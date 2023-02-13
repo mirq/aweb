@@ -1,0 +1,77 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+<html>
+<head>
+<title>User Authorization</title>
+<meta name="keywords" content="userid,password,authentication,authorize,authenticate">
+</head>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<h1>&nbsp; User Authorization</h1>
+
+<h2>Authorization</h2>
+User Authorization is a way to protect certain documents on the net by
+a user ID and password. To access such documents, you generally have to
+register yourself first.<p>
+Whenever you attempt to retrieve a document for which user authorization is necessary,
+AWeb will pop up a requester where you can type in your user ID and
+password. If these are valid, you will get the document.<p>
+On subsequent accesses to documents within the same <em>realm</em> on the
+same server, you don't need to enter your user ID and password again.
+
+<h2>Save your authorization details</h2>
+AWeb remembers all authorization details and saves them to disk when you quit.
+The next time you start AWeb, your authorization details are read so you
+won't need to enter these again.
+<p>
+To save these data during your session,
+select the <code>Cache / Save&nbsp;authorizations</code> menu item.<br>
+<p>
+<strong>Note:</strong> the authorization file is in an internal format.
+Do not attempt to modify this file.
+
+<h2><a name=edit>Edit your authorization details</a></h2>
+The <em>edit authorizations</em> requester allows you to change your user ID
+and password for known authorized sites, or delete the authorization
+details for a site.
+<p>
+You open the edit authorization requester by selecting the <code>Cache /
+Edit&nbsp;authorizations...</code> menu item.
+<p>
+After selecting an entry from the list, you can change your user ID and
+your password. Pressing the <b>Del</b> button will delete the entry.
+<p>
+The changes will be saved to disk when you quit AWeb, or when you save
+them earlier yourself.
+
+<h2><a name=proxy>Proxy authorization</a></h2>
+Some <a href=../Configuring/nwproxy.html>proxy servers</a> need authentication.
+If you use such a proxy, AWeb will pop up the same requester as for
+normal user authorization, to ask for your user ID and password for that proxy.
+
+<p>
+<hr>
+<a href=../AWeb%20Manual.html><img src=../GlobalImages/back.gif width=32 height=16 alt="<-" border=0></a> Back to
+<a href=../AWeb%20Manual.html>index</a>.
+
+</body>
+</html>

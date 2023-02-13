@@ -1,0 +1,145 @@
+<html>
+<head>
+<title>AOTP_APPLICATION class</title>
+</head>
+<body>
+<h1>AOTP_APPLICATION class</h1>
+
+<h2>Purpose</h2>
+
+The <b>AOTP_APPLICATION</b> class holds some global attributes.
+
+<h2>Supported methods</h2>
+
+<table border>
+<tr><th align=left valign=top>Method
+   <th align=left valign=top>Description
+<tr><th align=left valign=top><a href="../methods/addchild.html">AOM_ADDCHILD</a>
+   <td valign=top>Add a child to a relationship
+<tr><th align=left valign=top><a href="../methods/get.html">AOM_GET</a>
+   <td valign=top>Get current attribute value
+<tr><th align=left valign=top><a href="../methods/remchild.html">AOM_REMCHILD</a>
+   <td valign=top>Remove a child from a relationship
+</table>
+
+<h2>Supported attributes</h2>
+
+<table border>
+<tr><th align=left valign=top>Attribute
+   <th align=left valign=top>Type
+   <th align=left valign=top>Description
+   <th align=left valign=top>Applicability
+<tr><th align=left valign=top>AOAPP_Browsebgpen<br>
+      AOAPP_Textpen<br>AOAPP_Linkpen<br>AOAPP_Vlinkpen<br>AOAPP_Alinkpen
+   <td valign=top>LONG
+   <td valign=top>Default pen numbers for background, foreground, new links,
+      visited links, and selected links, respectively.
+      <p>
+      These are <b>not</b> the pen numbers that an HTML document uses,
+      but merely the defaults as configured by the user.
+      <p>Read this <a href=#screennote><b>important note</b></a>.
+   <td valign=top>AOM_GET
+<tr><th align=left valign=top>AOAPP_Colormap
+   <td valign=top>struct ColorMap *
+   <td valign=top>Pointer to the ColorMap of the screen that AWeb uses.
+      <p>Read this <a href=#screennote><b>important note</b></a>.
+   <td valign=top>AOM_GET
+<tr><th align=left valign=top>AOAPP_Drawinfo
+   <td valign=top>struct DrawInfo *
+   <td valign=top>Poibter to a DrawInfo for the screen that AWeb uses.
+      <p>Read this <a href=#screennote><b>important note</b></a>.
+   <td valign=top>AOM_GET
+<tr><th align=left valign=top>AOAPP_Programname
+   <td valign=top>STRPTR
+   <td valign=top>Fully qualified program path and name
+   <td valign=top>AOM_GET
+<tr><th align=left valign=top>AOAPP_Screen
+   <td valign=top>struct Screen *
+   <td valign=top>Pointer to the screen that AWeb uses.
+      <p>Read this <a href=#screennote><b>important note</b></a>.
+   <td valign=top>AOM_GET
+<tr><th align=left valign=top>AOAPP_Screenfont
+   <td valign=top>struct TextFont *
+   <td valign=top>Pointer to the screen font of the screen that AWeb uses.
+      <p>Read this <a href=#screennote><b>important note</b></a>.
+   <td valign=top>AOM_GET
+<tr><th align=left valign=top>AOAPP_Screenname
+   <td valign=top>STRPTR
+   <td valign=top>Name of the screen that AWeb uses.
+      <p>Read this <a href=#screennote><b>important note</b></a>.
+   <td valign=top>AOM_GET
+<tr><th align=left valign=top>AOAPP_Screenvalid
+   <td valign=top>BOOL
+   <td valign=top>Tells if the screen details are available, and the
+      screen related attributes may be used.
+   <td valign=top>AOM_GET
+<tr><th align=left valign=top>AOAPP_Screenwidth<br>AOAPP_Screenheight<br>AOAPP_Screendepth
+   <td valign=top>LONG
+   <td valign=top>Width, height and depth of the screen that AWeb uses.
+      <p>Read this <a href=#screennote><b>important note</b></a>.
+   <td valign=top>AOM_GET
+<tr><th align=left valign=top>AOAPP_Semaphore
+   <td valign=top>struct SignalSemaphore *
+   <td valign=top>Pointer to an initialized SignalSemaphore, or NULL.
+      <a href=task.html>Subtasks</a> that perform CPU intensive tasks
+      should obtain this semaphore, if present.
+   <td valign=top>AOM_GET
+<tr><th align=left valign=top>AOAPP_Systemfont
+   <td valign=top>struct TextFont *
+   <td valign=top>Pointer to the system's default font.
+   <td valign=top>AOM_GET
+<tr><th align=left valign=top>AOAPP_Visualinfo
+   <td valign=top>APTR
+   <td valign=top>Pointer to GadTools VisualInfo for the screen that AWeb uses.
+      <p>Read this <a href=#screennote><b>important note</b></a>.
+   <td valign=top>AOM_GET
+<tr><th align=left valign=top>AOAPP_Whitepen<br>AOAPP_Blackpen
+   <td valign=top>LONG
+   <td valign=top>Pen numbers of pure white and black, respectively.
+      <p>Read this <a href=#screennote><b>important note</b></a>.
+   <td valign=top>AOM_GET
+</table>
+
+<h2>Relations from AOTP_APPLICATION</h2>
+
+<table border>
+<tr><th align=left valign=top>Relationship
+   <th align=left valign=top>Description
+<tr><th align=left valign=top><a name=usescreen>AOREL_APP_USE_SCREEN</a>
+   <td valign=top>This relationship contains all objects that use one
+      of the screen resources. Child objects will be notified (using
+      the <a href="../methods/set.html">AOM_SET</a> method with the
+      AOAPP_Screenvalid attribute) when the screen is about to close,
+      or when a new screen has been opened.
+</table>
+
+
+<h2>Usage</h2>
+
+When AWeb is running, there is exactly one AOTP_APPLICATION object.
+The current object can be found using the <a href="../lib/aweb.html">Aweb()</a>
+function.
+<p>
+Use the object to find out about any of the global attributes listed
+above.
+<p>
+<a name=screennote><b>Important note</b></a>:<br>
+Before using one of the screen related attributes, you <b>must</b> check
+the value of the <b>AOAPP_Screenvalid</b> attribute. Only if this is nonzero,
+you can be sure that the values of screen related attributes are valid, and
+can safely be used.
+<p>
+Furthermore, if you use any screen resource (like allocating pens in
+the screen's ColorMap) you <b>must</b> use the
+<a href="../methods/addchild.html">AOM_ADDCHILD</a> method to add yourself
+in the <a href=#usescreen>AOREL_APP_USE_SCREEN</a> relation. Whenever the
+screen is about to become invalid (like when the user changes screen mode),
+you will receive an <a href="../methods/set.html">AOM_SET</a> message
+containing the AOAPP_Screenvalid attribute with a value of FALSE (zero).
+Upon receipt of this message, you <b>must</b> release all screen resources
+before returning from the method. When there is a screen again, you will
+be sent an <a href="../methods/set.html">AOM_SET</a> message
+containing the AOAPP_Screenvalid attribute with a value of TRUE (nonzero).
+<p>
+When an object is disposed that has added itself to this relation, it
+must remove itself again.

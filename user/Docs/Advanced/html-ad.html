@@ -1,0 +1,600 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+<html>
+<head>
+<title>
+AWeb supported HTML (A-D)
+</title>
+</head>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<h1>&nbsp; AWeb supported HTML</h1>
+
+<h2>Tags (A-D)</h2>
+
+The <em>Mode</em> column in the tables below contains the <a href=htmlmode.html>HTML
+mode</a> that recognizes the tag or attribute. Elements recognized in <em>strict</em>
+mode will also be recognized in <em>tolerant</em> mode, but elements marked as
+<em>tolerant</em> will not be recognized in <em>strict</em> mode.
+
+<h3><a name=comment>comment</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;!--comment--&gt;
+   <td>Includes a comment in the HTML source. Any text or tags within the comment
+      are ignored by the browser.
+   <td>Strict
+<tr align=left valign=top><td>&lt;!--comment-- [--comment--] &gt;
+   <td>The correct format of a HTML comment construct:
+      <ol>
+      <li>The comment starts with <b>&lt;!--</b>
+      <li>Any number of characters not containing <b>--</b>
+      <li>The first comment is terminated by <b>--</b>
+      <li>Optional whitespace (spaces, newlines)
+      <li>Either another comment starting with <b>--</b>, continue with step 2<br>
+         or the terminating <b>&gt;</b>
+      </ol>
+      So this is a correct comment:
+      <pre>&lt;!--This is a comment-- --&gt;this&lt;- is another comment--&nbsp;&gt;</pre>
+      But this is not:
+      <pre>&lt;!--This is a comment----&gt;</pre>
+      (The second comment was started but never ended).
+   <td>Strict
+<tr align=left valign=top><td>&lt;!--comment-&gt;
+   <td>An incorrect comment format, unfortunately used on many pages. The
+      comment is terminated by the first <b>-&gt;</b> found. AWeb recognizes
+      this comment format <strong>only</strong> in compatible mode.
+   <td>Compatible
+</table>
+
+<h3><a name=A>A</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;A&gt; ... &lt;/A&gt;
+   <td>Hyperlink anchor, specifies either a link to another location, or a named
+      location within a page.
+   <td valign=top>Strict
+<tr valign=top><th align=left>Attribute<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>COORDS="nn,nn,nn,..."
+   <td><em>Can only appear within a <a href=html-ks.html#OBJECT>OBJECT</a> element</em><br>
+      Lists the coordinates that describe the hot area of the object.
+      The number of coordinates depends on the shape:
+      <table cellpadding=0>
+         <tr><th align=left>SHAPE<th align=left>COORDS
+         <tr valign=top><td>RECT
+            <td>needs 4 coordinates: x,y of upper left and x,y of bottom right corners
+               if the rectangle
+         <tr valign=top><td>CIRC
+            <td>needs 3 coordinates: x,y of the center of the circle and a radius
+         <tr valign=top><td>POLY
+            <td>needs at least 3 pairs of x,y coordinates of the corners of the polygon
+         <tr valign=top><td>DEFAULT
+            <td>no coordinates are needed for default
+      </table>
+   <td>Strict
+<tr align=left valign=top><td>HREF="url"
+   <td>Specifies a destination for the hyperlink. "url" can be one of the following:
+      <dl>
+      <dt>Full URL<dd>a fully specified (absolute) URL, like
+         <code>http://www.amitrix.com/index.html</code>
+      <dt>Filename<dd>a filename (or path with filename). This specifies a location
+         relative to the address of the page (but see <a href=html-ad.html#BASE>BASE</a>).
+      <dt>#name<dd>the name of a location in the same page
+   <td>Strict
+<tr align=left valign=top><td>NAME="name"
+   <td>Defines a name in this page. You can point directly to this name using an
+      anchor with <code>HREF="url#name"</code>
+   <td>Strict
+<tr align=left valign=top><td>SHAPE=RECT<br>SHAPE=CIRC<br>SHAPE=POLY<br>SHAPE=DEFAULT
+   <td><em>Can only appear within a <a href=html-ks.html#OBJECT>OBJECT</a> element</em><br>
+      Specifies the shape of the hot area of the object.
+      Instead of the 4-letter abbreviations,
+      the full words may be used (RECTANGLE, CIRCLE, POLYGON).<p>
+      DEFAULT becomes active if no other area was selected.
+   <td>Strict
+<tr align=left valign=top><td>TARGET="name"
+   <td>The name of the <a href=html-ej.html#FRAME>frame</a> where to display the document linked to.
+      If the name does not exist, a new window will be opened.
+      <p>
+      The following <em>magic</em> names, beginning with an underscore character,
+      are recognized:
+      <table cellpadding=0>
+         <tr valign=top><td>_blank<td>The document is displayed in a new window.
+         <tr valign=top><td>_self<td>Target is the same window or frame that the
+            anchor appears in. This is the default, unless overridden by the
+            <a href=html-ad.html#BASE>BASE</a> tag.
+         <tr valign=top><td>_parent<td>Target is the window or frame containing
+            the frame that contains the anchor.
+         <tr valign=top><td>_top<td>Target is the entire browser window.
+      </table>
+   <td>Strict
+<tr align=left valign=top><td>TITLE="title"
+   <td>Defines the title to show when the mouse is over the hyperlink. By default
+      the URL of the destination is shown.
+   <td>Strict
+<tr align=left valign=top><td>METHOD=GET<br>METHOD=POST
+   <td><em>This attribute is an experimental addition to AWeb and is not supported
+      by other browsers.</em><br>
+      Specifies with what HTTP method the link should be accessed. If METHOD=POST
+      is specified and the URL contains a <em>query</em> part, that data is sent
+      as the request message body.
+   <td>Tolerant (AWeb)
+<TR VALIGN="TOP"><TH ALIGN="LEFT">Javascript Event</TH><TH ALIGN="LEFT">Explanation</TH><TH ALIGN="LEFT">Mode</TH></TR>
+<TR ALIGN="LEFT" VALIGN="TOP">
+<TD>ONCLICK="script"<BR>ONMOUSEOUT="script"<BR>ONMOUSEOVER="script"</TD>
+<TD>Standard JavaScript <A HREF="html.html#events">event handlers</A>.</TD>
+<TD>Strict</TD>
+</TR>
+</table>
+
+<h3><a name=ADDRESS>ADDRESS</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;ADDRESS&gt; ... &lt;/ADDRESS&gt;
+   <td>Specifies a (mail) address. Typically rendered in italics.
+   <td>Strict
+</table>
+
+<h3><a name=AREA>AREA</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;AREA&gt;
+   <td><em>Can only appear within a <a href=html-ks.html#MAP>MAP</a> element</em><br>
+      Specifies a hot area with a client-side image map.
+   <td>Strict
+<tr valign=top><th align=left>Attribute<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>ALT="text"
+   <td>Specifies the text to be shown in a tooltip when the mouse hovers over the area.
+   <td>Strict
+<tr align=left valign=top><td>COORDS="nn,nn,nn,..."
+   <td>Lists the coordinates that describe this area. The number of coordinates
+      depends on the shape:
+      <table cellpadding=0>
+         <tr><th align=left>SHAPE<th align=left>COORDS
+         <tr valign=top><td>RECT
+            <td>needs 4 coordinates: x,y of upper left and x,y of bottom right corners
+               if the rectangle
+         <tr valign=top><td>CIRC
+            <td>needs 3 coordinates: x,y of the center of the circle and a radius
+         <tr valign=top><td>POLY
+            <td>needs at least 3 pairs of x,y coordinates of the corners of the polygon
+         <tr valign=top><td>DEFAULT
+            <td>no coordinates are needed for default
+      </table>
+   <td>Strict
+<tr align=left valign=top><td>HREF="url"
+   <td>Specifies the URL that this area of the map links to.
+   <td>Strict
+<tr align=left valign=top><td>NOHREF
+   <td>Specifies that this area does not link to an URL.
+   <td>Strict
+<tr align=left valign=top><td>SHAPE=RECT<br>SHAPE=CIRC<br>SHAPE=POLY<br>SHAPE=DEFAULT
+   <td>Specifies the shape of the hot area. Instead of the 4-letter abbreviations,
+      the full words may be used (RECTANGLE, CIRCLE, POLYGON).<p>
+      DEFAULT becomes active if no other area was selected.
+   <td>Strict
+<tr align=left valign=top><td>TARGET="name"
+   <td>The name of the <a href=html-ej.html#FRAME>frame</a> where to display the
+      document linked to. If the name does not exist, a new window will be opened.
+      <p>
+      See <a href=html-ad.html#A>A</a> for a list of <em>magic</em> target names.
+   <td>Strict
+<TR VALIGN="TOP"><TH ALIGN="LEFT">Javascript Event</TH><TH ALIGN="LEFT">Explanation</TH><TH ALIGN="LEFT">Mode</TH></TR>
+<TR ALIGN="LEFT" VALIGN="TOP">
+<TD>ONMOUSEOUT="script"<BR>ONMOUSEOVER="script"</TD>
+<TD>Standard JavaScript <A HREF="html.html#events">event handlers</A>.</TD>
+<TD>Strict</TD>
+</TR>
+</table>
+
+<h3><a name=B>B</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;B&gt; ... &lt;/B&gt;
+   <td>Renders text in bold. Usually it is better to use one of the logical
+      styles (like <a href=html-ks.html#STRONG>STRONG</a>) instead of phisycal styles
+      like B.
+   <td>Strict
+</table>
+
+<h3><a name=BASE>BASE</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;BASE&gt;
+   <td><em>Can only appear within a <a href=html-ej.html#HEAD>HEAD</a> element</em><br>
+      Defines the base URL for this page. The base URL is the address to use
+      when resolving relative URL references (partial URLs). By default the
+      base URL is the page's address.
+   <td>Strict
+<tr valign=top><th align=left>Attribute<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>HREF="url"
+   <td>Specifies the URL to use as the base
+   <td>Strict
+<tr align=left valign=top><td>TARGET="name"
+   <td>The name of the <a href=html-ej.html#FRAME>frame</a> where to display documents linked to
+      by <a href=html-ad.html#A>A</a> hyperlink anchors. See <a href=html-ad.html#A>A</a> for details.
+   <td>Strict
+</table>
+
+<h3><a name=BASEFONT>BASEFONT</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;BASEFONT&gt;
+   <td>Sets the size normal text is rendered in, and that relative <a href=html-ej.html#FONT>FONT</a>
+      sizes refer to.
+   <td>Strict
+<tr valign=top><th align=left>Attribute<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>COLOR=#rrggbb<br>COLOR=colourname
+   <td>Specifies the colour to render the text in.<br>
+      See <a href=html.html#colours>colour specifications</a> for a list of valid names.
+   <td>Strict
+<tr align=left valign=top><td>SIZE=nn<br>SIZE=+nn<br>SIZE=-nn
+   <td>Specifies the font size.<p>
+      If <var>nn</var> is given, it is an absolute size. Valid sizes are 1 to 7,
+      1 being the smallest and 7 the largest.<p>
+      If <var>+nn</var> or <var>-nn</var> is given, it is a change relative to
+      the current BASEFONT size.
+      Valid range is -6 to +6, but the resulting font size will be adjusted to
+      fall within the range 1 to 7.
+   <td>Strict
+<tr align=left valign=top><td>FACE="name list"
+   <td>Specifies a comma separated list of names of preferred font faces.
+   <td>Strict
+</table>
+
+<h3><a name=BGSOUND></a>BGSOUND</h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;BGSOUND&gt;
+   <td>Defines a sound to play when this page is displayed.
+   <td>Tolerant (MS)
+<tr valign=top><th align=left>Attribute<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>SRC="url"
+   <td>Specifies the URL where the sound can be found.
+   <td>Tolerant (MS)
+<tr align=left valign=top><td>LOOP=n<br>LOOP=INFINITE
+   <td>The number of times the sound should be played. If the number is negative,
+      or if "INFINITE" is given, the sound will be repeated forever while the
+      page is being displayed.
+   <td>Tolerant (MS)
+</table>
+
+<h3><a name=BIG>BIG</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;BIG&gt; ... &lt;/BIG&gt;
+   <td>Renders text in a large font.
+   <td>Strict
+</table>
+
+<h3><a name=BLINK>BLINK</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;BLINK&gt; ... &lt;/BLINK&gt;
+   <td>Specifies blinking text.
+   <td>Tolerant (NS)
+</table>
+
+<h3><a name=BLOCKQUOTE>BQ or BLOCKQUOTE</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;BQ&gt; ... &lt;/BQ&gt;<br>
+      &lt;BLOCKQUOTE&gt; ... &lt;/BLOCKQUOTE&gt;
+   <td>Specifies a text as long quotation. Typically rendered in italics.
+   <td>Strict
+</table>
+
+<h3><a name=BODY>BODY</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;BODY&gt; ... &lt;/BODY&gt;
+   <td>Specifies the body if an HTML document. Each HTML document must have exactly
+      1 body or <a href=html-ej.html#FRAMESET>FRAMESET</a> element.
+      <p>Both the start and end tags are optional.
+   <td>Strict
+<tr valign=top><th align=left>Attribute<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>BACKGROUND="url"
+   <td>Specifies a background image. The image is tiled in the background of the
+      page.
+   <td>Strict
+<tr align=left valign=top><td>BGCOLOR=#rrggbb<br>BGCOLOR=colourname
+   <td>Specifies the pages background colour if no background image is given, or
+      the background image is not (yet) loaded.<br>
+      See <a href=html.html#colours>colour specifications</a> for a list of valid names.
+   <td>Strict
+<tr align=left valign=top><td>TEXT=#rrggbb<br>TEXT=colourname
+   <td>Specifies colour to render normal text in.<br>
+      See <a href=html.html#colours>colour specifications</a> for a list of valid names.
+   <td>Strict
+<tr align=left valign=top><td>LINK=#rrggbb<br>LINK=colourname
+   <td>Specifies colour to render unvisited hyperlinks in.<br>
+      See <a href=html.html#colours>colour specifications</a> for a list of valid names.
+   <td>Strict
+<tr align=left valign=top><td>VLINK=#rrggbb<br>VLINK=colourname
+   <td>Specifies colour to render already visited hyperlinks in.<br>
+      See <a href=html.html#colours>colour specifications</a> for a list of valid names.
+   <td>Strict
+<tr align=left valign=top><td>ALINK=#rrggbb<br>ALINK=colourname
+   <td>Specifies colour to render selected (highlighted) hyperlinks in.<br>
+      See <a href=html.html#colours>colour specifications</a> for a list of valid names.
+   <td>Strict
+<tr align=left valign=top><td>TOPMARGIN=nn<br>LEFTMARGIN=nn
+   <td>Specifies the top (and bottom) margin, or the left (and right) margin
+      in pixels. This overrides the default margins.
+   <td>Tolerant (MS)
+<TR VALIGN="TOP"><TH ALIGN="LEFT">Javascript Event</TH><TH ALIGN="LEFT">Explanation</TH><TH ALIGN="LEFT">Mode</TH></TR>
+<TR ALIGN="LEFT" VALIGN="TOP">
+<TD>ONBLUR="script"<BR>ONFOCUS="script"<BR>ONLOAD="script"<BR>ONUNLOAD="script"</TD>
+<TD>Standard JavaScript <A HREF="html.html#events">event handlers</A>.</TD>
+<TD>Strict</TD>
+</TR>
+</table>
+
+<h3><a name=BR>BR</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;BR&gt;
+   <td>Specifies a line break.
+   <td>Strict
+<tr valign=top><th align=left>Attribute<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>CLEAR=LEFT<br>CLEAR=RIGHT<br>CLEAR=ALL
+   <td>Places the following text after left aligned, right aligned or all floating
+      images.
+   <td>Strict
+</table>
+
+<h3><a name=BUTTON>BUTTON</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;BUTTON&gt; ... &lt;/BUTTON&gt;
+   <td><em>Can only appear within a <a href=html-ej.html#FORM>FORM</a> element</em><br>
+      Defines a button with custom imagery in a form.<p>
+      The BUTTON element can contain text and images, and these will be
+      rendered in the button.
+   <td>Strict
+<tr valign=top><th align=left>Attribute<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>TYPE=BUTTON<br>TYPE=RESET<br>TYPE=SUBMIT
+   <td>Defines the type of button:
+      <table cellpadding=0>
+         <tr><th align=left>TYPE<th align=left>Meaning
+         <tr valign=top><td>BUTTON<td>A general purpose button
+         <tr valign=top><td>RESET<td>Button to reset all fields to their initial state
+         <tr valign=top><td>SUBMIT<td>Button to send the form data
+      </table>
+      A general purpose button will generally have an ONCLICK attribute specified
+      to define the action to be taken when the user clicks the button.
+   <td>Strict
+<tr align=left valign=top><td>NAME="name"
+   <td>Gives this field a name. Fields without a name will not be included in the
+      form data sent.
+   <td>Strict
+<tr align=left valign=top><td>VALUE="value"
+   <td>This specifies the value (data) to be included when the form is sent.<br>
+   <td>Strict
+<TR VALIGN="TOP"><TH ALIGN="LEFT">Javascript Event</TH><TH ALIGN="LEFT">Explanation</TH><TH ALIGN="LEFT">Mode</TH></TR>
+<TR ALIGN="LEFT" VALIGN="TOP">
+<TD>ONBLUR="script"<BR>ONCLICK="script"<BR>ONFOCUS="script</TD>
+<TD>Standard JavaScript <A HREF="html.html#events">event handlers</A>.</TD>
+<TD>Strict</TD>
+</TR>
+</table>
+
+<h3><a name=CAPTION>CAPTION</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;CAPTION&gt; ... &lt;/CAPTION&gt;
+   <td><em>Can only appear within a <a href=html-tz.html#TABLE>TABLE</a> element</em><br>
+      Specifies a caption for a table.
+   <td>Strict
+<tr valign=top><th align=left>Attribute<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>ALIGN=TOP<br>ALIGN=BOTTOM
+   <td>Specifies whether the caption should appear above the table (ALIGN=TOP) or
+      below the table (ALIGN=BOTTOM).
+   <td>Strict
+<tr align=left valign=top><td>ALIGN=LEFT<br>ALIGN=CENTER<br>ALIGN=RIGHT
+   <td>Specifies the alignment of the caption relative to the table width.
+   <td>Tolerant (MS)
+<tr align=left valign=top><td>VALIGN=TOP<br>VALIGN=BOTTOM
+   <td>Specifies whether the caption should appear above the table (VALIGN=TOP) or
+      below the table (VALIGN=BOTTOM).
+   <td>Tolerant (MS)
+</table>
+
+<h3><a name=CENTER>CENTER</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;CENTER&gt; ... &lt;/CENTER&gt;
+   <td>Renders text and other elements centered within the window width.<br>
+      Is a shorthand notation for &lt;DIV ALIGN=CENTER&gt;
+   <td>Strict
+</table>
+
+<h3><a name=CITE>CITE</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;CITE&gt; ... &lt;/CITE&gt;
+   <td>Specifies a citation. Typically rendered in italics.
+   <td>Strict
+</table>
+
+<h3><a name=CODE>CODE</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;CODE&gt; ... &lt;/CODE&gt;
+   <td>Specifies a short code sample. Typically rendered in a fixed width font.
+   <td>Strict
+</table>
+
+<h3><a name=COL>COL</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;COL&gt;
+   <td><em>Can only appear within a <a href=html-tz.html#TABLE>TABLE</a> element</em><br>
+      Declares a column within a table.
+   <td>Strict
+<tr valign=top><th align=left>Attribute<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>SPAN=nn
+   <td>The number of columns declared with this tag. Default is 1.
+   <td>Strict
+<tr align=left valign=top><td>WIDTH=nn<br>WIDTH=nn*<br>WIDTH=nn%
+   <td>Specifies the width of this column, in pixels, in relative units or as
+      a percentage.
+   <td>Strict
+<tr align=left valign=top><td>ALIGN=LEFT<br>ALIGN=CENTER<br>ALIGN=RIGHT
+   <td>Renders the text and other elements within this column left aligned, centered
+      within the cell width, or right aligned with the cell border.
+      <p>
+      This attribute overrides the ALIGN attribute of the
+      <a href="html-ad.html#COLGROUP">COLGROUP</a>,
+      <a href=html-tz.html#THEAD>THEAD</a>, <a href=html-tz.html#TBODY>TBODY</a>,
+      <a href=html-tz.html#TFOOT>TFOOT</a> and <a href=html-tz.html#TR>TR</a>
+      elements.
+   <td>Strict
+<tr align=left valign=top><td>VALIGN=TOP<br>VALIGN=MIDDLE<br>VALIGN=BOTTOM<br>VALIGN=BASELINE
+   <td>Specifies the vertical alignment of the cell contents in this column:
+      <table cellpadding=0>
+         <tr><th align=left>ALIGN<th align=left>Meaning
+         <tr valign=top><td>TOP<td>places the cell contents at the top of the cell
+         <tr valign=top><td>MIDDLE<td>places the cell contents vertically centered
+            within the cell
+         <tr valign=top><td>BOTTOM<td>places the cell contents at the bottom of the cell
+         <tr valign=top><td>BASELINE<td>aligns the text in this cell with the text
+            in other cells in the same row that have VALIGN=BASELINE specified
+      </table>
+   <td>Strict
+</table>
+
+<h3><a name=COLGROUP>COLGROUP</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;COL&gt;
+   <td><em>Can only appear within a <a href=html-tz.html#TABLE>TABLE</a> element</em><br>
+      Declares a column group within a table. The COLGROUP element may contain one
+      or more <a href="html-ad.html#COL">COL</a> elements to declare the individual
+      columns in this group.
+   <td>Strict
+<tr valign=top><th align=left>Attribute<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>SPAN=nn
+   <td>The number of columns within this group. Default is 1. This can be overridden by
+      declaring one or more <a href="html-ad.html#COL">COL</a> elements.
+   <td>Strict
+<tr align=left valign=top><td>WIDTH=nn<br>WIDTH=nn*<br>WIDTH=nn%
+   <td>Specifies the width of each column in this group, in pixels, in relative units
+      or as a percentage.
+   <td>Strict
+<tr align=left valign=top><td>ALIGN=LEFT<br>ALIGN=CENTER<br>ALIGN=RIGHT
+   <td>Renders the text and other elements within this column group left aligned, centered
+      within the cell width, or right aligned with the cell border.
+      <p>
+      This attribute overrides the ALIGN attribute of the
+      <a href=html-tz.html#THEAD>THEAD</a>, <a href=html-tz.html#TBODY>TBODY</a>,
+      <a href=html-tz.html#TFOOT>TFOOT</a> and <a href=html-tz.html#TR>TR</a>
+      elements.
+   <td>Strict
+<tr align=left valign=top><td>VALIGN=TOP<br>VALIGN=MIDDLE<br>VALIGN=BOTTOM<br>VALIGN=BASELINE
+   <td>Specifies the vertical alignment of the cell contents in this column group:
+      <table cellpadding=0>
+         <tr><th align=left>ALIGN<th align=left>Meaning
+         <tr valign=top><td>TOP<td>places the cell contents at the top of the cell
+         <tr valign=top><td>MIDDLE<td>places the cell contents vertically centered
+            within the cell
+         <tr valign=top><td>BOTTOM<td>places the cell contents at the bottom of the cell
+         <tr valign=top><td>BASELINE<td>aligns the text in this cell with the text
+            in other cells in the same row that have VALIGN=BASELINE specified
+      </table>
+   <td>Strict
+</table>
+
+<h3><a name=DD>DD</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;DD&gt;
+   <td><em>Can only appear within a <a href=html-ad.html#DL>DL</a> element</em><br>
+      Specifies a description in a definition list. The description is rendered
+      indented.
+   <td>Strict
+</table>
+
+<h3><a name=DFN>DFN</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;DFN&gt; ... &lt;/DFN&gt;
+   <td>Specifies a definition. Typically rendered in italics.
+   <td>Strict
+</table>
+
+<h3><a name=DIR>DIR</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;DIR&gt; ... &lt;/DIR&gt;
+   <td>Specifies a directory list. AWeb renders a DIR list exactly the same
+      as a <a href=html-tz.html#UL>UL</a> list.
+   <td>Strict
+</table>
+
+<h3><a name=DIV>DIV</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;DIV&gt; ... &lt;/DIV&gt;
+   <td>Specifies a division of the document for aligning purposes.
+   <td>Strict
+<tr valign=top><th align=left>Attribute<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>ALIGN=LEFT<br>ALIGN=CENTER<br>ALIGN=RIGHT
+   <td>Renders the text and other elements within the division left aligned, centered
+      within the window width, or right aligned with the window border.
+   <td>Strict
+</table>
+
+<h3><a name=DL>DL</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;DL&gt; ... &lt;/DL&gt;
+   <td>Specifies a definition list. Each entry in the list contains one or more
+      <a href=html-ad.html#DT>DT</a> elements to specify the term, and one <a href=html-ad.html#DD>DD</a>
+      element that contains the desciption of that term
+   <td>Strict
+</table>
+
+<h3><a name=DT>DT</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;DT&gt;
+   <td><em>Can only appear within a <a href=html-ad.html#DL>DL</a> element</em><br>
+      Specifies a term in a definition list. The term is rendered non-indented as
+      opposed to the definition of the term.
+   <td>Strict
+</table>
+
+<p>
+<hr>
+<a href=html.html>Back to overview</a><br>
+More HTML tags:
+<a href=html-ej.html>E-J</a>,
+<a href=html-ks.html>K-S</a>,
+<a href=html-tz.html>T-Z</a><br>
+<br>
+
+<a href=../AWeb%20Manual.html><img src=../GlobalImages/back.gif width=32 height=16 alt="<-" border=0></a> Back to
+<a href=../AWeb%20Manual.html>index</a>.
+
+</body>
+</html>

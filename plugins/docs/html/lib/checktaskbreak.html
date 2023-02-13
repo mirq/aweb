@@ -1,0 +1,33 @@
+<html>
+<head>
+<title>Checktaskbreak()</title>
+</head>
+<body>
+<h1>Checktaskbreak()</h1>
+
+<h2>Purpose</h2>
+Check if this <a href="../classes/task.html">subtask</a> has received
+a message setting <b>AOTSK_Stop</b> to TRUE.
+
+<h2>Synopsis</h2>
+<pre>
+   stop = Checktaskbreak()
+   D0
+
+   BOOL Checktaskbreak(void)
+</pre>
+
+<h2>Function</h2>
+<a href="../classes/task.html">AOTP_TASK</a> support function.
+It checks if the subtask has been stopped by the main task. The main task can
+do so by setting the <a href="../classes/task.html">AOTP_TASK</a>
+object's <b>AOTSK_Stop</b> attribute to TRUE.
+<p>
+You may not use this function outside subtask code.
+
+<h2>Result</h2>
+<b>TRUE</b>, if the subtask was stopped by the main task.<br>
+<b>FALSE</b>, otherwise.
+
+<h2>See also</h2>
+<a href="gettaskmsg.html">Gettaskmsg()</a>

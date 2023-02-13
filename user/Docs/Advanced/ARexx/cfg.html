@@ -1,0 +1,1290 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+<html>
+<head>
+<title>AWeb ARexx Commands: Configuration</title>
+</head>
+
+<BODY BACKGROUND="../../GlobalImages/awebbg.gif">
+
+<IMG SRC="../../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<h1>&nbsp; AWeb ARexx Commands</h1>
+
+<h2>Configuration commands</h2>
+
+<table cellspacing=0 cellpadding=0 width=100%>
+<tr valign=top><td>
+<a href=#GETCFG>GETCFG</a><br>
+<a href=#SETCFG>SETCFG</a><br>
+</table>
+
+<table cellspacing=0 cellpadding=0 width=100%>
+<caption>Configuration items:</caption>
+<tr valign=top><td>
+<a href=#ALLOWCMD>ALLOWCMD</a><br>
+<a href=#ANONYMOUS>ANONYMOUS</a><br>
+<a href=#AUTOSEARCH>AUTOSEARCH</a><br>
+<a href=#AUTOSEARCHURL>AUTOSEARCHURL</a><br>
+<a href=#BACKGROUND>BACKGROUND</a><br>
+<a href=#BGSOUND>BGSOUND</a><br>
+<a href=#BLINK>BLINK</a><br>
+<a href=#BUTTON>BUTTON</a><br>
+<a href=#CACHEDISK>CACHEDISK</a><br>
+<a href=#CACHEMEMORY>CACHEMEMORY</a><br>
+<a href=#CACHEPATH>CACHEPATH</a><br>
+<a href=#CENTERREQS>CENTERREQS</a><br>
+<a href=#COLOUR>COLOUR</a><br>
+<a href=#CONSOLE>CONSOLE</a><br>
+<a href=#CONTANIM>CONTANIM</a><br>
+<a href=#COOKIES>COOKIES</a><br>
+<a href=#DRAGGING>DRAGGING</a><br>
+<a href=#EDITOR>EDITOR</a><br>
+<a href=#ENDTCP>ENDTCP</a><br>
+<a href=#FASTRESPONSE>FASTRESPONSE</a><br>
+<a href=#FONT>FONT</a><br>
+<a href=#FONTALIAS>FONTALIAS</a><br>
+<a href=#FOREIGNIMAGES>FOREIGNIMAGES</a><br>
+<td>
+<a href=#FORMWARNING>FORMWARNING</a><br>
+<a href=#FRAMES>FRAMES</a><br>
+<a href=#FTPEMAILADDR>FTPEMAILADDR</a><br>
+<a href=#FTPPROXY>FTPPROXY</a><br>
+<a href=#GOPHERPROXY>GOPHERPROXY</a><br>
+<a href=#HANDPOINTER>HANDPOINTER</a><br>
+<a href=#HISTORYCLOSE>HISTORYCLOSE</a><br>
+<a href=#HISTORYOPEN>HISTORYOPEN</a><br>
+<a href=#HOMEURL>HOMEURL</a><br>
+<a href=#HOTLISTCLOSE>HOTLISTCLOSE</a><br>
+<a href=#HOTLISTOPEN>HOTLISTOPEN</a><br>
+<a href=#HOTLISTREQUESTER>HOTLISTREQUESTER</a><br>
+<a href=#HOTLISTSINGLECLICK>HOTLISTSINGLECLICK</a><br>
+<a href=#HTMLMODE>HTMLMODE</a><br>
+<a href=#HTMLVIEWER>HTMLVIEWER</a><br>
+<a href=#HTTPPROXY>HTTPPROXY</a><br>
+<a href=#ICONS>ICONS</a><br>
+<a href=#IGNOREMIME>IGNOREMIME</a><br>
+<a href=#IMAGES>IMAGES</a><br>
+<a href=#IMAGEVIEWER>IMAGEVIEWER</a><br>
+<a href=#INCREMENTALTABLE>INCREMENTALTABLE</a><br>
+<a href=#INDEXSUFFIX>INDEXSUFFIX</a><br>
+<a href=#JAVASCRIPT>JAVASCRIPT</a><br>
+<td>
+<a href=#JSERRORS>JSERRORS</a><br>
+<a href=#KEEPFREECHIP>KEEPFREECHIP</a><br>
+<a href=#KEEPFREEFAST>KEEPFREEFAST</a><br>
+<a href=#KEY>KEY</a><br>
+<a href=#LIMITEDPROXY>LIMITEDPROXY</a><br>
+<a href=#MAILNEWS>MAILNEWS</a><br>
+<a href=#MAILTO>MAILTO</a><br>
+<a href=#MAXLOCAL>MAXLOCAL</a><br>
+<a href=#MAXNETWORK>MAXNETWORK</a><br>
+<a href=#MENU>MENU</a><br>
+<a href=#MIME>MIME</a><br>
+<a href=#NAVBUTTON>NAVBUTTON</a><br>
+<a href=#NAVIGATION>NAVIGATION</a><br>
+<a href=#NETSTATUSOPEN>NETSTATUSOPEN</a><br>
+<a href=#NEWS>NEWS</a><br>
+<a href=#NOCACHE>NOCACHE</a><br>
+<a href=#NOCOOKIE>NOCOOKIE</a><br>
+<a href=#NOMINALFRAME>NOMINALFRAME</a><br>
+<a href=#NOPROXY>NOPROXY</a><br>
+<a href=#OVERLAP>OVERLAP</a><br>
+<a href=#PALETTE>PALETTE</a><br>
+<a href=#PASSIVEFTP>PASSIVEFTP</a><br>
+<a href=#POPUP>POPUP</a><br>
+<td>
+<a href=#POPUPMENU>POPUPMENU</a><br>
+<a href=#RFCCOOKIES>RFCCOOKIES</a><br>
+<a href=#SAVEPATH>SAVEPATH</a><br>
+<a href=#SCREEN>SCREEN</a><br>
+<a href=#SCREENPENS>SCREENPENS</a><br>
+<a href=#SHOWBUTTONS>SHOWBUTTONS</a><br>
+<a href=#SHUTDOWN>SHUTDOWN</a><br>
+<a href=#SPAMBLOCK>SPAMBLOCK</a><br>
+<a href=#SPOOFAS>SPOOFAS</a><br>
+<a href=#STARTHOME>STARTHOME</a><br>
+<a href=#STARTTCP>STARTTCP</a><br>
+<a href=#STARTUP>STARTUP</a><br>
+<a href=#STYLE>STYLE</a><br>
+<a href=#SUPPRESSBANNERS>SUPPRESSBANNERS</a><br>
+<a href=#TELNET>TELNET</a><br>
+<a href=#TELNETPROXY>TELNETPROXY</a><br>
+<a href=#TEMPPATH>TEMPPATH</a><br>
+<a href=#TOOLTIPS>TOOLTIPS</a><br>
+<a href=#ULLINKS>ULLINKS</a><br>
+<a href=#VERIFICATION>VERIFICATION</a><br>
+<a href=#WATCHJS>WATCHJS</a><br>
+</table>
+
+<h3><a name=GETCFG>GETCFG</a></h3>
+Template:<pre><b>
+   GETCFG ITEM,VAR/K,STEM/K
+</b></pre>
+Obtain one or more configuration settings.
+<p>
+<table width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>ITEM
+   <td valign=top>Specifies the name of the <a href=#single>single item</a>,
+      <a href=#group>group</a> or <a href=#list>list</a> to obtain.
+      <p>
+      If not specified, an <a href=#stem>array</a> is built of all configuration
+      items.
+<tr><th align=left valign=top>VAR
+   <td valign=top>The name of the variable to return the value of a
+      <a href=#single>single item</a> in. If no name is specified, the value
+      of a single item will be returned in the reserved ARexx variable <code>RESULT</code>.
+<tr><th align=left valign=top>STEM
+   <td valign=top>The name of a stem variable to return an <a href=#stem>array</a>
+      of items in, for a <a href=#group>group</a> or <a href=#list>list</a>, or
+      when obtaining all items. Do not include the trailing period in this name.
+</table>
+
+<h3><a name=SETCFG>SETCFG</a></h3>
+Template:<pre><b>
+   SETCFG ITEM,VALUE,STEM/K,ADD/S
+</b></pre>
+Set one or more configuration settings. After completion of this command, the
+new configuration will be in effect, and possibly a re-lay out of the current
+document will take place (or even a screen close and re-open). If you need to
+set several items at once, it is best to combine all items into one
+<a href=#stem>array</a>, so any extra processing will be done only once.
+<p>
+<table width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>ITEM
+   <td valign=top>Specifies the name of the <a href=#items>item</a> to set.
+<tr><th align=left valign=top>VALUE
+   <td valign=top>The value to set the item of the specified name to.
+<tr><th align=left valign=top>STEM
+   <td valign=top>The name of a stem variable that holds an <a href=#stem>array</a>
+      of items to set. The items in this array don't necessarily belong
+      to the same <a href=#group>group</a> or <a href=#list>list</a>.
+<tr><th align=left valign=top>ADD
+   <td valign=top>If this switch is set, any <a href=#list>list</a> items are
+      added to the existing settings.
+      <p>
+      If this switch is not set, and <a href=#list>list</a> items are supplied, they
+      replace the existing list for that item.
+</table>
+
+<h3><a name=stem>Stem variable</a></h3>
+The stem variable used as output of the <a href=#GETCFG>GETCFG</a> command, or
+as input for the <a href=#SETCFG>SETCFG</a> command, holds an
+<a href=commands.html#structured>array of structured information</a>.
+Each array element contains the name and value of one configuration <a href=#items>item</a>.
+
+<table width=100%>
+<caption><a href=commands.html#structured>Structured information</a> components</caption>
+<tr><th align=left valign=top>Name
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>ITEM
+   <td valign=top>Name of the <a href=#items>item</a>.
+<tr><th align=left valign=top>VALUE
+   <td valign=top>Value of the <a href=#items>item</a>.
+</table>
+
+<h3>Types of items</h3>
+There are three basic types of configuration items:
+<a href=#single>single items</a>, <a href=#group>item groups</a>,
+and <a href=#list>item lists</a>.
+
+<h4><a name=single>Single item</a></h4>
+A single item is an atomic configuration item, identified by its name.
+<p>
+Example: <a href=#HTMLMODE><code>HTMLMODE</code></a> is the item controlling
+the browser's HTML mode.
+
+<h4><a name=group>Item group</a></h4>
+An item group is a set of closely related items. The individual items
+are identified by the group name and the item name, separated by a period.
+In the <a href=#GETCFG>GETCFG</a> command, the group name can be specified
+to obtain the entire group at once (in a <a href=#stem>stem variable</a>).
+<p>
+Example: <a href=#STYLE><code>STYLE</code></a> is a group containing all
+browser style settings.
+<code>STYLE.H3</code> and <code>STYLE.BLOCKQUOTE</code> are two individual
+items in this group.
+
+<h4><a name=list>Item list</a></h4>
+An item list contains one or more values for the same item. These values can
+not be obtained individually, only as an <a href=#stem>array</a>. The array
+elements for the item list all have the same name.
+<p>
+It is possible to set or add an individual value with the <a href=#SETCFG>SETCFG</a>
+command. If the <b>ADD</b> switch is given, the value is added to the list,
+otherwise the one value replaces all existing values from the list.
+<p>
+Example: <a href=#MIME><code>MIME</code></a> is a list containing all
+MIME type and external program settings.
+
+<h3><a name=items>Configuration items</a></h3>
+
+<h4><a name=ALLOWCMD>ALLOWCMD</a></h4>
+<a href="../../Configuring/proptions.html">program settings</a>, options:
+<em>Allow shell commands in links</em>.
+<p>
+Value: Boolean (0 or 1).
+
+<h4><a name=ANONYMOUS>ANONYMOUS</a></h4>
+<a href="../../Configuring/nwprivacy.html">network settings</a>, options:
+<em>Suppress Referer while browsing</em> (previously called:
+<em>Browse anonymously</em>).
+<p>
+Value: Boolean (0 or 1).
+
+<h4><a name=AUTOSEARCH>AUTOSEARCH</a></h4>
+<a href="../../Configuring/nwoptions.html">network settings</a>, options:
+<em>Enable auto search</em>.
+<p>
+Value: Boolean (0 or 1).
+
+<h4><a name=AUTOSEARCHURL>AUTOSEARCHURL</a></h4>
+<a href="../../Configuring/nwoptions.html">Network settings</a>, options:
+<em>Auto search URL</em>.
+<p>
+Value: String containing the URL of the autosearch search engine.
+
+<h4><a name=BACKGROUND>BACKGROUND</a></h4>
+<a href="../../Configuring/broptions.html">Browser settings</a>, options:
+<em>Use background and colours</em>.
+<p>
+Value: Boolean (0 or 1).
+
+<h4><a name=BGSOUND>BGSOUND</a></h4>
+<a href="../../Configuring/broptions.html">Browser settings</a>, options:
+<em>Use background sounds</em>.
+<p>
+Value: Boolean (0 or 1).
+
+<h4><a name=BLINK>BLINK</a></h4>
+<a href="../../Configuring/broptions.html">Browser settings</a>, options:
+<em>Blink</em>.
+<p>
+Value: Number in the range 0..40, specifying the blink rate in tenths
+of a second. Zero means no blinking.
+
+<h4><a name=BUTTON>BUTTON</a></h4>
+<a href="../../Configuring/uibuttons.html">GUI settings</a>, Buttons:
+<em>User buttons</em>.
+<p>
+This is an <a href=#list>item list</a> of individual menu entries.
+<p>
+Value of each entry: String with format:
+<pre>
+   <i>label</i> NL <i>command</i>
+</pre>
+<table>
+<tr valign=top><th valign=top align=left><i>label</i>
+   <td>The label to show in the button.
+<tr valign=top><th valign=top align=left>NL
+   <td>A newline character (hexadecimal 0A).
+<tr valign=top><th valign=top align=left><i>command</i>
+   <td>The ARexx command to execute when the button is clicked.
+</table>
+
+<h4><a name=CACHEDISK>CACHEDISK</a></h4>
+<a href="../../Configuring/nwcache.html">Network settings</a>, cache:
+<em>Cache size on disk</em>.
+<p>
+Value: Non-negative number, specifying the size of the disk cache in kB.
+
+<h4><a name=CACHEMEMORY>CACHEMEMORY</a></h4>
+<a href="../../Configuring/nwcache.html">Network settings</a>, cache:
+<em>Cache size in memory</em>.
+<p>
+Value: Non-negative number, specifying the size of the memory cache in kB.
+
+<h4><a name=CACHEPATH>CACHEPATH</a></h4>
+<a href="../../Configuring/nwcache.html">Network settings</a>, cache:
+<em>Cache path</em>.
+<p>
+Value: String specifying a DOS path.
+
+<h4><a name=CENTERREQS>CENTERREQS</a></h4>
+<a href="../../Configuring/proptions.html">Program settings</a>, options:
+<em>Center requesters</em>.
+<p>
+Value: Boolean (0 or 1).
+
+<h4><a name=COLOUR>COLOUR</a></h4>
+<a href="../../Configuring/brcolours.html">Browser settings</a>, colours:
+<em>Default browser colours</em>.
+<p>
+This <a href=#group>item group</a> contains the following items:
+
+<table>
+<tr valign=top><th valign=top align=left>COLOUR.BACKGROUND
+   <td>Document background colour.
+<tr valign=top><th valign=top align=left>COLOUR.TEXT
+   <td>Document text colour.
+<tr valign=top><th valign=top align=left>COLOUR.LINK
+   <td>Colour of not yet visited hyperlinks.
+<tr valign=top><th valign=top align=left>COLOUR.VLINK
+   <td>Colour of visited hyperlinks.
+<tr valign=top><th valign=top align=left>COLOUR.ALINK
+   <td>Colour of active (selected) hyperlinks.
+</table>
+
+Value of all items: String of 6 hexadecimal digits specifying
+the RGB colour value (RRGGBB).
+
+<h4><a name=CONSOLE>CONSOLE</a></h4>
+<a href="../../Configuring/prprograms.html">Program settings</a>, external programs:
+<em>Console window specification</em>.
+<p>
+Value: String specifying a DOS console window.
+
+<h4><a name=CONTANIM>CONTANIM</a></h4>
+<a href="../../Configuring/nwoptions.html">network settings</a>, options:
+<em>Continuous animation</em>.
+<p>
+Value: Boolean (0 or 1).
+
+<h4><a name=COOKIES>COOKIES</a></h4>
+<a href="../../Configuring/nwoptions.html">Network settings</a>, options:
+<em>Use cookies</em>.
+<p>
+Value: 0,1 or 2:
+<table>
+<tr valign=top><th valign=top align=left>0
+   <td>Never remember or send a cookie.
+<tr valign=top><th valign=top align=left>1
+   <td>Ask user before remembering a cookie.
+<tr valign=top><th valign=top align=left>2
+   <td>Remember and send cookies silently.
+</table>
+
+<h4><a name=DRAGGING>DRAGGING</a></h4>
+<a href="../../Configuring/proptions.html">Program settings</a>, options:
+<em>Allow dragging</em>.
+<p>
+Value: Boolean (0 or 1).
+
+<h4><a name=EDITOR>EDITOR</a></h4>
+<a href="../../Configuring/prprograms.html">Program settings</a>, external programs:
+<em>Editor</em>.
+<p>
+Value: String with format:
+<pre>
+   <i>command</i>;<i>arguments</i>
+</pre>
+<table>
+<tr valign=top><th valign=top align=left><i>command</i>
+   <td>DOS path and file name of the editor.
+<tr valign=top><th valign=top align=left><i>arguments</i>
+   <td>Arguments for the editor.
+</table>
+
+<h4><a name=ENDTCP>ENDTCP</a></h4>
+<a href="../../Configuring/nwprograms.html">Network settings</a>, external programs:
+<em>End TCP stack</em>.
+<p>
+Value: String with format:
+<pre>
+   <i>command</i>;<i>arguments</i>
+</pre>
+<table>
+<tr valign=top><th valign=top align=left><i>command</i>
+   <td>DOS path and file name of the TCP end script.
+<tr valign=top><th valign=top align=left><i>arguments</i>
+   <td>Arguments for the script.
+</table>
+
+<h4><a name=FASTRESPONSE>FASTRESPONSE</a></h4>
+<a href="../../Configuring/nwcache.html">Network settings</a>, cache:
+<em>Fast response</em>.
+<p>
+Value: Boolean (0 or 1).
+
+<h4><a name=FONT>FONT</a></h4>
+<a href="../../Configuring/brfonts.html">Browser settings</a>, fonts:
+<em>Standard browser fonts</em>.
+<p>
+This <a href=#group>item group</a> contains the following items:
+
+<table>
+<tr valign=top><th valign=top align=left>FONT.N# (# = 1..7)
+   <td>Normal font in this size.
+<tr valign=top><th valign=top align=left>FONT.F# (# = 1..7)
+   <td>Fixed width font in this size.
+</table>
+<p>
+Value of all items: String with format:
+<pre>
+   <i>fontname</i>/<i>fontsize</i>
+</pre>
+<table>
+<tr valign=top><th valign=top align=left><i>fontname</i>
+   <td>Name of the font, including the <code>.font</code> suffix.
+<tr valign=top><th valign=top align=left><i>fontsize</i>
+   <td>Number, specifying the size of the font.
+</table>
+
+<h4><a name=FONTALIAS>FONTALIAS</a></h4>
+<a href="../../Configuring/brfonts.html">Browser settings</a>, fonts:
+<em>Browser font aliases</em>.
+<p>
+This is an <a href=#list>item list</a> of individual font alias definitions.
+Note that the individual entries in the list will be kept unique with regard
+to the alias name. Even if you use the <b>ADD</b> switch on the
+<a href=#SETCFG>SETCFG</a> command, a definition for an alias will replace
+the existing definition for an already existing alias with the same name.
+<p>
+Value of each entry: String with format:
+<pre>
+   <i>alias</i> NL <i>fontname</i>/<i>fontsize</i> NL <i>fontname</i>/<i>fontsize</i> NL
+            <i>fontname</i>/<i>fontsize</i> NL <i>fontname</i>/<i>fontsize</i> NL
+            <i>fontname</i>/<i>fontsize</i> NL <i>fontname</i>/<i>fontsize</i> NL
+            <i>fontname</i>/<i>fontsize</i>
+</pre>
+<table>
+<tr valign=top><th valign=top align=left><i>alias</i>
+   <td>The name of the font alias, or a comma separated list of names.
+<tr valign=top><th valign=top align=left>NL
+   <td>A newline character (hexadecimal 0A).
+<tr valign=top><th valign=top align=left><i>fontname</i>
+   <td>Name of the font, including the <code>.font</code> suffix.
+<tr valign=top><th valign=top align=left><i>fontsize</i>
+   <td>Number, specifying the size of the font.
+</table>
+<br>
+The 7 <i>fontname</i>/<i>fontsize</i> combinations describe the fonts for
+logical sizes 1 through 7, respectively.
+
+<h4><a name=FOREIGNIMAGES>FOREIGNIMAGES</a></h4>
+<a href="../../Configuring/nwoptions.html">network settings</a>, options:
+<em>Allow foreign images</em>.
+<p>
+Value: Boolean (0 or 1).
+
+<h4><a name=FORMWARNING>FORMWARNING</a></h4>
+<a href="../../Configuring/nwprivacy.html">Network settings</a>, privacy:
+<em>Warn before sending unsecure form data</em>.
+<p>
+Value: Boolean (0 or 1).
+
+<h4><a name=FRAMES>FRAMES</a></h4>
+<a href="../../Configuring/broptions.html">Browser settings</a>, options:
+<em>Use frames</em>.
+<p>
+Value: Boolean (0 or 1).
+
+<h4><a name=FTPEMAILADDR>FTPEMAILADDR</a></h4>
+<a href="../../Configuring/nwprivacy.html">Network settings</a>, privacy:
+<em>Use e-mail address as FTP anon password</em>.
+<p>
+Value: Boolean (0 or 1).
+
+<h4><a name=FTPPROXY>FTPPROXY</a></h4>
+<a href="../../Configuring/nwproxy.html">Network settings</a>, proxy:
+<em>FTP proxy</em>.
+<p>
+Value: String containing the URL of the proxy, including the leading <code>http://</code>.
+
+<h4><a name=GOPHERPROXY>GOPHERPROXY</a></h4>
+<a href="../../Configuring/nwproxy.html">Network settings</a>, proxy:
+<em>Gopher proxy</em>.
+<p>
+Value: String containing the URL of the proxy, including the leading <code>http://</code>.
+
+<h4><a name=HANDPOINTER>HANDPOINTER</a></h4>
+<a href="../../Configuring/broptions.html">Browser settings</a>, options:
+<em>Hand pointer over links</em>.
+<p>
+Value: Boolean (0 or 1).
+
+<h4><a name=HISTORYCLOSE>HISTORYCLOSE</a></h4>
+<a href="../../Configuring/proptions.html">Program settings</a>, options:
+<em>History window auto close</em>.
+<p>
+Value: Boolean (0 or 1).
+
+<h4><a name=HISTORYOPEN>HISTORYOPEN</a></h4>
+<a href="../../Configuring/proptions.html">Program settings</a>, options:
+<em>Auto open window history</em>.
+<p>
+Value: Boolean (0 or 1).
+
+<h4><a name=HOMEURL>HOMEURL</a></h4>
+<a href="../../Configuring/nwoptions.html">Network settings</a>, options:
+<em>Home page</em>.
+<p>
+Value: String containing the URL of the browser's home page.
+
+<h4><a name=HOTLISTCLOSE>HOTLISTCLOSE</a></h4>
+<a href="../../Configuring/proptions.html">Program settings</a>, options:
+<em>Hotlist requester auto close</em>.
+<p>
+Value: Boolean (0 or 1).
+
+<h4><a name=HOTLISTOPEN>HOTLISTOPEN</a></h4>
+<a href="../../Configuring/proptions.html">Program settings</a>, options:
+<em>Auto open hotlist</em>.
+<p>
+Value: Boolean (0 or 1).
+
+<h4><a name=HOTLISTREQUESTER>HOTLISTREQUESTER</a></h4>
+<a href="../../Configuring/proptions.html">Program settings</a>, options:
+<em>Hotlist button gives requester</em>.
+<p>
+Value: Boolean (0 or 1).
+
+<h4><a name=HOTLISTSINGLECLICK>HOTLISTSINGLECLICK</a></h4>
+<a href="../../Configuring/proptions.html">Program settings</a>, options:
+<em>Use singleclick in hotlistviewer to follow the URL</em>.
+<p>
+Value: Boolean (0 or 1).
+
+<h4><a name=HTMLMODE>HTMLMODE</a></h4>
+<a href="../../Configuring/broptions.html">Browser settings</a>, options:
+<em>HTML mode</em>.
+<p>
+Value: 0, 1 or 2:
+<table>
+<tr valign=top><th valign=top align=left>0
+   <td>Strict
+<tr valign=top><th valign=top align=left>1
+   <td>Tolerant
+<tr valign=top><th valign=top align=left>2
+   <td>Compatible
+</table>
+
+<h4><a name=HTMLVIEWER>HTMLVIEWER</a></h4>
+<a href="../../Configuring/prprograms.html">Program settings</a>, external programs:
+<em>HTML source viewer</em>.
+<p>
+Value: String with format:
+<pre>
+   <i>command</i>;<i>arguments</i>
+</pre>
+<table>
+<tr valign=top><th valign=top align=left><i>command</i>
+   <td>DOS path and file name of the HTML viewer.
+<tr valign=top><th valign=top align=left><i>arguments</i>
+   <td>Arguments for the HTML viewer.
+</table>
+
+<h4><a name=HTTPPROXY>HTTPPROXY</a></h4>
+<a href="../../Configuring/nwproxy.html">Network settings</a>, proxy:
+<em>HTTP proxy</em>.
+<p>
+Value: String containing the URL of the proxy, including the leading <code>http://</code>.
+
+<h4><a name=ICONS>ICONS</a></h4>
+<a href="../../Configuring/proptions.html">Program settings</a>, options:
+<em>Create icons</em>.
+<p>
+Value: Boolean (0 or 1).
+
+<h4><a name=IGNOREMIME>IGNOREMIME</a></h4>
+<a href="../../Configuring/nwoptions.html">Network settings</a>, options:
+<em>Ignore server MIME type</em>.
+<p>
+Value: Boolean (0 or 1).
+
+<h4><a name=IMAGES>IMAGES</a></h4>
+<a href="../../Configuring/nwoptions.html">Network settings</a>, options:
+<em>Image loading</em>.
+<p>
+Value: 0, 1 or 2:
+<table>
+<tr valign=top><th valign=top align=left>0
+   <td>Off
+<tr valign=top><th valign=top align=left>1
+   <td>Maps only
+<tr valign=top><th valign=top align=left>2
+   <td>All images
+</table>
+
+<h4><a name=IMAGEVIEWER>IMAGEVIEWER</a></h4>
+<a href="../../Configuring/prprograms.html">Program settings</a>, external programs:
+<em>external image viewer</em>.
+<p>
+Value: String with format:
+<pre>
+   <i>command</i>;<i>arguments</i>
+</pre>
+<table>
+<tr valign=top><th valign=top align=left><i>command</i>
+   <td>DOS path and file name of the image viewer.
+<tr valign=top><th valign=top align=left><i>arguments</i>
+   <td>Arguments for the image viewer.
+</table>
+
+<h4><a name=INCREMENTALTABLE>INCREMENTALTABLE</a></h4>
+<a href="../../Configuring/broptions.html">Browser settings</a>, options:
+<em>Incremental table display</em>.
+<p>
+Value: Boolean (0 or 1).
+
+<h4><a name=INDEXSUFFIX>INDEXSUFFIX</a></h4>
+<a href="../../Configuring/nwoptions.html">Network settings</a>, options:
+<em>Local index name</em>.
+<p>
+Value: String.
+
+<h4><a name=JAVASCRIPT>JAVASCRIPT</a></h4>
+<a href="../../Configuring/broptions.html">Browser settings</a>, options:
+<em>Use JavaScript</em>.
+<p>
+Value: 0, 1 or 2:
+<table>
+<tr valign=top><th valign=top align=left>0
+   <td>Off
+<tr valign=top><th valign=top align=left>1
+   <td>Fastidious
+<tr valign=top><th valign=top align=left>2
+   <td>Omnivorous
+</table>
+
+<h4><a name=JSERRORS>JSERRORS</a></h4>
+<a href="../../Configuring/broptions.html">Browser settings</a>, options:
+<em>Show JavaScript errors</em>.
+<p>
+Value: Boolean (0 or 1).
+
+<h4><a name=KEEPFREECHIP>KEEPFREECHIP</a></h4>
+<a href="../../Configuring/nwcache.html">Network settings</a>, cache:
+<em>Keep minimum free chip memory</em>.
+<p>
+Value: Non-negative number, specifying the amount of memory in kB.
+
+<h4><a name=KEEPFREEFAST>KEEPFREEFAST</a></h4>
+<a href="../../Configuring/nwcache.html">Network settings</a>, cache:
+<em>Keep minimum free fast memory</em>.
+<p>
+Value: Non-negative number, specifying the amount of memory in kB.
+
+<h4><a name=KEY>KEY</a></h4>
+<a href="../../Configuring/uikeys.html">GUI settings</a>, Keys:
+<em>User defined keys</em>.
+<p>
+This is an <a href=#list>item list</a> of individual key configuration entries.
+<p>
+Value of each entry: String with format:
+<pre>
+   <i>key</i> NL <i>command</i>
+</pre>
+<table>
+<tr valign=top><th valign=top align=left><i>key</i>
+   <td>String describing the key to attach the command to. It is in one of these formats:
+   <table>
+   <tr valign=top><td><b>$xx</b>
+      <td>Special key, <i>xx</i> is the hexadecimal raw key code.
+   <tr valign=top><td><b>S-$xx</b>
+      <td>Shifted special key, <i>xx</i> is the hexadecimal raw key code.
+   <tr valign=top><td><b>A-$xx</b>
+      <td>Alt-special key combination, <i>xx</i> is the hexadecimal raw key code.
+   <tr valign=top><td><b>A-x</b>
+      <td>Alt-letter key combination, <i>x</i> is a letter (A-Z).
+   </table>
+   Not all rawkey codes are accepted, only for those special keys listed in the
+   GUI settings requester.
+<tr valign=top><th valign=top align=left>NL
+   <td>A newline character (hexadecimal 0A).
+<tr valign=top><th valign=top align=left><i>command</i>
+   <td>The ARexx command to execute when the key or key combination is hit.
+</table>
+
+<h4><a name=LIMITEDPROXY>LIMITEDPROXY</a></h4>
+<a href="../../Configuring/nwproxy.html">Network settings</a>, proxy:
+<em>Limited proxy usage</em>.
+<p>
+Value: Boolean (0 or 1).
+
+<h4><a name=MAILNEWS>MAILNEWS</a></h4>
+<a href="../../Configuring/nwmail.html">Network settings</a>, mail/news:
+<em>mail and news details</em>.
+<p>
+This <a href=#group>item group</a> contains the following items:
+<table>
+<tr valign=top><th valign=top align=left rowspan=2>MAILNEWS.EMAIL
+   <td>E-mail address
+<tr><td>Value: String
+<tr valign=top><th valign=top align=left rowspan=2>MAILNEWS.REALNAME
+   <td>Real name
+<tr><td>Value: String
+<tr valign=top><th valign=top align=left rowspan=2>MAILNEWS.REPLYTO
+   <td>Reply-to address
+<tr><td>Value: String
+<tr valign=top><th valign=top align=left rowspan=2>MAILNEWS.ORGANIZATION
+   <td>Organization
+<tr><td>Value: String
+<tr valign=top><th valign=top align=left rowspan=2>MAILNEWS.SIGNATURE
+   <td>Path of signature file
+<tr><td>Value: String
+<tr valign=top><th valign=top align=left rowspan=2>MAILNEWS.SMTPHOST
+   <td>Mail host name (SMTP)
+<tr><td>Value: String
+<tr valign=top><th valign=top align=left rowspan=2>MAILNEWS.MAILQUOTEHDR
+   <td>Mail quote header
+<tr><td>Value: String
+<tr valign=top><th valign=top align=left rowspan=2>MAILNEWS.EXTMAILER
+   <td>Use external mailer instead
+<tr><td>Value: Boolean (0 or 1)
+<tr valign=top><th valign=top align=left rowspan=2>MAILNEWS.NNTPHOST
+   <td>News host name (NNTP)
+<tr><td>Value: String
+<tr valign=top><th valign=top align=left rowspan=2>MAILNEWS.NEWSQUOTEHDR
+   <td>News quote header
+<tr><td>Value: String
+<tr valign=top><th valign=top align=left rowspan=2>MAILNEWS.USERNAME
+   <td>Authorized news user name
+<tr><td>Value: String
+<tr valign=top><th valign=top align=left rowspan=2>MAILNEWS.PASSWORD
+   <td>Authorized news password
+<tr><td>Value: String
+<tr valign=top><th valign=top align=left rowspan=2>MAILNEWS.EXTNEWSREADER
+   <td>Use external newsreader instead
+<tr><td>Value: Boolean (0 or 1)
+<tr valign=top><th valign=top align=left rowspan=2>MAILNEWS.MAXARTICLES
+   <td>Maximum number of articles
+<tr><td>Value: Positive number or zero
+<tr valign=top><th valign=top align=left rowspan=2>MAILNEWS.SORTARTICLES
+   <td>Sort article headers on subject
+<tr><td>Value: Boolean (0 or 1)
+<tr valign=top><th valign=top align=left rowspan=2>MAILNEWS.SPLITSCREEN
+   <td>Use split screen when reading news
+<tr><td>Value: Boolean (0 or 1)
+<tr valign=top><th valign=top align=left rowspan=2>MAILNEWS.LONGHEADERS
+   <td>Show long headers with news articles
+<tr><td>Value: Boolean (0 or 1)
+<tr valign=top><th valign=top align=left rowspan=2>MAILNEWS.PROPFONT
+   <td>Use proportional font for news articles
+<tr><td>Value: Boolean (0 or 1)
+<tr valign=top><th valign=top align=left rowspan=2>MAILNEWS.BYNUMBER
+   <td>Retrieve news articles by number
+<tr><td>Value: Boolean (0 or 1)
+</table>
+
+<h4><a name=MAILTO>MAILTO</a></h4>
+<a href="../../Configuring/nwprograms.html">Network settings</a>, external programs:
+<em>Mailto: program</em>.
+<p>
+Value: String with format:
+<pre>
+   <i>command</i>;<i>arguments</i>
+</pre>
+<table>
+<tr valign=top><th valign=top align=left><i>command</i>
+   <td>DOS path and file name of the mailto program or script.
+<tr valign=top><th valign=top align=left><i>arguments</i>
+   <td>Arguments for the program or script.
+</table>
+
+<h4><a name=MAXLOCAL>MAXLOCAL</a></h4>
+<a href="../../Configuring/nwoptions.html">Network settings</a>, options:
+<em>Maximum local disk reads</em>.
+<p>
+Value: Positive number.
+
+<h4><a name=MAXNETWORK>MAXNETWORK</a></h4>
+<a href="../../Configuring/nwoptions.html">Network settings</a>, options:
+<em>Maximum network connections</em>.
+<p>
+Value: Positive number.
+
+<h4><a name=MENU>MENU</a></h4>
+<a href="../../Configuring/uimenus.html">GUI settings</a>, menus:
+<em>Menus</em>.
+<p>
+This is an <a href=#list>item list</a> of individual menu entries.
+<p>
+Value of each entry: String with format:
+<pre>
+   <i>type</i> NL <i>title</i> NL <i>shortcut</i> NL <i>command</i>
+</pre>
+<table>
+<tr valign=top><th valign=top align=left><i>type</i>
+   <td>The type of entry:
+      <table>
+      <tr valign=top><th valign=top align=left>M
+         <td>A top level menu
+      <tr valign=top><th valign=top align=left>I
+         <td>An item within a menu
+      <tr valign=top><th valign=top align=left>S
+         <td>A sub-item for an item
+      <tr valign=top><th valign=top align=left>-
+         <td>A separator item
+      </table>
+<tr valign=top><th valign=top align=left>NL
+   <td>A newline character (hexadecimal 0A).
+<tr valign=top><th valign=top align=left><i>title</i>
+   <td>The title text as shown in the menu.
+<tr valign=top><th valign=top align=left><i>shortcut</i>
+   <td>A single character defining the keyboard shortcut, or empty for no shortcut.
+<tr valign=top><th valign=top align=left><i>command</i>
+   <td>The ARexx command to execute when the item is selected.
+</table>
+<p>
+When setting a menu entry, all three newline characters must be present,
+even if some individual fields don't have a meaning (like with a menu or separator).
+
+<h4><a name=MIME>MIME</a></h4>
+<a href="../../Configuring/brviewers.html">Browser settings</a>, viewers:
+<em>MIME types and external viewers</em>.
+<p>
+This is an <a href=#list>item list</a> of individual MIME and viewer definitions.
+Note that the individual entries in the list will be kept unique with regard
+to the MIME type. Even if you use the <b>ADD</b> switch on the
+<a href=#SETCFG>SETCFG</a> command, a definition for a MIME type will replace
+the existing definition for that MIME type.
+<p>
+Value of each entry: String with format:
+<pre>
+   <i>type</i>/<i>subtype</i>;<i>extensions</i>;<i>action</i>;<i>name</i>;<i>arguments</i>
+</pre>
+<table>
+<tr valign=top><th valign=top align=left><i>type</i>/<i>subtype</i>
+   <td>MIME type.
+<tr valign=top><th valign=top align=left><i>extensions</i>
+   <td>Filename extensions that default to this MIME type.
+<tr valign=top><th valign=top align=left><i>action</i>
+   <td>Action to perform for this MIME type. Valid actions are:
+      <table>
+      <tr><th>D<td>Default
+      <tr><th>I<td>Internal
+      <tr><th>A<td>AWeb plugin
+      <tr><th>E<td>External program
+      <tr><th>P<td>External program with PIPE:
+      <tr><th>S<td>Save to local disk
+      </table>
+<tr valign=top><th valign=top align=left><i>name</i>
+   <td>DOS path and file name of the AWeb plugin or external program.
+<tr valign=top><th valign=top align=left><i>arguments</i>
+   <td>Arguments for the AWeb plugin or external program.
+</table>
+
+<h4><a name=NAVBUTTON>NAVBUTTON</a></h4>
+<a href="../../Configuring/uinavs.html">GUI settings</a>, Navigation:
+<em>Function of the navigation buttons</em>.
+<p>
+This <a href=#group>item group</a> contains the following items:
+
+<table>
+<tr valign=top><th valign=top align=left>NAVBUTTON.BACK
+<tr valign=top><th valign=top align=left>NAVBUTTON.FORWARD
+<tr valign=top><th valign=top align=left>NAVBUTTON.HOME
+<tr valign=top><th valign=top align=left>NAVBUTTON.ADDHOT
+<tr valign=top><th valign=top align=left>NAVBUTTON.HOTLIST
+<tr valign=top><th valign=top align=left>NAVBUTTON.CANCEL
+<tr valign=top><th valign=top align=left>NAVBUTTON.NETSTATUS
+<tr valign=top><th valign=top align=left>NAVBUTTON.SEARCH
+<tr valign=top><th valign=top align=left>NAVBUTTON.RELOAD
+<tr valign=top><th valign=top align=left>NAVBUTTON.LOADIMGS
+</table>
+
+Value of all items: String containing the ARexx command to execute for this button.
+
+<h4><a name=NAVIGATION>NAVIGATION</a></h4>
+<a href="../../Configuring/uioptions.html">GUI settings</a>, options:
+<em>Show navigation gadgets</em>.
+<p>
+Value: Boolean (0 or 1).
+
+<h4><a name=NETSTATUSOPEN>NETSTATUSOPEN</a></h4>
+<a href="../../Configuring/proptions.html">Program settings</a>, options:
+<em>Auto open network status</em>.
+<p>
+Value: Boolean (0 or 1).
+
+<h4><a name=NEWS>NEWS</a></h4>
+<a href="../../Configuring/nwprograms.html">Network settings</a>, external programs:
+<em>News: program</em>.
+<p>
+Value: String with format:
+<pre>
+   <i>command</i>;<i>arguments</i>
+</pre>
+<table>
+<tr valign=top><th valign=top align=left><i>command</i>
+   <td>DOS path and file name of the mailto program or script.
+<tr valign=top><th valign=top align=left><i>arguments</i>
+   <td>Arguments for the program or script.
+</table>
+
+<h4><a name=NOCACHE>NOCACHE</a></h4>
+<a href="../../Configuring/nwcache.html">Network settings</a>, cache:
+<em>Do not cache these sites</em>.
+<p>
+This is an <a href=#list>item list</a> of individual names or patterns.
+<p>
+Value of each entry: String.
+
+<h4><a name=NOCOOKIE>NOCOOKIE</a></h4>
+<a href="../../Configuring/nwoptions.html">Network settings</a>, options:
+<em>No cookie for domains</em>.
+<p>
+This is an <a href=#list>item list</a> of individual names or patterns.
+<p>
+Value of each entry: String.
+
+<h4><a name=NOMINALFRAME>NOMINALFRAME</a></h4>
+<a href="../../Configuring/broptions.html">Browser settings</a>, options:
+<em>Nominal frame height</em>.
+<p>
+Value: Boolean (0 or 1).
+
+<h4><a name=NOPROXY>NOPROXY</a></h4>
+<a href="../../Configuring/nwcache.html">Network settings</a>, proxy:
+<em>No proxy for these sites</em>.
+<p>
+This is an <a href=#list>item list</a> of individual names or patterns.
+<p>
+Value of each entry: String.
+
+<h4><a name=OVERLAP>OVERLAP</a></h4>
+<a href="../../Configuring/proptions.html">Program settings</a>, options:
+<em>Scroll overlap</em>.
+<p>
+Value: Non-negative number.
+
+<h4><a name=PALETTE>PALETTE</a></h4>
+<a href="../../Configuring/prpalette.html">Program settings</a>, palette:
+<em>Change palette</em>.
+<p>
+This <a href=#group>item group</a> contains the following items:
+<table>
+<tr valign=top><th valign=top align=left>PALETTE.# (# = 0..7)
+   <td>Palette definition for this pen number.
+</table>
+
+Value of all items: String of 6 hexadecimal digits specifying
+the RGB colour value (RRGGBB).
+
+<h4><a name=PASSIVEFTP>PASSIVEFTP</a></h4>
+<a href="../../Configuring/nwproxy.html">Network settings</a>, proxy:
+<em>Passive FTP</em>.
+<p>
+Value: Boolean (0 or 1).
+
+<h4><a name=POPUP>POPUP</a></h4>
+<a href="../../Configuring/uioptions.html">GUI settings</a>, options:
+<em>Popup menu activation</em>.
+<p>
+Value: String containing zero of more from:
+<table>
+<tr valign=top><th valign=top align=left>A
+   <td>ALT key
+<tr valign=top><th valign=top align=left>C
+   <td>Control key
+<tr valign=top><th valign=top align=left>M
+   <td>Middle mouse button
+<tr valign=top><th valign=top align=left>R
+   <td>Right mouse button
+<tr valign=top><th valign=top align=left>S
+   <td>Shift key
+</table>
+
+<h4><a name=POPUPMENU>POPUPMENU</a></h4>
+<a href="../../Configuring/uipopup.html">GUI settings</a>, Popup:
+<em>Popup menu</em>.
+<p>
+This is an <a href=#list>item list</a> of individual menu entries.
+<p>
+Value of each entry: String with format:
+<pre>
+   <i>menu</i> NL <i>memory</i> NL <i>title</i> NL <i>command</i>
+</pre>
+<table>
+<tr valign=top><th valign=top align=left><i>menu</i>
+   <td>Identification of the menu section to add this item to:
+      <table>
+      <tr valign=top><th valign=top align=left>I
+         <td>Image popup menu
+      <tr valign=top><th valign=top align=left>L
+         <td>Link popup menu
+      <tr valign=top><th valign=top align=left>F
+         <td>Frame popup menu
+      </table>
+<tr valign=top><th valign=top align=left>NL
+   <td>A newline character (hexadecimal 0A).
+<tr valign=top><th valign=top align=left><i>memory</i>
+   <td>Number indicating when the item is valid:
+      <table>
+      <tr valign=top><th valign=top align=left>1
+         <td>Item to be shown if object is in memory
+      <tr valign=top><th valign=top align=left>2
+         <td>Item to be shown if object is not in memory
+      <tr valign=top><th valign=top align=left>3
+         <td>Item to be shown always
+      </table>
+      For the frame popup menu, this indicator is not used and has
+      the value zero.
+<tr valign=top><th valign=top align=left><i>title</i>
+   <td>The item title to show in the menu.
+<tr valign=top><th valign=top align=left><i>command</i>
+   <td>The ARexx command to execute when the button is clicked.
+</table>
+
+<h4><a name=RFCCOOKIES>RFCCOOKIES</a></h4>
+<a href="../../Configuring/nwprivacy.html">Network settings</a>, privacy:
+<em>RFC 2109</em>.
+<p>
+Value: Boolean (0 or 1).
+
+<h4><a name=SAVEPATH>SAVEPATH</a></h4>
+<a href="../../Configuring/proptions.html">Program settings</a>, options:
+<em>Save path</em>.
+<p>
+Value: String specifying a DOS path.
+
+<h4><a name=SCREEN>SCREEN</a></h4>
+<a href="../../Configuring/prscreen.html">Program settings</a>, screen:
+<em>Screen details</em>.
+<p>
+This <a href=#group>item group</a> contains the following items:
+<table>
+<tr valign=top><th valign=top align=left rowspan=2>SCREEN.TYPE
+   <td>Type of screen to run AWeb on.
+<tr><td>Value: 0, 1 or 2:
+   <table>
+   <tr valign=top><th valign=top align=left>0
+      <td>Default public screen
+   <tr valign=top><th valign=top align=left>1
+      <td>Named public screen
+   <tr valign=top><th valign=top align=left>2
+      <td>Own public screen
+   </table>
+<tr valign=top><th valign=top align=left rowspan=2>SCREEN.NAME
+   <td>Name of public screen to run AWeb on.
+<tr><td>Value: String.
+<tr valign=top><th valign=top align=left rowspan=2>SCREEN.MODE
+   <td>Screen mode of own public screen.
+<tr><td>Value: String containing 8 hexadecimal digits, specifying
+      the screen's ModeID.
+<tr valign=top><th valign=top align=left rowspan=2>SCREEN.WIDTH
+   <td>Width of own public screen in pixels.
+<tr><td>Value: Positive number.
+<tr valign=top><th valign=top align=left rowspan=2>SCREEN.HEIGHT
+   <td>Height of own public screen in pixels.
+<tr><td>Value: Positive number.
+<tr valign=top><th valign=top align=left rowspan=2>SCREEN.DEPTH
+   <td>Depth of own public screen (number of bitplanes).
+<tr><td>Value: Positive number.
+<tr valign=top><th valign=top align=left rowspan=2>SCREEN.PALETTE
+   <td>Load spread palette indicator.
+<tr><td>Value: 0, 1 or 2:
+   <table>
+   <tr valign=top><th valign=top align=left>0
+      <td>Off
+   <tr valign=top><th valign=top align=left>1
+      <td>Colours
+   <tr valign=top><th valign=top align=left>2
+      <td>Grayscale
+   </table>
+</table>
+
+<h4><a name=SCREENPENS>SCREENPENS</a></h4>
+<a href="../../Configuring/prpalette.html">Program settings</a>, palette:
+<em>Pen settings</em>.
+<p>
+Value: String containing 9 pen numbers, separated by spaces.
+The numbers define the pens to use for: Normal text, Bright edges,
+Dark edges, Active window title bars, Active window titles, Background
+(must be 0), Important text, Menu text, Menu background.
+
+<h4><a name=SHOWBUTTONS>SHOWBUTTONS</a></h4>
+<a href="../../Configuring/uioptions.html">GUI settings</a>, options:
+<em>Show user buttons</em>.
+<p>
+Value: Boolean (0 or 1).
+
+<h4><a name=SHUTDOWN>SHUTDOWN</a></h4>
+<a href="../../Configuring/prprograms.html">Program settings</a>, external programs:
+<em>Script run at sshutdown</em>.
+<p>
+Value: String
+
+<h4><a name=SPAMBLOCK>SPAMBLOCK</a></h4>
+<a href="../../Configuring/nwprivacy.html">Network settings</a>, privacy:
+<em>Activate spamblock when posting news</em>.
+<p>
+Value: Boolean (0 or 1).
+
+<h4><a name=SPOOFAS>SPOOFAS</a></h4>
+<a href="../../Configuring/nwoptions.html">Network settings</a>, options:
+<em>Spoof as</em>.
+<p>
+Value: String.
+
+<h4><a name=STARTHOME>STARTHOME</a></h4>
+<a href="../../Configuring/nwoptions.html">Network settings</a>, options:
+<em>Start with home page</em>.
+<p>
+Value: Boolean (0 or 1).
+
+<h4><a name=STARTTCP>STARTTCP</a></h4>
+<a href="../../Configuring/nwprograms.html">Network settings</a>, external programs:
+<em>Start TCP stack</em>.
+<p>
+Value: String with format:
+<pre>
+   <i>command</i>;<i>arguments</i>
+</pre>
+<table>
+<tr valign=top><th valign=top align=left><i>command</i>
+   <td>DOS path and file name of the TCP start script.
+<tr valign=top><th valign=top align=left><i>arguments</i>
+   <td>Arguments for the script.
+</table>
+
+<h4><a name=STARTUP>STARTUP</a></h4>
+<a href="../../Configuring/prprograms.html">Program settings</a>, external programs:
+<em>Script run at startup</em>.
+<p>
+Value: String
+
+<h4><a name=STYLE>STYLE</a></h4>
+<a href="../../Configuring/brstyles.html">Browser settings</a>, style:
+<em>Style settings</em>.
+This <a href=#group>item group</a> contains the following items:
+<table>
+<tr><th align=left>
+STYLE.H1<br>
+STYLE.H2<br>
+STYLE.H3<br>
+STYLE.H4<br>
+STYLE.H5<br>
+STYLE.H6<br>
+STYLE.BIG<br>
+<th align=left>
+STYLE.SMALL<br>
+STYLE.SUB<br>
+STYLE.SUP<br>
+STYLE.ADDRESS<br>
+STYLE.BLOCKQUOTE<br>
+STYLE.CITE<br>
+STYLE.CODE<br>
+<th align=left>
+STYLE.DFN<br>
+STYLE.EM<br>
+STYLE.KBD<br>
+STYLE.PRE<br>
+STYLE.SAMP<br>
+STYLE.STRONG<br>
+STYLE.VAR<br>
+</table>
+Each the style to use for the HTML tag, and corresponding to the entry
+in the browser settings, style page.
+<p>
+Value: For STYLE.H1 through STYLE.H6, string with format:
+<pre>
+   <i>fonttype</i>;<i>absolute size</i>;<i>style</i>
+</pre>
+and for the other items, string with format:
+<pre>
+   <i>fonttype</i>;<i>relative size</i>;<i>style</i>
+</pre>
+<table>
+<tr valign=top><th valign=top align=left><i>fonttype</i>
+   <td>Type of font to use:
+      <table>
+      <tr valign=top><th valign=top align=left>N
+         <td>Normal font
+      <tr valign=top><th valign=top align=left>F
+         <td>Fixed-width font
+      </table>
+<tr valign=top><th valign=top align=left><i>absolute size</i>
+   <td>Number in range 1..7
+<tr valign=top><th valign=top align=left><i>relative size</i>
+   <td>Signed number in range -6..+6
+<tr valign=top><th valign=top align=left><i>style</i>
+   <td>String containing zero or more from:
+      <table>
+      <tr valign=top><th valign=top align=left>B
+         <td>Bold
+      <tr valign=top><th valign=top align=left>I
+         <td>Italic
+      <tr valign=top><th valign=top align=left>U
+         <td>Underlined
+      </table>
+</table>
+
+<h4><a name=SUPPRESSBANNERS>SUPPRESSBANNERS</a></h4>
+<a href="../../Configuring/broptions.html">Browser settings</a>, options:
+<em>Suppress banner windows</em>.
+<p>
+Value: Boolean (0 or 1).
+
+<h4><a name=TELNET>TELNET</a></h4>
+<a href="../../Configuring/nwprograms.html">Network settings</a>, external programs:
+<em>Telnet: program</em>.
+<p>
+Value: String with format:
+<pre>
+   <i>command</i>;<i>arguments</i>
+</pre>
+<table>
+<tr valign=top><th valign=top align=left><i>command</i>
+   <td>DOS path and file name of the telnet program or script.
+<tr valign=top><th valign=top align=left><i>arguments</i>
+   <td>Arguments for the program or script.
+</table>
+
+<h4><a name=TELNETPROXY>TELNETPROXY</a></h4>
+<a href="../../Configuring/nwproxy.html">Network settings</a>, proxy:
+<em>Telnet proxy</em>.
+<p>
+Value: String containing the URL of the proxy, including the leading <code>http://</code>.
+
+<h4><a name=TEMPPATH>TEMPPATH</a></h4>
+<a href="../../Configuring/proptions.html">Program settings</a>, options:
+<em>Temporary path</em>.
+<p>
+Value: String specifying a DOS path.
+
+<h4><a name=TOOLTIPS>TOOLTIPS</a></h4>
+<a href="../../Configuring/broptions.html">Browser settings</a>, options:
+<em>Display tooltips for images</em>.
+<p>
+Value: Boolean (0 or 1).
+
+<h4><a name=ULLINKS>ULLINKS</a></h4>
+<a href="../../Configuring/broptions.html">Browser settings</a>, options:
+<em>Underline links</em>.
+<p>
+Value: Boolean (0 or 1).
+
+<h4><a name=VERIFICATION>VERIFICATION</a></h4>
+<a href="../../Configuring/nwcache.html">Network settings</a>, cache:
+<em>Verify cache copy</em>.
+<p>
+Value: 0, 1 or 2:
+<table>
+<tr valign=top><th valign=top align=left>0
+   <td>Verify always
+<tr valign=top><th valign=top align=left>1
+   <td>Verify once per session
+<tr valign=top><th valign=top align=left>2
+   <td>Verify never
+</table>
+
+<h4><a name=WATCHJS>WATCHJS</a></h4>
+<a href="../../Configuring/broptions.html">Browser settings</a>, options:
+<em>Warn for suspected JavaScript</em>.
+<p>
+Value: Boolean (0 or 1).
+
+</body>
+</html>

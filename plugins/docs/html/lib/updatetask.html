@@ -1,0 +1,45 @@
+<html>
+<head>
+<title>Updatetask()</title>
+</head>
+<body>
+<h1>Updatetask()</h1>
+
+<h2>Purpose</h2>
+Send an AWeb <a href="../methods/index.html">OO message</a> from a
+<a href="../classes/task.html">subtask</a> to the main task.
+
+<h2>Synopsis</h2>
+<pre>
+   result = Updatetask(message)
+   D0                  A0 
+
+   ULONG Updatetask(<a href="../methods/index.html#amessage">struct Amessage</a> *)
+</pre>
+
+<h2>Function</h2>
+<a href="../classes/task.html">AOTP_TASK</a> support function.
+It sends the supplied message to the main task, invoking the target object's
+<a href="../methods/update.html">AOM_UPDATE</a> method. A pointer to the message
+will appear as value of the <b>AOTSK_Message</b> attribute.
+<p>
+This function is always synchroneous, it waits until the main task has
+returned from the method.
+<p>
+You may not use this function outside subtask code.
+
+<h2>Inputs</h2>
+<table border>
+<tr><th align=left valign=top>Parameter
+   <th align=left valign=top>Description
+<tr><td valign=top><code>message</code>
+   <td valign=top>Pointer to a properly initialized
+      <a href="../methods/index.html#amessage">struct Amessage</a>
+</table>
+
+<h2>Result</h2>
+The return value of the target object's
+<a href="../methods/update.html">AOM_UPDATE</a> method.
+
+<h2>See also</h2>
+<a href="updatetaskattrsa.html">UpdatetaskattrsA()</a>

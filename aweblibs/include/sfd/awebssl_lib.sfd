@@ -1,0 +1,18 @@
+==id $Id: awebssl_lib.sfd,v 1.1 2004/10/04 01:35:44 broadblues Exp $
+==base _AwebSslBase
+==basetype struct Library *
+==libname awebssl.library
+==bias 30
+==public
+==include <exec/types.h>
+==include <libraries/awebssl.h>
+void Assl_cleanup(struct Assl * assl) (a0)
+BOOL Assl_openssl(struct Assl * assl) (a0)
+void Assl_closessl(struct Assl * assl) (a0)
+long Assl_connect(struct Assl * assl, long sock, UBYTE * hostname) (a0,d0,a1)
+char * Assl_geterror(struct Assl * assl, char * errbuf) (a0,a1)
+long Assl_write(struct Assl * assl, char * buffer, long length) (a0,a1,d0)
+long Assl_read(struct Assl * assl, char * buffer, long length) (a0,a1,d0)
+char * Assl_getcipher(struct Assl * assl) (a0)
+char * Assl_libname(struct Assl * assl) (a0)
+==end

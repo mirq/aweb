@@ -1,0 +1,143 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+<html>
+<head>
+<meta name="keywords" content="strict">
+<title>
+HTML modes
+</title>
+</head>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<h1>&nbsp; HTML modes</h1>
+
+<h2>About HTML</h2>
+Most of the documents ("pages") found on the World Wide Web are written
+in <em>HTML</em> (HyperText Markup Language). HTML was originally designed
+as a standard
+hard- and software independent way of formatting documents. It is an
+application of <em>SGML</em> (Standard Generalized Markup Language).
+<p>
+The only official standard is HTML 2.0, which contains very limited
+possibilities. The <A HREF="http://www.w3.org/" TARGET="_blank">W3 consortium</A> was
+developing a new, extended standard, HTML 3.0.
+<p>
+Meanwhile, in the recent boom of Internet and the World Wide Web, some browser
+manufacturers have introduced several ad-hoc extensions to HTML, of which
+many didn't fit in the new HTML 3.0 standard. Probably because this would make
+HTML 3.0 an academic standard without any practical use, the development of
+HTML 3.0 was abandoned. AWeb supports some of the extensions found in HTML 3.0.
+<p>
+In the first half of 1996 the W3 group proposed a new HTML 3.2 standard, which contains many
+of the widely used NetScape &reg; and Microsoft &reg; Internet Explorer specific
+extensions. In 1997 its successor, HTML 4.0 is proposed.
+AWeb fully supports HTML 3.2 and many features of HTML 4.0 (one major
+exception being style sheets).
+<p>
+The large browser manufacturers have introduced other tags, that aren't
+included in the HTML standard. AWeb will try to support most of these
+non-standard extensions.
+<p>
+To make things even more inconvenient, some earlier versions of popular PC
+browsers didn't stick to the SGML rules. And even recent versions of
+those browsers still have problems with SGML comments. Because many
+people design their pages using these browsers, there are many documents
+on the web that just are bad HTML.
+
+<h2>HTML modes</h2>
+AWeb does its best to display all pages correctly, but sometimes you have
+to set the way HTML should be interpreted to get the best results.
+<p>
+You can choose out of three <em>HTML modes</em>:
+<table>
+<tr valign=top><th align=left valign=top>Strict
+   <td>In <em>strict</em> HTML mode, AWeb understands only the
+   HTML standard.
+<tr valign=top><th align=left valign=top>Tolerant
+   <td>In <em>tolerant</em> HTML mode, AWeb understands also other extensions.
+   These are both extensions specific to other browsers, and HTML 3.0
+   extensions that can't be found in HTML 3.2 or HTML 4.0.<br>
+   Also, some commonly made errors are correctly understood. See
+   <a href=#tolerant>below</a> for a list of corrected errors.
+
+<tr valign=top><th align=left valign=top>Compatible
+   <td>In <em>compatible</em> HTML mode (a nice way of formulating "buggy"),
+   AWeb tries to interpret buggy HTML. <a href=#compatible>Below</a> is
+   a description of the deviations of the standard when compatibility mode
+   is used.
+</table>
+Set one of these in the <a href=../Configuring/broptions.html#htmlmode>Options</a>
+page in the browser settings.
+<p>
+The <a href=html.html>overview of supported HTML</a> mentions with each
+HTML tag or attribute in which mode it is recognized.
+<P><I>NOTE: Tolerant mode is the recommended mode to use on a regular basis.  Only use Compatible mode to view a website if Tolerant does not appear to work properly, otherwise undesirable results may occur.</I>
+
+<h2><a name=tolerant>Tolerant mode</a></h2>
+In tolerant mode, AWeb recovers from the following commonly made HTML errors:
+<ul>
+<li>Incorrectly placed tags in &lt;TABLE&gt;, like missing &lt;TD&gt;,
+   or &lt;FORM&gt; between &lt;TABLE&gt; and the first &lt;TR&gt;.
+<li>Invalid "<code>&amp;#nnn;</code>" entities, that contain a number that
+   is not included in the HTML Coded Character set, are converted to
+   whitespace.
+<li>Many forms of incorrect comments. When AWeb encounters a comment, it
+   starts by assuming the comment is correct, but if it encounters something
+   that does not belong in a correct <a href=html-ad.html#comment>comment</a>,
+   it terminates the comment at the first "&gt;".
+   This catches most of the incorrect comment usage, but it is still
+   possible that some of the HTML is inadvertently commented out.
+<li>When an URL in a hyperlink contains whitespace (a common source of this
+   whitespace is the HREF or SRC attribute being broken over two lines),
+   this whitespace is removed.
+<li>If a resulting absolute URL contains a path beginning with one or more
+   "<code>../</code>", these are removed.
+</ul>
+
+<h2><a name=compatible>Compatible mode</a></h2>
+As mentioned above, some pages contain bad HTML. When you view such a
+page, it can look distorted. You can expect large parts of the page missing,
+links to URLs that seem to contain HTML tags, and other strange things.
+<p>
+If you encounter such problems, try using the <em>compatible</em> HTML
+mode of AWeb. <strong>Warning:</strong> Using compatible HTML mode,
+documents containing <em>valid</em> HTML might look distorted in turn.
+<p>
+In compatible mode, AWeb exposes the following deviations from the
+SGML and HTTP standards:
+<ul>
+<li>Quoted attribute values are terminated by any occurrence of "&gt;"
+<li>Quoted attributes that contain URLs, like HREF, SRC and ACTION, are
+   terminated by whitespace
+<li>Comments are terminated by any occurrence of "-&gt;"
+<li>When a server responds to a POST request with a HTTP redirection
+   (status 301 or 302), the new location is accessed with the GET method
+   instead of POST.
+</ul>
+
+<p>
+<hr>
+<a href=../AWeb%20Manual.html><img src=../GlobalImages/back.gif width=32 height=16 alt="<-" border=0></a> Back to
+<a href=../AWeb%20Manual.html>index</a>.
+
+</body>
+</html>

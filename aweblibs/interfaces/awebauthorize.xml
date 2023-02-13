@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE library SYSTEM "library.dtd">
+<library name="awebauthorize" basename="AwebAuthorizeBase" openname="authorize.aweblib" basetype="Library">
+        <include>exec/types.h</include>
+        <include>libraries/awebauthorize.h</include>
+        <include>task.h</include>
+        <interface name="main" version="1.0" struct="AwebAuthorizeIFace" prefix="_AwebAuthorize_" asmprefix="IAwebAuthorize" global="IAwebAuthorize">
+                <method name="Obtain" result="ULONG"/>
+                <method name="Release" result="ULONG"/>
+                <method name="Expunge" result="void" status="unimplemented"/>
+                <method name="Clone" result="struct Interface *" status="unimplemented"/>
+                <method name="AuthGetTaskFunc" result="Subtaskfunction *">
+                        <arg name="id" type="ULONG"/>
+                </method>
+                <method name="Authorreq" result="void">
+                        <arg name="areq" type="struct Authorreq *"/>
+                        <arg name="onlypw" type="BOOL"/>
+                </method>
+                <method name="Authorset" result="void">
+                        <arg name="auth" type="struct Authorize *"/>
+                        <arg name="userid" type="UBYTE *"/>
+                        <arg name="passwd" type="UBYTE *"/>
+                </method>
+        </interface>
+</library>

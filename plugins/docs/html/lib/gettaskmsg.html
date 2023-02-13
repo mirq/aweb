@@ -1,0 +1,37 @@
+<html>
+<head>
+<title>Gettaskmsg()</title>
+</head>
+<body>
+<h1>Gettaskmsg()</h1>
+
+<h2>Purpose</h2>
+Get a queued message within a <a href="../classes/task.html">subtask</a>.
+
+<h2>Synopsis</h2>
+<pre>
+   taskmsg = Gettaskmsg()
+   D0
+
+   <a href="../structs/taskmsg.html">struct Taskmsg</a> *Gettaskmsg(void)
+</pre>
+
+<h2>Function</h2>
+<a href="../classes/task.html">AOTP_TASK</a> support function.
+It checks the subtask's internal message port for any queued messages, and
+return the first one.
+<p>
+When you are done with the message, you must use the
+<a href=replytaskmsg.html><code>Replytaskmsg()</code></a> function to
+reply it.
+<p>
+You may not use this function outside subtask code.
+
+<h2>Result</h2>
+A pointer to a <a href="../structs/taskmsg.html">struct Taskmsg</a>, or
+NULL of no message was waiting.
+
+<h2>See also</h2>
+<a href="checktaskbreak.html">Checktaskbreak()</a>,
+<a href="replytaskmsg.html">Replytaskmsg()</a>,
+<a href="waittask.html">Waittask()</a>

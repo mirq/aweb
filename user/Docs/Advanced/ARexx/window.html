@@ -1,0 +1,629 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+<html>
+<head>
+<title>AWeb ARexx Commands: Window and transfer related</title>
+</head>
+
+<BODY BACKGROUND="../../GlobalImages/awebbg.gif">
+
+<IMG SRC="../../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<h1>&nbsp; AWeb ARexx Commands</h1>
+
+<h2>Window and transfer related commands</h2>
+
+<table cellspacing=0 cellpadding=0 width=100%>
+<tr valign=top><td>
+<a href=#CANCEL>CANCEL</a><br>
+<a href=#CHANCLOSE>CHANCLOSE</a><br>
+<a href=#CHANDATA>CHANDATA</a><br>
+<a href=#CHANHEADER>CHANHEADER</a><br>
+<a href=#CHANOPEN>CHANOPEN</a><br>
+<a href=#CLOSE>CLOSE</a><br>
+<a href=#COPYURL>COPYURL</a><br>
+<a href=#FOCUS>FOCUS</a><br>
+<td>
+<a href=#GO>GO</a><br>
+<a href=#LOAD>LOAD</a><br>
+<a href=#NEW>NEW</a><br>
+<a href=#OPEN>OPEN</a><br>
+<a href=#OPENREQ>OPENREQ</a><br>
+<a href=#RELOAD>RELOAD</a><br>
+<a href=#RESETFRAME>RESETFRAME</a><br>
+<a href=#SAVEAS>SAVEAS</a><br>
+<td>
+<a href=#SAVEIFF>SAVEIFF</a><br>
+<a href=#SCROLL>SCROLL</a><br>
+<a href=#STATUSFIELD>STATUSFIELD</a><br>
+<a href=#URLFIELD>URLFIELD</a><br>
+<a href=#WAIT>WAIT</a><br>
+<a href=#WINDOW>WINDOW</a><br>
+</table>
+
+<h3><a name=CANCEL>CANCEL</a></h3>
+Template:<pre><b>
+   CANCEL LOADID/N,ALL/S
+</b></pre>
+
+Cancel one or more transfers. Essentially the same as pressing the <b>cancel</b>
+gadget.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>LOADID
+   <td valign=top>A number identifying which transfer to cancel. Use the
+      <a href="get.html#TRANSFERS">GET TRANSFERS</a> command to get load ID numbers
+      for the current transfers.
+<tr><th align=left valign=top>ALL
+   <td valign=top>When set, the command cancels all transfers. Essentially
+      the same as pressing the <b>cancel all</b> gadget in the
+      <a href="../../Working/nws.html">network status window</a>.
+</table>
+<br>
+If neither a LOADID nor the ALL switch is given on the command, the current transfer
+for this window is cancelled.
+
+<h3><a name=CHANCLOSE>CHANCLOSE</a></h3>
+Template:<pre><b>
+   CHANCLOSE CHANNEL/A
+</b></pre>
+Close this incremental input channel. If the channel was already closed
+then return code (RC) 5 is set.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>CHANNEL
+   <td valign=top>The channel ID as returned by the <a href=#CHANOPEN>CHANOPEN</a>
+      command.
+</table>
+See the <a href=#CHANOPEN>CHANOPEN</a> command for a brief explanation of
+incremental input channels.
+
+<h3><a name=CHANDATA>CHANDATA</a></h3>
+Template:<pre><b>
+   CHANDATA CHANNEL/A,DATA/A,NL=NEWLINE/S
+</b></pre>
+Send data to this incremental input channel. If the channel was closed
+then return code (RC) 5 is set.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>CHANNEL
+   <td valign=top>The channel ID as returned by the <a href=#CHANOPEN>CHANOPEN</a>
+      command.
+<tr><th align=left valign=top>DATA
+   <td valign=top>The string of data to send to the channel.
+<tr><th align=left valign=top>NEWLINE
+   <td valign=top>If this switch is set, a newline is appended to the data.
+</table>
+See the <a href=#CHANOPEN>CHANOPEN</a> command for a brief explanation of
+incremental input channels.
+
+<h3><a name=CHANHEADER>CHANHEADER</a></h3>
+Template:<pre><b>
+   CHANHEADER CHANNEL/A,HEADER/A
+</b></pre>
+Send a HTTP header to this incremental input channel. If the channel was closed
+then return code (RC) 5 is set.
+<p>
+All headers should be sent before any data is sent, otherwise results are
+unpredictable.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>CHANNEL
+   <td valign=top>The channel ID as returned by the <a href=#CHANOPEN>CHANOPEN</a>
+      command.
+<tr><th align=left valign=top>HEADER
+   <td valign=top>A HTTP header, e.g. "<code>Content-Type:&nbsp;text/html</code>".
+</table>
+See the <a href=#CHANOPEN>CHANOPEN</a> command for a brief explanation of
+incremental input channels.
+
+<h3><a name=CHANOPEN>CHANOPEN</a></h3>
+Template:<pre><b>
+   CHANOPEN URL/A
+</b></pre>
+Open an incremental input channel for this URL.
+<p>
+The reserved ARexx variable <code>RESULT</code> will be set to the ID
+for the opened channel.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>URL
+   <td valign=top>The URL to load via the channel.
+</table>
+<p>
+Incremental input channels can be used to generate and incrementally display
+a document, instead of writing data to a file and then use the
+<a href=#OPEN>OPEN</a> command to load the file in one go.
+<p>
+Basically a retrieve process is started by this command, that uses the ARexx
+CHAN... commands as input source. You have to supply a URL for which this
+retrieve process is started. This can be <em>any</em> URL, in any format (but it is
+advised to adhere to the general URL format "<code>scheme:scheme-specific-part</code>").
+This URL is not automatically displayed; you have to issue an <a href=#OPEN>OPEN</a>
+command <em>after</em> opening the channel. Do not use RELOAD because that will
+abort any ongoing transfer for the URL and therefore closes the channel.
+<p>
+Use the <a href=#CHANHEADER>CHANHEADER</a>, <a href=#CHANDATA>CHANDATA</a>
+and <a href=#CHANCLOSE>CHANCLOSE</a> commands to send data over the channel.
+Note that the channel can be closed by the user (by cancelling the retrieve
+process). These commands will return with returncode (RC) set to 5 if the
+channel was closed.
+<p>
+Data sent through a channel will be cached (unless the URL matches the
+no-cache list). If the data shouldn't be cached, you should send a
+"<code>Pragma:&nbsp;No-cache</code>" header.
+
+<h3><a name=CLOSE>CLOSE</a></h3>
+Template:<pre><b>
+   CLOSE FORCE/S
+</b></pre>
+Close the addressed window.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>FORCE
+   <td valign=top>When set, this switch suppresses the "Are you sure"
+      requester if this was the last open window.
+</table>
+
+<h3><a name=COPYURL>COPYURL</a></h3>
+Template:<pre><b>
+   COPYURL TARGET/K
+</b></pre>
+Copy the URL displayed in the addressed window or the specified frame to the
+clipboard.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>TARGET
+   <td valign=top>The <a href=commands.html#target>target name</a> of the
+      window or frame to copy the URL from. If no target is given, the
+      URL displayed in the main window is copied.
+</table>
+
+<h3><a name=FOCUS>FOCUS</a></h3>
+Template:<pre><b>
+   FOCUS TARGET/K
+</b></pre>
+Change the keyboard scroll focus to the specified frame.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>TARGET
+   <td valign=top>The <a href=commands.html#target>target name</a> of the
+      window or frame to make the new focus. If no target is given, the
+      main window is made the focus.
+</table>
+
+<h3><a name=GO>GO</a></h3>
+Template:<pre><b>
+   GO N/N,BACK/S,FWD=FORWARD/S,HOME/S
+</b></pre>
+Navigate through the window history.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>N
+   <td valign=top>A number specifying how many steps to go through the window history.
+      Default value is 1.
+<tr><th align=left valign=top>BACK
+   <td valign=top>Step back through the window history.
+<tr><th align=left valign=top>FORWARD
+   <td valign=top>Step forward through the window history.
+<tr><th align=left valign=top>HOME
+   <td valign=top>Go to the home document, if one is configured.
+</table>
+The <code>BACK</code>, <code>FORWARD</code> and <code>HOME</code> switches
+are mutually exclusive.
+
+<h3><a name=LOAD>LOAD</a></h3>
+Template:<pre><b>
+   LOAD URL/A,RELOAD/S,SAVEAS/K,APPEND/S,SAVEREQ/S,NOICON/S,POST/K
+</b></pre>
+Load a file in the background, or save a nondisplayed file.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>URL
+   <td valign=top>The URL to retrieve in the background.
+<tr><th align=left valign=top>RELOAD
+   <td valign=top>When set, the specified URL will be reloaded even if it is
+      still in the cache.
+<tr><th align=left valign=top>SAVEAS
+   <td valign=top>If a name is specified, the file will be saved into a file
+      with this name.
+<tr><th align=left valign=top>APPEND
+   <td valign=top>When set, the saved source is appended to the file
+      specified in the <b>SAVEAS</b> argument.<p>
+      When not set, and the <b>SAVEAS</b> argument is given, the specified
+      file will be overwritten.
+<tr><th align=left valign=top>SAVEREQ
+   <td valign=top>When set, a save filerequester will be opened to allow
+      saving of the file.
+<tr><th align=left valign=top>NOICON
+   <td valign=top>In combination with the <b>SAVEAS</b> or <b>SAVEREQ</b> switch,
+      this switch prevents AWeb from creating an icon for the saved file.
+<tr><th align=left valign=top>POST
+   <td valign=top>The message to post. If this parameter is specified the
+      document will be retrieved with the POST method (instead of the
+      usual GET).<p>
+      See the OPEN command description for a <a href=#OPENpost>note
+      about POST messages</a>
+</table>
+
+<h3><a name=NEW>NEW</a></h3>
+Template:<pre><b>
+   NEW URL/A,NAME/K,RELOAD/S,POST/K,SMART/S,NONAV/S,WIDTH/N/K,HEIGHT/N/K
+</b></pre>
+Open a new window and retrieve the specified document to display in the
+new window.
+<p>
+The reserved ARexx variable <code>RESULT</code> will be set to the name of
+the ARexx port for the new window.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>URL
+   <td valign=top>The URL to retrieve and display in the new window.
+<tr><th align=left valign=top>NAME
+   <td valign=top>Name of the new window. If given, the new window can be
+      addressed from other windows documents by using the HTML <code>TARGET</code>
+      attribute.
+<tr><th align=left valign=top>RELOAD
+   <td valign=top>When set, the specified URL will be reloaded even if it is
+      still in the cache.
+<tr><th align=left valign=top>POST
+   <td valign=top>The message to post. If this parameter is specified the
+      document will be retrieved with the POST method (instead of the
+      usual GET).<p>
+      See the OPEN command description for a <a href=#OPENpost>note
+      about POST messages</a>
+<tr><th align=left valign=top>SMART
+   <td valign=top>When set, the URL string will be handled in exactly the
+      same way as if it was typed into the URL gadget. That is, the
+      <code>http://</code> scheme is prepended if no scheme is given,
+      and (if enabled and appropriate) autosearch is used.
+      <p>
+      When SMART is set, the RELOAD and POST arguments are ignored.
+<tr><th align=left valign=top>NONAV      
+   <td valign=top>When set the navigation buttons for the window are
+      not displayed.
+<tr><th align=left valign=top>WIDTH/K/N
+   <td valign=top>The desired inner width of the new window.
+<tr><th align=left valign=top>HEIGHT/K/N
+   <td valign=top>The desired height of the new window in pixels.   
+</table>
+
+<h3><a name=OPEN>OPEN</a></h3>
+Template:<pre><b>
+   OPEN URL/A,TARGET/K,RELOAD/S,POST/K,SMART/S
+</b></pre>
+Retrieve the specified document and show it in the addressed window or in
+the specified frame.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>URL
+   <td valign=top>The URL to retrieve and display.
+<tr><th align=left valign=top>TARGET
+   <td valign=top>The <a href=commands.html#target>target name</a> of the
+      window or frame to display the new document in.
+<tr><th align=left valign=top>RELOAD
+   <td valign=top>When set, the specified URL will be reloaded even if it is
+      still in the cache.
+<tr><th align=left valign=top>POST
+   <td valign=top>The message to post. If this parameter is specified the
+      document will be retrieved with the POST method (instead of the
+      usual GET).
+<tr><th align=left valign=top>SMART
+   <td valign=top>When set, the URL string will be handled in exactly the
+      same way as if it was typed into the URL gadget. That is, the
+      <code>http://</code> scheme is prepended if no scheme is given,
+      and (if enabled and appropriate) autosearch is used.
+      <p>
+      When SMART is set, the RELOAD and POST arguments are ignored.
+</table>
+<a name=OPENpost><strong>Note</strong></a> about POST messages:<br>
+The message is posted exactly as it was supplied, so you must supply it in
+"form-urlencoded" format. In short, this means:
+<ul>
+<li>Name and value of form fields must be separated by <code>=</code>
+<li>Different form field name=value pairs must be separated by <code>&amp;</code>
+<li>All spaces must be replaced by <code>+</code>
+<li>All other non-alphanumeric characters in field names and values
+   must be replaced by a <code>%XX</code> sequence, where
+   <code>XX</code> is the hexadecimal representation of the character.
+</ul>
+You can use the <a href="program.html#URLENCODE">URLENCODE</a> command to
+perform the last two encodings.
+
+<h3><a name=OPENREQ>OPENREQ</a></h3>
+Template:<pre><b>
+   OPENREQ FILE/S,PAT=PATTERN/K
+</b></pre>
+Displays a requester for the URL to open in the addressed window, or a
+file requester for a file to load. This command does not wait until the
+requester is closed.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>FILE
+   <td valign=top>If this switch is set, a file requester is displayed. The selected
+      file will be loaded in the addressed window.
+      <p>
+      If not set, a requester is displayed prompting for an URL to load.
+<tr><th align=left valign=top>PATTERN
+   <td valign=top>If the FILE switch is set, you can use the PATTERN argument to
+      override the default file pattern.
+</table>
+
+<h3><a name=RELOAD>RELOAD</a></h3>
+Template:<pre><b>
+   RELOAD TARGET/K,IMAGES/S
+</b></pre>
+Reload the current document, or all the embedded images, in the addressed
+window or in the specified frame.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>TARGET
+   <td valign=top>The <a href=commands.html#target>target name</a> of the
+      window or frame to limit the reload operation to.
+<tr><th align=left valign=top>IMAGES
+   <td valign=top>When set, all embedded images in the document are reloaded.<p>
+      When not set, the document itself is reloaded.
+</table>
+
+<h3><a name=RESETFRAME>RESETFRAME</a></h3>
+Template:<pre><b>
+   RESETFRAME TARGET/K
+</b></pre>
+Resets all frames contained in the addressed window or in the specified frame to
+their original sizes. Note that the size of the addressed frame itself is not
+restored.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>TARGET
+   <td valign=top>The <a href=commands.html#target>target name</a> of the
+      window or frame in which the frame sizes should be restored.
+</table>
+
+<h3><a name=SAVEAS>SAVEAS</a></h3>
+Template:<pre><b>
+   SAVEAS NAME,APPEND/S,TARGET/K,NOICON/S
+</b></pre>
+Save the source of the current document in the addressed window or in
+the specified frame.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>NAME
+   <td valign=top>When given, the source is saved under this name.<p>
+      When not given, a save requester will pop up.
+<tr><th align=left valign=top>APPEND
+   <td valign=top>When set, the saved source is appended to the file
+      specified in the <b>NAME</b> argument.<p>
+      When not set, and the <b>NAME</b> argument is given, the specified
+      file will be overwritten.
+<tr><th align=left valign=top>TARGET
+   <td valign=top>The <a href=commands.html#target>target name</a> of the
+      window or frame for which the source should be saved.
+<tr><th align=left valign=top>NOICON
+   <td valign=top>Prevent AWeb from creating an icon for the saved file.
+</table>
+
+<h3><a name=SAVEIFF>SAVEIFF</a></h3>
+Template:<pre><b>
+   SAVEIFF NAME,NOICON/S,WAIT/S
+</b></pre>
+Save the current window contents as an IFF image file.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>NAME
+   <td valign=top>The name of the file to save. If no name is given, a
+      file requester will be opened prompting for the name.
+<tr><th align=left valign=top>NOICON
+   <td valign=top>If this switch is set, no icon will be saved for the file.
+<tr><th align=left valign=top>WAIT
+   <td valign=top>If set, this command will not return until the save
+      operation has been completed.
+</table>
+
+<h3><a name=SCROLL>SCROLL</a></h3>
+Template:<pre><b>
+   SCROLL N/N,PAGE/S,FAR/S,UP/S,DOWN/S,LEFT/S,RIGHT/S,TARGET/K
+</b></pre>
+Scroll the contents of the addressed window, or the specified frame.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>N
+   <td valign=top>A number specifying the number of pixels to scroll.
+      Default value is 1.
+<tr><th align=left valign=top>PAGE
+   <td valign=top>When set, the <b>N</b> argument will be treated as the
+      number of pages rather than a number of pixels.
+<tr><th align=left valign=top>FAR
+   <td valign=top>When set, the contents will be scrolled to the
+      extreme position in the given direction.
+<tr><th align=left valign=top>UP
+   <td valign=top>Move the visible area towards the top of the document.
+<tr><th align=left valign=top>DOWN
+   <td valign=top>Move the visible area towards the bottom of the document.
+<tr><th align=left valign=top>LEFT
+   <td valign=top>Move the visible area towards the left edge of the document.
+<tr><th align=left valign=top>RIGHT
+   <td valign=top>Move the visible area towards the right edge of the document.
+<tr><th align=left valign=top>TARGET
+   <td valign=top>The <a href=commands.html#target>target name</a> of the
+      window or frame to scroll.
+</table>
+
+The <code>UP</code> and <code>DOWN</code> arguments are mutually exclusive.
+The <code>LEFT</code> and <code>RIGHT</code> arguments are mutually exclusive.
+At least one direction must be specified.
+
+<h3><a name=STATUSFIELD>STATUSFIELD</a></h3>
+Template:<pre><b>
+   STATUSFIELD SET/A
+</b></pre>
+Show a new text in this windows status field.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>SET
+   <td valign=top>A new value to display in the status field.
+</table>
+
+<h3><a name=URLFIELD>URLFIELD</a></h3>
+Template:<pre><b>
+   URLFIELD ACTIVATE/S,POS/K/N,SET/K,PASTE/S
+</b></pre>
+Activate the URL field in the browser window, or set it to a value.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>ACTIVATE
+   <td valign=top>Activate the URL field. This will only work if the window
+      itself is the active window.
+      <p>
+      The cursor is positioned after the last character, unless you specify
+      a position with the POS argument.
+<tr><th align=left valign=top>POS
+   <td valign=top>Specify a new location for the cursor (the first character
+      is counted as 1).
+<tr><th align=left valign=top>SET
+   <td valign=top>A new value to load in the URL gadget.
+<tr><th align=left valign=top>PASTE
+   <td valign=top>If this switch is set, the new value for the URL gadget will be
+      loaded from the clipboard.
+</table>
+The <code>SET</code> and <code>PASTE</code> arguments are mutually exclusive.
+
+<h3><a name=WAIT>WAIT</a></h3>
+Template:<pre><b>
+   WAIT URL,DOC=DOCUMENT/S,IMG=IMAGES/S,ALL/S
+</b></pre>
+Wait until the specified transfers are completed.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>URL
+   <td valign=top>When specified, the command will wait until the
+      transfer for this URL is completed. If no transfer is running for this
+      URL, the command will return immediately.
+<tr><th align=left valign=top>DOCUMENT
+   <td valign=top>When set, the command will wait only for document transfers.
+      In this context, everything loaded directly at the top level in a window
+      or frame is considered to be a document, even if it is an image or a
+      sound file.
+<tr><th align=left valign=top>IMAGES
+   <td valign=top>When set, the command will wait only for embedded image
+      transfers. In this context, everything loaded because it is embedded
+      in a HTML document is considered to be an image. This includes
+      background sounds.
+<tr><th align=left valign=top>ALL
+   <td valign=top>When set, the command will wait for transfers in all
+      windows.<p>
+      When not set, the command will only wait for transfers in the addressed
+      window and its subordinate frames.
+</table>
+
+<h3><a name=WINDOW>WINDOW</a></h3>
+Template:<pre><b>
+   WINDOW RECT/K,ACTIVATE/S,TOFRONT/S,TOBACK/S,ZIP/S,NEXT/K/N
+</b></pre>
+Change the location or size of the addressed window, or the next or previous window.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>RECT
+   <td valign=top>A <a href=commands.html#rect>rectangle</a> describing the new
+      location and size of the window.
+<tr><th align=left valign=top>ACTIVATE
+   <td valign=top>When set, makes the window the active window.
+<tr><th align=left valign=top>TOFRONT
+   <td valign=top>When set, moves the window to the front of all other
+      windows on the screen.
+<tr><th align=left valign=top>TOBACK
+   <td valign=top>When set, moves the window to the back of all other
+      windows on the screen.
+<tr><th align=left valign=top>ZIP
+   <td valign=top>When set, toggles between the zoomed and unzoomed state
+      of the window, as if the user clicked the zoom gadget.
+<tr><th align=left valign=top>NEXT
+   <td valign=top>If this is a positive number, the actions will be applied to
+      the next window counting from the addressed window. If this is a negative
+      number, the actions will be applied to the previous window.
+      <p>
+      If not given (or zero), the actions are applied to the addressed window.
+</table>
+
+The <code>TOFRONT</code> and <code>TOBACK</code> arguments are mutually exclusive.
+
+
+<!-- template:
+
+<h3><a name=></a></h3>
+Template:<pre><b>
+
+</b></pre>
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>
+   <td valign=top>
+<tr><th align=left valign=top>
+   <td valign=top>
+</table>
+
+-->
+
+</body>
+</html>

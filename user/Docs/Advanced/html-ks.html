@@ -1,0 +1,535 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+<html>
+<head>
+<title>
+AWeb supported HTML (K-S)
+</title>
+</head>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<h1>&nbsp; AWeb supported HTML</h1>
+
+<h2>Tags (K-S)</h2>
+
+The <em>Mode</em> column in the tables below contains the <a href=htmlmode.html>HTML
+mode</a> that recognizes the tag or attribute. Elements recognized in <em>strict</em>
+mode will also be recognized in <em>tolerant</em> mode, but elements marked as
+<em>tolerant</em> will not be recognized in <em>strict</em> mode.
+
+<h3><a name=KBD>KBD</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;KBD&gt; ... &lt;/KBD&gt;
+   <td>Specifies keyboard input. Typically rendered in a fixed width font.
+   <td>Strict
+</table>
+
+<h3><a name=LI>LI</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;LI&gt; ... &lt;/LI&gt;
+   <td><em>Can only appear within a <a href=html-ks.html#OL>OL</a> or <a href=html-tz.html#UL>UL</a>element</em><br>
+      Defines a list item. The item is rendered indented with a bullet in front.
+      <p>The end tag is optional.
+   <td>Strict
+<tr valign=top><th align=left>Attribute<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>VALUE=nn
+   <td>Specifies the number to use in the bullet for an ordered list
+      (<a href=html-ks.html#OL>OL</a>).
+   <td>Strict
+<tr align=left valign=top><td>TYPE=CIRCLE<br>TYPE=DISC<br>TYPE=SQUARE
+   <td>Sets the type of bullet for an unordered list (<a href=html-tz.html#UL>UL</a>).
+   <td>Strict
+<tr align=left valign=top><td>TYPE=1<br>TYPE=A<br>TYPE=a<br>TYPE=I<br>TYPE=i
+   <td>Sets the type of bullet for an ordered list (<a href=html-ks.html#OL>OL</a>).
+      <table cellspacing=0 cellpadding=0>
+         <tr><th align=left>TYPE&nbsp;<th align=left>Meaning
+         <tr valign=top><td>1<td>Ordinary numbers (default) (1,2,3,4,...)
+         <tr valign=top><td>A<td>Capital letters (A,B,C,D,...)
+         <tr valign=top><td>a<td>lowercase letters (a,b,c,d,...)
+         <tr valign=top><td>I<td>Roman numbers in capital letters (I,II,III,IV,...)
+         <tr valign=top><td>i<td>Roman numbers in lowercase letters (i,ii,iii,iv,...)
+      </table>
+   <td>Strict
+<tr align=left valign=top><td>DINGBAT="name"
+   <td>Specifies the type of <a href=iconentities.html>icon entity</a> to use as a bullet
+      in an unordered list (<a href=html-tz.html#UL>UL</a>).
+   <td>Tolerant
+<tr align=left valign=top><td>SRC="url"
+   <td>Specifies the source of an image to use as a bullet in an unordered list
+      (<a href=html-tz.html#UL>UL</a>).
+   <td>Tolerant (HTML 3.0)
+<tr align=left valign=top><td>SKIP=nn
+   <td>Specifies the number of items to skip relative to the previous item
+      in an ordered list (<a href=html-ks.html#OL>OL</a>).
+   <td>Tolerant (HTML 3.0)
+</table>
+
+<h3><a name=LINK>LINK</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;LINK&gt;
+   <td><em>Can only appear within a <a href=html-ej.html#HEAD>HEAD</a> element</em><br>
+      Hyperlink to related resources. Typically used to indicate authorship, related
+      indices, other versions of the document, etc.
+   <td>Strict
+<tr valign=top><th align=left>Attribute<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>HREF="url"
+   <td>Specifies a destination for the hyperlink. See <a href=html-ad.html#A>A</a> for details.
+   <td>Strict
+<tr align=left valign=top><td>REL="name"
+   <td>Name of the relationship described by this hyperlink.
+   <td>Strict
+<tr align=left valign=top><td>TITLE="title"
+   <td>Title to show when presenting this hyperlink.
+   <td>Strict
+</table>
+
+<h3><a name=LISTING>LISTING</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;LISTING&gt; ... &lt;/LISTING&gt;
+   <td>Specifies a listing. The text is rendered in a fixed width font, exactly
+      as it appears in the document source. No word-wrapping is done.
+   <td>Strict
+</table>
+
+<h3><a name=MAP>MAP</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;MAP&gt; ... &lt;/MAP&gt;
+   <td>Defines a set of hot zones for a client-side image map (see
+      <a href=html-ej.html#IMG>IMG</a>).<br>
+      The MAP element should contain one or more <a href=html-ad.html#AREA>AREA</a> elements.
+   <td>Strict
+<tr valign=top><th align=left>Attribute<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>NAME="name"
+   <td>The name of the map, as it is references by the USEMAP attribute of the
+      <a href=html-ej.html#IMG>IMG</a> element.
+   <td>Strict
+</table>
+
+<h3><a name=META>META</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;META&gt;
+   <td>Meta information about the document. Also used to indicate additional HTTP
+      transfer headers to the server sending out the document. The last feature is
+      frequently used to implement the <em>client-pull</em> mechanism.
+   <td>Strict
+<tr valign=top><th align=left>Attribute<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>CONTENT="value"
+   <td>Specifies the value of the meta attribute identified by NAME or HTTP-EQUIV.
+   <td>Strict
+<tr align=left valign=top><td>HTTP-EQUIV="HTTP-header"
+   <td>Specifies the HTTP header (keyword only) that a server sending this document may
+      include in its response.<p>
+      Since not many servers actually do this, AWeb interprets this attribute itself
+      to support the <em>client-pull</em> mechanism.
+   <td>Strict
+<tr align=left valign=top><td>NAME="name"
+   <td>Specifies the name of the meta attribute.
+   <td>Strict
+</table>
+
+<h3><a name=MENU>MENU</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;MENU&gt; ... &lt;/MENU&gt;
+   <td>Specifies a menu list. AWeb renders a MENU list exactly the same
+      as a <a href=html-tz.html#UL>UL</a> list.
+   <td>Strict
+</table>
+
+<h3><a name=NOBR>NOBR</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;NOBR&gt; ... &lt;/NOBR&gt;
+   <td>Specifies that automatic line breaks must not occur within this text.<p>
+      The <a href=html-tz.html#WBR>WBR</a> element can be used to specify soft line breaks.
+   <td>Tolerant (NS)
+</table>
+
+<h3><a name=NOFRAMES>NOFRAMES</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;NOFRAMES&gt; ... &lt;/NOFRAMES&gt;
+   <td>If the document contains a <a href=html-ej.html#FRAMESET>FRAMESET</a> definition,
+      the contents of this element will be displayed by browsers that don't
+      support frames or are configured not to use frames.
+      The entire element with its contents will be ignored if frames are used.
+   <td>Strict
+</table>
+
+<h3><a name=NOSCRIPT>NOSCRIPT</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;NOSCRIPT&gt; ... &lt;/NOSCRIPT&gt;
+   <td>Provides an alternative for a prior <a href=html-ks.html#SCRIPT>SCRIPT</a>
+      element.<p>
+      If the browser doesn't support the language of any SCRIPT element
+      prior in the document, or is configured not to evaluate scripts,
+      the content of NOSCRIPT is displayed.<br>
+      If any of the previous SCRIPT elements was evaluated, then the contents of the
+      NOSCRIPT element will be ignored.
+   <td>Strict
+</table>
+
+<h3><a name=OBJECT>OBJECT</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;OBJECT&gt; ... &lt;/OBJECT&gt;
+   <td>Specifies an embedded object to display inlined with the text. If the
+      browser supports the type of object, the contents of the OBJECT element is
+      ignored. If the browser does not support the type of object, it displays
+      the content of the OBJECT element instead.<p>
+      OBJECT elements can be nested to supply several levels of fall-back until
+      the browser supports one of them.<p>
+      Object specific parameters can be specifies with separate
+      <a href=html-ks.html#PARAM>PARAM</a> elements within the OBJECT element.
+   <td>Strict
+<tr valign=top><th align=left>Attribute<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>ALIGN=TOP<br>ALIGN=MIDDLE<br>ALIGN=BOTTOM
+   <td>Specifies how the object should be aligned with the text:
+      <table cellpadding=0>
+         <tr><th align=left>ALIGN<th align=left>Meaning
+         <tr valign=top><td>TOP<td>the top of the object aligns with the top of the
+            tallest element in the line
+         <tr valign=top><td>MIDDLE<td>the middle of the object aligns with the text baseline
+         <tr valign=top><td>BOTTOM<td>the bottom of the object aligns with the text baseline
+      </table>
+   <td>Strict
+<tr align=left valign=top><td>ALIGN=LEFT<br>ALIGN=RIGHT
+   <td>Specifies that the object is a floating object. It is flushed to the current left or
+      right margin, and the text will flow around it.
+   <td>Strict
+<tr align=left valign=top><td>BORDER=nn
+   <td>Specifies the thickness of the border if the object is a link. BORDER=0 means
+      no border.
+   <td>Strict
+<tr align=left valign=top><td>CLASSID="name"
+   <td>Name of the class that implements the code to process the object data, within the
+      code object specified by the CODEBASE attribute.
+      Currently not supported by AWeb.
+   <td>Strict
+<tr align=left valign=top><td>CODEBASE="url"
+   <td>Specifies the address of the object that implements the code to process the object data.
+      Currently not supported by AWeb.
+   <td>Strict
+<tr align=left valign=top><td>CODETYPE="MIME-type"
+   <td>The MIME type of the code object specified by the CODEBASE attribute.
+      Currently not supported by AWeb.
+   <td>Strict
+<tr align=left valign=top><td>DATA="url"
+   <td>Specifies the address of the object data. See <a href=html-ad.html#A>A</a> for details.
+   <td>Strict
+<tr align=left valign=top><td>DECLARE
+   <td>Specifies that the object is declared only, and should not be instantiated.
+      Currently AWeb does not support declared objects.
+   <td>Strict
+<tr align=left valign=top><td>HEIGHT=nn<br>WIDTH=nn
+   <td>Specifies the height and the width of the object in pixels. AWeb uses this to
+      reserve enough space for the object, so that once it is loaded no reformatting
+      of the page is needed.
+   <td>Strict
+<tr align=left valign=top><td>HSPACE=nn<br>VSPACE=nn
+   <td>Specifies a margin around the object for floating objects. Without margin the text
+      will be placed directly adjacent to the object.
+   <td>Strict
+<tr align=left valign=top><td>ISMAP
+   <td>Specifies that the object is a clickable map. The object must be contained within
+      a <a href=html-ad.html#A>A</a> element.
+   <td>Tolerant (HTML 3.0)
+<tr align=left valign=top><td>NAME="name"
+   <td>Specifies a name for the object.
+   <td>Strict
+<tr align=left valign=top><td>SHAPES
+   <td>Specifies that the object is a client-side clickable map.
+      The OBJECT element should contain
+      one or more <a href=html-ad.html#A>A</a> elements with SHAPE and COORDS attributes defined.<p>
+      A clickable map constructed in this way (as opposed to one using the USEMAP
+      attribute) will gracefully fall back to textual
+      links in browsers that does not support the particular object type, or not support
+      the OBJECT tag at all.
+   <td>Strict
+<tr align=left valign=top><td>STANDBY="text"
+   <td>Specifies the text to be displayed when the object isn't loaded (yet).
+   <td>Strict
+<tr align=left valign=top><td>TYPE="MIME-type"
+   <td>The MIME-type of the object data specified by the DATA attribute. AWeb uses
+      this type, and the <a href=../Configuring/brviewers.html>MIME types configuration</a>
+      to determine if the object type is supported or not. If this attribute is absent,
+      AWeb tries to infer the MIME type from the extension of the URL specified in the
+      DATA attribute.
+   <td>Strict
+<tr align=left valign=top><td>USEMAP="url"
+   <td>Defines this object as a client-side clickable map with use of a separate
+      <a href=html-ks.html#MAP>MAP</a> element. The url must contain a
+      fragment name (introduced by the # character) and must point to a
+      MAP element.
+      The MAP element may be in the same document or in another document.<p>
+      Note that the OBJECT element allows for more browser-friendly client-side
+      maps, see the SHAPES attribute.
+   <td>Strict
+<TR VALIGN="TOP"><TH ALIGN="LEFT">Javascript Event</TH><TH ALIGN="LEFT">Explanation</TH><TH ALIGN="LEFT">Mode</TH></TR>
+<TR ALIGN="LEFT" VALIGN="TOP">
+<TD>ONABORT="script"<BR>ONCLICK="script"<BR>ONERROR="script<BR>ONLOAD="script"<BR>ONMOUSEOUT="script"<BR>ONMOUSEOVER="script"</TD>
+<TD>Standard JavaScript <A HREF="html.html#events">event handlers</A>.</TD>
+<TD>Strict</TD>
+</TR>
+</table>
+
+<h3><a name=OL>OL</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;OL&gt; ... &lt;/OL&gt;
+   <td>Defines an ordered list. Items in the list are preceded by numbered bullets.
+      <br>
+      An ordered list should contain one or more <a href=html-ks.html#LI>LI</a> elements.
+   <td>Strict
+<tr valign=top><th align=left>Attribute<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>TYPE=1<br>TYPE=A<br>TYPE=a<br>TYPE=I<br>TYPE=i
+   <td>Sets the type of bullet for this list.
+      <table cellspacing=0 cellpadding=0>
+         <tr><th align=left>TYPE&nbsp;<th align=left>Meaning
+         <tr valign=top><td>1<td>Ordinary numbers (default) (1,2,3,4,...)
+         <tr valign=top><td>A<td>Capital letters (A,B,C,D,...)
+         <tr valign=top><td>a<td>lowercase letters (a,b,c,d,...)
+         <tr valign=top><td>I<td>Roman numbers in capital letters (I,II,III,IV,...)
+         <tr valign=top><td>i<td>Roman numbers in lowercase letters (i,ii,iii,iv,...)
+      </table>
+   <td>Strict
+<tr align=left valign=top><td>START=nn
+   <td>Sets the number to start with. Default is 1.
+   <td>Strict
+<tr align=left valign=top><td>CONTINUE
+   <td>Specifies that the numbers should continue where the previous ordered list
+      ended.
+   <td>Tolerant (HTML 3.0)
+<tr align=left valign=top><td>SEQNUM=nn
+   <td>Sets the number to start with. Same as START.
+   <td>Tolerant (HTML 3.0)
+</table>
+
+<h3><a name=OPTION>OPTION</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;OPTION&gt; ... &lt;/OPTION&gt;
+   <td><em>Can only appear within a <a href=html-ks.html#SELECT>SELECT</a> element</em><br>
+      Defines an option in a selection list in a form.<p>
+      The end tag is optional.
+   <td>Strict
+<tr valign=top><th align=left>Attribute<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>VALUE="value"
+   <td>Specifies the value to be included in the form data if this option is
+      selected. Default is the option text.
+   <td>Strict
+<tr align=left valign=top><td>SELECTED
+   <td>Specifies that this option should be initially selected.
+   <td>Strict
+</table>
+
+<h3><a name=PARAM>PARAM</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;PARAM&gt;
+   <td><em>Can only appear within a <a href=html-ks.html#OBJECT>OBJECT</a> element</em><br>
+      Specifies an object-specific parameter. Parameters are passed to the
+      object, and are not interpreted by AWeb itself.
+   <td>Strict
+<tr valign=top><th align=left>Attribute<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>NAME="name"
+   <td>Specifies the name of the parameter.
+   <td>Strict
+<tr align=left valign=top><td>TYPE="MIME-type"
+   <td>The MIME type of the object specifies by URL in the the VALUE attribute.
+      Only valid if the VALUETYPE attribute indicates an URL.
+   <td>Strict
+<tr align=left valign=top><td>VALUE="value"
+   <td>Specifies the value of the parameter.
+   <td>Strict
+<tr align=left valign=top><td>VALUETYPE="type"
+   <td>Specifies the type of the value of the parameter. It must be one of
+      the following:
+      <table cellpadding=0>
+         <tr><th align=left>TYPE&nbsp;<th align=left>Meaning
+         <tr valign=top><td>DATA<td>The value is plain data.
+         <tr valign=top><td>OBJECT<td>The value is the name of another
+            <a href=html-ks.html#OBJECT>OBJECT</a>. Referencing objects is currently
+            not supported by AWeb.
+         <tr valign=top><td>REF<td>The value is an URL. (HTML 3.0)
+         <tr valign=top><td>URL<td>The value is an URL. (MS)
+      </table>
+   <td>Strict
+</table>
+
+<h3><a name=P>P</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;P&gt; ... &lt;/P&gt;
+   <td>Denotes a paragraph in the document.
+      <P>The end tag is optional.
+   <td>Strict
+<tr valign=top><th align=left>Attribute<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>ALIGN=LEFT<br>ALIGN=CENTER<br>ALIGN=RIGHT
+   <td>Renders the text and other elements within the paragraph left aligned, centered
+      within the window width, or right aligned with the window border.
+   <td>Strict
+</table>
+
+<h3><a name=PRE>PRE</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;PRE&gt; ... &lt;/PRE&gt;
+   <td>Specifies preformatted text. The text is rendered in a fixed width font, exactly
+      as it appears in the document source. No word-wrapping is done.
+   <td>Strict
+</table>
+
+<h3><a name=SAMP>SAMP</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;SAMP&gt; ... &lt;/SAMP&gt;
+   <td>Specifies sample output. Typically rendered in a fixed width font.
+   <td>Strict
+</table>
+
+<h3><a name=SCRIPT>SCRIPT</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;SCRIPT&gt; ... &lt;/SCRIPT&gt;
+   <td>Includes script statements in a document. Currently AWeb only supports
+      <a href="../Working/javascript.html">JavaScript</a>, but other script languages
+      exist. If the script is in a language not supported by AWeb, or if
+      <a href="../Configuring/broptions.html#javascript">java script usage</a> is
+      disabled, the contents of the SCRIPT element is ignored.
+   <td>Strict
+<tr valign=top><th align=left>Attribute<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>LANGUAGE="language"
+   <td>Specifies the scripting language, e.g. "JavaScript".
+   <td>Strict
+<tr align=left valign=top><td>SRC="url"
+   <td>Specifies the address of the script to execute. If this script is found,
+      the contents of the SCRIPT element itself is ignored.
+   <td>Strict
+<tr align=left valign=top><td>TYPE="content-type"
+   <td>Specifies the internet content type for the script language, e.g.
+      "text/javascript".
+   <td>Strict
+</table>
+
+<h3><a name=SELECT>SELECT</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;SELECT&gt; ... &lt;/SELECT&gt;
+   <td><em>Can only appear within a <a href=html-ej.html#FORM>FORM</a> element</em><br>
+      Defines a selection field in a form. Depending on the type of field and
+      the settings, this can be a cycle-type field or a scrollable list.
+      <p>
+      The SELECT element should contain one or more <a href=html-ks.html#OPTION>OPTION</a>
+      elements that define the options to choose from.
+   <td>Strict
+<tr valign=top><th align=left>Attribute<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>MULTIPLE
+   <td>Specifies that more than one option can be selected simultaneously. The
+      field will be rendered as a scrollable list with checkmarks to indicate
+      selected items.
+   <td>Strict
+<tr align=left valign=top><td>NAME="name"
+   <td>Gives this field a name. Fields without a name will not be included in the
+      form data sent.
+   <td>Strict
+<tr align=left valign=top><td>SIZE=nn
+   <td>Specifies the vertical size of the field. A size of 1 will usually be rendered as
+      a cycle-type field. A size of 2 or more will be rendered as a scrollable list,
+      where the number specifies how many items are visible.
+   <td>Strict
+</table>
+
+<h3><a name=SMALL>SMALL</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;SMALL&gt; ... &lt;/SMALL&gt;
+   <td>Renders text in a small font.
+   <td>Strict
+</table>
+
+<h3><a name=STRIKE>S or STRIKE</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;S&gt; ... &lt;/S&gt;<br>
+      &lt;STRIKE&gt; ... &lt;/STRIKE&gt;
+   <td>Renders text with strike through.
+   <td>Strict
+</table>
+
+<h3><a name=STRONG>STRONG</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;STRONG&gt; ... &lt;/STRONG&gt;
+   <td>Specifies strongly emphasized text. Typically rendered in bold.
+   <td>Strict
+</table>
+
+<h3><a name=STYLE>STYLE</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;STYLE&gt; ... &lt;/STYLE&gt;
+   <td><em>Can only appear within a <a href=html-ej.html#HEAD>HEAD</a> element</em><br>
+      Specifies style information. Currently AWeb does not support styles. Instead the
+      contents of the STYLE element is ignored.
+   <td>Strict
+</table>
+
+<h3><a name=SUB>SUB</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;SUB&gt; ... &lt;/SUB&gt;
+   <td>Renders text in subscript, that is in a smaller font and somewhat lower
+      than usual.
+   <td>Strict
+</table>
+
+<h3><a name=SUP>SUP</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;SUP&gt; ... &lt;/SUP&gt;
+   <td>Renders text in superscript, that is in a smaller font and somewhat higher
+      than usual.
+   <td>Strict
+</table>
+
+<p>
+<hr>
+<a href=html.html>Back to overview</a><br>
+More HTML tags:
+<a href=html-ad.html>A-D</a>,
+<a href=html-ej.html>E-J</a>,
+<a href=html-tz.html>T-Z</a><br>
+<br>
+
+<a href=../AWeb%20Manual.html><img src=../GlobalImages/back.gif width=32 height=16 alt="<-" border=0></a> Back to
+<a href=../AWeb%20Manual.html>index</a>.
+
+</body>
+</html>

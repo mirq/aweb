@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>Commandplugin()</title>
+</head>
+<body>
+<h1>Commandplugin()</h1>
+
+<h2>Purpose</h2>
+This function is used to pass a plugin-specific textual command to the
+plugin after a <b>PLUGIN</b> ARexx command was received by AWeb.
+
+<h2>Synopsis</h2>
+<pre>
+   Commandplugin(plugincommand)
+                 A0
+
+   void Commandplugin(<a href="../structs/plugincommand.html">struct Plugincommand</a> *)
+</pre>
+
+<h2>Inputs</h2>
+<table border>
+<tr><th align=left valign=top>Parameter
+   <th align=left valign=top>Description
+<tr><td valign=top><code>plugincommand</code>
+   <td valign=top>Pointer to a <a href="../structs/plugincommand.html">struct Plugincommand</a>.
+</table>
+
+<h2>Implementation</h2>
+This function is optional. It is only supposed to be present after the
+<a href=queryplugin.html><code>Queryplugin()</code></a> function indicated
+its presence.
+<p>
+If supported, the function should parse and execute the command passed
+in the <a href="../structs/plugincommand.html">struct Plugincommand</a>.
+Optionally it can return a textual result in this structure. In case
+of failure a numeric result code should be passed in this structure.
+
+<h2>Example</h2>
+The <a href=filterexample.html>example filter type plugin</a> contains an example
+implementation of the <code>Commandplugin()</code> function.
+

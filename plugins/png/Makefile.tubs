@@ -1,0 +1,13 @@
+MODULES := AWebPlugin/awebpng.awebplugin AWebPlugin/Docs/awebpng.html
+
+AWebPlugin/awebpng.awebplugin/TYPE := executable/library/amigashared
+AWebPlugin/awebpng.awebplugin/DEPS := $(MODULELIB) linklibs/libpng.a linklibs/libaz.a linklibs/libawebclib.a AWebPlugin/Docs/awebpng.html
+AWebPlugin/awebpng.awebplugin/LDFLAGS += distribution/linklibs/libpng.a -laz -lawebclib $(ALPHALIB)
+AWebPlugin/awebpng.awebplugin/CFILES := \
+startup awebpng pngsource pngcopy
+
+AWebPlugin/awebpng.awebplugin/CFILES/CPPFLAGS := -I plugins/include -I zlib/
+
+AWebPlugin/Docs/awebpng.html/TYPE := document
+AWebPlugin/Docs/awebpng.html/FILES := \
+awebpng.html awebpng.awebrx

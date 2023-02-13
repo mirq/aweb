@@ -1,0 +1,101 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+<html>
+<head>
+<title>Hotlist</title>
+</head>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<h1>&nbsp; Hotlist</h1>
+
+<h2>Adding a page</h2>
+The AWeb hotlist can be used to remember the addresses of interesting
+pages. Whenever you find an interesting page that you think you would
+like to visit again in the future, you should add the page to the hotlist.
+Do this by pressing the <em>add to hotlist</em> button, or
+using the <code>Hotlist / Add&nbsp;to&nbsp;hotlist</code> menu item.
+
+<h2>Using the list</h2>
+Press the <em>hotlist</em> button, or use the
+<code>Hotlist / Show&nbsp;hotlist</code> menu item to load a page
+with all links to all remembered pages.
+<p>
+With the
+<a href=../Configuring/proptions.html#hlrequester>Hotlist button gives requester</a>
+setting, you can make the <em>hotlist</em> button
+pop up a requester. This is the same requester as for the <code>Hotlist
+/ Hotlist&nbsp;Viewer...</code> menu item. The functions in this requester
+are described below.
+
+<h2><a name=viewer>Hotlist viewer</a></h2>
+When you choose the <code>Hotlist / Hotlist viewer...</code> menu item,
+a requester will open. In this requester you can choose entries
+from a hierarchical list.
+<p>
+Use the window close gadget, or the <kbd>Esc</kbd> key to close the
+requester.
+
+<h3>Follow a link</h3>
+Select the entry for the document you want to load, either with the
+mouse or with the cursor up and down keys. Now you can load the
+document with either the <em>Follow</em> button or with the
+<kbd>Enter</kbd> key.<br>
+Another way to follow a link is to double-click on it.
+<P>If you have enabled the <A HREF="../Configuring/proptions.html#hlsingleclick">Use Singleclick in Hotlist Viewer</A> setting, you only need to single-click an entry in the listview to follow the URI.
+<p>
+If you have selected the
+<a href=../Configuring/proptions.html#hlclose>Hotlist requester auto close</a>
+setting, the requester will close if you follow a link, otherwise
+the requester stays open.
+
+<h3>Show URLs</h3>
+By default only the page titles are shown in the list. If you select
+the <em>URLs</em> checkbox, the URLs for each page is shown too.
+
+<h3>Managing the list</h3>
+Click the <em>Manager</em> button to open the
+<a href=hotlistmgr.html>hotlist manager</a> window. In this window you can
+add, change or delete entries and group them into nested groups.
+
+<h2>Save and restore</h2>
+If the hotlist was changed, it will be saved automatically when you leave
+AWeb. You can save it earlier with the <code>Hotlist / Save&nbsp;hotlist</code>
+menu item. The hotlist is also saved after you have added a link.
+<p>
+Use the <code>Hotlist / Restore&nbsp;last&nbsp;saved</code> menu item to
+revert the hotlist to the state it was in when it was last saved.
+
+<h2>Using other hotlists</h2>
+You can specify a different hotlist to use with the <code>HOTLIST</code>
+<a href=startup.html#wb>tooltype</a> or <a href=startup.html#shell>argument</a>.
+<p>
+You can load another AWeb hotlist using the <code>Hotlist / Other...</code>
+menu item. The hotlist will be shown as document, not in the hotlist
+viewer window.
+
+<p>
+<hr>
+<a href=../AWeb%20Manual.html><img src=../GlobalImages/back.gif width=32 height=16 alt="<-" border=0></a> Back to
+<a href=../AWeb%20Manual.html>index</a>.
+
+</body>
+</html>

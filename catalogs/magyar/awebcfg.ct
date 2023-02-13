@@ -1,0 +1,1914 @@
+## version $VER: AWebCfg.catalog 0.0 ()
+## language magyar
+## codeset 0
+;
+; AWebcfg.cd - AWeb configuration program catalog description file
+;
+;
+;  The MSG_DUMMY_nn labels are there because FlexCat doesn't
+;  understand the LABEL (+1//) syntax (C='s Catcomp uses this
+;  to skip 1 number)
+;
+;
+;-------------- Error messages ----------------------
+;
+; NOTE - No locale formatters (like %1$s) possible in this string!
+;        Only plain C formatters allowed.
+MSG_ERROR_CANTOPENV
+Nem tudom megyitni %s, %ld változatát
+; Can't open %s version %ld
+;
+MSG_ERROR_COMMANDLINE
+
+; Please check the commandline options.\n\
+; E.g. you must use at least one of the 4 switches.\n\
+; The Template is:
+;
+; ***NEW***
+;
+;
+;-------------- Settings requesters- ------------------
+;
+;  General
+;
+MSG_SET_REQTITLE_FONT
+Válassz betûtípust
+; Select font
+;
+MSG_SET_REQTITLE_SCREEN
+Válassz képernyõmódot
+; Select screenmode
+;
+MSG_SET_REQTITLE_MAILTO
+Válassz mailto: parancsot
+; Select mailto: command
+;
+MSG_SET_REQTITLE_FTP
+Válassz ftp: parancsot
+; Select ftp: command
+;
+MSG_SET_REQTITLE_TELNET
+Válassz telnet: parancsot
+; Select telnet: command
+;
+MSG_SET_REQTITLE_NEWS
+Válassz news: parancsot
+; Select news: command
+;
+MSG_SET_REQTITLE_STARTTCP
+Válassz TCP indítóparancsot
+; Select TCP start command
+;
+MSG_SET_REQTITLE_ENDTCP
+Válassz TCP bezáró parancsot
+; Select TCP end command
+;
+MSG_SET_REQTITLE_TEMPPATH
+Válassz átmeneti útvonalat
+; Select temp path
+;
+MSG_SET_REQTITLE_SAVEPATH
+Válassz mentési útvonalat
+; Select save path
+;
+MSG_SET_REQTITLE_EDITOR
+Válassz Editor parancsot
+; Select Editor command
+;
+MSG_SET_REQTITLE_HTMLVIEWER
+Válassz HTML megjelenítõt
+; Select HTML viewer command
+;
+MSG_SET_REQTITLE_MIMEVIEWER
+Válassz megjelenítõ parancsot
+; Select viewer command
+;
+MSG_SET_REQTITLE_AREXXMACRO
+Válassz ARexx makrót
+; Select ARexx macro
+;
+MSG_SET_REQTITLE_BROWSERWINDOW
+AWeb böngészõ beállítások
+; AWeb browser settings
+;
+MSG_SET_REQTITLE_PROGRAMWINDOW
+AWeb programbeállítások
+; AWeb program settings
+;
+MSG_SET_REQTITLE_NETWORKWINDOW
+AWeb hálózati beállítások
+; AWeb network settings
+;
+MSG_SET_REQTITLE_OPENBROWSER
+Böngészõ beállításokat megnyit
+; Open browser settings
+;
+MSG_SET_REQTITLE_SAVEBROWSER
+Böngészõ beállításokat ment másként
+; Save browser settings as
+;
+MSG_SET_REQTITLE_OPENPROGRAM
+Programbeállításokat megnyit
+; Open program settings
+;
+MSG_SET_REQTITLE_SAVEPROGRAM
+Programbeállításokat ment másként
+; Save program settings as
+;
+MSG_SET_REQTITLE_OPENNETWORK
+Hálózati beállításokat megnyit
+; Open network settings
+;
+MSG_SET_REQTITLE_SAVENETWORK
+Hálózati beállításokat ment másként
+; Save network settings as
+;
+MSG_SET_REQTITLE_CACHEPATH
+Válassz cache útvonalat
+; Select cache path
+;
+MSG_SET_REQTITLE_IMGVIEWER
+Válassz képmegjelenítõ parancsot
+; Select image viewer command
+;
+MSG_SET_REQTITLE_GUIWINDOW
+AWeb GUI beállítások
+; AWeb GUI settings
+;
+MSG_SET_REQTITLE_OPENGUI
+GUI beállításokat megnyit
+; Open GUI settings
+;
+MSG_SET_REQTITLE_SAVEGUI
+GUI beállításokat ment másként
+; Save GUI settings as
+;
+MSG_SET_REQTITLE_SIGNATURE
+Válassz aláírást tartalmazó állományt
+; Select signature file
+;
+MSG_SET_REQTITLE_STARTUPSCRIPT
+
+; Select startup ARexx script
+;
+MSG_SET_REQTITLE_SHUTDOWNSCRIPT
+
+; Select shutdown ARexx script
+;
+;  Clicktab labels - Browser
+;
+MSG_SET_CTBR_OPTIONS
+_1 Beállítások
+; _1 Options
+;
+MSG_SET_CTBR_FONTS
+_2 Betûtípusok
+; _2 Fonts
+;
+MSG_SET_CTBR_STYLES
+_3 Stílusok
+; _3 Styles
+;
+MSG_SET_CTBR_COLOURS
+_4 Színek
+; _4 Colours
+;
+MSG_SET_CTBR_MIME
+_5 Megjelenítõk
+; _5 Viewers
+;
+;  Clicktab labels - Program
+;
+MSG_SET_CTPR_SCREEN
+_1 Képernyõ
+; _1 Screen
+;
+MSG_SET_CTPR_PALETTE
+_2 Paletta
+; _2 Palette
+;
+MSG_SET_CTPR_OPTIONS
+_3 Beállítások
+; _3 Options
+;
+MSG_SET_CTPR_PROGRAMS
+_4 Programok
+; _4 Programs
+;
+MSG_SET_CTPR_AREXX
+_5 ARexx
+; _5 ARexx
+;
+;  Clicktab labels - Network
+;
+MSG_SET_CTNW_OPTIONS
+_1 Beállítások
+; _1 Options
+;
+MSG_SET_CTNW_PROGRAMS
+_2 Programok
+; _2 Programs
+;
+MSG_SET_CTNW_PROXY
+_3 Proxy
+; _3 Proxy
+;
+MSG_SET_CTNW_CACHE
+_4 Cache
+; _4 Cache
+;
+MSG_SET_CTNW_PRIVACY
+_5 Biztonság
+; _5 Privacy
+;
+MSG_SET_CTNW_MAIL
+_6 Levél/Hírek
+; _6 Mail/News
+;
+;  Clicktab labels - GUI
+;
+MSG_SET_CTUI_OPTIONS
+_1 Beállítások
+; _1 Options
+;
+MSG_DUMMY_8
+
+; 
+;
+MSG_SET_CTUI_BUTTONS
+_3 Kapcsolók
+; _3 Buttons
+;
+MSG_SET_CTUI_POPUP
+_4 Kibomló
+; _4 Popup
+;
+MSG_SET_CTUI_KEYS
+_5 Billentyûk
+; _5 Keys
+;
+MSG_SET_CTUI_MENUS
+_2 Menük
+; _2 Menus
+;
+MSG_SET_CTUI_NAV
+_6 Navigáció
+; _6 Navigation
+;
+;  Popup help
+;
+; (don't use 40200-40208)
+;
+MSG_SET_HLP_NOARGS
+(Nincs helykitöltõ)
+; (No placeholders)
+;
+MSG_SET_HLP_A
+%a = hírcsoport vagy cikk
+; %%a = newsgroup or article
+;
+MSG_SET_HLP_E
+%e = e-mail cím
+; %%e = e-mail address
+;
+MSG_SET_HLP_F
+%f = útvonal/állománynév
+; %%f = path/file name
+;
+MSG_SET_HLP_H
+%h = host neve
+; %%h = host name
+;
+MSG_SET_HLP_L
+%l = felhasználó neve
+; %%l = login name
+;
+MSG_SET_HLP_N
+%n = képernyõ neve
+; %%n = screen name
+;
+MSG_SET_HLP_P
+%p = port száma
+; %%p = port number
+;
+MSG_SET_HLP_U
+%u = eredeti URL
+; %%u = original URL
+;
+MSG_SET_HLP_W
+%w = jelszó
+; %%w = password
+;
+MSG_SET_HLP_T
+%t = cím
+; %%t = title
+;
+MSG_SET_HLP_U2
+%u = aktuális URL
+; %%u = current URL
+;
+MSG_SET_HLP_U3
+%u = objektum URL
+; %%u = object URL
+;
+MSG_SET_HLP_I
+%i = keret azonosító
+; %%i = frame ID
+;
+MSG_SET_HLP_I2
+%i = célkeret azonosító
+; %%i = target frame ID
+;
+MSG_SET_HLP_M
+%m = MIME típus
+; %%m = MIME type
+;
+MSG_SET_HLP_S
+%s = keresés paramétere
+; %%s = search argument
+;
+MSG_SET_HLP_D
+%d = dátum
+; %%d = date
+;
+MSG_SET_HLP_G
+%g = csoport neve
+; %%g = group name
+;
+MSG_SET_HLP_I3
+%i = üzenet azonosító
+; %%i = message id
+;
+MSG_SET_HLP_N2
+%n = valódi név
+; %%n = real name
+;
+MSG_SET_HLP_S2
+%s = tárgy
+; %%s = subject
+;
+MSG_SET_HLP_I4
+%i = fókuszált keret azonosító
+; %%i = focus frame ID
+;
+MSG_SET_HLP_C
+%c = konfiguráció neve
+; %%c = config name
+;
+;  Font descriptions
+;
+MSG_SET_FD_NORMALTAG
+Normál
+; Normal
+;
+MSG_SET_FD_NORMAL
+Normál szöveg
+; Normal text
+;
+MSG_SET_FD_H1
+<H1> : Fejléc 1. szint, legnagyobb
+; <H1> : Headers level 1, largest
+;
+MSG_SET_FD_H2
+<H2> : Fejléc 2. szint
+; <H2> : Headers level 2
+;
+MSG_SET_FD_H3
+<H3> : Fejléc 3. szint
+; <H3> : Headers level 3
+;
+MSG_SET_FD_H4
+<H4> : Fejléc 4. szint
+; <H4> : Headers level 4
+;
+MSG_SET_FD_H5
+<H5> : Fejléc 5. szint
+; <H5> : Headers level 5
+;
+MSG_SET_FD_H6
+<H6> : Fejléc 6. szint, legkisebb
+; <H6> : Headers level 6, smallest
+;
+MSG_SET_FD_CITE
+<CITE> : idézetek, általában dõlt betûvel
+; <CITE> : citations, typically italics
+;
+MSG_SET_FD_CODE
+<CODE> : kód példa, általában fix mérettel
+; <CODE> : code example, typically monospaced
+;
+MSG_SET_FD_DFN
+<DFN> : definíció, általában dõlt betûvel
+; <DFN> : definition, typically italics
+;
+MSG_SET_FD_EM
+<EM> : kiemelt, általában dõlt betûvel
+; <EM> : emphasized, typically italics
+;
+MSG_SET_FD_KBD
+<KBD> : bevitel billentyûzetrõl, általában fix mérettel
+; <KBD> : keyboard input, typically monospaced
+;
+MSG_SET_FD_SAMP
+<SAMP> : minta kimenet, általában dõlt betûvel
+; <SAMP> : sample output, typically monospaced
+;
+MSG_SET_FD_STRONG
+<STRONG> : erõs kiemelés, általában félkövér betûvel
+; <STRONG> : strong emphasis, typically bold
+;
+MSG_SET_FD_VAR
+<VAR> : helykitöltõ változó, általában dõlt betûvel
+; <VAR> : placeholder variable, typically italics
+;
+MSG_DUMMY_1
+
+; 
+; (Note the leading space in the next 3 strings)
+MSG_SET_FD_BOLD
+ Félkövér
+;  Bold
+;
+MSG_SET_FD_ITALIC
+ Dõlt
+;  Italic
+;
+MSG_SET_FD_UNDERLINED
+ Aláhúzott
+;  Underlined
+;
+MSG_SET_FD_NORMALFONT
+Normál betûtípus
+; Normal font
+;
+MSG_SET_FD_FIXEDFONT
+Fix szélességû betûtípus
+; Fixed width font
+;
+MSG_SET_FD_SIZE
+méret
+; size
+;
+MSG_SET_FD_BIG
+<BIG> : nagy betûtípus
+; <BIG> : large font
+;
+MSG_SET_FD_SMALL
+<SMALL> : kicsi betûtípus
+; <SMALL> : small font
+;
+MSG_SET_FD_SUB
+<SUB> : kis, alsó index betûtípus
+; <SUB> : small subscript font
+;
+MSG_SET_FD_SUP
+<SUP> : kis, felsõ index betûtípus
+; <SUP> : small superscript font
+;
+MSG_SET_FD_ADDRESS
+<ADDRESS> : cím, általában dõlt betûvel
+; <ADDRESS> : address, typically italics
+;
+MSG_SET_FD_BLOCKQUOTE
+<BLOCKQUOTE> : hosszú idézetek, általában dõlt betûvel
+; <BLOCKQUOTE> : long quotations, typically italics
+;
+MSG_SET_FD_PRE
+<PRE> : elõformázott szöveg, fix szélességû betûtípusnak kell lennie
+; <PRE> : preformatted text, should be fixed width
+;
+;  HTML modes
+;
+MSG_SET_HTML_STRICT
+Pontos
+; Strict
+;
+MSG_SET_HTML_TOLERANT
+Toleráns
+; Tolerant
+;
+MSG_SET_HTML_COMPATIBLE
+Kompatibilis
+; Compatible
+;
+;  Screen types
+;
+MSG_SET_SCRT_DEFAULT
+Alapértelmezett publikus képernyõ
+; Default public screen
+;
+MSG_SET_SCRT_NAMED
+Megnevezett publikus képernyõ
+; Named public screen
+;
+MSG_SET_SCRT_OWN
+Saját publikus képernyõ
+; Own public screen
+;
+;  Image loading types
+;
+MSG_SET_IMGL_OFF
+Ki
+; Off
+;
+MSG_SET_IMGL_MAPS
+Csak a kapcsolók
+; Maps only
+;
+MSG_SET_IMGL_ALL
+Minden kép
+; All images
+;
+;  MIME list column names
+;
+MSG_SET_MLCN_TYPE
+Típus
+; Type
+;
+MSG_SET_MLCN_EXT
+Kiterjesztések
+; Extensions
+;
+;**obsolete
+MSG_SET_MLCN_COMMAND
+Megjelenítõ parancs
+; Viewer command
+;
+MSG_SET_MLCN_ACTION
+A
+; A
+;
+MSG_SET_MLCN_NAME
+Név és paraméterek
+; Name and arguments
+;
+;  Browser pen names
+;
+MSG_SET_BRPEN_LINK
+Új hivatkozás
+; New link
+;
+MSG_SET_BRPEN_VLINK
+Meglátogatott hivatkozás
+; Visited link
+;
+MSG_SET_BRPEN_ALINK
+Kiválasztott hivatkozás
+; Selected link
+;
+MSG_SET_BRPEN_BGCOLOR
+Háttér
+; Background
+;
+MSG_SET_BRPEN_TEXT
+Szöveg
+; Text
+;
+;  Screen colour names
+;
+MSG_SET_SCRPEN_TEXT
+Normál szöveg
+; Normal text
+;
+MSG_SET_SCRPEN_SHINE
+Világos sarkok
+; Bright edges
+;
+MSG_SET_SCRPEN_SHADOW
+Sötét sarkok
+; Dark edges
+;
+MSG_SET_SCRPEN_FILL
+Aktív ablak címsora
+; Active window title bars
+;
+MSG_SET_SCRPEN_FILLTEXT
+Aktív ablak címe
+; Active window titles
+;
+MSG_SET_SCRPEN_BACKGROUND
+Háttér
+; Background
+;
+MSG_SET_SCRPEN_HIGHLIGHTTEXT
+Fontos szöveg
+; Important text
+;
+MSG_SET_SCRPEN_BARDETAIL
+Menü szöveg
+; Menu text
+;
+MSG_SET_SCRPEN_BARBLOCK
+Menü háttér
+; Menu background
+;
+;  ARexx menu shortcut
+;
+MSG_SET_AREX_NONE
+semmi
+; none
+;
+;  Network external program types
+;
+MSG_SET_NWPRG_STARTTCP
+TCP indítása
+; Start TCP
+;
+MSG_SET_NWPRG_ENDTCP
+TCP leállítása
+; End TCP
+;
+;  Font types and sizes (fonts page)
+;
+MSG_SET_FTYPE_NORMAL
+Normál betûtípus
+; Normal fonts
+;
+MSG_SET_FTYPE_FIXED
+Fix szélességû betûtípusok
+; Fixed width fonts
+;
+MSG_SET_FSIZE_1
+1 (legkisebb)
+; 1 (smallest)
+;
+MSG_SET_FSIZE_3
+3 (normál)
+; 3 (normal)
+;
+MSG_SET_FSIZE_7
+7 (legnagyobb)
+; 7 (largest)
+;
+;  Font list headers
+;
+MSG_SET_FLH_SIZE
+Méret
+; Size
+;
+MSG_SET_FLH_FONTFACE
+Betûtípus neve és mérete
+; Font name and size
+;
+;  Style list headers
+;
+MSG_SET_SLH_TAG
+Jelöl
+; Tag
+;
+MSG_SET_SLH_STYLE
+Megjelenítve
+; Rendered as
+;
+;  Cache verify modes
+;
+MSG_SET_CAVERIFY_ALWAYS
+Mindig
+; Always
+;
+MSG_SET_CAVERIFY_ONCE
+Fázisonként egyszer
+; Once per session
+;
+MSG_SET_CAVERIFY_NEVER
+Soha
+; Never
+;
+;  Palette loading
+;
+MSG_SET_LPAL_OFF
+Ki
+; Off
+;
+MSG_SET_LPAL_COLOURS
+Színek
+; Colours
+;
+MSG_SET_LPAL_GRAY
+Szürkeárnyalatok
+; Grayscale
+;
+;  MIME action names and abbreviationss
+;
+MSG_SET_MACT_DEFAULT
+Alapértelmezett
+; Default
+;
+MSG_SET_MACT_INTERNAL
+Belsõ (I)
+; Internal (I)
+;
+MSG_SET_MACT_PLUGIN
+AWeb Plugin (A)
+; AWeb Plugin (A)
+;
+MSG_SET_MACT_EXTERNAL
+Külsõ program (E)
+; Extl. program (E)
+;
+MSG_SET_MACT_EXTPIPE
+Külsõ PIPE-pal (P)
+; Extl. w/PIPE (P)
+;
+MSG_SET_MACT_SAVEDISK
+Lemezre ment (S)
+; Save to disk (S)
+;
+MSG_SET_MACT_EXTCAN
+
+; Extl. No Fetch (F)
+;
+; ***NEW***
+;
+MSG_SET_MACT_CANCEL
+
+; Cancel (C)
+;
+; ***NEW***
+;
+; 1-letter abbreviations to use for the above in the MIME list
+MSG_SET_MACT_ABBREV
+ IAEPFSC
+;  IAEPFSC
+;
+;  Cookie settings
+;
+MSG_SET_COOKIES_NEVER
+Soha
+; Never
+;
+MSG_SET_COOKIES_ASK
+Megkérdez, mielõtt beállítja
+; Ask before set
+;
+MSG_SET_COOKIES_QUIET
+Mindig (csendben)
+; Always (quiet)
+;
+;  Pupup menu types
+;
+MSG_SET_PUPTYPE_IMAGE
+Kép felett kibomló menü
+; Image popup menu
+;
+MSG_SET_PUPTYPE_LINK
+Hivatkozás felett kibomló menü
+; Link popup menu
+;
+MSG_SET_PUPTYPE_FRAME
+Keret felett kibomló menü
+; Frame popup menu
+;
+;  Menu entry types (used in the chooser)
+;
+MSG_SET_MENUTYPE_MENU
+Menü
+; Menu
+;
+MSG_SET_MENUTYPE_ITEM
+Tárgy
+; Item
+;
+MSG_SET_MENUTYPE_SUB
+Helyettesít
+; Sub
+;
+;  Menu entry types used in the first list column.
+;  For best effects, make sure the string for "MENU" is
+;  wider than the string for "Item".
+;
+MSG_SET_MENULABEL_MENU
+MENÜ
+; MENU
+;
+MSG_SET_MENULABEL_ITEM
+Tárgy
+; Item
+;
+;  Javascript choices
+;
+MSG_SET_JS_OFF
+
+; Off
+;
+MSG_SET_JS_11
+
+; Fastidious
+;
+MSG_SET_JS_ALL
+
+; Omnivorous
+;
+;  Gadget labels - general
+;
+MSG_SET_PAGE
+_Oldal
+; _Page
+;
+MSG_SET_SAVE
+_Ment
+; _Save
+;
+MSG_SET_USE
+_Használ
+; _Use
+;
+MSG_SET_CANCEL
+_Mégsem
+; _Cancel
+;
+MSG_SET_TEST
+_Teszt
+; _Test
+;
+;  Gadget labels - fonts
+;
+MSG_SET_FONT_FONT
+_Betûtípus
+; _Font
+;
+MSG_SET_FONT_FONTTYPE
+Betû típ_usa
+; Font t_ype
+;
+MSG_SET_FONT_SETALL
+Mindet _erre a betûtípus névre állítja
+; Set _all to this font name
+;
+MSG_SET_FONT_FONTTYPE2
+
+; Font type
+;
+MSG_SET_FONT_ALIAS
+
+; A_lias
+;
+MSG_SET_FONT_ADD
+
+; Add
+;
+MSG_SET_FONT_DEL
+
+; Del
+;
+;  Gadget labels - colours
+;
+MSG_SET_APP_CHGCOLOUR
+S_zínt módosít
+; C_hange colour
+;
+MSG_SET_APP_SCREENPENS
+A szöveg és _háttér színeket használja
+; Use screen text and _background pens
+;
+;  Gadget labels - browser options/gui options
+;
+MSG_SET_BROPT_HTMLMODE
+HTML _mód
+; HTML _mode
+;
+MSG_SET_BROPT_ULLINKS
+A_láhúzott hivatkozások
+; Under_lined links
+;
+MSG_SET_BROPT_CYCLETOLIST
+Váltógombokat listaként jelenít meg
+; Show c_ycle fields as list
+;
+MSG_SET_BROPT_DOCOLORS
+Hátteret és szí_neket használ
+; Use _background and colours
+;
+MSG_SET_BROPT_POPUPLABEL
+Kibomló menüt aktivál
+; Popup menu activation
+;
+MSG_SET_BROPT_POPUPSHIFT
+S_HIFT billentyû
+; S_HIFT key
+;
+MSG_SET_BROPT_POPUPALT
+_ALT billentyû
+; _ALT key
+;
+MSG_SET_BROPT_POPUPCONTROL
+CT_RL billentyû
+; CT_RL key
+;
+MSG_SET_BROPT_POPUPMIDBUTTON
+K_özépsõ egérgomb
+; M_iddle mouse button
+;
+MSG_SET_BROPT_DOBGSOUND
+_Háttérhangot használ
+; Use background soun_d
+;
+MSG_SET_BROPT_BLINK
+_Villanás (0.1 s)
+; Blin_k (0.1 s)
+;
+MSG_SET_BROPT_POPUPRBUTTON
+_Jobb egérgomb
+; Ri_ght mouse button
+;
+MSG_SET_BROPT_JAVASCRIPT
+_JavaScriptet használ
+; Use _JavaScript
+;
+MSG_SET_BROPT_FRAMES
+_Keretet használ
+; Use _frames
+;
+MSG_SET_BROPT_INCTABLE
+_Növekvõ táblázat megjelenítés
+; _Incremental table display
+;
+MSG_SET_BROPT_NOMINALFRAME
+_Számszerû keretmagasság
+; _Nominal frame height
+;
+MSG_SET_BROPT_JSERRORS
+JavaScript _hibákat megmutat
+; Show JavaScript _errors
+;
+MSG_SET_BROPT_NOBANNERS
+Reklámablakokat _eltüntet
+; Su_ppress banner windows
+;
+MSG_SET_BROPT_TOOLTIPS
+
+; Display t_ooltips for images
+;
+MSG_SET_BROPT_HANDPOINTER
+
+; _Hand pointer over links
+;
+MSG_SET_BROPT_JSWATCH
+
+; _Warn for suspect JavaScript
+;
+MSG_SET_BROPT_TEMPRP
+
+; Use double buffered _rendering
+;
+; ***NEW***
+;
+MSG_SET_BROPT_CHARSET
+
+; Default ch_aracter set
+;
+; ***NEW***
+;
+MSG_SET_BROPT_IMGBORDER
+
+; Border around ima_ges
+;
+; ***NEW***
+;
+;  Gadget labels - screen
+;
+MSG_SET_SCREEN_OPENON
+_Megnyit
+; _Open on
+;
+MSG_SET_SCREEN_NAME
+Képernyõ_név
+; Screen _name
+;
+MSG_SET_SCREEN_MODE
+Képernyõ_mód
+; Screen _mode
+;
+MSG_SET_SCREEN_PALETTE
+Ál_talános palettát betölt
+; _Load spread palette
+;
+;  Gadget labels - palette
+;
+MSG_SET_PALL_PENLABEL
+Szín beállítások
+; Pen settings
+;
+MSG_SET_PALL_PEN
+S_zín
+; P_en
+;
+MSG_SET_PALL_PALLETTELABEL
+Palettát módosít
+; Change palette
+;
+MSG_SET_PALL_PALLPEN
+S_zín
+; Pe_n
+;
+MSG_SET_PALL_CHGCOLOUR
+Szí_nt módosít
+; C_hange colour
+;
+;  Gadget labels - network options and privacy
+;
+MSG_SET_NETWORK_IMGLOAD
+_Kép betöltése
+; _Image loading
+;
+MSG_SET_NETWORK_MAXCONN
+Kapcsolatok ma_ximális száma
+; Max. _network connections
+;
+MSG_SET_NETWORK_HOMEPAGE
+_Startoldal
+; _Home page
+;
+MSG_SET_NETWORK_LOCALINDEX
+_Helyi index
+; _Local index
+;
+MSG_SET_NETWORK_STARTHOME
+S_tartoldallal kezd
+; St_art with home page
+;
+MSG_SET_NETWORK_ANONYMOUS
+Bön_gészés közben besorolót felülbírál
+; Suppress _Referer while browsing
+;
+MSG_SET_NETWORK_IGNORE
+Kiszolgáló _MIME típus felülbírálata
+; I_gnore server MIME type
+;
+MSG_SET_NETWORK_MAXDISK
+_lemezolvasás
+; _disk reads
+;
+MSG_SET_NETWORK_COOKIES
+Coo_kie használata
+; Use coo_kies
+;
+MSG_SET_NETWORK_NOCOOKIELABEL
+Domainekhez nincs cookie
+; No cookies for domains
+;
+MSG_SET_NETWORK_NOCOOKIEADD
+Hozzáad
+; Add
+;
+MSG_SET_NETWORK_NOCOOKIEDEL
+Töröl
+; Del
+;
+MSG_SET_NETWORK_FORMWARN
+_Figyelmeztet, mielõtt adatot küld nem biztonságos módon
+; _Warn before sending unsecure form data
+;
+MSG_SET_NETWORK_AUTOSEARCHURL
+URL a_utomatikus keresése
+; Autosea_rch URL
+;
+MSG_SET_NETWORK_AUTOSEARCH
+_Automatikus keresés engedélyezése
+; _Enable autosearch
+;
+MSG_SET_NETWORK_SPAMBLOCK
+_Spam elleni védelem hír elküldésekor
+; _Activate spamblock when posting news
+;
+MSG_SET_NETWORK_FTPEMAILADDR
+E-mail cím haszánlata _FTP jelszó helyett
+; Use e-mail address as _FTP anon password
+;
+MSG_SET_NETWORK_SPOOFID
+Átejté_s:
+; Spoo_f as
+;
+MSG_SET_NETWORK_CONTANIM
+F_olyamatos animáció
+; C_ontinuous animation
+;
+MSG_SET_NETWORK_SPOOFID_EXPL
+
+; (Select an entry from the list\n or type your own browser ID)
+;
+MSG_SET_NETWORK_RESTRICT_IMAGES
+
+; Restrict i_mages to same host
+;
+;  Gadget labels - network proxy
+;
+MSG_SET_PROXY_TYPE
+T_ípus
+; T_ype
+;
+MSG_SET_PROXY_NAME
+_Proxy
+; _Proxy
+;
+MSG_SET_PROXY_LIMITED
+_Korlátozott proxy használat
+; _Limited proxy usage
+;
+MSG_SET_PROXY_NOPROXYLABEL
+Nincs proxy ezekhez az oldalakhoz:
+; No proxy for these sites
+;
+MSG_SET_PROXY_NOPROXYADD
+Hozzáad
+; Add
+;
+MSG_SET_PROXY_NOPROXYDEL
+Töröl
+; Del
+;
+MSG_SET_PROXY_PASSIVEFTP
+P_asszív FTP
+; Passi_ve FTP
+;
+;  Gadget labels - network external programs
+;
+MSG_SET_NWPRG_TYPE
+T_ípus
+; T_ype
+;
+MSG_SET_NWPRG_CMD
+Pa_rancs
+; Co_mmand
+;
+MSG_SET_NWPRG_ARGS
+_Paraméterek
+; _Arguments
+;
+;  Gadget labels - program options
+;
+MSG_SET_PROGRAM_SAVEPATH
+Út_vonalat ment
+; S_ave path
+;
+MSG_SET_PROGRAM_OVERLAP
+Gördítés át_fedés (pixelben)
+; Scroll _overlap (pixels)
+;
+MSG_SET_PROGRAM_ALLOW
+A hivatkozá_sban engedélyezi a Shell parancsokat
+; A_llow Shell commands in links
+;
+MSG_SET_PROGRAM_HOTCLOSE
+_Kedvencek ablakát automatikusan bezárja
+; _Hotlist requester auto close
+;
+MSG_SET_PROGRAM_HOTREQ
+A k_edvencek kapcsoló kérdezõt ad
+; Hotlist button gives _requester
+;
+MSG_SET_PROGRAM_HOTSINGLECLICK
+
+; Use Singleclic_k in Hotlist Viewer
+;
+; ***NEW***
+;
+MSG_SET_PROGRAM_WHISCLOSE
+_Visszatekintés ablakot automatiusan bezár
+; History _window auto close
+;
+MSG_SET_PROGRAM_SAVEICONS
+_Ikonokat létrehoz
+; Create _icons
+;
+MSG_SET_PROGRAM_AAHOTLIST
+Ke_dvenceket automatikusan megmutat
+; Auto ope_n hotlist
+;
+MSG_SET_PROGRAM_AAWINHIS
+Ab_lak visszatekintést automatikusan megmutat
+; Auto open window histor_y
+;
+MSG_SET_PROGRAM_AANETSTAT
+Háló_zat állapota ablakot automatikusan megmutat
+; Auto open n_etwork status
+;
+MSG_SET_PROGRAM_DRAGGING
+V_onszolást engedélyez
+; Allow _dragging
+;
+MSG_SET_PROGRAM_CENTERREQS
+
+; Center re_questers
+;
+;  Gadget labels - external programs
+;
+MSG_SET_EDITOR_LABEL
+Szerkesztõ
+; Editor
+;
+MSG_SET_EDITOR_CMD
+Pa_rancs
+; Co_mmand
+;
+MSG_SET_EDITOR_ARGS
+_Paraméterek
+; _Arguments
+;
+MSG_SET_VIEWER_LABEL
+HTML forrás megjelenítõ
+; HTML source viewer
+;
+;**OBSOLETE**
+MSG_SET_VIEWER_CMD
+Pa_rancs
+; C_ommand
+;
+;**OBSOLETE**
+MSG_SET_VIEWER_ARGS
+_Paraméterek
+; A_rguments
+;
+MSG_SET_CONSOLE
+Ko_nzol
+; Co_nsole
+;
+MSG_SET_PRPROGRAMS_TYPE
+Típ_us
+; T_ype
+;
+MSG_SET_IMGVIEWER_LABEL
+Képmegjelenítõ
+; Image viewer
+;
+MSG_SET_STARTUP_LABEL
+
+; Script run at startup
+;
+MSG_SET_SHUTDOWN_LABEL
+
+; Script run at shutdown
+;
+;  Gadget labels - cache
+;
+MSG_SET_CACHE_TEMPPATH
+Átmeneti _útvonal
+; Temp _path
+;
+MSG_DUMMY_2
+
+; 
+MSG_SET_CACHE_DOCMEM
+_Memória (kB)
+; _Memory (kB)
+;
+MSG_SET_CACHE_DOCDISK
+_Lemez (kB)
+; _Disk (kB)
+;
+MSG_DUMMY_3
+
+; 
+MSG_DUMMY_4
+
+; 
+MSG_DUMMY_5
+
+; 
+MSG_DUMMY_6
+
+; 
+MSG_DUMMY_7
+
+; 
+MSG_SET_CACHE_CACHEPATH
+Cache ú_tvonal
+; Cache _path
+;
+MSG_SET_CACHE_SIZELABEL
+Cache méret
+; Cache size
+;
+MSG_SET_CACHE_FREELABEL
+Legalább ennyit szabadon hagy
+; Keep minimum free
+;
+MSG_SET_CACHE_CHIP
+C_hip (kB)
+; C_hip (kB)
+;
+MSG_SET_CACHE_FAST
+_Fast (kB)
+; _Fast (kB)
+;
+MSG_CACHE_VERIFICATION_LABEL
+
+; Cache Verification
+;
+; ***NEW***
+;
+MSG_SET_CACHE_VERIFY_DYN
+
+; Verify d_ynamic objects
+;
+; ***NEW***
+;
+MSG_SET_CACHE_VERIFY_STAT
+
+; Verify _static objects
+;
+; ***NEW***
+;
+MSG_SET_CACHE_FASTRESPONSE_DYN
+
+; Fast _response
+;
+; ***NEW***
+;
+MSG_SET_CACHE_FASTRESPONSE_STAT
+
+; Fas_t response
+;
+; ***NEW***
+;
+MSG_SET_CACHE_NOCACHELABEL
+Ezeket az oldalakat nem tárolja:
+; Do not cache these sites
+;
+MSG_SET_CACHE_NOCACHEADD
+Hozzáad
+; Add
+;
+MSG_SET_CACHE_NOCACHEDEL
+Töröl
+; Del
+;
+;  Gadget labels - MIME types and external viewers
+;
+MSG_SET_MIME_TYPE
+T_ípus
+; T_ype
+;
+MSG_SET_MIME_ADD
+_Hozzáad
+; _Add
+;
+MSG_SET_MIME_DEL
+_Töröl
+; _Del
+;
+MSG_SET_MIME_EXTENSIONS
+_Kiterjesztések
+; _Extensions
+;
+;**obsolete
+MSG_SET_MIME_CMD
+P_arancs
+; C_ommand
+;
+MSG_SET_MIME_ARGS
+Pa_raméterek
+; A_rguments
+;
+MSG_SET_MIME_NAME
+Né_v
+; Na_me
+;
+MSG_SET_MIME_ACTION
+E_semény
+; Act_ion
+;
+;  Settings colour requester
+;
+MSG_SET_COLOUR_TITLE
+Válassz színt
+; Select colour
+;
+MSG_SET_COLOUR_CANCEL
+Mégsem
+; Cancel
+;
+MSG_SET_COLOUR_OK
+Ok
+; Ok
+;
+MSG_SET_COLOUR_RED
+R
+; R
+;
+MSG_SET_COLOUR_GREEN
+G
+; G
+;
+MSG_SET_COLOUR_BLUE
+B
+; B
+;
+;  Gadget labels - Menu (was: ARexx menu)
+;
+MSG_SET_AREXX_SORT
+S_orbarak
+; S_ort
+;
+MSG_SET_AREXX_ADD
+_Hozzáad
+; _Add
+;
+MSG_SET_AREXX_DEL
+_Töröl
+; _Del
+;
+MSG_SET_AREXX_TITLE
+Cí_m
+; T_itle
+;
+MSG_DUMMY_9
+
+; 
+;
+MSG_DUMMY_10
+
+; 
+;
+MSG_SET_MENUS_INVALID
+HIBÁS
+; INVALID
+;
+MSG_SET_MENUS_TYPE
+Tí_pus
+; T_ype
+;
+MSG_SET_MENUS_COMMAND
+Pa_rancs
+; Co_mmand
+;
+;  Gadget labels - Styles page
+;
+MSG_SET_STYLE_FIXED
+_Fix szélesség
+; _Fixed width
+;
+MSG_SET_STYLE_ABSSIZE
+_Absz. méret
+; _Abs size
+;
+MSG_SET_STYLE_RELSIZE
+_Rel. méret
+; _Rel size
+;
+MSG_SET_STYLE_NORMAL
+_Normál
+; _Normal
+;
+MSG_SET_STYLE_BOLD
+Fé_lkövér
+; _Bold
+;
+MSG_SET_STYLE_ITALIC
+_Dõlt
+; _Italic
+;
+MSG_SET_STYLE_UNDERLINED
+_Aláhúzott
+; Under_lined
+;
+;  Gadget labels - User buttons
+;
+MSG_SET_BUTTON_SORT
+S_orbarak
+; S_ort
+;
+MSG_SET_BUTTON_ADD
+_Hozzáad
+; _Add
+;
+MSG_SET_BUTTON_DEL
+_Töröl
+; _Del
+;
+MSG_SET_BUTTON_LABEL
+_Cimke
+; _Label
+;
+MSG_SET_BUTTON_CMD
+Pa_rancs
+; Co_mmand
+;
+;  Gadget labels - Popup menus
+;
+MSG_SET_POPUP_TYPE
+Tí_pus
+; T_ype
+;
+MSG_SET_POPUP_SORT
+S_orbarak
+; S_ort
+;
+MSG_SET_POPUP_ADD
+_Hozzáad
+; _Add
+;
+MSG_SET_POPUP_DEL
+_Töröl
+; _Del
+;
+MSG_SET_POPUP_TITLE
+Cí_m
+; T_itle
+;
+MSG_SET_POPUP_CMD
+Pa_rancs
+; Co_mmand
+;
+MSG_SET_POPUP_SHOWIF
+Mutat, ha tárgy
+; Show if object
+;
+MSG_SET_POPUP_INMEM
+Memór_iában
+; in m_em
+;
+MSG_SET_POPUP_NOTINMEM
+_nem a memóriában
+; _not in mem
+;
+;  Gadget labels - GUI options
+;
+MSG_SET_GUIOPT_SHOWBUTTONS
+_Felhasználói kapcsolókat mutat
+; Show user _buttons
+;
+MSG_SET_GUIOPT_SHOWNAV
+_Navigációs kapcsolókat mutat
+; Show _navigation gadgets
+;
+MSG_SET_GUIOPT_BORDERLESS
+
+; Border_less gadgets
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTTONTYPE
+
+; Gadget _Type
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_TEXTONLY
+
+; Text Only
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_TEXTIMAGE
+
+; Image & Text
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_IMAGEONLY
+
+; Image Only
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTTONPOS
+
+; Gadget _Position
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTPOS_LEFT
+
+; Left
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTPOS_RIGHT
+
+; Right
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTPOS_TOPLEFT
+
+; Top Left
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTPOS_TOPRIGHT
+
+; Top Right
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTPOS_BIGLEFT
+
+; Big Left
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTPOS_BIGRIGHT
+
+; Big Right
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_WINBDR
+
+; Window Borders
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_WINBDR_STANDARD
+
+; Standard
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_WINBDR_GADGETLESS
+
+; Gadgetless
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_WINBDR_BORDERLESS
+
+; Borderless
+;
+; ***NEW***
+;
+;  Gadget labels - Network Mail/News
+;
+MSG_SET_MAIL_TAB_ADDRESS
+_Cím
+; _Address
+;
+MSG_SET_MAIL_TAB_MAIL
+_Levél
+; _Mail
+;
+MSG_SET_MAIL_TAB_NEWS
+_Hírek
+; _News
+;
+MSG_SET_MAIL_TAB_OPTIONS
+_Beállítások
+; _Options
+;
+MSG_SET_MAIL_ADDRESS
+_E-mail cím
+; _E-mail address
+;
+MSG_SET_MAIL_REALNAME
+_Valódi név
+; _Real name
+;
+MSG_SET_MAIL_REPLYTO
+Válasz_cím
+; Re_ply to address
+;
+MSG_SET_MAIL_ORGANIZATION
+S_zervezet
+; Or_ganization
+;
+MSG_SET_MAIL_SIGNATURE
+Aláírá_s állomány
+; S_ignature file
+;
+MSG_SET_MAIL_SMTPHOST
+Levelezõ _host (SMTP)
+; Mail _host (SMTP)
+;
+MSG_SET_MAIL_MAILQUOTEHDR
+_Idézet fejléc
+; _Quote header
+;
+MSG_SET_MAIL_EXTMAILER
+Külsõ levelezõt _használ
+; Use _external mailer
+;
+MSG_SET_MAIL_EXTMCOMMAND
+Pa_rancs
+; Comman_d
+;
+MSG_SET_MAIL_EXTMARGS
+_Paraméterek
+; Ar_guments
+;
+MSG_SET_MAIL_NNTPHOST
+Hírek _host (NNTP)
+; News _host (NNTP)
+;
+MSG_SET_MAIL_NEWSQUOTEHDR
+_Idézet fejléc
+; _Quote header
+;
+MSG_SET_MAIL_NEWSUSER
+_Felhasználói név a hírekhez
+; News use_r name
+;
+MSG_SET_MAIL_NEWSPASSWORD
+Hírek _jelszó
+; News _password
+;
+MSG_SET_MAIL_EXTNEWS
+Külsõ hírolvasót _használ
+; Use _external newsreader
+;
+MSG_SET_MAIL_EXTNCOMMAND
+Pa_rancs
+; Comman_d
+;
+MSG_SET_MAIL_EXTNARGS
+_Paraméterek
+; Ar_guments
+;
+MSG_SET_MAIL_MAXARTICLES
+Ma_x hírszám
+; Ma_x nr of articles
+;
+MSG_SET_MAIL_SORTED
+Cikkeket s_orbarak
+; So_rt articles
+;
+MSG_SET_MAIL_FRAMED
+Képernyõt ketté_választ
+; S_plit screen
+;
+MSG_SET_MAIL_LONGHDRS
+_Hosszú fejlécek
+; _Long headers
+;
+MSG_SET_MAIL_PROPFONT
+Propor_cionális betûtípus
+; Proportional _font
+;
+MSG_SET_MAIL_NEWSBYNUMBER
+Keresés _szám alapján
+; Retrieve by num_ber
+;
+;  Gadget labels - GUI keys
+;
+MSG_SET_KEYS_KEY
+Billentyû
+; Key
+;
+MSG_SET_KEYS_COMMAND
+Pa_rancs
+; Co_mmand
+;
+;  Key names
+;
+MSG_SET_KEYS_ENTER
+Enter
+; Enter
+;
+MSG_SET_KEYS_TAB
+Tab
+; Tab
+;
+MSG_SET_KEYS_BS
+BS
+; BS
+;
+MSG_SET_KEYS_SPACE
+Szóköz
+; Space
+;
+MSG_SET_KEYS_UP
+Fel
+; Up
+;
+MSG_SET_KEYS_LEFT
+Balra
+; Left
+;
+MSG_SET_KEYS_RIGHT
+Jobbra
+; Right
+;
+MSG_SET_KEYS_DOWN
+Le
+; Down
+;
+MSG_SET_KEYS_NUM
+Num
+; Num
+;
+MSG_SET_KEYS_SHIFT
+Shift
+; Shift
+;
+MSG_SET_KEYS_WHEELUP
+
+; Wheel up
+;
+MSG_SET_KEYS_WHEELDOWN
+
+; Wheel down
+;
+;  Gadget labels - Navigation buttons
+;
+MSG_SET_NAVS_BUTTON
+Kapcsoló
+; Button
+;
+MSG_SET_NAVS_COMMAND
+Pa_rancs
+; Co_mmand
+;
+;  Navigation button names
+;
+MSG_SET_NAVS_BACK
+Vissza
+; Back
+;
+MSG_SET_NAVS_FORWARD
+Tovább
+; Forward
+;
+MSG_SET_NAVS_HOME
+Start
+; Home
+;
+MSG_SET_NAVS_ADDHOT
+Kedvencekhez hozzáad
+; Add to hotlist
+;
+MSG_SET_NAVS_HOTLIST
+Kedvenceket megmutat
+; Show hotlist
+;
+MSG_SET_NAVS_CANCEL
+Mégsem
+; Cancel
+;
+MSG_SET_NAVS_NETSTATUS
+A hálózat állapota
+; Network status
+;
+MSG_SET_NAVS_SEARCH
+Keres
+; Search
+;
+MSG_SET_NAVS_RELOAD
+Újratölt
+; Reload
+;
+MSG_SET_NAVS_LOADIMAGES
+Képeket betölt
+; Load images
+;
+;  Settings menu strings
+;
+MSG_SET_PROJECT_MENU
+Projekt
+; Project
+;
+MSG_SET_PROJECT_OPEN
+O/Megnyit...
+; O/Open...
+;
+MSG_SET_PROJECT_SAVEAS
+A/Mentés másként...
+; A/Save as...
+;
+MSG_SET_PROJECT_QUIT
+Q/Kilépés a beállításokból
+; Q/Quit settings
+;
+MSG_SET_EDIT_MENU
+Módosít
+; Edit
+;
+MSG_SET_EDIT_DEFAULTS
+D/Alapértelmezés
+; D/Reset to defaults
+;
+MSG_SET_EDIT_LASTSAVED
+L/Utoljára mentett
+; L/Last saved
+;
+MSG_SET_EDIT_RESTORE
+R/Visszaállít
+; R/Restore
+;
+MSG_SET_WINDOWS_MENU
+Ablakok
+; Windows
+;
+MSG_SET_WINDOWS_BROWSER
+Böngészõ beállítások...
+; Browser settings...
+;
+MSG_SET_WINDOWS_PROGRAM
+Programbeállítások...
+; Program settings...
+;
+MSG_SET_WINDOWS_NETWORK
+Hálózati beállítások...
+; Network settings...
+;
+MSG_SET_WINDOWS_CLASSACT
+ClassAct beállítások...
+; ClassAct settings...
+;
+MSG_SET_WINDOWS_SNAPSHOT
+Megjegyez
+; Snapshot
+;
+MSG_SET_WINDOWS_GUI
+GUI beállítások...
+; GUI settings...
+;

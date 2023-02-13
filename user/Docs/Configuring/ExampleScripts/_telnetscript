@@ -1,0 +1,32 @@
+; Sample script to start a Telnet client. If a username was present
+; on the telnet address, this script will pop up a requester showing
+; the username and password to use.
+;
+; To use this script, configure AWeb to use for its Telnet: program:
+;    command = (path)/_telnetscript
+;  arguments = %l %w %h %p
+;
+; Make sure to change the path name for the telnet program below to the one
+; you're actually using.
+; =======================================================================
+
+.key USERNAME,PASSWORD,HOST,PORT
+
+; If a USERNAME was given, open a requester. The requester is run in
+; a different shell so that it remains open while the telnet program
+; is started.
+
+If NOT "<USERNAME>" EQ ""
+  Run >NIL: RequestChoice "Telnet login parameters" "Please log in at <HOST> as:*N*NUser: <USERNAME>*NPassword: <PASSWORD>" "Ok"
+EndIf
+
+; Start the telnet program.
+;
+; ***********************************************************************
+; *** Change the path and command in the next line to the actual path
+; *** and program name. Also make sure the arguments are right.
+
+AmiTCP:Bin/telnet <HOST> <PORT>
+
+; ***********************************************************************
+

@@ -1,0 +1,242 @@
+#
+# $Id: AWebAPL_README,v 1.2 2002/07/22 00:16:25 tactica Exp $
+#
+# [A draft of]  A reference guide for potential AWebAPL developers.
+#
+#
+# This document is blatantly inspired on the documentation for
+# the CVS development policies - see the "DEVEL-CVS" and "HACKING"
+# files in the CVS repository at cvshome.org for the real thing.
+#
+#
+
+
+Index
+*****
+
+1. How to write code for AWebAPL
+   1.1  Patches from 3rd parties
+   1.2  Compiler options
+   1.3  Indentation style
+   1.4  Portability
+   1.5  Runtime behaviours
+   1.6  Coding standards in general
+   1.7  Writing patches (strategy)
+   1.8  Writing patches (tactics)
+2. What is the schedule for the next release?
+3. Resources
+   3.1  Mailing lists
+   3.2  IRC channels
+
+
+
+1.  How to write code for AWebAPL
+=================================
+
+1.1  Patches from 3rd parties
+
+Patches against the development version of AWebAPL are most likely
+to be accepted:
+
+   $ cvs -d:pserver:cvs@sunsite.dk:/pack/anoncvs co aweb
+
+By checking items into the repository, developers agree to permit
+distribution of such items under the terms of the AWeb Public License.
+
+
+1.2  Compiler options
+
+<...insert text here...>
+
+
+1.3  Indentation style
+
+<...insert text here...>
+
+In a submitted patch it is acceptable to refrain from changing the
+indentation of large blocks of code to minimize the size of the patch;
+the person checking in such a patch should reindent it.
+
+
+1.4  Portability
+
+The general rule for portability is that it is only worth including
+portability cruft for systems on which people are actually testing and
+using new AWebAPL releases.  Without testing, AWebAPL will fail to be
+portable for any number of unanticipated reasons.
+
+
+1.5  Run-time behaviours
+
+<...insert text here...>
+
+
+1.6  Coding standards in general
+
+<...insert text here...>
+
+
+1.7  Writing patches (strategy)
+
+Only some kinds of changes are suitable for inclusion in the "official"
+AWebAPL (from now on referred as just "AWeb").  Bugfixes, where AWeb's
+behaviour contradicts the documentation and/or expectations that everyone
+agrees on, should be OK (strategically).  For features, the desirable
+attributes are that the need is clear and that they fit nicely into the
+architecture of AWeb.  Is it worth the cost (in terms of complexity or any
+other tradeoffs involved)?  Are there better solutions?
+
+If the design is not yet clear (which is true of most features), then
+the design is likely to benefit from more work and community input.
+Make a list of issues, or write documentation including rationales for
+how one would use the feature.  Discuss it with coworkers, a
+newsgroup, or a mailing list, and see what other people think.
+Distribute some experimental patches and see what people think.  The
+intention is arrive at some kind of rough community consensus before
+changing the "official" AWeb.
+
+If longstanding AWeb behaviour, that people may be relying on, is
+clearly deficient, it can be changed, but only slowly and carefully.
+
+
+1.8  Writing patches (tactics)
+
+When you first distribute a patch it may be suitable to just put forth
+a rough patch, or even just an idea.  But before the end of the process
+the following should exist:
+
+- ChangeLog entry
+
+- Changes to the AWeb documentation, if the change is a user-visible
+  change worth mentioning.
+
+- Somewhere, a description of what the patch fixes (often in
+  comments in the code, or maybe the ChangeLog or documentation).
+
+If you solve several unrelated problems, it is generally easier to
+consider the desirability of the changes if there is a separate patch
+for each issue.  Use context diffs or unidiffs for patches.
+
+Include words like "I grant permission to distribute this patch under
+the terms of the AWeb Public License" with your patch.  By sending a
+patch to aweb-dev@sunsite.dk, you implicitly grant this permission.
+
+Submitting a patch to aweb-dev is the way to reach the people who have
+signed up to receive such submissions (including AWeb developers), but
+there may or may not be much (or any) response.  If you want to pursue
+the matter further, you are probably best off working with the larger
+AWeb community.  Distribute your patch as widely as desired (mailing
+lists, newsgroups, web sites, whatever).  Write a web page or other
+information describing what the patch is for.  It is neither practical
+nor desirable for all/most contributions to be distributed through the
+"official" (whatever that means) mechanisms of AWeb releases and AWeb
+developers.  Now, the "official" mechanisms do try to incorporate
+those patches which seem most suitable for widespread usage, together
+with test cases and documentation.  So if a patch becomes sufficiently
+popular in the AWeb community, it is likely that one of the AWeb
+developers will eventually try to do something with it.  But dealing
+with the AWeb developers may be the last step of the process rather
+than the first.
+
+
+
+2.  What is the schedule for the next release?
+==============================================
+
+There isn't one.  That is, upcoming releases are not announced (or
+even hinted at, really) until the feature freeze which is
+approximately 1 month before the final release.  At this time,
+test releases start appearing and are announced on aweb@sunsite.dk.
+This is intentional, to avoid a last minute rush to get new
+features in.
+
+
+
+3.  Resources
+=============
+
+3.1  Mailing lists
+
+3.1.1  aweb-dev@sunsite.dk
+
+Charter
+-------
+
+The AWeb developers' list exists to help people with access to the
+AWeb source repository coordinate changes, make releases, and
+administer the repository.
+
+Everyone who has been given checkin access to the repository for the
+AWeb sources should read aweb-dev.  Only those with checkin access may
+send messages to the list.
+
+The aweb-dev list may be used to discuss:
+
+- administrivia regarding the AWeb source repository and release
+  process, and
+- changes and features intended for inclusion in the official AWeb
+  release (either source code or documentation), which someone plans
+  to implement, or has implemented.
+      
+The aweb-dev list should not be used to discuss:
+
+- changes or features to packages other than the AWeb release,
+  or other groups' distributions of AWeb,
+- changes which nobody has offered to implement, or
+- the philosophy of AWeb (as opposed to a specific change to AWeb).
+
+These topics should either go on awebml, or have a new mailing list
+created for them.
+	  
+The topic restrictions in this charter do not reflect the development
+group's future plans for AWeb; rather, they reflect a topic
+classification which the group finds helpful.
+
+Subscription
+------------
+
+Send a mail to aweb-dev-subscribe@sunsite.dk
+
+
+3.1.2  aweb@sunsite.dk
+
+Charter
+-------
+
+Announcements-only mailing list for the AWeb development team to
+announce new releases and publish other appropriate notifications.
+Posts originated from non-authorized sources will be moderated.
+
+Subscription
+------------
+
+Send a mail to aweb-subscribe@sunsite.dk
+
+
+3.1.3  awebml@yahoogroups.com
+
+Charter
+-------
+
+Support mailing list for users of any flavour of AWeb.
+
+Subscription
+------------
+
+Send a mail to awebml-subscribe@yahoogroups.com
+
+
+3.2  IRC channels
+
+There are currently two IRC channels dedicated to AWeb, both of
+them based on IRCNET.  See http://www.ircnet.com/index.php?&p=5
+for a server list.
+
+- #aweb
+
+General chat about AWeb.  Anybody can join.
+
+
+- #aweb-dev
+
+Password protected IRC channel, only for AWeb developers.

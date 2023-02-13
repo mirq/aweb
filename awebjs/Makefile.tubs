@@ -1,0 +1,16 @@
+MODULES     := AWebJS
+
+AWebJS/DEPS   := linklibs/libawebcommon.a linklibs/libawebclib.a
+AWebJS/CFILES := awebjs arexxjs
+AWebJS/CFILES/CFLAGS := -gstabs
+AWebJS/LDFLAGS := -L. -lm  -gstabs $(AWEBJSLIB)
+
+
+
+
+
+
+
+
+
+

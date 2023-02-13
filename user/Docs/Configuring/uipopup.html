@@ -1,0 +1,94 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+
+<HTML>
+
+<HEAD>
+<TITLE>GUI settings: Popup</TITLE>
+</HEAD>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<H1>&nbsp; GUI settings: Popup</H1>
+
+<IMG SRC="Images/GUISettings-Popup.png" ALIGN="RIGHT" ALT="GUI Settings: Popup Tab" WIDTH="508" HEIGHT="260" HSPACE="20" VSPACE="20" BORDER="0">
+
+<H2>Changing the popup menu</H2>
+
+The list contains the labels and actions for the entries that should appear in the <A HREF="../Starting/popup.html">popup menu</A>.
+<P>AWeb can display three different popup menus, depending on the context:
+
+<UL>
+<LI>Image popup menu</LI>
+<LI>Link popup menu</LI>
+<LI>Frame popup menu</LI>
+</UL>
+
+You select which popup menu to change by the chooser on top of the list.
+<P>Select the popup menu entry you want to modify from the listview.  Use the <B>Add</B> button to add a new blank entry.  Use the <B>Del</B> button to remove the selected entry.
+
+<H2>Title</H2>
+Type the entry title as you like it to appear in the popup menu.
+
+<H2>Command</H2>
+In this field, you can type the <A HREF="../Advanced/ARexx/commands.html">ARexx command</A> that should be executed when you press the button.
+<P>In the command string, you can use the parameter specifiers to make substitutions.  The parameters you can use depend on the popup menu type:
+
+<P><TABLE BORDER="1">
+<TR><TH>Image popup menu</TH></TR>
+<TR><TD>
+<TABLE>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%u</TH><TD>URL of the image</TD></TR>
+</TABLE>
+</TD></TR>
+<TR><TH>Link popup menu</TH></TR>
+<TR><TD>
+<TABLE>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%u</TH><TD>URL that the link points to</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%i</TH><TD>ID or name of the target frame for this link, for use in TARGET arguments</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%t</TH><TD>link title, what is shown in the status gadget when the mouse is over the link</TD></TR>
+</TABLE>
+</TD></TR>
+<TR><TH>Frame popup menu</TH></TR>
+<TR><TD>
+<TABLE>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%u</TH><TD>URL currently displayed in this frame</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%i</TH><TD>ID of this frame, for use in TARGET arguments</TD></TR>
+</TABLE>
+</TD></TR>
+</TABLE>
+
+<H2>Show if object in memory</H2>
+
+In the image and link popup menus, you might want to show entries depending on if the object is in memory or not.  For example, "flush image" is only useful if the image is in memory.  Use the two checkboxes to specify if the entry should be included in the menu if the object is in memory, or if it is not in memory.  If you select both checkboxes, the entry will always appear in the popup menu.
+
+<H2>Rearranging entries</H2>
+
+You can move an entry in the popup menu.  Select the entry, either with the mouse or with the cursor up and down keys.  Now you can move the entry up and down in the list with either the arrow up and arrow down buttons, or with the <KBD>Ctrl</KBD> + cursor up/down keys.
+<P>The <B>Sort</B> button will sort the entries alphabetically by their title.
+
+<P><HR>
+
+<A HREF="uibuttons.html"><IMG SRC="../GlobalImages/back.gif" WIDTH="32" HEIGHT="16" ALT="&lt;-" BORDER="0">Buttons</A>&nbsp;&nbsp;<A HREF="settings.html"><IMG SRC="../GlobalImages/up.gif" WIDTH="32" HEIGHT="20" ALT="^" BORDER="0">Settings requesters</A>&nbsp;&nbsp;<A HREF="uikeys.html"><IMG SRC="../GlobalImages/next.gif" WIDTH="32" HEIGHT="16" ALT="-&gt;" BORDER="0">Keys</A>
+
+</BODY>
+
+</HTML>

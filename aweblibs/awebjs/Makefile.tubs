@@ -1,0 +1,15 @@
+MODULES := aweblib/javascript.aweblib
+
+aweblib/javascript.aweblib/TYPE    := executable/library/amigashared
+aweblib/javascript.aweblib/DEPS := $(MODULELIB) linklibs/libpcre.a linklibs/libawebclib.a
+aweblib/javascript.aweblib/CFILES  := \
+jcomp jdebug jmath jobject jslib \
+jarray jdata jexe jmemory jparse \
+jboolean jdate jfunction jnumber jstring jregexp \
+jerror
+
+#aweblib/javascript.aweblib/LDFLAGS := -lpcre
+
+aweblib/javascript.aweblib/LDFLAGS := -gstabs -lpcre
+
+aweblib/javascript.aweblib/CFILES/CFLAGS :=  -O3 -gstabs

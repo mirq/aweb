@@ -1,0 +1,574 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+<html>
+<head>
+<title>AWeb ARexx Commands: Inquiry</title>
+</head>
+
+<BODY BACKGROUND="../../GlobalImages/awebbg.gif">
+
+<IMG SRC="../../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<h1>&nbsp; AWeb ARexx Commands</h1>
+
+<h2>Inquiry commands</h2>
+
+<table cellspacing=0 cellpadding=0 width=100%>
+<tr valign=top><td>
+<a href=#GET>GET (general)</a><br>
+<a href=#ACTIVEPORT>GET ACTIVEPORT</a><br>
+<a href=#CACHE>GET CACHE</a><br>
+<a href=#CLIP>GET CLIP</a><br>
+<a href=#COOKIES>GET COOKIES</a><br>
+<a href=#FINALURL>GET FINALURL</a><br>
+<a href=#FOCUS>GET FOCUS</a><br>
+<a href=#FRAMES>GET FRAMES</a><br>
+<td>
+<a href=#FRAMESET>GET FRAMESET</a><br>
+<a href=#HOTLIST>GET HOTLIST</a><br>
+<a href=#HOTLISTGROUPS>GET HOTLISTGROUPS</a><br>
+<a href=#IMAGES>GET IMAGES</a><br>
+<a href=#INFO>GET INFO</a><br>
+<a href=#LINKS>GET LINKS</a><br>
+<a href=#MIME>GET MIME</a><br>
+<a href=#NAMES>GET NAMES</a><br>
+<td>
+<a href=#PORT>GET PORT</a><br>
+<a href=#SCREEN>GET SCREEN</a><br>
+<a href=#SECURE>GET SECURE</a><br>
+<a href=#SELECTION>GET SELECTION</a><br>
+<a href=#SOURCE>GET SOURCE</a><br>
+<a href=#STATUS>GET STATUS</a><br>
+<a href=#STATUSD>GET STATUSD</a><br>
+<a href=#TITLE>GET TITLE</a><br>
+<td>
+<a href=#TRANSFERS>GET TRANSFERS</a><br>
+<a href=#URL>GET URL</a><br>
+<a href=#VERSION>GET VERSION</a><br>
+<a href=#WINDOW>GET WINDOW</a><br>
+<a href=#WINDOWS>GET WINDOWS</a><br>
+</table>
+
+<h3><a name=GET>GET</a></h3>
+Template:<pre><b>
+   GET ITEM/A,TARGET/K,VAR/K,STEM/K,PAT=PATTERN/K,ALL/S
+</b></pre>
+Obtain various kinds of information about the program or the document in
+the addressed window or in the specified frame.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>ITEM
+   <td valign=top>Specifies the kind of information to obtain. See above for a list
+      of all valid item names.
+<tr><th align=left valign=top>TARGET
+   <td valign=top>The <a href=commands.html#target>target name</a> of the
+      window or frame to obtain information from.
+<tr><th align=left valign=top>VAR
+   <td valign=top>The name of a variable to return the information in. If no
+      name is specified, the single valued result will be returned in the
+      reserved ARexx variable <code>RESULT</code>.
+<tr><th align=left valign=top>STEM
+   <td valign=top>The name of a stem variable to return an array of
+      <a href=commands.html#structured>structured information</a> in. Do not include
+      the trailing period in this name.
+<tr><th align=left valign=top>PATTERN
+   <td valign=top>The meaning of this argument depends on the <b>ITEM</b> obtained.
+<tr><th align=left valign=top>ALL
+   <td valign=top>The meaning of this switch depends on the <b>ITEM</b> obtained.
+</table>
+
+Not all arguments are valid for all <code>ITEM</code> values. Refer to the
+individual descriptions for the template containing all valid arguments.
+
+<h3><a name=ACTIVEPORT>GET ACTIVEPORT</a></h3>
+Template:<pre><b>
+   GET ACTIVEPORT  VAR/K
+</b></pre>
+Obtain the name of the ARexx port associated with the most recently
+activated AWeb window. Useful in ARexx macros started via a shell script
+or shell command to find the active window.
+
+<h3><a name=CACHE>GET CACHE</a></h3>
+Template:<pre><b>
+   GET CACHE  STEM/K,PAT=PATTERN/K
+</b></pre>
+Obtain details of the files currently residing in AWeb's disk cache.
+<p>
+If a <b>PATTERN</b> is given, then only the cache entries will be returned that
+match this URL pattern using standard DOS wildcards.
+When the pattern does not include a scheme (like <code>http://</code>),
+the scheme part of each URL is not included in the pattern match. So
+a pattern "foo.bar#?" matches "http://foo.bar/xyz.html" and
+"ftp://foo.bar/zoo".
+<p>
+<table border width=100%>
+<caption><a href=commands.html#structured>Structured information</a> components</caption>
+<tr><th align=left valign=top>Name
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>URL
+   <td valign=top>The URL for the cached file.
+<tr><th align=left valign=top>TYPE
+   <td valign=top>The MIME type of the cached file.
+<tr><th align=left valign=top>SIZE
+   <td valign=top>The size in bytes of the cached file.
+<tr><th align=left valign=top>DATE
+   <td valign=top>The date that this file was retrieved, in internal system
+      days (like returned by the <code>DATE('I')</code> command).
+<tr><th align=left valign=top>FILE
+   <td valign=top>The subpath and file name of the cached copy. The subpath
+      returned is relative to AWebs current cache path.<p>
+      <b>IMPORTANT:</b> Never delete or modify these files other than
+      via AWeb ARexx commands!
+</table>
+
+<h3><a name=CLIP>GET CLIP</a></h3>
+Template:<pre><b>
+   GET CLIP  VAR/K
+</b></pre>
+Obtain the current contents of the clipboard. Due to various internal
+limitations, a maximum of 8192 characters is returned.
+
+<h3><a name=COOKIES>GET COOKIES</a></h3>
+Template:<pre><b>
+   GET COOKIES  STEM/A/K
+</b></pre>
+Obtain an array with the details of all currently known HTML cookies.
+<p>
+<table border width=100%>
+<caption><a href=commands.html#structured>Structured information</a> components</caption>
+<tr><th align=left valign=top>Name
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>NAME
+   <td valign=top>The name of this cookie.
+<tr><th align=left valign=top>VALUE
+   <td valign=top>The value of this cookie.
+<tr><th align=left valign=top>DOMAIN
+   <td valign=top>The domain for which this cookie is sent.
+<tr><th align=left valign=top>PATH
+   <td valign=top>The path (within the domain) for which this cookie is sent.
+<tr><th align=left valign=top>EXPIRES
+   <td valign=top>The date and time in GMT string format when this cookie will expire.
+      If this field is the empty string, the cookie is temporary and will not be
+      remembered when AWeb exits.
+<tr><th align=left valign=top>COMMENT
+   <td valign=top>An optional comment for the cookie.
+<tr><th align=left valign=top>VERSION
+   <td valign=top>An optional version number for the cookie.
+<tr><th align=left valign=top>FLAGS
+   <td valign=top>A string containing zero or more of the following letters:
+      <table cellpadding=0 cellspacing=0>
+      <tr><td valign=top><b>&nbsp;A&nbsp;</b>
+         <td valign=top>Changes to this cookie will be accepted by AWeb without
+            showing the cookie alert requester.
+      <tr><td valign=top><b>&nbsp;D&nbsp;</b>
+         <td valign=top>The DOMAIN was inferred from the URL of the document that set
+            the cookie, it was not explicitly given when the cookie was set.
+      <tr><td valign=top><b>&nbsp;P&nbsp;</b>
+         <td valign=top>The PATH was inferred from the URL of the document that set
+            the cookie, it was not explicitly given when the cookie was set.
+      <tr><td valign=top><b>&nbsp;S&nbsp;</b>
+         <td valign=top>The cookie will only be sent to the server over a secure
+            connection.
+      </table>
+</table>
+
+<h3><a name=FINALURL>GET FINALURL</a></h3>
+Template:<pre><b>
+   GET FINALURL  TARGET/K,VAR/K
+</b></pre>
+Obtain the final URL of the document currently displayed in the addressed
+window or the specified frame.
+<p>
+There is a difference with the <a href="#URL">GET&nbsp;URL</a> command when dealing
+with relocated URLs. This happens when the result of fetching one URL is only a reference
+to another document with a different URL. The standards say specifically that for one
+such type of relocation, the original URL must be used in the interface to the
+user, not the second one that is the actual URL for the document displayed. The
+GET&nbsp;URL command returns the original URL in this case, while the
+GET&nbsp;FINALURL command returns the second one.
+
+<h3><a name=FOCUS>GET FOCUS</a></h3>
+Template:<pre><b>
+   GET FOCUS  VAR/K
+</b></pre>
+Obtain the frame ID of the frame that currently has the keyboard scroll focus.
+If the main window has the focus, an empty string will be returned.
+
+<h3><a name=FRAMES>GET FRAMES</a></h3>
+Template:<pre><b>
+   GET FRAMES  TARGET/K,STEM/A/K,ALL/S
+</b></pre>
+Obtain an array with the names and IDs of all frames directly subordinate to
+the command's target window or frame. If the <b>ALL</b> switch is set, also
+details of all nested frames are returned.
+<p>
+<table border width=100%>
+<caption><a href=commands.html#structured>Structured information</a> components</caption>
+<tr><th align=left valign=top>Name
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>ID
+   <td valign=top>A unique (within the addressed window) identification for
+      the frame. Frames do not necessarily have a name, but will always have
+      an ID. The ID is recognized by the leading <code>#</code> sign, and can
+      be used in <code>TARGET</code> ARexx arguments.<p>
+      Note that this ID can not be used in HTML <code>TARGET</code> attributes.
+<tr><th align=left valign=top>NAME
+   <td valign=top>Name of the frame, as defined by the NAME attribute in the
+      &lt;FRAME&gt; HTML tag.
+<tr><th align=left valign=top>TITLE
+   <td valign=top>The title of the document loaded in the frame.
+      If the document has no title defined, the URL of this document is returned.
+<tr><th align=left valign=top>URL
+   <td valign=top>The URL of the document loaded in the frame.
+</table>
+
+<h3><a name=FRAMESET>GET FRAMESET</a></h3>
+Template:<pre><b>
+   GET FRAMESET  TARGET/K,VAR/K
+</b></pre>
+Obtain a boolean value specifying if the document in the target window or frame
+is a frameset document. If the document is a frameset document, "1" is returned.
+If the document is a normal document, "0" is returned. Note that normal documents
+still can contain inlined frames (&lt;IFRAME&gt;).
+<p>
+
+<h3><a name=HOTLIST>GET HOTLIST</a></h3>
+Template:<pre><b>
+   GET HOTLIST  STEM/A/K
+</b></pre>
+Obtain an array with all entries of AWeb's hotlist.
+<p>
+<table border width=100%>
+<caption><a href=commands.html#structured>Structured information</a> components</caption>
+<tr><th align=left valign=top>Name
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>GROUP
+   <td valign=top>"1" if this array element defines a group, or "0" if this
+      array element defines a single entry.
+<tr><th align=left valign=top>TITLE
+   <td valign=top>Title of the group or entry, as shown in the hotlist.
+<tr><th align=left valign=top>URL
+   <td valign=top>URL of this entry. Only defined for single entries, not
+      for groups.
+<tr><th align=left valign=top>OWNER
+   <td valign=top>The array index number for the group that is the direct
+      owner of this array element. This will be 0 if this element has no owner
+      (it is a root level group, or an unassigned entry).
+</table>
+
+<h3><a name=HOTLISTGROUPS>GET HOTLISTGROUPS</a></h3>
+Template:<pre><b>
+   GET HOTLISTGROUPS  STEM/A/K
+</b></pre>
+Obtain an array with all groups of AWeb's hotlist.
+<p>
+<table border width=100%>
+<caption><a href=commands.html#structured>Structured information</a> components</caption>
+<tr><th align=left valign=top>Name
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>TITLE
+   <td valign=top>Title of the group, as shown in the hotlist.
+<tr><th align=left valign=top>OWNER
+   <td valign=top>The array index number for the group that is the direct
+      owner of this array element. This will be 0 if this element has no owner
+      (it is a root level group).
+</table>
+
+<h3><a name=IMAGES>GET IMAGES</a></h3>
+Template:<pre><b>
+   GET IMAGES  TARGET/K,STEM/A/K
+</b></pre>
+Obtain an array with information of all embedded images in the HTML document
+in the addressed window or the specified frame.
+<p>
+<table border width=100%>
+<caption><a href=commands.html#structured>Structured information</a> components</caption>
+<tr><th align=left valign=top>Name
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>ALT
+   <td valign=top>The ALT text for this image, if any.
+<tr><th align=left valign=top>TYPE
+   <td valign=top>The type of image. This will be one of the following:
+      <table cellpadding=0 cellspacing=0>
+      <tr><td valign=top>BACKGROUND
+         <td valign=top>The document's background image.
+      <tr><td valign=top>IMAGE
+         <td valign=top>Not any of the other, special images.
+      <tr><td valign=top>ISMAP
+         <td valign=top>A server side image map.
+      <tr><td valign=top>USEMAP
+         <td valign=top>A client side image map.
+      </table>
+<tr><th align=left valign=top>URL
+   <td valign=top>The URL for the image.
+</table>
+
+<h3><a name=INFO>GET INFO</a></h3>
+Template:<pre><b>
+   GET INFO  TARGET/K,STEM/A/K
+</b></pre>
+Obtain HTTP headers and &lt;META&gt; and &lt;LINK&gt; information from the document
+in the addressed window or the specified frame.
+<p>
+<table border width=100%>
+<caption><a href=commands.html#structured>Structured information</a> components</caption>
+<tr><th align=left valign=top>Name
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>TYPE
+   <td valign=top>Type of information. This will be one of the following:
+      <table cellpadding=0 cellspacing=0>
+      <tr><td valign=top>CACHE
+         <td valign=top>The document was read from AWebs cache. The <b>VALUE</b> component will
+            contain "1".
+      <tr><td valign=top>HTTP
+         <td valign=top>HTTP transfer header.
+      <tr><td valign=top>META
+         <td valign=top>HTML &lt;META&gt; information.
+      <tr><td valign=top>LINK
+         <td valign=top>An HTML &lt;LINK&gt; anchor.
+      </table>
+<tr><th align=left valign=top>VALUE
+   <td valign=top>Depending on the returned <b>TYPE</b>: the HTTP header, the META name
+      and contents, or the LINK title.
+<tr><th align=left valign=top>URL
+   <td valign=top>The URL linked to. Only present if <b>TYPE</b> equals "LINK".
+</table>
+
+<h3><a name=LINKS>GET LINKS</a></h3>
+Template:<pre><b>
+   GET LINKS  TARGET/K,STEM/A/K
+</b></pre>
+Obtain an array with information of all hyperlinks in the HTML document in the
+addressed window or the specified frame.
+<p>
+<table border width=100%>
+<caption><a href=commands.html#structured>Structured information</a> components</caption>
+<tr><th align=left valign=top>Name
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>TARGET
+   <td valign=top>The target frame name, as defined in the <code>TARGET</code>
+      HTML attribute.
+<tr><th align=left valign=top>URL
+   <td valign=top>The URL this link points to.
+</table>
+
+<h3><a name=MIME>GET MIME</a></h3>
+Template:<pre><b>
+   GET MIME  TARGET/K,VAR/K
+</b></pre>
+Obtain the MIME content type of the document currently displayed in the addressed
+window or the specified frame.
+
+<h3><a name=NAMES>GET NAMES</a></h3>
+Template:<pre><b>
+   GET NAMES  TARGET/K,STEM/A/K
+</b></pre>
+Obtain an array with all fragment names (defined by &lt;A NAME="name"&gt;) in the
+HTML document in the addressed window or the specified frame.
+<p>
+<table border width=100%>
+<caption><a href=commands.html#structured>Structured information</a> components</caption>
+<tr><th align=left valign=top>Name
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>NAME
+   <td valign=top>The fragment name.
+</table>
+
+<h3><a name=PORT>GET PORT</a></h3>
+Template:<pre><b>
+   GET PORT  TARGET/K
+</b></pre>
+Obtain the ARexx portname for the window that contains the frame with the specified name.
+
+<h3><a name=SCREEN>GET SCREEN</a></h3>
+Template:<pre><b>
+   GET SCREEN  VAR/K
+</b></pre>
+Obtain the name of the public screen that AWeb uses to open its windows on.
+
+<h3><a name=SECURE>SECURE</a></h3>
+Template:<pre><b>
+   GET SECURE  TARGET/K,VAR/K
+</b></pre>
+Obtain a boolean value specifying if the document in the target window or frame
+is retrieved over a secure connection. If the document is secure, "1" is returned,
+else "0" is returned.
+
+<h3><a name=SELECTION>GET SELECTION</a></h3>
+Template:<pre><b>
+   GET SELECTION  VAR/K
+</b></pre>
+Obtain the currently selected text.
+<p>
+Note that due to an ARexx limitation, only the first 65535 bytes are returned.
+
+<h3><a name=SOURCE>GET SOURCE</a></h3>
+Template:<pre><b>
+   GET SOURCE  TARGET/K,VAR/K
+</b></pre>
+Obtain the source code of the document currently displayed in the addressed
+window or the specified frame.
+<p>
+Note that due to an ARexx limitation, only the first 65535 bytes are returned.
+
+<h3><a name=STATUS>STATUS</a></h3>
+Template:<pre><b>
+   GET STATUS  VAR/K
+</b></pre>
+Obtain the current text in the status field of the addressed window. Note that this
+text may be obscured by dynamic text, see the <a href="#STATUSD">GET STATUSD</a>
+command.
+
+<h3><a name=STATUSD>STATUSD</a></h3>
+Template:<pre><b>
+   GET STATUSD  VAR/K
+</b></pre>
+Obtain the dynamic text currently displayed in the status field of the addressed
+window. Dynamic text will be displayed if the mouse is over an active element in
+the document, like a hyperlink.
+<p>
+This dynamic text obscures any static text, see the <a href="#STATUS">GET STATUS</a>
+command. Static text is only visible if the dynamic text is the empty string.
+
+<h3><a name=TITLE>GET TITLE</a></h3>
+Template:<pre><b>
+   GET TITLE  TARGET/K,VAR/K
+</b></pre>
+Obtain the title of the document currently displayed in the addressed
+window or the specified frame. If the document has no title defined,
+the URL of this document is returned.
+
+<h3><a name=TRANSFERS>GET TRANSFERS</a></h3>
+Template:<pre><b>
+   GET TRANSFERS  STEM/A/K
+</b></pre>
+Obtain all currently active transfers (loading documents). This is essentially
+the same information as shown in the <a href="../../Working/nws.html">network status window</a>.
+<p>
+The information returned is a snapshot. Immediately after this command returns the
+actual transfer status may already have changed.
+<p>
+<table border width=100%>
+<caption><a href=commands.html#structured>Structured information</a> components</caption>
+<tr><th align=left valign=top>Name
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>URL
+   <td valign=top>The URL that is being downloaded.
+<tr><th align=left valign=top>STATUS
+   <td valign=top>A number designating the status of this transfer. It will contain
+      one of the following values:
+      <table cellpadding=0 cellspacing=0>
+      <tr><td valign=top>1
+         <td valign=top>Queued
+      <tr><td valign=top>2
+         <td valign=top>Started
+      <tr><td valign=top>3
+         <td valign=top>Looking up
+      <tr><td valign=top>4
+         <td valign=top>Connecting
+      <tr><td valign=top>5
+         <td valign=top>Logging in
+      <tr><td valign=top>6
+         <td valign=top>Scanning news
+      <tr><td valign=top>7
+         <td valign=top>Uploading
+      <tr><td valign=top>8
+         <td valign=top>Waiting for response
+      <tr><td valign=top>9
+         <td valign=top>Reading data
+      </table>
+<tr><th align=left valign=top>READ
+   <td valign=top>If STATUS is 9, the number of characters already downloaded.
+<tr><th align=left valign=top>TOTAL
+   <td valign=top>The expected size of the document, in characters.
+      <p>
+      This information is not always available. If the expected size is unknown,
+      TOTAL will be set to zero.
+<tr><th align=left valign=top>LOADID
+   <td valign=top>An ID number to identify the transfer. Use this number in the
+      <a href="window.html#CANCEL">CANCEL</a> command to cancel a specific transfer.
+</table>
+
+<h3><a name=URL>GET URL</a></h3>
+Template:<pre><b>
+   GET URL  TARGET/K,VAR/K
+</b></pre>
+Obtain the URL of the document currently displayed in the addressed
+window or the specified frame.
+<p>
+See the <a href="#FINALURL">GET&nbsp;FINALURL</a> command for an explanation
+of URL relocation.
+
+<h3><a name=VERSION>GET VERSION</a></h3>
+Template:<pre><b>
+   GET VERSION  VAR/K
+</b></pre>
+Obtain the version of AWeb. The string returned starts with numeric
+"<var>version.revision</var>".
+
+<h3><a name=WINDOW>GET WINDOW</a></h3>
+Template:<pre><b>
+   GET WINDOW  VAR/K
+</b></pre>
+Obtain the <a href=commands.html#rect>rectangle</a> describing the location and
+size of the addressed window.
+
+<h3><a name=WINDOWS>GET WINDOWS</a></h3>
+Template:<pre><b>
+   GET WINDOWS  STEM/A/K
+</b></pre>
+Obtain an array with details of all open AWeb windows.
+<p>
+<table border width=100%>
+<caption><a href=commands.html#structured>Structured information</a> components</caption>
+<tr><th align=left valign=top>Name
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>PORT
+   <td valign=top>The name of the ARexx port of the window.
+<tr><th align=left valign=top>RECT
+   <td valign=top>A <a href=commands.html#rect>rectangle</a> describing the
+      location and size of the window.
+<tr><th align=left valign=top>ZOOMED
+   <td valign=top>If the window is in zoomed state, this contains "1",
+      else this contains "0".
+</table>
+
+<!-- template:
+
+<h3><a name=></a></h3>
+Template:<pre><b>
+
+</b></pre>
+<p>
+<table border width=100%>
+<caption><a href=commands.html#structured>Structured information</a> components</caption>
+<tr><th align=left valign=top>Name
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>
+   <td valign=top>
+<tr><th align=left valign=top>
+   <td valign=top>
+</table>
+
+-->
+
+</body>
+</html>

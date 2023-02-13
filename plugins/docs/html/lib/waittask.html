@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>Waittask()</title>
+</head>
+<body>
+<h1>Waittask()</h1>
+
+<h2>Purpose</h2>
+Let a <a href="../classes/task.html">subtask</a> wait for incoming
+messages, and optionally for other signals.
+
+<h2>Synopsis</h2>
+<pre>
+   received = Waittask(signals)
+   D0                  A0
+
+   ULONG Waittask(ULONG)
+</pre>
+
+<h2>Function</h2>
+<a href="../classes/task.html">AOTP_TASK</a> support function.
+This function lets the subtask wait for any of the specified signals,
+and any incoming messages sent by the main task.
+<p>
+If messages are queued, or any of the specified signals was set prior
+to calling this function, it will return immediately.
+<p>
+You may not use this function outside subtask code.
+
+<h2>Inputs</h2>
+<table border>
+<tr><th align=left valign=top>Parameter
+   <th align=left valign=top>Description
+<tr><td valign=top><code>signals</code>
+   <td valign=top>Bitmask of the signals to wait for, or 0 to wait only for
+      incoming messages from the main task.
+</table>
+
+<h2>Result</h2>
+Bitmap of the signals that were set, or 0 if there are <b>only</b>
+incoming messages.
+
+<h2>See also</h2>
+<a href="gettaskmsg.html">Gettaskmsg()</a>

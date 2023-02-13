@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>Awebcommand()</title>
+</head>
+<body>
+<h1>Awebcommand()</h1>
+
+<h2>Purpose</h2>
+Execute an AWeb ARexx command. (V2.0)
+
+<h2>Synopsis</h2>
+<pre>
+   returncode = Awebcommand(portnumber, command, buffer, length)
+   D0                       D0          A0       A1      D1
+
+   long Awebcommand(long, char *, char *, long)
+</pre>
+
+<h2>Function</h2>
+This function executes an ARexx command and returns the result.
+
+
+<h2>Inputs</h2>
+<table border>
+<tr><th align=left valign=top>Parameter
+   <th align=left valign=top>Description
+<tr><td valign=top><code>portnumber</code>
+   <td valign=top>
+<tr><td valign=top><code>command</code>
+   <td valign=top>
+<tr><td valign=top><code>buffer</code>
+   <td valign=top>
+<tr><td valign=top><code>length</code>
+   <td valign=top>
+</table>
+
+<h2>Results</h2>
+A pointer to a new block of memory, holding a copy if the supplied string
+data, or NULL in case of failure.
+
+<h2>See also</h2>
+<a href="allocmem.html">Allocmem()</a>,
+<a href="freemem.html">Freemem()</a>

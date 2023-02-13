@@ -1,0 +1,121 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+<html>
+<head>
+<title>
+Cachebrowser
+</title>
+</head>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<h1>&nbsp; Cachebrowser</h1>
+
+<h2>Purpose</h2>
+With the <em>cachebrowser</em>, you can check which files are (still) in the
+<a href=../Advanced/cache.html>cache</a>. You have options to view the cached objects,
+save them to another file, or delete them from the cache.
+
+<h2>Opening the window</h2>
+Select <code>Cache / Cachebrowser...</code> from the menu to open the
+cachebrowser window.
+If the cachebrowser window is already open, it will pop up to front, and
+will be activated.
+
+<h2>The cache list</h2>
+The list shows all cached objects. The following information is shown for each
+object:
+<p>
+<B>URL</B>: the Url (address) of this object.<Br>
+<B>Date</B>: the date when it was retrieved.<BR>
+<B>Size</B>: the size of the object in bytes.<BR>
+<B>Type</B>: the <a href=../Configuring/mime.html>MIME type</a> of the object.<BR>
+<B>Charset</B>: the character set used by the object, if any.<BR>
+<B>Etag</B>: the Etag hash of the object, if any.<BR>
+<B>File</B>: the file name of the object in the cache directory.
+
+<P><A NAME="Etags"><B>Etags:</B> AWeb uses Etags (Entity tags) to validate objects in the cache.  If, when AWeb fetches an object, a server responds with an Etag header along with the object, AWeb stores this Etag in the cache along with the object.  The next time AWeb fetches the same object from the server, it sends the Etag within its request to the server.
+<P>If the object has not changed in the meanwhile (the server will know this from the Etag AWeb has just sent it), the server will respond with a "304 Not Modified" message and the object will not be resent.  There is no point in resending the object if nothing has changed!  If the object has changed, the server will send AWeb the modified object along with a <I>new</I> Etag, which AWeb will again use the next time it fetches the object.
+<P>Because Etags are a hash number calculated based on the content of the object, the Etag value will remain the same for dynamically created objects (such as php, asp, etc. documents) when their contents remain unchanged.  This is an advantage over Last-Modified headers, which will <I>always</I> be updated for dynamic objects - despite their contents possibly remaining unchanged.  This prevents objects being needlessly resent by the server.
+
+<h2>General information</h2>
+Below the list there is a fuelgauge showing how full the cache is, compared
+to the configured cache size.
+<p>
+Also the number of files and the total occupied disk space is shown.
+
+<h2><a name=find>Find</a></h2>
+Enable the find function. This button toggles, clicking it again
+(or clicking the <a href=#match>match</a> button) disables the find function.
+<p>
+You can now type a search string in the entry field.
+After you hit <kbd>Enter</kbd> in the entry field, or click the <b>Next</b>
+button, the string is located in the list. Clicking the
+<b>Next</b> button again finds the next occurrence.
+
+<h3><a name=match>Match</a></h3>
+Enable the match function. This button toggles, clicking it again
+(or clicking the <a href=#find>find</a> button) disables the match function.
+<p>
+You can now type a search string or pattern in the entry field.
+After you hit <kbd>Enter</kbd> in the entry field, all entries in the
+list matching the string or pattern become selected.
+<p>
+The match function supports both plain search strings and patterns.
+If the search string typed contains a DOS pattern matching character,
+it uses pattern matching against the full URLs.
+Otherwise a search is made for any occurrence of the search string
+within the URLs.
+<p>
+When the pattern does not
+contain the addressing scheme part (the part like "http://"), then the
+scheme part of every URL is ignored. So a pattern "foo.bar#?" matches URLs
+"http://foo.bar/xyz.html" and "ftp://foo.bar/zoo".
+
+<h2>Sort by</h2>
+Use the <b>Sort by</b> chooser to sort the entries in the list by their URL,
+their date (most recent will be shown first), or by their MIME type.
+
+<h2>Open an object</h2>
+If you have selected an object from the list, you can use the <b>Open</b> button
+to load the page in the current browser window. If it is an image, the external
+viewer for that image (as configured in the <a href=../Configuring/brviewers.html>viewers
+settings</a>) will be started.
+<p>
+Instead of the <b>Open</b> button, you can double click on the entry, or use the
+<kbd>Enter</kbd> key.
+
+<h2>Save an object</h2>
+If you have selected an object from the list, you can use the <b>Save</b> button
+to save the object to another file. You will see a save requester where you can
+enter the file name.
+
+<h2>Delete objects</h2>
+If you have selected one or more objects from the list, you can use the <b>Delete</b> button
+to delete the objects from the cache.
+
+<p>
+<hr>
+<a href=../AWeb%20Manual.html><img src=../GlobalImages/back.gif width=32 height=16 alt="<-" border=0></a> Back to
+<a href=../AWeb%20Manual.html>index</a>.
+
+</body>
+</html>

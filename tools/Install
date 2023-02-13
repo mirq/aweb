@@ -1,0 +1,376 @@
+; $VER: Install_AWeb_APL (15 March 2003)
+; Description: Installer script for AWeb
+
+(set cpu (database "cpu"))
+(set cpu020 (and (<> cpu "68000") (<> cpu "68010")))
+(set v39 (>= (/ (getversion "exec.library" (resident)) 65536) 39))
+
+(set awn (getversion "AWeb"))
+(set awv (/ awn 65536))
+(set awr (- awn (* awv 65536)))
+
+; all strings used in this installer script
+(set #need39 "This program requires OS 3.0 or later to function.")
+(set #needcpu "This archive was designed for the 68020 processor, please download the correct version for your CPU.")
+(set #nohelp "No help available.")
+(set #welcome
+   (cat "\n\nAWeb APL Lite is a fast, multithreaded WWW browser for AmigaOS and MorphOS.\n\n"
+        "AWeb APL Lite runs with a wide variety of TCP-stacks, including Genesis, Miami and Roadshow.\n\n"
+      ("\n\nThis installation procedure will install the AWeb APL Lite browser version %ld.%ld on your system.\n" awv awr)
+   )
+)
+(set #classact
+   (cat "IMPORTANT\n\n"
+        "This program needs the ClassAct GUI package or ReAction to run.\n"
+        "The ClassAct package is not included in the AWeb_APL archive, but is freely available "
+        "from Aminet.\n\n"
+        "The ReAction package is included as part of the AmigaOS in version 3.5 and above."
+   )
+)
+
+(set #destdir-prompt "Please select the directory where you want AWeb APL Lite installed.\n(If you do not accept the default, a directory 'AWeb_APL' will be created there.)")
+(set #destdir-help "A directory for AWeb will be created here. By accepting the default directory, most of the files don't have to be copied.")
+(set #installing "Installing ")
+(set #languages-prompt "Please select which language catalog(s) you want to install")
+(set #memory-prompt "Is your Amiga equipped with more than 2MB of memory?")
+(set #memory-help "AWeb runs on a 2MB Amiga, but needs a special setup on such a machine. If you click the 'only 2MB' button, the appropriate settings will be installed.\n\nYou can always change the settings after installation.")
+(set #fonts-prompt "Do you want to install the \"times.font\" and \"courier.font\" sizes 30 and 36?")
+(set #fonts-help
+   (cat "In order to provide AWeb with a consistent set of fonts, four fonts are included "
+      "in this archive, times/30, times/36, courier/30 and courier/36.\n\n"
+      "Because AWeb uses these fonts by default, page headers might look really awful "
+      " if you don't install these fonts. It is highly recommended that you install them."
+   )
+)
+(set #developer-prompt
+    (cat "Do you wish to install the AWeb.developer program"
+          "\nalongside the standard AWeb program?"
+    )
+)
+(set #developer-help
+    (cat "AWeb.developer is a special build of AWeb with certain extra functions"
+         "\nbuilt in. Its primary use is in the investigating and reporting"
+         "\nof bugs. There is no extra browsing functionality."
+    )
+)
+
+
+(set #fixfonts-prompt "The FixFonts utility will be run to make the newly added fonts available.")
+(set #fixfonts-help
+   (cat "The FixFonts utility is needed to make the newly added fonts available to the system.\n\n"
+      "If you intend to use the fonts from this archive, you are strongly encouraged to "
+      "run FixFonts now.\n\n"
+      "Note that running this program may take a while."
+   )
+)
+(set #charsets-prompt "Please select which charsets you wish to install")
+
+(set #readme "Displaying the version notes readme...")
+(set #makeasgn "Making AWeb_APL assignment to S:User-Startup")
+(set #bye
+   (cat "In case you need help configuring or using AWeb APL Lite, pressing the HELP key "
+        "when AWeb is active will bring up the documentation.\n\n\n"
+        "Please check the AWebPlugin drawer included in this archive for setting up internal image decoders."
+   )
+)
+
+; ---------------------------------------------------------------------------
+
+(complete 0)
+
+(if (not v39)
+   (abort #need39)
+)
+(if (not (>= cpu "68020"))
+    (abort #needcpu)
+)
+
+(message #welcome)
+
+(run "run >NIL: SYS:Utilities/MultiView Docs/AWeb.gif" (prompt #welcome))
+
+(set @source-dir (pathonly @icon))
+
+(set defdir
+   (askdir
+      (prompt #destdir-prompt)
+      (help #destdir-help)
+      (default @source-dir)
+   )
+)
+(set @default-dest defdir)
+
+(set nocopy (= @source-dir @default-dest))
+
+(message #classact)
+
+(set #developer
+   (askbool
+      (prompt #developer-prompt)
+      (help #developer-help)
+      (choices "Don't Install AWeb.developer" "Install AWeb.developer")
+      (default 1)
+  )
+)
+
+
+(if (not nocopy)
+    (
+    (set @default-dest (tackon @default-dest "AWeb_APL"))
+
+       (set update-aweb (exists @default-dest))
+
+    (if (not update-aweb)
+        (makedir @default-dest
+            (prompt #creating-dir @default-dest)
+               (infos)
+        )
+       )
+      (complete 10)
+
+      (copyfiles
+         (source "")
+         (dest @default-dest)
+         (choices "AWeb" "AWebCfg" "AWebJS")
+         (prompt #installing "AWeb")
+         (infos)
+      )
+      (if (= #developer 0)
+        (copyfiles
+             (source "")
+              (dest @default-dest)
+             (choices "AWeb.developer")
+              (prompt #installing "AWeb")
+        )
+      )
+      (complete 20)
+    (copyfiles
+         (source "")
+          (dest @default-dest)
+         (choices "AWebPlugin" "Extras" "AWebPlugin.info" "Extras.info")
+          (prompt #installing "AWeb")
+    )
+
+    (complete 25)
+    (copyfiles
+         (source "")
+          (dest @default-dest)
+         (choices "aweblib")
+          (prompt #installing "AWeb")
+    )
+    (copyfiles
+         (source "")
+          (dest @default-dest)
+         (choices "Docs")
+          (prompt #installing "AWeb")
+    )
+    (set #doc-index (tackon @default-dest "Docs/docsearch.index"))
+    (if (exists #doc-index)
+       (
+        (run "C:delete  "  | #doc-index )
+       )
+    )
+
+      (complete 30)
+
+      (set cache-dir (tackon @default-dest "Cache"))
+      (if (not (exists cache-dir))
+         (
+            (makedir cache-dir
+               (prompt #creating-dir cache-dir)
+            )
+         )
+      )
+      (complete 40)
+
+    (copyfiles
+         (source "")
+          (dest @default-dest)
+         (choices "apl.txt" "ReadMe" "Images")
+          (prompt #installing "AWeb")
+          (infos)
+    )
+      (complete 50)
+
+      (set languages
+         (askoptions
+            (choices "English" "ÃeÓtina (Czech)" "Bosanski" "Català" "Dansk" "Deutsch" "Español"
+               "Français" "Greek" "Hrvatski" "Italiano" "Latvian" "Magyar" "Nederlands" "Norsk"
+               "Polski" "Português" "Português-brasil" "Russian" "Slovak" "Srpski" "Suomi" "Svenska" "Türkçe")
+            (prompt #languages-prompt)
+            (help @askoptions-help)
+            (default 1)
+         )
+      )
+
+      ; If any language catalogs are selected, copy them.
+
+      (if (bitand languages 65534)
+         (
+            (set catdir (tackon @default-dest "Catalogs"))
+            (if (not (exists catdir))
+               (makedir catdir
+                  (prompt #creating-dir catdir)
+               )
+            )
+            (set bit 2)    ; English implementation, so there is no catalog for it
+            (set langnr 1)
+            (while (< langnr 25)
+               (if (bitand languages bit)
+                  (
+                     (set lang
+                        ; English is never selected from this list
+                        (select langnr "English" "ÃeÓtina" "Bosanski" "Català" "Dansk" "Deutsch" "Español"
+                           "Français" "Greek" "Hrvatski" "Italiano" "Latvian" "Magyar" "Nederlands" "Norsk"
+                           "Polski" "Português" "Português-brasil" "Russian" "Slovak" "Srpski" "Suomi" "Svenska" "Türkçe"
+                        )
+                     )
+                     (copyfiles
+                        (source (tackon "Catalogs" lang))
+                        (choices "aweb.catalog" "awebcfg.catalog")
+                        (dest (tackon catdir lang))
+                     )
+                  )
+               )
+               (set bit (shiftleft bit 1))
+               (set langnr (+ langnr 1))
+            )
+         )
+      )
+    )
+)
+
+(complete 60)
+
+; Ask which charsets to install
+
+(set charsets
+    (askoptions
+        (choices
+            "iso-8859-1 windows chars to latin 1"
+            "windows-1252 translates to iso-8859-1"
+            "iso-8859-2 for polish locales"
+            "koi8-r translates koi8-r to windows-1251"
+        )
+        (prompt #charsets-prompt)
+        (help @askoptions-help)
+    )
+)
+(if (bitand charsets 65534)
+    (
+    (set chardir (tackon @default-dest "Charsets"))
+    (if (not (exists chardir))
+       (makedir chardir
+          (prompt #creating-dir chardir)
+       )
+    )
+    (set bit 1)
+    (set charnr 0)
+    (while (< charnr 4)
+       (if (bitand charsets bit)
+          (
+             (set charset
+                (select charnr "iso-8859-1.charset" "windows-1252.charset" "iso-8859-2.charset" "koi8-r.charset"
+                )
+             )
+             (copyfiles
+                (source "Charsets")
+                (choices charset)
+                (dest chardir)
+             )
+          )
+       )
+       (set bit (shiftleft bit 1))
+       (set charnr (+ charnr 1))
+    )
+
+    )
+)
+; Only ask if fonts should be installed in expert mode
+(if
+   (< @user-level 2)
+   (set #fonts 1)
+   (set #fonts
+      (askbool
+         (prompt #fonts-prompt)
+         (help #fonts-help)
+         (choices "Yes" "No")
+         (default 1)
+      )
+   )
+)
+(if
+   (> #fonts 0)
+   (
+      (copyfiles
+         (source "Fonts")
+         (dest "Fonts:")
+         (choices "times" "courier")
+         (prompt #installing "fonts")
+      )
+      (run "SYS:System/FixFonts"
+         (confirm)
+         (prompt #fixfonts-prompt)
+         (help #fixfonts-help)
+      )
+   )
+)
+
+(complete 80)
+
+(set #memory
+   (askbool
+      (prompt #memory-prompt)
+      (help #memory-help)
+      (choices "More than 2MB" "Only 2MB")
+      (default 1)
+  )
+)
+(set #ss_command
+   (cat
+          "Assign AWEB_APL: "
+          '"'
+          @default-dest
+          '"'
+   )
+)
+
+(startup "AWEB_APL"
+
+    (prompt #makeasgn)
+
+    (help @startup-help)
+
+    (command
+
+        (#ss_command)
+    )
+)
+
+(run "run >NIL: " | #ss_command)
+
+(if (= #memory 0)
+   (
+      (makedir
+         (tackon @default-dest "T")
+      )
+      (makedir "ENVARC:AWeb_APL")
+      (copyfiles
+         (source "2MBsettings")
+         (dest "ENVARC:AWeb_APL")
+         (all)
+      )
+      (copyfiles
+         (source "ENVARC:AWeb_APL")
+         (dest "ENV:AWeb_APL")
+         (all)
+      )
+   )
+)
+
+(complete 100)
+
+(run "SYS:Utilities/MultiView apl.txt" (prompt #readme))
+(run "SYS:Utilities/MultiView ReadMe" (prompt #readme))
+
+(exit #bye)

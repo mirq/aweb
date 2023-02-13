@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>Plugin module internals</title>
+</head>
+<body>
+<h1>Plugin module internals</h1>
+
+The diagram below shows the relevant section of AWebs internal structure.
+<table>
+<caption valign=bottom><i>Relevant AWeb structure</i></caption>
+<tr><td><img src=diagram.iff>
+</table>
+For each file (document, image or other) that is referenced, either because
+it is loaded into a frame or window, or because it appears as an embedded object in
+an HTML document, a <b>SOURCE</b> object is created. No more than one SOURCE
+object can exist for a given file.
+<p>
+For each time this file is referenced, a <b>COPY</b> object is created that
+is related to the files SOURCE object. This COPY is also related to the
+window or frame, either directly or from within the HTML document that is
+shown in the window. The COPY object is responsible for displaying an
+"unloaded" icon as long as the referenced file is not displayable yet.
+<p>
+When the file is actually retrieved, and data arrives for the file, <b>DRIVER</b>
+objects are created. Various drivers are used for different MIME types,
+and which type of driver objects are created depends on the MIME type of
+the file, and on the users MIME settings.
+<p>
+The <b>SOURCEDRIVER</b> object receives blocks of data as AWeb receives them.
+The SOURCEDRIVER should store this data in some way, and will probably
+process it. When the data is processed so far that something can be displayed,
+or the existing display can be updated, the SOURCEDRIVER signals the
+<b>COPYDRIVER</b>. The COPYDRIVER in turn is responsible for actually displaying
+the data, possibly scaled to a given width and height.
+<p>
+AWeb has a number of drivers built in, and these can be replaced or extended
+by external drivers. This is where the <em>plugin module</em> comes into play:
+a plugin module is merely an implementation of a SOURCEDRIVER class and a COPYDRIVER
+class.
+<p>
+A plugin module is actually a <a href=plugin/index.html>shared library</a>
+that is opened by the <b>SOURCE</b> object. The library must contain
+dispatchers for both classes. Plugin modules have access to a
+<a href=lib/index.html>support library</a> incorporated in the AWeb executable.

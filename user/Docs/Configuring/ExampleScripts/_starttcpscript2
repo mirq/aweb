@@ -1,0 +1,45 @@
+; Sample script to start a TCP program that does not return when
+; the session is active.
+;
+; This is the second script, the one that actually starts the stack.
+; You should not configure this script in AWeb. It is started from within
+; the _starttcpscript file.
+;
+; Make sure to change path and program name of the TCP program in this script
+; to the one you're actually using.
+; =======================================================================
+
+.key DUMMY/K ; so we can use <$$>
+
+; Remember the CLI process we are running in
+
+SetEnv TCPPROCESS <$$>
+
+; Don't stop the script in case of failure
+
+FailAt 30
+
+; Start the TCP stack.
+;
+; ***********************************************************************
+; *** Change this line to start the actual TCP stack you are using, like
+; *** Miami or TermiteTCP.
+
+TCPPath:TCPProgram
+
+; ***********************************************************************
+
+; If the connection didn't succeed, now break the starting process, or
+; else it will wait forever.
+; If the start script isn't active any more, the variable will be unset
+; so the Break command fails.
+
+If WARN
+   Break $STARTTCPPROCESS D
+EndIf
+
+; Unset the variable with our process number so if the _stoptcpscript is
+; run it won't accidentally break another process
+
+UnSetEnv TCPPROCESS
+

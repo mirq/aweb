@@ -1,0 +1,90 @@
+<html>
+<head>
+<title>Method: AOM_RENDER</title>
+</head>
+<body>
+<h1>Method: AOM_RENDER</h1>
+
+<h2>Purpose</h2>
+
+The <b>AOM_RENDER</b> method is used to let a copydriver object render itself.
+
+<h2>Message structure</h2>
+
+The <b>AOM_RENDER</b> method uses an <b><code>Amrender</code></b> structure:<p>
+
+<pre>
+struct Amrender
+{  <a href=index.html#Amessage>struct Amessage</a> amsg;
+   <a href="../structs/coords.html">struct Coords</a> *coords;  /* Rastport, coordinate offsets to use. */
+   <a href="../structs/arect.html">struct Arect</a> rect;      /* Frame relative coordinates of portion to render. */
+   USHORT flags;
+   APTR text;
+};
+</pre>
+
+<h2>Usage</h2>
+
+<h3>Field: <code>coords</code></h3>
+A pointer to a <a href="../structs/coords.html"><code>struct Coords</code></a> holding
+essential rendering information. Note that this pointer may be NULL.
+
+<h3>Field: <code>rect</code></h3>
+An <a href="../structs/arect.html"><code>Arect</code></a> structure containing frame relative
+coordinates of the portion to render. The object may use these to limit
+its rendering.
+
+<h3>Field: <code>flags</code></h3>
+Special flags that affect rendering. Flags of possible interest for
+plugin copydrivers are:
+<table border>
+<tr><th align=left valign=top>Flag
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>AMRF_CLEAR
+   <td valign=top>Before rendering, the object must clear the background area
+      described by the <code>rect</code> rectangle, using the
+      <a href="../lib/erasebg.html">Erasebg()</a> function.
+<tr><th align=left valign=top>AMRF_UPDATESELECTED
+   <td valign=top>Objects can use this flag internally to update their rendering
+      to a selected state.
+<tr><th align=left valign=top>AMRF_UPDATENORMAL
+   <td valign=top>Objects can use this flag internally to update their rendering
+      to a normal (unselected) state.
+</table>
+
+<h3>Return value</h3>
+The return value for this method is not defined.
+
+<h2>Implementation</h2>
+
+Only copydriver objects must implement this method.
+<p>
+The object must call the <a href="../lib/clipcoords.html"><code>Clipcoords()</code></a>
+function to ensure a valid rendering context, then render only if this
+obtained a valid context.<p>
+During rendering, all object relative coordinates must be corrected by
+both the object's current AOBJ_Left and AOBJ_Top (the Copydriver's
+<code>aox</code> and <code>aoy</code> fields), and the Coords's <code>dx</code>
+and <code>dy</code> fields.
+Adding these three together yields the RastPort coordinates to use.<p>
+After rendering, the
+<a href="../lib/unclipcoords.html"><code>Unclipcoords()</code></a> function must be called
+to free any allocated context resources, regardless of failure of the
+<code>Clipcoords()</code> function.
+<p>
+Outline of implementation:
+<pre>
+   <a href="../structs/coords.html">struct Coords</a> *coo;
+   coo=<a href="../lib/clipcoords.html">Clipcoords</a>(object->cframe,amrender->coords);
+   if(coo && coo->rp)
+   {  /* Do the rendering using coo->rp.
+       * All coordinates must be corrected:
+       *  rp_xcoordinate = object->object_relative_x + object->aox + coo->dx
+       */
+   }
+   <a href="../lib/unclipcoords.html">Unclipcoords</a>(coo);
+</pre>
+
+</body>
+</html>
+

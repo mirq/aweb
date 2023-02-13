@@ -1,0 +1,49 @@
+<html>
+<head>
+<title>Dupstr()</title>
+</head>
+<body>
+<h1>Dupstr()</h1>
+
+<h2>Purpose</h2>
+Dupicate a string into a newly allocated memory block.
+
+<h2>Synopsis</h2>
+<pre>
+   copystring = Dupstr(string, length)
+   D0                  A0      D0
+
+   UBYTE *Dupstr(UBYTE *, long)
+</pre>
+
+<h2>Function</h2>
+This function allocates a block of memory within AWeb's memory system
+large enough to hold the string or the specified length. Then the
+contents of the supplied string is copied into the new memory block.
+<p>
+Eventually you will free the memory using the
+<a href=freemem.html><code>Freemem()</code></a> function.
+
+<h2>Inputs</h2>
+<table border>
+<tr><th align=left valign=top>Parameter
+   <th align=left valign=top>Description
+<tr><td valign=top><code>string</code>
+   <td valign=top>A nullbyte terminated string, or any other block of data.
+      Passing a NULL pointer is harmless, and will return NULL.
+<tr><td valign=top><code>length</code>
+   <td valign=top>The length of the string to be copied. The allocated
+      memory block is at least 1 byte larger, and a nullbyte is added after
+      the specified length has been copied.
+      <p>
+      If this parameter is negative, the length of the nullbyte terminated
+      string is used.
+</table>
+
+<h2>Results</h2>
+A pointer to a new block of memory, holding a copy if the supplied string
+data, or NULL in case of failure.
+
+<h2>See also</h2>
+<a href="allocmem.html">Allocmem()</a>,
+<a href="freemem.html">Freemem()</a>

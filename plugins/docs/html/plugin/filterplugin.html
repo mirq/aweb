@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>Filterplugin()</title>
+</head>
+<body>
+<h1>Filterplugin()</h1>
+
+<h2>Purpose</h2>
+This function is used to filter data from data blocks read by AWeb, and
+write back data to be processed.
+
+<h2>Synopsis</h2>
+<pre>
+   Filterplugin(pluginfilter)
+                A0
+
+   void Filterplugin(<a href="../structs/pluginfilter.html">struct Pluginfilter</a> *)
+</pre>
+
+<h2>Inputs</h2>
+<table border>
+<tr><th align=left valign=top>Parameter
+   <th align=left valign=top>Description
+<tr><td valign=top><code>pluginfilter</code>
+   <td valign=top>Pointer to a <a href="../structs/pluginfilter.html">struct Pluginfilter</a>.
+</table>
+
+<h2>Implementation</h2>
+This function is optional. It is only supposed to be present after the
+<a href=queryplugin.html><code>Queryplugin()</code></a> function indicated
+its presence.
+<p>
+If supported, the function should examine any data in the data block pointed
+to by the <a href="../structs/pluginfilter.html">struct Pluginfilter</a>.
+<p>
+Optionally data can be written back to AWeb to be processed, with the
+<a href="../lib/writefilter.html"><code>Writefilter()</code></a> function.
+This data may be the same as the input, modified data, or totally new data.
+It is allowed to write back no data at all, or only after eof has been
+reached.
+
+<h2>Example</h2>
+The <a href=filterexample.html>example filter type plugin</a> contains an example
+implementation of the <code>Filterplugin()</code> function.

@@ -1,0 +1,53 @@
+<html>
+<head>
+<title>AOTP_SOURCEDRIVER class</title>
+</head>
+<body>
+<h1>AOTP_SOURCEDRIVER class</h1>
+
+<h2>Purpose</h2>
+
+The <b>AOTP_SOURCEDRIVER</b> class is the object to derive
+<a href="../plugin/sourcedriver.html">plugin sourcedriver</a> classes from.
+
+<h2>Supported methods</h2>
+
+<table border>
+<tr><th align=left valign=top>Method
+   <th align=left valign=top>Description
+<tr><th align=left valign=top><a href="../methods/dispose.html">AOM_DISPOSE</a>
+   <td valign=top>Dispose the object
+<tr><th align=left valign=top><a href="../methods/get.html">AOM_GET</a>
+   <td valign=top>Get attribute values
+<tr><th align=left valign=top><a href="../methods/set.html">AOM_SET</a>
+   <td valign=top>Set attribute values
+<tr><th align=left valign=top><a href="../methods/srcupdate.html">AOM_SRCUPDATE</a>
+   <td valign=top>Receive new data
+</table>
+
+<h2>Supported attributes</h2>
+
+The AOTP_SOURCEDRIVER class does not support any attributes itself. It defines
+a number of attributes that are used by the derived classes,
+however.
+
+<h2>Instance data structure</h2>
+
+The AOTP_SOURCEDRIVER class uses the following data structure:
+<p>
+<pre>
+struct Sourcedriver
+{  struct Aobject object;     /* Object header */
+   APTR extension;            /* Private extension data */
+};
+</pre>
+
+Every object that is a direct subclass of AOTP_SOURCEDRIVER <b>must</b> have this
+structure as the first item in its instance data structure.
+
+<h2>Usage</h2>
+
+<h3>Field: <code>object</code></h3>
+This is the compulsory embedded <a href=object.html>AOTP_OBJECT</a>
+instance data.
+

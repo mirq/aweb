@@ -1,0 +1,35 @@
+<html>
+<head>
+<title>Freemem()</title>
+</head>
+<body>
+<h1>Freemem()</h1>
+
+<h2>Purpose</h2>
+Free a block of memory allocated before within AWeb's memory system.
+
+<h2>Synopsis</h2>
+<pre>
+   Freemem(memoryblock)
+           A0
+
+   void Freemem(void *)
+</pre>
+
+<h2>Function</h2>
+This function returns memory to the system that was previously allocated
+within AWeb's memory system, using one of the 
+<a href=allocmem.html><code>Allocmem()</code></a> or
+<a href=dupstr.html><code>Dupstr()</code></a> functions.
+
+<h2>Inputs</h2>
+<table border>
+<tr><th align=left valign=top>Parameter
+   <th align=left valign=top>Description
+<tr><td valign=top><code>memoryblock</code>
+   <td valign=top>Pointer to a previously allocated block of memory
+</table>
+
+<h2>See also</h2>
+<a href="allocmem.html">Allocmem()</a>,
+<a href="freemem.html">Freemem()</a>

@@ -1,0 +1,71 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+
+<HTML>
+
+<HEAD>
+<TITLE>Using your own default images</TITLE>
+</HEAD>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<H1>&nbsp; Using your own default images</H1>
+
+<H2>Purpose</H2>
+
+There are moments where just displaying text is not sufficient, but some imagery is needed.  For some of these imagery, AWeb uses external images that you can replace with your own.
+<P>AWeb uses these external images in the following places:
+
+<UL>
+<LI>As default icons for <A HREF="../Starting/browser.html#images">unloaded images</A></LI>
+<LI>For displaying <A HREF="http://www.w3.org/TR/WD-wwwicn.html" TARGET="_blank">WWW icon entities</A>, like &quot;<CODE>&amp;document;</CODE>&quot; (&document;)</LI>
+</UL>
+
+<P>All external images are located in the <CODE>Images</CODE> drawer.  These are image files that can be in any format for which a datatype is available.  Transparent GIFs are also supported.
+
+<H2>Unloaded images</H2>
+
+For <A HREF="../Starting/browser.html#images">unloaded images</A>, AWeb uses the following files:
+
+<P><TABLE BORDER="1">
+<TR><TH>file name</TH><TH>used for</TH><th>current image</TH></TR>
+<TR><TD><CODE>def_image</CODE></TD><TD>Unloaded normal image</TD><TD ALIGN="CENTER"><IMG SRC="/PROGDIR:Images/def_image"></TD></TR>
+<TR><TD><CODE>def_imagemap</CODE></TD><TD>Unloaded image map</TD><TD ALIGN="CENTER"><IMG SRC="/PROGDIR:Images/def_imagemap"></TD></TR>
+<TR><TD><CODE>def_errimage</CODE></TD><TD>Image that couldn't be loaded.</TD><TD ALIGN="CENTER"><IMG SRC="/PROGDIR:Images/def_errimage"></TD></TR>
+</TABLE>
+
+<H2>Icon entities</H2>
+
+For all supported icon entities there is a file with the same name. So for the "<CODE>&amp;document;</CODE>" entity there is a file named "<CODE>document</CODE>" in the "<code>Images</code>" drawer.
+<P>Look at the <A HREF="../Advanced/iconentities.html">overview</A> for all supported entities.
+
+<H2>Installing your own images</H2>
+
+To install your own image, just copy your image over the old one.  Be sure to use the same name, and don't use a suffix like <CODE>.gif</CODE> or <CODE>.png</CODE>.
+<P>The <CODE>Storage</CODE> drawer contains some alternatives for the icon entities, but you can use any image of course.
+
+<P><HR>
+
+<A HREF="../AWeb%20Manual.html"><IMG SRC="../GlobalImages/back.gif" WIDTH="32" HEIGHT="16" ALT="<-" BORDER="0"></A>Back to <A HREF="../AWeb%20Manual.html">index</A>.
+
+</BODY>
+
+</HTML>

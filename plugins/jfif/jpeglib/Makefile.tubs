@@ -1,0 +1,18 @@
+MODULES := linklibs/libjpeg.a
+
+linklibs/libjpeg.a/TYPE := executable/library/link
+linklibs/libjpeg.a/CFILES := \
+jcomapi jutils jerror jmemmgr jmemaweb \
+jcapimin jcapistd jctrans jcparam jdatadst jcinit \
+jcmaster jcmarker jcmainct jcprepct jccoefct jccolor \
+jcsample jchuff jcphuff jcdctmgr jfdctfst jfdctflt \
+jfdctint \
+jdapimin jdapistd jdtrans jdatasrc jdmaster \
+jdinput jdmarker jdhuff jdphuff jdmainct jdcoefct \
+jdpostct jddctmgr jidctfst jidctflt jidctint jidctred \
+jdsample jdcolor jquant1 jquant2 jdmerge
+
+
+
+
+

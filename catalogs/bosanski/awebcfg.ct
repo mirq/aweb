@@ -1,0 +1,1914 @@
+## version $VER: AWebCfg.catalog 3.4 (23.11.2000)
+## language bosanski
+## codeset 0
+;
+; AWebcfg.cd - AWeb configuration program catalog description file
+;
+;
+;  The MSG_DUMMY_nn labels are there because FlexCat doesn't
+;  understand the LABEL (+1//) syntax (C='s Catcomp uses this
+;  to skip 1 number)
+;
+;
+;-------------- Error messages ----------------------
+;
+; NOTE - No locale formatters (like %1$s) possible in this string!
+;        Only plain C formatters allowed.
+MSG_ERROR_CANTOPENV
+Ne mogu otvoriti %s verziju %ld
+; Can't open %s version %ld
+;
+MSG_ERROR_COMMANDLINE
+
+; Please check the commandline options.\n\
+; E.g. you must use at least one of the 4 switches.\n\
+; The Template is:
+;
+; ***NEW***
+;
+;
+;-------------- Settings requesters- ------------------
+;
+;  General
+;
+MSG_SET_REQTITLE_FONT
+Izberi slova
+; Select font
+;
+MSG_SET_REQTITLE_SCREEN
+Izaberi video nacin
+; Select screenmode
+;
+MSG_SET_REQTITLE_MAILTO
+Izaberi mailto: komandu
+; Select mailto: command
+;
+MSG_SET_REQTITLE_FTP
+Izaberi ftp: komandu
+; Select ftp: command
+;
+MSG_SET_REQTITLE_TELNET
+Izaberi telnet: komandu
+; Select telnet: command
+;
+MSG_SET_REQTITLE_NEWS
+Izaberi news: komandu
+; Select news: command
+;
+MSG_SET_REQTITLE_STARTTCP
+Izaberi TCP start komandu
+; Select TCP start command
+;
+MSG_SET_REQTITLE_ENDTCP
+Izaberi TCP kraj komandu
+; Select TCP end command
+;
+MSG_SET_REQTITLE_TEMPPATH
+Izaberi putanju
+; Select temp path
+;
+MSG_SET_REQTITLE_SAVEPATH
+Izaberi putanju
+; Select save path
+;
+MSG_SET_REQTITLE_EDITOR
+Izaberi komandu editora
+; Select Editor command
+;
+MSG_SET_REQTITLE_HTMLVIEWER
+Izaberi komandu za HTML viewer
+; Select HTML viewer command
+;
+MSG_SET_REQTITLE_MIMEVIEWER
+Izaberi komandu za viewer
+; Select viewer command
+;
+MSG_SET_REQTITLE_AREXXMACRO
+Izaberi ARexx makro
+; Select ARexx macro
+;
+MSG_SET_REQTITLE_BROWSERWINDOW
+Opcije AWeb browsera
+; AWeb browser settings
+;
+MSG_SET_REQTITLE_PROGRAMWINDOW
+Opcije AWeb programa
+; AWeb program settings
+;
+MSG_SET_REQTITLE_NETWORKWINDOW
+Opcije AWeb mreze
+; AWeb network settings
+;
+MSG_SET_REQTITLE_OPENBROWSER
+Otvori opcije browsera
+; Open browser settings
+;
+MSG_SET_REQTITLE_SAVEBROWSER
+Snimi opcije browsera kao
+; Save browser settings as
+;
+MSG_SET_REQTITLE_OPENPROGRAM
+Otvori opcije programa
+; Open program settings
+;
+MSG_SET_REQTITLE_SAVEPROGRAM
+Snimi opcije programa kao
+; Save program settings as
+;
+MSG_SET_REQTITLE_OPENNETWORK
+Otvori opcije mreze
+; Open network settings
+;
+MSG_SET_REQTITLE_SAVENETWORK
+Snimi opcije mreze kao
+; Save network settings as
+;
+MSG_SET_REQTITLE_CACHEPATH
+Izaberi putanju za kes
+; Select cache path
+;
+MSG_SET_REQTITLE_IMGVIEWER
+Izaberi komandu sa viewer slika
+; Select image viewer command
+;
+MSG_SET_REQTITLE_GUIWINDOW
+GUI opcije
+; AWeb GUI settings
+;
+MSG_SET_REQTITLE_OPENGUI
+Otvori GUI opcije
+; Open GUI settings
+;
+MSG_SET_REQTITLE_SAVEGUI
+Snimi GUI opcije kao
+; Save GUI settings as
+;
+MSG_SET_REQTITLE_SIGNATURE
+Izaberi file potpisa
+; Select signature file
+;
+MSG_SET_REQTITLE_STARTUPSCRIPT
+Izberi ARexx script za pokretanje
+; Select startup ARexx script
+;
+MSG_SET_REQTITLE_SHUTDOWNSCRIPT
+Izaberi ARexx script za izlaz
+; Select shutdown ARexx script
+;
+;  Clicktab labels - Browser
+;
+MSG_SET_CTBR_OPTIONS
+_1 Opcije
+; _1 Options
+;
+MSG_SET_CTBR_FONTS
+_2 Slova
+; _2 Fonts
+;
+MSG_SET_CTBR_STYLES
+_3 Stilovi
+; _3 Styles
+;
+MSG_SET_CTBR_COLOURS
+_4 Boje
+; _4 Colours
+;
+MSG_SET_CTBR_MIME
+_5 Pokazivaci
+; _5 Viewers
+;
+;  Clicktab labels - Program
+;
+MSG_SET_CTPR_SCREEN
+_1 Ekran
+; _1 Screen
+;
+MSG_SET_CTPR_PALETTE
+_2 Paleta
+; _2 Palette
+;
+MSG_SET_CTPR_OPTIONS
+_3 Opcije
+; _3 Options
+;
+MSG_SET_CTPR_PROGRAMS
+_4 Programi
+; _4 Programs
+;
+MSG_SET_CTPR_AREXX
+_5 Arexx
+; _5 ARexx
+;
+;  Clicktab labels - Network
+;
+MSG_SET_CTNW_OPTIONS
+_1 Opcije
+; _1 Options
+;
+MSG_SET_CTNW_PROGRAMS
+_2 Programi
+; _2 Programs
+;
+MSG_SET_CTNW_PROXY
+_3 Proxy
+; _3 Proxy
+;
+MSG_SET_CTNW_CACHE
+_4 Cache
+; _4 Cache
+;
+MSG_SET_CTNW_PRIVACY
+_5 Sigurnost
+; _5 Privacy
+;
+MSG_SET_CTNW_MAIL
+_6 Posta/News
+; _6 Mail/News
+;
+;  Clicktab labels - GUI
+;
+MSG_SET_CTUI_OPTIONS
+_1 Opcije
+; _1 Options
+;
+MSG_DUMMY_8
+
+; 
+;
+MSG_SET_CTUI_BUTTONS
+_3 Dugmad
+; _3 Buttons
+;
+MSG_SET_CTUI_POPUP
+_4 Popup
+; _4 Popup
+;
+MSG_SET_CTUI_KEYS
+_5 Tipke
+; _5 Keys
+;
+MSG_SET_CTUI_MENUS
+_2 Meniji
+; _2 Menus
+;
+MSG_SET_CTUI_NAV
+_6 Navigacija
+; _6 Navigation
+;
+;  Popup help
+;
+; (don't use 40200-40208)
+;
+MSG_SET_HLP_NOARGS
+(bez drzaca)
+; (No placeholders)
+;
+MSG_SET_HLP_A
+%a = news grupa ili clanak
+; %%a = newsgroup or article
+;
+MSG_SET_HLP_E
+%e = e-mail adresa
+; %%e = e-mail address
+;
+MSG_SET_HLP_F
+%f  = putanja/ime filea
+; %%f = path/file name
+;
+MSG_SET_HLP_H
+%h = ime host-a
+; %%h = host name
+;
+MSG_SET_HLP_L
+%l = ime login-a
+; %%l = login name
+;
+MSG_SET_HLP_N
+%n = ime ekrana
+; %%n = screen name
+;
+MSG_SET_HLP_P
+%p broj vrata
+; %%p = port number
+;
+MSG_SET_HLP_U
+%u = originalni URL
+; %%u = original URL
+;
+MSG_SET_HLP_W
+%w = sifra
+; %%w = password
+;
+MSG_SET_HLP_T
+%t naslov
+; %%t = title
+;
+MSG_SET_HLP_U2
+%u = trenutni URL
+; %%u = current URL
+;
+MSG_SET_HLP_U3
+%u = objekt URL-a
+; %%u = object URL
+;
+MSG_SET_HLP_I
+%i = ID frame-a
+; %%i = frame ID
+;
+MSG_SET_HLP_I2
+%i = ID odredisnog frame-a
+; %%i = target frame ID
+;
+MSG_SET_HLP_M
+%m = MIME tip
+; %%m = MIME type
+;
+MSG_SET_HLP_S
+%s = argument pretrage
+; %%s = search argument
+;
+MSG_SET_HLP_D
+%d = datum
+; %%d = date
+;
+MSG_SET_HLP_G
+%g = ime grupe
+; %%g = group name
+;
+MSG_SET_HLP_I3
+%i = ID poruke
+; %%i = message id
+;
+MSG_SET_HLP_N2
+%n = stvarno ime
+; %%n = real name
+;
+MSG_SET_HLP_S2
+%s = naslov
+; %%s = subject
+;
+MSG_SET_HLP_I4
+%i = ID glavnog frame-a
+; %%i = focus frame ID
+;
+MSG_SET_HLP_C
+%c = ime konfiguracije
+; %%c = config name
+;
+;  Font descriptions
+;
+MSG_SET_FD_NORMALTAG
+Normalna
+; Normal
+;
+MSG_SET_FD_NORMAL
+Normalna slova
+; Normal text
+;
+MSG_SET_FD_H1
+<H1>: Zaglavlja nivo 1, najveca
+; <H1> : Headers level 1, largest
+;
+MSG_SET_FD_H2
+<H2>: Zaglavlja nivo
+; <H2> : Headers level 2
+;
+MSG_SET_FD_H3
+<H3>: Zaglavlja nivo 3
+; <H3> : Headers level 3
+;
+MSG_SET_FD_H4
+<H4>: Zaglavlja nivo 4
+; <H4> : Headers level 4
+;
+MSG_SET_FD_H5
+<H5>: Zaglavlja nivo 5
+; <H5> : Headers level 5
+;
+MSG_SET_FD_H6
+<H6>: Zaglavlja nivo 6, najmanja
+; <H6> : Headers level 6, smallest
+;
+MSG_SET_FD_CITE
+<CITE>: Citiranja, uglavnom iskoseno
+; <CITE> : citations, typically italics
+;
+MSG_SET_FD_CODE
+<CODE>: primjer koda, uglavnom sa jednim razmakom
+; <CODE> : code example, typically monospaced
+;
+MSG_SET_FD_DFN
+<DFN>: definicija, uglavnom iskoseno
+; <DFN> : definition, typically italics
+;
+MSG_SET_FD_EM
+<EM>: isticanje, uglavnom iskoseno
+; <EM> : emphasized, typically italics
+;
+MSG_SET_FD_KBD
+<KBD>: ulaz sa tastature, uglavnom sa jednim razmakom
+; <KBD> : keyboard input, typically monospaced
+;
+MSG_SET_FD_SAMP
+<SAMP>: primjer, uglavnom sa jednim razmakom
+; <SAMP> : sample output, typically monospaced
+;
+MSG_SET_FD_STRONG
+<STORNG>: veliko isticanje, uglavnom podebljano
+; <STRONG> : strong emphasis, typically bold
+;
+MSG_SET_FD_VAR
+<VAR>: promijenjiva, uglavnom iskoseno
+; <VAR> : placeholder variable, typically italics
+;
+MSG_DUMMY_1
+
+; 
+; (Note the leading space in the next 3 strings)
+MSG_SET_FD_BOLD
+Podebljano
+;  Bold
+;
+MSG_SET_FD_ITALIC
+Iskoseno
+;  Italic
+;
+MSG_SET_FD_UNDERLINED
+Podvuceno
+;  Underlined
+;
+MSG_SET_FD_NORMALFONT
+Normalna slova
+; Normal font
+;
+MSG_SET_FD_FIXEDFONT
+Slova fiksne velicine
+; Fixed width font
+;
+MSG_SET_FD_SIZE
+velicina
+; size
+;
+MSG_SET_FD_BIG
+<BIG>: velika slova
+; <BIG> : large font
+;
+MSG_SET_FD_SMALL
+<SMALL>: mala slova
+; <SMALL> : small font
+;
+MSG_SET_FD_SUB
+<SUB>: mala podscript slova
+; <SUB> : small subscript font
+;
+MSG_SET_FD_SUP
+<SUP>: mala podscript slova
+; <SUP> : small superscript font
+;
+MSG_SET_FD_ADDRESS
+<ADDRESS>: adresa, uglavnom iskoseno
+; <ADDRESS> : address, typically italics
+;
+MSG_SET_FD_BLOCKQUOTE
+<BLOCKQUOTE>: dugi citati
+; <BLOCKQUOTE> : long quotations, typically italics
+;
+MSG_SET_FD_PRE
+<PRE>: preformatirani text, treba biti fiksne velicine
+; <PRE> : preformatted text, should be fixed width
+;
+;  HTML modes
+;
+MSG_SET_HTML_STRICT
+Uzak
+; Strict
+;
+MSG_SET_HTML_TOLERANT
+Tolerantan
+; Tolerant
+;
+MSG_SET_HTML_COMPATIBLE
+Kompatibilan
+; Compatible
+;
+;  Screen types
+;
+MSG_SET_SCRT_DEFAULT
+Standardni javni ekran
+; Default public screen
+;
+MSG_SET_SCRT_NAMED
+Javni ekran
+; Named public screen
+;
+MSG_SET_SCRT_OWN
+Vlastiti javni ekran
+; Own public screen
+;
+;  Image loading types
+;
+MSG_SET_IMGL_OFF
+Ne
+; Off
+;
+MSG_SET_IMGL_MAPS
+Samo mape
+; Maps only
+;
+MSG_SET_IMGL_ALL
+Sve slike
+; All images
+;
+;  MIME list column names
+;
+MSG_SET_MLCN_TYPE
+Vrsta
+; Type
+;
+MSG_SET_MLCN_EXT
+Ekstenzije
+; Extensions
+;
+;**obsolete
+MSG_SET_MLCN_COMMAND
+Komanda pokazivaca
+; Viewer command
+;
+MSG_SET_MLCN_ACTION
+A
+; A
+;
+MSG_SET_MLCN_NAME
+Ime i argumenti
+; Name and arguments
+;
+;  Browser pen names
+;
+MSG_SET_BRPEN_LINK
+Novi link
+; New link
+;
+MSG_SET_BRPEN_VLINK
+Posjeceni link
+; Visited link
+;
+MSG_SET_BRPEN_ALINK
+Selektirani link
+; Selected link
+;
+MSG_SET_BRPEN_BGCOLOR
+Pozadina
+; Background
+;
+MSG_SET_BRPEN_TEXT
+Tekst
+; Text
+;
+;  Screen colour names
+;
+MSG_SET_SCRPEN_TEXT
+Normalni tekst
+; Normal text
+;
+MSG_SET_SCRPEN_SHINE
+Svijetli rubovi
+; Bright edges
+;
+MSG_SET_SCRPEN_SHADOW
+Tamni rubovi
+; Dark edges
+;
+MSG_SET_SCRPEN_FILL
+Naslov aktivnih prozora
+; Active window title bars
+;
+MSG_SET_SCRPEN_FILLTEXT
+Naslov aktivnih prozora
+; Active window titles
+;
+MSG_SET_SCRPEN_BACKGROUND
+Pozadina
+; Background
+;
+MSG_SET_SCRPEN_HIGHLIGHTTEXT
+Vazni tekst
+; Important text
+;
+MSG_SET_SCRPEN_BARDETAIL
+Tekst menija
+; Menu text
+;
+MSG_SET_SCRPEN_BARBLOCK
+Pozadina menija
+; Menu background
+;
+;  ARexx menu shortcut
+;
+MSG_SET_AREX_NONE
+nista
+; none
+;
+;  Network external program types
+;
+MSG_SET_NWPRG_STARTTCP
+Pokreni TCP
+; Start TCP
+;
+MSG_SET_NWPRG_ENDTCP
+Zatvori TCP
+; End TCP
+;
+;  Font types and sizes (fonts page)
+;
+MSG_SET_FTYPE_NORMAL
+Normalna slova
+; Normal fonts
+;
+MSG_SET_FTYPE_FIXED
+Slova fiksne velicine
+; Fixed width fonts
+;
+MSG_SET_FSIZE_1
+1 (najmanja)
+; 1 (smallest)
+;
+MSG_SET_FSIZE_3
+3 (normalna)
+; 3 (normal)
+;
+MSG_SET_FSIZE_7
+7 (najsira)
+; 7 (largest)
+;
+;  Font list headers
+;
+MSG_SET_FLH_SIZE
+Velicina
+; Size
+;
+MSG_SET_FLH_FONTFACE
+Ime i velicina slova
+; Font name and size
+;
+;  Style list headers
+;
+MSG_SET_SLH_TAG
+Tag
+; Tag
+;
+MSG_SET_SLH_STYLE
+Prikazan kao
+; Rendered as
+;
+;  Cache verify modes
+;
+MSG_SET_CAVERIFY_ALWAYS
+Uvijek
+; Always
+;
+MSG_SET_CAVERIFY_ONCE
+Jednom
+; Once per session
+;
+MSG_SET_CAVERIFY_NEVER
+Nikad
+; Never
+;
+;  Palette loading
+;
+MSG_SET_LPAL_OFF
+Ne
+; Off
+;
+MSG_SET_LPAL_COLOURS
+Boje
+; Colours
+;
+MSG_SET_LPAL_GRAY
+Skala sive
+; Grayscale
+;
+;  MIME action names and abbreviationss
+;
+MSG_SET_MACT_DEFAULT
+Standardni
+; Default
+;
+MSG_SET_MACT_INTERNAL
+Unutrasnji (I)
+; Internal (I)
+;
+MSG_SET_MACT_PLUGIN
+AWeb plugin (A)
+; AWeb Plugin (A)
+;
+MSG_SET_MACT_EXTERNAL
+Vanjski program (E)
+; Extl. program (E)
+;
+MSG_SET_MACT_EXTPIPE
+Vanjski sa PIPE (P)
+; Extl. w/PIPE (P)
+;
+MSG_SET_MACT_SAVEDISK
+Snimi na disk (S)
+; Save to disk (S)
+;
+MSG_SET_MACT_EXTCAN
+
+; Extl. No Fetch (F)
+;
+; ***NEW***
+;
+MSG_SET_MACT_CANCEL
+
+; Cancel (C)
+;
+; ***NEW***
+;
+; 1-letter abbreviations to use for the above in the MIME list
+MSG_SET_MACT_ABBREV
+ IAEPFSC
+;  IAEPFSC
+;
+;  Cookie settings
+;
+MSG_SET_COOKIES_NEVER
+Nikad
+; Never
+;
+MSG_SET_COOKIES_ASK
+Pitaj prije primanja
+; Ask before set
+;
+MSG_SET_COOKIES_QUIET
+Uvijek (tiho)
+; Always (quiet)
+;
+;  Pupup menu types
+;
+MSG_SET_PUPTYPE_IMAGE
+Popup meni za sliku
+; Image popup menu
+;
+MSG_SET_PUPTYPE_LINK
+Popup meni za link
+; Link popup menu
+;
+MSG_SET_PUPTYPE_FRAME
+Popup link za frame
+; Frame popup menu
+;
+;  Menu entry types (used in the chooser)
+;
+MSG_SET_MENUTYPE_MENU
+Meni
+; Menu
+;
+MSG_SET_MENUTYPE_ITEM
+Element
+; Item
+;
+MSG_SET_MENUTYPE_SUB
+Pod
+; Sub
+;
+;  Menu entry types used in the first list column.
+;  For best effects, make sure the string for "MENU" is
+;  wider than the string for "Item".
+;
+MSG_SET_MENULABEL_MENU
+MENI
+; MENU
+;
+MSG_SET_MENULABEL_ITEM
+Element
+; Item
+;
+;  Javascript choices
+;
+MSG_SET_JS_OFF
+Ne
+; Off
+;
+MSG_SET_JS_11
+Tezak
+; Fastidious
+;
+MSG_SET_JS_ALL
+Blio kakav
+; Omnivorous
+;
+;  Gadget labels - general
+;
+MSG_SET_PAGE
+S_tranica
+; _Page
+;
+MSG_SET_SAVE
+_Snimi
+; _Save
+;
+MSG_SET_USE
+_Koristi
+; _Use
+;
+MSG_SET_CANCEL
+O_dustani
+; _Cancel
+;
+MSG_SET_TEST
+Is_probaj
+; _Test
+;
+;  Gadget labels - fonts
+;
+MSG_SET_FONT_FONT
+S_lova
+; _Font
+;
+MSG_SET_FONT_FONTTYPE
+_Vrsta slova
+; Font t_ype
+;
+MSG_SET_FONT_SETALL
+Koristi ova slova _za sve
+; Set _all to this font name
+;
+MSG_SET_FONT_FONTTYPE2
+Vrsta slova
+; Font type
+;
+MSG_SET_FONT_ALIAS
+Al_ias
+; A_lias
+;
+MSG_SET_FONT_ADD
+Dodaj
+; Add
+;
+MSG_SET_FONT_DEL
+Izb
+; Del
+;
+;  Gadget labels - colours
+;
+MSG_SET_APP_CHGCOLOUR
+Promijeni boju
+; C_hange colour
+;
+MSG_SET_APP_SCREENPENS
+Koristi _boje ekrana i pozadine
+; Use screen text and _background pens
+;
+;  Gadget labels - browser options/gui options
+;
+MSG_SET_BROPT_HTMLMODE
+_HTML nacin
+; HTML _mode
+;
+MSG_SET_BROPT_ULLINKS
+Podvuceni linkovi
+; Under_lined links
+;
+MSG_SET_BROPT_CYCLETOLIST
+Pokazi c_ycle polja kao listu
+; Show c_ycle fields as list
+;
+MSG_SET_BROPT_DOCOLORS
+Koristi pozadinu i boje
+; Use _background and colours
+;
+MSG_SET_BROPT_POPUPLABEL
+Aktiviranje popup menija
+; Popup menu activation
+;
+MSG_SET_BROPT_POPUPSHIFT
+SHI_FT tipka
+; S_HIFT key
+;
+MSG_SET_BROPT_POPUPALT
+_ALT tipka
+; _ALT key
+;
+MSG_SET_BROPT_POPUPCONTROL
+_CTRL tipka
+; CT_RL key
+;
+MSG_SET_BROPT_POPUPMIDBUTTON
+Srednja tipka misa
+; M_iddle mouse button
+;
+MSG_SET_BROPT_DOBGSOUND
+Koristi zvukove
+; Use background soun_d
+;
+MSG_SET_BROPT_BLINK
+Bljesak (_0.1 s)
+; Blin_k (0.1 s)
+;
+MSG_SET_BROPT_POPUPRBUTTON
+Desna tipka misa
+; Ri_ght mouse button
+;
+MSG_SET_BROPT_JAVASCRIPT
+Koristi JavaScript
+; Use _JavaScript
+;
+MSG_SET_BROPT_FRAMES
+Koristi frame_-ove
+; Use _frames
+;
+MSG_SET_BROPT_INCTABLE
+Pro_gresivno prikazivanje stranica
+; _Incremental table display
+;
+MSG_SET_BROPT_NOMINALFRAME
+Standardna visina za frame-ove
+; _Nominal frame height
+;
+MSG_SET_BROPT_JSERRORS
+Pokazi greske u JavaScript-u
+; Show JavaScript _errors
+;
+MSG_SET_BROPT_NOBANNERS
+Nemoj pokazivati banner-e
+; Su_ppress banner windows
+;
+MSG_SET_BROPT_TOOLTIPS
+Pokazi t_ooltips za like
+; Display t_ooltips for images
+;
+MSG_SET_BROPT_HANDPOINTER
+Pokazivac ruka iznad linkova
+; _Hand pointer over links
+;
+MSG_SET_BROPT_JSWATCH
+_Upozori za sumnjivi JavaScript
+; _Warn for suspect JavaScript
+;
+MSG_SET_BROPT_TEMPRP
+
+; Use double buffered _rendering
+;
+; ***NEW***
+;
+MSG_SET_BROPT_CHARSET
+
+; Default ch_aracter set
+;
+; ***NEW***
+;
+MSG_SET_BROPT_IMGBORDER
+
+; Border around ima_ges
+;
+; ***NEW***
+;
+;  Gadget labels - screen
+;
+MSG_SET_SCREEN_OPENON
+_Otvori na
+; _Open on
+;
+MSG_SET_SCREEN_NAME
+Odredjenom ekranu
+; Screen _name
+;
+MSG_SET_SCREEN_MODE
+Nacinu ekrana
+; Screen _mode
+;
+MSG_SET_SCREEN_PALETTE
+_Ucitaj zajednicku paletu
+; _Load spread palette
+;
+;  Gadget labels - palette
+;
+MSG_SET_PALL_PENLABEL
+Opcije boja
+; Pen settings
+;
+MSG_SET_PALL_PEN
+Boja
+; P_en
+;
+MSG_SET_PALL_PALLETTELABEL
+Promijeni paletu
+; Change palette
+;
+MSG_SET_PALL_PALLPEN
+Boja
+; Pe_n
+;
+MSG_SET_PALL_CHGCOLOUR
+Promijeni boju
+; C_hange colour
+;
+;  Gadget labels - network options and privacy
+;
+MSG_SET_NETWORK_IMGLOAD
+Ucitavanje slika
+; _Image loading
+;
+MSG_SET_NETWORK_MAXCONN
+Najveci broj prikljucaka
+; Max. _network connections
+;
+MSG_SET_NETWORK_HOMEPAGE
+_Home page
+; _Home page
+;
+MSG_SET_NETWORK_LOCALINDEX
+_Lokalni sadrzaj
+; _Local index
+;
+MSG_SET_NETWORK_STARTHOME
+Kreni s_a home page-om
+; St_art with home page
+;
+MSG_SET_NETWORK_ANONYMOUS
+Iskljuci _refer tokom browsiranja
+; Suppress _Referer while browsing
+;
+MSG_SET_NETWORK_IGNORE
+Ignoriraj MIME tipove servera
+; I_gnore server MIME type
+;
+MSG_SET_NETWORK_MAXDISK
+citanja sa diska
+; _disk reads
+;
+MSG_SET_NETWORK_COOKIES
+Prihvati cookie-je
+; Use coo_kies
+;
+MSG_SET_NETWORK_NOCOOKIELABEL
+Nemoj primati cookie-je za domene
+; No cookies for domains
+;
+MSG_SET_NETWORK_NOCOOKIEADD
+Dodaj
+; Add
+;
+MSG_SET_NETWORK_NOCOOKIEDEL
+Izb
+; Del
+;
+MSG_SET_NETWORK_FORMWARN
+Upozori prije slanja form-a nesigurnim ve_zama
+; _Warn before sending unsecure form data
+;
+MSG_SET_NETWORK_AUTOSEARCHURL
+Autop_retraga URL-a
+; Autosea_rch URL
+;
+MSG_SET_NETWORK_AUTOSEARCH
+Ukljuci autopr_etragu
+; _Enable autosearch
+;
+MSG_SET_NETWORK_SPAMBLOCK
+Izolir_aj spam tokom slanja news-a
+; _Activate spamblock when posting news
+;
+MSG_SET_NETWORK_FTPEMAILADDR
+Koristi e-mail adresu kao anonimnu sifru za _FTP
+; Use e-mail address as _FTP anon password
+;
+MSG_SET_NETWORK_SPOOFID
+Prevari kao
+; Spoo_f as
+;
+MSG_SET_NETWORK_CONTANIM
+Stalna anima_cija
+; C_ontinuous animation
+;
+MSG_SET_NETWORK_SPOOFID_EXPL
+(Izaberi element sa liste\nili upisi vlastiti ID browser-a)
+; (Select an entry from the list\n or type your own browser ID)
+;
+MSG_SET_NETWORK_RESTRICT_IMAGES
+Ogranici slike samo na isti host
+; Restrict i_mages to same host
+;
+;  Gadget labels - network proxy
+;
+MSG_SET_PROXY_TYPE
+Vrsta
+; T_ype
+;
+MSG_SET_PROXY_NAME
+Pro_xy
+; _Proxy
+;
+MSG_SET_PROXY_LIMITED
+Ogranicena upotreba prox_y-ja
+; _Limited proxy usage
+;
+MSG_SET_PROXY_NOPROXYLABEL
+Nemoj koristiti proxy za ove stranice
+; No proxy for these sites
+;
+MSG_SET_PROXY_NOPROXYADD
+Dodaj
+; Add
+;
+MSG_SET_PROXY_NOPROXYDEL
+Izb
+; Del
+;
+MSG_SET_PROXY_PASSIVEFTP
+Pasi_vni FTP
+; Passi_ve FTP
+;
+;  Gadget labels - network external programs
+;
+MSG_SET_NWPRG_TYPE
+_Vrsta
+; T_ype
+;
+MSG_SET_NWPRG_CMD
+Ko_manda
+; Co_mmand
+;
+MSG_SET_NWPRG_ARGS
+_Argumenti
+; _Arguments
+;
+;  Gadget labels - program options
+;
+MSG_SET_PROGRAM_SAVEPATH
+Putan_ja za snimanje
+; S_ave path
+;
+MSG_SET_PROGRAM_OVERLAP
+Skok za scr_oll (pixela)
+; Scroll _overlap (pixels)
+;
+MSG_SET_PROGRAM_ALLOW
+Omoguci upotrebu Shell komandi u linkovima
+; A_llow Shell commands in links
+;
+MSG_SET_PROGRAM_HOTCLOSE
+Automatsko zatvaranje hotliste
+; _Hotlist requester auto close
+;
+MSG_SET_PROGRAM_HOTREQ
+Dugme hotlista otvara za_htjev
+; Hotlist button gives _requester
+;
+MSG_SET_PROGRAM_HOTSINGLECLICK
+
+; Use Singleclic_k in Hotlist Viewer
+;
+; ***NEW***
+;
+MSG_SET_PROGRAM_WHISCLOSE
+Automatsko zatvaranje prozora historije
+; History _window auto close
+;
+MSG_SET_PROGRAM_SAVEICONS
+Snimi _ikonu
+; Create _icons
+;
+MSG_SET_PROGRAM_AAHOTLIST
+Automatsko otvaranje hotliste
+; Auto ope_n hotlist
+;
+MSG_SET_PROGRAM_AAWINHIS
+Automatsko otvaranje historije
+; Auto open window histor_y
+;
+MSG_SET_PROGRAM_AANETSTAT
+Automatsko otvaranje statusa mreze
+; Auto open n_etwork status
+;
+MSG_SET_PROGRAM_DRAGGING
+Omoguci prebaciva_nje
+; Allow _dragging
+;
+MSG_SET_PROGRAM_CENTERREQS
+Centriraj zahtjeve
+; Center re_questers
+;
+;  Gadget labels - external programs
+;
+MSG_SET_EDITOR_LABEL
+Editor
+; Editor
+;
+MSG_SET_EDITOR_CMD
+Komanda
+; Co_mmand
+;
+MSG_SET_EDITOR_ARGS
+Argumenti
+; _Arguments
+;
+MSG_SET_VIEWER_LABEL
+Pokazivac HTML izvornog koda
+; HTML source viewer
+;
+;**OBSOLETE**
+MSG_SET_VIEWER_CMD
+Ko_manda
+; C_ommand
+;
+;**OBSOLETE**
+MSG_SET_VIEWER_ARGS
+A_rgumenti
+; A_rguments
+;
+MSG_SET_CONSOLE
+Ko_nzola
+; Co_nsole
+;
+MSG_SET_PRPROGRAMS_TYPE
+_Vrsta
+; T_ype
+;
+MSG_SET_IMGVIEWER_LABEL
+Pokazivac slika
+; Image viewer
+;
+MSG_SET_STARTUP_LABEL
+Pokreni script na otvaranju
+; Script run at startup
+;
+MSG_SET_SHUTDOWN_LABEL
+Pokreni script na zatvaranju
+; Script run at shutdown
+;
+;  Gadget labels - cache
+;
+MSG_SET_CACHE_TEMPPATH
+Trenutna putanja
+; Temp _path
+;
+MSG_DUMMY_2
+
+; 
+MSG_SET_CACHE_DOCMEM
+_Memorija (Kb)
+; _Memory (kB)
+;
+MSG_SET_CACHE_DOCDISK
+Na disku _(Kb)
+; _Disk (kB)
+;
+MSG_DUMMY_3
+
+; 
+MSG_DUMMY_4
+
+; 
+MSG_DUMMY_5
+
+; 
+MSG_DUMMY_6
+
+; 
+MSG_DUMMY_7
+
+; 
+MSG_SET_CACHE_CACHEPATH
+Mjesto za kes
+; Cache _path
+;
+MSG_SET_CACHE_SIZELABEL
+Velicina kesa
+; Cache size
+;
+MSG_SET_CACHE_FREELABEL
+Najmanje slobodno
+; Keep minimum free
+;
+MSG_SET_CACHE_CHIP
+C_hip (Kb)
+; C_hip (kB)
+;
+MSG_SET_CACHE_FAST
+_Fast (Kb)
+; _Fast (kB)
+;
+MSG_CACHE_VERIFICATION_LABEL
+
+; Cache Verification
+;
+; ***NEW***
+;
+MSG_SET_CACHE_VERIFY_DYN
+
+; Verify d_ynamic objects
+;
+; ***NEW***
+;
+MSG_SET_CACHE_VERIFY_STAT
+
+; Verify _static objects
+;
+; ***NEW***
+;
+MSG_SET_CACHE_FASTRESPONSE_DYN
+
+; Fast _response
+;
+; ***NEW***
+;
+MSG_SET_CACHE_FASTRESPONSE_STAT
+
+; Fas_t response
+;
+; ***NEW***
+;
+MSG_SET_CACHE_NOCACHELABEL
+Nemoj stavljati u kes slijedece stranice
+; Do not cache these sites
+;
+MSG_SET_CACHE_NOCACHEADD
+Dodaj
+; Add
+;
+MSG_SET_CACHE_NOCACHEDEL
+Izb
+; Del
+;
+;  Gadget labels - MIME types and external viewers
+;
+MSG_SET_MIME_TYPE
+Vrsta
+; T_ype
+;
+MSG_SET_MIME_ADD
+Dod_aj
+; _Add
+;
+MSG_SET_MIME_DEL
+Izb
+; _Del
+;
+MSG_SET_MIME_EXTENSIONS
+_Ekstenzije
+; _Extensions
+;
+;**obsolete
+MSG_SET_MIME_CMD
+K_omanda
+; C_ommand
+;
+MSG_SET_MIME_ARGS
+A_rgumenti
+; A_rguments
+;
+MSG_SET_MIME_NAME
+I_me
+; Na_me
+;
+MSG_SET_MIME_ACTION
+Akc_ija
+; Act_ion
+;
+;  Settings colour requester
+;
+MSG_SET_COLOUR_TITLE
+Izberi boju
+; Select colour
+;
+MSG_SET_COLOUR_CANCEL
+Odustani
+; Cancel
+;
+MSG_SET_COLOUR_OK
+OK
+; Ok
+;
+MSG_SET_COLOUR_RED
+C
+; R
+;
+MSG_SET_COLOUR_GREEN
+Z
+; G
+;
+MSG_SET_COLOUR_BLUE
+P
+; B
+;
+;  Gadget labels - Menu (was: ARexx menu)
+;
+MSG_SET_AREXX_SORT
+P_oredaj
+; S_ort
+;
+MSG_SET_AREXX_ADD
+Dod_aj
+; _Add
+;
+MSG_SET_AREXX_DEL
+Izb
+; _Del
+;
+MSG_SET_AREXX_TITLE
+Naslov
+; T_itle
+;
+MSG_DUMMY_9
+
+; 
+;
+MSG_DUMMY_10
+
+; 
+;
+MSG_SET_MENUS_INVALID
+NEDOGOVARAJUCI
+; INVALID
+;
+MSG_SET_MENUS_TYPE
+Vrsta
+; T_ype
+;
+MSG_SET_MENUS_COMMAND
+Ko_manda
+; Co_mmand
+;
+;  Gadget labels - Styles page
+;
+MSG_SET_STYLE_FIXED
+_Fiksna velicina
+; _Fixed width
+;
+MSG_SET_STYLE_ABSSIZE
+Cjelokupna velicina
+; _Abs size
+;
+MSG_SET_STYLE_RELSIZE
+_Relativna velicina
+; _Rel size
+;
+MSG_SET_STYLE_NORMAL
+_Normalna
+; _Normal
+;
+MSG_SET_STYLE_BOLD
+Pode_bljano
+; _Bold
+;
+MSG_SET_STYLE_ITALIC
+_Iskoseno
+; _Italic
+;
+MSG_SET_STYLE_UNDERLINED
+Podvuceno
+; Under_lined
+;
+;  Gadget labels - User buttons
+;
+MSG_SET_BUTTON_SORT
+Poredaj
+; S_ort
+;
+MSG_SET_BUTTON_ADD
+Dod_aj
+; _Add
+;
+MSG_SET_BUTTON_DEL
+Izb
+; _Del
+;
+MSG_SET_BUTTON_LABEL
+Nas_lov
+; _Label
+;
+MSG_SET_BUTTON_CMD
+Ko_manda
+; Co_mmand
+;
+;  Gadget labels - Popup menus
+;
+MSG_SET_POPUP_TYPE
+Vrsta
+; T_ype
+;
+MSG_SET_POPUP_SORT
+Poredaj
+; S_ort
+;
+MSG_SET_POPUP_ADD
+Dodaj
+; _Add
+;
+MSG_SET_POPUP_DEL
+Izb
+; _Del
+;
+MSG_SET_POPUP_TITLE
+Naslov
+; T_itle
+;
+MSG_SET_POPUP_CMD
+Ko_manda
+; Co_mmand
+;
+MSG_SET_POPUP_SHOWIF
+Pokazi objekt
+; Show if object
+;
+MSG_SET_POPUP_INMEM
+U m_emoriji
+; in m_em
+;
+MSG_SET_POPUP_NOTINMEM
+_Nije u memoriji
+; _not in mem
+;
+;  Gadget labels - GUI options
+;
+MSG_SET_GUIOPT_SHOWBUTTONS
+Pokazi korisnicke tipke
+; Show user _buttons
+;
+MSG_SET_GUIOPT_SHOWNAV
+Pokazi _navigacijske tipke
+; Show _navigation gadgets
+;
+MSG_SET_GUIOPT_BORDERLESS
+
+; Border_less gadgets
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTTONTYPE
+
+; Gadget _Type
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_TEXTONLY
+
+; Text Only
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_TEXTIMAGE
+
+; Image & Text
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_IMAGEONLY
+
+; Image Only
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTTONPOS
+
+; Gadget _Position
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTPOS_LEFT
+
+; Left
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTPOS_RIGHT
+
+; Right
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTPOS_TOPLEFT
+
+; Top Left
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTPOS_TOPRIGHT
+
+; Top Right
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTPOS_BIGLEFT
+
+; Big Left
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTPOS_BIGRIGHT
+
+; Big Right
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_WINBDR
+
+; Window Borders
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_WINBDR_STANDARD
+
+; Standard
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_WINBDR_GADGETLESS
+
+; Gadgetless
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_WINBDR_BORDERLESS
+
+; Borderless
+;
+; ***NEW***
+;
+;  Gadget labels - Network Mail/News
+;
+MSG_SET_MAIL_TAB_ADDRESS
+_Adresa
+; _Address
+;
+MSG_SET_MAIL_TAB_MAIL
+_Posta
+; _Mail
+;
+MSG_SET_MAIL_TAB_NEWS
+_News
+; _News
+;
+MSG_SET_MAIL_TAB_OPTIONS
+_Opcije
+; _Options
+;
+MSG_SET_MAIL_ADDRESS
+_E-mail adresa
+; _E-mail address
+;
+MSG_SET_MAIL_REALNAME
+Stva_rno ime
+; _Real name
+;
+MSG_SET_MAIL_REPLYTO
+Odgovori na adresu
+; Re_ply to address
+;
+MSG_SET_MAIL_ORGANIZATION
+Or_ganizacija
+; Or_ganization
+;
+MSG_SET_MAIL_SIGNATURE
+F_ile potpisa
+; S_ignature file
+;
+MSG_SET_MAIL_SMTPHOST
+SMTP _host
+; Mail _host (SMTP)
+;
+MSG_SET_MAIL_MAILQUOTEHDR
+Dodatno zaglavlje
+; _Quote header
+;
+MSG_SET_MAIL_EXTMAILER
+Koristi vanjski mail_er
+; Use _external mailer
+;
+MSG_SET_MAIL_EXTMCOMMAND
+Komanda
+; Comman_d
+;
+MSG_SET_MAIL_EXTMARGS
+Ar_gumenti
+; Ar_guments
+;
+MSG_SET_MAIL_NNTPHOST
+Host NNTP
+; News _host (NNTP)
+;
+MSG_SET_MAIL_NEWSQUOTEHDR
+Dodatno zaglavlje
+; _Quote header
+;
+MSG_SET_MAIL_NEWSUSER
+UserID za news
+; News use_r name
+;
+MSG_SET_MAIL_NEWSPASSWORD
+Sifra za news
+; News _password
+;
+MSG_SET_MAIL_EXTNEWS
+Koristi vanjski ne_wsreader
+; Use _external newsreader
+;
+MSG_SET_MAIL_EXTNCOMMAND
+Komanda
+; Comman_d
+;
+MSG_SET_MAIL_EXTNARGS
+Ar_gumenti
+; Ar_guments
+;
+MSG_SET_MAIL_MAXARTICLES
+Najveci broj clanaka
+; Ma_x nr of articles
+;
+MSG_SET_MAIL_SORTED
+Po_redaj clanke
+; So_rt articles
+;
+MSG_SET_MAIL_FRAMED
+_Prepolovi ekran
+; S_plit screen
+;
+MSG_SET_MAIL_LONGHDRS
+Duga zag_lavlja
+; _Long headers
+;
+MSG_SET_MAIL_PROPFONT
+Proporcionalna slova
+; Proportional _font
+;
+MSG_SET_MAIL_NEWSBYNUMBER
+Procitaj _brojem
+; Retrieve by num_ber
+;
+;  Gadget labels - GUI keys
+;
+MSG_SET_KEYS_KEY
+Tipka
+; Key
+;
+MSG_SET_KEYS_COMMAND
+Ko_manda
+; Co_mmand
+;
+;  Key names
+;
+MSG_SET_KEYS_ENTER
+Ulaz
+; Enter
+;
+MSG_SET_KEYS_TAB
+Tab
+; Tab
+;
+MSG_SET_KEYS_BS
+BS
+; BS
+;
+MSG_SET_KEYS_SPACE
+Space
+; Space
+;
+MSG_SET_KEYS_UP
+Gore
+; Up
+;
+MSG_SET_KEYS_LEFT
+Lijevo
+; Left
+;
+MSG_SET_KEYS_RIGHT
+Desno
+; Right
+;
+MSG_SET_KEYS_DOWN
+Dolje
+; Down
+;
+MSG_SET_KEYS_NUM
+Num
+; Num
+;
+MSG_SET_KEYS_SHIFT
+Shift
+; Shift
+;
+MSG_SET_KEYS_WHEELUP
+Tockic gore
+; Wheel up
+;
+MSG_SET_KEYS_WHEELDOWN
+Tockic dolje
+; Wheel down
+;
+;  Gadget labels - Navigation buttons
+;
+MSG_SET_NAVS_BUTTON
+Dugme
+; Button
+;
+MSG_SET_NAVS_COMMAND
+Ko_manda
+; Co_mmand
+;
+;  Navigation button names
+;
+MSG_SET_NAVS_BACK
+Nazad
+; Back
+;
+MSG_SET_NAVS_FORWARD
+Naprijed
+; Forward
+;
+MSG_SET_NAVS_HOME
+Na vrh
+; Home
+;
+MSG_SET_NAVS_ADDHOT
+Dodaj na hotlistu
+; Add to hotlist
+;
+MSG_SET_NAVS_HOTLIST
+Pokazi hotlistu
+; Show hotlist
+;
+MSG_SET_NAVS_CANCEL
+Odustani
+; Cancel
+;
+MSG_SET_NAVS_NETSTATUS
+Status mreze
+; Network status
+;
+MSG_SET_NAVS_SEARCH
+Pretraga
+; Search
+;
+MSG_SET_NAVS_RELOAD
+Ucitaj ponovo
+; Reload
+;
+MSG_SET_NAVS_LOADIMAGES
+Ucitaj slike
+; Load images
+;
+;  Settings menu strings
+;
+MSG_SET_PROJECT_MENU
+Projekt
+; Project
+;
+MSG_SET_PROJECT_OPEN
+O/Otvori...
+; O/Open...
+;
+MSG_SET_PROJECT_SAVEAS
+A/Snimi kao...
+; A/Save as...
+;
+MSG_SET_PROJECT_QUIT
+Q/Izlaz
+; Q/Quit settings
+;
+MSG_SET_EDIT_MENU
+Edit
+; Edit
+;
+MSG_SET_EDIT_DEFAULTS
+D/Vrati originalne vrijednosti
+; D/Reset to defaults
+;
+MSG_SET_EDIT_LASTSAVED
+L/Vrati zadnje snimljene vrijednosti
+; L/Last saved
+;
+MSG_SET_EDIT_RESTORE
+R/Vrati
+; R/Restore
+;
+MSG_SET_WINDOWS_MENU
+Prozori
+; Windows
+;
+MSG_SET_WINDOWS_BROWSER
+Opcije browser-a...
+; Browser settings...
+;
+MSG_SET_WINDOWS_PROGRAM
+Opcije programa...
+; Program settings...
+;
+MSG_SET_WINDOWS_NETWORK
+Opcije mreze...
+; Network settings...
+;
+MSG_SET_WINDOWS_CLASSACT
+Opcije ClassAct...
+; ClassAct settings...
+;
+MSG_SET_WINDOWS_SNAPSHOT
+Zapamti poziciju
+; Snapshot
+;
+MSG_SET_WINDOWS_GUI
+Opcije GUI-ja...
+; GUI settings...
+;

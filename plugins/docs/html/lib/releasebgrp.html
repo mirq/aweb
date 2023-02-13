@@ -1,0 +1,32 @@
+<html>
+<head>
+<title>Releasebgrp()</title>
+</head>
+<body>
+<h1>Releasebgrp()</h1>
+
+<h2>Purpose</h2>
+Free previously obtained background RastPort.
+
+<h2>Synopsis</h2>
+<pre>
+   Releasebgrp(bgrp)
+               A0
+
+   void Releasebgrp(struct RastPort *)
+</pre>
+
+<h2>Function</h2>
+This function releases a RastPort containing a section of the background, that was
+previously obtained using the <a href=obtainbgrp.html>Obtainbgrp()</a> function.
+
+<h2>Inputs</h2>
+<table border>
+<tr><th align=left valign=top>Parameter
+   <th align=left valign=top>Description
+<tr><td valign=top><code>bgrp</code>
+   <td valign=top>Pointer to the struct RastPort that was previously obtained
+</table>
+
+<h2>See also</h2>
+<a href="obtainbgrp.html">Obtainbgrp()</a>

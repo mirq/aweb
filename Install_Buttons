@@ -1,0 +1,26 @@
+.key button
+.bra {
+.ket }
+
+if "{button}" eq ""
+  set button "Storage/Buttons/"
+  set button `requestfile Storage/Buttons title "Select AWeb button set" noicons`
+  if "$button" eq "Storage/Buttons/"
+    quit
+  endif
+else
+  set button "{button}"
+endif
+
+copy "$button" images/def_buttons
+if not warn
+  copy "$button.info" images/def_buttons.info
+  if not warn
+    requestchoice >NIL: "AWeb buttons" "Button set $button installed." "OK"
+    quit
+  endif
+endif
+
+requestchoice >NIL: "AWeb buttons" "Couldn't install new buttons.*NYou have to quit AWeb first" "OK"
+
+

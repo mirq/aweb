@@ -1,0 +1,317 @@
+
+awebcharset.awebplugin
+======================
+
+Description:
+------------
+The awebcharset.awebplugin for AWeb APL Lite (3.5.09 beta or higher)
+allows you to use the features of the codesets.library.
+
+The codesets.library provides general character conversion routines,
+e.g. for converting from one (source) charset (e.g. UTF-8) into another
+(destination) charset (e.g. ISO-8859-1) or vice versa.
+
+You can download the codesets.library at
+http://sourceforge.net/projects/codesetslib or
+http://aminet.net/package.php?package=util/libs/codesets.lha
+
+So the purpose is simply convert from one charset into another.
+e.g. if the Site use UTF-8 and the site contain 0xC3 0xBC
+(=dec: 195 188) the plugin convert them to 0xFC (252) which is
+on the Amiga usually (using ISO-8859-1) the german letter "ü".
+How the "252" is displayed is not under control of the plugin.
+
+The Plugin has also the feature to replace some UTF-8 characters
+with other "look like" characters. e.g. the U+2026 character
+'...' (HORIZONTAL ELLIPSIS) is replaced with 3 Dots.
+For a full list of replacements see at the source (awebcharset.c).
+a good Site to see the effect is e.g.
+http://www.fileformat.info/info/unicode/block/general_punctuation/utf8test.htm
+
+
+Installation:
+-------------
+First install the codesets.library. Then copy the awebcharset.awebplugin
+to AWebPlugin directory. Now run AWeb and open the Browser settings
+(usually use the Menu Settings->Browser settings...
+Here skip to the Viewers page and add or change the following entry:
+
+Type: TEXT/HTML
+Extensions:
+Action: AWeb Plugin (A)
+Name: AWebPath:AWebPlugin/awebcharset.awebplugin
+
+
+Features:
+---------
+At startup the plugin is using the system default charset as the
+destination charset and the filter and replace feature is turned on.
+
+
+The awebcharset.awebplugin implements the follow plugin commands:
+
+On  -  turns the filter on. This is the default setting.
+Off -  turns the filter off, what mean the Filter do nearly nothing.
+This setting is stored in the ENV Variable: Env:AWeb3/CharsetFilter.
+(more about ENV Variables see Usage)
+
+Note: If the Filter is turned off the replace feature is of course
+also disabled.
+
+
+ReplaceOn  - turns the feature to replace some UTF-8 character on.
+             This is the default setting.
+ReplaceOff - turn that feature off.
+This setting is stored in the ENV Variable: Env:AWeb3/CharsetReplace.
+
+
+RequestOn  - turns the feature to Show a Requester if the Meta and
+             Header Charset differ on.
+RequestOff - turn that feature off. This is the default setting.
+This setting is stored in the ENV Variable: Env:AWeb3/CharsetRequest.
+
+Note: If that Feature is turned off the header Charset is used otherwise
+a Requester always ask which charset should be used if the Meta and Header
+Charset differ.
+
+
+INFO - show in a requester the Filter, Replace and Request Mode (On/Off),
+the URL, Header and Meta Charset definitions from the Server/Document
+and the used Source and Destination Charsets.
+
+Note: The Requester show the Information for the latest Data which go
+through the Filter, which is must not the currently active Window (Page)
+or the visible Part of the page. So sometimes the Requester show wrong Datas.
+
+
+If a charset (supported from codeset.library) is given as command then
+the filter is turned on (for the case it was turned off before) and this
+charset is used as destination charset.
+
+e.g. if you want to convert to the koi8-r charset then send koi8-r
+to the plugin. See also Usage section.
+
+
+The commands are case-insensitive. e.g. 'On', 'ON' and 'oN' do the same.
+
+
+If a not supported command is send to the plugin then the plugin
+return with RC=10 and the default (system) codeset is used.
+
+
+If the codesets.library isn't found or you run a wrong AWeb Version you
+get a requester which inform you about that and the charset support is disabled.
+
+
+Usage:
+------
+Usually you don't need the command function but if you want to change
+the used charset you must send a command to the Pugin.
+
+Here are 4 ways to do this:
+
+1. Use a menu entry
+-------------------
+Make a menu entry in GUI settings->Menus:
+Type: Item
+Title: Awebcharset-OFF
+Command: PLUGIN AWebPath:AWebPlugin/awebcharset.awebplugin Off
+
+(BTW: Don't forget to hit the Enter/Return key after insert
+the text into the string gadgeds)
+
+2. Use a user button
+--------------------
+Make a User Button in GUI settings->Buttons:
+Label: Off
+Command: PLUGIN AWebPath:AWebPlugin/awebcharset.awebplugin Off
+
+3. Use a Hotkey
+---------------
+Select a Hotkey from the list in GUI settings->Keys:
+Command: PLUGIN AWebPath:AWebPlugin/awebcharset.awebplugin Off
+
+4. Use a Arexx command
+----------------------
+Send a command like 'PLUGIN AWebPath:AWebPlugin/awebcharset.awebplugin Off'
+to the AWeb ARexx port. For more Information about ARexx see:
+file:///AWebPAth:docs/arexx/program.html#PLUGIN
+
+
+Similar with all the other supported commands.
+
+After you use the command function you must reload the page.
+The page should then displayed with your new settings.
+
+Using the ENV Variables
+-----------------------
+If you want to turn the Filter On/Off or turn Replace On/Off you can also
+use the ENV Variables mentioned above.
+
+To turn the Filter off set the Variable AWeb3/CharsetFilter to Off or 0.
+To turn the Replace feature off set the Variable AWeb3/CharsetReplace to Off or 0.
+
+The Value are case-insensitive. e.g. 'Off', 'OFF' and 'oFF' do the same.
+Note: all other Values (or if such Variable not exists) are recognized as "On".
+
+
+How to set a ENV Variable:
+
+Open a Shell and type e.g. "setenv AWeb3/CharsetFilter Off" (without the quotes).
+and the Filter is turned off until you change the setting or do a reboot.
+
+BTW: You can also use your favorite Texteditor create a new File containing the
+Word "Off" and save the file to "ENV:AWeb3" as "CharsetFilter" (all without the quotes).
+
+If you want that your setting is also available after a reboot you should save
+the Variable to "ENVARC:AWeb3/" Here are several ways to do that:
+
+1. copy the Variable from Env:AWeb3/ to setenv ENVARC:AWeb3/
+e.g. type in a shell: copy Env:AWeb3/CharsetFilter ENVARC:AWeb3/CharsetFilter
+
+2. if you are own a newer shell (e.g. Version 45.25) then you can use the
+setenv command to save your Variable. e.g. type in a shell:
+"setenv AWeb3/CharsetFilter SAVE Off" (without the quotes).
+Note the SAVE Keyword must be between the Path/Name and the Value.
+
+
+Disadvantages
+-------------
+If you want to save the original page you have to turn off
+the plugin, reload the page and save the source.
+If you don't do that the page is saved in converted format.
+
+The Info Requester is an synchronous Requester what mean AWeb stop all
+activity (e.g. rendering, loading etc.) until the Requester is closed.
+
+
+How it works:
+-------------
+The awebcharset plugin look if the server provides a valid header charset
+description. If such description is found then use this charset as source
+charset. If such description isn't found then the plugin search in the
+first data block of the file for a valid charset definition and if found
+use this charset as source charset.
+
+It also looks if here is a XML encoding definition and use this definition
+if no other charset information is found.
+
+If no definition is found the default charset (ISO-8859-1) is used.
+
+If a header and a meta definition is found but differ then the header charset
+is used. But you can use the RequestOn Command to change this default behaviour
+and let a Requester pop up and ask you which Charset should be used. Here you
+have also a Gadget called "Don't ask again"  which turn off this Request feature
+again. You can of course always turn on the Request Feature using the "RequestOn"
+command again or set the ENV Variable. (see Features and Usage)
+
+
+The codesets.library do always a foreign->local charset translation.
+There isn't always a 100% mapping of chars. So for every unknown char
+which can't be expressed in the locale charset a "?" will be inserted.
+
+To reduce such signs here is the Replace function which replace some
+characters with similar "look like" characters.
+
+
+TODO:
+-----
+Maybe some more character replacements. Any suggestions?
+
+
+History: (DateFormat: YYYY-MM-DD)
+--------
+Version 1.4 - 2009-10-06
+- Provide a cleared structure for the InitSemaphore() call and free the
+  structure at Expungepluginlib().
+
+Version 1.3 - 2009-09-27
+- Add a Semaphore protected list for some memory allocations and delete
+  all not yet freed memory at Expungepluginlib. The changes avoid memory
+  leaks if the Plugin is in use while the user wants to quit AWeb which
+  causes a expunge of the Plugin.
+
+Version 1.2 - 2008-03-15
+- Add a ObtainSemaphore call before Initpluginlib() in startup.c.
+  This should fix the random crashes that some people were experiencing.
+- Add work arounds for some servers or webpages which use "utf8" as name
+  instead of the correct name "utf-8".
+- Add some casts in startup.c and awebcharset.c to remove some warnings.
+- Add a #include <exec/semaphores.h> in awebcharset.c to remove a warning.
+- Changed some Parts in this readme.
+
+Version 1.1 - 2007-05-02
+- Fix a bug which cause a double rendering if a wrong AWeb Version was used.
+- Added the RequestOn-Off Command which use the ENV Variable CharsetRequest.
+
+
+Version 1.0 - 2007-04-18
+It's now Version 1.0 because i think the most wanted features are included.
+- Added a Revision check for open "codesets.library" to avoid using a buggy
+  Revision. The minimum required Version.Revision is 6.2.
+- Added the "codesets.library" download URL to the Requesters which is
+  displayed if no codesets.library (or a wrong Revision) is installed.
+- Added the AWeb download URL to the Requesters which is displayed if a
+  old AWeb version is running.
+- Added localisation for the Requesters. Doesn't work with AWeb 3.5.08 therfore
+  the minimum required AWeb Version is now 3.5.09.
+- Added german .ct File.
+
+
+Version 0.5 - 2007-03-14 (never released)
+- Changed the STATUS Command to INFO because the Requester show Infos.
+- Moved the CodesetsFind() calls to the first data block so the function
+  is only 2 times called for a document (instead of 2 times for every Block).
+- Deleted code for  U+2019 -> U+00B4 (RIGHT SINGLE QUOTATION MARK) replacement
+  because the codesets.library know it already.
+- Added support for U+2190 (LEFTWARDS ARROW) and U+2192 (RIGHTWARDS ARROW).
+- Added the URL from the last processed File to the Info Requester.
+- Added the feature to re-use an already allocated Replace-Buffer. So for the
+  most sites here are only 1 or 2 calls to allocate and free such buffer instead
+  of one call to allocate and free such buffer for every Block like before.
+
+
+Version 0.4 - 2007-03-08
+- Add the Replace feature.
+- Use ENV Variables CharsetFilter and CharsetReplace in Env:AWeb3/.
+- Rewrote the search routine for the charset definition. Now the Charset
+  definition must be in a active Meta tag and the search for a definition
+  ends at a </HEAD> or <BODY> Tag. So the Plugin don't recognize utf-8
+  as charset on a Page  which contain anything like:
+  <html><head><title>Test</title></head><body>use charset=utf-8</body></html>
+- Add a Requester if the Header and Meta the Charset definition differ.
+  The User has the choice which Charset should be used. The Requester
+  has also a Gadget to turn off the Filter.
+- Add the Replace Status, Header and Meta Charset Names to the Statusrequester.
+- Add XML ENCODING support.
+- Changed some Parts in this readme.
+
+
+Version 0.3 - 2006-09-10
+
+- Port to OS4 - thanks to Andy Broad <andy@broad.ology.org.uk>.
+  (also use another startup.c file.)
+- Make this awebcharset.readme and delete the 'how to use' from source files.
+- Add the 'ON' command to Commandplugin again.
+- Moved the code which open/close the needed libraries from Initpluginlib()
+  and Expungepluginlib() (in awebcharset.c) to Openlib()/Closelib() (in startup.c)
+- Add a Intuition requester if the plugin run on a very old Version. (e.g AWeb-II 3.0b).
+- Add a AWeb requester if run on a old Version - but keep AWeb usable
+  (do not Filter via codesets.library).
+- Add a AWeb (localized) requester if the codesets.library isn't found.
+
+Version 0.2 - 2006-05-05
+
+- Remove the ON command and add the destination charset as ON command
+- Add header charset support and add a check for a valid Charset in the
+  Command, header and first Block definition.
+
+Version 0.1 - 2006-05-02
+
+First release
+
+
+Author:
+-------
+Frank (Opi) Weber <opionline@yahoo.de>
+

@@ -1,0 +1,2186 @@
+## version $VER: AWeb.catalog 3.0 (30.06.2003)
+## language nederlands
+## codeset 0
+;
+; AWeb.cd - AWeb catalog description file
+;
+; $Id: aweb.ct,v 1.8 2009/09/11 11:42:31 opi Exp $
+;
+;  The MSG_DUMMY_nn labels are there because FlexCat doesn't
+;  understand the LABEL (+1//) syntax (C='s Catcomp uses this
+;  to skip 1 number)
+;
+;
+;-------------- General -----------------------------
+;
+MSG_REQUEST_TITLE
+AWeb verzoek
+; AWeb request
+;
+MSG_REQUEST_YES_NO
+
+; Yes|No
+;
+; ***NEW***
+;
+;
+;-------------- About requester ---------------------
+;
+MSG_ABOUT_TITLE
+Over AWeb
+; About AWeb
+;
+MSG_ABOUT_REGNR
+Registratienr
+; Registration #
+;
+MSG_ABOUT_REGTO
+Geregistreerd voor
+; Registered to
+;
+MSG_ABOUT_SCREENNAME
+Schermnaam
+; Public screen name
+;
+MSG_ABOUT_PORTNAME
+ARexx-poortnaam
+; ARexx port name
+;
+MSG_ABOUT_EMAIL
+E-mail
+; E-mail
+;
+MSG_ABOUT_WWW
+WWW
+; WWW
+;
+MSG_ABOUT_OK
+_Ok
+; _Ok
+;
+MSG_ABOUT_UNREGISTERED
+Ongeregistreerde versie\n
+; Unregistered version\n
+;
+MSG_ABOUT_DEMO
+Ongeregistreerde demoversie\n
+; Unregistered demo version\n
+;
+MSG_ABOUT_DISTRIBUTED
+Gedistribueerd door %s
+; Distributed by %s
+;
+; Translators give yourself credit with this string.
+; It should read something like "(Language) translation by: (your name)\n"
+;
+MSG_ABOUT_TRANSLATOR
+Nederlandse vertaling: Yvon Rozijn\n
+; 
+;
+MSG_ABOUT_SPECIAL
+Speciale versie gebundeld met het Amiga OS\n
+; Special version for distribution with Amiga OS\n
+;
+;-------------- Quit requester ----------------------
+;
+MSG_QUIT_TEXT
+Weet u zeker dat u AWeb wilt beëindigen?
+; Are you sure you want to quit AWeb?
+;
+MSG_QUIT_OK
+_Ok
+; _Ok
+;
+MSG_QUIT_CANCEL
+_Annuleer
+; _Cancel
+;
+MSG_QUIT_WARNING
+WAARSCHUWING: Gegevensoverdracht wordt afgebroken!\n\n
+; WARNING: Transfers will be aborted!\n\n
+;
+;-------------- Demoversion requester ---------------
+;
+MSG_DEMO_TEXT
+Dit is de demoversie van AWeb\nmeerdere documentvensters zijn niet mogelijk
+; This is the demo version of AWeb\nmultiple document windows are not supported
+;
+MSG_DEMO_OK
+_Ok
+; _Ok
+;
+;
+;-------------- Close windows requester -------------
+;
+MSG_SCRCLOSE_TEXT
+AWeb kan het scherm niet sluiten.\nSluit aub alle vensters.
+; AWeb can't close its screen.\nPlease close all windows.
+;
+MSG_SCRCLOSE_OK
+Ok
+; Ok
+;
+;
+;-------------- Network status window ---------------
+;
+MSG_NWS_TITLE
+Netwerkstatus
+; Network status
+;
+MSG_NWS_QUEUED
+Wachtrij
+; Queued
+;
+MSG_NWS_STARTED
+Gestart
+; Started
+;
+MSG_NWS_LOOKUP
+Opzoeken
+; Looking up
+;
+MSG_NWS_CONNECT
+Verbinding
+; Connecting
+;
+MSG_NWS_WAIT
+Antwoord
+; Waiting
+;
+MSG_NWS_PROCESS
+Verwerken
+; Processing
+;
+MSG_NWS_LOGIN
+Inloggen
+; Logging in
+;
+MSG_NWS_CPS
+%ld cps
+; %ld cps
+;
+MSG_NWS_NEWSGROUP
+Doorzoeken
+; Scanning
+;
+MSG_NWS_UPLOAD
+Verzenden
+; Uploading
+;
+;-------------- Authorization requester -------------
+;
+MSG_AUTH_TITLE
+Autorisatie
+; Authorization
+;
+MSG_AUTH_PROMPT
+Gebruikersnaam en wachtwoord vereist voor
+; Userid and password required for
+;
+MSG_AUTH_USERID
+_Gebruikersnaam
+; _Userid
+;
+MSG_AUTH_PASSWORD
+_Wachtwoord
+; _Password
+;
+MSG_AUTH_OK
+_Ok
+; _Ok
+;
+MSG_AUTH_CANCEL
+_Annuleer
+; _Cancel
+;
+MSG_AUTH_PROMPT_FTP
+Wachtwoord vereist voor
+; Password required for
+;
+MSG_AUTH_USERID_FTP
+Gebruikersnaam
+; Userid
+;
+MSG_AUTH_PROMPT_PROXY
+Gebruikersnaam en wachtwoord vereist voor proxy
+; Userid and password required for proxy
+;
+MSG_AUTH_PROMPT_MASTER
+
+; Please enter the password to show the passwords.
+;
+; ***NEW***
+;
+;
+;-------------- File requesters ---------------------
+;
+MSG_FILE_SAVETITLE
+Selecteer bestandsnaam (bewaren)
+; Select save filename
+;
+MSG_FILE_SAVE
+Bewaar
+; Save
+;
+MSG_FILE_INCTEXT
+Incompleet bestand!\n%s\nVerwacht: %ld bytes\nOntvangen: %ld bytes\n\n\
+Kies OK om de gegevens te behouden.
+; Incomplete file!\n%s\nExpected: %ld bytes\nReceived: %ld bytes\n\n\
+; Choose OK to keep the partial data.
+;
+MSG_DUMMY_1
+
+; 
+MSG_FILE_EXISTTEXT
+Bestand:\n%s\nbestaat al!
+; File:\n%s\nalready exists!
+;
+MSG_FILE_EXISTBUTTONS
+_Overschrijven|_Toevoegen|_Nieuwe naam|_Annuleer
+; _Overwrite|_Append|_New name|_Cancel
+;
+MSG_FILE_AREXXTITLE
+Selecteer ARexx macro
+; Select ARexx macro
+;
+MSG_FILE_HOTLISTTITLE
+Selecteer hiërarchische snellijst
+; Select hierarchical hotlist
+;
+MSG_FILE_LOCALTITLE
+Open lokaal bestand
+; Open local file
+;
+MSG_FILE_OPEN
+Open
+; Open
+;
+MSG_FILE_TEMPTITLE
+Kan tijdelijk pad niet vinden:\n%s\nGebruik T:
+; Can't find temporary path:\n%s\nUse T: instead.
+;
+MSG_FILE_TEMPBUTTONS
+_Ok
+; _Ok
+;
+MSG_FILE_INCBUTTONS2
+_Ok|Op_nieuw|_Annuleer
+; _Ok|_Retry|_Cancel
+;
+MSG_FILE_SETTINGSTITLE
+Selecteer instellingendirectory
+; Select settings directory
+;
+MSG_FILE_UPLOADTITLE
+Selecteer te verzenden bestand
+; Select file to upload
+;
+;-------------- TCP close requester -----------------
+;
+MSG_TCP_ENDTCP
+AWeb is gestopt.\nMoet de TCP verbinding ook beëindigd worden?
+; AWeb is stopped.\nShould the TCP connection be terminated too?
+;
+MSG_TCP_BUTTONS
+_Ja|_Nee
+; _Yes|_No
+;
+;-------------- Startup requester -------------------
+; Mind the maximum length!
+;
+MSG_STARTUP_FONTS
+Tekensets laden
+; Loading fonts
+;
+MSG_STARTUP_IMAGES
+Afbeeldingen laden
+; Loading GUI images
+;
+MSG_STARTUP_CACHE
+Cache-index laden
+; Loading cache index
+;
+;-------------- Hotlist requester -------------------
+;
+MSG_HOTL_TITLE
+AWeb snellijst
+; AWeb hotlist
+;
+MSG_HOTL_ADDLINK
+N_ieuwe
+; _Add link
+;
+MSG_HOTL_ADDGROUP
+Nw _groep
+; Add _group
+;
+; (No hotkey for this one please!)
+MSG_HOTL_REMOVE
+Wis
+; Remove
+;
+MSG_HOTL_FOLLOW
+_Volg
+; _Follow
+;
+MSG_HOTL_NAME
+_Naam
+; _Name
+;
+MSG_HOTL_URL
+_URL
+; _URL
+;
+MSG_HOTL_NEWGROUP
+Nieuwe groep
+; New group
+;
+MSG_HOTL_NEWLINK
+Nieuwe ingang
+; New link
+;
+; -- new hotlist viewer requester --
+;
+MSG_HOTL_TITLE_VIEWER
+AWeb snellijst
+; AWeb hotlist viewer
+;
+MSG_HOTL_VURLS
+UR_Ls
+; UR_Ls
+;
+MSG_HOTL_MANAGER
+_Beheerder
+; _Manager
+;
+; -- new hotlist manager requester --
+;
+MSG_HOTL_TITLE_MANAGER
+AWeb snellijst-beheerder
+; AWeb hotlist manager
+;
+MSG_HOTL_LTYPE
+Li_jst
+; L_ist
+;
+MSG_HOTL_LTYPE_REST
+Overig
+; Rest
+;
+MSG_HOTL_LTYPE_ALL
+Alles
+; All
+;
+MSG_HOTL_LTYPE_GROUPS
+Groepen
+; Groups
+;
+MSG_HOTL_LSORT
+Volgor_de
+; S_ort
+;
+MSG_HOTL_LSORT_TITLE
+Titel
+; Title
+;
+MSG_HOTL_LSORT_URL
+URL
+; URL
+;
+MSG_HOTL_MOVEIN
+_< In
+; _< In
+;
+MSG_HOTL_MOVEOUT
+Uit _>
+; Out _>
+;
+MSG_HOTL_MOVE
+< Verpl_aats
+; < _Move
+;
+MSG_HOTL_DEL
+_Wis
+; _Delete
+;
+MSG_HOTL_WHERE
+Waar_?
+; _Where
+;
+MSG_HOTL_SHOW
+_Toon
+; S_how
+;
+MSG_HOTL_SORT
+_Sorteer
+; Sor_t
+;
+MSG_HOTL_PARENT
+_Hogere
+; _Parent
+;
+MSG_HOTL_ALL
+Gr_oepen
+; G_roups
+;
+MSG_HOTL_ADDENTRY
++ _Ingang
+; + _Entry
+;
+MSG_HOTL_ADDGROUP2
++ _Groep
+; + _Group
+;
+MSG_HOTL_URLS
+UR_Ls
+; UR_Ls
+;
+MSG_HOTL_REVERT
+Te_rug
+; Re_vert
+;
+MSG_HOTL_SAVE
+_Bewaar
+; _Save
+;
+MSG_HOTL_LADD
+Ni_euwe
+; _Add
+;
+MSG_HOTL_FIND
+_Zoek
+; _Find
+;
+MSG_HOTL_PATTERN
+_Patroon
+; Mat_ch
+;
+MSG_HOTL_NEXT
+_Volgende
+; Ne_xt
+;
+MSG_HOTL_DEFAULT_TITLE
+** Nieuwe ingang **
+; ** New link **
+;
+MSG_HOTL_DEFAULT_GROUP
+** Nieuwe groep **
+; ** New group **
+;
+MSG_HOTL_TITLE_ALLGROUPS
+Alle groepen
+; All groups
+;
+MSG_HOTL_TITLE_WHERE
+Groepen met deze ingang
+; Groups containing this entry
+;
+MSG_HOTL_TITLE_REST
+Overige ingangen
+; Unassigned entries
+;
+MSG_HOTL_TITLE_ALL
+Alle ingangen
+; All entries
+;
+MSG_HOTL_TITLE_ROOTGROUPS
+Hoogste groepen
+; Root-level groups
+;
+MSG_HOTL_LSORT_DATE
+Datum
+; Date
+;
+;
+;--------------  Window history requester -------------------
+;
+MSG_WHIS_TITLE
+Vensterhistorie
+; Window history
+;
+MSG_WHIS_FILTER
+_Filter
+; _Filter
+;
+MSG_WHIS_WINDOW
+_Venster
+; _Window
+;
+MSG_WHIS_ORDER
+V_olgorde
+; _Order
+;
+MSG_WHIS_DISPLAY
+_Toon
+; _Display
+;
+MSG_WHIS_ORDER_NATURAL
+Natuurlijk
+; Natural
+;
+MSG_WHIS_ORDER_MAINLINE
+Hoofdlijn
+; Mainline
+;
+MSG_WHIS_ORDER_RETRIEVED
+Opgehaald
+; Retrieved
+;
+MSG_WHIS_ORDER_TITLE
+Titel
+; Title
+;
+MSG_WHIS_ORDER_URL
+URL
+; URL
+;
+;
+;-------------- Cache browser ---------------------------
+;
+MSG_CABR_TITLE
+Cachelijst
+; Cache browser
+;
+MSG_CABR_URL
+URL
+; URL
+;
+MSG_CABR_DATE
+Datum
+; Date
+;
+MSG_CABR_SIZE
+Grootte
+; Size
+;
+MSG_CABR_TYPE
+Type
+; Type
+;
+MSG_CABR_FILE
+Bestand
+; File
+;
+MSG_CABR_STATUS
+%ld bestanden, %ld kB
+; %ld files, %ld kB
+;
+MSG_CABR_SORTBY
+_Sorteer op
+; _Sort by
+;
+MSG_CABR_OPEN
+_Open
+; _Open
+;
+MSG_CABR_SAVE
+_Bewaar
+; Sa_ve
+;
+MSG_CABR_DELETE
+_Wis
+; _Delete
+;
+MSG_CABR_FIND
+_Zoek
+; _Find
+;
+MSG_CABR_PATTERN
+_Patroon
+; _Match
+;
+MSG_CABR_NEXT
+_Volgende
+; _Next
+;
+MSG_CABR_CHARSET
+
+; Charset
+;
+; ***NEW***
+;
+MSG_CABR_ETAG
+
+; Etag
+;
+; ***NEW***
+;
+;-------------- Progress requester ----------------------
+;
+MSG_PROGRESS_TITLE
+AWeb voortgang
+; AWeb progress
+;
+MSG_PROGRESS_CANCEL
+Annuleer
+; Cancel
+;
+;
+;-------------- Fix cache requesters ---------------------
+;
+MSG_FIXCACHE_WARNING
+WAARSCHUWING!\n\
+Deze functie verwijderd alle vreemde bestanden uit de\n\
+%s lade
+; WARNING!\n\
+; This function will delete all foreign files from the\n\
+; %s drawer
+;
+MSG_FIXCACHE_BUTTONS
+_Ok|_Annuleer
+; _Ok|_Cancel
+;
+MSG_FIXCACHE_PROGRESS
+Bezig de cache te herstellen...
+; Fixing the disk cache...
+;
+MSG_FIXCACHE_DELETEPROGRESS
+
+; Delete %ld Files from disk cache...
+;
+; ***NEW***
+;
+MSG_FIXCACHE_DELETEIMAGES
+Weet u zeker dat u alle afbeeldingen\n\
+uit de cache wilt verwijderen?
+; Are you sure you want to delete\n\
+; all images from the cache?
+;
+MSG_FIXCACHE_DELETEDOCS
+Weet u zeker dat u alle documenten\n\
+uit de cache wilt verwijderen?
+; Are you sure you want to delete\n\
+; all documents from the cache?
+;
+MSG_FIXCACHE_ERASE
+Weet u zeker dat u alle documenten en afbeeldingen\n\
+uit de cache wilt verwijderen?
+; Are you sure you want to delete\n\
+; all documents and images from the cache?
+;
+MSG_FIXCACHE_CORRUPT
+De cacheregistratie is niet te lezen\n\
+of van een oudere versie van AWeb.\n\
+Gecachede files kunnen niet meer wirden gebruikt.\n\
+Wilt u nu opschonen?
+; The cache registration is unreadable\n\
+; or from an older version of AWeb.\n\
+; Cached files cannot be used any more.\n\
+; Do you want to clean up now?
+;
+;-------------- Search requesters ---------------------
+;
+MSG_SEARCH_STRING
+Zoek _naar
+; Search _for
+;
+MSG_SEARCH_IGNORECASE
+Negeer _hoofdletters
+; _Ignore case
+;
+MSG_SEARCH_SEARCH
+_Zoek
+; _Search
+;
+MSG_SEARCH_FROMTOP
+_Vanaf begin
+; From _top
+;
+MSG_SEARCH_BACKWARDS
+Zoek _terug
+; _Backwards
+;
+MSG_SEARCH_CANCEL
+_Annuleer
+; _Cancel
+;
+MSG_SEARCH_NOTFOUND
+Zoekargument niet gevonden
+; String not found
+;
+MSG_SEARCH_OK
+  _Ok  \
+
+; _Ok
+;
+;
+;-------------- Popup menu ---------------------------
+;
+MSG_POPUP_LOADIMAGE
+Laad afbeelding
+; Load image
+;
+MSG_POPUP_RELOADIMAGE
+Laad afbeelding opnieuw
+; Reload image
+;
+MSG_POPUP_SAVEIMAGE
+Bewaar afbeelding
+; Save image
+;
+MSG_POPUP_DOWNLOADIMAGE
+Laad en bewaar afbeelding
+; Download image
+;
+MSG_POPUP_FLUSHIMAGE
+Wis afbeelding
+; Flush image
+;
+MSG_POPUP_SHOWIMAGE
+Laat afbeelding zien
+; Show image
+;
+MSG_POPUP_OPENLINK
+Open verwijzing
+; Open link
+;
+MSG_POPUP_OPENLINKNW
+Open verwijzing in nieuw venster
+; Open link in new window
+;
+MSG_POPUP_LOADLINK
+Laad verwijzing in achtergrond
+; Load link in background
+;
+MSG_POPUP_SAVELINK
+Bewaar verwijzing
+; Save link
+;
+MSG_POPUP_DOWNLOADLINK
+Laad en bewaar verwijzing
+; Download link
+;
+MSG_POPUP_ADDLINK
+Voeg verwijzing toe aan snellijst
+; Add link to hotlist
+;
+MSG_POPUP_RELOADFRAME
+Laad inhoud opnieuw
+; Reload contents
+;
+MSG_POPUP_SAVEFRAME
+Bewaar broncode
+; Save source
+;
+MSG_POPUP_VIEWFRAME
+Bekijk broncode
+; View source
+;
+MSG_POPUP_SHOWFRAME
+Laat apart zien
+; Show separately
+;
+MSG_POPUP_SEARCHFRAME
+Zoek in inhoud
+; Search in contents
+;
+MSG_POPUP_INFOFRAME
+Informatie
+; Info
+;
+MSG_POPUP_IMAGE2CLIP
+
+; Image Url to Clipboard
+;
+; ***NEW***
+;
+;
+;-------------- Print --------------------------------
+;
+MSG_PRINTP_TITLE
+Afdrukparameters
+; Print parameters
+;
+MSG_PRINTP_SCALE
+_Schaal (%)
+; _Scale (%)
+;
+MSG_PRINTP_PRINTBG
+Druk achter_gronden
+; Print _backgrounds
+;
+MSG_PRINTP_FORMFEED
+_Nieuw blad
+; _Formfeed
+;
+MSG_PRINTP_CENTER
+_Centreer
+; Ce_nter
+;
+MSG_PRINTP_PRINT
+_Druk af
+; _Print
+;
+MSG_PRINTP_CANCEL
+_Annuleer
+; _Cancel
+;
+MSG_PRINT_NOPRINTER
+Onmogelijk de printer te benaderen
+; Unable to access the printer
+;
+MSG_PRINT_OK
+_Ok
+; _Ok
+;
+MSG_PRINT_PROGRESS
+Bezig met afdrukken...
+; Printing in progress...
+;
+MSG_PRINTP_LAYOUTWIDTH
+Opmaak_breedte
+; _Layout Width
+;
+MSG_PRINTP_LW_WINDOW
+Venster
+; Window
+;
+MSG_PRINTP_LW_DOCUMENT
+Document
+; Document
+;
+MSG_PRINTP_LW_SCREEN
+Scherm
+; Screen
+;
+;
+;-------------- Cookie warning ----------------------
+;
+MSG_COOKIE_TITLE
+Cookie alarm
+; Cookie alert
+;
+MSG_COOKIE_WARNING
+Er gaat een NetScape cookie gezet worden!
+; About to set a NetScape cookie!
+;
+MSG_COOKIE_NAME
+Cookie naam:
+; Cookie name:
+;
+MSG_COOKIE_VALUE
+Cookie waarde:
+; Cookie value:
+;
+MSG_COOKIE_DOMAIN
+Voor domein:
+; For domain:
+;
+MSG_COOKIE_PATH
+Pad:
+; Path:
+;
+MSG_COOKIE_COMMENT
+Commentaar:
+; Comment:
+;
+MSG_COOKIE_MAXAGE
+Max-leeftijd:
+; Max-age:
+;
+MSG_COOKIE_EXPIRES
+Verloopt op:
+; Expires:
+;
+MSG_COOKIE_ONCE
+_Eenmaal
+; _Once
+;
+MSG_COOKIE_ACCEPT
+_Accepteer
+; _Accept
+;
+MSG_COOKIE_NEVER
+_Nooit
+; _Never
+;
+MSG_COOKIE_CANCEL
+Ann_uleer
+; _Cancel
+;
+MSG_COOKIE_SECURE
+AWeb zal deze cookie alleen over\nbeveiligde verbindingen terugzenden.
+; AWeb will send this cookie back\nover secure connections only.
+;
+MSG_COOKIE_UNSECURE
+AWeb zal deze cookie ook over\nONBEVEILIGDE verbindingen terugzenden.
+; AWeb will send this cookie back\nover UNSECURE connections too.
+;
+;
+;-------------- Info requester ----------------------
+;
+MSG_INFO_TITLE
+Informatie
+; Information
+;
+MSG_INFO_FROMCACHE
+Uit AWeb cache gelezen
+; Read from AWeb cache
+;
+MSG_INFO_XFER
+Kopregels in boodschap:
+; Transfer headers:
+;
+MSG_INFO_META
+Meta-informatie:
+; Meta information:
+;
+MSG_INFO_LINK
+Aanklikbare verwijzingen:
+; Clickable links:
+;
+MSG_INFO_CIPHER
+HTTPS versleutelmethode: %s
+; HTTPS cipher method: %s
+;
+MSG_INFO_SSLLIBRARY
+Gebruikte SSL library: %s
+; SSL library used: %s
+;
+;-------------- Default buttons ---------------------
+;
+MSG_USERBUTTON_CACHE
+Cache
+; Cache
+;
+MSG_USERBUTTON_CLOCK
+Klok
+; Clock
+;
+MSG_USERBUTTON_SEARCH
+
+; Search
+;
+; ***NEW***
+;
+;-------------- Authorizations edit requester -------
+;
+MSG_AUTHEDIT_TITLE
+Bewerk autorisaties
+; Edit authorizations
+;
+MSG_AUTHEDIT_TITLE_SERVER
+Server
+; Server
+;
+MSG_AUTHEDIT_TITLE_USERID
+Gebruiker
+; Userid
+;
+MSG_AUTHEDIT_TITLE_PASSWORD
+
+; Password
+;
+; ***NEW***
+;
+MSG_AUTHEDIT_DEL
+_Wis
+; _Del
+;
+MSG_AUTHEDIT_SERVER
+Server
+; Server
+;
+MSG_AUTHEDIT_USERID
+_Gebruiker
+; _Userid
+;
+MSG_AUTHEDIT_PASSWORD
+W_achtwoord
+; _Password
+;
+MSG_AUTHEDIT_SHOWPASS
+
+; _Show Passwords
+;
+; ***NEW***
+;
+MSG_AUTHEDIT_SHOWPWREQ
+
+; To use this function you must first enter a\n\
+; master password then you can use the function\n\
+; to show all passwords.\n\
+; \n\
+; Warning:\n\
+; Please remember or notice your password\n\
+; because here is no chance to show or delete\n\
+; the password without the password!
+;
+; ***NEW***
+;
+MSG_AUTHEDIT_SHOWPWREQ_BUTTONS
+
+; _Ok|_Cancel
+;
+; ***NEW***
+;
+;-------------- JavaScript prompt requester ---------
+;
+MSG_JSPROMPT_OK
+_Ok
+; _Ok
+;
+MSG_JSPROMPT_CANCEL
+_Annuleren
+; _Cancel
+;
+;
+;-------------- Unsecure form warning ---------------
+;
+MSG_FORMWARN_TITLE
+AWeb waarschuwing
+; AWeb warning
+;
+MSG_FORMWARN_WARNING
+Gegevens van dit formulier worden via\neen ONBEVEILIGDE verbinding verzonden.
+; Data from this form will be sent\nover an UNSECURE connection.
+;
+MSG_FORMWARN_BUTTONS
+_Ok|_Annuleren
+; _Ok|_Cancel
+;
+;
+;-------------- Mailer messages ---------------------
+;
+MSG_MAIL_TITLE
+AWeb fout bij posten
+; AWeb mailer error
+;
+MSG_MAIL_NOSMTPHOST
+U dient eerst een SMTP server op te geven.\nZie Netwerk/Post instellingen.
+; You have to configure your SMTP host first.\nSee Network/Mail settings.
+;
+MSG_MAIL_NOCONNECT
+Kan niet verbinden met %s.
+; Can't connect to %s.
+;
+MSG_MAIL_MAILFAILED
+Versturen van het bericht is mislukt.
+; Sending mail message failed.
+;
+MSG_MAIL_BUTTONS
+_Opnieuw|_Bewaren|_Annuleren
+; _Retry|_Save|_Cancel
+;
+MSG_MAIL_SAVETITLE
+Bewaar muslukt bericht
+; Save failed message
+;
+MSG_MAIL_MAILTO_TITLE
+Bericht aan %s
+; Mail to %s
+;
+MSG_MAIL_MAILTO_HEADER
+Bericht aan: %s
+; Mail to: %s
+;
+MSG_MAIL_TO
+Aan:
+; To:
+;
+MSG_MAIL_SUBJECT
+Onderwerp:
+; Subject:
+;
+MSG_MAIL_MESSAGE_BODY
+Inhoud van bericht:
+; Message body:
+;
+MSG_MAIL_EXTRA_HEADERS
+Extra mail headers opgenomen
+; Extra mail headers included
+;
+MSG_MAIL_SEND
+Verzend bericht
+; Send mail
+;
+MSG_MAIL_RESET
+Initialiseer
+; Reset
+;
+MSG_MAIL_RETURN
+Ga terug
+; Return
+;
+MSG_MAIL_MAIL_SENT_TITLE
+Bericht aan: %s verzonden
+; Mail sent to: %s
+;
+MSG_MAIL_MAIL_SENT
+<H1>Bericht verzonden</H1>\nUw bericht aan <B>%s</B> is met succes verzonden.
+; <H1>Mail sent</H1>\nYour mail message to <B>%s</B> has been sent succesfully.
+;
+;
+;-------------- Newsreader messages -----------------
+;
+MSG_NEWS_TITLE
+AWeb nieuwslezer fout
+; AWeb newsreader error
+;
+MSG_NEWS_NONNTPHOST
+U dient eerst een NNTP server op te geven.\nZie Netwerk/Nieuws instellingen.
+; You have to configure your NNTP host first.\nSee Network/News settings.
+;
+MSG_NEWS_NOCONNECT
+Kan niet verbinden met %s.
+; Can't connect to %s.
+;
+MSG_NEWS_POSTFAILED
+Posten van artikel mislukt.
+; Posting article failed.
+;
+MSG_NEWS_BUTTONS
+_Opnieuw|_Bewaren|_Annuleren
+; _Retry|_Save|_Cancel
+;
+MSG_NEWS_SAVETITLE
+Bewaar mislukt artikel
+; Save failed article
+;
+MSG_NEWS_NEWS_HEADER
+Nieuws
+; News
+;
+MSG_NEWS_SUBSCRIBED
+Nieuwsgroep-abonnementen
+; Subscribed newsgroups
+;
+; Don't forget to include the '8' in the %8ld below:
+MSG_NEWS_NEW_ARTICLES
+%8ld nieuwe artikelen
+; %8ld new articles
+;
+MSG_NEWS_CATCH_UP
+Alles gelezen
+; Catch up
+;
+MSG_NEWS_UNSUBSCRIBE
+Opzeggen
+; Unsubscribe
+;
+MSG_NEWS_OTHER_GROUP
+Andere groep
+; Other group
+;
+MSG_NEWS_SUBSCRIBE
+Abonneren
+; Subscribe
+;
+MSG_NEWS_READ
+Lezen
+; Read
+;
+MSG_NEWS_SEARCH_FOR_GROUP
+Zoek naar groep
+; Search for group
+;
+MSG_NEWS_SEARCH
+Zoeken
+; Search
+;
+MSG_NEWS_LONG_DOWNLOAD
+De eerste keer dat u naar een nieuwsgroep zoekt,\n\
+zal een lijst met alle nieuwsgroepnamen worden opgehaald.\n\
+Dit kan enkele minuten duren.
+; The first time you search for a group,\n\
+; a list of all newsgroup names will be downloaded.\n\
+; This may take several minutes to complete.
+;
+MSG_NEWS_NO_SUBJECT
+(geen onderwerp)
+; (no subject)
+;
+MSG_NEWS_LINES
+(%s regels)
+; (%s lines)
+;
+MSG_NEWS_POST_NEW_ARTICLE
+Post nieuw artikel
+; Post new article
+;
+MSG_NEWS_GROUP_LIST
+Groeplijst
+; Group list
+;
+MSG_NEWS_ERROR_NO_GROUP
+<h1>Fout</h1>Groep %s bestaat niet.
+; <h1>Error</h1>\nGroup %s does not exist.
+;
+MSG_NEWS_USE_FRAMES
+Nieuws is ingesteld om frames te gebruiken.
+; News is configured to use frames
+;
+MSG_NEWS_ERROR_NO_ARTICLE
+Artikel %s bestaat niet<BR>
+; Article %s does not exist<BR>
+;
+MSG_NEWS_FOLLOW_UP
+Reageen
+; Follow-up
+;
+MSG_NEWS_REPLY
+Antwoord per e-mail
+; Reply in e-mail
+;
+MSG_NEWS_SAVE
+Bewaar artikel
+; Save article
+;
+MSG_NEWS_SUBJECT
+Onderwerp:
+; Subject:
+;
+MSG_NEWS_NEWSGROUPS
+Nieuwsgroepen:
+; Newsgroups:
+;
+MSG_NEWS_ARTICLE_BODY
+Inhoud van artikel:
+; Article body:
+;
+MSG_NEWS_EXTRA_HEADERS
+Extra news headers opgenomen
+; Extra news headers included
+;
+MSG_NEWS_POST_ARTICLE
+Post artikel
+; Post article
+;
+MSG_NEWS_RESET
+Initialiseer
+; Reset
+;
+MSG_NEWS_RETURN
+Ga terug
+; Return
+;
+MSG_NEWS_FOLLOWUP_TITLE
+Reageer op artikel
+; Follow-up to article
+;
+MSG_NEWS_FOLLOWUP_TO_GROUPS
+Reageer in:
+; Follow-up to:
+;
+MSG_NEWS_PLEASE_DELETE
+Verwijder onnodige aangehaalde regels a.u.b.
+; Please delete unnecessary quoted lines
+;
+MSG_NEWS_REPLY_TITLE
+Beantwoord artikel
+; Reply to article
+;
+MSG_NEWS_REPLY_TO_ADDRESS
+Antwoord aan:
+; Reply to:
+;
+MSG_NEWS_ARTICLE_POSTED_TITLE
+Artikel gepost
+; Article posted
+;
+MSG_NEWS_ARTICLE_POSTED
+<H1>Artikel gepost</H1>\n\
+Uw artikel is gepost.
+; <H1>Article posted</h1>\n\
+; Your article has been posted.
+;
+MSG_NEWS_DOWNLOAD_TITLE
+Ophalen nieuwsgroeplijst
+; Download newsgroup list
+;
+MSG_NEWS_DOWNLOAD_BODY
+<h1>Bezig met ophalen...</h1>\n\
+Bezig met ophalen van de nieuwsgrouplijst. Dit kan enkele minuten duren.
+; <H1>Downloading...</H1>\n\
+; Downloading newsgroup list. This can take several minutes.
+;
+MSG_NEWS_SEARCH_RESULT
+Zoekresultaat
+; Search result
+;
+MSG_NEWS_FIRST_MATCHING
+Eerste %ld van %ld nieuwsgroepnamen met <B>%s</B>
+; First %ld of %ld newsgroup names matching <B>%s</B>
+;
+MSG_NEWS_FOUND_MATCHING
+%ld nieuwsgroepnamen gevonden met <B>%s</B>
+; Found %ld newsgroup names matching <B>%s</B>
+;
+;
+;-------------- Shell/ARexx command warning ---------
+;
+MSG_CMDWARN_TITLE
+AWeb waarschuwing
+; AWeb warning
+;
+MSG_CMDWARN_SHELL
+Er gaat een shell commando uitgevoerd worden:\n%s
+; About to execute shell command:\n%s
+;
+MSG_CMDWARN_AREXX
+Er gaat een ARexx programma uitgevoerd worden:\n%s
+; About to start ARexx program:\n%s
+;
+MSG_CMDWARN_BUTTONS
+_Ok|_Annuleren
+; _Ok|_Cancel
+;
+;
+;-------------- SSL related warnings ----------------
+;
+MSG_SSLWARN_SSL_TITLE
+AWeb waarschuwing
+; AWeb warning
+;
+MSG_SSLWARN_SSL_TEXT
+Kan geen beveiligde verbinding maken met %s:\n \n\
+In plaats daarvan een onbeveiligde verbinding gebruiken?
+; Cannot make secure connection to %s:\n%s\n \nUse an unsecure connection instead?
+;
+MSG_SSLWARN_SSL_BUTTONS
+_Onbeveiligd|_Annuleren
+; _Unsecure|_Cancel
+;
+MSG_SSLWARN_SSL_NO_SSL
+Beveiligde verbindingen worden alleen ondersteund met het Miami TCP pakket en MiamiSSL.
+; Secure connections are only supported with the Miami TCP program and MiamiSSL.
+;
+MSG_SSLWARN_CERT_TITLE
+AWeb waarschuwing
+; AWeb warning
+;
+MSG_SSLWARN_CERT_TEXT
+Het certificaat voor %s kan niet worden geverifiëerd.\nDetails: %s\n \n\
+Als u doorgaat zullen de gegevens versleuteld worden (bescherming tegen afluisteren), \
+maar de identiteit van de server kan niet worden geverifiëerd (-GEEN- bescherming \
+tegen fraude),\n \n\
+Wilt u doorgaan?
+; Certificate for %s cannot be verified.\nDetails: %s\n \n\
+; If you continue the data will be encrypted (protection against eavesdropping), \
+; but the identity of the server cannot be verified (-NO- protection against fraud).\n \n\
+; Do you want to continue?
+;
+MSG_SSLWARN_CERT_BUTTONS
+_Ok|_Annuleren
+; _Ok|_Cancel
+;
+MSG_SSLWARN_SSL_NO_SSL2
+Beveiligde verbindingen worden alleen ondersteund met AmiSSL of MiamiSSL.
+; Secure connections are only supported when using AmiSSL or MiamiSSL.
+;
+;
+;-------------- Unknown MIME type -------------------
+;
+MSG_UNKMIME_TITLE
+Onbekend gegevenstype
+; Unknown content type
+;
+MSG_UNKMIME_TEXT
+Onherkenbaar bestand wordt opgeslagen\n \n\
+URL:   %s\nGegevenstype:   %s\nExtensie:   %s\n \n\
+Misschien wilt u het opslaan nu annuleren, en dit bestand opnieuw laden \
+nadat u een programma of aktie heeft geonfigureerd voor dit MIME-type \
+in de Browser-instellingen (Extern).
+; Unrecognized file will be saved\n \n\
+; URL:   %s\nContent type:   %s\nExtension:   %s\n \n\
+; You might want to cancel the save now, and reload this file \
+; after configuring a viewer or action for this MIME type \
+; in the Browser settings (Viewers).
+;
+MSG_UNKMIME_BUTTONS
+_Bewaar|_Annuleer
+; _Save|_Cancel
+;
+MSG_REQUEST_COPYURL
+Kopieer _URL naar klembord
+; Copy _URL to clipboard
+;
+;-------------- Open URL requester ------------------
+;
+;
+MSG_OPENURL_TITLE
+AWeb verzoek
+; AWeb request
+;
+MSG_OPENURL_TEXT
+Type the URL die u wilt openen:
+; Type in the URL to open:
+;
+MSG_OPENURL_BUTTONS
+_Ok|_Annuleer
+; _Ok|_Cancel
+;
+;
+;-------------- Save as IFF requester ---------------
+;
+;
+MSG_SAVEIFF_PROGRESS
+Opslaan van IFF-bestand...
+; Saving IFF file...
+;
+;
+;-------------- awebcharset.awebplugin ---------------
+;
+;
+MSG_CHARSET_CODESETTITLE
+
+; Awebcharset.awebplugin
+;
+; ***NEW***
+;
+MSG_CHARSET_CODESETWRONG
+
+; The Version of %s on the System is %ld.%ld,\n\
+; but for this Plugin at least Version %ld.%ld is needed.\n
+;
+; ***NEW***
+;
+MSG_CHARSET_CODESETFAIL
+
+; Can't open required %s - Version: %ld.%ld.\n
+;
+; ***NEW***
+;
+MSG_CHARSET_CODESETURL
+
+; \n\
+; Please visit http://sourceforge.net/projects/codesetslib\n\
+; for downloading the latest Version and make sure the\n\
+; Library is properly installed.
+;
+; ***NEW***
+;
+MSG_CHARSET_INFOTITLE
+
+; Awebcharset.awebplugin Info Window
+;
+; ***NEW***
+;
+MSG_CHARSET_INFOTEXT
+
+; Filter is : %s\n\
+; Replace is: %s\n\
+; Request is: %s\n\
+; \n\
+; URL='%s'\n\
+; \n\
+; Document Charsets:\n\
+; Header Charset     = '%s'\n\
+; Meta Charset       = '%s'\n\
+; \n\
+; Used Charsets:\n\
+; Source Charset     = '%s'\n\
+; Destination Charset= '%s'
+;
+; ***NEW***
+;
+MSG_CHARSET_DIFFREQTXT
+
+; The Server send 2 different Charsets for this Document:\n\
+; \n\
+; Header Charset  = '%s'\n\
+; Document Charset= '%s'\n\
+; \n\
+; Which Charset should be used?
+;
+; ***NEW***
+;
+MSG_CHARSET_DIFFREQBUT
+
+; Don't ask again
+;
+; ***NEW***
+;
+MSG_CHARSET_ON
+
+; On
+;
+; ***NEW***
+;
+MSG_CHARSET_OFF
+
+; Off
+;
+; ***NEW***
+;
+MSG_CHARSET_OK
+
+; _Ok
+;
+; ***NEW***
+;
+;
+;-------------- Menus -------------------------------
+;
+; If the second character in a menu item string is a slash (/),
+; then the first character is used as menu shortcut.
+;
+MSG_PROJECT_MENU
+Project
+; Project
+;
+MSG_PROJECT_NEWWINDOW
+N/Nieuw venster
+; N/New window
+;
+MSG_PROJECT_CLOSEWINDOW
+K/Sluit venster
+; K/Close window
+;
+MSG_PROJECT_OPENURL
+U/Open URL
+; U/Open URL
+;
+MSG_PROJECT_OPENWWW
+W/Open WWW
+; W/Open WWW
+;
+MSG_PROJECT_OPENLOCAL
+L/Open lokaal...
+; L/Open local...
+;
+MSG_PROJECT_OPENSEARCH
+E/Zoekdiensten
+; E/Search engines
+;
+MSG_PROJECT_SOURCE
+Bekijk broncode...
+; View source...
+;
+MSG_PROJECT_SAVEHTML
+S/Bewaar broncode...
+; S/Save source...
+;
+MSG_PROJECT_ABOUT
+Over...
+; About...
+;
+MSG_PROJECT_QUIT
+Q/Einde...
+; Q/Quit...
+;
+MSG_PROJECT_SEARCH
+G/Zoek...
+; G/Search...
+;
+MSG_PROJECT_PRINT
+P/Afdrukken...
+; P/Print...
+;
+MSG_PROJECT_EDIT
+Bewerk broncode...
+; Edit source...
+;
+MSG_PROJECT_INFO
+Informatie...
+; Info...
+;
+MSG_PROJECT_OPENNEWS
+Open nieuws...
+; Open News
+;
+; (Shortcut key is backslash)
+MSG_PROJECT_ICONIFY
+\\/Iconificeer
+; \\/Iconify
+;
+MSG_PROJECT_SAVEIFF
+Bewaar als IFF...
+; Save as IFF...
+;
+MSG_CONTROL_MENU
+Besturing
+; Control
+;
+MSG_CONTROL_LOADNOW
+Laad afbeeldingen nu
+; Load images now
+;
+MSG_CONTROL_LOADNOWALL
+I/Alle afbeeldingen
+; I/All images
+;
+MSG_CONTROL_LOADNOWMAPS
+M/Alleen kaarten
+; M/Maps only
+;
+MSG_CONTROL_NETWORKSTATUS
+?/Netwerkstatus...
+; ?/Network status...
+;
+MSG_DUMMY_2
+
+; 
+MSG_CONTROL_CANCEL
+Z/Breek laden af
+; Z/Cancel load
+;
+MSG_CONTROL_NEXTWINDOW
+./Volgend venster
+; ./Next window
+;
+MSG_CONTROL_PREVWINDOW
+,/Vorig venster
+; ,/Previous window
+;
+MSG_CONTROL_NOPROXY
+Y/Geen proxy
+; Y/Disable proxy
+;
+MSG_CONTROL_RLOAD
+Laad opnieuw
+; Reload
+;
+MSG_CONTROL_RLOADDOC
+R/Huidige document
+; R/Current document
+;
+MSG_CONTROL_RLOADIMGS
+Afbeeldingen in huidige
+; Images in current
+;
+MSG_CONTROL_PLAYBGSOUND
+J/Speel achtergrondgeluid
+; J/Play background sound
+;
+MSG_CONTROL_COPYURL
+Kopieer URL
+; Copy URL
+;
+MSG_CONTROL_PASTEURL
+Plak URL
+; Paste URL
+;
+MSG_CONTROL_COPYBLOCK
+C/Kopieer blok
+; C/Copy block
+;
+MSG_CONTROL_DRAGGING
+Slepen
+; Dragging
+;
+MSG_CONTROL_BREAKJS
+X/Breek JavaScript af
+; X/Break JavaScript
+;
+MSG_CONTROL_DEBUGJS
+JavaScript debugger
+; Debug JavaScript
+;
+MSG_CONTROL_RESET
+Frames terugzetten
+; Reset frames
+;
+MSG_CACHE_MENU
+Cache
+; Cache
+;
+MSG_DUMMY_3
+
+; 
+MSG_DUMMY_4
+
+; 
+MSG_DUMMY_5
+
+; 
+MSG_DUMMY_6
+
+; 
+MSG_CACHE_SAVEAUTH
+Bewaar autorisaties
+; Save authorizations
+;
+;**obsolete**
+MSG_CACHE_FLUSHAUTH
+Verwijder autorisaties
+; Flush authorizations
+;
+MSG_CACHE_BROWSER
+Cachelijst...
+; Cache browser...
+;
+MSG_CACHE_FLUSH
+Wis uit geheugen
+; Flush from memory
+;
+MSG_CACHE_FLSHIMGSND
+Niet-getoonde afbeeldingen
+; Nondisplayed images
+;
+MSG_CACHE_FLSHIMGS
+Alle afbeeldingen
+; All images
+;
+MSG_CACHE_FLSHDOCSND
+Niet-getoonde documenten
+; Nondisplayed documents
+;
+MSG_CACHE_DELETE
+Wis van schijf
+; Delete from disk
+;
+MSG_CACHE_DELIMGS
+Alle afbeeldingen
+; All images
+;
+MSG_CACHE_DELDOCS
+Alle documenten
+; All documents
+;
+MSG_CACHE_CLEAR
+Wis cache
+; Erase cache
+;
+MSG_CACHE_FIX
+Herstel cache...
+; Fix cache...
+;
+MSG_CACHE_EDITAUTH
+Bewerk autorisaties...
+; Edit authorizations...
+;
+MSG_NAVIGATE_MENU
+Navigeer
+; Navigate
+;
+MSG_NAVIGATE_BACK
+B/Terug
+; B/Back
+;
+MSG_NAVIGATE_FWD
+F/Vooruit
+; F/Forward
+;
+MSG_NAVIGATE_HOME
+D/Uitgangsdocument
+; D/Home document
+;
+MSG_NAVIGATE_HISTORY
+-/Vensterhistorie...
+; -/Window history...
+;
+MSG_HOTLIST_MENU
+Snellijst
+; Hotlist
+;
+MSG_HOTLIST_ADDHOT
+A/Voeg toe aan lijst
+; A/Add to hotlist
+;
+MSG_HOTLIST_SHOWHOT
+H/Toon lijst
+; H/Show hotlist
+;
+;**obsolete**
+MSG_HOTLIST_MAINT
+T/Onderhoud...
+; T/Maintenance...
+;
+MSG_HOTLIST_SAVE
+Bewaar
+; Save hotlist
+;
+MSG_HOTLIST_RESTORE
+Herstel laatst bewaarde
+; Restore last saved
+;
+MSG_HOTLIST_AMHOTRX
+AMosaic (ARexx)
+; AMosaic (ARexx)
+;
+MSG_HOTLIST_AMHOT20
+AMosaic (2.0)
+; AMosaic (2.0)
+;
+MSG_HOTLIST_IBHOT
+Andere...
+; Other...
+;
+MSG_HOTLIST_VIEW
+V/Bekijk snellijst...
+; V/View hotlist...
+;
+MSG_HOTLIST_MGR
+T/Snellijst-beheerder...
+; T/Hotlist manager...
+;
+MSG_SETTINGS_MENU
+Instellingen
+; Settings
+;
+MSG_SETTINGS_LOADIMG
+Afbeeldingen laden
+; Image loading
+;
+MSG_SETTINGS_LOADIMGALL
+Alle afbeeldingen
+; All images
+;
+MSG_SETTINGS_LOADIMGMAPS
+Alleen kaarten
+; Maps only
+;
+MSG_SETTINGS_LOADIMGOFF
+Uit
+; Off
+;
+MSG_DUMMY_7
+
+; 
+MSG_DUMMY_8
+
+; 
+MSG_SETTINGS_BROWSER
+Browser-instellingen...
+; Browser settings...
+;
+MSG_SETTINGS_PROGRAM
+Programma-instellingen...
+; Program settings...
+;
+MSG_SETTINGS_NETWORK
+Netwerk-instellingen...
+; Network settings...
+;
+MSG_SETTINGS_CLASSACT
+ClassAct instellingen...
+; ClassAct settings...
+;
+MSG_SETTINGS_SAVEALL
+Bewaar huidige instellingen
+; Save current settings
+;
+MSG_SETTINGS_SNAPSHOT
+Bewaar vensterposities
+; Snapshot windows
+;
+;**obsolete
+MSG_SETTINGS_SNAPSHOTALT
+Bewaar als alternatieve positie
+; Snapshot as alternate size
+;
+MSG_SETTINGS_BGIMAGES
+Achtergrond-afbeeldingen
+; Background images
+;
+MSG_SETTINGS_BGSOUND
+Achtergrondgeluid
+; Background sound
+;
+MSG_SETTINGS_SAVEAS
+Bewaar instellingen als...
+; Save settings as...
+;
+MSG_SETTINGS_LOAD
+Laad instellingen...
+; Load settings...
+;
+MSG_SETTINGS_GUI
+GUI-instellingen...
+; GUI settings...
+;
+MSG_HELP_MENU
+Hulp
+; Help
+;
+MSG_HELP_HELP
+Documentatie
+; Documentation
+;
+MSG_HELP_AWEBHOME
+AWeb pagina
+; AWeb home page
+;
+MSG_HELP_AWEBFAQ
+AWeb vragen
+; AWeb FAQ
+;
+MSG_HELP_REGISTER
+Registratie
+; Registration
+;
+MSG_AREXX_MENU
+ARexx
+; ARexx
+;
+MSG_AREXX_AREXX
+!/Start ARexx macro...
+; !/Start ARexx macro...
+;
+;--------------- Navigation Button Texts -------
+;
+MSG_NAVGAD_FORWARD
+
+; Fwd
+;
+; ***NEW***
+;
+MSG_NAVGAD_BACK
+
+; Back
+;
+; ***NEW***
+;
+MSG_NAVGAD_HOME
+
+; Home
+;
+; ***NEW***
+;
+MSG_NAVGAD_CANCEL
+
+; Stop
+;
+; ***NEW***
+;
+MSG_NAVGAD_IMAGES
+
+; Images
+;
+; ***NEW***
+;
+MSG_NAVGAD_STATUS
+
+; Status
+;
+; ***NEW***
+;
+MSG_NAVGAD_SEARCH
+
+; Find
+;
+; ***NEW***
+;
+MSG_NAVGAD_RELOAD
+
+; Reload
+;
+; ***NEW***
+;
+MSG_NAVGAD_ADDHOTLIST
+
+; Add
+;
+; ***NEW***
+;
+MSG_NAVGAD_HOTLIST
+
+; Hotlist
+;
+; ***NEW***
+;
+;
+;-------------- Error messages ----------------------
+;
+MSG_ERROR_CANTOPEN
+Kan %s niet openen
+; Can't open %s
+;
+; NOTE - No locale formatters (like %1$s) possible in this string!
+;        Only plain C formatters allowed.
+MSG_ERROR_CANTOPENV
+Kan %s versie %ld niet openen
+; Can't open %s version %ld
+;
+MSG_ERROR_NEEDOS30
+AWeb heeft OS 3.0 of beter nodig
+; AWeb needs OS 3.0 or better
+;
+MSG_ERROR_CANTQUIT
+Kan niet afsluiten!\n%s\nis nog in gebruik
+; Cannot quit!\n%s\nis still in use
+;
+;-------------- partial error messages --------------
+;
+MSG_EPART_ERROR
+Fout
+; Error
+;
+MSG_EPART_RETURL
+Bij het ophalen van URL
+; While retrieving URL
+;
+MSG_EPART_ADDRSCHEME
+Het &quot;%s&quot; adresseringsschema is niet geïmplementeerd in deze versie van AWeb
+; The &quot;%s&quot; addressing scheme is not implemented in this version of AWeb
+;
+MSG_EPART_NOLIB
+Er moet eerst een TCP "stack" gestart worden
+; A TCP stack must be started first
+;
+MSG_EPART_NOHOST
+Kan host name &quot;%s&quot; niet vinden
+; Cannot resolve host name &quot;%s&quot;
+;
+MSG_EPART_NOCONNECT
+Kan geen verbinding maken met &quot;%s&quot;
+; Cannot connect to &quot;%s&quot;
+;
+MSG_EPART_NOFILE
+Kan bestand &quot;%s&quot; niet openen
+; Cannot open file &quot;%s&quot;
+;
+MSG_EPART_XAWEB
+Ongeldige interne (x-aweb:) naam &quot;%s&quot;
+; Invalid internal (x-aweb:) name &quot;%s&quot;
+;
+MSG_EPART_FLUSHED_HEAD
+Verwijderd
+; Flushed
+;
+MSG_EPART_FLUSHED_MSG
+Dit document is niet langer in het geheugen aanwezig
+; This document is no longer available in memory
+;
+MSG_EPART_FLUSHED_NORELOAD
+Dit document kan niet opnieuw worden opgehaald. U moet het formulier dat deze pagina \
+teruggaf opnieuw verzenden. Pas op voor ongewenste neveneffecten als u dat formulier \
+opnieuw verstuurt, zoals een dubbele registratie.
+; This document cannot be retrieved again. You will have to submit the form again that \
+; produced this page. Beware of undesired side-effects if you submit that form twice, \
+; like a duplicate registration.
+;
+MSG_EPART_NOLOGIN
+Kan niet inloggen op &quot;%s&quot; als &quot;%s&quot;
+; Cannot login at &quot;%s&quot; as &quot;%s&quot;
+;
+MSG_EPART_NOAWEBLIB
+Kan AWebLib module voor &quot;%s&quot; niet laden.
+; Unable to load the AWebLib module for &quot;%s&quot;.
+;
+MSG_EPART_NOPROGRAM
+U heeft geen programma voor het &quot;%s&quot; adresseringsschema ingesteld.
+; You haven't configured a program for the &quot;%s&quot; addressing scheme.
+;
+;
+;-------------- Miscellaneous -----------------------
+;
+; (external program window title)
+MSG_AWEB_EXTWINTITLE
+AWeb extern programma
+; AWeb External Program
+;
+; (status field text)
+MSG_AWEB_BYTESREAD
+Bytes gelezen
+; Bytes read
+;
+; (form SUBMIT button default text)
+MSG_AWEB_FORMSUBMIT
+Verzend
+; Submit
+;
+; (form RESET button default text)
+MSG_AWEB_FORMRESET
+Herstel
+; Reset
+;
+; (ISINDEX default prompt)
+MSG_AWEB_INDEXPROMPT
+Dit is een doorzoekbare index. Geef zoekwoorden: 
+; This is a searchable index. Enter keywords:
+;
+; (window title)
+MSG_AWEB_NODOCTITLE
+(Geen document geladen)
+; (No document loaded)
+;
+; (screen title)
+MSG_AWEB_SCREENTITLE
+AWeb publiek scherm - Naam AWeb
+; AWeb public screen - Name AWeb
+;
+; (hotlist document title)
+MSG_AWEB_HOTLISTTITLE
+Snellijst
+; Hotlist
+;
+; (gopher index title)
+MSG_AWEB_GOPHERINDEX
+Gopher index
+; Gopher index
+;
+; (gopher menu title)
+MSG_AWEB_GOPHERMENU
+Gopher menu
+; Gopher menu
+;
+; (window history title)
+MSG_AWEB_WINDOWHIS
+Vensterhistorie
+; Window history
+;
+; (partial title of other hotlist)
+MSG_AWEB_OTHER
+Andere
+; Other
+;
+; (transfer status messages)
+MSG_AWEB_LOOKUP
+Opzoeken van %s
+; Looking up %s
+;
+MSG_AWEB_CONNECT
+Maak %s verbinding met %s
+; Making %s connection to %s
+;
+MSG_AWEB_WAITING
+%s aanvraag verzonden; wacht op antwoord
+; %s request sent; waiting for response
+;
+MSG_AWEB_TCPSTART
+TCP verbinding opbouwen
+; Establishing TCP connection
+;
+; (form image fieldstatus text)
+MSG_AWEB_FORMLOCATION
+Verzend formulier op x=%ld, y=%ld
+; Submit form at x=%ld, y=%ld
+;
+; (form BUTTON button default text)
+MSG_AWEB_FORMBUTTON
+Start
+; Start
+;
+; (frame resizing status prompt)
+MSG_AWEB_FRAME_RESIZE
+Vergroot frame
+; Resize frame
+;
+; (transfer status message)
+MSG_AWEB_LOGIN
+Inloggen op %s
+; Logging in at %s
+;
+; (transfer status message)
+MSG_AWEB_NEWSGROUP
+Doorzoeken van %s
+; Scanning %s
+;
+; (transfer status message)
+MSG_AWEB_NEWSSCAN
+Doorzoeken van %s (%ld artikelen)
+; Scanning %s (%ld articles)
+;
+; (transfer status message)
+MSG_AWEB_NEWSSORT
+Sorteren van %s
+; Sorting %s
+;
+; (transfer status message)
+MSG_AWEB_NEWSPOST
+Posten van artikel
+; Posting article
+;
+; (transfer status message)
+MSG_AWEB_MAILSEND
+Verzenden van bericht
+; Sending mail message
+;
+; (transfer status message)
+MSG_AWEB_UPLOAD
+Verzenden van bestand
+; Uploading file
+;
+; ** (don't use numbers 40001 or higher) **

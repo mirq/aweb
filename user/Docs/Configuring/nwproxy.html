@@ -1,0 +1,77 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+
+<HTML>
+
+<HEAD>
+<TITLE>Network settings: Proxy</TITLE>
+<META NAME="KEYWORDS" CONTENT="http,ftp,gopher,telnet">
+</HEAD>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<H1>&nbsp; Network settings: Proxy</H1>
+
+<IMG SRC="Images/NetworkSettings-Proxy.png" ALIGN="RIGHT" ALT="Network Settings: Proxy Tab" WIDTH="490" HEIGHT="330" HSPACE="20" VSPACE="20" BORDER="0">
+
+<H2>Proxy servers</H2>
+
+A proxy server is a special server that acts as a gateway between your computer and the Internet.  Instead of having to establish a connection to a server possibly on the other end of the world, a browser only connects to the proxy.  The proxy server has a cache of the most popular pages, so there is a chance the page you requested is already there.  If not, the proxy server retrieves the document for you.  This will decrease the traffic on the network, thus speeding up websurfing.
+<P>Sometimes a proxy server is the <EM>only</EM> way to connect via your Internet Service Provider, thereby acting as a firewall.
+
+<H2>Configuring a proxy</H2>
+
+First, choose the protocol you want to define the proxy for.  Use the chooser for this, it has 4 options:
+
+<UL>
+<LI>HTTP</LI>
+<LI>FTP</LI>
+<LI>Gopher</LI>
+<LI>Telnet</LI>
+</UL>
+
+Then type in the address of the proxy in the <em>proxy</em> field.  Make sure it is in one of these two forms:
+<PRE><B>&nbsp;&nbsp;&nbsp;http://proxy.foo.bar</B></PRE>
+<PRE><B>&nbsp;&nbsp;&nbsp;http://proxy.foo.bar:8080</B></PRE>
+<BR>where the name and port number may differ, of course.
+<P>If the address doesn't start with "<CODE>htt..</CODE>", AWeb will prepend this to the address.
+
+<H2>Limited proxy usage</H2>
+
+Some proxies can't handle submitting forms with <CODE>METHOD=POST</CODE> or <A HREF="../Working/authorize.html">authorized</A> pages correctly.  If you have problems with such pages, try selecting this checkbox.  It allows AWeb send these pages directly to the server and not via the proxy.
+
+<H2><A NAME="passiveftp">Passive FTP</A></H2>
+
+If you are working from behind a firewall and you experience problems using FTP, try selecting this checkbox.  It tells AWeb to use a different way of making the necessary FTP connections that will more likely work from behind a firewall.
+
+<H2>No proxy for these sites</H2>
+
+If this list contains <EM>site names</EM> (also known as <EM>locations</EM> or <EM>host names</EM>), then documents and images from these sites will never be retrieved through the proxy.
+<P>Use the <B>Add</B> button to add a new entry, and the <B>Del</B> button to delete the currently selected entry.  Double-click on an entry to edit the name <EM>in place</EM>.
+<P>You may type simple host names, or use pattern matching.  If a string contains pattern matching characters, it's matched against the full url, not only the host name.  This enables you to selectively use the proxy for files from a server.
+
+<P><HR>
+
+<A HREF="nwprograms.html"><IMG SRC="../GlobalImages/back.gif" WIDTH="32" HEIGHT="16" ALT="&lt;-" BORDER="0">Programs</A>&nbsp;&nbsp;<A HREF="settings.html"><IMG SRC="../GlobalImages/up.gif" WIDTH="32" HEIGHT="20" ALT="^" BORDER="0">Settings requesters</A>&nbsp;&nbsp;<A HREF="nwcache.html"><IMG SRC="../GlobalImages/next.gif" WIDTH="32" HEIGHT="16" ALT="-&gt;" BORDER="0">Cache</A>
+
+</BODY>
+
+</HTML>

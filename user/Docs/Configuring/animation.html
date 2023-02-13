@@ -1,0 +1,64 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+
+<HTML>
+
+<HEAD>
+<TITLE>Using your own transfer animation</TITLE>
+</HEAD>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<H1>&nbsp; Using your own transfer animation</H1>
+
+<H2>Configurable animation</H2>
+
+The transfer animation in AWeb's main window is fully user-configurable.  It is read from the file <CODE>Images/def_transferanim</CODE>.  This must be a picture file, but the exact format isn't relevant as long as you have a datatype installed that can read the file.
+<P>The icon that goes with the file is important.  The tooltypes in the icon contain vital information, without this information AWeb cannot use the file.
+<P>The animation is shown in the <EM>background status</EM> gadget.  This gadget will be sized according to the size of the animation.  For the best look, you should use an animation that is about twice as high as your <A HREF="buttons.html">button images</A>.
+
+<H2>Installing your own animation</H2>
+
+The <CODE>Storage/Animations</CODE> drawer contains a few alternate animations, and it is a good place to store new animations.
+<P>To install a new animation, open AWeb's drawer on your Workbench.  Now you can double-click the <EM>Install_Animation</EM> icon.  It will open a file requester from which you can pick your animation.  The install procedure will then copy the selected file to your <CODE>Images</CODE> drawer.
+<P>Alternatively, you can click the <EM>Install_Animation</EM> icon once, hold the shift key and double-click on the icon of the animation you want to install.
+<P><STRONG>NOTE:</STRONG> You cannot install a new animation while AWeb is running.
+
+<H2>Creating your own animation file</H2>
+
+Use an ordinary paint program to design your animation.  Create one picture that contains all animation frames.  Make sure all button images are equal in size.  Also every next frame must be at the same horizontal and/or vertical distance from the previous.  Save the picture in the <CODE>Storage/Animations</CODE> drawer.  Save it with an icon, or add an icon later.
+<P>Add some tooltypes to the icon.  The tooltypes tell AWeb where in your picture to look for the animation frames.  Use the following tooltypes:
+
+<TABLE>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">SIZE=<I>width,height</I></TH><TD>This defines the width and height of each animation frame, in pixels.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">FIRST=<I>left,top</I></TH><TD>Defines the top left corner of the first animation frame.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">FRAMES=<I>number</I></TH><TD>This is the total number of frames in the animation.  After the last frame the first one is used again.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">DELTA=<I>delta_x,delta_y</I></TH><TD>This is the amount to add to the current x and y coordinates to get to the next frame.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">REST=<I>left,top</I></TH><TD>Defines the top left corner of the <EM>rest</EM> image, the image that is displayed if no transfer is taking place.<BR>This tooltype is optional.  If you don't specify it, the animation gadget will be empty at rest.</TD></TR>
+</TABLE>
+
+<P><HR>
+
+<A HREF="../AWeb%20Manual.html"><IMG SRC="../GlobalImages/back.gif" WIDTH="32" HEIGHT="16" ALT="<-" BORDER="0"></A>Back to <A HREF="../AWeb%20Manual.html">index</A>.
+
+</BODY>
+
+</HTML>

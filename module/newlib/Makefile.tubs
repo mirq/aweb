@@ -1,0 +1,12 @@
+MODULES := linklibs/libnewlibmoduleinit.a
+
+linklibs/libnewlibmoduleinit.a/TYPE := executable/library/link
+linklibs/libnewlibmoduleinit.a/CFILES := \
+module_init \
+module_exit \
+module_libraries \
+
+
+
+
+

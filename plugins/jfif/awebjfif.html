@@ -1,0 +1,201 @@
+<html>
+<head>
+<title>AWeb JFIF plugin</title>
+</head>
+<body background="file:///AWebPath:Docs/GlobalImages/awebbg.gif">
+<h1><img src="file:///AWebPath:Docs/GlobalImages/aweb.gif" width=192 height=93 alt="(logo)">&nbsp;
+   AWeb JFIF plugin</h1>
+
+<h2>General</h2>
+The <em>awebjfif</em> plugin for AWeb allows you to view all JFIF images.
+Features include:
+<ul>
+<li>Optional progressive display of loading images
+<li>Support for scaling
+<li>Support for CyberGraphics
+</ul>
+
+<h2>Installation</h2>
+Follow these steps to install the AWeb JFIF plugin.
+<ol>
+<li>
+Run the supplied Installer script. It will copy the necessary files to a
+drawer <code>AWebPlugins</code> in the drawer where the AWeb program is
+located.
+<p>
+The installer script might ask you for a location to store temporary swap
+files during decoding of large images. You should select a drawer on your
+hard disk.
+<br><br>
+<li>
+<form action="x-aweb:rexx/AWebPath:AWebPlugin/Docs/awebjfif.awebrx">
+Run the <input type=submit value="Setup script">.
+</form>
+</ol>
+
+<h2>Manual Installation</h2>
+If, for some reason, you don't want to install the plugin automatically, you
+can install it by hand.
+<ol>
+<li>
+Copy the file named <code>awebjfif.awebplugin</code> to a location of your
+choice. The recommended location for plugins like this is a drawer
+<code>AWebPlugins</code> in the drawer where the AWeb program is located.
+<br><br>
+<li>Select a drawer on your hard disk for the temporary swap files. These files
+may be needed during decoding of large images. Add the following assign to
+your <code>S:User-Startup</code> file if it isn't already there:
+<dl><dd><code>assign JPEGTMP: <var>swap_drawer</var></code>
+</dl>
+where <var>swap_drawer</var> is the drawer you selected.
+<br><br>
+<li>
+Start AWeb, open the browser settings and bring up the <em>Viewers</em> page.
+Select the entry for MIME type <code>IMAGE/JPEG</code> and change the following
+settings:
+<ul>
+   <li>Action: "AWeb Plugin (A)"
+   <li>Name: the location where you copied the file <code>awebjfif.awebplugin</code>
+   <li>Arguments: leave blank or supply optional parameters, see below
+</ul>
+<br><br>
+<li>
+Don't forget to save your settings.
+</ol>
+Repeat steps 3 and 4 for the MIME type <code>IMAGE/PJPEG</code>
+
+<h2><a name=parameters>Parameters</a></h2>
+The awebjfif plugin supports some optional parameters. You can type the chosen
+parameters in the "Arguments:" field of the settings window. Separate the
+parameters by a comma or space, if you specify more than one.
+
+<dl>
+<dt><code><b>PROGRESS=</b>0|<var>number</var></code>
+<dd>Specifies the number of image scan lines to decode before the display is
+   updated. A higher number is faster but results in chunkier building of the
+   image. PROGRESS=1 gives the smoothest progressive display but is relatively
+   slow. The default value is 4, which is a good compromise between speed and
+   visual attractiveness.
+<p>
+   If you specify PROGRESS=0, progressive display is disabled. The image is
+   not displayed until decoding is ready.
+<p>
+<dt><code><b>MULTIPASS=</b>0|1</code>
+<dd>Specifies if progressive JPEG images should be rendered progressively.
+   MULTIPASS=1 (the default) will display progressive JPEGs in multiple passes,
+   each with increasing quality.
+   <p>
+   Use MULTIPASS=0 to disable rendering in multiple passes, and only display
+   the final image. This may be faster when reading from fast connections or
+   from local files.
+<p>
+<dt><code><b>DITHER=</b>0|1|2</code>
+<dd>A number specifying the dither mode if colourmapped images are generated.
+   This option takes only effect on screens with 256 colours or less. On
+   CyberGraphics screens with more than 256 colours, true colour images are
+   produced and no dithering is performed.
+   <p>
+   The number specifies the type of dithering as follows:
+   <table>
+   <tr><td><b>number</b><td><b>dither mode</b>
+   <tr valign=top><td align=center>0<td>No dithering (fast but low quality)
+   <tr valign=top><td align=center>1<td>Ordered (compromise between no dithering and Floyd-Steinberg)
+   <tr valign=top><td align=center>2<td>Floyd-Steinberg (best quality but slow).
+      This is the default.
+   </table>
+<p>
+<dt><code><b>GRAYSCALE</b></code>
+<dd>Produce grayscale images. This is faster than colour images.
+<p>
+<dt><code><b>MAXMEM=</b><var>number</var></code>
+<dd>Specifies the maximum amount of scratch memory (in kB) to be used for the decoding
+   process of each image. Large images may take quite a lot of memory during
+   decoding. If an image needs more memory than the specified maximum, a virtual
+   memory system is used. After the image has been decoded, the scratch memory
+   is released, even if the image is still displayed.
+   <p>
+   Default for this parameter is 1024 (= 1 megabyte). Note that the maximum
+   is used on a per-image basis, not for all images together.
+<p>
+<dt><code><b>LOWPRI</b></code>
+<dd>The LOWPRI argument will run the decoder at a lower priority than default.
+   If you are using your Amiga for other tasks while AWeb is downloading images,
+   this feature helps you to keep the GUI responsive when many images are being
+   decoded.
+   However, if you are running CPU intensive tasks this argument could stop
+   images from being processed alltogether.
+<p>
+   Note that the LOWPRI argument might not be effective when you use a custom task
+   scheduler like Executive. Use task name "AWebJFIF decoder" to configure the
+   decoder task in custom schedulers.
+<dt><code><b>DEBUG=</b>0|1</code>
+<dd>The DEBUG argument switches on or off output of errors and warnings from the
+underlying JPEG Library to standard out.
+<p>
+DEBUG=0 no debug output (default)
+<p>
+DEBUG=1 output debug info.
+</dl>
+
+<h2>Support</h2>
+This distribution of AWeb comes with no support, however the AWeb Mailing list has many users and you are <A HREF="FILE:///AWebPath:Docs/GettingHelp.html">encouraged to subscribe</A> if you haven't aleady done so.
+
+<h2>Disclaimer</h2>
+This software is provided "as is". No warranties are made, either
+expressed or implied, with respect to reliability, quality, performance,
+or operation of this software. The use of this program is at your own risk.
+Yvon Rozijn assumes no responsibility or liability for any damage or
+losses resulting from the use of this software, even if advised of the
+possibility of such damage or loss.
+
+<h2>Copyright</h2>
+<P><strong>Copyright &copy; 2002-2007 by the respective contributers of <A HREF="http://aweb.sunsite.dk" TARGET="_blank">The AWeb Open Source Project</A>.  All rights reserved.</strong>
+<P>Any code or files that remain in their original, unmodified form are
+<P><strong>Copyright &copy; 2002 by Tom Parker, and copyright &copy; 1998-2000 by Yvon Rozijn.  All rights reserved.</strong>
+<P>It uses code from the JPEG library that was written by the <A HREF="http://www.ijg.org" TARGET="_blanl">Independent JPEG Group (IJG)</A>.
+
+<h2>History</h2>
+awebjfif.awebplugin 1.10 (14-01-2002)
+<ul>
+<li>Removed low memory bug
+<li>Removed minor bug with LOWPRI option
+<li>Fixed and compiled by Tom Parker
+</ul>
+
+awebjfif.awebplugin 1.9 (1-12-2000)
+<ul>
+<li>Added support for scaling after completion, necessary for percentage scaling.
+</ul>
+
+awebjfif.awebplugin 1.8 (5-9-1999)
+<ul>
+<li>Cleaned up the code a bit.
+</ul>
+
+awebjfif.awebplugin 1.6 (19-10-1998)
+<ul>
+<li>Added support for proportional scaling (only one of WIDTH and HEIGHT specified).
+<li>Added MULTIPASS argument.
+</ul>
+
+awebjfif.awebplugin 1.3 (01-03-1998)
+<ul>
+<li>Added LOWPRI argument.
+</ul>
+
+awebjfif.awebplugin 1.2 (25-02-1998)
+<ul>
+<li>Removed possible decoder stalls.
+<li>Much faster progressive display of scaled images.
+</ul>
+
+awebjfif.awebplugin 1.1 (14-02-1998)
+<ul>
+<li>Didn't support progressive JPEGs (used old library version)
+<li>Didn't support grayscale JPEGs.
+</ul>
+
+awebjfif.awebplugin 1.0 (11-02-1998)
+<ul>
+<li>Initial version
+</ul>

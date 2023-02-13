@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>Method: AOM_LAYOUT</title>
+</head>
+<body>
+<h1>Method: AOM_LAYOUT</h1>
+
+<h2>Purpose</h2>
+
+The <b>AOM_LAYOUT</b> method is used to make the copydriver object layout
+itself.
+
+<h2>Message structure</h2>
+
+The <b>AOM_LAYOUT</b> method uses an <b>Amlayout</b> structure:<p>
+
+<pre>
+struct Amlayout
+{  <a href=index.html#Amessage>struct Amessage</a> amsg;
+   LONG width,height;      /* Target width and height to layout within */
+   USHORT flags;
+   APTR text;
+   LONG startx;
+   struct Amlresult *amlr;
+};
+</pre>
+
+<h2>Usage</h2>
+
+<h3>width, height</h3>
+
+These are the target width and height of the current window or frame.
+
+
+<h3>Return value</h3>
+The return value for this method is not defined.
+
+<h2>Implementation</h2>
+
+Only copydriver objects must implement this method.
+<p>
+The object should layout itself and compute all its components coordinates relative
+to the copydriver object.
+Then set its <b>AOBJ_Width</b> and <b>AOBJ_Height</b> attributes (the
+<a href="../classes/copydriver.html"><code>struct Copydriver</code></a>'s
+<code>aow</code> and <code>aoh</code> fields).
+<p>
+Note that the <b>AOBJ_Left</b> and <b>AOBJ_Top</b> attributes will be changed by other
+methods processed by your superclass object. Never cache coordinates other than
+relative coordinates to your outer bounds.
+
+</body>
+</html>
+

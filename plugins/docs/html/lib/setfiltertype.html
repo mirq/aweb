@@ -1,0 +1,51 @@
+<html>
+<head>
+<title>Setfiltertype()</title>
+</head>
+<body>
+<h1>Setfiltertype()</h1>
+
+<h2>Purpose</h2>
+Set a new content type from within a filter type plugin. (V2.0)
+
+<h2>Synopsis</h2>
+<pre>
+   Setfiltertype(handle, type)
+                 A0      A1
+
+   void Setfiltertype(void *, char *)
+</pre>
+
+<h2>Function</h2>
+This function sets a new MIME content type from within a filter
+type plugin.
+<p>
+This function can only be called from within the plugins
+<a href="../plugin/filterplugin.html"><code>Filterplugin()</code></a>
+function. It should be called before any data is written by the
+<a href=writefilter.html><code>Writefilter()</code></a> function,
+or else it will have no effect.
+
+<h2>Inputs</h2>
+<table border>
+<tr><th align=left valign=top>Parameter
+   <th align=left valign=top>Description
+<tr><td valign=top><code>handle</code>
+   <td valign=top>The handle contained in the
+      <a href="../structs/pluginfilter.html"><code>Pluginfilter</code></a>
+      structure.
+<tr><td valign=top><code>type</code>
+   <td valign=top>A null-terminated string holding the new MIME content
+      type (e.g. "text/html").
+      <p>
+      Currently only text types are supported (text/html, text/plain, etc).
+</table>
+
+<h2>Results</h2>
+Subsequent data written by the
+<a href=writefilter.html><code>Writefilter()</code></a> function will
+be interpreted as being of this type.
+
+<h2>See also</h2>
+<a href="writefilter.html">Writefilter()</a>
+

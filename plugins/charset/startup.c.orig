@@ -1,0 +1,630 @@
+/**********************************************************************
+ *
+ * This file is part of the AWeb-II distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+
+/* startup.c
+ *
+ * General startup file for AWeb plugin modules
+ *
+ * Loosely based on the "demo library in pure C" code
+ * by Andreas R. Kleinert.
+ *
+ * Use this file unchanged as startup file in your own
+ * AWeb plugin module project.
+ *
+ */
+
+#include "pluginlib.h"
+#include <libraries/awebsupport.h>
+#include <exec/types.h>
+#include <exec/libraries.h>
+#include <exec/resident.h>
+#include <proto/exec.h>
+#include <proto/intuition.h>
+#include "awebcharset.h"
+#include <intuition/intuition.h>
+#include <intuition/intuitionbase.h>
+#include <stdio.h>
+#include <string.h>
+
+#undef NO_INLINE_STDARG
+#include <proto/awebsupport.h>
+#include <proto/codesets.h>
+#define NO_INLINE_STDARG
+
+struct SegList;
+struct Library *AwebSupportBase=NULL;
+struct Library *CodesetsBase=NULL;
+struct IntuitionBase *IntuitionBase=NULL;
+
+#if defined(__amigaos4__)
+struct AwebSupportIFace *IAwebSupport=NULL;
+struct CodesetsIFace *ICodesets=NULL;
+struct IntuitionIFace *IIntuition;
+#endif
+
+struct SignalSemaphore charsema;
+
+#ifdef __MORPHOS__
+ULONG __abox__=1;
+#endif
+
+
+#if defined(__amigaos4__)
+
+USRFUNC_P3
+(
+__saveds struct Library * , Initlib,
+struct Library *,libbase,D0,
+struct SegList *,seglist,A0,
+struct ExecIFace *,exec,A6
+
+);
+
+#else
+
+USRFUNC_P3
+(
+__saveds struct Library * , Initlib,
+struct Library *,libbase,D0,
+struct SegList *,seglist,A0,
+struct ExecBase *,sysbase,A6
+
+);
+
+#endif
+LIBFUNC_P0
+(
+__saveds struct Library * , Openlib,
+LIBMAN_TYPE, LIBMAN_NAME
+);
+
+LIBFUNC_P0
+(
+ __saveds struct SegList * , Closelib,
+ LIBMAN_TYPE, LIBMAN_NAME
+);
+
+static __saveds struct SegList * Real_Expungelib(LIBMAN_TYPE LIBMAN_NAME);
+LIBFUNC_P0
+(
+__saveds struct SegList * , Expungelib,
+LIBMAN_TYPE, LIBMAN_NAME
+);
+
+LIBFUNC_P0
+(
+__saveds ULONG  , Extfunclib,
+LIBMAN_TYPE, LIBMAN_NAME
+);
+
+
+LIBFUNC_P1
+(
+extern  __saveds ULONG  , Initplugin,
+struct Plugininfo *,pi,A0,
+PLUGIN_TYPE, PLUGIN_NAME
+);
+
+LIBFUNC_P1
+(
+extern  __saveds void  , Queryplugin,
+struct Pluginquery *,pq,A0,
+PLUGIN_TYPE, PLUGIN_NAME
+
+);
+
+LIBFUNC_P1
+(
+extern  __saveds void  , Commandplugin,
+struct Plugincommand *,pc,A0,
+PLUGIN_TYPE, PLUGIN_NAME
+
+);
+
+LIBFUNC_P1
+(
+extern  __saveds void  , Filterplugin,
+struct Pluginfilter *,pf,A0,
+PLUGIN_TYPE, PLUGIN_NAME
+
+);
+
+/* Function declarations for project dependent hook functions */
+extern ULONG Initpluginlib(struct Library *libbase);
+extern void Expungepluginlib(struct Library *libbase);
+
+
+
+struct Library *AwebPluginBase;
+
+static APTR libseglist;
+
+struct ExecBase *SysBase;
+
+
+LIBSTART_DUMMY
+
+static char __aligned libname[]=PLUGIN_LIBNAME;
+static char __aligned libid[]=PLUGIN_LIBID;
+
+/*----------------------------------------------------------------------*/
+#if defined(__amigaos4__)
+
+
+/* ------------------- Manager Interface ------------------------ */
+static LONG _manager_Obtain(struct LibraryManagerInterface *Self)
+{
+    return Self->Data.RefCount++;
+}
+
+static ULONG _manager_Release(struct LibraryManagerInterface *Self)
+{
+    return Self->Data.RefCount--;
+}
+
+/* Manager interface vectors */
+static void *lib_manager_vectors[] =
+{
+    (void *)_manager_Obtain,
+    (void *)_manager_Release,
+    (void *)0,
+    (void *)0,
+    (void *)Openlib,
+    (void *)Closelib,
+    (void *)Expungelib,
+    (void *)0,
+    (void *)-1,
+};
+
+/* "__library" interface tag list */
+static struct TagItem lib_managerTags[] =
+{
+    {MIT_Name,             (ULONG)"__library"},
+    {MIT_VectorTable,      (ULONG)lib_manager_vectors},
+    {MIT_Version,          1},
+    {TAG_DONE,             0}
+};
+
+/* ------------------- Library Interface(s) ------------------------ */
+
+/* ------------------- Main Interface ------------------------------ */
+
+ULONG _Main_Obtain(struct LibraryManagerInterface *Self)
+{
+    return Self->Data.RefCount++;
+
+}
+
+static ULONG _Main_Release(struct LibraryManagerInterface *Self)
+{
+    return Self->Data.RefCount--;
+}
+
+static void *main_vectors[] = {
+        (void *)_Main_Obtain,
+        (void *)_Main_Release,
+        (void *)NULL,
+        (void *)NULL,
+        (void *)Initplugin,
+        (void *)Queryplugin,
+#ifdef PLUGIN_COMMANDPLUGIN
+        (void *)Commandplugin,
+#else
+                NULL,
+#endif
+#ifdef PLUGIN_FILTERPLUGIN
+        (void *)Filterplugin,
+#else
+                NULL,
+#endif
+
+        (void *)-1
+};
+
+
+
+/* extern ULONG VecTable68K;*/
+
+static struct TagItem mainTags[] =
+{
+    {MIT_Name,              (uint32)"main"},
+    {MIT_VectorTable,       (uint32)main_vectors},
+    {MIT_Version,           1},
+    {TAG_DONE,              0}
+};
+
+static uint32 libInterfaces[] =
+{
+    (uint32)lib_managerTags,
+    (uint32)mainTags,
+    (uint32)0
+};
+
+struct TagItem libCreateTags[] =
+{
+    {CLT_DataSize,         (uint32)PLUGIN_SIZE},
+    {CLT_InitFunc,         (uint32)Initlib},
+    {CLT_Interfaces,       (uint32)libInterfaces},
+ /*   {CLT_Vector68K,        (uint32)&VecTable68K}, */
+    {TAG_DONE,             0}
+};
+
+
+/* ------------------- ROM Tag ------------------------ */
+static struct Resident lib_res __attribute((used)) =
+{
+    RTC_MATCHWORD,
+    &lib_res,
+    &lib_res+1,
+    RTF_NATIVE|RTF_AUTOINIT,
+    PLUGIN_VERSION,
+    NT_LIBRARY,
+    0,
+    libname,
+    libid,
+    libCreateTags
+};
+
+
+
+
+
+
+
+#else // !(os4 but os3)
+/*----------------------------------------------------------------------*/
+/* OS3.x Library */
+
+
+
+static APTR functable[]=
+{ 
+#ifdef __MORPHOS__
+   (APTR)FUNCARRAY_32BIT_NATIVE,
+#endif  
+   Openlib,
+   Closelib,
+   Expungelib,
+   Extfunclib,
+   Initplugin,
+   Queryplugin,
+#ifdef PLUGIN_COMMANDPLUGIN
+   Commandplugin,
+#else
+   NULL,
+#endif
+#ifdef PLUGIN_FILTERPLUGIN
+   Filterplugin,
+#else
+   NULL,
+#endif
+
+   (APTR)-1
+};
+
+/* Init table used in library initialization. */
+static ULONG inittab[]=
+{  PLUGIN_SIZE,
+   (ULONG) functable,
+   0,
+   (ULONG) Initlib
+};
+
+
+/* The ROM tag */
+struct Resident __aligned romtag=
+{  RTC_MATCHWORD,
+   &romtag,
+   &romtag+1,
+#ifdef __MORPHOS__
+   RTF_AUTOINIT | RTF_PPC,
+#else
+   RTF_AUTOINIT,
+#endif
+   PLUGIN_VERSION,
+   NT_LIBRARY,
+   0,
+   libname,
+   libid,
+   inittab
+};
+
+#endif
+
+#if defined(__amigaos4__)
+
+USRFUNC_H3
+(
+ __saveds struct Library *, Initlib,
+ struct Library *, libBase, D0,
+ struct SegList *, seglist, A0,
+ struct ExecIFace *, exec, A6
+)
+
+// struct Library *Initlib(struct Library *LibraryBase, APTR seglist, struct Interface *exec)
+{
+    struct ExecIFace *IExec
+#ifdef __GNUC__
+        __attribute__((unused))
+#endif
+        = (struct ExecIFace *)exec;
+
+    AwebPluginBase = libBase;
+
+    libBase->lib_Node.ln_Type = NT_LIBRARY;
+    libBase->lib_Node.ln_Pri  = 0;
+    libBase->lib_Node.ln_Name = libname;
+    libBase->lib_Flags        = LIBF_SUMUSED|LIBF_CHANGED;
+    libBase->lib_Version      = PLUGIN_VERSION;
+    libBase->lib_Revision     = PLUGIN_REVISION;
+    libBase->lib_IdString     = libid;
+
+    libseglist = seglist;
+
+    if(!Initpluginlib((struct Library *)libBase))
+    {
+        Expungepluginlib((struct Library *)libBase);
+        libBase=NULL;
+    }
+
+       return (struct Library *)libBase;
+}
+
+
+#else
+
+USRFUNC_H3
+(
+__saveds struct Library * , Initlib,
+struct Library *,libbase,D0,
+struct SegList *,seglist,A0,
+struct ExecBase *,sysbase,A6
+)
+{
+    USRFUNC_INIT
+  SysBase=sysbase;
+   AwebPluginBase=libbase;
+   libbase->lib_Revision=PLUGIN_REVISION;
+   libseglist=seglist;
+   if(!Initpluginlib(libbase))
+   {  Expungepluginlib(libbase);
+      libbase=NULL;
+   }
+   return libbase;
+
+    USRFUNC_EXIT
+}
+
+#endif
+
+LIBFUNC_H0
+(
+__saveds struct Library * , Openlib,
+LIBMAN_TYPE, LIBMAN_NAME
+)
+{
+    LIBFUNC_INIT
+
+#if defined(__amigaos4__)
+   struct Library *Pluginlibbase = (struct Library *)LIBMAN_NAME->Data.LibBase;
+#else
+   struct Library *Pluginlibbase = (struct Library *)LIBMAN_NAME;
+#endif
+
+   UBYTE buf[128];
+   static BOOL versionok=FALSE;
+   static BOOL warned=FALSE;
+
+#define MINVERSION "3.5.08"
+#warning "Replace 3.5.08 with the next release Version"
+
+#define WARNTEXT "This awebcharset.awebplugin need at least AWeb " MINVERSION
+
+   InitSemaphore(&charsema);
+
+   Pluginlibbase->lib_OpenCnt++;
+   Pluginlibbase->lib_Flags&=~LIBF_DELEXP;
+
+   // Open the libraries we need
+   // Filter plugins need version 2 or higher of the awebsupport library
+
+   ObtainSemaphore(&charsema);
+   if(!AwebSupportBase)
+   {
+      AwebSupportBase=OpenLibrary("awebsupport.library",2);
+      if(!AwebSupportBase)
+      {
+         // no AwebSupportBase - we must run on an *very* old Version
+         if (IntuitionBase=(struct IntuitionBase *) OpenLibrary("intuition.library", 36))
+         {
+            struct Window *win;
+            struct EasyStruct es;
+            ULONG lock;
+
+#if defined(__amigaos4__)
+            IIntuition = (struct IntuitionIFace *)GetInterface((struct Library *)IntuitionBase,"main",1,0);
+#endif
+            es.es_StructSize=sizeof(es);
+            es.es_Title="AWeb";
+            es.es_TextFormat=WARNTEXT;
+            es.es_GadgetFormat="Ok";
+
+            lock = LockIBase(0);
+            win = IntuitionBase->FirstScreen->FirstWindow;
+            UnlockIBase(lock);
+            EasyRequestArgs(win, &es, NULL, NULL);
+
+#if defined(__amigaos4__)
+            DropInterface((struct Interface *)IIntuition);
+            IIntuition=NULL;
+#endif
+            CloseLibrary((struct Library *)IntuitionBase);
+            IntuitionBase=NULL;
+            Pluginlibbase->lib_OpenCnt--;
+            Pluginlibbase=NULL;
+         }
+      }
+      else
+      {
+
+#if defined(__amigaos4__)
+         IAwebSupport = (struct AwebSupportIFace *)GetInterface(AwebSupportBase,"main",1,0);
+#endif
+         if(strncmp(Awebversion(),MINVERSION,6)<0)
+         {
+            // we must run on an old Version - don't load codesets.library to keep AWeb usable
+            // use the MSG Strings: REQUEST_TITLE(1), ABOUT_OK(107)
+            Syncrequest(Awebstr(1),WARNTEXT,Awebstr(107));
+         }
+         else
+         {
+            versionok=TRUE;
+         }
+      }
+   }
+   if(versionok && !CodesetsBase) // no check for warned here so the User can add the Lib without restart AWeb
+   {
+      CodesetsBase=OpenLibrary(CODESETSNAME,CODESETSVER);
+
+#if defined(__amigaos4__)
+      if(CodesetsBase)
+      ICodesets = (struct CodesetsIFace *)GetInterface(CodesetsBase,"main",1,0);
+#endif
+
+      if(!CodesetsBase)
+      {
+         // No codesets library - build a requester to inform the user once about that
+         if(Agetattr(Aweb(),AOAPP_Screenvalid) && !warned)
+         {
+            // use the MSG Strings: REQUEST_TITLE(1), ERROR_CANTOPENV(20001), ABOUT_OK(107)
+            sprintf(buf,Awebstr(20001),CODESETSNAME,CODESETSVER);
+            Syncrequest(Awebstr(1),buf,Awebstr(107));
+            warned=TRUE;
+         }
+      }
+   }
+   ReleaseSemaphore(&charsema);
+   return Pluginlibbase;
+
+    LIBFUNC_EXIT
+}
+
+LIBFUNC_H0
+(
+__saveds struct SegList * , Closelib,
+LIBMAN_TYPE, LIBMAN_NAME
+)
+{
+    LIBFUNC_INIT
+
+#if defined(__amigaos4__)
+   struct Library *Pluginlibbase = (struct Library *)LIBMAN_NAME->Data.LibBase;
+#else
+   struct Library *Pluginlibbase = (struct Library *)LIBMAN_NAME;
+#endif
+
+
+  Pluginlibbase->lib_OpenCnt--;
+   if(Pluginlibbase->lib_OpenCnt==0)
+   {
+      ObtainSemaphore(&charsema);
+
+#if defined(__amigaos4__)
+      if(IAwebSupport)
+      {
+         DropInterface((struct Interface *)IAwebSupport);
+         IAwebSupport=NULL;
+      }
+      if(ICodesets)
+      {
+         DropInterface((struct Interface *)ICodesets);
+         ICodesets=NULL;
+      }
+#endif
+
+      if(AwebSupportBase)
+      {
+         CloseLibrary(AwebSupportBase);
+         AwebSupportBase=NULL;
+      }
+      if(CodesetsBase)
+      {
+         CloseLibrary(CodesetsBase);
+         CodesetsBase=NULL;
+      }
+      ReleaseSemaphore(&charsema);
+      if(Pluginlibbase->lib_Flags&LIBF_DELEXP)
+      {
+         return Real_Expungelib(LIBMAN_NAME);
+      }
+   }
+   return NULL;
+
+    LIBFUNC_EXIT
+}
+
+LIBFUNC_H0
+(
+__saveds struct SegList * , Expungelib,
+LIBMAN_TYPE,LIBMAN_NAME
+)
+{
+    LIBFUNC_INIT
+      return Real_Expungelib(LIBMAN_NAME);
+      LIBFUNC_EXIT
+}
+
+static __saveds struct SegList * Real_Expungelib(LIBMAN_TYPE LIBMAN_NAME)
+{
+
+#if defined(__amigaos4__)
+   struct Library *Pluginlibbase = (struct Library *)LIBMAN_NAME->Data.LibBase;
+#else
+   struct Library *Pluginlibbase = (struct Library *)LIBMAN_NAME;
+#endif
+
+
+  if(Pluginlibbase->lib_OpenCnt==0)
+   {  ULONG size=Pluginlibbase->lib_NegSize+Pluginlibbase->lib_PosSize;
+      UBYTE *ptr=(UBYTE *)Pluginlibbase-Pluginlibbase->lib_NegSize;
+      Remove((struct Node *)Pluginlibbase);
+      Expungepluginlib(Pluginlibbase);
+#if defined(__amigaos4__)
+    DeleteLibrary(Pluginlibbase);
+#else
+      FreeMem(ptr,size);
+#endif
+
+      return libseglist;
+   }
+   Pluginlibbase->lib_Flags|=LIBF_DELEXP;
+   return NULL;
+}
+
+LIBFUNC_H0
+(
+__saveds ULONG  , Extfunclib,
+LIBMAN_TYPE, LIBMAN_NAME
+)
+{
+    LIBFUNC_INIT
+  return 0;
+
+    LIBFUNC_EXIT
+}
+
+

@@ -1,0 +1,25 @@
+/Makefile.tubs/1.1/Mon May  9 23:55:40 2005//
+/adler32.c/1.1/Wed May 11 11:31:31 2005//
+/compress.c/1.1/Wed May 11 11:31:32 2005//
+/crc32.c/1.1/Wed May 11 11:31:32 2005//
+/crc32.h/1.1/Sun Jan  5 16:53:34 2003//
+/deflate.c/1.1/Wed May 11 11:31:32 2005//
+/deflate.h/1.1/Wed May 11 11:31:33 2005//
+/gzio.c/1.1/Wed May 11 11:31:33 2005//
+/infback.c/1.1/Mon Oct  4 02:31:20 2004//
+/inffast.c/1.1/Tue Sep  7 05:24:56 2004//
+/inffast.h/1.1/Wed Jan  1 17:46:20 2003//
+/inffixed.h/1.1/Sun Nov 24 23:44:58 2002//
+/inflate.c/1.1/Mon Oct  4 02:33:51 2004//
+/inflate.h/1.1/Mon Sep  8 04:52:50 2003//
+/inftrees.c/1.1/Wed Sep 15 14:30:06 2004//
+/inftrees.h/1.1/Sun Aug 10 22:15:50 2003//
+/trees.c/1.1/Wed May 11 11:31:34 2005//
+/uncompr.c/1.1/Wed May 11 11:31:35 2005//
+/zconf.h/1.1/Wed May 11 11:31:35 2005//
+/zconf.in.h/1.1/Wed May 11 11:31:35 2005//
+/zlib.h/1.1/Mon Oct  4 02:57:26 2004//
+/zutil.c/1.1/Wed May 11 11:31:36 2005//
+/zutil.h/1.1/Wed May 11 11:31:36 2005//
+/trees.h/1.2/Thu Jun 25 16:56:56 2009//
+D

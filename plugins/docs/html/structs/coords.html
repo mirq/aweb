@@ -1,0 +1,66 @@
+<html>
+<head>
+<title>struct Coords</title>
+</head>
+<body>
+<h1><code>struct Coords</code></h1>
+
+<h2>Purpose</h2>
+
+The <b><code>struct Coords</code></b> contains details needed
+for <a href="../plugin/copydriver.html">plugin copydriver</a> classes
+to render themselves.
+
+<h2>Structure contents</h2>
+
+<pre>
+struct Coords              /* Rendering context */
+{  LONG dx,dy;             /* Add to frame coordinates to get RastPort coordinates */
+   LONG minx,miny,maxx,maxy;  /* Resulting max visible limits as RastPort coords */
+   APTR win;
+   struct RastPort *rp;    /* The window's RastPort */
+   struct DrawInfo *dri;   /* The current DrawInfo */
+   SHORT bgcolor,textcolor,linkcolor,vlinkcolor,alinkcolor;
+                           /* Default pen numbers for current frame */
+   APTR bgimage;
+};
+</pre>
+
+<h2>Usage</h2>
+
+<h3>General</h3>
+Never allocate this structure yourself. Always use the
+<a href="../lib/clipcoords.html"><code>Clipcoords()</code></a> function
+to allocate a new <code>Coords</code> structure, or to validate an existing
+one.
+
+<h3>Fields: <code>dx, dy</code></h3>
+Coordinate offsets. Add these to your object's
+<a href="../coordinates.html">frame-relative coordinates</a> to obtain the
+RastPort relative coordinates needed to do any rendering.
+<p>
+Or, subtract these from RastPort relative coordinates (like mouse coordinates
+in a <a href="../methods/handleinput.html">AOM_HANDLEINPUT</a> message)
+to obtain frame-relative coordinates.
+
+<h3>Fields: <code>minx, miny, maxx, maxy</code></h3>
+The upper left, and lower right coordinates of the currently visible
+display area. These are RastPort relative coordinates.
+
+<h3>Field: <code>rp</code></h3>
+A pointer to a RastPort to be used for rendering. After obtaining or validating
+a <code>struct Coords</code> using the
+<a href="../lib/clipcoords.html"><code>Clipcoords()</code></a> function,
+the RastPort's Layer is clipped to the rectangle described by <code>minx,
+miny, maxx, maxy</code>.
+
+<h3>Field: <code>dri</code></h3>
+A pointer to a <code>struct DrawInfo</code> for the current screen.
+
+<h3>Fields: <code>bgcolor, textcolor, linkcolor, vlinkcolor, alinkcolor</code></h3>
+Pen numbers to use for background, foreground text, unvisited links,
+visited links, and selected links, respectively.
+
+</body>
+</html>
+

@@ -1,0 +1,20 @@
+; Sample script to stop a TCP program that was started using the
+; _starttcpscript script
+;
+; To use this script, configure AWeb to use for its Stop TCP program:
+;    command = (path)/_stoptcpscript
+;  arguments = (none)
+
+; The variable TCPPROCESS contains the CLI process that the TCP stack
+; is running in.
+
+Break $TCPPROCESS
+
+; Note:
+; If your TCP stack supports ARexx, you could use it to stop your TCP
+; program directly, instead of using this script.
+; In that case you should configure AWeb to use the following as its
+; Stop TCP program:
+;    command = SYS:RexxC:rx
+;  arguments = "ADDRESS (portname) QUIT"
+; where (portname) is the actual ARexx port name of your TCP program.

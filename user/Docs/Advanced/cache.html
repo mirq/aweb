@@ -1,0 +1,181 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+<html>
+<head>
+<title>
+Cache usage
+</title>
+</head>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<h1>&nbsp; Cache usage</h1>
+
+<h2>Why a cache is useful</h2>
+When you are web-surfing, you often find that there are pages that you
+visit every time again. Most of the time these pages haven't changed, so
+it is really a waste of network bandwidth to fetch the page (and possibly
+the images on it) every time. The <em>cache</em> is used to store the most
+recently visited
+pages and images on your hard disk. The next time you visit the same page,
+it is already on your computer. There is no need to retrieve it again
+over the network, thus saving time and bandwidth.
+<p>
+Another benefit of having a cache is, that after you have disconnected
+from the network, the pages remain on your computer. You can then browse
+through them again <em>off-line</em>.
+
+<h2>How the cache works</h2>
+AWeb uses a two-stage caching system, both in memory and on disk. The
+main cache is on disk, and for the most recently used objects there is
+also a copy in memory. This way you will always get the maximum response
+speed.<br>
+<font size=-1>The term "object" is used here to indicate documents (pages)
+and inlined images shown within documents.</font>
+<p>
+Whenever you click a link (or type an URL), or an embedded image on a
+page is needed, AWeb first looks in its cache to see if it is already
+there. If the object is in memory, it is used immediately. If it is
+still on disk but not in memory, it is loaded back into memory. If it
+is not on disk, it is fetched over the network.
+<p>
+A <em>reload</em> of an object never uses the cached copy, but fetches
+the object from the original location again.
+
+<h2><a name=verify>Verifications</a></h2>
+There are two types of objects to consider for caching: Static objects and Dynamic objects.
+<p>Static objects are simply items that don't change from moment to moment, although they may change over the long term as a website is updated.  An image or standard HTML page is an example of this.  Dynamic objects are those that are created "on the fly" or "on demand" by a server.  That is, content differs each time it is downloaded.  This is commonly performed via a PHP script, for example.
+<p>There is no standard defined way to determine whether an object may be considered static or dynamic, but usually static objects have the "Last-Modified" HTTP header defined, so AWeb uses this to differentiate.
+
+<p>If the original object has been updated since it was stored
+in the cache, the cache copy should be updated as well. Therefore,
+when AWeb uses a cached copy of an object, it also
+sends a verification request to the server,
+to see if the object was modified. If not, AWeb will use the cache copy,
+and if the object <em>is</em> modified, AWeb will fetch the new version.
+<p>
+You can control how often AWeb will check with the server:
+
+<h3>&middot; Verify always</h3>
+<em>Every time</em> AWeb uses an object from the cache, it will also send
+out a verification request. This guarantees that you always see the most
+recent version. Obviously it also generates a lot of network activity,
+so normally you won't use this. Only if you visit sites with many documents
+that are updated very frequently you may want to use this option.
+
+<h3>&middot; Verify once per session</h3>
+Only when AWeb uses an object from the cache for the first time after you
+started AWeb, it will check with the server. The second and later times the
+object is used without verification. This allows AWeb to update its cached
+objects regularly, but does not produce excessive network overhead. This is
+the default verification mode.
+
+<h3>&middot; Verify never</h3>
+AWeb will just use cached copies of objects if they are available.
+It will never check with the server if
+the object has changed. If you know or suspect that the cached copy
+is no longer up-to-date, you should use the reload function.
+<p>
+When you browse <em>off-line</em> through cached pages with AWeb set to one of
+the other response modes, AWeb silently falls back to
+<em>verify never</em> mode. So it won't complain that it cannot
+connect to the server, and won't try to start your TCP stack just to
+verify cached objects. Of course it <em>will</em> do so when you try
+to fetch an object that is not in cache.
+
+<h2><a name=fast>Fast response</a></h2>
+Most browsers implement the verification mentioned above so that they first
+ask the server, and when the object turns out to be unmodified, then they
+use the cached copy. As a consequence, with <em>every</em> link you follow,
+you have to wait a few seconds until the network connection is set up and
+the server responds. You have to wait with every verification, even if the object is
+still in cache and up-to-date.
+<p>
+In most cases, the cached copy <em>will</em> still be valid.
+After all, that is one of the reasons for having a cache in the first place.
+So slow verification will let you wait many times totally unnecessary.
+<p>
+When using <strong>fast response</strong> mode, AWeb <em>always</em> uses
+the cached copy if one is available.
+The cached document or image is displayed immediately.
+In the same time that the object is displayed, AWeb connects to the server
+and verifies if the object is indeed not modified.
+In most cases the copy will still be up-to-date,
+and these connections disappear silently after a few seconds. This way
+you will gain a few seconds with every link you follow to a cached document.
+<p>
+In the few cases where the object was modified, you will first see the
+old version that was in cache. Then after a few seconds, when the server
+responds, the new updated
+version will be shown in the window, much like as if you had hit the reload
+button.
+<p>If this behaviour confuses you or annoys you, you should not use fast response
+mode.
+<p>The recommended setting is to verify "Always" without Fast response for Dynamic objects, and verify "Once per session" with Fast response for Static objects.
+
+<h2><a name=nocache>Uncached objects</a></h2>
+All documents and inlined images <em>from the net</em> are stored in
+the cache. The following objects will <em>not</em> go into the cache:
+<ul>
+<li>Objects from your own machine (<code>file://localhost</code>). Because these
+   objects already reside on your harddisk, there is no reason to store them
+   again in the cache.
+<li>Downloaded objects, they are stored at the location where you save them.
+<li>Objects from sites listed in the <a href=../Configuring/nwcache.html#nocache>do
+   not cache these sites list</a>.
+</ul>
+
+<h2><a name=cachedir>Cache directory</a></h2>
+To take maximum advantage of AWeb's cache, the
+<a href=../Configuring/nwcache.html#cachedir>cache directory</a> should be
+located on your hard disk. It is possible to configure AWeb to use a drawer
+in your Ram disk for its cache,
+but that would take up much memory and everything will be lost when you
+turn off your machine.
+<p>
+Should your machine crash (or be turned off) while AWeb was still active,
+then the next time you start AWeb the cache will be recovered
+automatically.
+<p>
+AWeb stores its cache files in several subdirectories. That way the number
+of files in each directory is kept low, which will result in a much faster
+cache when used with certain file systems (like AFS).
+<p>
+Note that you should not use the cache directory for anything else. Also,
+don't modify or delete any files.<br>
+If you accidentally deleted some files
+from the cache, or if you suspect that it has become corrupt, you
+should use the <code>Cache / Fix&nbsp;cache...</code> menu item. It will
+synchronize the internal registration with the files actually on disk.
+<strong>NOTE:</strong> This function will delete any files from the cache
+directory that are not belonging to AWebs cache.
+
+<h2>Cachebrowser</h2>
+You can use the <a href=../Working/cachebrowser.html>cachebrowser</a> to see what files
+are in the cache, and optionally view, save or delete them.
+
+<p>
+<hr>
+<a href=../AWeb%20Manual.html><img src=../GlobalImages/back.gif width=32 height=16 alt="<-" border=0></a> Back to
+<a href=../AWeb%20Manual.html>index</a>.
+
+</body>
+</html>

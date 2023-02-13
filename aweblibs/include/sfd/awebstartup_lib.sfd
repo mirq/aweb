@@ -1,0 +1,14 @@
+==id $Id: awebstartup_lib.sfd,v 1.1 2004/10/04 01:35:44 broadblues Exp $
+==base _AwebStartupBase
+==basetype struct Library *
+==libname awebstartup.library
+==bias 30
+==public
+==include <exec/types.h>
+==include <libraries/awebstartup.h>
+void AwebStartupOpen(struct Screen * screen, UBYTE * version, ULONG * imagepalette,
+	UBYTE * imagedata) (a0,a1,a2,a3)
+void AwebStartupState(ULONG state) (d0)
+void AwebStartupLevel(long ready, long total) (d0,d1)
+void AwebStartupClose() ()
+==end

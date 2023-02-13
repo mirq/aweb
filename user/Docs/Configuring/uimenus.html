@@ -1,0 +1,98 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+
+<HTML>
+
+<HEAD>
+<TITLE>GUI settings: Menus</TITLE>
+</HEAD>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<H1>&nbsp; GUI settings: Menus</H1>
+
+<IMG SRC="Images/GUISettings-Menus.png" ALIGN="RIGHT" ALT="GUI Settings: Menus Tab" WIDTH="508" HEIGHT="260" HSPACE="20" VSPACE="20" BORDER="0">
+
+<H2>Changing menu entries</H2>
+
+The list contains the menu definition for the browser window menus.
+<P>Select the entry you want to modify from the listview.  Use the <B>Add</B> button to add a new blank entry after the currently selected one.  Use the <B>Del</B> button to remove the selected entry.
+
+<H2>Type</H2>
+
+Select the type of this entry.
+
+<TABLE>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">Menu</TH><TD>A menu entry, appearing in the menu bar.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">Item</TH><TD>A menu item.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">Sub</TH><TD>A menu sub-item or another Sub definition.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">----</TH><TD>A separator item.</TD></TR>
+</TABLE>
+
+<P>Make sure the menu is correctly built.  That is, items and separators can only appear within a menu (that is, not at the top of the list), and sub-items can only immediately follow items or other sub-items.  If the menu structure is incorrect, the <B>INVALID</B> indicator is lit.
+<P>An incorrectly built menu results in no menu at all.  Should this happen, and you are locked out because the menu to start the GUI settings is gone, just open a shell window and type <PRE>&nbsp;&nbsp;&nbsp;AWEB_APL:AWebCfg GUI</PRE> to open the settings window again.
+
+<H2>Title</H2>
+
+Type the title as you like it to appear in the menu.
+
+<H2>Shortcut</H2>
+
+Type a one-character shortcut for the menu, or leave this field blank for no shortcut.
+
+<H2>Command</H2>
+
+In this field, you can type the <A HREF="../Advanced/ARexx/commands.html">Arexx command</A> that should be executed when you select the menu item.
+<P>In the command string, you can use the following parameter specifiers:
+
+<TABLE>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%u</TH><TD>Address currently displayed in the browser window.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%n</TH><TD>screen name that AWeb is running on.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%i</TH><TD>ID of frame that has focus.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%t</TH><TD>title of the document, as shown in the window title bar.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%c</TH><TD><A HREF="../Working/startup.html">configuration name</A>.</TD></TR>
+</TABLE>
+
+<P>In addition to ARexx commands, there are a few special strings you can enter.  Some strings will result in a checkmark, others are merely a shortcut for functionality not available in a single ARexx command.  All special strings start with the <B>@</B> character:
+
+<P><TABLE>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">@AREXX</TH><TD>When the item is selected, open a file requester and let the user pick an ARexx macro to run.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">@BGIMAGES</TH><TD>Display a checkmark along this item reflecting if backgrounds are on or off.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">@BGSOUND</TH><TD>Display a checkmark along this item reflecting if background sound is on or off.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">@BREAKJS</TH><TD>Break javascript programs.  This menu item is handled in a special way to work even when a program is running.  The normal <CODE>JSBREAK</CODE> command would not be handled until a running program has ended by itself.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">@DEBUGJS</TH><TD>Display a checkmark along this item reflecting if JavaScript debugging is on or off.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">@DRAGGING</TH><TD>Display a checkmark along this item reflecting if dragging is on or off.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">@LOADIMGALL<BR>@LOADIMGMAPS<BR>@LOADIMGOFF</TH><TD VALIGN="MIDDLE">These three display a checkmark along this item that is mutual exclusive across these items.  The checkmark reflects the current image loading status (all images, maps only, or off).</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">@NOPROXY</TH><TD>Display a checkmark along this item reflecting the noproxy status.
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">@OTHERHOT</TH><TD>When the item is selected, open a file requester and let the user pick a hotlist to display.</TD></TR>
+</TABLE>
+
+<H2>Rearranging menu entries</H2>
+
+You can move an entry in the menu.  Select the entry, either with the mouse or with the cursor up and down keys.  Now you can move the entry up and down in the list with either the arrow up or arrow down buttons, or with the <KBD>Ctrl</KBD> + cursor up/down keys.
+
+<P><HR>
+
+<A HREF="uioptions.html"><IMG SRC="../GlobalImages/back.gif" WIDTH="32" HEIGHT="16" ALT="&lt;-" BORDER="0">Options</A>&nbsp;&nbsp;<A HREF="settings.html"><IMG SRC="../GlobalImages/up.gif" WIDTH="32" HEIGHT="20" ALT="^" BORDER="0">Settings requesters</A>&nbsp;&nbsp;<A HREF="uibuttons.html"><IMG SRC="../GlobalImages/next.gif" WIDTH="32" HEIGHT="16" ALT="-&gt;" BORDER="0">Buttons</A>
+
+</BODY>
+
+</HTML>

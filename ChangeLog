@@ -1,0 +1,2628 @@
+----------------------------
+AWeb Open Source - ChangeLog
+----------------------------
+
+
+Wed, 07 Mar 2018  -  15:53:11
+Revision:  17
+
+    Add support for AmiSSL 4.2  A minimum of verson 4.2 is required to use more 
+    than one connection  process at at time so AWeb will enforce this minimum. 
+    A error requestor to inform about incorrect AmiSSL version.  Fix a number of 
+    warnings.    
+
+
+Tue, 25 Feb 2014  -  17:29:34
+Revision:  16
+
+    Add support for new built in mouse pointer types in AmigaOS 4.1 build Improve 
+    security by limiting Cyphers and enforcing SSL3 minimum Various fixes.   
+
+
+Sat, 26 May 2012  -  01:13:25
+Revision:  15
+
+    REplace all calls to CreatemsgPort and DeleteMsgPort with ACreatemsgport ADeletemsgport. 
+    Implement said functiosn with AlloSysObject for AmigaOS 4 and CreateMsgPort 
+    DeleteMsgPort for other operating systems.  Fix a few pointer type warnings 
+       
+
+
+Fri, 25 May 2012  -  02:36:54
+Revision:  14
+
+    AWeb created and deleted apports like crazy. Now the apport is created once 
+    at the beginning of the app and deleted the end at the same time as the other 
+    ports.   
+
+
+Fri, 25 May 2012  -  01:50:51
+Revision:  13
+
+    AWeb would only create an appport if opened on the default public screen. If 
+    opened on a named public screen (even if that name was Workbench!) it wouldn't 
+    create the port. AWeb now always creates an appport whatever screen it opens 
+    on.   
+
+
+Fri, 25 May 2012  -  00:27:42
+Revision:  12
+
+    Extend ARexx NEW to enabling opening the new window on a specific named screen 
+      
+
+
+Thu, 24 May 2012  -  23:11:09
+Revision:  11
+
+    Extend AREXX NEW to set LEFT and TOP of a new window. Add missing left and 
+    top attributes to javascrip window.open() spec.   
+
+
+Thu, 24 May 2012  -  19:40:38
+Revision:  10
+
+    Use AmigaOS 4 sysiclass for iconify gadget  
+
+
+Thu, 24 May 2012  -  18:35:10
+Revision:  9
+
+    The gadget / layout craetion code was moved to the wrong place so that it was 
+    not called on uniconfication. Corrected.  Save the values of winow->Width and 
+    window->Height after opening (as they are no longer always calculated by AWeb) 
+    and ensure newwidth and newheight are zeroed after use, so that on uniconfication 
+    etc they are not reused.    
+
+
+Thu, 24 May 2012  -  17:27:28
+Revision:  8
+
+    Fix long term bug where javascript.open() would open an incorrectly sized window. 
+     The old code would determine the window bordersizes, gadget layout sizes etc 
+    from those of an existing window. But this was only valid if the two windows 
+    were to share identical specs, in particular if they both were to have or not 
+    have navigation gadgets.  The new code allocates the entire gadgetry and imagery 
+    before the window is opened, allowing LayLimits to be used to determine the 
+    required window size.  Some additional calls to Closewindfow() were added to 
+    cleanup resources in the event of failing to open a window.  Fix a few warnings. 
+
+
+2012-05-22: Andy Broad <andy@broad.ology.org.uk>
+    * awebcommon/memory.c: Update code to use modern AmigaOS functions
+    
+2012-05-21: Andy Broad <andy@broad.ology.org.uk>
+    * aweb/arexx.c, aweb/winrexx.c, user/Docs/Advanced/ARexx/window.html:
+      Extend the ARexx command NEW to give greater control over the window. Added 
+      NONAV WIDTH and Height and updated the documentation accordingly.  
+  
+2012-05-20: Andy Broad <andy@broad.ology.org.uk>
+    * Include/keyfile.h: bumprev ro 3.5.10
+    * Include/platform_specific.h: bumprev of OS4 to OS4.1
+
+2012-05-20: Andy Broad <andy@broad.ology.org.uk>
+    * Remove asyncio dependencies. Fix behaviour of AWeb when render to a window
+      that is partially ofscreen.
+
+2009-10-15: Andy Broad <andy@broad.ology.org.uk>
+    * aweblibs/cachebroswer/cabrtask.c: removed (void *) cast from qsort and update
+      cabrsortf type to include consts. NO VOID POINTERS TO ELIMNATE AWARNINGS PLEASE!
+
+2009-10-15: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweblibs/history/whistask.c: Changed the version string and bumped version.
+
+2009-10-15: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweblibs/history/whistask.c: make some changes to eradicate all warnings.
+
+2009-10-15: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweblibs/gopher/gopher.c: Changed the version string and bumped version.
+
+2009-10-15: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweblibs/gopher/gopher.c: make some changes to eradicate all warnings.
+
+2009-10-15: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweblibs/cachebrowser/cabrtask.c: Changed the version string and bumped version.
+
+2009-10-15: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweblibs/cachebrowser/cabrtask.c: make some changes to eradicate all warnings.
+
+2009-10-15: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweblibs/authorize/authorlib.c: Changed the version string and bumped version.
+
+2009-10-15: Frank (Opi) Weber <opionline@yahoo.de>
+    * plugins/png/pluginlib.h: Changed the version string and bumped version.
+
+2009-10-15: Frank (Opi) Weber <opionline@yahoo.de>
+    * plugins/png/__pngsource68k.c: make some changes to eradicate some warnings.
+    * plugins/png/__pngcopy68k.c: make some changes to eradicate all warnings.
+    * plugins/png/awebpng.c: Ditto.
+    * plugins/png/startup.c: Ditto.
+
+
+2009-10-15: Frank (Opi) Weber <opionline@yahoo.de>
+    * plugins/filterexample/pluginlib.h: Changed the version string and bumped version.
+
+2009-10-15: Frank (Opi) Weber <opionline@yahoo.de>
+    * plugins/filterexample/filterexample.c: make some changes to eradicate all warnings.
+
+2009-10-15: Frank (Opi) Weber <opionline@yahoo.de>
+    * plugins/charset/pluginlib.h: Changed the version string and bumped version.
+
+2009-10-14: Frank (Opi) Weber <opionline@yahoo.de>
+    * tools/builddate.c: New file. Print out a datestring used for the version
+      string in the format '"DD.MM.YYYY"'. Because AWeb use the predefined __DATE__
+      macro which output the Date in the Format Mmm.DD.YYY no AWeb file have a
+      standard conform Datestring. With the use of this File the problem is
+      solved. If it works on AOS4 and MOS too then the Tubsengine and Makefile
+      for these systems can be changed to use this file too.
+    * Tubsengine: redirect the __AMIGADATE__ macro to the builddate executable.
+    * Makefile: Make sure that build/builddate is build before all other files.
+      The file is always build because i see no other way to include it.
+      But the build should only take some seconds.
+
+2009-10-06: Frank (Opi) Weber <opionline@yahoo.de>
+    * plugins/charset/awebcharset.c: provide a cleared structure for the
+      InitSemaphore() call and free the structure at Expungepluginlib().
+    * plugins/charset/pluginlib.h: Bumped Version to 1.4.
+    * plugins/charset/awebcharset.readme: Upadated the History.
+
+2009-10-05: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/popup.c: Close a open memory leak by add a ADDHEAD().
+
+2009-09-27: Frank (Opi) Weber <opionline@yahoo.de>
+    * plugins/charset/awebcharset.c: Add a Semaphore protected list for some
+      memory allocations and delete all not yet freed memory at Expungepluginlib.
+      The changes avoid memory leaks if the Plugin is in use while the user wants
+      to quit AWeb which causes a expunge of the Plugin.
+    * plugins/charset/awebcharset.h: changes caused by above.
+    * plugins/charset/startup.c: ditto
+    * plugins/charset/pluginlib.h: Bumped Version to 1.3.
+    * plugins/charset/awebcharset.readme: Upadated the History.
+
+2009-09-25: Frank (Opi) Weber <opionline@yahoo.de>
+    * awebcommon/defprefs.c: Close some open memory leaks.
+
+2009-09-17: Frank (Opi) Weber <opionline@yahoo.de>
+    * user/Docs/Working/winhis.html: relpaced whismain.iff with whismain.gif.
+    * user/Docs/Working/Images/whismain.iff: Deleted.
+    * user/Docs/Working/Images/whismain.gif: Added.
+
+2009-09-14: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweblibs/authorize/authorlib.c: Add a check against string.gadget
+      version 45 and use STRINGA_HookType,SHK_PASSWORD in password string
+      gadgets if the version is at least version 45.
+    * aweblibs/include/libraries/awebauthorize.h: changes caused by above
+      and moved the global showpass variable into the struct Authedit.
+
+2009-09-12: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweblibs/authorize/authorlib.c: Fixed a minor bug. The password gadget
+      and delete gadget should not enabled if no item in the list is selected.
+
+2009-09-11: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweblibs/authorize/authorlib.c: Add GetInterface(CheckBoxBase...)
+      and DropInterface(ICheckBox) for the OS4 Build. Hope that works
+      because i can't test it.
+
+2009-09-11: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweblibs/authorize/authorlib.c: Add a passwort protection for the
+      function which allow to show the passwords in plain text.
+      Bumped authorize.aweblib version to 36.2.
+    * aweblibs/include/libraries/awebauthorize.h: changes caused by above.
+    * aweblibs/include/libraries/awebauthorize.h: ditto.
+    * aweb/author.c: ditto.
+    * aweb.cd: Update according to the above changes.
+    * aweb/include/locale.h: ditto.
+    * catalogs/#?/aweb.ct: ditto.
+    * catalogs/deutsch/awebcfg.ct, catalogs/german/awebcfg.ct:
+      Added german translations caused by above and correct some words.
+
+2009-09-10: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweblibs/interfaces/awebauthorize.xml: forget to commit the xml file.
+
+2009-09-10: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweblibs/include/inline4/awebauthorize.h: forget to commit.
+
+2009-09-10: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/aweblibs/authorize/authorlib.c: Changed the function Authorreq()
+      to accept a additional argument to show a requester without a userid
+      gadget It's usefull if you only need a password from the user and
+      used in later changes to protect the passwords from viewing.
+    * aweb/aweblibs/include/#?/awebauthorize#?.h: Changed the header files
+      caused by above. Hopefully all is done correct because it's handmade.
+    * aweb/author.c: Changed the call to __Authorreq_WB() caused by above.
+
+2009-08-27: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/window.c: Added some DisposeObject() calls for not disposed objects.
+      Also sort the order of the DisposeObject() calls for the objects in the
+      order the objects are created.
+
+2009-08-23: Frank (Opi) Weber <opionline@yahoo.de>
+    * catalogs/deutsch/awebcfg.ct:
+    * catalogs/german/awebcfg.ct:
+      Added missing translations.
+
+2009-08-18: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/include/object.h, aweb/object.c: Changed the types for the first and
+      second argument for the Allocobject() function to fit the descriptions and
+      function calls in the program.
+
+2009-08-18: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweblibs/authorize/authorlib.c: Changes to not loose the buf for a changed
+      Listbrowser title.
+
+2009-08-18: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweblibs/authorize/authorlib.c: Add a checkmark button which allow to
+      show the passwords in the Listbrowser and in the Password gadget as
+      plain text. If you activate this checkbox a requester will ask you if
+      you really want to show the passwords in plain text.
+      Bumped authorize.aweblib version to 36.1.
+    * aweblibs/include/libraries/awebauthorize.h: changes cause by above.
+    * aweb.cd: Update according to the above changes.
+    * aweb/include/locale.h: ditto.
+    * catalogs/#?/aweb.ct: ditto.
+
+2009-08-18: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweblibs/authorize/authorlib.c: Allow sorting the Listbrowser columns if the
+      user click on the Listbrowser title. A sign (\/ or /\) is added to the titles
+      to give a visual feedback about the sort order.
+
+2009-08-18: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweblibs/authorize/authorlib.c: make some changes to eradicate all warnings
+
+2009-07-26: Frank (Opi) Weber <opionline@yahoo.de>
+    * user/Extras/awebshell.rexx: Do some cosmetic changes.
+
+2009-07-26: Frank (Opi) Weber <opionline@yahoo.de>
+    * user/Docs/#?: Corrected some wrong or broken links in the Docs.
+
+
+2009-07-24: Frank (Opi) Weber <opionline@yahoo.de>
+    * Tubsengine: Because AWeb and AWebCfg is now nearly warning free i add
+      the feature to print out the warnings to the console. You can switch off
+      that feature if you call 'make WARN=0 ...'. ('0' can be something except 1)
+      This makes only sense for OS3 builds so it is only implemented in Tubsengine.
+      (The other OS produce still too much warnings.)
+
+2009-07-23: Frank (Opi) Weber <opionline@yahoo.de>
+    * user/Docs/Configuring/nwmail.html: Because a unpatched RAM: device allow
+      only a file name length of 30 i truncate some filenames to fit this size.
+      e.g. NetworkSettings-MailNews-... is now called NetworkSettings-MN-...
+      This avoid some problems if a user unpack the archive to such unpatched device.
+
+2009-06-15: Frank (Opi) Weber <opionline@yahoo.de>
+    * all #?.c and #?.h Files: Only cosmetic changes: Remove all whitespaces
+      at end of line and replace all tabs with 3 spaces. Reformat some files.
+
+2009-06-09: Frank (Opi) Weber <opionline@yahoo.de>
+    * Makefile: Add touch aweb/version.c to get always a correct build date
+      in the version string.
+
+2009-06-09: Frank (Opi) Weber <opionline@yahoo.de>
+    * awebcommon/libraries.c: Changed again to avoid a compiler warning.
+
+2009-06-09: Frank (Opi) Weber <opionline@yahoo.de>
+    * awebcommon/libraries.c: Display a english error message if the
+      locale.library isn't available because this message can't localized
+      without the locale.library. That avoid a possible crash if the
+      locale.library isn't available.
+
+2009-06-09: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/aweb.c: Move the Openlib("locale.library"...) call to the top that the
+      locale.library is available at the first access to a localized string.
+      That avoid a possible crash if e.g. the asl.library isn't available.
+
+2009-06-04: Frank (Opi) Weber <opionline@yahoo.de>
+    * awebcfg/include/cfglocale.h, awebcfg.cd, catalogs/#?/awebcfg.ct:
+      fix for the Catcomp warnings about unknown formatting commands
+      and update all awebcfg.ct files according to the changes.
+
+2009-06-04: Frank (Opi) Weber <opionline@yahoo.de>
+    * awebcfg/awebcfg.c: Print a empty line before and after
+      the warning if no AWebCfg window could be opened.
+
+2009-05-24: Frank (Opi) Weber <opionline@yahoo.de>
+    * catalogs/deutsch/awebcfg.ct:
+    * catalogs/german/awebcfg.ct:
+      Forget the Linefeeds (\n) in the translation.
+
+2009-05-24: Frank (Opi) Weber <opionline@yahoo.de>
+    * catalogs/deutsch/awebcfg.ct:
+    * catalogs/german/awebcfg.ct:
+      Update german translation according to the latest changes.
+
+2009-05-24: Frank (Opi) Weber <opionline@yahoo.de>
+    * catalogs/#?/awebcfg.ct: Update all awebcfg.ct files
+      according to the latest changes.
+
+2009-05-24: Frank (Opi) Weber <opionline@yahoo.de>
+    * awebcfg/awebcfg.c, awebcfg/include/cfglocale.h, awebcfg.cd:
+      Print out a warning if no AWebCfg window could be opened.
+      The usual fault is a typo in the command line or forget
+      to use at least one of the 4 switches.
+
+2009-05-24: Frank (Opi) Weber <opionline@yahoo.de>
+    * catalogs/deutsch/aweb.ct:
+    * catalogs/german/aweb.ct:
+      Update german translation according to the changes from 2008-11-18.
+
+2009-05-24: Frank (Opi) Weber <opionline@yahoo.de>
+    * catalogs/#?/aweb.ct: Update all aweb.ct files according to
+      the changes from 2008-11-18.
+
+2009-05-24: Frank (Opi) Weber <opionline@yahoo.de>
+    * awebcfg/cfgui.c: Insert the first 2 chars of a selected entry
+      in a chooser dropdown menu into the associated stringgadget.
+      This and the latest 4 patches should fix bug #227.
+
+2009-05-24: Frank (Opi) Weber <opionline@yahoo.de>
+    * awebcfg/cfgpr.c: Insert the first 2 chars of a selected entry
+      in a chooser dropdown menu into the associated stringgadget.
+
+2009-05-24: Frank (Opi) Weber <opionline@yahoo.de>
+    * awebcfg/cfgnw.c: Insert the first 2 chars of a selected entry
+      in a chooser dropdown menu into the associated stringgadget.
+
+2009-05-24: Frank (Opi) Weber <opionline@yahoo.de>
+    * awebcfg/cfgbr.c: Insert the first 2 chars of a selected entry
+      in a chooser dropdown menu into the associated stringgadget.
+
+2009-05-24: Frank (Opi) Weber <opionline@yahoo.de>
+    * awebcfg/awebcfg.c: Introduce a new function called
+      Insertinstringgadget() which insert the first 2 chars of text
+      into a stringgadget at the current cursorposition and activate
+      the stringgadget afterwards.
+
+2009-05-08: Frank (Opi) Weber <opionline@yahoo.de>
+    * awebcommon/defprefs.c: Changed a strchr(cmd,';') into a
+      strrchr(cmd,';') call in Loadprefs() (case SVF_MENU)
+      that allow also semicolons in the URL.
+      If the URL contain a semicolon then the URL must be quoted.
+
+2009-05-08: Frank (Opi) Weber <opionline@yahoo.de>
+    * awebcfg/cfgui.c: Add a Correctcommand() call to convert
+      a typed URL in the MenuCMD gadget to the OPEN URL command.
+
+2009-05-08: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/application.c: Changed a '#if defined(__amigaos__)'
+      to '#if defined(__amigaos4__)' to fix the OS3 build.
+
+2009-04-18: Andy Broad <andy@broad.ology.org.uk>
+    * aweb/application.c: Add support for the extended range of default
+      full colour pointers under OS4 if installed
+
+2009-02-09: Andy Broad <andy@broad.ology.org.uk>
+    * aweblibs/awebjs/jdebug.c:
+    * aweblibs/awebjs/jexe.c: Fix some varargs errors spotted by matthey
+
+2009-02-07: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/area.c: Changed back 3 Amethodas calls to AmethodasA. This was
+      a fault by me. Sorry for that. I'll check for similar issues ASAP.
+
+2009-01-30: Andy Broad <andy@broad.ology.org.uk>
+    * aweb/frame.c: Now uses OS4.1 new alpha blend features, instead of
+      libablit.
+
+2009-01-30: Andy Broad <andy@broad.ology.org.uk>
+    * plugins/png/__pngcopyos4.c: Now uses OS4.1 new alpha blend features, instead of
+      libablit.
+
+2009-01-23: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/form.c: Add a patch which allow submitting a form using the enter
+      key(s) if the form has checkboxes, select or radio buttons or more as
+      one submit button. That fixes also Bug 272.
+
+2009-01-22: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/print.c: make some changes to eradicate all warnings
+      and moved the '#warning' warnings inside '#if defined(__amigaos4__)'
+      because they are OS4 related.
+
+2009-01-22: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/application.c: make some changes to eradicate all warnings
+      also for the developer version.
+
+2009-01-21: Frank (Opi) Weber <opionline@yahoo.de>
+    * Makefile#?: make some cosmetic changes in the 3 Makefiles.
+
+2009-01-21: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/application.c: make some changes to eradicate all warnings.
+      (except the #   warning  __chip does not work on my system...)
+
+2009-01-20: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/hotlist.c: make some changes to eradicate all warnings.
+
+2009-01-20: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/button.c: make some changes to eradicate all warnings.
+
+2009-01-19: Frank (Opi) Weber <opionline@yahoo.de>
+    * awebcfg/cfgnw.c: Deleted the code which was trying to set LISTBROWSER_EditTags->
+      STRINGA_BufferPos to 4 for the nocookie, noproxy and nocache lists. This code
+      wasn't working and the listbrowser set the cursor anyway at the latest cursor
+      position. I assume it's also still (or again) working for the other OS Versions.
+      This fixes bug 302. -> http://bugz.naff.dk/show_bug.cgi?id=302
+
+2009-01-19: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/cache.c: make some changes to eradicate all warnings
+      and reformat the file to get the 'AWeb style'.
+
+2009-01-12: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/fetch.c: make some changes to eradicate all warnings.
+
+2009-01-12: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/table.c: make some changes to eradicate all warnings.
+
+2009-01-06: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb//aweb.c: Delete the code which open the icon.library and
+      locale.library twice for the developer version.
+
+2009-01-05: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/aweblibs/include/inline/awebjs.h: Fixing a nasty bug introduced
+      on 2006/05/24. The entry point for Jallowgc() was wrong so Jallowgc was
+      never called on OS3.x machines. Instead of that Jsetscreen() was called
+      which is totally nonsense. That maybe fixes a lot of JS issues on OS3.x
+      machines including the Memory Hits if the JS Debug window or the Requester
+      "JavaScript runs for one minute" is opened.
+
+2008-12-24: Frank (Opi) Weber <opionline@yahoo.de>
+    * #?: Change all remaining 'AWebCFG' or 'awebcfg' to 'AWebCfg'.
+
+2008-12-24: Frank (Opi) Weber <opionline@yahoo.de>
+    * awebcfg/awebcfg.c: add CONST keyword to version string.
+
+2008-12-21: Frank (Opi) Weber <opionline@yahoo.de>
+    * awebcfg/awebcfg.c: change the version string again.
+
+2008-12-08: Frank (Opi) Weber <opionline@yahoo.de>
+    * awebcfg/awebcfg.c: change the version string so that it
+      corresponds to the standard.
+
+2008-12-08: Frank (Opi) Weber <opionline@yahoo.de>
+    * awebcfg/cfgbr.c: make some changes to eradicate all warnings.
+
+2008-12-08: Frank (Opi) Weber <opionline@yahoo.de>
+    * awebcfg/cfglocale.c: make some changes to eradicate all warnings.
+
+2008-12-08: Frank (Opi) Weber <opionline@yahoo.de>
+    * awebcfg/cfgmainstr.c: make some changes to eradicate all warnings.
+
+2008-12-08: Frank (Opi) Weber <opionline@yahoo.de>
+    * awebcfg/cfgnw.c: make some changes to eradicate all warnings.
+
+2008-12-08: Frank (Opi) Weber <opionline@yahoo.de>
+    * awebcfg/cfgpr.c: make some changes to eradicate all warnings.
+
+2008-12-08: Frank (Opi) Weber <opionline@yahoo.de>
+    * awebcfg/cfgui.c: make some changes to eradicate all warnings.
+
+2008-12-08: Frank (Opi) Weber <opionline@yahoo.de>
+    * awebcfg/awebcfg.c: make some changes to eradicate all warnings.
+
+2008-12-06: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/aweb.c: make some changes to eradicate all warnings
+      in the debugversion of AWeb.
+
+2008-12-06: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/document.c: make some changes to eradicate all warnings
+      in the debugversion of AWeb.
+
+2008-12-06: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/form.c: make some changes to eradicate all warnings
+      in the debugversion of AWeb.
+
+2008-12-06: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/http.c: make some changes to eradicate all warnings
+      in the debugversion of AWeb.
+
+2008-12-06: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/winhis.c: make some changes to eradicate all warnings
+      in the debugversion of AWeb.
+
+2008-12-05: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/filefield.c: make some changes to eradicate all warnings.
+
+2008-12-05: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/framejs.c: make some changes to eradicate all warnings.
+
+2008-12-05: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/netstat.c: make some changes to eradicate all warnings.
+
+2008-12-05: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/radio.c: make some changes to eradicate all warnings.
+
+2008-12-05: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/textarea.c: make some changes to eradicate all warnings.
+
+2008-12-05: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/window.c: make some changes to eradicate all warnings.
+
+2008-12-05: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/winrexx.c: make some changes to eradicate all warnings.
+
+2008-12-04: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/editor.c: make some changes to eradicate all warnings.
+
+2008-12-04: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/form.c: make some changes to eradicate all warnings.
+
+2008-12-04: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/popup.c: make some changes to eradicate all warnings.
+
+2008-12-04: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/search.c: make some changes to eradicate all warnings.
+
+2008-12-04: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/select.c: make some changes to eradicate all warnings.
+
+2008-12-04: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/soundcopy.c: make some changes to eradicate all warnings.
+
+2008-12-04: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/task.c: make some changes to eradicate all warnings.
+
+2008-12-03: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/bullet.c: make some changes to eradicate all warnings.
+
+2008-12-03: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/document.c: make some changes to eradicate all warnings.
+
+2008-12-03: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/filereq.c: make some changes to eradicate all warnings.
+
+2008-12-03: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/imgsource.c: make some changes to eradicate all warnings.
+
+2008-12-03: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/info.c: make some changes to eradicate all warnings.
+
+2008-12-03: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/input.c: make some changes to eradicate all warnings.
+
+2008-12-03: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/scroller.c: make some changes to eradicate all warnings.
+
+2008-12-03: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/awebcommon/defprefs.c: make some changes to eradicate all warnings.
+
+2008-12-03: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/request.c: make some changes to eradicate all warnings.
+
+2008-12-03: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/file.c: make some changes to eradicate all warnings.
+
+2008-12-03: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/tooltip.c: make some changes to eradicate all warnings.
+
+2008-12-03: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/cookie.c: make some changes to eradicate all warnings.
+
+2008-12-02: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/local.c: make some changes to eradicate all warnings.
+
+2008-11-25: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/include/document.h: add a newline at end of file.
+    * aweb/include/file.h: add a newline at end of file.
+    * aweb/include/scroller.h: add a newline at end of file.
+      above fix a lot of warnings 'no newline at end of file' on OS4.x builds.
+
+2008-11-24: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/checkbox.c: removed #include <clib/intuition_protos.h>
+      because it may breaks OS4.x builds.
+
+2008-11-24: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/boopsi.c: removed #include <clib/intuition_protos.h>
+      because it breaks OS4.x builds.
+
+2008-11-23: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/aweb.c: delete a #include <proto/dos.h> which was commited by mistake.
+
+2008-11-23: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/event.c: make some changes to eradicate all warnings.
+
+2008-11-23: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/frameset.c: make some changes to eradicate all warnings.
+
+2008-11-23: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/source.c: make some changes to eradicate all warnings.
+
+2008-11-22: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/field.c: make some changes to eradicate all warnings.
+
+2008-11-22: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/link.c: make some changes to eradicate all warnings.
+
+2008-11-22: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/simplerexx.c: make some changes to eradicate all warnings.
+
+2008-11-22: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/saveiff.c: make some changes to eradicate all warnings.
+
+2008-11-22: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/ruler.c: make some changes to eradicate all warnings.
+
+2008-11-22: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/saveas.c: make some changes to eradicate all warnings.
+
+2008-11-22: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/docjs.c: make some changes to eradicate all warnings.
+
+2008-11-22: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/copyjs.c: make some changes to eradicate all warnings.
+
+2008-11-21: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/copy.c: make some changes to eradicate all warnings.
+
+2008-11-21: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/cabrowse.c: make some changes to eradicate all warnings.
+
+2008-11-21: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/docsource.c: make some changes to eradicate all warnings.
+
+2008-11-21: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/text.c: make some changes to eradicate all warnings.
+
+2008-11-20: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/url.c: make some changes to eradicate all warnings.
+
+2008-11-20: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/include/object.h: add a cast to the Asrcupdatetags() define.
+      that fix a lot of 'initialization from incompatible pointer type' warnings.
+
+2008-11-20: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/html.c: removed a comment.
+
+2008-11-20: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/include/object.h: add a cast to the Asrcupdatetags() define. That fix
+      a lot of 'passing arg 2 of `AmethodA' from incompatible pointer type' warnings.
+
+2008-11-20: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/frame.c: make some changes to eradicate a lot of warnings.
+
+2008-11-20: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/soundsource.c: make some changes to eradicate all warnings.
+
+2008-11-20: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/object.c: make some changes to eradicate all warnings.
+
+2008-11-20: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/aweblibs/include/inline/awebjs.h: changed the type in the #define
+      for Jallowgc for allow to BOOL. This fix a lot of 'passing arg 3 of
+      pointer to function makes pointer from integer without a cast' warnings.
+
+2008-11-20: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/plugins/charset/pluginlib.h: forget to commit the file
+      whit bumped Version to 1.2.
+
+2008-11-19: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/include/object.h: add some casts to the Anotifyset() define.
+      that fix a lot of 'initialization from incompatible pointer type' warnings.
+
+2008-11-19: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/printwin.c: make some changes to eradicate all warnings.
+
+2008-11-18: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/imgcopy.c: make some changes to eradicate all warnings.
+
+2008-11-18: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/hidden.c: make some changes to eradicate all warnings.
+
+2008-11-18: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/winhis.c: make some changes to eradicate all warnings.
+
+2008-11-18: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/whiswin.c: make some changes to eradicate all warnings.
+
+2008-11-18: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/timer.c: make some changes to eradicate all warnings.
+
+2008-11-18: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb.cd: fixed 3 typos.
+    * aweb/include/locale.h: fixed 3 typos.
+    * aweb/locale.c: add a (CONST STRPTR)
+      all of the above make locale.c warnings free.
+
+2008-11-17: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/map.c: make some changes to eradicate all warnings.
+
+2008-11-17: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/sourcedriver.c: make some changes to eradicate all warnings.
+
+2008-11-17: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/copydriver.c: make some changes to eradicate all warnings.
+
+2008-11-17: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/element.c: make some changes to eradicate all warnings.
+
+2008-11-17: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/docext.c: make some changes to eradicate all warnings.
+
+2008-11-17: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/name.c: make some changes to eradicate all warnings.
+
+2008-11-17: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/mime.c: make some changes to eradicate all warnings.
+
+2008-11-17: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/extprog.c: make some changes to eradicate all warnings.
+
+2008-11-17: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/break.c: make some changes to eradicate all warnings.
+
+2008-11-16: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/aweb.c: make some changes to eradicate all warnings.
+
+2008-11-15: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/body.c: make some changes to eradicate all warnings.
+
+2008-11-15: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/checkbox.c: make some changes to eradicate all warnings.
+
+2008-11-15: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/boopsi.c: make some changes to eradicate all warnings.
+
+2008-11-14: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/include/docprivate.h: add a #include "html.h" to fix some
+      `struct Tagattr' declared inside parameter list warnings.
+
+2008-11-14: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/html.c: make some changes to eradicate all 241 warnings.
+
+2008-11-14: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/author.c: make some changes to eradicate all warnings.
+
+2008-11-14: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/area.c: add some (Tag) casts to eradicate all warnings.
+
+2008-11-13: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/amissl.c: Attempt to eradicate all warnings for OS3 and OS4.
+
+2008-11-09: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/include/object.h: changed the type of Amethod and Amethodas from struct Amsg
+      to struct Amessage. (BTW: i can't find the definition for struct Amsg in the source)
+      This fixes a lot of passing arg ... of `AmethodasA' from incompatible pointer type warnings.
+
+2008-11-08: Andy Broad <andy@broad.ology.org.uk>
+    * aweb/amissl.c: Attempt to remove remaining warnings for OS4.x
+    * aweb/include/awebprotos.h: change declaration of Lowlevelreq to use STRPTR rather than UBYTE *
+    * aweb/aweb.c: idem
+    * awebcommon/libraries.c: idem
+
+2008-11-08: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/asyncio.c: make some changes to eradicate all warnings.
+
+2008-11-07: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/xaweb.c: add a cast to (int) to eradicate all warnings.
+
+2008-11-07: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/aweblibs/include/inline/: in Addjfunction add a cast to
+      struct Library and change the type of arg 6 from ULONG to APTR.
+    * aweb/docjs.c: removed 2 now unnecessary casings to IPTR.
+      That fixes a lot of "passing arg ... of `___Addjfunction' ..." warnings.
+
+2008-11-06: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/prefs.c: make some changes to eradicate all warnings.
+      (the remaining warnings must be fixed in the header files.)
+
+2008-11-06: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/html.c: fix the </div> Tag breaks <center> Tag issue.
+    * aweb/include/docprivate.h: add centeractive to struct Document for the above patch.
+      e.g. compare http://opi.kilu.de/AWebTest/CenterTest.html with other browsers.
+
+2008-11-06: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/application.c: fix all missing braces... warnings.
+    * aweb/cabrowse.c: ditto.
+
+2008-11-06: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/aweb.c: fix all missing braces... warnings.
+    * aweb/cache.c: ditto and made some cosmetic changes.
+    * aweb/copy.c: fix all missing braces... warnings.
+    * aweb/event.c: ditto.
+    * aweb/filereq.c: ditto.
+    * aweb/form.c: ditto.
+    * aweb/frame.c: ditto.
+    * aweb/frameset.c: ditto.
+    * aweb/prefs.c: ditto.
+    * aweb/search.c: ditto.
+    * aweb/source.c: ditto.
+    * aweb/table.c: ditto.
+    * aweb/task.c: ditto.
+    * aweb/textarea.c: ditto.
+    * aweb/url.c: ditto.
+    * aweb/winrexx.c: ditto.
+    * aweb/include/colours.h: ditto.
+
+2008-11-04: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/miamissl.c: make some changes to eradicate all warnings.
+
+2008-11-04: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/support.c: make some changes to eradicate all warnings.
+
+2008-11-02: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/http.c: make some changes to eradicate all warnings.
+
+2008-10-31: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/include/task.h: change arg 1 of Updatetaskattrstags from NULL to 0L.
+      That fixes a lot of warnings.
+
+2008-10-30: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/idn.c: make some changes to eradicate all warnings.
+
+2008-10-29: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/#?.c, aweb/awebclib/#?, awebinet225.c: removed some Tabs.
+
+2008-10-29: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/parse.c: make some changes to eradicate all warnings.
+
+2008-10-29: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/awebamitcp.c: make some changes to eradicate all warnings.
+
+2008-10-29: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/arexx.c: make some changes to eradicate all warnings.
+
+2008-10-28: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweb/plugins/charset/awebcharset.c: Add work arounds for some servers or webpages
+      which use "utf8" as name, instead of the correct name "utf-8". Add some casts to
+      remove some warnings. Add a #include <exec/semaphores.h> to remove a warning.
+    * aweb/plugins/charset/startup.c: Add a ObtainSemaphore call before Initpluginlib()
+      This should fix the random crashes that some people were experiencing.
+    * aweb/plugins/charset/awebcharset.readme: Update the History for above changes.
+
+2008-08-14: Andy Broad <andy@broad.ology.org.uk>
+    * aweb/body.c: Change temporary rastport code. We now create a custom Layerinfo and Layer
+      associated with our tempbitmap, rather than reusing the Window rastport  Layer,
+      This fixes the doublebuffering issues with AmigaOS4.1 and should work for previous OS's too.
+
+2008-08-10: Andy Broad <andy@broad.ology.org.uk>
+    * aweb/frame.c: make Background drawing code bitmap size agnostic, fixes issue with OS4.1
+      but should work for OS variants
+
+2008-07-22: Andy Broad <andy@broad.ology.org.uk>
+    * aweb/task.c: increase minimum stacksize for subtasks (improves stabilty)
+
+2008-07-22: Andy Broad <andy@broad.ology.org.uk>
+    * aweb/mime.c: improve mime checking for 'broken DOCTYPES'
+
+##### 2007-07-22 #### Aweb 3.5.09  ##################################
+
+2007-05-13: Andy Broad <andy@broad.ology.org.uk>
+    * aweb/prefs.c: Jmimetypes() could be called with a NULL jcontext.
+
+2007-05-10: Andy Broad <andy@broad.ology.org.uk>
+    * awebcommon/defprefs.c: updated uri for online docs.
+    * plugins/charset/Makefile.tubs: add document to modules list
+
+2007-04-28: Steve Bowman <>
+    * user/Docs/docsearch.awebrx: fix bugs in calling external programs
+
+2007-04-20: Andy Broad <andy@broad.ology.org.uk>
+    * aweb.cd: changes for awebcharset.awebplugin
+    * aweb/include/locale.h: changes cause by above.
+    * plugins/charset/#?: updates to awebcharset.awebplugin
+    Patches by Frank Weber <opionline@yahoo.de>
+
+2007-04-13: Andy Broad <andy@broad.ology.org.uk>
+    * aweb/parse.c: &reg; did not work as 'reg' was out of alphabetical order
+
+2007-02-26: Andy Broad <andy@broad.ology.org.uk>
+    * aweblibs/awebjs/jparse.c: regular expressions should not terminate at '/' if it's in a
+      character set ([]). An oddity of javascript as in other languages they do!
+
+2007-02-24: Andy Broad <andy@broad.ology.org.uk>
+    * aweblibs/awebjs/jdata.c: Defaulttostring() was not called for null objects in
+      Tostring()
+
+2007-02-24: Andy Broad <andy@broad.ology.org.uk>
+    * aweblibs/awebjs/jexe.c: Temp objects created during exedot() and exeindex() could
+      be disposed of during garbage collection.
+    * aweblibs/awebjs/jslib.c: Unkeep any temp objects after program execution
+
+2007-02-04: Andy Broad <andy@broad.ology.org.uk>
+    * aweblibs/awebjs/jexe.c: Parseint() could crash if s == NULL.
+      Add this list nesting to callfunctionbody()
+
+2007-02-04: Andy Broad <andy@broad.ology.org.uk>
+    * aweblibs/awebjs/jcomp.c: Disfuncref() now calls keepobj(,FALSE) to release
+      function objects after script disposal
+    * return statements should be terminated by JT_NEWLINE
+
+2007-02-04: Andy Broad <andy@broad.ology.org.uk>
+    * aweblibs/awebjs/jarray.c: Touin32() did not detect overflow.
+
+2007-02-03: Andy Broad <andy@broad.ology.org.uk>
+    * aweblibs/awebjs/jexe.c: in Executeelem()tc was not initailsed, causing crash on stop.
+
+2007-01-31: Andy Broad <andy@broad.ology.org.uk>
+    * aweblibs/awebjs/#? Remove "object list" based garbage collection, and replace
+      scope based system.
+
+2007-01-26: Andy Broad <andy@broad.ology.org.uk>
+    * aweb/html.c: In Doframeset default to rows="*" if rows and cols attributes
+      are both absent.
+
+2006-12-29: Andy Broad <andy@broad.ology.org.uk>
+    * aweb/frame.c: Fix for Morphos 1.5
+      Patch by Jacek Piszczek
+
+2006-12-28: Andy Broad <andy@broad.ology.org.uk>
+    * aweblibs/awebjs/jstring.c: Protect temp objects created by Applyregexp() from
+      accidental garbage collection
+
+2006-12-20: Andy Broad <andy@broad.ology.org.uk>
+    * aweblib/awebjs/include/jprotos.h: add Newscope;
+    * aweblib/awebjs/jslib.c: move body of function Newjscope to new function Newscope
+      in jexe.c
+    * aweblib/awebjs/jexe.c: extend new function Newscope to restore global functions
+      such as escape().
+
+2006-12-11: Andy Broad <andy@broad.ology.org.uk>
+    * aweb/file.c: Saveiconfile() now uses GetDiskObjectNew() to create the icon.
+      This means the corect default icon for the file type is created if using deficons.
+
+2006-12-10: Andy Broad <andy@broad.ology.org.uk>
+    * aweblibs/awebjs/jstring.c: string assigment optimisations
+    * aweblibs/awebjs/jregexp.c: ditto
+
+2006-12-10: Andy Broad <andy@broad.ology.org.uk>
+    * aweblibs/cachebrowser/cabrtask.c: replace short with long to prevent caches
+      with very large numbers of entries.
+
+2006-12-07: Andy Broad <andy@broad.ology.org.uk>
+    * aweblibs/awebjs/include/awebjs.h: Remove some debug related term from
+      struct Jobjct to reduce object mem consumption by 10%
+    * aweblibs/awebjs/jdata.c: comment out debug related code.
+      Add asgstringlen() to enable more efficient assignment of substrings
+    * aweblibs/jstring.h: fix bug in Stringsplit where first letter of whitespace
+      split substrings was lost.
+      Fix memeory leak in Stringslice(). Optimise Stringsplit and Stringsplice()
+      by using Asgstringlen()
+
+
+2006-12-07: Andy Broad <andy@broad.ology.org.uk>
+    * aweblibs/awebjs/jexe.c: Protect the array created by Exearray() from accidental
+      garbagecollection.
+
+2006-12-05: Andy Broad <andy@broad.ology.org.uk>
+    * aweb/include/source.h: Add AOSRC_Filename.
+    * aweb/include/url.h:   Add AOURL_Filename;
+    * aweb/source.c: add filename to struct Source: adapt get and upsdatesrc to get/set
+      it.
+    * aweb/http.c: Parse Content-Disposition Header.
+    * aweb/saveas.c: Get src->filename based save name if it exists.
+      Above implement "bug #15"
+
+
+2006-12-03: Andy Broad <andy@broad.ology.org.uk>
+    * aweblibs/awebjs/jexe.c: fix unitiliased varibles in bitwise shift functions.
+
+2006-12-03: Andy Broad <andy@broad.ology.org.uk>
+    * aweblibs/awebjs/include/awebjs.h: add ->tmp to struct Jcontext for holding
+      the temporay object list during function execution.
+    * aweblibs/awebjs/jdata.c: Newobject now adds objects to jc->tmp. Garbagecollect()
+      scans jc->tmp instead of &jc->objects;
+    * aweblibs/awebjs/jexe.c: Callfunction now installs it's own temporay objects list
+      and garbage collects on function return.
+      Above alterations allow safe garbage collection during execution of syntax like
+      ((new Constructor()).method(). Before the anonymous object might have been disposed
+      prematurely
+
+2006-11-30: Andy Broad <andy@broad.ology.org.uk>
+    * aweblibs/awebjs/jexe.c: Findvar now seraches all functions in the list, not
+      just first and last. Further extensions may be required.
+    * aweblibs/awebjs/jfunction.c: Funtion was added to itself rather than scope!
+
+2006-11-28: Andy Broad <andy@broad.ology.org.uk>
+    * plugins/gif/gifcopy.c: remove strat ";" in if statement in Setgifcopy().
+
+2006-11-28: Andy Broad <andy@broad.ology.org.uk>
+    * aweb/include/application.h:  add AOAPP_Reactionport and AOAPP_Messagelist tags
+    * aweb/application.c: add reactionport to the application object, use this for
+      reaction windows, saving windowport solely for main html windows.
+      add a windowmsgs list to save any unprocessed Intuimessages from the windowport.
+    * aweb/event.c: Processwindow() no longers uses Getimessage() but uses GetMsg()
+      instead. Before calling GetMsg() it will process any messages saved in the
+      applications windowmsgs list. Thus Forbid() / Permit() unneeded.
+
+      Refreshevent() now uses GetMsg() to serach for IDCMP_WINDOWREFRESH events saving
+      any non matching message in the applications windowmsgs list. Again removes
+      Forbid()
+
+      Cancelevent() now scans the applications windowmsgs list for break javascript
+      messages as Refreshevent() will have allready saved the messages there. Again
+      removes a Forbid().
+    * aweb/info.c: use AOAPP_Reactionport to get reactionport rather than windowport
+    * aweb/netstat.c: ditto
+    * aweb/popup.c: ditto
+    * aweb/print.c: ditto
+    * aweb/search.c: ditto
+    * aweb/select.c: ditto
+
+
+2006-11-24: Andy Broad <andy@broad.ology.org.uk>
+    * awebcommon/defprefs.c: Alter Addmimeinfo to allow multiple entries for
+      each mimetype
+    * aweb/mime.c: Adapt Addmimetype() to allow multiple entries for each mimetype
+      Adapt Getmimedriver() to match on file extentions as well as mimetypes.
+      Allows different handling for differing filetypes with the same mime.
+    * aweb/include/awebprotos.h: Extra arg in Getmimedriver
+    * aweb/source.c: Extra arg for Getmimedriver()
+    * aweb/html.c: Extra arg for getmimedriver()
+
+2006-11-23: Andy Broad <andy@broad.ology.org.uk>
+    * awebcfg/awecfg.c: remove duplicate calls to Openclass().
+      Move opening of catalogs to earlier in program flow.
+    * awebcommon.libraries.c: Change open class to use MSG_ERROR_CANTOPENV
+      Patch by Frank Weber <opionline@yahoo.de>
+
+2006-11-21: Andy Broad <andy@broad.ology.org.uk>
+    * aweb/file.c: AWeb would freeze if a PIPE: channel filled up and the
+      external command failed to read from the pipe. Now opens a pipe with
+      unlimited buffers.
+
+2006-11-19: Andy Broad <andy@broad.ology.org.uk>
+    * aweb/aweb.c: Explicitly initialise all library and class base pointers to NULL.
+    * awebcfg/awebcfg.c: Ditto.
+      Above prevent libnix code pulling in auto library auto opening and opening
+      libraries mulitple times. (under 68k) FIXES bugs 289 and 290
+
+2006-11-18: Andy Broad <andy@broad.ology.org.uk>
+    * Tubsengine.mos
+    * Include/library_types_morphos.h
+    * aweb/Makefile.tubs
+    * aweb/include/jslib.h
+    * awebjs/Makefile.tubs
+    * aweblibs/awebjs/jslib.c
+    * aweblibs/include/clib/awebjs_protos.h
+    * aweblibs/include/ppcinline/awebjs.h
+    * plugins/charset/awebcharset.c
+    Morphos fixes by Ilkka Lehtoranta <ilkleht@isoveli.org>
+
+2006-11-17: Andy Broad <andy@broad.ology.org.uk>
+    * aweb/include/object.h: Add AMLR_CONT for objects that wish to lay them selces out
+      in multiple segments on the same line.
+    * aweb/body.c: Support above result in Layoutbody()
+    * aweb/text.c: When laying out verylong unbreakable text split into sections
+      and return AMLR_CONT. Adapt Aligntext to align all text section not previously
+      aligned (as opposed to the last added). Adapt Rendertext() to check each section
+      for individual visibilty.
+
+2006-11-15: Andy Broad <andy@broad.ology.org.uk>
+    * aweb/imgcopy.c: Modify Newbitmap() to use GetBitMapAttr() for all bitmap types
+
+2006-11-14: Andy Broad <andy@broad.ology.org.uk>
+    * plugins/png/__pngcopy#?.c: add PNGCF_RESCALE flag to defer rescale till
+      PNGCF_READY set
+    * plugins/png/pluginlib.h: bump revision to 1.13
+    * plugins/gif/gifcopy.c: add GIFCF_RESCALE flag to defer rescale till
+      GIFCF_READY set
+    * plugins/gif/awebgif.awebplugin_rev.h: bump revision to 1.13
+    * plugins/jfif/jfifcopy.c: add JFIFCF_RESCALE flag to defer rescale till
+      JFIFCF_READY set
+    * plugins/png/pluginlib.h: bump revision to 1.13
+      above fix bug #201.
+
+2006-11-14: Andy Broad <andy@broad.ology.org.uk>
+    * aweblib/ftp/ftp.c: No longer scans default strings with Urldecode.
+      FIXES bug #281  bump ftp.aweblib rev to 37.1
+
+2006-11-13: Andy Broad <andy@broad.ology.org.uk>
+    * aweb/imgcopy.c: implemented transparency for deep scaled bitmaps
+
+2006-11-10: Andy Broad <andy@broad.ology.org.uk>
+    * aweblibs/awebjs/jslib.c: suspend javascript timout during debug.
+
+2006-11-09: Andy Broad <andy@broad.ology.org.uk>
+    * aweblibs/awebjs/jexe.c: Eval invoked Tostring on it argument, when it should
+      simply have returned non string values without evaluating.
+      Fixes remaining aspects of bug #67
+
+2006-11-08: Andy Broad <andy@broad.ology.org.uk>
+    * aweb/soundcopy.c: Reimplement Sound Copy driver using AHI if available
+      Patch by: Ilkka Lehtoranta <ilkleht@isoveli.org>
+
+2006-11-08: Andy Broad <andy@broad.ology.org.uk>
+    * aweb/url.c: Move the if(terminate) block of code to before the forwarding code.
+      So that the race condition in bug #195 is reduced.
+
+2006-11-08: Andy Broad <andy@broad.ology.org.uk>
+    * aweb/http.c: A call to Updatetaskattrs() was not terminated with TAG_END
+
+2006-11-01: Andy Broad <andy@broad.ology.org.uk>
+    * aweblibs/ftp/ftpparse.c: added
+    * aweblibs/ftp/ftpparse.h: added
+    * aweblibs/ftp/ftp.c: use ftparse() from above to correctly parse the
+      ftp directory listing. Fixes bug #30
+
+2006-11-01: Andy Broad <andy@broad.ology.org.uk>
+    * aweblibs/awebjs/jexe.c: Suspend garbage collection during execution of rhs
+      of a assign statement.
+
+2006-11-01: Andy Broad <andy@broad.ology.org.uk>
+    * aweblibs/awebjs/jarray.c: New array implemetaion did not copy whole array
+      (missing sizeof)
+
+2006-10-26: Andy Broad <andy@broad.ology.uk>
+    * aweblibs/awebjs/jarray.c: implement _Array_Getownproperty et al
+    * aweblibs/jdata.c: some small optimisations
+    * aweblibs/jexe.c: some small optimisations
+
+2006-10-25: Andy Broad <andy@broad.ology.org.uk>
+    * aweblibs/awebjs/jdata.c: Addproperty() and Getownproperty() now call
+      object type specific get and add functions. Old Getownproperty and
+      Addproperty now become _Generic_#?
+    * aweblibs/awebjs/include/jprotos.h: new protos for above;
+
+2006-10-25: Andy Broad <andy@broad.ology.org.uk>
+    * aweblibs/awebjs/jdata.c: Increase flexabilty of Getproperty();
+
+2006-10-24: Andy Broad <andy@broad.ology.org.uk>
+    * add charset.awebplugin to CVS.
+      code by Frank Weber <opionline@yahoo.de>
+
+2006-10-22 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/source.c: fix another instance of Asetattrs() with no terminating TAG_DONE
+    * aweb/extprog.c:  ditto
+
+2006-10-22 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/mime.c: make mime chack slightly less stringent. html docs with one or two
+      stray unprintables will now display.
+
+2006-10-22 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/saveas.c: a call to Asetattrs() was not terminated with TAG_DONE causing
+      random crashes when setting AOAPP_Savepath.
+
+2006-06-04 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/document.c: charset debug woould attempt to print NULL charset names
+
+2006-05-30 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/url.c: the absolute url "/" would incorrectly inherit query part from parent
+      doc
+      Fixes bug 265.
+
+2006-05-24 Andy Broad <andy@broad.ology.org.uk>
+    * aweblibs/include/inline/awebjs.h
+    * aweblibs/include/inline4/awebjs.h
+    * aweblibs/include/interfaces/awebjs.h
+    * aweblibs/include/sfd/awebjs_lib.sfd
+
+2006-05-24 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/framejs.c: adaption for new garbagecollection.
+    * aweb/object.c:  as above
+    * aweb/application.c: as above
+
+2006-05-24 Andy Broad <andy@broad.ology.org.uk>
+    * javascript.aweblib: add dynamic garbage collection. Add Jallowgc to API
+      extend memeory handling to use seperate pools for Jobjects Variable and
+      general.
+
+2006-05-19 Andy Broad <andy@broad.ology.org.uk>
+    * aweblibs/awebjs/include/jprotos.c: Rename Execute() to Executelem() to avoid
+      clash dos.libraries Execute
+    * aweblibs/awebjs/jexe.c: as above
+    * aweblibs/awebjs/jstring.c: as above
+    * aweblibs/awebjs/jfunctions.c: as above
+
+2006-05-19 Andy Broad <andy@broad.ology.org.uk>
+    * awebjs/awebjs.c: adapt to new javascript API and fix Feedback bug. Add print
+      as synonym for writeln.
+
+2006-05-10 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/html.c: Add standard mouse events to <objects>
+
+2006=05-10 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/copy.c: fix a crash with Hittestcopy.c whan called with amh->amhr unset.
+
+2006-05-10 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/<dispatchers>: all dispatchers now renamed to reflect the object
+      they dispatch. ie Objectname_Dispatcher. For easier reading of stacktraces
+
+2006-05-09 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/include/object.h: add AMHF_NOLINK
+    * aweb/link.c: links now pass their handle input message onto components
+    * aweb/copy.c: don't pass to superclass if AMHF_NOLINK set
+
+
+2006-05-09 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/html.c: support onclick for <IMG> tags
+    * aweb/copyjs.c: extend copy's javascript object to include mouse events
+    * aweb/copy.c: extend hittest and handleinput methods to handle onclick events
+    * aweb/include/copyprivate.h: extended Copy object to add mouseevents
+    * aweb/include/copy.h: add AOCPY_Onclick, AOCPY_Onmouseover, AOCPY_Onmouseout
+      above constitute first step in implmenting bug #199
+
+2006-05-08 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/html.c: Doselect now allows to add select elements when not in a form
+
+2006-05-07 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/docjs.c: Docjexecute() now forces an update before executing a script
+      to ensure that the script get the correct (current) document attributes.
+
+2006-05-07 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/html.c: extend fix to bug #256 to include src urls that are only whitespace
+      eg src="  "
+
+2006-05-07 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/framejs.c: Check for valid whis and inputwhis in Propertylochref()
+      Another symptom fix for bug #276
+
+2006-05-05 Andy Broad <andy@broad.ology.org.uk>
+    * plugins/filterexample/startup.c: replace with startup.c from awebgif plugin.
+      This has fullsupport for all plugin types in both 68k / MOS and os4
+
+2006-05-04 Andy Broad <andy@broad.ology.org.uk>
+    * plugins/include/libraies/awebsupport.h: add encoding to Filterplugin structure
+    * aweb/include/plugin.h: as above.
+    * aweb/source.c: reactivate filter code or os4.
+    * plugins/filterexample/filterplugin.c: port filterexample.awebplugin to OS4
+    * plugins/filterexample/startup.c: replace with cross platform version.
+    * plugins.filterexample/pluglib.h: correct version info and enable Commandplugin()
+
+2006-05-03 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/url.c: check url in Getjspart();
+    * aweblibs/history/whistask.c: check for valid whis before using whis->windownr
+      These two protect against the symptons of bug #276, without
+      address the cause.
+
+2006-05-02 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/html.c: fastidious mode now executes all javascript
+
+2006-05-01 Andy Broad <andy@broad.ology.org.uk>
+    * plugins/png/awebpng.c: remove CGX dependency for OS4
+    * plugins/png/__pngsourceos4.c: bug fixes and enhancements
+    * plugins/png/__pngcopyos4.c: bug fixes and enhancements
+      Patch by Jürgen Schober <juergen@cox.net>
+
+2006-04-28 Andy Broad <andy@broad.ology.org.uk>
+    * plugins/png/__pngsource#?.c: ntrans was not initialised for palette images
+      with no transparency
+
+2006-04-26 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/frame.c: adapt to new javascript.aweblib API
+    * aweb/framejs.c: adapt to ew javascript.aweblib API
+
+2006-04-26 Andy Broad <andy@broad.ology.org.uk>
+    * Merge Javascript Debelopment Branch into HEAD
+      See Change log in javascript_36_3 branch for full details
+
+2006-04-26 Andy Broad <andy@broad.ology.org.uk>
+    * aweblibs/cabrtask.c: change delcaration of AWebSupportBase
+    * aweblibs/printlib.c: ditto
+    * aweblibs/whistask.c: ditto
+    * aweblibs/startup.c: ditto
+      Above changes make aweblibs compile with OS4 up4 SDK / gcc 4
+
+2006-04-19 Andy Broad <andy@broad.ology.org.uk>
+    * aweblibs/arexx/cfgress.c: add windowborder option to setcfg and getcfg
+
+2006-04-19 Andy Broad <andy@broad.ology.org.uk>
+    * Include/awebprefs.h: add windowborder to guiprefs
+    * awebcommon/defprefs.c: deafualts for gui.windowborder
+    * aweb/include/application.h: add PREFSF_WINDOWBORDER flag
+    * aweb/application.c handle PRESF_WINDOWBORDER flag
+    * aweb/prefs.c: handle gui.windowborder
+    * aweb/window.c: implement gadget / border less windows.
+    * awebcfg/include/cfglocale.h: add strings for window border options
+    * awebcfg/awebcfg.c: fix gcc 4 probblem with line 645
+    * awebcfg/cfgui.c: add windowborder options
+    * awecfg.cd: add strings for window border options
+      Above implement an option to remove gadgets and / or borders from windows
+
+
+
+2006-04-17 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/version.c: remove unused variable "internalstring" and change types
+      from "UBYTE *" to STRPTR to eradicate signedness warnings
+    * aweb/include/aweb.h: change type of awebversion & aboutversion tp STRPTR
+
+2006-04-17 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/print.c: Use Openlibnofail() instead of Openlib() to open
+      print.aweblib
+
+2006-04-15 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/aweb.c: open cybergraphics.library with Openlibnofail()
+    * aweb/saveiff.c: use gloabal CyberGfxBase and ICyberGfx
+    * aweb/print.c: use global CyberGfxBase and ICyberGfx
+    * aweb/timer.c: use __NOLIBBASE__ and __NOGLOBALIFACE__ to allow static
+      declaration of TimerBase and ITimer
+    * awebcommon/libraries.c: Add Openlibnofail() function.
+    * aweb/include/awebprotos.h: prototype for above
+    Above changes adapt AWeb to the latest Os4 SDK / gcc 4.02
+
+##### 2006-04-12 #### Aweb 3.5.08 beta ##################################
+
+
+2006-04-11 Andy Broad <andy@broad.ology.org.uk>
+    * tools/Install.mos: add
+    * tools/Install.os4: fix
+
+2006-04-11 Andy Broad <andy@broad.ology.org.uk>
+    * tools/Install:
+    * tools/Install.os4:
+       Update install to not produce uneeded .info files and spell files names
+       with correct cases.
+    Patch by Frank Weber <opionline@yahoo.de>
+
+2006-04-11 Andy Broad <andy@broad.ology.org.uk>
+    * aweblibs/include/inline/awebsupport.h: modified register for Addmimeinfo
+    * aweblibs/inlcude/sfd/awebsupport_lib.sfd: modified register for Addmimeinfo, correct doubled register in TCperr.
+    * aweb/support.c: modified registers for appsAddmimeinfo(), to avoid 68k compilation problem with using a4 and a5
+      above changes appear to fix a bug with SetCFG in arexx.aweblib where args to Addmimeinfo were getting trashed.
+
+
+2006-04-05 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/aweb.c: Freeprefs() was called before Freeobjects() resulting in hits
+      from slower tasks such as ssl related ones.
+
+2006-04-03 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/amissl.c: Check for library validity *after* obtaining semaphore
+      as well as before
+    * aweb/amissl.c: rationalisation of 68k and Morphos code
+      Patch by Ilkka Lehtoranta <ilkleht@isoveli.org>
+
+2006-03-29 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/filefield.c: file elments did not set ELTF_ALIGNED flag after aligning
+      embedded input element
+
+2006-03-27 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/select.c: Propertytext did not check for validity opt->sel
+      Fixes bug #264
+
+2006-03-27 Andy Broad <andy@broad.ology.org.uk>
+    * plugins/#?/#?.awebrx: alter AWeb3: to AWeb_APL in awebplugin setup
+      scripts.
+
+2006-03-25 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/parse.c: temp remove fix to bug#78 as it's broken
+
+2006-03-22 Andy Broad <andy@broad.ology.org.uk>
+    * awebcommon/defprefs.c: make form warn default to TRUe
+
+2006-03-21 Andy Broad <andy@btoad.ology.org.uk>
+    * tools/Install: Said it was creating directory AWeb, Creates AWeb_APL,
+    * aweb/requester.c: Update copyright info to 2006
+
+2006-03-16 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/prefs.c: Openfonts now falls back to screen font rather topaz.
+
+2006-03-15 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/amissl.c: fix for m68k build
+
+2006-03-12 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/amissl.c: modify new code to open the amissl the first time a https
+      fetch task occurs. Protect from simultaneous open with semaphore.
+
+2006-03-10 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/include/aweb-protos.h: add arg to Storecookie() prototype
+    * aweb/cookie.c: Add responsetime to Storecookie() args:
+    * aweb/fetch.c: extend fetch object to recorded the local time response is recieved
+      Use for Storecookie() calls.
+    * aweb/include/fetch.h: add AOFCH_Resonsetime
+    * aweb/http.c: set responsetime for fetch driver (will pass on to fetch)
+      use responsetime when calling Storecookie
+    * aweb/docjs.c: add extra arg to javascript calls to Storecookie
+    * aweb/include/fetchdriver.h add responsetime to fetchdriver object
+      Above fix bug #179:
+
+
+
+2006-03-06 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/application.c: removed MEMF_PUBLIC from Newanimgad as always set in
+      memory.c for those targets that need it.
+    * aweb/arexx.c: as above (Processarexx())
+    * aweb/author.c: as above (Rememberauth(),Newauthorize(),Guessauthorize(),
+      Dupauthorise(),
+    * aweb/aweb.c: as above....
+    * aweb/body.c: as above....
+    * aweb/cache.c: as above....
+    * aweb/cookie.c: as above....
+    * aweb/copy.c: as above
+    * aweb/document.c: as above, remove memf_public from doc->pool for os4.
+    * aweb/event.c: as above
+    * aweb/fetch.c: as above
+    * aweb/file.c:  as above
+    * aweb/form.c   as above
+    * aweb/frame.c  as above
+    * aweb/hotlist.c as above
+    * aweb.html.c:  as above
+    * aweb/http.c: as above
+    * aweb/imgsource.c: as above
+    * aweb/local.c: as above
+    * aweb/mime.c as above
+    * aweb/nameserv as above
+    * aweb/object.c as above
+    * aweb/popup.c as above
+    * aweb/prefs.c: as above
+    * aweb/request.c: as above
+    * aweb/saveiff.c: as above
+    * aweb/simplerexx.c as above
+    * aweb/soundcopy.c as above
+    * aweb/support.c as above
+    * aweb/table.c as above
+    * aweb/task.c as above
+    * aweb/url.c
+    * aweb/window.c:
+    * aweb/winhis.c as above
+    * aweb/winrexx.c as above
+
+
+2006-03-06 Andy Broad <andy@broad.ology.org.uk>
+    * Include/awebdefs.h: removed MEMF_PUBLIC flags from memory macros as these are
+      always added in awebcommon/memory.c (if not os4)
+    * awebcommon/memory.c: removed MEMF_PUBLIC and MEMF_CHIP fo OS4. No longer allocate
+      chippool for OS4.
+
+2006-03-06 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/include/docprivate.h: add DPF_QSCRIPT and DPF_DQSCRIPT flags
+    * aweb/parse.c: use above to ignore quaoted sections of script in the html
+      parse.
+    * aweb/html.c: reset above at start and stop of script section
+      Fix bug #78
+
+2006-03-05 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/parse.c: adapt Parsecommentstrict and Parsecommenttolerant to
+      fix bugs #211 and #259
+
+2006-03-03 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/button.c: add Movebutton() to handle AOM_MOVE passing on to the buttons body
+      object. fixes # bug 258
+
+2006-03-02 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/input.c: Rendercontents now checks that the element has benn aligned
+      (amd thus layed out) fixes bug #94
+
+2006-03-01 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/amissl.c:  adapt awebamissl to use amisll version 3. Use one shared copy of
+      AmiSSLIFace and AmiSSLBase. Code should still compile for version 1.1 on 68k and
+      MOS.
+
+2006-02-22 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/document.c: stop background images from rendering into document copies
+      that have no frame. fix bug #230 (second part)
+
+2006-02-20 Andy Broad <andy@broad.oloy.org.uk>
+    * aweb/aweb.c: IAWebStartup was not cleared after droping the interface
+      resulting in crashes on deiconification.
+
+2006-02-19 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/html.c: Doimg now treats a src of "" as if src is unset, fixes bug #256
+
+2006-02-14 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/window.c: Open window in zoomed position, rather than calling ZipWindow()
+      produces flicker free window opening. fixes bug #84
+
+2006-12-13 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/cache.c: only open progress req if there are files to delete
+      Patch by Frank Weber <opionline@yahoo.de>
+
+2006-02-12 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/event.c: add support for IDCMP_EXTENDEDMOUSE events (fixs change in mouse wheel support)
+    * aweb/window.c: as above.
+
+2006-02-08 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/support.c: make os4 versions of Tcpmessage and Tcperror work with the 68k varags
+      workarround
+
+2006-02-07 Andy Broad <andy@broad.ology.org.uk>
+    * module/clib2/module_init,c: add __enable_check_abort = FALSE; to stop
+      ftp.aweblib (and others) aborting via clib2 on reciept of SIG_BREAKF_C (^C)
+
+2006-02-05 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/table.c: table backgrounds would still render in no backgrounds and
+      colour mode.
+
+2006-02-05 Andy Broad <andy@broad.ology.org.uk>
+    * plugins/png__pngcopyos4.c: add BMF_CLEAR to new bitmap attributes to fix
+      occasional corrupt pixels in scaled pngs.
+
+
+2006-02-04 Andy Broad <andy@broad.ology.org.uk>
+    * plugins/png/__pngcopyos4.c: add a AOCPY_ChangedChild on completion
+      of a png with alpha channnel to ensure any multipass alpha blending is
+      refreshed
+    * plugins/png/__pngcopymos.c:  as above
+
+2006-02-04 Andy Broad <andy@broad.ology.org.uk>
+    * plugins/png/__pngsource#?.c: implement MULTIPASS command option in
+      awebpng.awebplugin
+
+2006-02-04 Andy Broad <andy@broad.olog.org.uk>
+    * aweb/frame.c:
+    * aweb/include/frame.h:
+    * aweb/include/copydriver.h
+      implement alpha blending of background images
+    * plugins/png/__#?:
+      support for above in png plugin.
+      Morphos components of alpha blending by
+      Ilkka Lehtoranta <ilkleht@isoveli.org>
+
+
+2006-02-02 Andy Broad <andy@broad.ology.org.uk>
+    * add plugins/png/__png#?
+    * plugins/png/pngcopy.c: now includes one of __pngcopy<osname>.c
+    * plugins/png/pngsource.c: now include one of __pngsource<osname>.c
+      The above steps allow the mergin of the difering implementaions of
+      png alpha channel with the minimum of fuss
+    * plugins/png/awebpng.c: add library openings for __amigaos4__ and __MORPHOS__
+    * plugins/png/awebpng.h: add AOPNG_Alpha and AOPNG_PixelArray tags
+    * plugins/png/pluginlib.h: bump revision.
+
+
+2006-02-02 Andy Broad <andy@broad.ology.org.uk>
+    * Tubsengine.#?: add ALPHALIB variable to determine target specific alphablending
+      library. Set to -lablit for OS4 not set for other targets.
+    * aweb/Makefile.tubs: replace -lablit with $(ALPHALIB)
+
+2006-02-01 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/include/copydriver.h: add AOCDV_Alpha tag for detecting alphachannel
+      support in copydriver.
+    * aweb/frame.c: add alpha channel detection to Erasebg() and Scroll() functions.
+      add alphachannel rendering for OS4 to Drawbackground()
+    * aweb/aweb.c: open Picasso96API.library if using OS4.
+    * plugins/include/libraries/awebsupport.h: add AOCDV_Alpha tag as above.
+
+2006-01-10 Andy Broad <andy@broad.ology.org.uk>
+    * awebcfg/cfgbr.c: fix miscased Setgadetattrs
+    Patch by Frank Weber <opionline@yahoo.de>
+
+2005-12-04 Andy Broad <andy@broad.ology.org.uk>
+    * aweblibs/arexx/cfgrexx.c: add hotlistsingleclick to CFG
+    Patch by: Frank Weber <opionline@yahoo.de>
+
+2005-11-30 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/tcperr.c: Adapt tcperr() and tcpmessage() to convert native varags to
+      68k style varags.
+    * aweb/include/awebprotos.h: modify protos for above commands and add MACROS for
+      morphos.
+      Patch by: Ilkka Lehtoranta <ilkleht@isoveli.org>
+
+2005-11-25 Andy Broad <andy@broad.ology.org.uk>
+    * awebcfg.cd:
+    * aweb/hotlist.c:
+    * aweb/include/hotlist.h:
+    * aweblibs/hotlist/hotviewer.c:
+    * awebcfg/cfgpr.c:
+    * awebcfg/include/cfglocale.h:
+    * awebcommon/defprefs.c:
+    * Include/awebprefs.h:
+    Above files mosdified to implement "single click" in hotlist viewer option.
+    Patch by: Frank Weber <opionline@yahoo.de>
+
+
+2005-11-06 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/form.c: add casting to the mime-type "tolower" code.
+
+2005-10-12 Andy Broad <andy@broad.ology.org.uk>
+    * awebcommon/defprefs.c: add Disposecookiesprefs() and Loadcookiesprrefs()
+    * aweb/prefs.c: add sepaerate flag for notification of changein nocookies
+      modify Changednetwok() to only dispose cookies if network itself was not
+      changed (ie only nocookies file was modified by clicking "never")
+    * Include/awebprefs.h: proto for above functions.
+
+2005-10-04 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/http.c: The work arround for supsending the progress requester during
+      a gzip enocoded download used a | instead of & an suspended the progress bar
+      all the time!
+
+2005-09-29 Andy Broad <andy@broad.ology.org.uk>
+    * tools/searchindex.c: set return type of main to int
+    * tools/makeindex.c: as above
+      Stops bugus return values for 68k.
+
+2005-09-25 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/cache.c: add progress requester for erase cache
+    * aweb.cd: locale string for above
+    * aweb/include/locale.h: as above
+      patch by Frank Weber <opionline@yahoo.de>
+
+2005-09-25 Andy Broad <andy@broad.ology.org.uk>
+    * awebcfg/cfgui.c: The buttons and text and button position gadgets did not reset
+      after aloads prefs.
+      patch by Frank Weber <opionline@yahoo.de>
+
+2005-09-16 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/mime.c: Increase flexability of Mimetypefromdata()
+      addresses bug 217.
+
+2005-09-16 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/prefs.c: add excliusive lock in copyfile
+    * aweb/event.c: point loadsettings req to ENVARC:
+      Fixes loadsettings bug,
+      patch by Jef Gilpin <jeg@dejazzd.com>
+
+2005-09-14 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/url.c: etag was used uninitiliased when url had no cache object.
+
+2005-09-13 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/fetch.c: AOFTCH_Etag and AOFCH_Referer did not check for NULL pointer
+      before passing to Dupstr()
+
+2005-09-13 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/http.c: Etag code did not check for valid ptr before passing to strlen
+
+2005-09-12 Gunnar von Boehn <gunnar@greyhound-data.com>
+    * Add support for Etag
+
+2005-09-12 Gunnar von Boehn <gunnar@greyhound-data.com>
+    * aweb/cfgbr.c add option that allows the user to
+      choose to have the images rendered with or without border
+
+2005-09-09 Gunnar von Boehn <gunnar@greyhound-data.com>
+    * plugins/gif/gifsource.c Limit animgif frame speed to 20 frames per second.
+
+2005-09-09 Andy Broad <andy@broad.ology.org.uk>
+    * aweblibs/awebjs/jslib.c: change os4 memeory flags to MEMF_ANY
+    * aweblibs/awebjs/jsmemory.c: change os4 memeory flags to MEMF_ANY
+      allows correct detection of memory over consumption
+
+##### 2005-09-03 #### Aweb 3.5.07 beta ##################################
+
+
+2005-08-31 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/table.c: temp fix to bgimage background problems, reduces
+      efficiency as table cells can double clear thier backgrounds.
+
+2005-08-31 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/table.c: sheight was not initialised leading to height failures
+      in nested tables. Tightened casting for relavent areas.
+
+2005-08-24 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/window.c: morphos mods for better layout with classact
+      patch by: Gunnar von Boehn <gunnar@greyhound-data.com>
+
+2005-08-24 Andy Broad <andy@broad.ology.org.uk>
+    * awebcfg/awebcfg.c: add TAG_END to some broken taglists
+
+2005-08-23 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/window.c: add "big" layout options
+    * awebcfg/cfggui.c: add options
+    * awebcfg/include/cfglocal.h:
+    * awebcfg.cd: add localised big options
+    Above implement big icon style user nav buttons, based on
+    patch by: Gunnar von Boehn <gunnar@greyhound-data.com>
+
+2005-08-23 Andy Broad <andy@broad.ology.org.uk>-
+    * aweb/frame.c: fix background alignment in Obtainbgrp()
+
+2005-07-26 Andy Broad <andy@broad.oogy.org.uk>
+    * aweb/frame.c: check for frame->whis before sending AOBJ_Winhis to window.
+      FIXES bug 209
+
+2005-07-21 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/include/fetch.c: Channelfetch() was not decalred using VARARGS68K_PROTO
+      macro, breaking the arexx channel functions for OS4 and posibly Morphos.
+
+2005-07-19 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/http.c: the gzip decoding did not check that Content-Encoding was gzip
+
+2005-07-18 Andy Broad <andy@broad.ology.org.uk>
+    * aweblibs/awebjs/parse.c: Errormsg() used VARARGS68K when should have used ordinary
+      varargs
+    * aweblibs/awebjs/include/jsprotos.h: prototype for above.
+
+2005-07-17 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/parse.c: the function parsehtml() did not check the validity of td (tagdescriptor)
+      before checking td->container.
+
+##### 2005-07-14 #### Aweb 3.5.06 beta ###### ( intrenel release ) #############
+
+2005-07-11 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/table.c: the new background handling code did not pass on the bgalign and
+      bgimage in some circumstances.
+
+2005-07-10 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/include/winprivate.h: increase MAXSTRBUFCHARS to 1024
+
+2005-06-22 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/include/element.h: add bgupdate to element structure and AOELT_Bgupdate
+      to Get it.
+    * aweb/element.c: support AOLELT_Bgupdate tag
+    * aweb/table.c: modifications to background image handling
+      tables now render their own background rather than the cells, thus rendering
+      cell spacing with table backgorind. Add a table to the list of user of
+      a bgimage.
+    * aweb/document.c: support any element type as a bguser.
+
+
+2005-06-08 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/http.c: if we are decoding a gzip encoded response discard
+      the content length - temporary work arround
+
+2005-06-08 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/window.c:
+      aweb/application.c:
+      aweb/include/winprivate.c:
+      aweb/include/application.h:
+      aweb/include/locale.h:
+      awebcfg/cfgui.c
+      awebcfg/include/cfglocale.h
+      aweb.cd
+      awebcfg.cd
+      Implement a more configurable gui includued options for navigation
+      gadgets position, borderles gadgets, text labesl etc.
+
+
+2005-05-22 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/url.c: add ':' to protocol attributes
+      (by adapting Getjspart()) also adapt Repjspart() to accept ':' in
+      supplied protocol string. (will still insert it if omitted)
+      Fix to bug 200.
+
+
+2005-05-11 Andy Broad <andy@broad.ology.org.uk>
+    * zlib/#?: added upadated zlib in it's own directory
+    * aweb/http.c: add support for Content Encoded gzip
+    * aweb/Makefile.tubs: mod include path for http.c
+      above implements accept gzip encoding
+      patch by: Gunnar von Boehn <gunnar@greyhound-data.com>
+
+2005-05-08 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/parse.c: selfclosing needed to be reset to FALSE after
+      invoking Processhtml() from Parsehtml().
+
+2005-05-08 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/url.c: DOCEXT source were not properly cached. fix bug#196
+
+2005-05-04 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/saveiff.c: program would quit if cybergraphics lib not present
+
+2005-04-21 Andy Broad <andy@broad.ology.org.uk>
+    * aweblibs/awebjs/jslib.c: fix the fix to bug #154 / #181 the scope
+      was not restored in error conditions.
+
+
+2005-04-13 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/select.c: add support for value property of javascript
+      select object and fix rendering of javascript induced change
+      for popup mode. FIXES bug #180
+
+2005-04-12 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/source.c: add srcdriver for clientpull if eof
+    * aweb/http.c: make responses with refresh: non cacheable
+
+
+2005-04-10 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/table.c: make table row colours override table background
+      fix bug 187:
+      patch by: Gunnar von Boehn <gunnar@greyhound-data.com>
+
+
+2005-04-09 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/table.c: adjustment to border rendering
+      fixes bug 188:
+      patch by: Gunnar von Boehn <gunnar@greyhound-data.com>
+
+2005-04-07 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/http.c: stop any referer not of the form <protocal>://domain/
+      being processes by the internationailsation code. and check url
+      in Makeheader() for NULL pointer.
+
+2005-04-07 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/window.c: prevent light and dark capens from "wrapping round"
+      on OS4 resulting in bad colours for some choices of background colour.
+
+2005-04-07 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/amisll.c: patch to fix ammisll on morphos
+      patch by Jürgen Lachmann <juergen_lachmann@t-online.de>
+
+2005-02-06 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/cookies.c: BreakUp() did not take account of a port in a url.
+
+2005-02-05 Andy Broad <andy@broad.ology.org.uk>
+    * Include/ezlist.h: revert to using OS calls for OS4 due to
+      posible compiler bug
+
+2005-02-05 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/parse.c: add code to support xml style <element />
+    * aweb/html.c:  likewise
+    * aweb/include/docprivate.h: update prototype for Processhtml()
+    * aweb/button.c: fix some rendering bugs
+
+
+2005-02-05 Fabio Alemagna <falemagn@studenti.unina.it>
+    * aweb/aweb.c aweblibs/awebs/jexe.c:
+      MOS needs special code to handle stack overflows.
+      (Patch by Illka 'itix' lehtoranta)
+    * Tubsengine: removed the setup:: target, now directories
+      are created only when needed, on the fly.
+    * Lots of files all around the place, during the past days:
+        o  removed all instances of the LIBFUNC_C macro
+        o  regenerated the inline includes for the various
+           platforms, using the sfdc tool by Martin Blom, so
+           that Foo() may now be invoked like __Foo_WB(base).
+           This was necessary to make the function calling syntax
+           the same, in some critical places, between AmigaOS4 and
+           the other platforms
+        o  changed the aweblibs to export a new function named
+           AwebGetTaskFunc(id), which returns a function suited
+           to be the entry point of an Aweb Task object. This way
+           the function can use the standard calling convention
+        o  many other changes that served to make Aweb less dependent
+           on 68k semantics. Still lots of work needs to be done.
+
+2005-02-01 Andy Broad <andy@broad.ology.org.uk>
+    * All aweblibs except javascript.aweblib: fixed bug where Openlib would
+      not check that awebsupport.library was opened properly
+    * Include/versions.h: bumped aweblib major version numbers and also
+      the minimum required versions to ensure only compatable aweblibs are
+      loaded
+
+
+##### 2005-01-25 #### Aweb 3.5.05 beta ##################################
+
+
+2005-01-14 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/fetch.c: suppress referer if javascript: url to avoid
+      crashing bug in http.c
+
+2005-01-12 Andy Broad <andy@broad.ology.org.uk>
+    * aweblibs/awebjs/jslib.c: Jaddeventhandler did not allow overwriting of
+      an old event handler.
+    * aweb/html.c: modify setting of doc->onload and doc->onunload to
+      call Jaddeventhandler to update jobject if allready created
+    * aweb/frame.c: same for frame->onblur and frame->onfocus.
+
+
+2005-01-11 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/select.s: The multiselect version of the select element did not
+      check for the case where there were no options.
+      FIXES bug #172
+      Added workarround for miss-sized popup under OS4
+      bug #117
+
+2004-12-31 Andy Broad <andy@broad.ology.org.uk>
+    * aweblibs/awebjs/jslib.c: RunJprogram() did not replace fscope after
+      running the program.
+    * aweblibs/awebjs/jmemory.c: Add some useful debugging functions.
+      The above fix bug #154
+
+2004-12-26 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/event.c:
+    * aweb/window.c: Changes to support Morphos style iconify gadget
+      patch by Nicolas DET <det.nicolas@free.fr>
+
+2004-12-22 Andy Broad <andy@broad.ology.org.uk>
+    * aweblibs/awebjs/include/awebjs.h: move static token to jcontext
+      structure to prevent information persisting from on instance of AWeb
+      to the next.
+    * aweblibs/awebjs/jparse.c: rewrite of Nexttoken() to use token in
+      jcontext structure, these two should fix the "amigaimpact" bug
+    * aweblibs/awebjs/jslib.c: up revision number
+
+2004-12-21 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/document.c: would attempt to run onunload handler if
+      document.onunload *or* (||)  AWebJSBase existed should have *and* (&&)
+
+2004-12-21 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/aweb.c: stack increase for MORPHOS
+    * aweb/task.c: likewise
+      patch by Nicolas DET <det.nicolas@free.fr>
+
+2004-12-20 Andy Broad <andy@broad.ology.org.uk>
+    * aweblib/awebjs/jparse.c: replace an overlooked VARARG macro with
+      the new portable equivalent.
+    * aweblib/awebjs/include/jsprotos.h: Prototype for above.
+
+
+2004-12-17 Andy Broad <andy@broad.ology.org.uk>
+    * aweblib/cfgrexx.c: fixed return value of Closelib
+
+##### 2004-12-16 #### Aweb 3.5.04 beta ##################################
+
+
+2004-12-16 Andy Broad <andy@broad.ology.org.uk>
+    * awebcfg/cfgbr.c: the result of Hotkey() was never checked causing
+      crashes in catalogs with no hotkey set eg (finnish)
+    * awebcfg/cfgnw.c: likewise
+    * awebcfg/cfgpr.c: likewise
+
+2004-12-15 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/cookie.c: Breakup() could sometimes drop the trailing / on a
+      path resulting in paths that would not match in Matchpath()
+      probably FIXES bug #10
+
+2004-12-14 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/html.c: add the flag DPF_FORM whilst creating the "fake" form
+      for the ISINDEX element
+
+2004-12-13 Andy Broad <andy@broad.ology.org.uk>
+    * aweblib/awebjs/jcomp.c: Fixed bug where certain invalid (under 1.1)
+      syntax could cause a function with a NULL for a name, and thus a
+      enforcer/grimreaper hit.
+
+2004-12-11 Andy Broad <andy@broad.ology.org.uk>
+    * most aweblibs library code: Real_expunge() should allways be called
+      with LIBMAN_NAME rather than the libbase so that OS4 gets the
+      interface as arg rather than the libbase. News: and Gopher aweblibs
+      didnot return coorectly on closelib resulting in occasional crashes.
+
+2004-12-11 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/include/docprivate.h: Changed Flag DPF_DIDSCRIPT to
+      DPF_BADSCRIPT.
+    * aweb/html.c: Now sets DPF_BADSCRIPT if a section of unknown script
+      is encountered. Test for prefs.browser.dojs before parsing
+      <noscript> contents. FIXES bug#158
+
+2004-12-10 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/field.c: Protect ther javascript objects of formless field
+      elements from garbage collection. All other field types inherit
+      their protection from this.
+
+2004-12-10 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/winrexx.c: Fix incorrect usage of Openlib in DoPlugin
+
+2004-12-09 Andy Broad <andy@broad.ology.org.uk>
+    * aweblibs/awebjs/jslib.c: fixed bug where Expungelib did not return
+      the result of Real_Expungelib.
+
+2004-12-08 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/parse.c: Adjust behaviour of character entity refs so that
+      current tolerant behaviour only occurs in compatible mode.
+
+2004-12-08 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/print/c: Now checks printer.device >=44 as well as turboprint
+      for printing on deep screens
+
+2004-12-01 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/link.c: fix referer for redirected POST links
+    * aweb/frame.c: fix referer for redirected links.
+    FIXES bug #153
+
+2004-11-30 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/include/cache.h: add the AOCAC_Expires tag to extract the
+      expirey date for a cache object.
+    * aweb/cache.c: code to handle the above
+    * aweb/url.c: new code to improve cache verification.
+    * awebcfg.cd: new text for cache verifcation options
+    * awebcfg/include/cfglocale.h: created from above. plus some hand editing
+    * awebcfg/cfgnw.c: add options for dynamic amd static cache verification
+
+
+2004-11-29 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/html.c: Fix to the Fix to bug #144. Some form elements were
+      attempting to add themselves to non existant forms!
+
+##### 2004-11-20 #### Aweb 3.5.03 beta ##################################
+
+2004-11-20 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/amissl.c: fix a silly error in the library opening.
+
+2004-11-17 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/framejs.c: allow supporing event handlers of the form
+      "javascript:code" in tolerant and strict modes. FIXES bug #145
+
+2004-11-16 Andy Broad <andy@broad.ology.org.uk>
+    * awebcommon/defprefs.c:
+    * aweb.cd:
+    * aweb/include/locale.h: Add Url To Clipboard to default image popup.
+
+2004-11-16 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/html.c: Allow <input> tags outside forms in tolerant/compatable
+      mode FIXES bug #144
+    * aweb/aweb.c: Check that Initcharsets was called before doing the work in
+      Freecharsets(). Fixes crash on running second version of AWeb. bug #139?
+
+2004-11-15 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/cookie.c: add suppport for ingnoring the leading . when matching
+      cookie domains in non rfc2109 mode. affects Matchdomain() and
+      Matchdomainsend(). FIXES bug #143
+
+2004-11-10 Andy Broad <andy@broad.ology.org.uk>
+    * Incorporate Nicolas DET's changes for morphos.
+      Nicolas DET <det.nicolas@free.fr>
+
+2004-11-01 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/aweb.c: Fixed bug in closing of javascript.aweblib, which caused
+      trashing of the exec library lists. Detected on OS4 but would have
+      affected all OSs.
+
+2004-11-01 Andy Broad <andy@broad.ology.org.uk>
+    * aweblibs/awebjs/jslib.c: fixed bug where a missing underscore in a
+      preprocessor macro allowsed some OS3 code to be included in the OS4
+      version
+
+
+##### 2004-10-27 #### Aweb 3.5.02 beta ##################################
+
+
+2004-10-27 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/copyjs.c: modifications to fix bug where images can overwrite
+      document javascript pproperties.
+
+2004-10-27 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/aweb.c: test sscanf against > 0 instead of != 0 to work arround
+      clib2 scanf bug and behave correctly for genuine error conditions.
+      FIXES bug 133
+    * aweb/frame.c: as above
+    * aweb/html.c: as above
+
+2004-10-27 Andy Broad <andy@broad.ology.org.uk>
+    * awebcfg/awebcfg.c: fix undeclared function Openclasss()
+
+2004-10-27 Andy Broad <andy@broad.ology.org.uk>
+    * All aweblibs and plugins: added __attribute__((used)) to all
+      Resident structures to prevent OS4's gcc 3.4.2 from optimising them away.
+
+
+2004-10-26 Andy Broad <andy@broad.ology.org.uk>
+    * Work arround for anomolous behaviour of OS4 APICALL for functions
+      with return type pointer to function.
+
+2004-10-26 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/window.c: Remove work arround for previous OS4 include bug with
+      reaction macros.
+
+2004-10-25 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/include/simplerex.h: added prototypes for SetRexxVar()
+      GetRexxVar() and FreeRexxVar() for OS4 (in alib for OS3)
+
+2004-10-25 Andy Broad <andy@broad.ology.org.uk>
+    * plugins/png/pnglib/png.h: fixed a broken macro that prevented the
+      inclusion of caertain function prototypes.
+
+
+2004-10-25 Andy Broad <andy@broad.ology.org.uk>
+    * awebcommon/defprefs.c: work arround for bug in clib2 sscanf which
+      was breaking interpretaion of Usr key codes. Fixes bug 123
+
+
+2004-10-25 Andy Broad <andy@broad.ology.org.uk>
+    * aweb/aweb.c: OS4. when linking with clib2 the SIGBREAKF_CTL_C used
+      to stop subtasks was intercepted by the clib causing crashes. Fixed by
+      adding an dummy signal handler. FIXES Bug 122
+
+2004-08 to 2004-10
+    * large number of changes to implement port to OS4 in a manner that still allows compilation
+    for OS3.x m68k
+
+
+2004-07-23  Andy Broad  <andy@broad.ology.org.uk>
+    * aweb/parse.c: altered character refernce code to work in all modes (strict tolerant ...)
+      added &euro; and mapped it to iso-8859-15 position (A4)
+
+2004-07-23  Andy Broad  <andy@broad.ology.org.uk>
+    * aweb/frames.c: update to previous patch to handle redirection with framsets properly,
+      Setwinhis now checks for the leading frame before testing for URLF_TEMPMOVED
+
+2004-07-20  Andy Broad  <andy@broad.ology.org.uk>
+    * aweb/include/url.h: added AOURL_Linkurl for supporting differing types of relocation
+    * aweb/url.c: added Urllinkaddress() and modified Urladdress() to support the difference
+      between the destination a url should link to and the one its described as, (they are
+      different if temporarily moved)
+    * aweb/frame.c: added test for temporary moved urls when deciding whether to reload pages
+      also replacedsome AOURLS_Urls with AOURL_linkurl
+    * aweb/http.c: modified not to cache 302 and to recognise 307 (treated as sysnomin for 302)
+      301 and 302 now correctly differentiated.
+    * All above fix bug #118 302 not supported properly
+
+2004-07-13  Andy Broad  <andy@broad.ology.org.uk>
+    * aweb/copy.c: surrounded "onerror" call in setcopy() with Jkeepobject() to prevent
+      javascript garbage collection disposing of the copy Aobject after the onerror event
+      handler had been run. fixes bug #119
+
+2004-06-30  Andy Broad  <andy@broad.ology.org.uk>
+    * aweb/document.c: Changebackground() not notifys the body with AOBJ_bgchanged
+      so that gif anim etc update their backgrounds. FIXES bug #116
+
+2004-06-29  Andy Broad  <andy@broad.ology.org.uk>
+    * aweb/body.c: code for AOBDY_Bgimage would throw enforcer hits when back
+      button was push. Added if(bd->frame) to fix. FIXESbug #115
+
+2004-06-22  Andy Broad  <andy@broad.ology.org.uk>
+    * removed extraneous debug output from javascript.aweblib (jparse.c)
+
+2004-06-22  Andy Broad  <andy@broad.ology.org.uk>
+    * aweb/aweb.c: corrected bug in Addbuffer where ading "" to unitilised buffer
+      return a still unitialise buffer rather than a "" empty buffer
+    * aweb/http.c: corrected bug in Urlescape() that resulted in an unitialised
+      buffer being returned if the referering document had no trailing /
+      ie http://www.foo.com rather than http://www.foo.com/ fixes bug#111
+
+##### 2004-06-20 #### aweb3.5b #################################################
+
+2004-06-13  Andy Broad  <andy@broad.ology.org.uk>
+    * catalogs/#?/#?.ct: changed all catalog trannslation file names tolowercase
+    * catalogs/Makefile.tubs: added this file to automate catalog compilng
+    * Makfile: added build/module/catalog module type. for automatic compiling of
+      catalog translations
+
+2004-05-30  Andy Broad  <andy@broad.ology.org.uk>
+    * aweb/html.c: Add charset support to <ISINDEX> element
+    * awebcommon/Makefile.tubs: add awebcfg/include to include path
+
+2004-05-25  Andy Broad  <andy@broad.ology.org.uk>
+
+      (charset translation Patch by Pavel Fedin <sonic_amiga@rambler.ru>)
+
+    * aweb/aweb.c: Functions to load character sets on demand and store on a
+      linked list for future use. Added CHARSETDEBUG debugging option
+    * aweb/printwin.c: Added handling of character set conversion tables.
+    * aweb/form.c: Added reverse character set conversion when submitting
+      forms.
+    * aweb/include/form.h: Added new AOFOR_Charset attribute
+    * aweb/html.c: Character set is also specified for form object
+    * awebcfg/awebcfg.c: Added Activelabel() utility subroutine which is used
+      for handling new "Default character set" gadget
+    * awebcfg/include/awebcfg.h: Likewise
+    * aweblibs/cachebrowser/cabrtask.c: Cache browser now displays also
+      document's character set
+    * aweb/cache.c: Cache structure changed. Now character set information
+      taken from HTTP headers is also stored in the cache index. Cache index
+      version changed to 5. Support for older cache index versions disabled to
+      ensure that all files in user's cache will always have character set
+      specification.
+    * aweb/include/cache.h: Likewise.
+    * aweblibs/cachebrowser/caprivate.h: Likewise.
+    * awebcfg/cfgbr.c: A new chooser gadget named "Default character set"
+      added to the options page of browser settings window.
+    * awebcommon/defprefs.c: A new tag 'CHRS' added to store default character
+      set name in preference files.
+    * include/awebprefs.h: Likewise.
+    * aweb/document.c: Added support for character set information which can be
+      retrieved from "Content-type" HTTP header or "META" tag.
+    * aweb/fetch.c: Likewise
+    * aweb/html.c: Likewise
+    * aweb/http.c: Likewise
+    * aweb/source.c: Likewise
+    * aweb/url.c: Likewise
+    * aweb/include/docprivate.h: Likewise
+    * aweb/include/source.h: Likewise
+    * aweb/include/url.h: Likewise
+    * aweb/parse.c: Implemented character set conversion in Translate()
+      function.
+    * aweb/window.c: Implemented new attributes for working with character set
+      tables.
+    * aweb/include/window.h: Likewise
+    * aweb/include/winprivate.h: Likewise
+    * aweb.cd: Added new "Charset" column name for cache browser
+    * awebcfg.cd: Added new "Default character set" chooser gadget label for
+      settings window
+    * charsets/#?.charset: added standard charset translation tables
+    * charset/Makfile.tubs: Makfile to handled copy to distribution
+
+2004-05-17  Andy Broad  <andy@broad.ology.org.uk>
+    * aweb/html.c: slight improvement to iframe support. width = "" no longer treated
+      as 100%.
+
+2004-05-17  Andy Broad  <andy@broad.ology.org.uk>
+    * aweblibs/awebjs/regex/#?: imported source to libpcrea.a to act as basis for
+      javascript regular expression support.
+    * aweblibs/awebjs/include/awebjs.h: add types and definitions for RegExp object
+    * aweblibs/awebjs/jregexp.c: implementation of internal code for REgExp Object
+    * aweblibs/awebjs/jparse.c: modifications to parser to recognise reg exps literals
+    * aweblibs/awebjs/jcomp.c: compile and decompile rege exp literals etc
+    * aweblibs/awebjs/jexec.: code to execute regexps
+    * aweblibs/awebjs/Makefile.tubs: added jregexp.c to CFILES
+
+2004-05-07  Andy Broad  <andy@broad.ology.org.uk>
+    * aweb/aweb.c: improved handling of aweblib version control and revision
+      aweblib version numbers. Openaweblib()
+    * aweb/hotlist.c:
+    * aweb/author.c:
+    * aweb/cabrowse.c:
+    * aweb/fetch.c:
+    * aweb/whiswin.c:
+    * aweb/winrexx.c: all likewise
+    * Include/versions.h: version numbers required for each aweblib as well
+      library names and path
+    * aweblib/awebjs/jslib.c: changed name of awebjs.aweblib to
+      javascript.aweblib to avoid incompatabilities with AWeb 3.4
+    * aweblib/#?/#?: changed version numbers of aweblbs to start anew from 35.0
+
+
+2004-05-03  Andy Broad  <andy@broad.ology.org.uk>
+    * aweb/imgcopy.c: added support for scaling transparent images.
+      FIXES bug #100.
+
+2004-04-30  Oliver B. Warzecha <obw@amarok.ping.de>
+    * aweb/html.c: added Doins(), Doinsend(), Dodel and Dodelend()
+      and call them by the big parser switch in Processhtml().
+    * aweb/include/html.h: added definitions in MARKUP_TYPES
+      for ins and del tag.
+    * aweb/parser.c: added ins and del tag to struct Tagdes tags[].
+    * thus implementing first support for <ins> and <del>.
+
+2004-04-26  Andy Broad  <andy@broad.ology.org.uk>
+    * aweb/docjs.c: added document.width and document.height javascript
+      properties
+
+2004-04-26  Andy Broad   <andy@broad.ology.org.uk>
+    * aweb/http.c: fix badly encoded urls (spaces etc) bug #76
+
+2004-04-26  Oliver B. Warzecha <obw@amarok.ping.de>
+    * aweb/include/idn.h and aweb/idn.c: new files to handle IDNA encoding
+      for hostnames.
+    * aweb/http.c: modified Makehttpaddr and Buildrequest to encode hostnames
+      with non-ascii characters by calling Dorfc3490 in idn.c.
+    * aweb/nameserv.c: modified Lookup to handle IDN properly, hostnames
+      are now encoded.
+    * the above: FIX #80.
+    * aweb/http.c: Buildrequest reparses the URL now when building the referer
+      field. FIX #27.
+
+2004-04-21  Andy Broad  <andy@broad.ology.org.uk>
+    * plugins/jfif/jfifsource.c: add functions Jfifoutput_message()
+      and Jfifoutput_dummy and add option DEBUG. FIXES bug #96
+    * plugins/jfif/awebjfif.html: document DEBUG option.
+
+2004-04-18  Andy Broad  <andy@broad.ology.org.uk>
+    * aweb/table.c: a number of patches fixing problms with cellspacing and
+      border rendering. FIXES bug #87
+
+2004-04-04  Andy Broad  <andy@broad.ology.org.uk>
+    * aweb/table.c: small optimisation of Settable() for newin and newframe.
+      should result in a speed up of Disposing of Documents.
+
+2004-04-04  Andy Broad  <andy@broad.ology.org.uk>
+    * aweb/body.c: fix to bug in temporary raster rendering for very long
+      documents
+
+2004-04-04  Andy Broad  <andy@broad.ology.org.uk>
+    * aweb/Makefile.tubs: added AWeb.developer module to build developer
+      version.
+    * awebcommon/Makefile.tubs: added libawebdevcommon.a to make linklib
+      developer version
+
+2004-04-03  Andy Broad  <andy@broad.ology.org.uk>
+    * aweb/aweb.c: Changed type of UtilityBase to struct *UtilityBase
+      so that #ifdef #betakeyfile sections will compile.
+
+2004-03-31  Andy Broad  <andy@broad.ology.org.uk>
+    * implementation of #bug83 improved background image rendering
+    * aweb/body.c: code to add body to the list of "users" of a background
+      image, pass AOBJ_Changedbgimage to parent, get AOBDY_bgupdate.
+    * aweb/include/body.h: add bgupdate to struct Body and define
+      AOBDY_Bgupdate
+    * aweb/table.c: added Getcellsize() function.
+    * aweb/include/table.h: added prototype for above
+    * aweb/documemt.c: added code to drive background inamge upadate
+      function Changedbackground(), Disposebguser()
+    * aweb/include/docprivate.h: added LIST(BGuser) to struct Bgimage
+    * aweb/copy.c: changed AOBJ_Changedchild to AOBJ_Changedbgimage
+      for backgound images.
+    * aweb/frame.c: added AOFRM_Copy to get the copy driver of a given frame
+    * aweb/include/frame.h: define for above.
+    * aweb/include/object.h: added define for AOBJ_Changedbgimage.
+    * aweb/html.c: extended *Backgroundimg() to add bguser to bgimage list
+
+
+2004-03-28  Andy Broad  <andy@broad.ology.org.uk>
+    * aweb/html.c: fix Getnumber() function when passed empty string.
+     FIXES bug #95
+
+2004-03-25  Andy Broad  <andy@broad.ology.org.uk>
+    * aweb/table.c: fix handlin of column widths bug #92.
+
+2004-03-24  Andy Broad  <andy@broad.ology.org.uk>
+    * Include/platform_specific.h: Added code to set CPU macro for GCC.
+
+2004-03-20  Andy Broad  <andy@broad.ology.org.uk>
+    * Created new awebcommon linklib, which combines duplicated code in
+      AWeb and AWebCfg. Specifically defprefs.c amd memory.c
+    * Moved awebprefs.h to Include as it's shared between the variuous modules
+      removed duplicate copies in aweb/include and awebcfg/include
+
+
+2004-03-19  Andy Broad  <andy@broad.ology.org.uk>
+    * aweb/include/object.h: added new renderflag for temp rast rendering
+      AMRF_NOTEMPRAST
+    * aweb/include/awebprefs.h: added browser.temprp to choose tenporay rastport
+      rendering
+    * aweb/body.c: changes to implement temp rastport rendering
+    * aweb/table.c: modificatios to flags passing to table elements to ensure
+      AMRF_TEMPRAST is passed on when present.
+    * aweb/defprefs.c: setdefault for browser.temprp to true and updated code to
+      load prefs to include browser.temprp
+
+    * awebcfg/cfgbr.c: extended guinto include Use Double Buffer option
+    * awebcfg.cd: added MSG_SET_BROPT_TEMPRP
+    * awebcfg/include/cfglocale.h: updated for above
+    * awebcfg/include/awebprefs.h: synced with aweb/*
+    * awebcfg/defpres.c: as above
+    * all above FIXES bug #74 Improved rendering (Double Buffering)
+
+2004-03-05  Andy Broad  <andy@broad.ology.org.uk>
+    * aweb/table.c: FIXES bug #82. split bgset into bgimgset and bgcolset
+      so that bgcolor can be set completelt independantly of bgimage.
+
+2004-03-03  Andy Broad  <andy@broad.ology.org.uk>
+    * aweb/awebamitcp.c: corrected address register in gethostname()
+      A2 should have been A1
+
+2004-03-02  Andy Broad  <andy@broad.ology.org.uk>
+    * plugins/gif/pluginlib.h: redefined PLUGIN_COMMANDPLUGIN so that generic
+      startup.c could be used. Commandplugin now works for gcc.
+
+2004-02-14  Andy Broad  <andy@broad.ology.org.uk>
+    * aweb/table.c: FIX bug 55: nested tables were not handled correctly if
+      there conflicting width attributes.
+
+2004-02-05  Andy Broad  <andy@broad.ology.org.uk>
+    * aweb/table.c: FIX bug 39: nowrap was ignored if table cell width was set
+
+2004-02-05  Andy Broad  <andy@broad.ology.org.uk>
+    * aweb/include/aweb.h: extended struct Coords by adding void *bgalign
+    * aweb/include/body.h: added void *bgalign and void *tcell to struct Body
+      added the tags AOBDY_Bgalign AOBDY_Tcell
+    * aweb/include/docprivate.h: added void *bgalign to struct Docement.
+    * aweb/include/frame.h: added AOFRM_Bgalign
+    * aweb/include/frprivate.h: added void *bgalign to struct Frame.
+    * aweb/include/table.h: added AOTAB_Bgalign.
+    * aweb/body.c: implemented tags added to body.h
+    * aweb/document.c: modified code to use bgalign tags as wells as bgimage.
+    * aweb/frame.c: extended Erasebg() to handle alignment info and implemented
+      new tags defined in frame.h
+    * aweb/frame.c: added code to propagate alignment information through the
+      table hierarchy.
+    * plugins/include/libraries/awebsupport.h: transfered upadted struct Coords
+      from aweb.h
+    * The above FIXES bug 38
+
+2004-01-27  Andy Broad  <andy@broad.ology.org.uk>
+    * aweb/parse.c: replaced a line of code ommitted in the conversion
+      from pointers to array indexes in Translate(). Also fixed an accidental
+      usage of isdigit instead of isxdigit which broke hex character refs.
+      FIXES bug #60.
+    * aweb/window.c: changed the way the secure image change was handled, now
+      uses selected and unselected gaget states, so that transparency is handled
+      by the OS. Had to change the fillpen for the gadget to ca->sp_Light for
+      correct selected image. FIXES bug #18
+
+2004-01-26  Andy Broad  <andy@broad.ology.org.uk>
+    * aweb/defprefs.c:
+    * awebcfg/defprefs.c: Changed menu-help-home to aweb.sunsite.dk and removed
+      inappropriate regsitration menu. FIXES bug #36
+
+2004-01-25  Fabio Alemagna  <falemagn@studenti.unina.it>
+    * Makefile (build/module) : avoid making directories if they're already
+      there. This partly fixes bug #58, but I think I'll rework it
+      so to take into account the dependency problem listed in bug #58.
+    * (aweb|awebcfg)/defprefs.c : changed the default search engine to
+      Google rather than altavista. FIXES bug #41.
+
+2004-01-22  Andy Broad  <andy@broad.ology.org.uk>
+    * bug #40: new splash images and about dialog.
+    * aweb/splashimages.c: created this file and moved the image data here.
+    * aweb/inlcude/splashimages.h: externs for imagedata.
+    * aweb/request.c: modified to create more sophisticated about dialog, added
+      extra function Makeawebrequest3() based on Makeawebrequest2() but taking
+      a Gadget structure instead of an Image Label. Adapted Aboutreq and
+      associated subfunctions.
+    * aweblibs/startup/startup.c: modified doStartupopen to take pointers to
+      imagepalette and imagedata.
+    * aweblibs/include/#?startup#?: modified the library interface to relfect
+      the above.
+    * aweb/aweb.c: modified call to AwebStartupOpen() to reflect above.
+    * keyfile.h: added APLADDRESS macro.
+
+
+2004-01-20  Andy Broad  <andy@broad.ology.org.uk>
+    * aweb/aweb.c: added code for iconify gadget using toolbar_ic
+      (Patch by Stephen Illingworth <stephen.t.illingworth@btinternet.com>)
+    * aweb/include/aweb.h:       Likewise
+    * aweb/event.c:              Likewise
+    * aweb/window.c:             Likewise
+    * aweb/include/winprivste.h: Likewise
+
+
+2004-01-19  Andy Broad  <andy@broad.ology.org.uk>
+    * aweb/imgsource.c: fixed bug in internal image decoder tramsparency
+      support. Datatypes returned incorrect transparency masks and so
+      modified code to use existing function Makegifmask() for standard
+      bitmaps. bugzilla bug #54
+
+2004-01-12  Andy Broad  <andy@broad.ology.org.uk>
+    * aweb/parse.c: applied Jacob Dahl Pind's textarea patch which
+      causes the parser to treat html tags inside a text area as data
+      for greater compatabilty with bloggers etc.
+
+2004-01-12  Andy Broad  <andy@broad.ology.org.uk>
+    * aweblibs/gopher/gopher.c: Applied the patch by Jacob Dahl Pind
+      which improves gopher support.
+
+2004-01-11  Andy Braod  <andy@broad.ology.org.uk>
+    * Aweb: (re)added support for miamissl to main executable.
+    * aweb/miamissl.c: made appropriate changes to convert to GCC compilation
+    * Makefile: Added MIAMISSLINCLUDE variable
+    * aweb/Makefile.tubs: added settings for maimissl.c CPPFLAGS
+
+2004-01-09  Andy Broad  <andy@broad.ology.org.uk>
+    * Makefile: added -specs tools/gcc.spec option to global LDFLAGS
+      to use Fabio's spec file for including libnix stackswap code
+    * aweb/Makefile.tubs: added -stackswap option
+    * awebcfg/Makefile.tubs: likewise
+    * awebjs/Makefile.tubs: likewise
+
+2004-01-08  Andy Broad  <andy@broad.ology.org.uk>
+    * aweb/aweb.c: Fixed bug in Getprogramname() which resulted in an
+      incorrect programname when invoke from the CLI.
+
+2004-01-07  Andy Broad  <andy@broad.ology.org.uk>
+    * AWebJS: converted to GCC
+    * awebjs.c: moved to awebjs/awebjs.c
+    * awebjs/awebjs.c: converted methods to use stkargs rather than
+      regargs for compatabilty with the GCC compiled awebjs.aweblib
+    * awebjs/Makefile.tubs: added this file included module definition
+      for AwebJS
+
+2004-01-06  Andy Broad  <andy@broad.ology.org.uk>
+    * AWebCfg: converted existing code to GCC
+    * awebcfg.c cfgbr.c cfgnw.c cfgui.c cfgpr.c: moved all C files to
+      awebcfg/
+    * awebcfg/defprefs.c awebcfg/memory.c: coppied these files from the
+      aweb/ directory.
+    * awebcfg/Makefile.tubs: added this file including module definitions
+      for AwebCFG
+    * awebcfg/#?.c: converted all SASC __asm functions to USRFUNC macros
+    * awebcfg/defprefs.c: stopped Adddefmenu() from calling Getmainstr()
+      with a msg number of 0 and thus causing MuForce hits and crashes
+    * aweb/defprefs.c: copied above change back to aweb/defprefs.c solving
+      MuForce hits on aweb GCC startup.
+    * awebcfg/cfglocale.c: added own code for Getstring() as compcat version
+      in cfglocale.h could search out of bounds if a non existant stringNum
+      was passed to it.
+    * aweb/locale.c: transferred above change back to aweb/locale.c
+
+
+2004-01-05  Andy Broad  <andy@broad.ology.org.uk>
+    * ilbmexample.awebplugin: converted to compile with gcc
+    * plugins/ilbmexample/Makefile.tubs: added
+    * plugins/ilbmexample/#?.c: Added USRFUNC macros etc
+    * filterexample.awebplugin: likewise
+
+2003-12-31  Andy Broad  <andy@broad.ology.org.uk>
+    * plugins/gif/gifcopy.c: Made the changes to the Newbitmap() function
+      for correct behaviour when the screen is changed.
+    * plugins/jfif/jfifcopy.c: Likewise
+
+2003-12-30  Andy Broad  <andy@broad.ology.org.uk>
+    * awebpng.awebplugin: converted to compile with gcc
+    * plugins/png/Makefile.tubs: added thsi file. Included modules for
+      awebpng.awebplugin, associated documentation, and made dependancies with
+      libpng.a and libgz.a
+    * plugins/png/pnglib/Makefile.tubs: added so that libpng and libgz are built
+      automatically under the TUBS system.
+    * plugins/png/pnglib/#?: replaced "\r\n" with "\n" from the end of each line
+      so that gcpp would work correctly.
+    * plugins/png/#?.c: replaced SAS/C style __asm registerfunctions with
+      USR_FUNC macros. Replaced pragmas/#? includes with proto/#? and added
+      correct casting in function calls etc to allow warning free compilation.
+      With the exception of warnings caused by longjmp, which are largely due to
+      function inlines anyway.
+    * plugins/png/awebpng.c: Rewrote Initpluginlib() and Expungepluginlib() to be
+      consistent with aweblibs and added calls to AwebModuleInit() and
+      AwebModuleExit()
+    * plugins/png/awebpng.h: changed arguement types of Dispatchersource and
+      Dispatchercopy to be consitent with those in pngsource.c and pngcopy.c
+      Added nacro for mising function max()
+    * plugins/png/pngsource.c: Releaseimage() did not reset the values in
+      array ps->allocated[] resulting in colour trashing when the screen was
+      changed (iconification or change of depth/mode).
+    * plugins/png/pngcopy.c: Newbitmap() did not correctly handle freeing of
+      bitmap information, resulting in memory trashing on deiconification and
+      change of screen mode.
+
+
+2003-12-07  Andy Broad  <andy@broad.ology.org.uk>
+    * awebjfif.awebplugin: converted to compile with GCC.
+    * plugins/jfjf/Makefile.tubs: added this file. Included modules for
+      awebjfif.awebplugin associated documentation and made dependancies with
+      libjpeg.a
+    * plugins/jfif/#?.c: replaced SAS/C style __asm registerfunctions with
+      USR_FUNC macros. Replaced pragmas/#? includes with proto/#? and added
+      correct casting in function calls etc to allow warning free compilation.
+    * plugins/jfif/awebjfif.c: Rewrote Initpluginlib() and Expungepluginlib()
+      to be consistent with the aweblibs and added calls to AwebModuleInit()
+      and AwebModuleExit()
+    * plugins/jfif/awebjfif.h: changed argument types of Dispatchersource and
+      Dispatchercopy to be comsitent with those in jfifsource.c and jfifcopy.c
+      Added macro for missing function max().
+
+
+2003-12-05  Andy Broad  <andy@broad.ology.org.uk>
+    * awebgif.awebplugin: converted to compile with gcc
+    * Makefile: added build/module/document type
+    * plugins/gif/Makefile.tubs: added this file included modules for
+      awebgif.awebplugin associated documentation
+    * plugins/gif/#?.c: replaced SAS/C style __asm register functions
+      with the portable USR_FUNC macros. Filled in some structure references
+      eg amrender->minx expanded to amrender->rect.minx. Replaced #include
+      references to pragmas/ with the equivalent proto/. Added the correct
+      casting to most function calls, to reduce the number of compile warnings.
+    * plugins/gif/awebgif.c: rewrote Initpluginlib() and Expungepluginlib()
+      to be consitent with the aweblibs and added calls to AwebModuleInit()
+      and AwebModuleExit() respectively
+    * plugins/gif/awebgif.h: changed argument types of Dispatchersource and
+      Dispatchercopy to be comsitent with those in gifsource.c and gifcopy.c
+      Added macro for missing function max().
+    * plugins/gif/gifsource.c: "#if 0ed" out code for Awebactive() provided by
+      awebsupport.library
+    * plugins/include/inline/awebsupport_amigaos.h: replaced this with the more
+      extensive version from aweblib/include/inline/awebsupport.h
+
+
+2003-11-23  Andy Broad  <andy@broad.ology.org.uk>
+    * created new libnix initialisation link library for use by all AWeb
+      modules. Code is in module/libnix/ currently built as
+      distribution/linklibs/libmoduleinit.a
+    * Makefile: Put link options for aweblibs back into root Makefile and
+      added libmoduleinit.a
+    * aweblibs/#?/Makefile.tubs: made all the aweblibs depend on libmoduleinit.a
+    * adapted the Initaweblib() and Expungeaweblib() functions in each aweblib to
+      use the libmoduleinit.a
+    * aweblibs/include/libraries/awebmodule.h: added the header file for the new
+      moduleinit API
+
+2003-11-17  Andy Broad  <andy@broad.ology.org.uk>
+    * aweb/awebamitcp.c corrected register for arg3 of amitcp_bind
+      (from A1 to D1)
+
+2003-11-10  Andy Broad  <andy@broad.ology.org.uk>
+    * Makefile: Added -I aweb/include to the default include path (INCLUDE).
+      Moved definition of LDFLAGS for the aweblibs to the Makfile.tubs
+      concerned. Added -lamigastubs and -lrexx to the global LDFLAGS
+      added ?=0 to end of mkdirs line to overcome bug in geekgadgets shell
+      when no directories are created
+    * aweb/Makefile.tubs: added -lm option to LDFLAGS
+    * aweblibs/awebjs/Makefile.tubs: added LDFLAGS, added -lm to LDFLAGS
+    * aweblibs/#?/Makefile.tubs: added this file for each aweblib
+    * aweblibs/awebjs/jslib.c: added code to Initaweblib() open and create the
+      copies of various library bases required by libnix and the corresponding
+      cleanup code to Expungeaweblib(). Added a dummy for exit() again for
+      libnix sake.
+    * aweblibs/awebjs/jsdata.c jsnumber.c changed %20lg to %15lg so
+      as not to exceed "maximum" precision * aweblib/awebjs/jscomp.c changed
+      some lines which made assumptions about the order of evaluation of a
+      functions arguments. New code is order independent.
+    * aweblibs/include/fd/awebsupport_lib.fd: created this from awebsupport.h
+      using fd2pragma
+    * aweblibs/include/clib/awebsupport_protos.h: created from awebsupport.h
+      changed type the first arg of Addmimeinfo from LIST(mimeinfo)* to
+      void* to enable correct operation of fd2pragma
+    * aweblibs/include/inline/awebsupport.h: created using fd2pragme special 47
+      option
+    * aweblibs/include/proto/awebsupport.h: created
+    * aweblib.h: changed this to #include proto/awebsupport.h instead of
+      awebsupport.h
+    * all aweblibs: replaced SASC style __asm register function definitions
+      with Fabio Alemagna's portable macros
+    * aweblibs/news/news.c:              Added libnix startup code
+    * aweblibs/ftp/ftp.c:                Added libnix startup code
+    * aweblibs/history/whistask.c:       Added libnix startup code
+    * aweblibs/cachebrowser/cabrtask.c:  Added libnix startup code
+    * aweblibs/authorize/authorlib.c:    Added libnix startup code
+    * aweblibs/arexx/cfgrexx.c:          Added libnix startup code
+    * aweblibs/gopher/gopher.c:          Added libnix startup code
+    * aweblibs/mail/mail.c:              Added libnix startup code
+    * aweblibs/hotlist/hotlisttask.c:    Added libnix startup code
+    * aweb/awebamitcp.c:  Added a function a_gethostname() to
+      awebamitcp.library, added so that other function offset were unchanged.
+    * aweb/include/task.h: modified type Subtaskfunction to be a pointer to a
+      function using regargs USRFUNC
+    * changed all task entry functions in aweb executable to explicitly use
+      registerised arguments for compatability with existing aweblibs and
+      awebsupports
+    * changed all Dispatcher() functions in aweb executable to explicitly use
+      registerised arguments for compatability with existing awebsupports
+
+2003-02-22  Fabio Alemagna  <falemagn@aros.org>
+    * cache.c: The new cache code didn't read or write the movedto element of
+      the Cregentry structure if the type was COTYPE_TEMPMOVED. FIXED.
+      (Patch by Stephen Illingworth <stephen.t.illingworth@btinternet.com>)
+
+2003-01-23  Fabio Alemagna  <falemagn@aros.org>
+    * cache.c: implemented new caching routines which are
+      endianess-independent and produce shorter files.
+      (Patch by Stephen Illingworth <stephen.t.illingworth@btinternet.com>)
+    * asyncio.c: Likewise
+    * asyncio.h: Likewise
+
+2002-11-01  Tom Parker  <tom@carrott.org>
+
+    * table.h: fixed transposed vertical and horizontal table frames
+      (Patch by Dave Clarke <bj73@cryogen.com>)
+
+2002-10-08  David Rey  <david@saug.org>
+
+    * cookie.c: fixed a bug that sometimes prevented cookies from
+      being sent to the remote site
+      (Patch by Stephen Illingworth <stephen.t.illingworth@btinternet.com>)
+
+
+

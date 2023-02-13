@@ -1,0 +1,303 @@
+INCLUDE    := -I Include -I aweblibs/include -I aweb/include
+NETINCLUDE := -I /gg/netinclude
+NETINCLUDE2 :=
+SSLINCLUDE := -I /gg/amissl-sdk/include
+MIAMISSLINCLUDE := -I /gg/miamissl-sdk/include -I /gg/miamissl-sdk
+ALPHALIB :=
+
+CC := m68k-amigaos-gcc
+AR := m68k-amigaos-ar
+
+BUILD_CC := gcc
+BUILDDATE= $(shell build/builddate) 
+
+MODULELIB = linklibs/libmoduleinit.a
+
+CFLAGS	 := -O2 -fomit-frame-pointer -m68020-60 -Werror-implicit-function-declaration \
+	    -Wall  -Wno-parentheses -D__AMIGADATE__='$(BUILDDATE)'
+
+CPPFLAGS := -Dstpbrk=strpbrk $(INCLUDE)
+
+LDFLAGS =  -noixemul -lamigastubs -lrexx -specs tools/gcc.spec -Ldistribution/linklibs/ -lawebclib
+
+
+RM	 = rm -f -R $(1)
+MKDIRS	 = mkdir -p $(1)
+ECHO	 = echo $(1)
+COPY	 = cp $(1) $(2)
+FCAT	 = compcat $(1) $(2) $(3)
+
+DISTDIR     := distribution/
+BUILDDIR    := build/
+ALL_MODULES :=
+ALL_DEPS    :=
+
+build/module/executable/common/language := C
+
+ifeq ($(TERM),amiga)
+    _Y := 37
+    _G := 35
+    _R := 34
+else
+    _Y := 33
+    _G := 32
+    _R := 31
+endif
+
+WARN = 1
+
+
+#################################################
+# Handle logging of building activities.        #
+# To be used only inside build macros.          #
+#                                               #
+# $(1) - the action being performed             #
+# $(2) - the log file to use                    #
+# $(3) - the command to execute                 #
+# $(4) - the log level. If empty, then the      #
+#    value $(LOGLEVEL) will be used             #
+#################################################
+define build/log
+@$(call ECHO, -n "$(1)... "); { $(3); } 2>$(2); res=$$$$?; \
+if [ "$$$$res" != "0" ]; then \
+    $(call ECHO, -e "\\033[1;$(_R)m"FAILED"\\033[0;39m"); \
+    $(call ECHO, $(3)); \
+    cat $(2); \
+    exit $$$$res; \
+else \
+    if [ -s $(2) ]; then \
+        $(call ECHO, -e "\\033[1;$(_Y)m"PASSED"\\033[0;39m"); \
+        if [ $(WARN) != "1" ]; then \
+            $(call ECHO, -n ""); \
+        else \
+            $(call ECHO, ""); \
+            cat $(2); \
+            $(call ECHO, ""); \
+        fi; \
+    else \
+        $(call ECHO, -e "\\033[1;$(_G)m"OK"\\033[0;39m"); \
+    fi; \
+fi
+endef
+
+##################################
+define build/module/executable/common/language/C
+$(1)/OBJS	+= $($(1)/CFILES:%=$(BUILDDIR)$(1)/%.o)
+$(1)/OBJS/CDEPS := $($(1)/CFILES:%=$(BUILDDIR)$(1)/%.d)
+
+$(BUILDDIR)$(1)/%.o : $$($(1)/SRCDIR)%.c | $(BUILDDIR)$(1)
+	$(call build/log,Compiling [$(1)] $$<,$$@.err, \
+	    $(CC) -c $(CFLAGS) $$($(1)/CFILES/CFLAGS) $$($(1)/CFILES/$$*/CFLAGS) \
+	    $$($(1)/CFILES/$$*/CPPFLAGS) $$($(1)/CFILES/CPPFLAGS) $(CPPFLAGS) \
+	    -I $$($(1)/SRCDIR)include $$< -o $$@ \
+	 )
+
+ifeq (,$(filter true, $(NOCDEPS) $($(1)/NOCDEPS)))
+
+$(BUILDDIR)$(1)/%.d : $$($(1)/SRCDIR)%.c | $(BUILDDIR)$(1)
+	$(call build/log,Generating dependency list for $$<,$$@.err, \
+	    $(CC) -M $$($(1)/CFILES/$$*/CPPFLAGS) $$($(1)/CFILES/CPPFLAGS) $(CPPFLAGS) \
+	     -I $$($(1)/SRCDIR)include $$< | sed 's;^.*\.o:;$$(dir $$@)&;' > $$@ \
+	 )
+
+ifeq (,$(filter clean distclean $(1)-clean $(1)-distclean $(notdir $(1))-clean $(notdir $(1))-distclean,$(MAKECMDGOALS)))
+
+ifneq (,$(filter all $(1) $(notdir $(1)) $(BUILDDIR)$(1)/%.o $(DISTDIR)$(1),$(if $(ALL_DEPS),$(ALL_DEPS),$(1))))
+
+-include $$($(1)/OBJS/CDEPS)
+
+endif
+
+endif
+
+endif
+
+endef
+##################################
+
+##################################
+define build/module/executable/common
+$(1)/OBJS  :=
+
+$$(foreach lang,$(build/module/executable/common/language),$$(eval $$(call build/module/executable/common/language/$$(lang),$(1))))
+
+$(DISTDIR)$(1) : $$($(1)/DEPS)
+endef
+##################################
+
+##################################
+define build/module/executable/application
+$(eval $(call build/module/executable/common,$(1)))
+$(DISTDIR)$(1): $$($(1)/OBJS) | $(dir $(DISTDIR)$(1))
+	$(call build/log,Linking $$@,$(BUILDDIR)$(1).err, \
+	    $(CC) -o $$@ $$($(1)/OBJS) $(LDFLAGS) $$($(1)/LDFLAGS) \
+	)
+endef
+##################################
+
+##################################
+define build/module/executable/library/amigashared
+$(1)/LDFLAGS += -nostartfiles -lgcc -lm -lmoduleinit
+$(eval $(call build/module/executable/application,$(1)))
+endef
+##################################
+
+
+##################################
+define build/module/executable/library/link
+$(eval $(call build/module/executable/common,$(1)))
+$(DISTDIR)$(1): $$($(1)/OBJS) | $(dir $(DISTDIR)$(1))
+	$(call build/log,Making link library $$@,$(BUILDDIR)$(1).err, \
+	    $(AR) cr $$@ $$? \
+	 )
+endef
+##################################
+
+#default module type is executable/application
+build/module/ = $(build/module/executable/application)
+
+##################################
+
+ifneq ($($(BUILDDIR)/__DIRECTORYMADE__),yes)
+$(BUILDDIR)/__DIRECTORYMADE__:=yes
+
+$(BUILDDIR) :
+	$(call MKDIRS, $@)
+endif
+
+ifneq ($($(DISTDIR)/__DIRECTORYMADE__),yes)
+$(DISTDIR)/__DIRECTORYMADE__:=yes
+
+$(DISTDIR) :
+	$(call MKDIRS, $@)
+endif
+
+##################################
+define build/module
+#FIXME: this is not really good, because these targets might conflict with the $(BUILDDIR)/%
+#ones.
+$(1):		$(DISTDIR)$(1)
+
+$(1)-clean:	$(DISTDIR)$(1)-clean
+$(1)-distclean: $(DISTDIR)$(1)-distclean
+
+$(notdir $(1)): 	  $(DISTDIR)$(1)
+$(notdir $(1))-clean:	  $(DISTDIR)$(1)-clean
+$(notdir $(1))-distclean: $(DISTDIR)$(1)-distclean
+
+$(DISTDIR)$(1)-clean:
+	$(call RM, $(BUILDDIR)$(1)); \
+	$$(if "$$(wildcard $(dir $(BUILDDIR)$(1))*)",,$(call RM, $(dir $(BUILDDIR)$(1))))
+
+$(DISTDIR)$(1)-distclean: $(DISTDIR)$(1)-clean
+	$(call RM, $(DISTDIR)$(1)); \
+	$$(if "$$(wildcard $(dir $(DISTDIR)$(1))*)",,$(call RM, $(dir $(DISTDIR)$(1))))
+
+.PHONY: $(1)-clean $(1)-distclean $(notdir $(1))-clean $(notdir $(1))-distclean
+.ALIAS: $(1) $(notdir $(1))
+
+ifneq ($($(BUILDDIR)$(1)/__DIRECTORYMADE__),yes)
+$(BUILDDIR)$(1)/__DIRECTORYMADE__:=yes
+
+$(BUILDDIR)$(1) :
+	$$(call MKDIRS, $$@)
+endif
+
+ifneq ($($(DISTDIR)$(dir $(1))/__DIRECTORYMADE__),yes)
+$(DISTDIR)$(dir $(1))/__DIRECTORYMADE__:=yes
+
+$(DISTDIR)$(dir $(1)) :
+	$$(call MKDIRS, $$@)
+endif
+
+$(eval $(call build/module/$($(1)/TYPE),$(1)))
+
+endef
+##################################
+
+##################################
+define build/module/document
+$(1)/DOCS := $(addprefix $($(1)/SRCDIR),$($(1)/FILES))
+
+
+$(DISTDIR)$(1): $$($(1)/DOCS) | $(DISTDIR)$(dir $(1))
+	$(call COPY, $$($(1)/DOCS), $(DISTDIR)$(dir $(1)))
+endef
+##################################
+define build/module/catalog
+$(1)/CATS := $(addprefix $(DISTDIR)$(dir $(1)),$(foreach ap, $($(1)/APPS), $(addsuffix /$(ap).catalog,$($(1)/LANGUAGES))))
+$(1)/CDS   := $(addsuffix .cd, $($(1)/APPS))
+
+$(DISTDIR)$(1): $$($(1)/CATS)
+
+# this next is not so good the catalogs should only depend on their own .cd file but
+# I can't find a way to do this
+
+$$($(1)/CATS): $$($(1)/CDS)
+
+
+$(DISTDIR)$(dir $(1))%.catalog : $$($(1)/SRCDIR)%.ct
+	 mkdir -p $$(dir $$@)
+	 FlexCat FILL $$(basename $$(notdir $$@)).cd $$< catalog=$$@; ret=$$$$?; if [ $$$$ret -ge 10 ]; then exit 1; else exit 0; fi;
+
+endef
+##################################
+
+# 1) include a given makefile
+# 2) add the modules it defines to the global modules list
+# 3) set the SRCDIR variable for each module if it's not defined already
+define add_modules
+#make sure MODULES is initialized to an empty value, in case something goes wrong in the
+#included makefile
+MODULES :=
+
+include $(1)
+
+ALL_MODULES += $$(MODULES)
+$$(foreach m,$$(MODULES),$$(eval $$(if $$($$(m)/SRCDIR), , $$(m)/SRCDIR := $$(dir $(1)))))
+endef
+########################################################################################
+
+#The real makefile begins --here--
+
+#This is the first target in the makefile. It just redirects to all_modules which
+#does the real job. It's here so that even if the included makefiles define some
+#other targets, __all_modules__ always gets executed first (unless otherwise specified
+#in the command line)
+all: __all_modules__
+
+include $(BUILDDIR)Tubsfiles
+
+$(warning Adding modules...)
+$(foreach t,$(TUBSFILES),$(eval $(call add_modules,$(t))))
+
+#The two functions below work together to calculate the complete list
+#of all dependencies of the modules to build, given on the command line.
+#In case no modules are given by the user then the list will be empty,
+#however the real list should be filled with ALL dependencies of ALL
+#available modules, but we optimize this out so that the build is faster
+define getdeplist_1
+$(foreach m,$(1),$(if $(filter $(m),$(__ALLDEPS__)),,$(eval __ALLDEPS__ += $(m)) \
+$(call getdeplist_1,$($(m)/DEPS))))
+endef
+getdeplist = $(eval __ALLDEPS__ :=) $(call getdeplist_1,$(1)) $(__ALLDEPS__)
+
+$(warning Finding out modules dependencies...)
+ALL_DEPS := $(strip $(call getdeplist,$(MAKECMDGOALS)))
+__all_modules__: $(ALL_MODULES:%=$(DISTDIR)%)
+
+#invoke build/module on every module
+#build module recursively invokes some other functions which take care
+#of everything on the basis of the module's type.
+$(warning Building modules...)
+$(foreach m,$(ALL_MODULES),$(eval $(call build/module,$(m))))
+
+clean:
+	@$(call RM,$(BUILDDIR))
+
+distclean: clean
+	@$(call RM,$(DISTDIR))
+
+.PHONY:  all __all_modules__ clean
+
+

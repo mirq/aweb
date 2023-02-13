@@ -1,0 +1,101 @@
+<html>
+<head>
+<title>AOTP_COPYDRIVER class</title>
+</head>
+<body>
+<h1>AOTP_COPYDRIVER class</h1>
+
+<h2>Purpose</h2>
+
+The <b>AOTP_COPYDRIVER</b> class is the object to derive
+<a href="../plugin/copydriver.html">plugin copydriver</a> classes from.
+
+<h2>Supported methods</h2>
+
+<table border>
+<tr><th align=left valign=top>Method
+   <th align=left valign=top>Description
+<tr><th align=left valign=top><a href="../methods/dispose.html">AOM_DISPOSE</a>
+   <td valign=top>Dispose the object
+<tr><th align=left valign=top><a href="../methods/get.html">AOM_GET</a>
+   <td valign=top>Get attribute values
+<tr><th align=left valign=top><a href="../methods/set.html">AOM_SET</a>
+   <td valign=top>Set attribute values
+</table>
+
+<h2>Supported attributes</h2>
+
+<table border>
+<tr><th align=left valign=top>Attribute
+   <th align=left valign=top>Type
+   <th align=left valign=top>Description
+   <th align=left valign=top>Applicability
+<tr><th align=left valign=top>AOBJ_Cframe
+   <td valign=top><a href=object.html>struct Aobject</a> *
+   <td valign=top>The context frame in which the copydriver is displayed. If this is
+      not NULL, you are being displayed. If it is NULL, you are not visible.
+   <td valign=top>AOM_SET<br>AOM_GET
+<tr><th align=left valign=top>AOBJ_Height
+   <td valign=top>LONG
+   <td valign=top>Height of the visible object in pixels.
+   <td valign=top>AOM_SET<br>AOM_GET
+<tr><th align=left valign=top>AOBJ_Left
+   <td valign=top>LONG
+   <td valign=top>X coordinate of the left edge of the visible object.
+   <td valign=top>AOM_SET<br>AOM_GET
+<tr><th align=left valign=top>AOBJ_Top
+   <td valign=top>LONG
+   <td valign=top>Y coordinate of the top edge of the visible object.
+   <td valign=top>AOM_SET<br>AOM_GET
+<tr><th align=left valign=top>AOBJ_Width
+   <td valign=top>LONG
+   <td valign=top>Width of the visible object in pixels.
+   <td valign=top>AOM_SET<br>AOM_GET
+</table>
+
+<h2>Instance data structure</h2>
+
+The AOTP_COPYDRIVER class uses the following data structure:
+<p>
+<pre>
+struct Copydriver
+{  struct Aobject object;     /* Object header */
+   APTR extension;            /* Private extension data */
+   LONG aox,aoy;              /* Left,top position */
+   LONG aow,aoh;              /* Width, height */
+   struct Aobject *cframe;    /* Current context frame */
+};
+</pre>
+
+Every object that is a direct subclass of AOTP_COPYDRIVER <b>must</b> have this
+structure as the first item in its instance data structure.
+
+<h2>Usage</h2>
+
+<h3>Field: <code>object</code></h3>
+This is the compulsory embedded <a href=object.html>AOTP_OBJECT</a>
+instance data.
+
+<h3>Field: <code>aox, aoy</code></h3>
+The X and Y xoordinates of the left top corner of the visible object. These
+fields correspond with the <b>AOBJ_Left</b> and <b>AOBJ_Top</b> attributes,
+respectively.
+<p>
+Direct subclasses of AOTP_COPYDRIVER may read these fields directly, but not
+change them. Beware that the AOTP_COPYDRIVER class supports more, private,
+methods that may change these fields, so do not cache them between your
+method invokations.
+
+<h3>Field: <code>aow, aoh</code></h3>
+The widht and height of the visible object. These fields correspond with the
+<b>AOBJ_Width</b> and <b>AOBJ_Height</b> attributes, respectively.
+<p>
+Direct subclasses of AOTP_COPYDRIVER may both read and set these fields directly.
+
+<h3>Field: <code>cframe</code></h3>
+A pointer to the context frame in which the object is displayed, directly or indirectly
+because it is embedded in a HTML document. This field corresponds with
+the <b>AOBJ_Cframe</b> attribute.
+<p>
+Direct subclasses of AOTP_COPYDRIVER may read this field directly, but not
+change it.

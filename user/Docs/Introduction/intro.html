@@ -1,0 +1,246 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+<html>
+<head>
+<title>
+Introduction
+</title>
+</head>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<h1>&nbsp; Introduction</h1>
+AWeb is a fast and powerful World Wide Web browser for the Amiga computer.
+<p>Some of the most important features of AWeb APL Lite are listed below.
+<P>This documentation is Work In Progress.  In fact, it is being overhauled for the first time since AWeb went APL.  That's a few years ago now.  There's a fair bit of work to do.  So some pages will be incomplete or links broken.  This <I>should</I> all be fixed by the  next AWeb release...
+
+<h2>HTML and browsing</h2>
+AWeb offers complete <a HREF="../Advanced/html.html">HTML support</a>, including:
+<ul>
+<li>JavaScript 1.1.
+<li>Frames.
+<li>Tables, including table backgrounds.
+<li>Font sizes, faces, colours, subscript, superscript, optional blinking.
+<li>Client-side image maps, also when the map is defined in another document.
+<li>Embedded objects and background sounds.
+</ul>
+<p>
+As a unique feature, AWeb offers three different
+<a HREF="../Advanced/htmlmode.html">HTML modes</a> ensure the
+correct display of virtually every page:
+<ul>
+<li>Strict mode, where only the official standard is recognized.
+<li>Tolerant mode, which also recognizes many of the NetScape and other
+   extensions. Tolerant mode also offers automatic recovery from many
+   syntactic errors, including bad comments.
+<li>Compatible mode, to recover from really bad HTML, where automatic
+   recovery would break most other pages.
+</ul>
+<P><I>NOTE: Tolerant mode is the recommended mode to use on a regular basis.  Only use Compatible mode to view a website if Tolerant does not appear to work properly, otherwise undesirable results may occur.</I>
+<p>
+<a href="../Starting/browser.html#images">Images</a> are shown using datatypes.
+That means you are not stuck with
+a particular decoding method built-in in the browser, but you can choose the
+datatype that does the job the best. Instead of the datatype you can use
+special plugins (included) that supports progressive decoding for GIF, JPEG
+and PNG images, and animated GIF.<br>
+Using datatypes also ensures the widest possible coverage of image formats,
+where other browsers only support a limited number of built-in formats.
+<p>
+<a href="../Starting/browser.html#stimages">"Standalone" images</a> (that are shown
+when following a hyperlink) are
+shown in the browser window, or optionally using an external image
+viewer.
+<p>
+You can <a HREF="../Configuring/brviewers.html">define</a> which action to
+perform for all types of files, depending
+on their MIME type. Streaming input for external programs is supported.
+For textual files, AWeb checks if the file really contains text before
+attempting to show the contents, in order to avoid problems with servers
+that don't recognize extensions like <code>.lha</code>.
+<p>
+A public <a HREF="../Advanced/api.html">plugin interface</a> allows seamless integration
+of extension programs within AWeb.
+
+<h2>Networking </h2>
+AWeb can use a wide range of TCP-stacks: OS4's Roadshow, AmiTCP/IP, I-Net225, AS-225 or compatible, like Miami or TermiteTCP.  The TCP stack can be <A HREF="../Working/starttcp.html">started automatically</A>  when it is needed to fetch a document from the Internet.  Without a TCP stack running, you can still view local files.
+<p>
+Using internal multitasking, AWeb offers totally asynchronous and
+parallel network access. Up to 256  parallel connections are supported,
+but you can configure a lower maximum.
+<p>
+The HTTP, FTP, Mailto, News and Gopher protocols are supported internally.
+Telnet  is supported by an external program or an ARexx plugin. Optionally
+you can use an external program for Mailto or News, too.
+<p>
+AWeb supports both the client pull (the "<code>Refresh:</code>" HTTP header)
+and server push (multipart/x-mixed-replace) mechanisms.
+<p>
+AWeb supports the use of <a HREF="../Configuring/nwproxy.html">proxies</a> for
+HTTP, FTP, Gopher and Telnet.
+You can define sites or URL patterns for which the proxy should not
+be used.
+<p>
+A persistent, disk based <a HREF="../Advanced/cache.html">cache</a> ensures fast access
+to pages that you have visited before.
+In order to keep the cached pages up to date, AWeb can
+verify the cached files once per session or with every access. You can
+also turn cache verification off to decrease the network usage. AWeb
+allows you to define sites or URL patterns for files that should never
+be cached.
+<p>
+HTTP <a HREF="../Working/authorize.html">authorization</a> and proxy authorization are
+supported. A separate window allows for easy maintenance of your userid and
+passwords.
+<p>
+NetScape and RFC 2109 <a HREF="../Working/cookies.html">cookies</a> are fully supported.
+AWeb helps you protect
+your privacy in several ways: it can show an alert requester whenever
+a site wants to set a cookie, and you can specify sites from which cookies
+must never be accepted . You can tag individual cookies as being trusted
+so the alert requester will not be shown again for those cookies. Cookies
+are stored in a readable and editable ASCII file.
+<P>AWeb supports <A HREF="../Working/secure.html">secure website connections</A> by use of AmiSSL or MiamiSSL.
+<p>
+AWeb lets you load all images, or delay all image loading. A third option
+is to load only clickable maps, so you know where to click on.
+
+<h2>Productivity</h2>
+AWeb has many features to enhance your productivity when browsing. Most
+of these features are not found in other Amiga browsers, and some of them
+not even in browsers on other platforms.
+<p>
+AWeb is fast. It has a unique <a HREF="../Configuring/nwcache.html"><em>fast
+cache response</em></a> mode that
+shows cached pages immediately without delay, and yet ensures that
+you always see the most recent version of a page.
+<p>
+You can <a HREF="../Configuring/broptions.html#nobanners">suppress</a> those
+annoying advertizement windows popping up on many sites.
+<p>
+The <a href="../Starting/browser.html#clipboard">clipboard</a> is supported. You can
+not only copy or paste URLs,
+but you can also drag-select in a page and copy the selected text
+to the clipboard.
+<p>
+The <a HREF="../Working/search.html">search function</a> lets you locate text in
+the page. The text found will
+be highlighted so you can easily recognize it.
+<p>
+You can <a href="../Starting/browser.html#scroll">scroll</a> pages with the keyboard.
+This is also possible for
+pages shown in <a href="../Starting/browser.html#frames">frames</a>, and even when the
+frame has no scroller.
+<p>
+You can <a HREF="../Working/print.html">print</a> the page graphically, or
+save it as IFF file  and process or print it later.<br>
+Instead of a graphical printout, you can also print a page textually using the
+HTTX conversion utility that is included in the AWeb APL Lite package.
+You can save the document as text (using HTTX) or as HTML source.
+Functions that use the HTTX utility are installed automatically as
+an option.
+<p>
+AWeb was the first browser to feature a <a HREF="../Working/nws.html">network status
+window</a>, that enables
+you to watch all foreground and background network transfer progresses.
+You can cancel selected transfers, or all transfers at once. A global
+CPS rate is also shown in this window.
+<p>
+You can store your favourite links in a <a HREF="../Working/hotlist.html">hotlist</a>.
+A powerful <a HREF="../Working/hotlistmgr.html">hotlist
+manager</a> allows very easy maintenance of your hotlist. You can add,
+delete and sort entries, and group them in a hierarchical way. You can
+include an entry in more than one group simultaneously without having
+to duplicate it first. A set of search functions, including pattern matching,
+helps you in finding back any entry in your hotlist.
+<p>
+The <a HREF="../Working/cachebrowser.html">cache browser</a>   allows you to view or
+save any file from the cache.
+You can delete single or multiple files. A set of search functions,
+including pattern matching, lets you easily find back that interesting
+document or image you like to view again.
+<p>
+The <a HREF="../Working/autosearch.html">autosearch</a>   feature allows you
+to use your favourite search engine directly from the URL entry field.
+<p>
+You can <a HREF="../Starting/browser.html#iconify">iconify</a> AWeb, closing its screen
+and windows but let transfers continue in the background.
+<p>
+AWeb features a powerful set of <a HREF="../Advanced/ARexx/arexx.html">ARexx commands</a> ,
+that allows you to control
+almost every aspect of AWeb from outside, including all settings.
+Combined with the unique ability to <a HREF="../Advanced/shellcmd.html">start ARexx macros</a>
+from a hyperlink
+or form button, this makes it possible to build complex applications that
+use AWeb as their user interface!
+
+<h2>Configurability</h2>
+AWebs configuration items are grouped in four separate
+<a HREF="../Configuring/settings.html">settings windows</a>.
+These allow you to tailor almost every aspect of AWebs operation to
+your personal preferences.
+<p>
+You can <a HREF="../Configuring/prscreen.html"><em>easily</em> configure</a>
+AWeb to open its windows on its own
+public screen, a named public screen or the default public screen. The
+network status, hotlist viewer and history windows are optionally
+opened automatically at the program start.
+<p>
+You can completely <a HREF="../Configuring/uimenus.html">configure</a> the menus
+ to fit your personal needs. You can rearrange the menus, or add your
+own items that execute ARexx commands or run ARexx macros.
+<p>
+You can <a HREF="../Configuring/uinavs.html">configure</a> the function of
+the ten navigation buttons at the top of the browser window.
+<p>
+You can change the default <a href="../Starting/popup.html">popup menu</a> that is
+shown for images, links
+or frames. Using ARexx commands, you can <a HREF="../Configuring/uipopup.html">add</a>
+all functionality that you
+find useful. You can even start ARexx macros  or external programs
+from the popup menus.
+<p>
+Where other browsers have fastlink buttons, AWeb offers you the much
+more powerful <a HREF="../Starting/gui.html#user"><em>user buttons</em></a>. You can
+<a HREF="../Configuring/uibuttons.html">assign</a> any ARexx command
+to these buttons. This includes opening a URL (which would turn the
+button into a simple fastlink button), changing a single configuration
+item (like HTML mode), and starting ARexx macros  or external programs.
+<p>
+You can assign your own functions to most <a HREF="../Configuring/uikeys.html">
+keys of the keyboard</a>.
+
+<h2>Web authoring </h2>
+You can easily edit the HTML source of files stored locally on your hard
+disk directly from within AWeb.
+<p>
+For authors of JavaScript programs, AWeb contains a unique built-in
+<a HREF="../Advanced/jsprogrammer.html#debugger">JavaScript debugger</a>. The standalone
+<a HREF="../Advanced/jsprogrammer.html#awebjs">AWebJS</a> program allows you to run
+scripts outside of the browser.
+
+<p>
+<hr>
+<a href=../AWeb%20Manual.html><img src=../GlobalImages/back.gif width=32 height=16 alt="<-" border=0></a> Back to
+<a href=../AWeb%20Manual.html>index</a>.
+
+</body>
+</html>

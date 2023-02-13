@@ -1,0 +1,12 @@
+==id $Id: awebarexx_lib.sfd,v 1.1 2005/01/28 21:14:19 falemagn Exp $
+==base _AwebArexxBase
+==basetype struct Library *
+==libname arexx.aweblib
+==bias 30
+==public
+==include <exec/types.h>
+==include <libraries/awebarexx.h>
+==include "awebprefs.h"
+void AwebArexxGetCfg(struct Arexxcmd *ac, struct AwebPrefs *prefs) (a0,a1)
+void AwebArexxSetCfg(struct Arexxcmd *ac, struct AwebPrefs *prefs) (a0,a1)
+==end

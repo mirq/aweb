@@ -1,0 +1,51 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+
+<HTML>
+
+<HEAD>
+<TITLE>About MIME types</TITLE>
+</HEAD>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<H1>&nbsp; About MIME types</H1>
+
+MIME (Multipurpose Internet Mail Extensions) is a mechanism for specifying and describing the format of Internet message bodies.  It was primarily designed for e-mail, but MIME types are used also to identify the type of data in the HTTP protocol, the most widely used protocol on the World Wide Web.
+<P>For a browser like AWeb, the MIME type of a document determines whether the file should be displayed in the browser window, or be processed by some other program.
+<P>A MIME type consists of a <EM>type</EM> and a <EM>subtype</EM>.  The <EM>type</EM> describes the major class of data, like text or image.  The <EM>subtype</EM> is used for a subdivision of the major type into different formats, like GIF or JPEG images.
+<P> According to <A HREF="http://www.ietf.org/rfc/rfc1521.txt" TARGET="_blank">RFC 1521</A>, the following official MIME types are defined:
+
+<DL>
+<DT><B>TEXT/HTML</B><DD>This is a document in the HTML hypertext format. Virtually all pages on the Web are in this format.
+<P><DT><B>TEXT/PLAIN</B><DD>This type is used for plain text documents (normally in ASCII).
+<P><DT><B>APPLICATION/OCTET-STREAM</B><DD>This describes a binary file. The file could be processed by some application.  An example of this would be an LHA archive.
+<P><DT><B>APPLICATION/POSTSCRIPT</B><DD>The document is in PostScript format.
+<P><DT><B>IMAGE/GIF</B><DT><B>IMAGE/JPEG</B><DD>These are images, in GIF and JPEG format.
+<P><DT><B>AUDIO/BASIC</B><DD>This type is used for audio data encoded using 8-bit ISDN mu-law [PCM].
+<P><DT><B>VIDEO/MPEG</B><DD>This is an animation in MPEG format.
+</DL>
+
+In addition to these (and other) official types and subtypes, it is possible to define extension MIME types and subtypes.  These should be prepended with &quot;<B>X-</B>&quot; to avoid collisions with future official MIME types.
+
+</BODY>
+
+</HTML>

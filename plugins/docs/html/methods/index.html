@@ -1,0 +1,62 @@
+<html>
+<head>
+<title>Methods</title>
+</head>
+<body>
+<h1>Methods</h1>
+
+<h2>Defined object methods</h2>
+
+<table border>
+<tr><th align=left valign=top>Method
+    <th align=left valign=top>Description
+<tr><th align=left valign=top><a href=addchild.html>AOM_ADDCHILD</a>
+    <td>Add object as a child into a relationship with another object
+<tr><th align=left valign=top><a href=dispose.html>AOM_DISPOSE</a>
+    <td>Delete an object instance
+<tr><th align=left valign=top><a href=get.html>AOM_GET</a>
+    <td>Get attribute values from an object
+<tr><th align=left valign=top><a href=goactive.html>AOM_GOACTIVE</a>
+    <td>Make copydriver the input focus
+<tr><th align=left valign=top><a href=goinactive.html>AOM_GOINACTIVE</a>
+    <td>Remove copydriver from the input focus
+<tr><th align=left valign=top><a href=handleinput.html>AOM_HANDLEINPUT</a>
+    <td>Let copydriver handle an input event
+<tr><th align=left valign=top><a href=hittest.html>AOM_HITTEST</a>
+    <td>Check if copydriver understand input event
+<tr><th align=left valign=top><a href=install.html>AOM_INSTALL</a>
+    <td>Install the dispatcher for a class
+<tr><th align=left valign=top><a href=layout.html>AOM_LAYOUT</a>
+    <td>Let copydriver compose itself
+<tr><th align=left valign=top><a href=measure.html>AOM_MEASURE</a>
+    <td>Get dimensions from copydriver
+<tr><th align=left valign=top><a href=new.html>AOM_NEW</a>
+    <td>Create a new instance
+<tr><th align=left valign=top><a href=notify.html>AOM_NOTIFY</a>
+    <td>Send message to an object and all its children
+<tr><th align=left valign=top><a href=remchild.html>AOM_REMCHILD</a>
+    <td>Remove object from a relationship with another object
+<tr><th align=left valign=top><a href=render.html>AOM_RENDER</a>
+    <td>Let copydriver render itself
+<tr><th align=left valign=top><a href=set.html>AOM_SET</a>
+    <td>Set attributes of an object
+<tr><th align=left valign=top><a href=srcupdate.html>AOM_SRCUPDATE</a>
+    <td>Send data to sourcedriver
+<tr><th align=left valign=top><a href=update.html>AOM_UPDATE</a>
+    <td>Set attributes of a related object
+</table>
+<h2>Message structure</h2>
+
+Every message used to trigger a method starts with the <b>Amessage</b>
+structure:<p>
+
+<pre>
+<a name=Amessage>struct Amessage
+{  ULONG method;
+};
+</pre>
+
+The field <i>method</i> holds the method to identify the type of message.
+
+</body>
+</html>

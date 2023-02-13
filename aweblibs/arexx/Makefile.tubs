@@ -1,0 +1,9 @@
+MODULES := aweblib/arexx.aweblib
+
+aweblib/arexx.aweblib/TYPE := executable/library/amigashared
+aweblib/arexx.aweblib/DEPS := $(MODULELIB) linklibs/libawebclib.a
+aweblib/arexx.aweblib/CFILES := \
+cfgrexx
+
+
+

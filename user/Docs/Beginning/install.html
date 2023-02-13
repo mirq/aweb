@@ -1,0 +1,79 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+<html>
+<head>
+<title>
+Installation
+</title>
+</head>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<h1>&nbsp; Installation</h1>
+
+<h2>Installing AWeb</h2>
+Installing AWeb is straightforward. Just double-click the Install icon.
+<p>
+The archive contains three different Workbench icons for AWeb: for the
+standard Workbench, for MagicWB, and for NewIcons. The installation process
+will ask you which you want to install. The other icons are saved in a
+separate drawer so you can switch icons later.
+<p>
+AWeb needs some <a href=classact.html>ClassAct</a> classes.
+These are
+included in the archive, and the installation process will ask you if
+you want to install them. You are strongly encouraged to do so. If you
+do not install ClassAct, you have to make sure that AWeb can find its
+classes, for instance by executing the <code>MakeAssign</code> script
+before you start AWeb. If you <em>do</em> install ClassAct, you don't
+have to worry about this.
+
+<h2>Configuring the AWeb plugins</h2>
+To configure the AWeb plugins, please refer to the Plugin documentation in the AwebPlugin/Docs/ directory.
+
+<h2>Configuring the JFIF datatype</h2>
+<em>If you use the JFIF datatype (by Christoph Feck, TowerSystems), then
+please read this:</em>
+<p>
+The JFIF datatype doesn't seem to handle shareable pens on public screens
+correctly under all circumstances.
+You have to install AWeb in the datatype or else AWeb will not be able to
+show inline JPEG images.
+<p>
+In the JFIF preference editor, you must add an application named
+<code><b>AWebIP</b></code> (AWeb Image Processing), and then select
+<em>Single-Pass Quantization</em> (in the GadTools version of the
+preference editor) or <em>One-pass</em> (in the MUI version).
+
+<h2>The AWebLib drawer</h2>
+In order to reduce the size of the executable, some less frequently used parts
+of AWeb are located in separate files. AWeb expects these files to be found
+in the <code>AWebLib</code> subdrawer.
+You must not move these files out of their drawer, or else some functions
+of AWeb may cease to work.
+
+<p>
+<hr>
+<a href=../AWeb%20Manual.html><img src=../GlobalImages/back.gif width=32 height=16 alt="<-" border=0></a> Back to
+<a href=../AWeb%20Manual.html>index</a>.
+
+</body>
+</html>

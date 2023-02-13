@@ -1,0 +1,886 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+<html>
+<head>
+<title>AWeb ARexx Commands: Program related</title>
+</head>
+
+<BODY BACKGROUND="../../GlobalImages/awebbg.gif">
+
+<IMG SRC="../../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<h1>&nbsp; AWeb ARexx Commands</h1>
+
+<h2>Program related commands</h2>
+
+<table cellspacing=0 cellpadding=0 width=100%>
+<tr valign=top><td>
+<a href=#ADDHOTLIST>ADDHOTLIST</a><br>
+<a href=#ALLOWCMD>ALLOWCMD</a><br>
+<a href=#BACKGROUND>BACKGROUND</a><br>
+<a href=#BGSOUND>BGSOUND</a><br>
+<a href=#CLEARSELECTION>CLEARSELECTION</a><br>
+<a href=#COPYBLOCK>COPYBLOCK</a><br>
+<a href=#DELETECACHE>DELETECACHE</a><br>
+<a href=#DRAGGING>DRAGGING</a><br>
+<a href=#EDITSOURCE>EDITSOURCE</a><br>
+<a href=#FIXCACHE>FIXCACHE</a><br>
+<a href=#FLUSHCACHE>FLUSHCACHE</a><br>
+<td>
+<a href=#GETHISTORY>GETHISTORY</a><br>
+<a href=#HOTLIST>HOTLIST</a><br>
+<a href=#ICONIFY>ICONIFY</a><br>
+<a href=#IMAGELOADING>IMAGELOADING</a><br>
+<a href=#INFO>INFO</a><br>
+<a href=#JAVASCRIPT>JAVASCRIPT</a><br>
+<a href=#JSBREAK>JSBREAK</a><br>
+<a href=#JSDEBUG>JSDEBUG</a><br>
+<a href=#LOADIMAGES>LOADIMAGES</a><br>
+<a href=#LOADSETTINGS>LOADSETTINGS</a><br>
+<a href=#MIMETYPE>MIMETYPE</a><br>
+<td>
+<a href=#PLAYBGSOUND>PLAYBGSOUND</a><br>
+<a href=#PLUGIN>PLUGIN</a><br>
+<a href=#PRINT>PRINT</a><br>
+<a href=#QUIT>QUIT</a><br>
+<a href=#REQUEST>REQUEST</a><br>
+<a href=#REQUESTFILE>REQUESTFILE</a><br>
+<a href=#REQUESTSTRING>REQUESTSTRING</a><br>
+<a href=#RUN>RUN</a><br>
+<a href=#SAVEAUTHORIZE>SAVEAUTHORIZE</a><br>
+<a href=#SAVESETTINGS>SAVESETTINGS</a><br>
+<a href=#SCREENTOBACK>SCREENTOBACK</a><br>
+<td>
+<a href=#SCREENTOFRONT>SCREENTOFRONT</a><br>
+<a href=#SEARCH>SEARCH</a><br>
+<a href=#SETCLIP>SETCLIP</a><br>
+<a href=#SETCOOKIES>SETCOOKIES</a><br>
+<a href=#SNAPSHOT>SNAPSHOT</a><br>
+<a href=#SUBWINDOW>SUBWINDOW</a><br>
+<a href=#SYSTEM>SYSTEM</a><br>
+<a href=#URLENCODE>URLENCODE</a><br>
+<a href=#USEPROXY>USEPROXY</a><br>
+<a href=#VIEWSOURCE>VIEWSOURCE</a><br>
+</table>
+
+<h3><a name=ADDHOTLIST>ADDHOTLIST</a></h3>
+Template:<pre><b>
+   ADDHOTLIST URL,TITLE,TARGET/K,GROUP/K
+</b></pre>
+Add the current document in the addressed window or in the specified frame,
+or the supplied URL to the hotlist.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>URL
+   <td valign=top>The URL to add to the hotlist. If not given, the currently shown
+      URL in the window (or in the specified frame) is added.
+<tr><th align=left valign=top>TITLE
+   <td valign=top>Title to show in the hotlist for the given URL. Ignored if the
+      URL argument is not given.
+<tr><th align=left valign=top>TARGET
+   <td valign=top>The <a href=commands.html#target>target name</a> of the
+      window or frame showing the document to add to the hotlist. Ignored if the
+      URL argument is supplied.
+<tr><th align=left valign=top>GROUP
+   <td valign=top>Identifies the group where the hotlist entry should be added.
+      This argument should be a string containing the names of the top level group and
+      all subgroups in the path, separated by <code>*N</code> sequences (this is the
+      DOS escape for a newline).
+      <p>
+      If no group is given, or if the given group doesn't exist, the new entry remains
+      unassigned.
+</table>
+
+<h3><a name=ALLOWCMD>ALLOWCMD</a></h3>
+Template:<pre><b>
+   ALLOWCMD
+</b></pre>
+Temporarily allow <a href="../shellcmd.html">shell commands and
+ARexx macros</a> to be started from hyperlinks regardless of the
+<a href="../../Configuring/proptions.html#shellcmd">Allow shell commands</a>
+setting. This allows easier usage of ARexx plug-ins without need for
+the user to explicitly change the settings.
+<p>
+Commands are allowed only in the current document, or in the document
+that is being loaded. After a new document is loaded in the window, the
+normal settings apply.
+
+<h3><a name=BACKGROUND>BACKGROUND</a></h3>
+Template:<pre><b>
+   BACKGROUND ON/S,OFF/S
+</b></pre>
+Control the usage of background images and colours.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>ON
+   <td valign=top>Use backgrounds.
+<tr><th align=left valign=top>OFF
+   <td valign=top>Don't use backgrounds.
+</table>
+The <code>ON</code> and <code>OFF</code> arguments are mutually exclusive.
+When neither one is specified, the setting is toggled.
+
+<h3><a name=BGSOUND>BGSOUND</a></h3>
+Template:<pre><b>
+   BGSOUND ON/S,OFF/S
+</b></pre>
+Control the usage of background sounds.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>ON
+   <td valign=top>Use background sounds.
+<tr><th align=left valign=top>OFF
+   <td valign=top>Don't use background sounds.
+</table>
+The <code>ON</code> and <code>OFF</code> arguments are mutually exclusive.
+When neither one is specified, the setting is toggled.
+
+<h3><a name=CLEARSELECTION>CLEARSELECTION</a></h3>
+Template:<pre><b>
+   CLEARSELECTION
+</b></pre>
+Clears the current drag-selection highlight in the addressed window.
+
+<h3><a name=COPYBLOCK>COPYBLOCK</a></h3>
+Template:<pre><b>
+   COPYBLOCK
+</b></pre>
+Copy the currently selected text, if any, to the clipboard.
+
+<h3><a name=DELETECACHE>DELETECACHE</a></h3>
+Template:<pre><b>
+   DELETECACHE IMAGES/S,DOCUMENTS/S,FORCE/S,PAT=PATTERN/K
+</b></pre>
+Delete files from the <a href="../cache.html">cache</a>.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>IMAGES
+   <td valign=top>Delete images and other non-text files.
+<tr><th align=left valign=top>DOCUMENTS
+   <td valign=top>Delete text files.
+<tr><th align=left valign=top>FORCE
+   <td valign=top>When set, suppress the display of the confirmation requester
+      that is shown when deleting all documents or images.
+<tr><th align=left valign=top>PATTERN
+   <td valign=top>Delete files by URL pattern using standard DOS wildcards.
+      When the pattern does not include a scheme (like <code>http://</code>),
+      the scheme part of each URL is not included in the pattern match. So
+      a pattern "foo.bar#?" matches "http://foo.bar/xyz.html" and
+      "ftp://foo.bar/zoo".
+      <p>
+      When <code>IMAGES</code> or <code>DOCUMENTS</code> is specified, the
+      delete is restricted to that type of file, otherwise all matching files
+      are deleted.
+</table>
+When <code>PATTERN</code> is not used, at least one of <code>IMAGES</code>
+and <code>DOCUMENTS</code> must be set, or else this command does nothing.
+
+<h3><a name=DRAGGING>DRAGGING</a></h3>
+Template:<pre><b>
+   DRAGGING ON/S,OFF/S
+</b></pre>
+Temporarily turns clipboard drag-selecting on or off for the addressed window.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>ON
+   <td valign=top>Turn drag-selecting on.
+<tr><th align=left valign=top>OFF
+   <td valign=top>Turn drag-selecting off.
+</table>
+The <code>ON</code> and <code>OFF</code> arguments are mutually exclusive.
+When neither one is specified, the setting is toggled.
+
+<h3><a name=EDITSOURCE>EDITSOURCE</a></h3>
+Template:<pre><b>
+   EDITSOURCE URL/A
+</b></pre>
+Start the editor for the source of this URL. If the document is not in
+memory, this command does nothing.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>URL
+   <td valign=top>The URL for which to edit the source.
+</table>
+
+<h3><a name=FIXCACHE>FIXCACHE</a></h3>
+Template:<pre><b>
+   FIXCACHE FORCE/S
+</b></pre>
+Start synchronizing the <a href="../cache.html">cache</a> contents and
+registration.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>FORCE
+   <td valign=top>When set, suppress the display of the confirmation requester.
+</table>
+
+<h3><a name=FLUSHCACHE>FLUSHCACHE</a></h3>
+Template:<pre><b>
+   FLUSHCACHE IMAGES/S,DOCUMENTS/S,ALL/S,URL/K
+</b></pre>
+Remove files from AWeb's memory <a href="../cache.html">cache</a>.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>IMAGES
+   <td valign=top>When set, flush nondisplayed images. If the ALL
+      switch is set, displayed images are also flushed.
+<tr><th align=left valign=top>DOCUMENTS
+   <td valign=top>When set, flush nondisplayed documents.
+<tr><th align=left valign=top>ALL
+   <td valign=top>Used in combination with the IMAGES switch to flush
+      all images instead of only nondisplayed images.
+<tr><th align=left valign=top>URL
+   <td valign=top>When given, this specified URL will be flushed from memory.
+</table>
+
+<h3><a name=HOTLIST>HOTLIST</a></h3>
+Template:<pre><b>
+   HOTLIST SET/K,SAVE/S,RESTORE/S
+</b></pre>
+Control or show the hotlist.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>SET
+   <td valign=top>Name of a stem variable containing an
+      <a href=commands.html#structured>array of structured information</a>
+      describing the new hotlist contents.
+      <p>
+      See the <a href=get.html#HOTLIST>GET HOTLIST</a> command for a
+      description of the structured information.
+<tr><th align=left valign=top>SAVE
+   <td valign=top>Save the current or new contents of the hotlist to disk.
+<tr><th align=left valign=top>RESTORE
+   <td valign=top>Restore the hotlist to the contents that was last saved to disk.
+</table>
+<p>
+If no argument is given, the hotlist is shown. If the
+<a href="../../Configuring/proptions.html#hlrequester">hotlist button gives requester</a>
+option is on, the hotlist viewer window is opened. Otherwise the hotlist is
+displayed in the addressed window.
+
+<h3><a name=GETHISTORY>GETHISTORY</a></h3>
+Template:<pre><b>
+   GETHISTORY WINDOW/N,MAINLINE/S,STEM/AK
+</b></pre>
+Retrieve entries from AWeb's window history.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>WINDOW
+   <td valign=top>When given, only entries for this window number will be returned.
+      When absent, entries for all windows are returned. The function of this number
+      is identical to the filter function in the history window.
+<tr><th align=left valign=top>MAINLINE
+   <td valign=top>When set, only entries from the mainline are returned. When not set,
+      all entries for the requested window(s) are returned.
+<tr><th align=left valign=top>STEM
+   <td valign=top>The name of a stem variable to return the result in.
+</table>
+<p>
+The result is returned in the named variable as an array:
+<table border width=100%>
+<caption><a href=commands.html#structured>Structured information</a> components</caption>
+<tr><th align=left valign=top>Name
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>URL
+   <td valign=top>The URL for the history entry.
+<tr><th align=left valign=top>TITLE
+   <td valign=top>The title for this entry.
+<tr><th align=left valign=top>WINDOW
+   <td valign=top>The window number that this entry relates to.
+</table>
+
+<h3><a name=ICONIFY>ICONIFY</a></h3>
+Template:<pre><b>
+   ICONIFY HIDE/S,SHOW/S
+</b></pre>
+Controls iconification of the program.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>HIDE
+   <td valign=top>When set, the program is iconified to an icon on the Workbench screen.
+<tr><th align=left valign=top>SHOW
+   <td valign=top>When set, the program windows are reopened.
+</table>
+The <code>HIDE</code> and </code>SHOW</code> arguments are mutually exclusive.
+When neither one is specified, the setting is toggled.
+
+<h3><a name=IMAGELOADING>IMAGELOADING</a></h3>
+Template:<pre><b>
+   IMAGELOADING OFF/S,MAPS/S/ALL/S
+</b></pre>
+Controls the loading of inlined images in HTML documents.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>OFF
+   <td valign=top>When set, no inlined images will be loaded.
+<tr><th align=left valign=top>MAPS
+   <td valign=top>When set, only images representing clickable maps will be loaded.
+<tr><th align=left valign=top>ALL
+   <td valign=top>When set, all inlined images will be loaded.
+</table>
+The <code>OFF</code>, <code>MAPS</code> and <code>ALL</code> arguments are
+mutually exclusive. When neither one is specified, the setting is toggled.
+
+<h3><a name=INFO>INFO</a></h3>
+Template:<pre><b>
+   INFO TARGET/K
+</b></pre>
+Open the <a href="../../Starting/infowindow.html">information window</a> for the document
+in the addressed window or in the specified frame.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>TARGET
+   <td valign=top>The <a href=commands.html#target>target name</a> of the
+      window or frame to open the information window for.
+</table>
+
+<h3><a name=JAVASCRIPT>JAVASCRIPT</a></h3>
+Template:<pre><b>
+   JAVASCRIPT SOURCE,FILE/K,TARGET/K,VAR/K
+</b></pre>
+Run this JavaScript source in the context of the document in the addressed window or
+in the specified frame. The resulting value from the script is converted to string
+and returned in the reserved variable RESULT or in the variable with the specified
+name.
+<p>
+If the user has disabled JavaScript usage, this command does nothing and
+returns a warning (RC status 5).
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>SOURCE
+   <td valign=top>The JavaScript source to run. It may be a single expression,
+      a statement or a complete program.
+<tr><th align=left valign=top>FILE
+   <td valign=top>The path and name of a local file containing the JavaScript
+      source to run. Either the SOURCE or the FILE argument must be given.
+<tr><th align=left valign=top>TARGET
+   <td valign=top>The <a href=commands.html#target>target name</a> of the
+      window or frame that defines the context to run the script in.
+<tr><th align=left valign=top>VAR
+   <td valign=top>The name of the ARexx variable to return the result in.
+      By default the result is returned in the reserved variable RESULT.
+</table>
+
+<h3><a name=JSBREAK>JSBREAK</a></h3>
+Template:<pre><b>
+   JSBREAK
+</b></pre>
+Cancel all outstanding JavaScript timeout events in the addressed window.
+
+<h3><a name=JSDEBUG>JSDEBUG</a></h3>
+Template:<pre><b>
+   JSDEBUG ON/S,OFF/S
+</b></pre>
+Turns debugging of JavaScripts on or off.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>ON
+   <td valign=top>Turn debugging of JavaScripts on.
+<tr><th align=left valign=top>OFF
+   <td valign=top>Turn debugging of JavaScripts off.
+</table>
+The <code>ON</code> and <code>OFF</code> arguments are mutually exclusive.
+When neither one is specified, the setting is toggled.
+
+<h3><a name=LOADIMAGES>LOADIMAGES</a></h3>
+Template:<pre><b>
+   LOADIMAGES TARGET/K,MAPS/S,RESTRICT/S
+</b></pre>
+Load embedded images in the current HTML document in the addresses window or
+in the specified frame.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>TARGET
+   <td valign=top>The <a href=commands.html#target>target name</a> of the
+      window or frame to load the images in.
+<tr><th align=left valign=top>MAPS
+   <td valign=top>When set, only images representing clickable maps are
+      loaded. Otherwise all embedded images are loaded.
+<tr><th align=left valign=top>RESTRICT
+   <td valign=top>When set, images or maps are only loaded if they originate from the
+      same domain as the document in which they appear.
+      Otherwise all embedded images or maps are loaded.
+</table>
+
+<h3><a name=LOADSETTINGS>LOADSETTINGS</a></h3>
+Template:<pre><b>
+   LOADSETTINGS PATH,REQUEST/S
+</b></pre>
+Load a new set of AWeb settings.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>PATH
+   <td valign=top>The fully qualified name of the drawer where to load the
+      settings from.<br>
+      AWeb will look for files named <code>browser</code>, <code>program</code>
+      and <code>network</code>.
+<tr><th align=left valign=top>REQUEST
+   <td valign=top>If set, a file requester is displayed where the user can select
+      the settings to load. This command does not wait until the file requester
+      is closed.
+</table>
+
+<h3><a name=MIMETYPE>MIMETYPE</a></h3>
+Template:<pre><b>
+   MIMETYPE NAME/A
+</b></pre>
+Get the MIME type associated with this file name, based on the file extension.
+this uses the currently defined <a href="../../Configuring/brviewers.html">MIME types</a>.
+The MIME type is returned in the reserved variable RESULT. If no MIME type can
+be found, an empty string is returned.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>NAME
+   <td valign=top>The file name to find a MIME type for.
+</table>
+
+<h3><a name=PLAYBGSOUND>PLAYBGSOUND</a></h3>
+Template:<pre><b>
+   PLAYBGSOUND
+</b></pre>
+Starts or restarts the playing of a background sound in the current document.
+If the current document has no background sound defined, this command has
+no effect.
+
+<h3><a name=PLUGIN>PLUGIN</a></h3>
+Template:<pre><b>
+   PLUGIN PLUGIN/A,COMMAND/A
+</b></pre>
+Sends a command to an AWeb plugin module, if that plugin module supports
+commands. The result of the command, if any, is returned in the reserved
+variable RESULT.
+<p>
+If the plugin isn't yet loaded in memory and you specify the correct path
+with the plugin name, the plugin will be loaded into memory by the PLUGIN
+command.
+Use this facility with care. Unless the plugin is subsequently used by AWeb
+in the normal fashion, or you remove the library from memory by doing a
+memory flush, AWeb will not be able to exit because the plugin in memory
+still has the awebplugin.library in use.
+<p>
+If the plugin cannot be found, or if the plugin does not support commands,
+a <a href=returns.html>return code</a> 5 is returned.
+
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>PLUGIN
+   <td valign=top>The name of the AWeb plugin module to address. AWeb plugin
+      modules should not be confused with external ARexx scripts.
+<tr><th align=left valign=top>COMMAND
+   <td valign=top>The command to be sent to the plugin. See the documentation
+      for the specific AWeb plugin for the supported commands.
+</table>
+
+<h3><a name=PRINT>PRINT</a></h3>
+Template:<pre><b>
+   PRINT SCALE/N/K,CENTER/S,NOFF=NOFORMFEED/S,NOBG=NOBACKGROUND/S,WAIT/S,REQUEST/S
+</b></pre>
+Make a graphical printout of the current document in the addressed window.
+If AWeb is still printing another document, a <a href=returns.html>return
+code</a> 5 is returned.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>SCALE
+   <td valign=top>The scaling percentage for the printout. Default is 100 percent.
+<tr><th align=left valign=top>CENTER
+   <td valign=top>If this switch is set, the print will be centered on the paper.
+<tr><th align=left valign=top>NOFORMFEED
+   <td valign=top>If this switch is set, there will be no form feed when printing
+      is finished. Default is to add a form feed.
+<tr><th align=left valign=top>NOBACKGROUND
+   <td valign=top>If this switch is set, backgrounds and text colours are not
+      used. Default is to use backgrounds and colours.
+<tr><th align=left valign=top>WAIT
+   <td valign=top>If this switch is set, the command will not return until the
+      printing is finished. Without this switch, the command returns immediately
+      while AWeb continues printing.
+<tr><th align=left valign=top>REQUEST
+   <td valign=top>If set, the print requester is opened where the user can
+      select the print details.
+      <p>
+      If this switch is set, then all other arguments are ignored.
+</table>
+
+<h3><a name=QUIT>QUIT</a></h3>
+Template:<pre><b>
+   QUIT FORCE/S
+</b></pre>
+Terminate AWeb.<br>
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>FORCE
+   <td valign=top>When set, this switch suppresses the "Are you sure"
+      requester.
+</table>
+
+<h3><a name=REQUEST>REQUEST</a></h3>
+Template:<pre><b>
+   REQUEST TITLE/A,BODY/A,GADGETS/A,NOWAIT/S
+</b></pre>
+Display a requester on the AWeb screen. Unless NOWAIT is specified, the user's
+response is returned in the reserved variable RESULT. The result is a number,
+starting from 1 for the left most button. When the rightmost button is selected,
+or the requester is cancelled with the <kbd>Esc</kbd> key, return code 5
+(warning) is set.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>TITLE
+   <td valign=top>The requester title string.
+<tr><th align=left valign=top>BODY
+   <td valign=top>The body text for the requester. DOS escape characters
+      are supported, i.e. "<code>*N</code>" will begin a new line. To include
+      an empty line, use "<code>*N *N</code>", with a space between the
+      two newlines.
+<tr><th align=left valign=top>GADGETS
+   <td valign=top>A string describing the gadgets. Multiple gadgets must
+      be separated by the vertical bar "<code>|</code>". You can precede a
+      character in each individual gadget label with an underscore to make
+      that character the keyboard shortcut.
+<tr><th align=left valign=top>NOWAIT
+   <td valign=top>When set, the command will not wait for user input. No
+      user response is returned. Really only makes sense for informational
+      requesters with only one choice.
+</table>
+
+<h3><a name=REQUESTFILE>REQUESTFILE</a></h3>
+Template:<pre><b>
+   REQUESTFILE TITLE/A,FILE/K,PATTERN/K,SAVEMODE/S,DIRSONLY/S
+</b></pre>
+Display a standard file requester on the AWeb screen. The selected file name
+is returned in the reserved variable RESULT. When the requester is cancelled
+by the user, the return code 5 (warning) is set.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>TITLE
+   <td valign=top>The requester title string.
+<tr><th align=left valign=top>FILE
+   <td valign=top>Initial path and/or file name. If you want to supply a directory
+      without filename, then end the path with a slash.
+<tr><th align=left valign=top>PATTERN
+   <td valign=top>If supplied, the requester will contain a pattern gadget with
+      this initial contents.
+<tr><th align=left valign=top>SAVEMODE
+   <td valign=top>Turn the requester into a save mode requester.
+<tr><th align=left valign=top>DIRSONLY
+   <td valign=top>Restrict the operation of the requester to only directories,
+      not file names.
+</table>
+
+<h3><a name=REQUESTSTRING>REQUESTSTRING</a></h3>
+Template:<pre><b>
+   REQUESTSTRING TITLE/A,BODY/A,GADGETS/A,DEFAULT
+</b></pre>
+Display a requester on the AWeb screen where the user can type in a string. The user's
+response is returned in the reserved variable RESULT. When the rightmost button is selected,
+or the requester is cancelled with the <kbd>Esc</kbd> key, return code 5
+(warning) is set.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>TITLE
+   <td valign=top>The requester title string.
+<tr><th align=left valign=top>BODY
+   <td valign=top>The body text for the requester. DOS escape characters
+      are supported, i.e. "<code>*N</code>" will begin a new line. To include
+      an empty line, use "<code>*N *N</code>", with a space between the
+      two newlines.
+<tr><th align=left valign=top>GADGETS
+   <td valign=top>A string describing the gadgets. Multiple gadgets must
+      be separated by the vertical bar "<code>|</code>". You can precede a
+      character in each individual gadget label with an underscore to make
+      that character the keyboard shortcut.
+<tr><th align=left valign=top>DEFAULT
+   <td valign=top>The default string to display initially in the string gadget
+      of the requester.
+</table>
+<br>
+Although it is possible to specify any number of gadget strings, you should specify
+not more than two. More than two gadgets
+may confuse the user, as there is no way for the script to find out which
+gadget was pressed (apart from the rightmost one).
+
+<h3><a name=RUN>RUN</a></h3>
+Template:<pre><b>
+   RUN NAME/A/F
+</b></pre>
+Start an ARexx macro.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>NAME
+   <td valign=top>Path and name of the ARexx macro to start, with optional
+      arguments.
+</table>
+
+<h3><a name=SAVEAUTHORIZE>SAVEAUTHORIZE</a></h3>
+Template:<pre><b>
+   SAVEAUTHORIZE
+</b></pre>
+Saves the authorization details now. Usually these details are saved when
+you quit AWeb, if they are changed.
+
+<h3><a name=SAVESETTINGS>SAVESETTINGS</a></h3>
+Template:<pre><b>
+   SAVESETTINGS PATH,REQUEST/S
+</b></pre>
+Save the current settings to the current configuration drawer, or another
+drawer.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>PATH
+   <td valign=top>The fully qualified name of the drawer where to save
+      the settings. If none is given, the settings will be saved on top
+      of the current settings (either default or as indicated by the
+      <a href="../../Working/startup.html">CONFIG</a> tooltype or argument.
+<tr><th align=left valign=top>REQUEST
+   <td valign=top>If set, a file requester is displayed where the user can select
+      the settings to save.
+</table>
+
+<h3><a name=SCREENTOBACK>SCREENTOBACK</a></h3>
+Template:<pre><b>
+   SCREENTOBACK
+</b></pre>
+Move the screen that AWeb is using to the back of all other screens.
+
+<h3><a name=SCREENTOFRONT>SCREENTOFRONT</a></h3>
+Template:<pre><b>
+   SCREENTOFRONT
+</b></pre>
+Move the screen that AWeb is using in front of all other screens.
+
+<h3><a name=SEARCH>SEARCH</a></h3>
+Template:<pre><b>
+   SEARCH TARGET/K
+</b></pre>
+Open the <a href="../../Working/search.html">search requester</a> for the document
+in the addressed window or in the specified frame.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>TARGET
+   <td valign=top>The <a href=commands.html#target>target name</a> of the
+      window or frame to open the search requester for.
+</table>
+
+<h3><a name=SETCLIP>SETCLIP</a></h3>
+Template:<pre><b>
+   SETCLIP VALUE/A/F
+</b></pre>
+Copy a string to the clipboard.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>VALUE
+   <td valign=top>The string to copy to the clipboard.
+</table>
+
+<h3><a name=SETCOOKIES>SETCOOKIES</a></h3>
+Template:<pre><b>
+   SETCOOKIES STEM/A/K,ADD/S
+</b></pre>
+Add or replace cookies known by AWeb.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>STEM
+   <td valign=top>The name of a stem variable that holds the cookie information.
+      See the <a href="get.html#COOKIES">GET COOKIES</a> command for a description
+      of the contents of this array.
+      <p>
+      The NAME, VALUE, DOMAIN and PATH items must be given for each cookie, the other
+      items are optional.
+<tr><th align=left valign=top>ADD
+   <td valign=top>If set, the cookies will be added to the cookies already
+      known by AWeb.
+      <p>
+      If not set, the new cookies will replace all known cookies.
+</table>
+
+<h3><a name=SNAPSHOT>SNAPSHOT</a></h3>
+Template:<pre><b>
+   SNAPSHOT
+</b></pre>
+Save the current window positions and locations.
+
+<h3><a name=SUBWINDOW>SUBWINDOW</a></h3>
+Template:<pre><b>
+   SUBWINDOW TYPE/A,OPEN/S,CLOSE/S
+</b></pre>
+Open or close one of AWeb's subwindows.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>TYPE
+   <td valign=top>Name of the window. Valid names are:
+      <table>
+      <tr><th align=left>ABOUT<td>About window
+      <tr><th align=left>AUTHORIZE<td><a href="../../Working/authorize.html">Authorizations edit window</a>
+      <tr><th align=left>CACHEBROWSER<td><a href="../../Working/cachebrowser.html">Cachebrowser window</a>
+      <tr><th align=left>HISTORY<td><a href="../../Working/winhis.html">History window</a>
+      <tr><th align=left>HOTMANAGER<td><a href="../../Working/hotlistmgr.html">Hotlist manager</a>
+      <tr><th align=left>HOTVIEWER<td><a href="../../Working/hotlist.html">Hotlist viewer</a>
+      <tr><th align=left>NETSTATUS<td><a href="../../Working/nws.html">Network status window</a>
+      </TABLE>
+<tr><th align=left valign=top>OPEN
+   <td valign=top>If this switch is set, the window is opened, or moved to front
+      and made active if it was already open.
+<tr><th align=left valign=top>CLOSE
+   <td valign=top>If this switch is set, the window is closed if it was open.
+</table>
+
+<h3><a name=SYSTEM>SYSTEM</a></h3>
+Template:<pre><b>
+   SYSTEM COMMAND/A,ARGUMENTS/F
+</b></pre>
+Spawn a CLI command.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>COMMAND
+   <td valign=top>The command to start.
+<tr><th align=left valign=top>ARGUMENTS
+   <td valign=top>Arguments for the command.
+</table>
+
+<h3><a name=URLENCODE>URLENCODE</a></h3>
+Template:<pre><b>
+   URLENCODE STRING/A,VAR/K
+</b></pre>
+Encode the string using the <em>URL-encode</em> mechanism. Spaces are replaced
+by '+', most non-alphanumeric characters are escaped. The result is returned
+in the reserved variable RESULT, or in the given variable name.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>STRING
+   <td valign=top>The string to URL-encode.
+<tr><th align=left valign=top>VAR
+   <td valign=top>The name of a variable to return the information in. If no
+      name is specified, the result will be returned in the
+      reserved ARexx variable <code>RESULT</code>.
+</table>
+
+<h3><a name=USEPROXY>USEPROXY</a></h3>
+Template:<pre><b>
+   USEPROXY ENABLE/S,DISABLE/S
+</b></pre>
+Controls the usage of proxies for transfers started in this window.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>ENABLE
+   <td valign=top>Enables the use of proxies.
+<tr><th align=left valign=top>DISABLE
+   <td valign=top>Disables the use of proxies.
+</table>
+The <code>ENABLE</code> and <code>DISABLE</code> arguments are
+mutually exclusive. When neither one is specified, the setting is toggled.
+
+<h3><a name=VIEWSOURCE>VIEWSOURCE</a></h3>
+Template:<pre><b>
+   VIEWSOURCE URL/A
+</b></pre>
+Start the HTML source viewer for the source of this URL. If the document is not in
+memory, this command does nothing.
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>URL
+   <td valign=top>The URL for which to view the source.
+</table>
+
+<!-- template:
+
+<h3><a name=></a></h3>
+Template:<pre><b>
+
+</b></pre>
+<p>
+<table border width=100%>
+<tr><th align=left valign=top>Argument
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>
+   <td valign=top>
+<tr><th align=left valign=top>
+   <td valign=top>
+</table>
+
+-->
+
+</body>
+</html>

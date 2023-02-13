@@ -1,0 +1,72 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+
+<HTML>
+
+<HEAD>
+<TITLE>Network settings: Cache</TITLE>
+<META NAME="KEYWORDSs" CONTENT="memory,disk,chip,fast">
+</HEAD>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<H1>&nbsp; Network settings: Cache</H1>
+
+<IMG SRC="Images/NetworkSettings-Cache.png" ALIGN="RIGHT" ALT="Network Settings: Cache Tab" WIDTH="490" HEIGHT="330" HSPACE="20" VSPACE="20" BORDER="0">
+
+<H2><A NAME="cachedir">Cache path</A></H2>
+
+AWeb uses a <A HREF="../Advanced/cache.html">cache</A> on your harddisk to store objects.  It will use the directory you configure here as its <A HREF="../Advanced/cache.html#cachedir">cache directory</A>.  Note that you should create a new directory, or use an empty one for AWebs cache.  Don't use the cache directory for anything else but AWebs cache.
+<P>Type the full path name, or click the <IMG SRC="Images/PopdrawerGad.png" ALT="Drawer" WIDTH="20" HEIGHT="21"> button to pop up a standard drawer requester.
+<P>Note that if you change this setting it does not become active when you <B>Use</B> or <B>Save</B> the settings.  In order to avoid an inconsistent cache, AWeb will continue to use the current cache directory until you quit AWeb.  The next time you start AWeb the new directory will be used.
+
+<H2>Verify cache copy</H2>
+
+Use this chooser to set the <A HREF="../Advanced/cache.html#verify">verification mode</A>.  <EM>Once per session</EM> is the recommended setting.
+
+<H2>Fast response</H2>
+
+Check this checkbox if you want <A HREF="../Advanced/cache.html#fast">fast response</A> from the cache.
+
+<H2><A NAME="cache">Cache size</A></H2>
+
+Use these two gadgets to set the maximum size to use for the cache in memory and on your harddisk.
+<P>All sizes should be given in KiB.
+
+<H2>Minimum free memory</H2>
+
+These two gadgets determine the minimum amount of chip and fast memory that AWeb should leave free.  If there is less memory free than what is set here, AWeb will flush objects from memory.  Usually these objects remain on your harddisk.
+<P>If you specify more memory than can possibly be freed (e.g. a non-zero fast memory limit on a machine with no fast memory), AWeb will continuously flush all documents and images.  So be careful what you enter here.
+<P>Sizes are in KiB.
+
+<H2><A NAME="nocache">Do not cache these sites</A></H2>
+
+If this list contains <EM>site names</EM> (also known as <EM>locations</EM> or <EM>host names</EM>), then documents and images from these sites will not be stored in the cache.
+<P>Use the <B>Add</B> button to add a new entry, and the <B>Del</B> button to delete the currently selected entry.  Double-click on an entry to edit the name <EM>in place</EM>.
+<P>You may type simple host names, or use pattern matching.  If a string contains pattern matching characters, it's matched against the full url, not only the host name.  This enables you to selectively cache or not cache files from a server.
+
+<P><HR>
+
+<A HREF="nwproxy.html"><IMG SRC="../GlobalImages/back.gif" WIDTH="32" HEIGHT="16" ALT="&lt;-" BORDER="0">Proxy</A>&nbsp;&nbsp;<A HREF="settings.html"><IMG SRC="../GlobalImages/up.gif" WIDTH="32" HEIGHT="20" ALT="^" BORDER="0">Settings requesters</A>&nbsp;&nbsp;<A HREF="nwprivacy.html"><IMG SRC="../GlobalImages/next.gif" WIDTH="32" HEIGHT="16" ALT="-&gt;" BORDER="0">Privacy</A>
+
+</BODY>
+
+</HTML>

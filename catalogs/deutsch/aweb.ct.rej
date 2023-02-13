@@ -1,0 +1,39 @@
+***************
+*** 1407,1415 ****
+  ; Awebcharset.awebplugin Info Window
+  ;
+  MSG_CHARSET_INFOTEXT
+- Filter ist    : %s\n\
+- Ersetzen ist  : %s\n\
+- Nachfragen ist: %s\n\
+  \n\
+  URL='%s'\n\
+  \n\
+--- 1407,1414 ----
+  ; Awebcharset.awebplugin Info Window
+  ;
+  MSG_CHARSET_INFOTEXT
++ Filter ist  : %s\n\
++ Ersetzen ist: %s\n\
+  \n\
+  URL='%s'\n\
+  \n\
+***************
+*** 1448,1455 ****
+  ; Which Charset should be used?
+  ;
+  MSG_CHARSET_DIFFREQBUT
+- Nicht nochmal nachfragen
+- ; Don't ask again
+  ;
+  MSG_CHARSET_ON
+  Ein
+--- 1446,1453 ----
+  ; Which Charset should be used?
+  ;
+  MSG_CHARSET_DIFFREQBUT
++ Plugin ausschalten
++ ; Turn the Plugin _Off
+  ;
+  MSG_CHARSET_ON
+  Ein

@@ -1,0 +1,39 @@
+<html>
+<head>
+<title>Anotify()</title>
+</head>
+<body>
+<h1>Anotify()</h1>
+
+<h2>Purpose</h2>
+Perform the <a href="../methods/notify.html">AOM_NOTIFY</a> method on an object.
+
+<h2>Synopsis</h2>
+<pre>
+   result = Anotify(object, message)
+   D0               A0      A1
+
+   ULONG Anotify(<a href="../classes/object.html">struct Aobject</a> *, <a href="../methods/index.html#amessage">struct Amessage</a> *
+</pre>
+
+<h2>Function</h2>
+Object oriented support function that invokes the
+<a href="../methods/notify.html">AOM_NOTIFY</a> method on the specified
+object, to send a message to this object and to its children.
+
+<h2>Inputs</h2>
+<table border>
+<tr><th align=left valign=top>Parameter
+   <th align=left valign=top>Description
+<tr><td valign=top><code>object</code>
+   <td valign=top>Pointer to object to invoke the method on
+<tr><td valign=top><code>message</code>
+   <td valign=top>Pointer to a <a href="../methods/index.html#amessage">struct Amessage</a>
+      to send to the object and its children.
+</table>
+
+<h2>Result</h2>
+Specific to the method and the object's class.
+
+<h2>See also</h2>
+<a href="anotifyseta.html">AnotifysetA()</a>

@@ -1,0 +1,98 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+
+<HTML>
+
+<HEAD>
+<TITLE>Program settings: Programs</TITLE>
+</HEAD>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<H1>&nbsp; Program settings: Programs</H1>
+
+<IMG SRC="Images/ProgramSettings-Programs.png" ALIGN="RIGHT" ALT="Program Settings: Programs Tab" WIDTH="356" HEIGHT="310" HSPACE="20" VSPACE="20" BORDER="0">
+
+<H2>Program type</H2>
+
+Use the chooser to select the external program type to configure.
+
+<H2><A NAME="editor">Editor</A></H2>
+This is the editor command invoked when you select the <CODE>&quot;Project-&gt;Edit&nbsp;source&quot;</CODE> menu item or when you click the <IMG SRC="Images/EditGad.png" ALT="E&gt;" WIDTH="22" HEIGHT="22"> gadget in text area form fields.
+<P>Use the <A HREF="cmdargs.html">Command and Arguments</A> fields to specify your editor command.  Argument parameters are:
+
+<TABLE>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%f</TH><TD>file name to edit.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%n</TH><TD>screen name that AWeb is running on, in case your editor supports opening on a public screen.</TD></TR>
+</TABLE>
+
+<P>Make sure the command will <STRONG>not</STRONG> return until you leave the editor.  For some editors, this will need a <CODE>STICKY</CODE> or <CODE>KEEPIO</CODE> argument.
+
+<H2><A NAME="viewer">HTML source viewer</A></H2>
+
+Currently, AWeb relies on an external viewer for the <CODE>&quot;Project-&gt;View&nbsp;source&quot;</code> menu item.
+<P>Use the <A HREF="cmdargs.html">Command and Arguments</A> fields to specify your source viewer command.  Argument parameters are:
+
+<TABLE>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%f</TH><TD>file name to view.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%n</TH><TD>screen name that AWeb is running on, in case your viewer supports opening on a public screen.</TD></TR>
+</TABLE>
+
+<P>Note that the default setting, <EM>MultiView</EM>, will not produce the expected results if you happen to have a HTML datatype installed on your system.  In that case, the datatype will show the source as HTML again.  If this happens, you should configure another viewer.
+
+<H2><A NAME="imgviewer">Image viewer</A></H2>
+
+This is the image viewer used to display <A HREF="../Starting/browser.html#stimages">standalone images</A>.
+<P>Use the <A HREF="cmdargs.html">Command and Arguments</A> fields to specify your source viewer command.  Argument parameters are:
+
+<TABLE>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%f</TH><TD>file name to view.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%n</TH><TD>screen name that AWeb is running on, in case your viewer supports opening on a public screen.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%m</TH><TD>MIME type of the image.  You can use this in a script that starts a different viewer for different types of image.</TD></TR>
+</TABLE>
+
+<H2><A NAME="startup">Script run at startup</A></H2>
+
+This is an ARexx script (not an executable program) that is run immediately after AWeb is started.
+
+<H2><A NAME="shutdown">Script run at shutdown</A></H2>
+
+This is an ARexx script (not an executable program) that is run immediately before AWeb is stopped.
+
+<H2><A NAME="console">Console</A></H2>
+
+This is the DOS filename of the console to be opened when external programs are started.
+<P>Argument parameters are:
+
+<TABLE>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%t</TH><TD>window title</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%n</TH><TD>screen name that AWeb is running on.
+</TABLE>
+
+<P>If you define the console as <B>NIL:</B>, no window will be opened.  This may seem convenient, but you should realize that error messages are lost too.
+
+<P><HR>
+
+<A HREF="proptions.html"><IMG SRC="../GlobalImages/back.gif" WIDTH="32" HEIGHT="16" ALT="&lt;-" BORDER="0">Options</A>&nbsp;&nbsp;<A HREF="settings.html"><IMG SRC="../GlobalImages/up.gif" WIDTH="32" HEIGHT="20" ALT="^" BORDER="0">Settings requesters</A>&nbsp;&nbsp;<A HREF="prscreen.html"><IMG SRC="../GlobalImages/next.gif" WIDTH="32" HEIGHT="16" ALT="-&gt;" BORDER="0">Screen</A>
+
+</BODY>
+
+</HTML>

@@ -1,0 +1,96 @@
+<html>
+<head>
+<title>The AWeb OO model</title>
+</head>
+<body>
+<h1>The AWeb OO model</h1>
+
+<h2>Introduction</h2>
+
+AWeb internally uses its own object oriented model for representation of data.
+By means of the plugin interface, this model can be expanded by the plugin
+modules. This document does not explain object oriented modelling, that is
+something assumed to be known to the reader.
+<p>
+The OO system used by AWeb is similar to BOOPSI, although it is a completely
+separate system. The existing BOOPSI image and gadget models were not
+useable because of AWeb's scrolling and RastPort clipping demands. Building
+a new model using BOOPSI would have been possible, but I decided to build
+my own system instead, for the following reasons:
+<ul>
+<li>The way BOOPSI implements inheritance is basically very good. If you
+   derive a class from a certain superclass, you can only access the
+   superclasses attributes through its methods. That is perfect when
+   deriving from a foreign class, but if you own the superclass as well,
+   it's a bit of a hassle. One of the very few things I like about C++
+   is the way you can access your superclasses public attributes as if
+   they were your own.
+<p>
+<li>Building my own central dispatcher allowed me to add a trace option.
+   Simply by specifying a couple of arguments when starting AWeb, I can
+   make a full trace of every single message that is sent around.
+   Filtering is possible by class, or by method, or both. A great help
+   when debugging.
+</ul>
+
+<h2>Usage</h2>
+<h3>Dispatcher</h3>
+Like BOOPSI, every class must have a dispatcher function that handles
+incoming OO messages.
+<p>
+Invoking methods of other objects is done by calling the
+<a href="lib/amethoda.html"><code>Amethod[A]()</code></a> function,
+AWebs equivalent of <code>DoMethod[A]()</code>. This function forwards
+the message to the dispatcher of the class.
+
+<h3>Inheritance</h3>
+Deriving a class from a superclass is different from the way it is
+done in BOOPSI. The object instance data structure of the derived class must
+start with the data structure for the superclass. This implies that
+you must know the data structure of the superclass, so either
+it must be public, or it must be your own private class. It is not
+possible to inherit from other classes, you should use delegation
+instead. (Popularly, delegation is having a pointer to another object
+and forward the messages to it.)
+<p>
+There is no such function as <code>DoSuperMethod()</code>, in the AWeb
+OO system the central dispatcher does not know what your superclass is.
+To pass a message to your superclass you must use
+<a href="lib/amethodasa.html"><code>Amethodas[A]()</code></a>, AWebs
+version of <code>CoerceMethod[A]()</code>.
+
+<h2><a name=dispatcher>Implementation</a></h2>
+
+Every object implementation must have a <b>dispatcher</b> to process
+messages sent to the object.
+<p>
+<h3>Synopsis</h3>
+<pre>
+   retval = Dispatcher(object, message)
+   D0                A0      A1
+
+   ULONG Dispatcher(<a href="classes/object.html">struct Aobject</a> *, <a href="methods/index.html#amessage">struct Amessage</a> *);
+</pre>
+<h3>Function</h3>
+The dispatcher function is called whenever a message is sent to the object.
+Depending on the message type (<a href=methods/index.html>method</a>),
+the object code should take appropriate actions.
+
+<h3>Inputs</h3>
+<table border>
+<tr><th align=left valign=top>Parameter
+   <th align=left valign=top>Description
+<tr><td valign=top>object
+   <td valign=top>A pointer to the object instance that the message was sent to.
+      <p>
+      This will be NULL for the <a href="methods/new.html">AOM_NEW</a> method.
+<tr><td valign=top>message
+   <td valign=top>A pointer to the message that was sent to the object.
+</table>
+
+<h3>Results</h3>
+The value to return depends on the method invoked. See the documentation
+for the individual methods.
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+<html>
+<head>
+<title>
+Starting AWeb
+</title>
+</head>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<h1>&nbsp; Starting AWeb</h1>
+
+<h2><a name=wb>From the Workbench</a></h2>
+You can start AWeb by a double-click on its icon.
+<p>
+AWeb can be specified as <em>default tool</em> in a project icon. You can
+use extended selection (shift-click) to select one or more project icons.
+AWeb will load the projects selected as local documents.
+<p>
+In addition, AWeb supports the following <em>tool types</em>:
+<dl>
+<dt><code><b>URL=<i>url_or_filename</i></b></code>
+<dd>Specify this tool type one or more times to open these documents
+when AWeb is started. If you specify a local filename, use the <code>LOCAL</code>
+tool type too.
+<p>
+<dt><code><b>LOCAL</b></code>
+<dd>If this tool type is present, the names in the <code>URL</code> tool
+types will be interpreted as local file names, rather than network URLs.
+This tool type is not needed if you select documents by their project icon,
+as mentioned above.
+<p>
+<dt><code><b>CONFIG=<i>settings_name</i></b></code>
+<dd>Look in <code>ENV:AWeb3/<i>settings_name</i></code> for the settings. By default
+the settings in <code>ENV:AWeb3</code> are used.
+If the directory doesn't exist, default settings are used. Saving the settings
+will create the directory (also in <code>ENVARC:AWeb3</code>).
+<p>
+<dt><code><b>HOTLIST=<i>hotlist_filename</i></b></code>
+<dd>Use this file as AWeb's hotlist instead of the default,
+<code>AWeb.hotlist</code>. If the file doesn't exist, it will be created
+the first time you add an entry to the hotlist.
+</dl>
+
+<h2><a name=shell>From the Shell</a></h2>
+You can start AWeb from the Shell (or the CLI).
+<dl>
+<dt>Format:
+<dd><code><b>AWeb [<i>url_or_filename</i>]... [ LOCAL ] [CONFIG <i>settings_name</i>]
+[HOTLIST <i>hotlist_filename</i>]</b></code>
+<p>
+<dt>Template:
+<dd><code><b>URL/M,LOCAL/S,CONFIG/K,HOTLIST/K</b></code>
+</dl>
+The documents in the URL argument are loaded when AWeb starts. If the LOCAL
+argument is present, the names will be interpreted as local file names,
+rather than network URLs.
+<p>
+The name in the CONFIG argument will be used as subdirectory name relative
+to <code>ENV:AWeb3</code> to look for the settings.
+By default the settings in <code>ENV:AWeb3</code> (no subdirectory) are used.
+If the directory doesn't exist, default settings are used. Saving the settings
+will create the directory (also in <code>ENVARC:AWeb3</code>).
+<p>
+The file in the HOTLIST argument will be used as AWeb's hotlist instead of
+the default, <code>AWeb.hotlist</code>.
+If the file doesn't exist, it will be created
+the first time you add an entry to the hotlist.
+
+<p>
+<hr>
+<a href=../AWeb%20Manual.html><img src=../GlobalImages/back.gif width=32 height=16 alt="<-" border=0></a> Back to
+<a href=../AWeb%20Manual.html>index</a>.
+
+</body>
+</html>

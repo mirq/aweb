@@ -1,0 +1,141 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+
+<HTML>
+
+<HEAD>
+<TITLE>Settings Requesters</TITLE>
+</HEAD>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<H1>&nbsp; Settings Requesters</H1>
+
+<H2>Purpose</H2>
+
+In the settings requesters, you can change many aspects of AWeb.  The changed settings can be saved, used until the next reboot, temporarily tested, or cancelled.
+<P>There are four settings requesters, each controlling a different aspect of AWeb:
+
+<TABLE>
+<TR VALIGN="TOP"><TD><A HREF="#browser">Browser settings</A></TD><TD>Everything directly related to the way HTML is shown, including the fonts used and the external viewers</TD></TR>
+<TR VALIGN="TOP"><TD><A HREF="#program">Program settings</A></TD><TD>Things general for the program, including screen mode, paths, and the editor</TD></TR>
+<TR VALIGN="TOP"><TD><A HREF="#gui">GUI settings</A></TD><TD>Things directly related to the GUI functions, like the menu, the user buttons and the popup menu</TD></TR>
+<TR VALIGN="TOP"><TD><A HREF="#network">Network settings</A></TD><TD>Everything related to the network, including the loading of images, plug-ins and the cache</TD></TR>
+</TABLE>
+
+<H2>Opening the Settings Requesters</H2>
+
+A settings requester is opened by simply selecting the appropriate &quot;<CODE>Settings-><VAR>(aspect)</VAR> settings...</code>&quot; menu item.
+<P><STRONG>NOTE:</STRONG> When opened on a small sized screen (eg. 200 pixels in height), some requesters may not be visible completely, depending on the screen font used.  If this happens, you should open the system <EM>GUI</EM> preferences, go to the <em>Gadgets->General</em> tab, and decrease the Horizonatl and Vertical Spacing values.
+
+<H2>Different settings</H2>
+
+By default, AWeb stores its settings in the <CODE>ENVARC:AWeb3</CODE> drawer.  If you used the <CODE>CONFIG</CODE> <A HREF="../Working/startup.html">tooltype or argument</A>, the settings are stored in the <CODE>ENVARC:AWeb3/<VAR>config_name</VAR></CODE> drawer instead.  If this drawer doesn't exist, it will be created.
+<P>Don't edit the settings files by hand.  Some entries contain unprintable characters that your editor may or may not handle correctly.  Saving a settings file from your editor may destroy one or more settings.
+
+<H2>Controlling the settings requesters</H2>
+
+<H3>Menus</H3>
+
+Each settings requester has the following menu items:
+
+<TABLE>
+<TR VALIGN="TOP"><TH ROWSPAN="3" ALIGN="LEFT" VALIGN="TOP">Project menu</TH><TH ALIGN="LEFT">Open...</TH><TD>Read settings from a different file.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">Save as...</TH><TD>Save the settings in a different file.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">Quit settings</TH><TD>Close this settings requester.</TD></TR>
+<TR VALIGN="TOP"><TH ROWSPAN="3" ALIGN="LEFT" VALIGN="TOP">Edit menu</TH><TH ALIGN="LEFT">Reset to defaults</TH><TD>The settings in this requester are reset to their default values.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">Last saved</TH><TD>The settings in this requester are reset to the values as you have saved them the last time.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">Restore</TH><TD>The settings in this requester are reset to the values as they were when you opened the requester.</TD></TR>
+<TR VALIGN="TOP"><TH ROWSPAN="5" ALIGN="LEFT" VALIGN="TOP">Windows menu</TH><TH ALIGN="LEFT">Browser settings...</TH><TD>Open or activate the <A HREF="#browser">browser settings</A> requester.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">Program settings...</TH><TD>Open or activate the <A HREF="#program">program settings</A> requester.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">GUI settings...</TH><TD>Open or activate the <A HREF="#gui">GUI settings</A> requester.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">Network settings...</TH><TD>Open or activate the <A HREF="#network">network settings</A> requester.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">Snapshot</TH><TD>Store the current window positions.</TD></TR>
+</TABLE>
+
+<H3>Buttons</H3>
+
+Each settings requester has some standard buttons:
+
+<TABLE>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP"><EM>Clicktabs</EM></TD><TD>From the row of so-called <EM>clicktabs</EM> you can select a <EM>tab</EM> with related settings.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">Save</TH><TD>Save the current settings to disk, and close the requester.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">Use</TH><TD>Close the requester and use the current settings, but don't save them.  After a boot, the last saved settings are active again.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">Test</TH><TD>Use the settings now, but don't save them to disk.  The requester remains open.  If you cancel the requester, the original settings become active again.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">Cancel</TH><TD>Close the requester without changing the current settings.</TD></TR>
+</TABLE>
+
+<H2><A NAME="browser">Browser settings</A></H2>
+
+The browser settings requester can control the following aspects:
+
+<TABLE>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP"><A HREF="broptions.html">Options</A></TH><TD>Some general options that control the behaviour and looks of the browser.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP"><A HREF="brfonts.html">Fonts</A></TH><TD>The fonts that should be to AWebs disposal.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP"><A HREF="brstyles.html">Styles</A></TH><TD>The font type, size and style to use for various elements on a HTML page.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP"><A HREF="brcolours.html">Colours</A></TH><TD>The colours to be used for various elements of a document.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP"><A HREF="brviewers.html">Viewers</A></TH><TD>The external viewers to use for various types of objects.</TD></TR>
+</TABLE>
+
+<H2><A NAME="program">Program settings</A></H2>
+
+The program settings requester can control the following aspects:
+
+<TABLE>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP"><A HREF="prscreen.html">Screen</A></TH><TD>The screen that AWeb should open on: default public screen, another public screen, or let AWeb open its own screen.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP"><A HREF="prpalette.html">Palette</A></TH><TD>The screen colours for AWeb's own screen.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP"><A HREF="proptions.html">Options</A></TH><TD>The save and temporary paths, and various other general options.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP"><A HREF="prprograms.html">Programs</A></TH><TD>The external editor and HTML source viewer to use.</TD></TR>
+</TABLE>
+
+<H2><A NAME="gui">GUI settings</A></H2>
+
+The GUI settings requester can control the following aspects:
+
+<TABLE>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP"><A HREF="uioptions.html">Options</A></TH><TD>If the button row should be visible, and the popup menu activation.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP"><A HREF="uimenus.html">Menus</A></TH><TD>The entries to appear in the browser window menu.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP"><A HREF="uibuttons.html">Buttons</A></TH><TD>The buttons to appear in the user button row.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP"><A HREF="uipopup.html">Popup</A></TH><TD>The entries to appear in the popup menu.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP"><A HREF="uikeys.html">Keys</A></TH><TD>The user-defined keys.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP"><A HREF="uinavs.html">Navigation</A></TH><TD>The function of the ten navigation buttons.</TD></TR>
+</TABLE>
+
+<H2><A NAME="network">Network settings</A></H2>
+
+The network settings requester can control the following aspects:
+
+<TABLE>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP"><A HREF="nwoptions.html">Options</A></TH><TD>Various general network related settings, including the loading of images.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP"><A HREF="nwprograms.html">Programs</A></TH><TD>The external programs or <EM>plug-ins</EM> to use, e.g. for telnet.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP"><A HREF="nwproxy.html">Proxy</A></TH><TD>The proxies that AWeb should use.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP"><A HREF="nwcache.html">Cache</A></TH><TD>The cache size, cache mode and other cache related settings.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP"><A HREF="nwprivacy.html">Privacy</A></TH><TD>Various privacy protection options.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP"><A HREF="nwmail.html">Mail/News</A></TH><TD>Everything related to the internal mailer and newsreader.</TD></TR>
+</TABLE>
+
+<P><HR>
+
+<A HREF="../AWeb%20Manual.html"><IMG SRC="../GlobalImages/back.gif" WIDTH="32" HEIGHT="16" ALT="<-" BORDER="0>"</A>Back to <A HREF="../AWeb%20Manual.html">index</A>.
+
+</BODY>
+
+</HTML>

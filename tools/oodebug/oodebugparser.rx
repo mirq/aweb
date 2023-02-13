@@ -1,0 +1,79 @@
+/*
+Parse AWeb OODEBUG Output
+*/
+
+options results
+
+
+parse arg infile outfile .
+
+awebdevpath = "Projects:AWeb/"
+
+typesfile = awebdevpath || "awebHEAD/tools/oodebug/objecttypes"
+tagsfile  = awebdevpath || "awebHEAD/tools/oodebug/tagsfile"
+
+
+if open('TAGS', tagsfile, 'R') then do
+
+    i = 0
+    do until eof('TAGS')
+        i = i + 1
+        line = readln('TAGS');
+        parse VAR line tname thexval .
+        tag.i.name = tname
+        tag.i.hexval = thexval
+    end
+    tag.0 = i
+    say tag.0
+    call close('TAGS')
+end
+else do
+    Say "Couldn't open tagsfile: " || tagsfile
+    exit
+end
+
+
+if open('IN',infile,'R') then do
+
+    if open('OUT', outfile, 'W') then do
+
+        do until eof('IN')
+            output = ""
+            line = readln('IN')
+            first = 1
+            do while line ~= ""
+                parse var line term line
+                if pos("=",term) > 0 then term = replacetag(term)
+                if (first) then output = term
+                else output = output || " " || term
+                first = 0
+            end
+            call writeln('OUT',output)
+            call writeln('OUT',"")
+        end
+        call close('OUT')
+    end
+    call close('IN')
+end
+
+
+
+exit
+
+replacetag:
+procedure expose tag.
+
+parse arg tagname"="tagvalue
+
+replace = tagname
+
+do i = 1 to tag.0
+
+    if(tag.i.hexval = tagname) then do
+        replace = tag.i.name
+        leave
+    end
+end
+
+
+return x2c('0A') || "        " || replace || "=" || tagvalue

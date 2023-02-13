@@ -1,0 +1,134 @@
+<html>
+<head>
+<title>AOTP_FILE class</title>
+</head>
+<body>
+<h1>AOTP_FILE class</h1>
+
+<h2>Purpose</h2>
+
+The <b>AOTP_FILE</b> class creates a temporary or permanent file
+with a generated or supplied name, and optionally a Workbench icon for the file.
+
+<h2>Supported methods</h2>
+
+<table border>
+<tr><th align=left valign=top>Method
+   <th align=left valign=top>Description
+<tr><th align=left valign=top><a href="../methods/dispose.html">AOM_DISPOSE</a>
+   <td valign=top>Dispose the object, and optionally delete the file
+<tr><th align=left valign=top><a href="../methods/get.html">AOM_GET</a>
+   <td valign=top>Get attribute values
+<tr><th align=left valign=top><a href="../methods/new.html">AOM_NEW</a>
+   <td valign=top>Create a new file
+<tr><th align=left valign=top><a href="../methods/set.html">AOM_SET</a>
+   <td valign=top>Set attribute values
+</table>
+
+<h2>Supported attributes</h2>
+
+<table border>
+<tr><th align=left valign=top>Attribute
+   <th align=left valign=top>Type
+   <th align=left valign=top>Description
+   <th align=left valign=top>Applicability
+<tr><th align=left valign=top>AOFIL_Append
+   <td valign=top>BOOL
+   <td valign=top>When TRUE, an existing file is opened in APPEND mode, otherwise
+      a new file is created (possibly deleting an existing file).
+   <td valign=top>AOM_NEW
+<tr><th align=left valign=top>AOFIL_Comment
+   <td valign=top>STRPTR
+   <td valign=top>File comment. Supply before you set AOFIL_Eof.
+   <td valign=top>AOM_NEW<br>AOM_SET
+<tr><th align=left valign=top>AOFIL_Copyfile
+   <td valign=top>STRPTR
+   <td valign=top>Name of a file, whose contents will be copied to
+      this file. Only valid if AOFIL_Eof is not set yet.
+   <td valign=top>AOM_SET
+<tr><th align=left valign=top>AOFIL_Data
+   <td valign=top>UBYTE *
+   <td valign=top>Pointer to a block of data. You must also set the AOFIL_Datalength
+      attribute afterwards to specify the length of the block.
+      Only valid if AOFIL_Eof is not set yet.
+   <td valign=top>AOM_SET
+<tr><th align=left valign=top>AOFIL_Datalength
+   <td valign=top>ULONG
+   <td valign=top>Length of the block of data specified in the previous AOFIL_Data
+      tag. The block of data is written to the file.
+      Only valid if AOFIL_Eof is not set yet.
+   <td valign=top>AOM_SET
+<tr><th align=left valign=top>AOFIL_Datestamp
+   <td valign=top>ULONG
+   <td valign=top>The datestamp of the file, in system seconds.
+      Only valid after AOFIL_Eof is set.
+   <td valign=top>AOM_GET
+<tr><th align=left valign=top>AOFIL_Delete
+   <td valign=top>BOOL
+   <td valign=top>If set to FALSE, the file will not be deleted when the object
+      is disposed. Default is TRUE.
+   <td valign=top>AOM_NEW<br>AOM_SET
+<tr><th align=left valign=top>AOFIL_Eof
+   <td valign=top>BOOL
+   <td valign=top>If set to TRUE, the output file is closed. Further writes to the file
+      or changes of this attribute are ignored.
+   <td valign=top>AOM_SET
+<tr><th align=left valign=top>AOFIL_Extension
+   <td valign=top>STRPTR
+   <td valign=top>Extension to use when generating a unique file name. Default is
+      NULL, i.e. no extension.
+   <td valign=top>AOM_NEW
+<tr><th align=left valign=top>AOFIL_Filesize
+   <td valign=top>ULONG
+   <td valign=top>Current size of the file in bytes.
+   <td valign=top>AOM_GET
+<tr><th align=left valign=top>AOFIL_Icontype
+   <td valign=top>ULONG
+   <td valign=top>If nonzero, type of Workbench icon to create when the file
+      is closed. Valid values are:
+      <table border>
+      <tr><th align=left valign=top>Type
+         <th align=left valign=top>Description
+      <tr><th align=left valign=top>FILEICON_NONE
+         <td valign=top>No icon will be created.
+      <tr><th align=left valign=top>FILEICON_TEXT
+         <td valign=top>Create a project icon with the current program name
+            set as its default tool.
+      <tr><th align=left valign=top>FILEICON_DATA
+         <td valign=top>Create a project icon with no default tool.
+      </table>
+      Supply this attribute before you set AOFIL_Eof.
+   <td valign=top>AOM_NEW<br>AOM_SET
+<tr><th align=left valign=top>AOFIL_Name
+   <td valign=top>STRPTR
+   <td valign=top>When used in the <a href="../methods/new.html">AOM_NEW</a> method,
+      this fully qualified file name is used. Default is NULL, in which case
+      a new, unique file name in AWeb's temporary path will be generated, using
+      the specified AOFIL_Extension.
+      <p>
+      When used in the <a href="../methods/get.html">AOM_GET</a> method
+      the actual filename (with full path) is returned.
+   <td valign=top>AOM_NEW<br>AOM_GET
+<tr><th align=left valign=top>AOFIL_Pipe
+   <td valign=top>BOOL
+   <td valign=top>When set to TRUE, a unique file on the PIPE: device is
+      created.
+   <td valign=top>AOM_NEW
+<tr><th align=left valign=top>AOFIL_Stringdata
+   <td valign=top>STRPTR
+   <td valign=top>A nullbyte terminated string. The contents of the string is
+      written to the file.
+      Only valid if AOFIL_Eof is not set yet.
+   <td valign=top>AOM_SET
+</table>
+
+<h2>Usage</h2>
+
+Objects can use this class to create temporary or permanent files. Also,
+the <a href=sourcedriver.html>AOTP_SOURCEDRIVER</a> object receives a
+pointer to an AOTP_FILE object when it should save its source.
+<p>
+To write data to the file, you set the AOFIL_Copyfile, AOFIL_Data, AOFIL_Datalength
+or AOFIL_Stringdata attributes. You may use any number of these attributes
+in one <a href="../methods/set.html">AOM_SET</a> method. Data is written
+to the file in the order that the attributes appear on the message's taglist.

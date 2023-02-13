@@ -1,0 +1,2185 @@
+## version $VER: AWeb.catalog 3.0 (30.06.2003)
+## language italiano
+## codeset 0
+;
+; AWeb.cd - AWeb catalog description file
+;
+; $Id: aweb.ct,v 1.8 2009/09/11 11:43:35 opi Exp $
+;
+;  The MSG_DUMMY_nn labels are there because FlexCat doesn't
+;  understand the LABEL (+1//) syntax (C='s Catcomp uses this
+;  to skip 1 number)
+;
+;
+;-------------- General -----------------------------
+;
+MSG_REQUEST_TITLE
+Richiesta di AWeb
+; AWeb request
+;
+MSG_REQUEST_YES_NO
+
+; Yes|No
+;
+; ***NEW***
+;
+;
+;-------------- About requester ---------------------
+;
+MSG_ABOUT_TITLE
+Informazioni su AWeb
+; About AWeb
+;
+MSG_ABOUT_REGNR
+Registrazione #
+; Registration #
+;
+MSG_ABOUT_REGTO
+Registrato a
+; Registered to
+;
+MSG_ABOUT_SCREENNAME
+Nome schermo pubblico
+; Public screen name
+;
+MSG_ABOUT_PORTNAME
+Nome porta ARexx
+; ARexx port name
+;
+MSG_ABOUT_EMAIL
+E-Mail
+; E-mail
+;
+MSG_ABOUT_WWW
+WWW
+; WWW
+;
+MSG_ABOUT_OK
+_Ok
+; _Ok
+;
+MSG_ABOUT_UNREGISTERED
+Versione non registrata\n
+; Unregistered version\n
+;
+MSG_ABOUT_DEMO
+Versione demo non registrata\n
+; Unregistered demo version\n
+;
+MSG_ABOUT_DISTRIBUTED
+Distribuito da %s
+; Distributed by %s
+;
+; Translators give yourself credit with this string.
+; It should read something like "(Language) translation by: (your name)\n"
+;
+MSG_ABOUT_TRANSLATOR
+Traduzione italiana a cura di Gabriele Favrin\n
+; 
+;
+MSG_ABOUT_SPECIAL
+Versione speciale per la distribuzione con Amiga OS
+; Special version for distribution with Amiga OS\n
+;
+;-------------- Quit requester ----------------------
+;
+MSG_QUIT_TEXT
+Sei sicuro di voler uscire da AWeb?
+; Are you sure you want to quit AWeb?
+;
+MSG_QUIT_OK
+_Ok
+; _Ok
+;
+MSG_QUIT_CANCEL
+_Annulla
+; _Cancel
+;
+MSG_QUIT_WARNING
+ATTENZIONE: i download verranno interrotti!\n\n
+; WARNING: Transfers will be aborted!\n\n
+;
+;-------------- Demoversion requester ---------------
+;
+MSG_DEMO_TEXT
+Questa è la versione demo di AWeb\nle finestre multiple non sono supportate
+; This is the demo version of AWeb\nmultiple document windows are not supported
+;
+MSG_DEMO_OK
+_Ok
+; _Ok
+;
+;
+;-------------- Close windows requester -------------
+;
+MSG_SCRCLOSE_TEXT
+AWeb non può chiudere il proprio schermo.\nPer favore chiudi tutte le finestre presenti.
+; AWeb can't close its screen.\nPlease close all windows.
+;
+MSG_SCRCLOSE_OK
+Ok
+; Ok
+;
+;
+;-------------- Network status window ---------------
+;
+MSG_NWS_TITLE
+Stato rete
+; Network status
+;
+MSG_NWS_QUEUED
+Accodato
+; Queued
+;
+MSG_NWS_STARTED
+Iniziato
+; Started
+;
+MSG_NWS_LOOKUP
+Ricerca IP
+; Looking up
+;
+MSG_NWS_CONNECT
+Connessione
+; Connecting
+;
+MSG_NWS_WAIT
+Attesa
+; Waiting
+;
+MSG_NWS_PROCESS
+Interpretazione
+; Processing
+;
+MSG_NWS_LOGIN
+Ingresso
+; Logging in
+;
+MSG_NWS_CPS
+%ld cps
+; %ld cps
+;
+MSG_NWS_NEWSGROUP
+Esame
+; Scanning
+;
+MSG_NWS_UPLOAD
+Upload
+; Uploading
+;
+;-------------- Authorization requester -------------
+;
+MSG_AUTH_TITLE
+Autorizzazione
+; Authorization
+;
+MSG_AUTH_PROMPT
+ID utente e password necessari per
+; Userid and password required for
+;
+MSG_AUTH_USERID
+ID _utente
+; _Userid
+;
+MSG_AUTH_PASSWORD
+_Password
+; _Password
+;
+MSG_AUTH_OK
+_Ok
+; _Ok
+;
+MSG_AUTH_CANCEL
+_Annulla
+; _Cancel
+;
+MSG_AUTH_PROMPT_FTP
+Password necessaria per
+; Password required for
+;
+MSG_AUTH_USERID_FTP
+ID utente
+; Userid
+;
+MSG_AUTH_PROMPT_PROXY
+ID utente e password necessari per il proxy
+; Userid and password required for proxy
+;
+MSG_AUTH_PROMPT_MASTER
+
+; Please enter the password to show the passwords.
+;
+; ***NEW***
+;
+;
+;-------------- File requesters ---------------------
+;
+MSG_FILE_SAVETITLE
+Selezione nome di salvataggio
+; Select save filename
+;
+MSG_FILE_SAVE
+Salva
+; Save
+;
+MSG_FILE_INCTEXT
+File incompleto!\n%s\nAttesi: %ld bytes\nRicevuti: %ld bytes\n\n\
+Scegliere OK per conservare i dati sin qui ricevuti.
+; Incomplete file!\n%s\nExpected: %ld bytes\nReceived: %ld bytes\n\n\
+; Choose OK to keep the partial data.
+;
+MSG_DUMMY_1
+
+; 
+MSG_FILE_EXISTTEXT
+Il file:\n%s\nesiste già!
+; File:\n%s\nalready exists!
+;
+MSG_FILE_EXISTBUTTONS
+S_ovrascrivi|A_ccoda|_Nuovo nome|_Annulla
+; _Overwrite|_Append|_New name|_Cancel
+;
+MSG_FILE_AREXXTITLE
+Selezione macro ARexx
+; Select ARexx macro
+;
+MSG_FILE_HOTLISTTITLE
+Selezione hotlist gerarchica
+; Select hierarchical hotlist
+;
+MSG_FILE_LOCALTITLE
+Apri file locale
+; Open local file
+;
+MSG_FILE_OPEN
+Apri
+; Open
+;
+MSG_FILE_TEMPTITLE
+Non trovo il path temporaneo:\n%s\nUtilizzo T: al suo posto.
+; Can't find temporary path:\n%s\nUse T: instead.
+;
+MSG_FILE_TEMPBUTTONS
+_Ok
+; _Ok
+;
+MSG_FILE_INCBUTTONS2
+_Ok|_Riprova|_Annulla
+; _Ok|_Retry|_Cancel
+;
+MSG_FILE_SETTINGSTITLE
+Selezione directory impostazioni
+; Select settings directory
+;
+MSG_FILE_UPLOADTITLE
+Selezione file da inviare
+; Select file to upload
+;
+;-------------- TCP close requester -----------------
+;
+MSG_TCP_ENDTCP
+AWeb è stato fermato.\nVa conclusa anche la connessione TCP?
+; AWeb is stopped.\nShould the TCP connection be terminated too?
+;
+MSG_TCP_BUTTONS
+_Si|_No
+; _Yes|_No
+;
+;-------------- Startup requester -------------------
+; Mind the maximum length!
+;
+MSG_STARTUP_FONTS
+Caricamento font
+; Loading fonts
+;
+MSG_STARTUP_IMAGES
+Caricamento immagini GUI
+; Loading GUI images
+;
+MSG_STARTUP_CACHE
+Caricamento indice cache
+; Loading cache index
+;
+;-------------- Hotlist requester -------------------
+;
+MSG_HOTL_TITLE
+AWeb hotlist
+; AWeb hotlist
+;
+MSG_HOTL_ADDLINK
+_Aggiungi link
+; _Add link
+;
+MSG_HOTL_ADDGROUP
+Aggiungi _gruppo
+; Add _group
+;
+; (No hotkey for this one please!)
+MSG_HOTL_REMOVE
+Rimuovi
+; Remove
+;
+MSG_HOTL_FOLLOW
+_Segui
+; _Follow
+;
+MSG_HOTL_NAME
+No_me
+; _Name
+;
+MSG_HOTL_URL
+_URL
+; _URL
+;
+MSG_HOTL_NEWGROUP
+Nuovo gruppo
+; New group
+;
+MSG_HOTL_NEWLINK
+Nuovo link
+; New link
+;
+; -- new hotlist viewer requester --
+;
+MSG_HOTL_TITLE_VIEWER
+Visualizzatore hotlist di AWeb
+; AWeb hotlist viewer
+;
+MSG_HOTL_VURLS
+UR_L
+; UR_Ls
+;
+MSG_HOTL_MANAGER
+Ges_tione
+; _Manager
+;
+; -- new hotlist manager requester --
+;
+MSG_HOTL_TITLE_MANAGER
+Gestione hotlist AWeb
+; AWeb hotlist manager
+;
+MSG_HOTL_LTYPE
+L_ista
+; L_ist
+;
+MSG_HOTL_LTYPE_REST
+Rimanenti
+; Rest
+;
+MSG_HOTL_LTYPE_ALL
+Tutti
+; All
+;
+MSG_HOTL_LTYPE_GROUPS
+Gruppi
+; Groups
+;
+MSG_HOTL_LSORT
+_Ordina
+; S_ort
+;
+MSG_HOTL_LSORT_TITLE
+Titolo
+; Title
+;
+MSG_HOTL_LSORT_URL
+URL
+; URL
+;
+MSG_HOTL_MOVEIN
+_< In
+; _< In
+;
+MSG_HOTL_MOVEOUT
+Out _>
+; Out _>
+;
+MSG_HOTL_MOVE
+Muo_vi
+; < _Move
+;
+MSG_HOTL_DEL
+Cancella
+; _Delete
+;
+MSG_HOTL_WHERE
+Dove_?
+; _Where
+;
+MSG_HOTL_SHOW
+Apri_...
+; S_how
+;
+MSG_HOTL_SORT
+Ordi_na
+; Sor_t
+;
+MSG_HOTL_PARENT
+Prece_dente
+; _Parent
+;
+MSG_HOTL_ALL
+G_ruppi
+; G_roups
+;
+MSG_HOTL_ADDENTRY
++ _Elemento
+; + _Entry
+;
+MSG_HOTL_ADDGROUP2
++ _Gruppo
+; + _Group
+;
+MSG_HOTL_URLS
+UR_L
+; UR_Ls
+;
+MSG_HOTL_REVERT
+Ripris_tina
+; Re_vert
+;
+MSG_HOTL_SAVE
+_Salva
+; _Save
+;
+MSG_HOTL_LADD
+_Aggiungi
+; _Add
+;
+MSG_HOTL_FIND
+_Cerca
+; _Find
+;
+MSG_HOTL_PATTERN
+Multi
+; Mat_ch
+;
+MSG_HOTL_NEXT
+_Prossimo
+; Ne_xt
+;
+MSG_HOTL_DEFAULT_TITLE
+** Nuovo link **
+; ** New link **
+;
+MSG_HOTL_DEFAULT_GROUP
+** Nuovo gruppo **
+; ** New group **
+;
+MSG_HOTL_TITLE_ALLGROUPS
+Tutti i gruppi
+; All groups
+;
+MSG_HOTL_TITLE_WHERE
+I gruppi contenenti questo elemento
+; Groups containing this entry
+;
+MSG_HOTL_TITLE_REST
+Elementi non assegnati
+; Unassigned entries
+;
+MSG_HOTL_TITLE_ALL
+Tutti gli elementi
+; All entries
+;
+MSG_HOTL_TITLE_ROOTGROUPS
+Gruppi principali
+; Root-level groups
+;
+MSG_HOTL_LSORT_DATE
+Data
+; Date
+;
+;
+;--------------  Window history requester -------------------
+;
+MSG_WHIS_TITLE
+Finestra history
+; Window history
+;
+MSG_WHIS_FILTER
+_Filtro
+; _Filter
+;
+MSG_WHIS_WINDOW
+F_inestra
+; _Window
+;
+MSG_WHIS_ORDER
+_Ordine
+; _Order
+;
+MSG_WHIS_DISPLAY
+_Visualizza
+; _Display
+;
+MSG_WHIS_ORDER_NATURAL
+Naturale
+; Natural
+;
+MSG_WHIS_ORDER_MAINLINE
+Consultazione
+; Mainline
+;
+MSG_WHIS_ORDER_RETRIEVED
+Accesso
+; Retrieved
+;
+MSG_WHIS_ORDER_TITLE
+Titolo
+; Title
+;
+MSG_WHIS_ORDER_URL
+URL
+; URL
+;
+;
+;-------------- Cache browser ---------------------------
+;
+MSG_CABR_TITLE
+Cache browser
+; Cache browser
+;
+MSG_CABR_URL
+URL
+; URL
+;
+MSG_CABR_DATE
+Data
+; Date
+;
+MSG_CABR_SIZE
+Dim.
+; Size
+;
+MSG_CABR_TYPE
+Tipo
+; Type
+;
+MSG_CABR_FILE
+File
+; File
+;
+MSG_CABR_STATUS
+%ld file, %ld kB
+; %ld files, %ld kB
+;
+MSG_CABR_SORTBY
+_Ordine
+; _Sort by
+;
+MSG_CABR_OPEN
+_Apri
+; _Open
+;
+MSG_CABR_SAVE
+_Salva
+; Sa_ve
+;
+MSG_CABR_DELETE
+Canc_ella
+; _Delete
+;
+MSG_CABR_FIND
+_Cerca
+; _Find
+;
+MSG_CABR_PATTERN
+_Multi
+; _Match
+;
+MSG_CABR_NEXT
+_Prossimo
+; _Next
+;
+MSG_CABR_CHARSET
+
+; Charset
+;
+; ***NEW***
+;
+MSG_CABR_ETAG
+
+; Etag
+;
+; ***NEW***
+;
+;-------------- Progress requester ----------------------
+;
+MSG_PROGRESS_TITLE
+Progresso operazione di AWeb
+; AWeb progress
+;
+MSG_PROGRESS_CANCEL
+Annulla
+; Cancel
+;
+;
+;-------------- Fix cache requesters ---------------------
+;
+MSG_FIXCACHE_WARNING
+ATTENZIONE!\n\
+Questa opzione cancellerà tutti i file alieni dalla\n\
+directory %s
+; WARNING!\n\
+; This function will delete all foreign files from the\n\
+; %s drawer
+;
+MSG_FIXCACHE_BUTTONS
+_Ok|_Annulla
+; _Ok|_Cancel
+;
+MSG_FIXCACHE_PROGRESS
+Correzione della cache su disco...
+; Fixing the disk cache...
+;
+MSG_FIXCACHE_DELETEPROGRESS
+
+; Delete %ld Files from disk cache...
+;
+; ***NEW***
+;
+MSG_FIXCACHE_DELETEIMAGES
+Sei sicuro di voler cancellare\n\
+tutte le immagini dalla cache?
+; Are you sure you want to delete\n\
+; all images from the cache?
+;
+MSG_FIXCACHE_DELETEDOCS
+Sei sicuro di voler cancellare\n\
+tutti i documenti dalla cache?
+; Are you sure you want to delete\n\
+; all documents from the cache?
+;
+MSG_FIXCACHE_ERASE
+Sei sicuro di voler cancellare\n\
+tutti i documenti e le immagini dalla cache?
+; Are you sure you want to delete\n\
+; all documents and images from the cache?
+;
+MSG_FIXCACHE_CORRUPT
+Le registrazioni della cache sono illeggibili\n\
+o appartenenti ad una versione precedente di AWeb.\n\
+I file in cache non possono essere riutilizzati.\n\
+Li cancello ora?
+; The cache registration is unreadable\n\
+; or from an older version of AWeb.\n\
+; Cached files cannot be used any more.\n\
+; Do you want to clean up now?
+;
+;-------------- Search requesters ---------------------
+;
+MSG_SEARCH_STRING
+Ricerca p_er
+; Search _for
+;
+MSG_SEARCH_IGNORECASE
+_Ignora maiuscole/minuscole
+; _Ignore case
+;
+MSG_SEARCH_SEARCH
+_Cerca
+; _Search
+;
+MSG_SEARCH_FROMTOP
+Dall'i_nizio
+; From _top
+;
+MSG_SEARCH_BACKWARDS
+A _Ritroso
+; _Backwards
+;
+MSG_SEARCH_CANCEL
+_Annulla
+; _Cancel
+;
+MSG_SEARCH_NOTFOUND
+Stringa non trovata
+; String not found
+;
+MSG_SEARCH_OK
+  _Ok  \
+
+; _Ok
+;
+;
+;-------------- Popup menu ---------------------------
+;
+MSG_POPUP_LOADIMAGE
+Carica immagine
+; Load image
+;
+MSG_POPUP_RELOADIMAGE
+Ricarica immagine
+; Reload image
+;
+MSG_POPUP_SAVEIMAGE
+Salva immagine
+; Save image
+;
+MSG_POPUP_DOWNLOADIMAGE
+Download immagine
+; Download image
+;
+MSG_POPUP_FLUSHIMAGE
+Rimuovi immagine
+; Flush image
+;
+MSG_POPUP_SHOWIMAGE
+Mostra immagine
+; Show image
+;
+MSG_POPUP_OPENLINK
+Apri link
+; Open link
+;
+MSG_POPUP_OPENLINKNW
+Apri link su nuova finestra
+; Open link in new window
+;
+MSG_POPUP_LOADLINK
+Carica link in background
+; Load link in background
+;
+MSG_POPUP_SAVELINK
+Salva link
+; Save link
+;
+MSG_POPUP_DOWNLOADLINK
+Download link
+; Download link
+;
+MSG_POPUP_ADDLINK
+Aggiungi link alla hotlist
+; Add link to hotlist
+;
+MSG_POPUP_RELOADFRAME
+Ricarica contenuti
+; Reload contents
+;
+MSG_POPUP_SAVEFRAME
+Salva sorgente
+; Save source
+;
+MSG_POPUP_VIEWFRAME
+Visualizza sorgente
+; View source
+;
+MSG_POPUP_SHOWFRAME
+Mostra separatamente
+; Show separately
+;
+MSG_POPUP_SEARCHFRAME
+Cerca nei contenuti
+; Search in contents
+;
+MSG_POPUP_INFOFRAME
+Informazioni
+; Info
+;
+MSG_POPUP_IMAGE2CLIP
+
+; Image Url to Clipboard
+;
+; ***NEW***
+;
+;
+;-------------- Print --------------------------------
+;
+MSG_PRINTP_TITLE
+Parametri stampa
+; Print parameters
+;
+MSG_PRINTP_SCALE
+_Scala
+; _Scale (%)
+;
+MSG_PRINTP_PRINTBG
+Stampa sfon_di
+; Print _backgrounds
+;
+MSG_PRINTP_FORMFEED
+_Formfeed
+; _Formfeed
+;
+MSG_PRINTP_CENTER
+Ce_ntra
+; Ce_nter
+;
+MSG_PRINTP_PRINT
+Stam_pa
+; _Print
+;
+MSG_PRINTP_CANCEL
+_Annulla
+; _Cancel
+;
+MSG_PRINT_NOPRINTER
+Non posso accedere alla stampante
+; Unable to access the printer
+;
+MSG_PRINT_OK
+_Ok
+; _Ok
+;
+MSG_PRINT_PROGRESS
+Stampa in corso...
+; Printing in progress...
+;
+MSG_PRINTP_LAYOUTWIDTH
+Di_mensione di stampa
+; _Layout Width
+;
+MSG_PRINTP_LW_WINDOW
+Finestra
+; Window
+;
+MSG_PRINTP_LW_DOCUMENT
+Documento
+; Document
+;
+MSG_PRINTP_LW_SCREEN
+Schermo
+; Screen
+;
+;
+;-------------- Cookie warning ----------------------
+;
+MSG_COOKIE_TITLE
+Avviso cookie
+; Cookie alert
+;
+MSG_COOKIE_WARNING
+Salvataggio di un cookie di NetScape
+; About to set a NetScape cookie!
+;
+MSG_COOKIE_NAME
+Nome cookie:
+; Cookie name:
+;
+MSG_COOKIE_VALUE
+Valore cookie:
+; Cookie value:
+;
+MSG_COOKIE_DOMAIN
+Dominio:
+; For domain:
+;
+MSG_COOKIE_PATH
+Percorso:
+; Path:
+;
+MSG_COOKIE_COMMENT
+Commento:
+; Comment:
+;
+MSG_COOKIE_MAXAGE
+Conserva fino a:
+; Max-age:
+;
+MSG_COOKIE_EXPIRES
+Scadenza:
+; Expires:
+;
+MSG_COOKIE_ONCE
+S_olo questo
+; _Once
+;
+MSG_COOKIE_ACCEPT
+Acc_etta
+; _Accept
+;
+MSG_COOKIE_NEVER
+_Nessuno
+; _Never
+;
+MSG_COOKIE_CANCEL
+_Annulla
+; _Cancel
+;
+MSG_COOKIE_SECURE
+AWeb invierà questo cookie solo\ntramite connessioni protette.
+; AWeb will send this cookie back\nover secure connections only.
+;
+MSG_COOKIE_UNSECURE
+AWeb invierà questo cookie anche\ntramite connessioni NON PROTETTE.
+; AWeb will send this cookie back\nover UNSECURE connections too.
+;
+;
+;-------------- Info requester ----------------------
+;
+MSG_INFO_TITLE
+Informazioni
+; Information
+;
+MSG_INFO_FROMCACHE
+Letto dalla cache di AWeb
+; Read from AWeb cache
+;
+MSG_INFO_XFER
+Intestazioni trasferimento:
+; Transfer headers:
+;
+MSG_INFO_META
+Informazioni meta:
+; Meta information:
+;
+MSG_INFO_LINK
+Link cliccabili:
+; Clickable links:
+;
+MSG_INFO_CIPHER
+Metodo di cifratura HTTPS: %s
+; HTTPS cipher method: %s
+;
+MSG_INFO_SSLLIBRARY
+Libreria SSL utilizzata: %s
+; SSL library used: %s
+;
+;-------------- Default buttons ---------------------
+;
+MSG_USERBUTTON_CACHE
+Cache
+; Cache
+;
+MSG_USERBUTTON_CLOCK
+Orologio
+; Clock
+;
+MSG_USERBUTTON_SEARCH
+
+; Search
+;
+; ***NEW***
+;
+;-------------- Authorizations edit requester -------
+;
+MSG_AUTHEDIT_TITLE
+Edita autorizzazioni
+; Edit authorizations
+;
+MSG_AUTHEDIT_TITLE_SERVER
+Server
+; Server
+;
+MSG_AUTHEDIT_TITLE_USERID
+ID utente
+; Userid
+;
+MSG_AUTHEDIT_TITLE_PASSWORD
+
+; Password
+;
+; ***NEW***
+;
+MSG_AUTHEDIT_DEL
+_Cancella
+; _Del
+;
+MSG_AUTHEDIT_SERVER
+Server
+; Server
+;
+MSG_AUTHEDIT_USERID
+ID _utente
+; _Userid
+;
+MSG_AUTHEDIT_PASSWORD
+_Password
+; _Password
+;
+MSG_AUTHEDIT_SHOWPASS
+
+; _Show Passwords
+;
+; ***NEW***
+;
+MSG_AUTHEDIT_SHOWPWREQ
+
+; To use this function you must first enter a\n\
+; master password then you can use the function\n\
+; to show all passwords.\n\
+; \n\
+; Warning:\n\
+; Please remember or notice your password\n\
+; because here is no chance to show or delete\n\
+; the password without the password!
+;
+; ***NEW***
+;
+MSG_AUTHEDIT_SHOWPWREQ_BUTTONS
+
+; _Ok|_Cancel
+;
+; ***NEW***
+;
+;-------------- JavaScript prompt requester ---------
+;
+MSG_JSPROMPT_OK
+_Ok
+; _Ok
+;
+MSG_JSPROMPT_CANCEL
+_Annulla
+; _Cancel
+;
+;
+;-------------- Unsecure form warning ---------------
+;
+MSG_FORMWARN_TITLE
+Avviso di AWeb
+; AWeb warning
+;
+MSG_FORMWARN_WARNING
+I dati di questo form verranno inviati\ntramite una connessione NON PROTETTA.
+; Data from this form will be sent\nover an UNSECURE connection.
+;
+MSG_FORMWARN_BUTTONS
+_Ok|_Annulla
+; _Ok|_Cancel
+;
+;
+;-------------- Mailer messages ---------------------
+;
+MSG_MAIL_TITLE
+Errore mailer di AWeb
+; AWeb mailer error
+;
+MSG_MAIL_NOSMTPHOST
+Prima va configurato l'host SMTP.\nVedere impostazioni Rete/Mail.
+; You have to configure your SMTP host first.\nSee Network/Mail settings.
+;
+MSG_MAIL_NOCONNECT
+Impossibile collegarsi a %s
+; Can't connect to %s.
+;
+MSG_MAIL_MAILFAILED
+Invio messaggio mail fallito.
+; Sending mail message failed.
+;
+MSG_MAIL_BUTTONS
+_Riprova|_Salva|_Annulla
+; _Retry|_Save|_Cancel
+;
+MSG_MAIL_SAVETITLE
+Salvataggio messaggio fallito
+; Save failed message
+;
+MSG_MAIL_MAILTO_TITLE
+Mail a %s
+; Mail to %s
+;
+MSG_MAIL_MAILTO_HEADER
+Mail a: %s
+; Mail to: %s
+;
+MSG_MAIL_TO
+Destinatario:
+; To:
+;
+MSG_MAIL_SUBJECT
+Soggetto:
+; Subject:
+;
+MSG_MAIL_MESSAGE_BODY
+Corpo del messaggio:
+; Message body:
+;
+MSG_MAIL_EXTRA_HEADERS
+Intestazioni aggiuntive mail incluse
+; Extra mail headers included
+;
+MSG_MAIL_SEND
+Invia mail
+; Send mail
+;
+MSG_MAIL_RESET
+Reset
+; Reset
+;
+MSG_MAIL_RETURN
+Torna
+; Return
+;
+MSG_MAIL_MAIL_SENT_TITLE
+Mail inviata a: %s
+; Mail sent to: %s
+;
+MSG_MAIL_MAIL_SENT
+<H1>Mail inviata</H1>\nIl tuo messaggio a <B>%s</B> &egrave; stato inviato con successo.
+; <H1>Mail sent</H1>\nYour mail message to <B>%s</B> has been sent succesfully.
+;
+;
+;-------------- Newsreader messages -----------------
+;
+MSG_NEWS_TITLE
+Errore newsreader di AWeb
+; AWeb newsreader error
+;
+MSG_NEWS_NONNTPHOST
+Prima va configurato l'host NNTP.\nVedere impostazioni Rete/News.
+; You have to configure your NNTP host first.\nSee Network/News settings.
+;
+MSG_NEWS_NOCONNECT
+Impossibile collegarsi a %s
+; Can't connect to %s.
+;
+MSG_NEWS_POSTFAILED
+Invio articolo fallito.
+; Posting article failed.
+;
+MSG_NEWS_BUTTONS
+_Riprova|_Salva|_Annulla
+; _Retry|_Save|_Cancel
+;
+MSG_NEWS_SAVETITLE
+Salvataggio articolo fallito
+; Save failed article
+;
+MSG_NEWS_NEWS_HEADER
+News
+; News
+;
+MSG_NEWS_SUBSCRIBED
+Newsgroup sottoscritti
+; Subscribed newsgroups
+;
+; Don't forget to include the '8' in the %8ld below:
+MSG_NEWS_NEW_ARTICLES
+%8ld nuovi articoli
+; %8ld new articles
+;
+MSG_NEWS_CATCH_UP
+Lettura completata
+; Catch up
+;
+MSG_NEWS_UNSUBSCRIBE
+Sgancia
+; Unsubscribe
+;
+MSG_NEWS_OTHER_GROUP
+Altro gruppo
+; Other group
+;
+MSG_NEWS_SUBSCRIBE
+Sottoscrivi
+; Subscribe
+;
+MSG_NEWS_READ
+Leggi
+; Read
+;
+MSG_NEWS_SEARCH_FOR_GROUP
+Cerca gruppo
+; Search for group
+;
+MSG_NEWS_SEARCH
+Cerca
+; Search
+;
+MSG_NEWS_LONG_DOWNLOAD
+La prima volta che cercherai un gruppo,\n\
+verr&agrave; scaricata una lista di tutti i nomi dei newsgroup.\n\
+Questa operazione potrebbe richiedere diversi minuti.
+; The first time you search for a group,\n\
+; a list of all newsgroup names will be downloaded.\n\
+; This may take several minutes to complete.
+;
+MSG_NEWS_NO_SUBJECT
+(nessun soggetto)
+; (no subject)
+;
+MSG_NEWS_LINES
+(%s linee)
+; (%s lines)
+;
+MSG_NEWS_POST_NEW_ARTICLE
+Invia nuovo articolo
+; Post new article
+;
+MSG_NEWS_GROUP_LIST
+Lista gruppi
+; Group list
+;
+MSG_NEWS_ERROR_NO_GROUP
+<h1>Errore</h1>\nIl gruppo %s non esiste.
+; <h1>Error</h1>\nGroup %s does not exist.
+;
+MSG_NEWS_USE_FRAMES
+Le news sono configurate per utilizzare i frame.
+; News is configured to use frames
+;
+MSG_NEWS_ERROR_NO_ARTICLE
+L'articolo %s non esiste<BR>
+; Article %s does not exist<BR>
+;
+MSG_NEWS_FOLLOW_UP
+Rispondi
+; Follow-up
+;
+MSG_NEWS_REPLY
+Rispondi in e-mail
+; Reply in e-mail
+;
+MSG_NEWS_SAVE
+Salva articolo
+; Save article
+;
+MSG_NEWS_SUBJECT
+Soggetto:
+; Subject:
+;
+MSG_NEWS_NEWSGROUPS
+Newsgroup:
+; Newsgroups:
+;
+MSG_NEWS_ARTICLE_BODY
+Corpo dell'articolo:
+; Article body:
+;
+MSG_NEWS_EXTRA_HEADERS
+Intestazioni news incluse
+; Extra news headers included
+;
+MSG_NEWS_POST_ARTICLE
+Invia articolo
+; Post article
+;
+MSG_NEWS_RESET
+Reset
+; Reset
+;
+MSG_NEWS_RETURN
+Torna
+; Return
+;
+MSG_NEWS_FOLLOWUP_TITLE
+Risposta all'articolo
+; Follow-up to article
+;
+MSG_NEWS_FOLLOWUP_TO_GROUPS
+Risposta a:
+; Follow-up to:
+;
+MSG_NEWS_PLEASE_DELETE
+Per favore cancellare linee quotate non necessarie
+; Please delete unnecessary quoted lines
+;
+MSG_NEWS_REPLY_TITLE
+Risposta in e-mail all'articolo
+; Reply to article
+;
+MSG_NEWS_REPLY_TO_ADDRESS
+Risposta a:
+; Reply to:
+;
+MSG_NEWS_ARTICLE_POSTED_TITLE
+Articolo inviato
+; Article posted
+;
+MSG_NEWS_ARTICLE_POSTED
+<H1>Articolo inviato</h1>\n\
+L'articolo &egrave; stato inviato.
+; <H1>Article posted</h1>\n\
+; Your article has been posted.
+;
+MSG_NEWS_DOWNLOAD_TITLE
+Download lista newsgroup
+; Download newsgroup list
+;
+MSG_NEWS_DOWNLOAD_BODY
+<h1>Download...</H1>\n\
+Download della lista newsgroup. L'operazione pu&ograve; richiedere diversi minuti.
+; <H1>Downloading...</H1>\n\
+; Downloading newsgroup list. This can take several minutes.
+;
+MSG_NEWS_SEARCH_RESULT
+Risultato ricerca
+; Search result
+;
+MSG_NEWS_FIRST_MATCHING
+Primi %ld di %ld nomi di newsgroup che rispondono al criterio di ricerca <B>%s</B>
+; First %ld of %ld newsgroup names matching <B>%s</B>
+;
+MSG_NEWS_FOUND_MATCHING
+Trovati %ld nomi di newsgroup che rispondono al criterio di ricerca <B>%s</B>
+; Found %ld newsgroup names matching <B>%s</B>
+;
+;
+;-------------- Shell/ARexx command warning ---------
+;
+MSG_CMDWARN_TITLE
+Avviso di AWeb
+; AWeb warning
+;
+MSG_CMDWARN_SHELL
+Esecuzione comando shell:\n%s
+; About to execute shell command:\n%s
+;
+MSG_CMDWARN_AREXX
+Esecuzione programma ARexx:\n%s
+; About to start ARexx program:\n%s
+;
+MSG_CMDWARN_BUTTONS
+_Ok|_Annulla
+; _Ok|_Cancel
+;
+;
+;-------------- SSL related warnings ----------------
+;
+MSG_SSLWARN_SSL_TITLE
+Avviso di AWeb
+; AWeb warning
+;
+MSG_SSLWARN_SSL_TEXT
+Impossibile effettuare una connessione protetta a %s:\n%s\n \nUtilizzo una connessione non protetta?
+; Cannot make secure connection to %s:\n%s\n \nUse an unsecure connection instead?
+;
+MSG_SSLWARN_SSL_BUTTONS
+_Non protetta|_Annulla
+; _Unsecure|_Cancel
+;
+MSG_SSLWARN_SSL_NO_SSL
+Le connessioni protette sono supportate solo con lo stack TCP Miami e MiamiSSL.
+; Secure connections are only supported with the Miami TCP program and MiamiSSL.
+;
+MSG_SSLWARN_CERT_TITLE
+Avviso di AWeb
+; AWeb warning
+;
+MSG_SSLWARN_CERT_TEXT
+Il certificato per %s non può essere verificato.\nDettagli: %s\n \n\
+Procedendo, i dati verranno criptati (protezione dalle intercettazioni), \
+ma l'identità del server non potrà essere verificata (-NESSUNA- protezione dalle frodi).\n \n\
+Vuoi procedere?
+; Certificate for %s cannot be verified.\nDetails: %s\n \n\
+; If you continue the data will be encrypted (protection against eavesdropping), \
+; but the identity of the server cannot be verified (-NO- protection against fraud).\n \n\
+; Do you want to continue?
+;
+MSG_SSLWARN_CERT_BUTTONS
+_Ok|_Annulla
+; _Ok|_Cancel
+;
+MSG_SSLWARN_SSL_NO_SSL2
+Le connessioni protette sono possibili solo utilizzando AmiSSL o MiamiSSL.
+; Secure connections are only supported when using AmiSSL or MiamiSSL.
+;
+;
+;-------------- Unknown MIME type -------------------
+;
+MSG_UNKMIME_TITLE
+Tipo contenuto sconosciuto
+; Unknown content type
+;
+MSG_UNKMIME_TEXT
+Il file non identificato verrà salvato\n \n\
+URL:            %s\nTipo contenuto: %s\nEstensione:     %s\n \n\
+Eventualmente puoi annullare il salvataggio e ricaricare \
+il file dopo aver configurato un visualizzatore \
+appropriato per questo tipo MIME nelle impostazioni \
+browser (visualizzatori).
+; Unrecognized file will be saved\n \n\
+; URL:   %s\nContent type:   %s\nExtension:   %s\n \n\
+; You might want to cancel the save now, and reload this file \
+; after configuring a viewer or action for this MIME type \
+; in the Browser settings (Viewers).
+;
+MSG_UNKMIME_BUTTONS
+_Salva|_Annulla
+; _Save|_Cancel
+;
+MSG_REQUEST_COPYURL
+Copia l'_URL nella clipboard
+; Copy _URL to clipboard
+;
+;-------------- Open URL requester ------------------
+;
+;
+MSG_OPENURL_TITLE
+Richiesta di AWeb
+; AWeb request
+;
+MSG_OPENURL_TEXT
+Inserire l'URL da aprire:
+; Type in the URL to open:
+;
+MSG_OPENURL_BUTTONS
+_Ok|_Annulla
+; _Ok|_Cancel
+;
+;
+;-------------- Save as IFF requester ---------------
+;
+;
+MSG_SAVEIFF_PROGRESS
+Salvataggio file IFF...
+; Saving IFF file...
+;
+;
+;-------------- awebcharset.awebplugin ---------------
+;
+;
+MSG_CHARSET_CODESETTITLE
+
+; Awebcharset.awebplugin
+;
+; ***NEW***
+;
+MSG_CHARSET_CODESETWRONG
+
+; The Version of %s on the System is %ld.%ld,\n\
+; but for this Plugin at least Version %ld.%ld is needed.\n
+;
+; ***NEW***
+;
+MSG_CHARSET_CODESETFAIL
+
+; Can't open required %s - Version: %ld.%ld.\n
+;
+; ***NEW***
+;
+MSG_CHARSET_CODESETURL
+
+; \n\
+; Please visit http://sourceforge.net/projects/codesetslib\n\
+; for downloading the latest Version and make sure the\n\
+; Library is properly installed.
+;
+; ***NEW***
+;
+MSG_CHARSET_INFOTITLE
+
+; Awebcharset.awebplugin Info Window
+;
+; ***NEW***
+;
+MSG_CHARSET_INFOTEXT
+
+; Filter is : %s\n\
+; Replace is: %s\n\
+; Request is: %s\n\
+; \n\
+; URL='%s'\n\
+; \n\
+; Document Charsets:\n\
+; Header Charset     = '%s'\n\
+; Meta Charset       = '%s'\n\
+; \n\
+; Used Charsets:\n\
+; Source Charset     = '%s'\n\
+; Destination Charset= '%s'
+;
+; ***NEW***
+;
+MSG_CHARSET_DIFFREQTXT
+
+; The Server send 2 different Charsets for this Document:\n\
+; \n\
+; Header Charset  = '%s'\n\
+; Document Charset= '%s'\n\
+; \n\
+; Which Charset should be used?
+;
+; ***NEW***
+;
+MSG_CHARSET_DIFFREQBUT
+
+; Don't ask again
+;
+; ***NEW***
+;
+MSG_CHARSET_ON
+
+; On
+;
+; ***NEW***
+;
+MSG_CHARSET_OFF
+
+; Off
+;
+; ***NEW***
+;
+MSG_CHARSET_OK
+
+; _Ok
+;
+; ***NEW***
+;
+;
+;-------------- Menus -------------------------------
+;
+; If the second character in a menu item string is a slash (/),
+; then the first character is used as menu shortcut.
+;
+MSG_PROJECT_MENU
+Progetto
+; Project
+;
+MSG_PROJECT_NEWWINDOW
+N/Nuova finestra
+; N/New window
+;
+MSG_PROJECT_CLOSEWINDOW
+K/Chiudi finestra
+; K/Close window
+;
+MSG_PROJECT_OPENURL
+U/Apri URL
+; U/Open URL
+;
+MSG_PROJECT_OPENWWW
+W/Apri WWW
+; W/Open WWW
+;
+MSG_PROJECT_OPENLOCAL
+L/Apri file...
+; L/Open local...
+;
+MSG_PROJECT_OPENSEARCH
+E/Motori di ricerca
+; E/Search engines
+;
+MSG_PROJECT_SOURCE
+Visualizza sorgente...
+; View source...
+;
+MSG_PROJECT_SAVEHTML
+S/Salva sorgente...
+; S/Save source...
+;
+MSG_PROJECT_ABOUT
+Informazioni su AWeb...
+; About...
+;
+MSG_PROJECT_QUIT
+Q/Esci...
+; Q/Quit...
+;
+MSG_PROJECT_SEARCH
+G/Ricerca...
+; G/Search...
+;
+MSG_PROJECT_PRINT
+P/Stampa...
+; P/Print...
+;
+MSG_PROJECT_EDIT
+Modifica sorgente...
+; Edit source...
+;
+MSG_PROJECT_INFO
+Informazioni...
+; Info...
+;
+MSG_PROJECT_OPENNEWS
+Apri News
+; Open News
+;
+; (Shortcut key is backslash)
+MSG_PROJECT_ICONIFY
+\\/Iconifica
+; \\/Iconify
+;
+MSG_PROJECT_SAVEIFF
+Salva come IFF...
+; Save as IFF...
+;
+MSG_CONTROL_MENU
+Controllo
+; Control
+;
+MSG_CONTROL_LOADNOW
+Carica immagini ora
+; Load images now
+;
+MSG_CONTROL_LOADNOWALL
+I/Tutte le immagini
+; I/All images
+;
+MSG_CONTROL_LOADNOWMAPS
+M/Solo le mappe
+; M/Maps only
+;
+MSG_CONTROL_NETWORKSTATUS
+?/Stato rete...
+; ?/Network status...
+;
+MSG_DUMMY_2
+
+; 
+MSG_CONTROL_CANCEL
+Z/Annulla caricamento
+; Z/Cancel load
+;
+MSG_CONTROL_NEXTWINDOW
+./Finestra successiva
+; ./Next window
+;
+MSG_CONTROL_PREVWINDOW
+,/Finestra precedente
+; ,/Previous window
+;
+MSG_CONTROL_NOPROXY
+Y/Disattiva proxy
+; Y/Disable proxy
+;
+MSG_CONTROL_RLOAD
+Ricarica
+; Reload
+;
+MSG_CONTROL_RLOADDOC
+R/Documento corrente
+; R/Current document
+;
+MSG_CONTROL_RLOADIMGS
+Immagini nel documento corrente
+; Images in current
+;
+MSG_CONTROL_PLAYBGSOUND
+J/Suona musica di sottofondo
+; J/Play background sound
+;
+MSG_CONTROL_COPYURL
+Copia URL
+; Copy URL
+;
+MSG_CONTROL_PASTEURL
+Inserisci URL
+; Paste URL
+;
+MSG_CONTROL_COPYBLOCK
+C/Copia blocco
+; C/Copy block
+;
+MSG_CONTROL_DRAGGING
+Trascinamento
+; Dragging
+;
+MSG_CONTROL_BREAKJS
+X/Interrompi JavaScript
+; X/Break JavaScript
+;
+MSG_CONTROL_DEBUGJS
+Debug JavaScript
+; Debug JavaScript
+;
+MSG_CONTROL_RESET
+Ripristina frame
+; Reset frames
+;
+MSG_CACHE_MENU
+Cache
+; Cache
+;
+MSG_DUMMY_3
+
+; 
+MSG_DUMMY_4
+
+; 
+MSG_DUMMY_5
+
+; 
+MSG_DUMMY_6
+
+; 
+MSG_CACHE_SAVEAUTH
+Salva autorizzazioni
+; Save authorizations
+;
+;**obsolete**
+MSG_CACHE_FLUSHAUTH
+Rimuovi autorizzazioni
+; Flush authorizations
+;
+MSG_CACHE_BROWSER
+Cache browser...
+; Cache browser...
+;
+MSG_CACHE_FLUSH
+Rimuovi dalla memoria
+; Flush from memory
+;
+MSG_CACHE_FLSHIMGSND
+Immagini non a video
+; Nondisplayed images
+;
+MSG_CACHE_FLSHIMGS
+Tutte le immagini
+; All images
+;
+MSG_CACHE_FLSHDOCSND
+Documenti non a video
+; Nondisplayed documents
+;
+MSG_CACHE_DELETE
+Cancella dal disco
+; Delete from disk
+;
+MSG_CACHE_DELIMGS
+Tutte le immagini
+; All images
+;
+MSG_CACHE_DELDOCS
+Tutti i documenti
+; All documents
+;
+MSG_CACHE_CLEAR
+Cancella cache
+; Erase cache
+;
+MSG_CACHE_FIX
+Correggi cache...
+; Fix cache...
+;
+MSG_CACHE_EDITAUTH
+Edita autorizzazioni...
+; Edit authorizations...
+;
+MSG_NAVIGATE_MENU
+Navigazione
+; Navigate
+;
+MSG_NAVIGATE_BACK
+B/Indietro
+; B/Back
+;
+MSG_NAVIGATE_FWD
+F/Avanti
+; F/Forward
+;
+MSG_NAVIGATE_HOME
+D/Documento iniziale
+; D/Home document
+;
+MSG_NAVIGATE_HISTORY
+-/Finestra history...
+; -/Window history...
+;
+MSG_HOTLIST_MENU
+Hotlist
+; Hotlist
+;
+MSG_HOTLIST_ADDHOT
+A/Aggiungi alla hotlist
+; A/Add to hotlist
+;
+MSG_HOTLIST_SHOWHOT
+H/Mostra hotlist
+; H/Show hotlist
+;
+;**obsolete**
+MSG_HOTLIST_MAINT
+T/Gestione...
+; T/Maintenance...
+;
+MSG_HOTLIST_SAVE
+Salva hotlist
+; Save hotlist
+;
+MSG_HOTLIST_RESTORE
+Ripristina ultima salvata
+; Restore last saved
+;
+MSG_HOTLIST_AMHOTRX
+AMosaic (ARexx)
+; AMosaic (ARexx)
+;
+MSG_HOTLIST_AMHOT20
+AMosaic (2.0)
+; AMosaic (2.0)
+;
+MSG_HOTLIST_IBHOT
+Altro...
+; Other...
+;
+MSG_HOTLIST_VIEW
+V/Visualizza hotlist...
+; V/View hotlist...
+;
+MSG_HOTLIST_MGR
+T/Gestione hotlist...
+; T/Hotlist manager...
+;
+MSG_SETTINGS_MENU
+Configurazione
+; Settings
+;
+MSG_SETTINGS_LOADIMG
+Caricamento immagini
+; Image loading
+;
+MSG_SETTINGS_LOADIMGALL
+Tutte le immagini
+; All images
+;
+MSG_SETTINGS_LOADIMGMAPS
+Solo le mappe
+; Maps only
+;
+MSG_SETTINGS_LOADIMGOFF
+Disattivato
+; Off
+;
+MSG_DUMMY_7
+
+; 
+MSG_DUMMY_8
+
+; 
+MSG_SETTINGS_BROWSER
+Impostazioni browser...
+; Browser settings...
+;
+MSG_SETTINGS_PROGRAM
+Impostazioni programma...
+; Program settings...
+;
+MSG_SETTINGS_NETWORK
+Impostazioni rete...
+; Network settings...
+;
+MSG_SETTINGS_CLASSACT
+Impostazioni ClassAct...
+; ClassAct settings...
+;
+MSG_SETTINGS_SAVEALL
+Salva impostazioni correnti
+; Save current settings
+;
+MSG_SETTINGS_SNAPSHOT
+Fissa posizione finestre
+; Snapshot windows
+;
+;**obsolete
+MSG_SETTINGS_SNAPSHOTALT
+Fissa come dimensione alternativa
+; Snapshot as alternate size
+;
+MSG_SETTINGS_BGIMAGES
+Immagini di sfondo
+; Background images
+;
+MSG_SETTINGS_BGSOUND
+Suoni di sottofondo
+; Background sound
+;
+MSG_SETTINGS_SAVEAS
+Salva impostazioni come...
+; Save settings as...
+;
+MSG_SETTINGS_LOAD
+Carica impostazioni...
+; Load settings...
+;
+MSG_SETTINGS_GUI
+Impostazioni GUI...
+; GUI settings...
+;
+MSG_HELP_MENU
+Help
+; Help
+;
+MSG_HELP_HELP
+Documentazione
+; Documentation
+;
+MSG_HELP_AWEBHOME
+Home page di AWeb
+; AWeb home page
+;
+MSG_HELP_AWEBFAQ
+FAQ di AWeb
+; AWeb FAQ
+;
+MSG_HELP_REGISTER
+Registrazione
+; Registration
+;
+MSG_AREXX_MENU
+ARexx
+; ARexx
+;
+MSG_AREXX_AREXX
+!/Esegui macro ARexx...
+; !/Start ARexx macro...
+;
+;--------------- Navigation Button Texts -------
+;
+MSG_NAVGAD_FORWARD
+
+; Fwd
+;
+; ***NEW***
+;
+MSG_NAVGAD_BACK
+
+; Back
+;
+; ***NEW***
+;
+MSG_NAVGAD_HOME
+
+; Home
+;
+; ***NEW***
+;
+MSG_NAVGAD_CANCEL
+
+; Stop
+;
+; ***NEW***
+;
+MSG_NAVGAD_IMAGES
+
+; Images
+;
+; ***NEW***
+;
+MSG_NAVGAD_STATUS
+
+; Status
+;
+; ***NEW***
+;
+MSG_NAVGAD_SEARCH
+
+; Find
+;
+; ***NEW***
+;
+MSG_NAVGAD_RELOAD
+
+; Reload
+;
+; ***NEW***
+;
+MSG_NAVGAD_ADDHOTLIST
+
+; Add
+;
+; ***NEW***
+;
+MSG_NAVGAD_HOTLIST
+
+; Hotlist
+;
+; ***NEW***
+;
+;
+;-------------- Error messages ----------------------
+;
+MSG_ERROR_CANTOPEN
+Impossibile aprire %s
+; Can't open %s
+;
+; NOTE - No locale formatters (like %1$s) possible in this string!
+;        Only plain C formatters allowed.
+MSG_ERROR_CANTOPENV
+Impossibile aprire %s versione %ld
+; Can't open %s version %ld
+;
+MSG_ERROR_NEEDOS30
+AWeb richiede l'OS 3.0 o superiore
+; AWeb needs OS 3.0 or better
+;
+MSG_ERROR_CANTQUIT
+Impossibile uscire!\n%s\nè ancora in uso
+; Cannot quit!\n%s\nis still in use
+;
+;-------------- partial error messages --------------
+;
+MSG_EPART_ERROR
+Errore
+; Error
+;
+MSG_EPART_RETURL
+Durante l'accesso all'URL
+; While retrieving URL
+;
+MSG_EPART_ADDRSCHEME
+Lo schema di indirizzamento &quot;%s&quot; non &egrave; implementato in questa versione di AWeb
+; The &quot;%s&quot; addressing scheme is not implemented in this version of AWeb
+;
+MSG_EPART_NOLIB
+Prima va lanciato uno stack TCP
+; A TCP stack must be started first
+;
+MSG_EPART_NOHOST
+Impossibile individuare l'host &quot;%s&quot;
+; Cannot resolve host name &quot;%s&quot;
+;
+MSG_EPART_NOCONNECT
+Impossibile collegarsi a &quot;%s&quot;
+; Cannot connect to &quot;%s&quot;
+;
+MSG_EPART_NOFILE
+Impossibile aprire il file &quot;%s&quot;
+; Cannot open file &quot;%s&quot;
+;
+MSG_EPART_XAWEB
+&quot;%s&quot; non &egrave; un nome interno (x-aweb:) valido
+; Invalid internal (x-aweb:) name &quot;%s&quot;
+;
+MSG_EPART_FLUSHED_HEAD
+Rimosso
+; Flushed
+;
+MSG_EPART_FLUSHED_MSG
+Questo documento non &egrave; pi&ugrave; disponibile in memoria
+; This document is no longer available in memory
+;
+MSG_EPART_FLUSHED_NORELOAD
+Questo documento non pu&ograve; essere ricaricato. La form che lo ha generato va \
+inviata nuovamente. Attenzione ai problemi che un secondo invio pu&ograve; \
+comportare, come ad esempio la doppia registrazione ad un servizio
+; This document cannot be retrieved again. You will have to submit the form again that \
+; produced this page. Beware of undesired side-effects if you submit that form twice, \
+; like a duplicate registration.
+;
+MSG_EPART_NOLOGIN
+Impossibile collegarsi a &quot;%s&quot; come &quot;%s&quot;
+; Cannot login at &quot;%s&quot; as &quot;%s&quot;
+;
+MSG_EPART_NOAWEBLIB
+Impossibile caricare il modulo AWebLib per &quot;%s&quot;.
+; Unable to load the AWebLib module for &quot;%s&quot;.
+;
+MSG_EPART_NOPROGRAM
+Non &egrave; stato configurato un programma per lo schema di indirizzamento &quot;%s&quot;.
+; You haven't configured a program for the &quot;%s&quot; addressing scheme.
+;
+;
+;-------------- Miscellaneous -----------------------
+;
+; (external program window title)
+MSG_AWEB_EXTWINTITLE
+Programma esterno ad AWeb
+; AWeb External Program
+;
+; (status field text)
+MSG_AWEB_BYTESREAD
+Byte letti
+; Bytes read
+;
+; (form SUBMIT button default text)
+MSG_AWEB_FORMSUBMIT
+Submit
+; Submit
+;
+; (form RESET button default text)
+MSG_AWEB_FORMRESET
+Reset
+; Reset
+;
+; (ISINDEX default prompt)
+MSG_AWEB_INDEXPROMPT
+Indice ricercabile. Inserire chiavi di ricerca:
+; This is a searchable index. Enter keywords:
+;
+; (window title)
+MSG_AWEB_NODOCTITLE
+(Nessun documento caricato)
+; (No document loaded)
+;
+; (screen title)
+MSG_AWEB_SCREENTITLE
+Schermo pubblico di AWeb - Nome AWeb
+; AWeb public screen - Name AWeb
+;
+; (hotlist document title)
+MSG_AWEB_HOTLISTTITLE
+Hotlist
+; Hotlist
+;
+; (gopher index title)
+MSG_AWEB_GOPHERINDEX
+Indice Gopher
+; Gopher index
+;
+; (gopher menu title)
+MSG_AWEB_GOPHERMENU
+Menu Gopher
+; Gopher menu
+;
+; (window history title)
+MSG_AWEB_WINDOWHIS
+Finestra history
+; Window history
+;
+; (partial title of other hotlist)
+MSG_AWEB_OTHER
+Altra 
+; Other
+;
+; (transfer status messages)
+MSG_AWEB_LOOKUP
+Ricerca IP di %s
+; Looking up %s
+;
+MSG_AWEB_CONNECT
+Collegamento %s a %s
+; Making %s connection to %s
+;
+MSG_AWEB_WAITING
+Inviata richiesta %s; attendo risposta
+; %s request sent; waiting for response
+;
+MSG_AWEB_TCPSTART
+Connessione TCP
+; Establishing TCP connection
+;
+; (form image fieldstatus text)
+MSG_AWEB_FORMLOCATION
+Invio form a x=%ld, y=%ld
+; Submit form at x=%ld, y=%ld
+;
+; (form BUTTON button default text)
+MSG_AWEB_FORMBUTTON
+Start
+; Start
+;
+; (frame resizing status prompt)
+MSG_AWEB_FRAME_RESIZE
+Ridimensiona frame
+; Resize frame
+;
+; (transfer status message)
+MSG_AWEB_LOGIN
+Ingresso in %s
+; Logging in at %s
+;
+; (transfer status message)
+MSG_AWEB_NEWSGROUP
+Esame %s
+; Scanning %s
+;
+; (transfer status message)
+MSG_AWEB_NEWSSCAN
+Esame %s (%ld articoli)
+; Scanning %s (%ld articles)
+;
+; (transfer status message)
+MSG_AWEB_NEWSSORT
+Ordinamento %s
+; Sorting %s
+;
+; (transfer status message)
+MSG_AWEB_NEWSPOST
+Invio articolo
+; Posting article
+;
+; (transfer status message)
+MSG_AWEB_MAILSEND
+Invio messaggio mail
+; Sending mail message
+;
+; (transfer status message)
+MSG_AWEB_UPLOAD
+Upload file
+; Uploading file
+;
+; ** (don't use numbers 40001 or higher) **

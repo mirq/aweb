@@ -1,0 +1,33 @@
+<html>
+<head>
+<title>Unclipcoords()</title>
+</head>
+<body>
+<h1>Upclipcoords()</h1>
+
+<h2>Purpose</h2>
+Free previously obtained rendering context information.
+
+<h2>Synopsis</h2>
+<pre>
+   Unclipcoords(coords)
+                A0
+
+   void Unclipcoords(<a href="../structs/coords.html">struct Coords</a> *)
+</pre>
+
+<h2>Function</h2>
+This function releases a rendering context information block, that was
+previously obtained using the <a href=clipcoords.html>Clipcoords()</a> function.
+
+<h2>Inputs</h2>
+<table border>
+<tr><th align=left valign=top>Parameter
+   <th align=left valign=top>Description
+<tr><td valign=top><code>coords</code>
+   <td valign=top>Pointer to a <a href="../structs/coords.html">struct Coords</a>
+      that was previously obtained
+</table>
+
+<h2>See also</h2>
+<a href="clipcoords.html">Clipcoords()</a>

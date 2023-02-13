@@ -1,0 +1,195 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+<html>
+<head>
+<title>
+Cookies
+</title>
+</head>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<h1>&nbsp; Cookies</h1>
+
+<h2>What are cookies?</h2>
+Most private home pages on the World Wide Web are just simple, static
+pages. Some services, however, offer more complex, interactive transaction
+sequences where the contents of each page retrieved is dependent on choices
+you have made earlier. A shopping site would be such an example, where you
+pick thinks you would like to buy, and in the end you get a list of everything
+you have chosen. Or, some sites offer personalized news, and they depend on
+certain personal preferences.
+<p>
+Before, these things weren't possible, or only with great effort. The reason
+for this is, that each request for a page is independent of all previous
+pages. The server has no way of telling that this request was done by you,
+and thus it doesn't know the details needed to construct the personalized response.
+<p>
+To overcome these limitations, NetScape has developed a persistent client
+state mechanism they called <em>cookies</em>.
+The <a href="http://www.w3.org" TARGET="_blank">W3 Consortium</a> has adopted this mechanism
+and enhanced it. You can find a full description in
+<a href="http://RFC.net/rfc2109.html" TARGET="_blank">RFC 2109</a>. AWeb complies with this
+definition to ensure maximum privacy and security.
+<p>
+With the cookie mechanism, a server essentially has a way to say to the browser
+program: &quot;keep this information on your hard disk, and include it in
+every future request for a page on this server.&quot;
+
+<h2>Your privacy</h2>
+Using cookies, many interesting services can be realized that otherwise
+wouldn't have been possible.
+<p>
+Unfortunately, cookies can also be abused to track your steps on the World
+Wide Web. Many pages contain a banner advert image or a counter. Many of those
+images are located on the same server. They set a cookie in your browser, and every
+time you visit another page with a banner or counter image that comes from their server,
+<em>your</em> personal cookie is sent back to the server. Although this cookie
+doesn't contain any real personal information that you haven't supplied yourself
+(how could it), this practice does allow companies to
+obtain a perfect picture of your websurfing habits. Fortunately, AWeb offers
+facilities to protect yourself against this kind of privacy violation.
+
+<h2>Protection levels</h2>
+AWeb offers three levels of protection against cookie misuse. You can change
+this level in the <a href=../Configuring/nwprivacy.html#cookie>network settings</a> window.
+<p>
+<table border>
+<tr>
+   <th align=left>Level
+   <th align=left>Description
+<tr align=left valign=top>
+   <td nowrap>Never
+   <td>AWeb will never remember a cookie, and will never send back a cookie
+      to the server. This gives you maximum privacy, but it makes the use
+      of personalized sites impossible.
+<tr align=left valign=top>
+   <td nowrap>Ask before set
+   <td>Every time the server asks AWeb to remember a cookie, the <a href=#alert>
+      cookie alert</a> requester is shown. You can decide if you want AWeb to
+      remember the cookie or not.
+<tr align=left valign=top>
+   <td nowrap>Always (quiet)
+   <td>AWeb will always accept requests to set a cookie, and will always
+      send them back to the server whenever appropriate.
+</table>
+
+<h2><a name=alert>Cookie alert</a></h2>
+If you have set <em>Cookie usage</em> to "Ask before set", AWeb will open a
+requester every time the server wants to set a cookie. This requester contains
+the following information, depending on what the server included in its request:
+<table>
+<tr align=left valign=top>
+   <th align=left valign=top>Name
+   <td>The name of the cookie to set.
+<tr align=left valign=top>
+   <th align=left valign=top>Value
+   <td>The value to remember for this cookie.
+<tr align=left valign=top>
+   <th align=left valign=top>Domain
+   <td>If the domain does <strong>not</strong> start with a period, this cookie
+      will be sent back <em>only</em> in requests for files from this exact
+      domain (server).
+      <p>
+      If the domain starts with a period, the cookie will be sent back in
+      requests for files from all domains with a name equal to this name with one
+      part prepended. For example: cookies for domain "<code>.foo.bar</code>" will
+      be sent back in requests for files from "<code>zoo.foo.bar</code>",
+      "<code>blah.foo.bar</code>", but not "<code>cat.mouse.foo.bar</code>"
+      because this name has two parts prepended.
+<tr align=left valign=top>
+   <th align=left valign=top>Path
+   <td>The cookie will only be sent back in requests for files on the server
+      from this path, or from subdirectories in this path.
+<tr align=left valign=top>
+   <th align=left valign=top>Comment
+   <td>A description of the purpose of the cookie. Not all servers supply a
+      comment with their cookies yet.
+<tr align=left valign=top>
+   <th align=left valign=top>Max-age
+   <td>The maximum number of seconds that the cookie details should be remembered.
+      After this time the cookie will be forgotten.
+<tr align=left valign=top>
+   <th align=left valign=top>Expires
+   <td>The date and time until the cookie details should be remembered. After this
+      moment the cookie will be forgotten.
+      <p>
+      Cookies without <b>Max-age</b> or <b>Expires</b> are only valid during
+      the current session, and are never saved to disk.
+</table>
+<p>
+At the bottom of the requester is mentioned if this cookie will be sent back to
+the server in all cases, or only over <a href="secure.html">secure connections</a>.
+<p>
+In this requester, you have the following options:
+<table>
+<tr align=left valign=top>
+   <th align=left valign=top>Once
+   <td>Accept this cookie this time only. It will be sent back in requests
+      that match the domain and path. The next time the server wants to change
+      the value of this cookie, AWeb will show the cookie requester again.
+<tr align=left valign=top>
+   <th align=left valign=top>Accept
+   <td>Accept this cookie, and all future updates of this cookie.
+      "This cookie" is the cookie identified by its name, domain and path.
+<tr align=left valign=top>
+   <th align=left valign=top>Never
+   <td>Do not remember this cookie, and add the domain to the
+      <a href=../Configuring/nwprivacy.html#nocookie>No-cookie list</a>. Future
+      attempts by this server to set a cookie will be denied automatically.<br>
+<tr align=left valign=top>
+   <th align=left valign=top>Cancel
+   <td>Do not remember this cookie this time.
+</table>
+
+<h2><a name=rfc2109>RFC 2109 protection</a></h2>
+As mentioned above, the W3 consortium has developed an enhanced mechanism for
+cookies, with better protection of your privacy. This mechanism basically
+sends back the domain and path for which the cookie was originally set. This
+way, the server has a possibility to check if the cookie really was set by
+that server, not by some spoofing site. This enhanced mechanism was carefully
+designed so that is would be compatible with the existing limited mechanism
+introduced by NetScape.
+<p>
+Unfortunately, some servers are using cookies in such a way that the enhanced
+mechanism actually produces incompatible results. If you encounter problems
+like a site complaining that your browser doesn't support cookies (but you
+have turned cookie usage on), try
+<a href="../Configuring/nwprivacy.html#rfc2109">disabling</a> the RFC 2109 mechanism.
+
+<h2>Cookie file</h2>
+Cookies are saved in a file named <code>AWCK</code>, located in your
+<A HREF="../Advanced/cache.html#cachedir">cache directory</A>. This is a readable file,
+and you are allowed to edit it in order to remove cookies or change their
+details.
+<p>
+Note that the appearance of the keyword "<code>*ACCEPT;</code>" means that
+you have accepted future updates of this cookie. If you remove this keyword,
+the cookie alert requester will be shown again when the server tries to
+update this cookie.
+
+<p>
+<hr>
+<a href=../AWeb%20Manual.html><img src=../GlobalImages/back.gif width=32 height=16 alt="<-" border=0></a> Back to
+<a href=../AWeb%20Manual.html>index</a>.
+
+</body>
+</html>

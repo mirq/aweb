@@ -1,0 +1,51 @@
+<html>
+<head>
+<title>AOTP_SOURCE class</title>
+</head>
+<body>
+<h1>AOTP_SOURCE class</h1>
+
+<h2>Purpose</h2>
+
+The <b>AOTP_SOURCE</b> class represents the in memory copy of a loaded file.
+It delegates most of its job to the attached <a href=sourcedriver.html>AOTP_SOURCEDRIVER</a>
+object.
+
+<h2>Supported methods</h2>
+
+<table border>
+<tr><th align=left valign=top>Method
+   <th align=left valign=top>Description
+<tr><th align=left valign=top><a href="../methods/notify.html">AOM_NOTIFY</a>
+   <td valign=top>Notify related <a href=copy.html>AOTP_COPY</a> objects
+<tr><th align=left valign=top><a href="../methods/set.html">AOM_SET</a>
+   <td valign=top>Set attribute values.
+</table>
+
+<h2>Supported attributes</h2>
+
+<table border>
+<tr><th align=left valign=top>Attribute
+   <th align=left valign=top>Type
+   <th align=left valign=top>Description
+   <th align=left valign=top>Applicability
+<tr><th align=left valign=top>AOSRC_Memory
+   <td valign=top>ULONG
+   <td valign=top>Total amount of memory occupied by the attached
+      <a href=sourcedriver.html>AOTP_SOURCEDRIVER</a> object.
+   <td valign=top>AOM_SET
+</table>
+
+<h2>Usage</h2>
+
+Whenever a <a href=sourcedriver.html>AOTP_SOURCEDRIVER</a> subclass object
+changes the amount of memory occupied for the internal representation of
+the file, it should set the <b>AOSRC_Memory</b> attribute of the AOTP_SOURCE
+object that it belongs to. The value of this attribute is the current
+total amount of memory. This is used in the memory cache managing process.
+<p>
+The <a href="../methods/notify.html">AOM_NOTIFY</a> method forwards
+the supplied <code>nmsg</code> message to all related <a href=copy.html>AOTP_COPY</a>
+objects. If the forwarded message was <a href="../methods/set.html">AOM_SET</a>,
+these will in turn forward it to their respective
+<a href=copydriver.html>AOTP_COPYDRIVER</a> objects.

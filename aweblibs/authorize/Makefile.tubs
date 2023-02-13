@@ -1,0 +1,15 @@
+MODULES := aweblib/authorize.aweblib
+
+aweblib/authorize.aweblib/TYPE := executable/library/amigashared
+aweblib/authorize.aweblib/DEPS := $(MODULELIB) linklibs/libawebclib.a
+aweblib/authorize.aweblib/CFILES := \
+authorlib
+
+
+aweblib/authorize.aweblib/LDFLAGS := -g
+aweblib/authorize.aweblib/CFILES/authorlib/CFLAGS := -g
+
+
+
+
+

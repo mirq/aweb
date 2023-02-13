@@ -1,0 +1,47 @@
+<html>
+<head>
+<title>Arender()</title>
+</head>
+<body>
+<h1>Arender()</h1>
+
+<h2>Purpose</h2>
+Perform the <a href="../methods/render.html">AOM_RENDER</a> method on an object.
+
+<h2>Synopsis</h2>
+<pre>
+   result = Arender(object, coords, minx, miny, maxx, maxy, flags, text)
+   D0               A0      A1      D0    D1    D2    D3    D4     A2
+
+   ULONG Arender(<a href="../classes/object.html">struct Aobject</a> *, <a href="../structs/coords.html">struct Coords</a> *, long, long, long, long,
+                 ULONG, void *)
+</pre>
+
+<h2>Function</h2>
+Object oriented support function that invokes the
+<a href="../methods/render.html">AOM_RENDER</a> method on the specified
+object, to let the object render itself.
+
+<h2>Inputs</h2>
+<table border>
+<tr><th align=left valign=top>Parameter
+   <th align=left valign=top>Description
+<tr><td valign=top><code>object</code>
+   <td valign=top>Pointer to object to invoke the method on
+<tr><td valign=top><code>coords</code>
+   <td valign=top>Pointer to a <a href="../structs/coords.html">struct Coords</a>
+      that contain context info, or NULL
+<tr><td valign=top><code>minx, miny, maxx, maxy</code>
+   <td valign=top>Coordinates relative to the frame to limit the rendering.<br>
+      If no limitation is required, use 0 for minima and <code>AMRMAX</code> for
+      maxima.
+<tr><td valign=top><code>flags</code>
+   <td valign=top>Flags that may affect the rendering.
+<tr><td valign=top><code>text</code>
+   <td valign=top>Internal use only. You <b>must</b> leave this NULL
+</table>
+
+<h2>Results</h2>
+Specific to the method and the object's class.
+
+<h2>See also</h2>

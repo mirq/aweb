@@ -1,0 +1,47 @@
+<html>
+<head>
+<title>Erasebg()</title>
+</head>
+<body>
+<h1>Erasebg()</h1>
+
+<h2>Purpose</h2>
+Erase the background with the current background image or background colour.
+
+<h2>Synopsis</h2>
+<pre>
+   Erasebg(cframe, coords, minx, miny, maxx, maxy)
+           A0      A1      D0    D1    D2    D3
+
+   void Erasebg(<a href="../classes/object.html">struct Aobject</a> *, <a href="../structs/coords.html">struct Coords</a> *, LONG, LONG, LONG, LONG)
+</pre>
+
+<h2>Function</h2>
+This function erases a rectangle of the specified frame, using the current
+background image or background colour. The specified rectangle is clipped
+to the visible display area, as defined by the context rendering information
+(<code>coords</code>).
+
+<h2>Inputs</h2>
+<table border>
+<tr><th align=left valign=top>Parameter
+   <th align=left valign=top>Description
+<tr><td valign=top><code>cframe</code>
+   <td valign=top>Pointer to the context frame
+      object in which you want to erase a rectangle.
+      Usually you get the context frame set in the AOBJ_Cframe attribute.
+<tr><td valign=top><code>coords</code>
+   <td valign=top>Pointer to a valid rendering context information block,
+      <a href="../structs/coords.html">struct Coords</a>.
+      You obtain valid context information using the
+      <a href=clipcoords.html>Clipcoords()</a> function.
+<tr><td valign=top><code>(minx, miny), (maxx, maxy)</code>
+   <td valign=top>Coordinates of the upper left and lower right corner of
+      the rectangle to erase. These coordinates are relative to the frame
+      (that is, they are in the same coordinate system as your object's
+      AOBJ_Left and AOBJ_Top).
+</table>
+
+<h2>See also</h2>
+<a href="clipcoords.html">Clipcoords()</a>,
+<a href="obtainbgrp.html">Obtainbgrp()</a>

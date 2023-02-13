@@ -1,0 +1,27 @@
+2004-06-19
+    * Readded the foreign laungue named directories as OS3.x requires them
+      (or seems to at least).
+    * all files name must now be lower case so that make can deal with them
+      consistantly, the Makefile.tubs converts the result to the appropriate case
+      on compilation.
+
+
+2003-06-30  David Rey  <tactica@gmx.net>
+
+    * Renamed the directories using their English name to avoid charset
+      display problems when using certain fonts (e.g. you can't see
+      "français" properly using a greek font) and for better compliance
+      with AmigaOS 4. Filenames are now consistent as well.
+    * Made all version strings and introductory locale commands consistent
+      (3.x), fixed some malformations, removed the fluff at the beginning
+      and added a CVS ID. The credits removed will go in the docs later on.
+    * bosnian/AWebCfg.ct: fixed typos in MSG_SET_HLP_P, MSG_SET_HLP_T,
+      MSG_SET_FD_H2, MSG_SET_FD_STRONG
+    * danish/AWeb.ct:
+        - fixed the duplicated shortcut in the cookie manager window (bug #26)
+        - both "Control/Copy block" and "Project/Close window" were using
+          RAmiga-K
+        - dropped another two dupes in the Hotlist manager
+        - dropped the trailing dots in MSG_FILE_OPEN
+    * spanish/AWeb.ct: fixed translation error in MSG_SSLWARN_CERT_TEXT
+      (my fault)

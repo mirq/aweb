@@ -1,0 +1,272 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+<html>
+<head>
+<title>
+The browser window
+</title>
+</head>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<h1>&nbsp; The browser window</h1>
+
+The browser window is the most important window of AWeb. It is the place
+where World Wide Web pages are displayed. On top of the window there are
+some <a href=../Starting/gui.html>gadgets</a>.
+
+<h2><a name=scroll>Scrolling the page</a></h2>
+You can scroll the window contents horizontally and vertically, provided
+the size of the document is larger than the window.
+<p>
+Of course you can use the scroll bars and arrow buttons to scroll, but AWeb
+also understands the following keys:
+<ul>
+<li><kbd><b>cursor up/down</b></kbd> (both cursor keypad and numeric
+   keypad) scroll up and down over a short distance.
+<li><kbd><b>shift + cursor up/down</b></kbd> (cursor keypad) scroll up or
+   down a page.
+<li><kbd><b>PgUp, PgDn</b></kbd> (numeric keypad) scroll up or down a page.
+<li><kbd><b>Space, Backspace</b></kbd> scroll up or down a page.
+<li><kbd><b>Home, End</b></kbd> (numeric keypad) jump to the beginning or
+   the end of the document.
+<li><kbd><b>cursor left/right</b></kbd> (both cursor keypad and numeric
+   keypad) scroll left and right. This is only possible if the document
+   contains an image or preformatted text wider than the window, because
+   otherwise AWeb will keep the text formatted to fit within the window
+   width.
+<li><kbd><b>shift + cursor left/right</b></kbd> (cursor keypad) scroll
+   left or right a full page width.
+</ul>
+Note: these are the default keys, you can <a HREF=../Configuring/uikeys.html>configure
+</a> different keys, or different actions for these keys.
+
+<h2><a name=frames>Frames</a></h2>
+Many pages on the World Wide Web use a feature called <em>frames</em>.
+Effectively frames are a subdivision of the browser window, to allow the
+display of several different documents simultaneously. When frames are
+displayed, the main window scroll bars are probably set to full-size
+(not scrollable). Instead, some frames may contain a scroll bar you can
+use to scroll the frame contents.
+<p>
+In many framed pages, one frame contains the main document, and other,
+smaller, frames contain additional things like a banner or a navigation
+bar. In such cases, AWeb will make a reasonable guess of what frame would
+be a likely candidate for scrolling.
+In this frame, you can scroll with the same keys as
+explained <a href=#scroll>above</a>. If you want to scroll another frame
+than the one AWeb selected, you just have to click in it once (or use
+its scrollers), and that frame will be selected for subsequent scrolling
+with the keyboard.
+<p>
+Sometimes the Web page author defines frames explicitly without scrollers,
+even if the contents is larger than the visible portion. Although there
+are no scrollers, you can still scroll such a frame with the keyboard.
+<p>
+Frames have their own <a href=../Starting/popup.html>popup menu</a>. It is selectable
+in the top left corner of each frame.
+<p>
+You can always resize frames. Just grab the edge of a frame with the mouse
+and move it until the desired size is reached. Use the <code>Control /
+Reset&nbsp;frames</code> menu item to reset all frames to their initial
+size.
+<p>
+On small windows (like those on 200 or 256 high screens) a framed page
+often appears squeezed, and is not easy to use. In that case you can
+<a HREF="../Configuring/broptions.html#nominal">configure</a> AWeb to use a larger
+height to layout the page against. Then you can use the window scrollbar
+to scroll the framed page in its entirety.
+
+<h2><a name=links>Following links</a></h2>
+One of the most important features of the World Wide Web is the ability
+to include <em>hyperlinks</em> in documents. A hyperlink is displayed in
+another colour, and by default underlined. You can change the colour and
+the underlining in the <a HREF=../Configuring/broptions.html>Options</a> page
+in the browser settings requester.
+<p>
+Images that are also links have a frame drawn around them. If you have
+deselected the link underlining in the
+<a HREF=../Configuring/broptions.html>browser settings</a> requester, then this frame isn't
+drawn.
+<p>
+Click the text or image to follow the link, i.e. retrieve and display the
+document "behind" the link. The URL (network address) of the document
+that is linked to, is shown in the status indicator
+when the mouse pointer is over the hyperlink.
+
+<h2><a name=ftp>FTP links</a></h2>
+Sometimes a hyperlink doesn't point to another document, but to a file
+or directory via FTP instead. You can recognize such hyperlinks by their
+URL (network address), that starts with "<code>ftp://</code>". If you
+click on a FTP link to a directory, AWeb will show the contents of this
+directory. There is no standardized format for this, but usually you will
+see the names of files or subdirectories on the right-hand side of the
+listing. These are made hyperlinks again, so you can browse through a
+directory structure by clicking the links. Often the listing also contains
+file sizes and dates.
+<p>
+If you click on a link to a file, AWeb will load the file and display it
+if the file is displayable. If the file cannot be displayed, a file requester
+will pop up to let you save the file.
+<p>
+If you browse from behind a firewall, the firewall might not allow the FTP
+connection the normal way. You can
+<a HREF=../Configuring/nwproxy.html#passiveftp>configure</a> AWeb to use a different
+way of establishing the FTP connection that is likely to work from behind
+a firewall.
+
+<h2><a name=stimages>Standalone images</a></h2>
+Sometimes a hyperlink does not point to another document, but to an image
+instead. By default these images are displayed in the AWeb browser window.
+You can, however, <a HREF=../Configuring/prprograms.html#imgviewer>configure</a> an
+external image viewer that will be used to show these images.
+<p>
+Note that when the image linked to is already in AWeb's memory, the external
+viewer is not used. This may be the case if the link points to exactly
+the same image as appears in a document. Since the image is already
+decoded and in memory, it would be a waste of resources to let it decode
+again and take up more memory by an external viewer. If you like to
+view the image in the external viewer, you have to flush the image
+from AWeb's memory first. One way of flushing an image is by using the
+<a href=#popup>popup menu</a>.
+
+<h2><a name=images>Inlined images</a></h2>
+A document can contain inlined images interspersed with the text. If an
+inlined image is not (yet) loaded, AWeb displays an icon for that image.
+You can select if you want images to be loaded immediately or not using the
+<a HREF=../Configuring/nwoptions.html#imgload>image loading</a> chooser in the
+settings requester.
+<p>
+AWeb displays different icons under different circumstances.
+You can tell AWeb to use <a HREF="../Configuring/images.html">your own images</a> here.
+<p>
+<img src="x-nil:no-image-here" align=left hspace=2> This icon depicts an unloaded image.
+Click it to load the image.
+<br clear=all><br>
+<a href="x-nil:no-link-here"><img src="x-nil:no-image-here" align=left hspace=2></a>
+If an unloaded image
+is also a link to another document, there is a diagonal line through the image.
+Click in the upper left half
+of the icon to follow the link directly, or in the bottom right half to
+load the image.
+<br clear=all><br>
+<a href="x-nil:no-link-here"><img src="x-nil:no-image-here" ismap align=left hspace=2></a>
+This icon depicts an unloaded clickable map. Because a clickable map is always
+also a link to another document, the diagonal line is here too. Click on the bottom
+right half to load the image. Once it is loaded you can pick a spot from the map.<br>
+You can click in the upper left half of the icon to follow the link without
+map coordinates. Servers should recognize this as a request to a text-only
+version of the page.
+<br clear=all><br>
+<img src="/PROGDIR:Images/def_errimage" align=left hspace=2>
+If an image cannot be loaded for some reason, this icon is shown.
+<br clear=all><br>
+For an inlined image, a so-called ALT-text can be defined. This is a text
+that can be displayed if the browser doesn't display the image. Of course,
+AWeb understands this ALT-text and will display it instead of the icon
+imagery. With ALT-text, unloaded images look like this:
+<br clear=all><br>
+<img src="x-nil:no-image-here" alt="ALT-text" align=left> Unloaded image.
+<br clear=all><br>
+<a href="x-nil:no-link-here"><img src="x-nil:no-image-here" alt="ALT-text" align=left></a>
+Unloaded image that is also a link or a clickable map.
+<br clear=all>
+
+<h2>Downloading</h2>
+Instead of following a link and display the new document, or loading
+and displaying an inlined image, you can <em>download</em> a document
+or an inlined image. To do so, hold the <kbd>Shift</kbd> key while
+clicking the link or image icon. The document or image is retrieved, and a
+standard save requester will pop up to let you specify a file name.
+<p>
+If the document or image is already in <a HREF=../Advanced/cache.html>cache</a>, it
+will only be saved, not retrieved again over the network.
+<p>
+Note you can also save a displayed image in this way. Just press the
+<kbd>Shift</kbd> key and click the image. This will work even for background
+images (only if background images are displayed):
+just shift-click somewhere in the background and you will be asked
+for a filename to save the background image.
+<p>
+If the image is also a link, shift-clicking the image
+could be ambiguous; therefore AWeb will save the image in this case.
+If you want to download the document "behind" the link, you should use
+the <a href=../Starting/popup.html>pop-up menu</a>.
+
+<h2><a name=popup>Pop-up menu</a></h2>
+If you hold the <kbd>ALT</kbd> or the <kbd>Ctrl</kbd> key while you click on a link or an image,
+AWeb opens a <a href=../Starting/popup.html>pop-up menu</a> with several very useful
+choices that were not easily accommodated otherwise.
+<p>
+You can <a HREF=../Configuring/uioptions.html#popup>configure</a> AWeb to open the
+popup menu also when you hold down the <kbd>SHIFT</kbd> key,
+or when you use the middle or right mouse button.
+
+<h2><a name=clipboard>Clipboard usage</a></h2>
+The clipboard is supported in several ways.
+<p>
+You can copy the current URL to the clipboard, so you can easily include it
+in other programs. Use the <code>Control / Copy&nbsp;URL</code> menu item.
+<p>
+You can also paste the clipboard contents to the URL field. Use the
+<code>Control / Paste&nbsp;URL</code> menu item for this. Only the first
+line of text will be pasted.
+<p>
+Finally, you can select text from the page and copy it to the clipboard.
+Drag-select the section of text to be copied, and use the
+<code>Control / Copy&nbsp;block</code> menu item. If you hold the <kbd>Shift</kbd>
+key while drag-selecting, an existing selection is extended to the mouse position.
+<p>
+Although this is a very useful feature, sometimes it can be annoying. Like
+when you click on a link, and accidentely you move the mouse a bit while the mouse
+button is depressed, and your click-on-link has turned into a drag-select.
+To avoid this, you can turn on or off drag-selecting in two ways. First, you
+can use the <code>Control / Dragging</code> menu item to turn drag-selecting
+temporarily on or off. Second, you can
+<a HREF=../Configuring/proptions.html#dragging>configure</a> AWeb so that drag-selecting
+is disabled (or enabled) by default. You can then always turn it on temporarily
+by the <code>Control / Dragging</code> menu item.
+<h2><a name=appwindow>AppWindow feature</a></h2>
+If you run AWeb on the Workbench screen, the browser windows act as
+<em>AppWindows</em>. This means that you can drag a Workbench icon over the
+browser window, and the file associated with that icon will be opened in
+that window.
+
+<h2><a name=iconify>Iconify</a></h2>
+With the <code>Project / Iconify</code> menu item, you can iconify AWeb. When
+iconified, all windows and the own AWeb screen are closed, thereby freeing some
+memory (especially if AWeb was run on its own screen). Also, all images are
+flushed from memory. All transfers continue in the background.
+<p>
+After iconification, AWeb will appear as icon on the WorkBench screen. Double-click
+the icon to let AWeb re-open its screen and windows. You can also drag another icon
+over the AWeb icon to de-iconify AWeb and open the file associated with that icon
+in a new window.
+<p>
+When Iconified, you can still address AWeb's <a href="../Advanced/ARexx/arexx.html">ARexx
+ports</a>. Note that some ARexx commands will cause AWeb to de-iconify automatically.
+<p>
+<hr>
+<a href=../AWeb%20Manual.html><img src=../GlobalImages/back.gif width=32 height=16 alt="<-" border=0></a> Back to
+<a href=../AWeb%20Manual.html>index</a>.
+
+</body>
+</html>

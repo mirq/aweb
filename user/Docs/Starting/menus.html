@@ -1,0 +1,378 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+<html>
+<head>
+<title>
+The menus
+</title>
+</head>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<h1>&nbsp; The menus</h1>
+
+<a href=#project>Project</a>
+<a href=#control>Control</a>
+<a href=#cache>Cache</a>
+<a href=#navigate>Navigate</a>
+<a href=#hotlist>Hotlist</a>
+<a href=#settings>Settings</a>
+<a href=#help>Help</a>
+<a href=#arexx>ARexx</a>
+<h2>Configuring the menu</h2>
+You can <a HREF=../Configuring/uimenus.html>configure</a> the AWeb menus completely.
+<p>
+By default, the menus contain the following choices:
+<a name=project><h2>Project menu</h2></a>
+The <em>Project menu</em> offers functions to open or close windows, fetch
+or save documents, or quit AWeb.
+<dl>
+<dt><strong>New window</strong>
+<dd>Open a new window.
+<dt><strong>Close window</strong>
+<dd>Close the current window.
+<p>
+<dt><strong>Open URL</strong>
+<dd>Open and activate a URL requester so you can type a new URL.
+<dt><strong>Open WWW</strong>
+<dd>Preset the URL field with
+   "<code>http://www.</code>" and activate it for maximum convenience
+   if you want to load a WWW page.
+<dt><strong>Open News</strong>
+<dd>Starts the <a HREF="../Working/news.html">newsreader</a>.
+<dt><strong>Open local...</strong>
+<dd>Opens a standard file requester. After you select a HTML file, the
+   file will be loaded in the current window.
+<dt><strong>Search engines</strong>
+<dd>Opens the local page
+   <a HREF="file:///AWebPath:Extras/AWebSearchEngines/search.html"><code>Extras/AWebSearchEngines/search.html</code></a> which
+   contains a quick interface to several search engines on the Internet.
+<p>
+<dt><strong>Search...</strong>
+<dd>Opens the <a HREF=../Working/search.html>search requester</a>.
+   <br>Pressing the <em>search</em> button will do the same.
+<dt><strong>View source...</strong>
+<dd>Show the HTML source of the current page, using the viewer program
+   that was installed as <a HREF=../Configuring/prprograms.html#viewer>HTML source
+   viewer</a>.
+<dt><strong>Edit source...</strong>
+<dd>Edit the HTML source of the current page, using the editor that you
+   <a HREF=../Configuring/prprograms.html#editor>configured</a>.
+   If you edit a
+   local file (the URL starts with "<code>file://localhost/</code>") the
+   editor will work on the file itself. Otherwise you will edit a temporary
+   file, and your changes are lost when the page is flushed from memory.<br>
+   Whenever you save the file from the editor, the page is reloaded in AWeb
+   and displayed again. So you don't have to leave the editor to see the
+   changes.
+<dt><strong>Save source...</strong>
+<dd>Opens a standard file requester. After you type a file name or select
+   a file, the HTML source of the current page is saved. If the selected
+   file already exists, you have the choice to:
+   <ul>
+   <li>overwrite the old file,
+   <li>append the source to the old file,
+   <li>select another name, or
+   <li>cancel the save altogether.
+   </ul>
+<dt><strong>Save as IFF...</strong>
+<dd>Opens a standard file requester. After you type a file name or select
+   a file, the current page is saved as an IFF image file.
+<dt><strong>Print...</strong>
+<dd>Opens a <a HREF=../Working/print.html>print</a> parameters requester to allow a
+   graphical print of the current document.
+<dt><strong>Info...</strong>
+<dd>Opens the <a HREF=infowindow.html>Information window</a> for the current
+   document.
+<p>
+<dt><strong>About...</strong>
+<dd>Opens a window with version information. If the current window has an
+   <a HREF=../Advanced/ARexx/arexx.html>ARexx port</a>, the name is shown here.
+<p>
+<dt><strong>Iconify</strong>
+<dd>Closes all windows and minimizes AWeb to an icon on the Workbench screen.
+   While AWeb is iconified, network transfers will continue.<br>
+   To re-open the windows, double-click the icon, or drag another icon
+   over the AWeb icon.
+<dt><strong>Quit</strong>
+<dd>Quit AWeb. All pending network operations are cancelled.
+</dl>
+
+<a name=control><h2>Control menu</h2></a>
+The <em>Control menu</em> offers functions to control the operation of
+AWeb, other than cache functions.
+<dl>
+<dt><strong>Load images now</strong>
+<dd>Initiates the load of images in the current document.
+   This menu item has 2 sub-items:
+   <dl>
+   <dt><strong>All images</strong>
+   <dd>Initiates the load of all images in the current document that
+      aren't loaded yet.<br>
+      Pressing the <em>load images</em> button will do the same.
+   <dt><strong>Maps only</strong>
+   <dd>Initiates the load of all clickable maps in the current document
+      that aren't loaded already.
+   </dl>
+<dt><strong>Play background sound</strong>
+<dd>Plays the background sound attached to this page.
+   If the sound is still playing, it will be stopped now and played again from the start.
+<dt><strong>Reset frames</strong>
+<dd>Resets all frames in this window to their original sizes.
+<p>
+<dt><strong>Copy URL</strong>
+<dd>Copies the current URL to the clipboard.
+<dt><strong>Paste URL</strong>
+<dd>Copies the current contents of the clipboard to the URL field.
+<dt><strong>Copy block</strong>
+<dd>Copies the currently <a href=browser.html#clipboard>selected</a>
+   text to the clipboard.
+<dt><strong>Dragging</strong>
+<dd>Toggles the ability to <a href=browser.html#clipboard>drag-select</a>
+   text for the clipboard on or off.
+<p>
+<dt><strong>Network status...</strong>
+<dd>Open the <a HREF=../Working/nws.html>network status window</a>, or bring it up
+   to front if it is already open.<br>
+   Pressing the <em>network status</em> button will do the same.
+<dt><strong>Reload</strong>
+<dd><dl>
+   <dt><strong>Current document</strong>
+   <dd>Reload the current document. The page is deleted from the cache, and
+      retrieved again.<br>
+      Pressing the <em>reload</em> button will do the same.
+   <dt><strong>Images in current</strong>
+   <dd>Reloads the images in the current document. The images are retrieved again
+      from their original source.
+   </dl>
+<dt><strong>Cancel load</strong>
+<dd>Interrupt (cancel) the load of a page in this window. Background loads
+   cannot be cancelled by this menu function, use the cancel button in the
+   <a HREF=../Working/nws.html>network status window</a> instead.<br>
+   Pressing the <em>cancel</em> button, or pressing the
+   <kbd>Esc</kbd> key will do the same.
+<p>
+<dt><strong>Next window</strong>
+<dd>Activates and brings up to front the next window.
+<dt><strong>Previous window</strong>
+<dd>Activates and brings up to front the previous window.
+<p>
+<dt><strong>Disable proxy</strong>
+<dd>If you have <a HREF=../Configuring/nwproxy.html>proxies</a> configured, you can
+   select this menu item to toggle the use of proxies on and off. This
+   feature is included because some proxies tend to handle forms and
+   authorized requests incorrectly.
+<p>
+<dt><strong>Break JavaScript</strong>
+<dd>Stops all running <a HREF="../Working/javascript.html">JavaScript</a> programs.
+<dt><strong>Debug JavaScript</strong>
+<dd>Opens the <a HREF="../Advanced/jsprogrammer.html#debugger">JavaScript debugger</a>
+   for every JavaScript program started.
+</dl>
+
+<a name=cache><h2>Cache menu</h2></a>
+The <em>Cache menu</em> offers functions to control the
+<a HREF=../Advanced/cache.html>cache</a>, and to save or flush the cached
+<a HREF=../Working/authorize.html>authorizations</a>.
+<dl>
+<dt><strong>Cache browser...</strong>
+<dd>Opens the <a HREF=../Working/cachebrowser.html>cache browser</a>.
+<p>
+<dt><strong>Flush from memory</strong>
+<dd>Flush one of the following from the memory cache. If the objects were
+   also on disk, they will remain there.
+   <dl>
+   <dt><strong>Nondisplayed images</strong>
+   <dd>All images that are not used in the currently visible page(s)
+      are flushed from memory.
+   <dt><strong>All images</strong>
+   <dd>All images, including those on the current page, are flushed
+      from memory.
+   <dt><strong>Nondisplayed documents</strong>
+   <dd>All documents that are not currently visible are flushed from
+      memory.
+   </dl>
+<dt><strong>Delete from disk</strong>
+<dd>Delete one of the following from the disk cache and also from memory if
+   the objects are not in use. You will be asked for confirmation first.
+   <dl>
+   <dt><strong>All images</strong>
+   <dd>Delete all images from the disk cache.
+   <dt><strong>All documents</strong>
+   <dd>Delete all documents from the disk cache.
+   <dt><strong>Erase cache</strong>
+   <dd>Delete all images and documents from the disk cache.
+   </dl>
+<dt><strong>Fix cache...</strong>
+<dd>Synchronizes the cache registration with the files actually found on
+   disk. Also, any files in the <a HREF=../Advanced/cache.html#cachedir>cache directory</a>
+   that don't belong to AWebs cache are deleted.
+<p>
+<dt><strong>Save authorizations</strong>
+<dd>Save the current <a HREF=../Working/authorize.html>authorization</a> details.
+<dt><strong>Edit authorizations</strong>
+<dd>Opens the <a HREF=../Working/authorize.html#edit>authorization edit window</a>.
+</dl>
+
+<a name=navigate><h2>Navigate menu</h2></a>
+The <em>Navigate menu</em> offers functions to navigate in the document
+history.
+<dl>
+<dt><strong>Back</strong>
+<dd>Walk back one document through the window history. The window history
+   contains all pages viewed before <em>in this window</em>.<br>
+   Pressing the <em>back</em> button, or using the
+   <kbd>Alt + cursor left</kbd> key combination, will do the same.
+<dt><strong>Forward</strong>
+<dd>Walk forward one document through the window history. The window history
+   contains all pages viewed before <em>in this window</em>.<br>
+   Pressing the <em>forward</em> button, or using the
+   <kbd>Alt + cursor right</kbd> key combination, will do the same.
+<dt><strong>Home document</strong>
+<dd>Retrieve the URL that is configured as your
+   <a HREF=../Configuring/nwoptions.html#home>home page</a>.<br>
+   Pressing the <em>home</em> button will do the same.
+<p>
+<dt><strong>Window history</strong>
+<dd>Show the <a HREF="../Working/winhis.html">window history requester</a>.
+</dl>
+
+<a name=hotlist><h2>Hotlist menu</h2></a>
+The <em>Hotlist menu</em> offers functions to use the
+<a HREF=../Working/hotlist.html>hotlist</a>, or to read foreign hotlists.
+<dl>
+<dt><strong>Add to hotlist</strong>
+<dd>Add the current document to the end of your hotlist.<br>
+   Pressing the <em>add to hotlist</em> button will do the same.
+<dt><strong>Show hotlist</strong>
+<dd>Show the hotlist in the browser window.<br>
+   Pressing the <em>hotlist</em> button will do the same.
+<p>
+<dt><strong>View hotlist...</strong>
+<dd>Opens the <a HREF=../Working/hotlist.html#viewer>hotlist viewer window</a>.
+   <br>You can <a HREF=../Configuring/proptions.html#hlrequester>configure</a>
+   AWeb so that the <em>hotlist</em> button will do the same.
+<dt><strong>Hotlist manager...</strong>
+<dd>Opens the <a HREF=../Working/hotlistmgr.html>hotlist manager window</a>.
+<dt><strong>Save hotlist</strong>
+<dd>Save any changes made to the hotlist now. Changes will be saved
+   when you quit AWeb automatically, but sometimes you might want to save
+   changes earlier.
+<dt><strong>Restore last saved</strong>
+<dd>Reverts the hotlist to the last saved version.
+<p>
+<dt><strong>AMosaic (ARexx)</strong>
+<dd>Show the ARexx-based hotlist of AMosaic 1.2. AWeb expects it to
+   reside under the name <code>ENV:mosaic/hotlist.html</code>.
+<dt><strong>AMosaic (2.0)</strong>
+<dd>Show the hierarchical hotlist of AMosaic 2.0 (pre-release). AWeb
+   expects it to reside under the name
+   <code>ENV:mosaic/.mosaic-hotlist-default</code>.
+<dt><strong>Other...</strong>
+<dd>Opens a standard file requester, from which you can select other
+   hierarchical hotlists. These include hotlists saved by older versions
+   of IBrowse, and other hotlists created by AWeb.
+</dl>
+
+<a name=settings><h2>Settings menu</h2></a>
+The <em>Settings menu</em> offers functions to configure AWeb.
+<dl>
+<dt><strong>Image loading</strong>
+<dd>This menu item provides a quick way to set the
+   <a HREF=../Configuring/nwoptions.html#imgload>image loading</a>. It has 3
+   sub-items:
+   <ul>
+   <li>All images
+   <li>Maps only
+   <li>Off
+   </ul>
+   with the same meaning as the choices in the
+   <a HREF=../Configuring/nwoptions.html#imgload>image loading</a> chooser.
+<dt><strong>Backgrounds</strong>
+<dd>This menu item provides a quick way to set the
+   <a HREF=../Configuring/broptions.html#background>background colors and images</a>
+   setting.
+<dt><strong>Background sounds</strong>
+<dd>This menu item provides a quick way to set the
+   <a HREF=../Configuring/broptions.html#bgsound>background sounds</a>
+   setting.
+<p>
+<dt><strong>Browser settings...</strong>
+<dd>Brings up the <a HREF=../Configuring/settings.html#browser>browser settings requester</a>.
+<dt><strong>Program settings...</strong>
+<dd>Brings up the <a HREF=../Configuring/settings.html#program>program settings requester</a>.
+<dt><strong>GUI settings...</strong>
+<dd>Brings up the <a HREF=../Configuring/settings.html#gui>GUI settings requester</a>.
+<dt><strong>Network settings...</strong>
+<dd>Brings up the <a HREF=../Configuring/settings.html#network>network settings requester</a>.
+<dt><strong>ClassAct settings...</strong>
+<dd>Brings up the <a href=../Beginning/classact.html>ClassAct</a> preferences requester.
+<p>
+<dt><strong>Save current settings</strong>
+<dd>Saves all current settings.
+<dt><strong>Save settings as...</strong>
+<dd>Saves all current settings as another configuration. A file requester will
+   pop up from which you can select the drawer where to save the settings.
+   Usually you will save the settings in a drawer in <code>ENVARC:AWeb3</code>
+   so you can use the drawer name as <A HREF="../Working/startup.html">CONFIG</A> tooltype
+   or argument when you start AWeb.
+<dt><strong>Load settings...</strong>
+<dd>Load an alternate configuration. This will pop up a file requester in which
+   you can select the drawer that AWeb should read its new settings from.
+<dt><strong>Snapshot windows</strong>
+<dd>Saves the current positions of the first browser window and all requester
+   windows.
+   This function also saves the <em>zoomed</em> size of the first browser window.
+</dl>
+
+<a name=help><h2>Help menu</h2></a>
+The <em>Help menu</em> offers you more information.
+<dl>
+<dt><strong>Documentation</strong>
+<dd>Shows the <a href=../AWeb%20Manual.html>AWeb manual</a> in this window.
+<p>
+<dt><strong>AWeb home page</strong>
+<dd>Retrieves the AWeb Home page.
+   A TCP stack must be running, and you must be connected to the Internet
+   for this function to work.
+</dl>
+
+<a name=arexx><h2>ARexx menu</h2></a>
+The <em>ARexx menu</em> offers functions to start ARexx macros.
+<dl>
+<dt><strong>Start ARexx macro...</strong>
+<dd>Opens a standard file requester. After you select an ARexx macro, that
+   macro will be executed with the original window as default port.
+<p>
+<dt><strong><i>User-configurable items</i></strong>
+<dd>The remainder of this menu contains a list of ARexx macros you
+   can configure yourself.
+   Use the <a HREF="../Configuring/uimenus.html">Menu</a> settings
+   page for this.
+</dl>
+
+<p>
+<hr>
+<a href=../AWeb%20Manual.html><img src=../GlobalImages/back.gif width=32 height=16 alt="<-" border=0></a> Back to
+<a href=../AWeb%20Manual.html>index</a>.
+
+</body>
+</html>

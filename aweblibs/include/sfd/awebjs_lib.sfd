@@ -1,0 +1,64 @@
+==id $Id: awebjs_lib.sfd,v 1.4 2006/05/24 21:50:59 broadblues Exp $
+==base _AWebJSBase
+==basetype struct Library *
+==libname awebjs.library
+==bias 30
+==public
+==include <exec/types.h>
+==include <libraries/awebjs.h>
+struct Jcontext * Newjcontext(UBYTE * screenname) (a0)
+void Freejcontext(struct Jcontext * jc) (a0)
+BOOL Runjprogram(struct Jcontext * jc, struct Jobject * fscope, UBYTE * source,
+        struct Jobject * jthis, struct Jobject ** gwtab, ULONG protkey,
+        ULONG userdata) (a0,a1,a2,a3,a4,d0,d1)
+struct Jobject * Newjobject(struct Jcontext * jc) (a0)
+void Disposejobject(struct Jobject * jo) (a0)
+struct Jobject * AddjfunctionA(struct Jcontext * jc, struct Jobject * jo, UBYTE * name,
+        void (*code)(struct Jcontext *), UBYTE ** args) (a0,a1,a2,a3,a4)
+==varargs
+struct Jobject * Addjfunction(struct Jcontext * jc, struct Jobject * jo, UBYTE * name,
+        void (*code)(struct Jcontext *), ULONG args, ...) (a0,a1,a2,a3,a4)
+struct Jvar * Jfargument(struct Jcontext * jc, long n) (a0,d0)
+UBYTE * Jtostring(struct Jcontext * jc, struct Jvar * jv) (a0,a1)
+void Jasgstring(struct Jcontext * jc, struct Jvar * jv, UBYTE * string) (a0,a1,a2)
+void Jasgobject(struct Jcontext * jc, struct Jvar * jv, struct Jobject * jo) (a0,a1,a2)
+void Setjobject(struct Jobject * jo, Objhookfunc * hook, void * internal,
+        Objdisposehookfunc * dispose) (a0,a1,a2,a3)
+struct Jvar * Jproperty(struct Jcontext * jc, struct Jobject * jo, UBYTE * name) (a0,a1,a2)
+void Setjproperty(struct Jvar * jv, Varhookfunc * hook, void * hookdata) (a0,a1,a2)
+struct Jobject * Jthis(struct Jcontext * jc) (a0)
+void * Jointernal(struct Jobject * jo) (a0)
+void Jasgboolean(struct Jcontext * jc, struct Jvar * jv, BOOL bvalue) (a0,a1,d0)
+BOOL Jtoboolean(struct Jcontext * jc, struct Jvar * jv) (a0,a1)
+struct Jobject * Newjarray(struct Jcontext * jc) (a0)
+struct Jvar * Jnewarrayelt(struct Jcontext * jc, struct Jobject * jo) (a0,a1)
+struct Jobject * Jtoobject(struct Jcontext * jc, struct Jvar * jv) (a0,a1)
+long Jtonumber(struct Jcontext * jc, struct Jvar * jv) (a0,a1)
+void Jasgnumber(struct Jcontext * jc, struct Jvar * jv, long nvalue) (a0,a1,d0)
+BOOL Jisarray(struct Jcontext * jc, struct Jobject * jo) (a0,a1)
+struct Jobject * Jfindarray(struct Jcontext * jc, struct Jobject * jo, UBYTE * name) (a0,a1,a2)
+void Jsetprototype(struct Jcontext * jc, struct Jobject * jo, struct Jobject * proto) (a0,a1,a2)
+ULONG Jgetuserdata(struct Jcontext * jc) (a0)
+BOOL Jisnumber(struct Jvar * jv) (a0)
+void Clearjobject(struct Jobject * jo, UBYTE ** except) (a0,a1)
+void Freejobject(struct Jobject * jo) (a0)
+void Jdumpobjects(struct Jcontext * jc) (a0)
+struct Jvar * Jgetreturnvalue(struct Jcontext * jc) (a0)
+void Jpprotect(struct Jvar * var, ULONG protkey) (a0,d0)
+void Jcprotect(struct Jcontext * jc, ULONG protkey) (a0,d0)
+UBYTE * Jpname(struct Jvar * var) (a0)
+Objdisposehookfunc * Jdisposehook(struct Jobject * jo) (a0)
+void Jsetfeedback(struct Jcontext * jc, Jfeedback * jf) (a0,a1)
+void Jdebug(struct Jcontext * jc, BOOL debugon) (a0,d0)
+void Jerrors(struct Jcontext * jc, BOOL comperrors, long runerrrs, BOOL watch) (a0,d0,d1,d2)
+void Jkeepobject(struct Jobject * jo, BOOL used) (a0,d0)
+void Jgarbagecollect(struct Jcontext * jc) (a0)
+void Jsetlinenumber(struct Jcontext * jc, long linenr) (a0,d0)
+void Jsetobjasfunc(struct Jobject * jo, BOOL asfunc) (a0,d0)
+void Jsetscreen(struct Jcontext * jc, UBYTE * screenname) (a0,a1)
+void Jaddeventhandler(struct Jcontext * jc, struct Jobject * jo, UBYTE * name, UBYTE * source) (a0,a1,a2,a3)
+struct Jvar * Jaddproperty(struct Jcontext * jc, struct Jobject * jo, UBYTE * name) (a0,a1,a2)
+struct Jobject * Newjscope(struct Jcontext *jc)(a0)
+void Disposejscope(struct Jobject *jo)(a0)
+void Jallowgc(struct Jcontext *jc, BOOL allow)(a0,d0)
+==end

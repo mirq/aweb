@@ -1,0 +1,7 @@
+MODULES := aweblib/startup.aweblib
+
+aweblib/startup.aweblib/TYPE   := executable/library/amigashared
+aweblib/startup.aweblib/DEPS := linklibs/libmoduleinit.a
+aweblib/startup.aweblib/CFILES := \
+startup
+

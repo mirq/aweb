@@ -1,0 +1,90 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+<html>
+<head>
+<title>
+Sending mail
+</title>
+</head>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<h1>&nbsp; Sending mail</h1>
+
+You can use the built-in mailer to send e-mail messages. This includes full
+support for <code>mailto:</code> type URLs and forms. Reading mail is
+not supported.
+
+<h2>Setup</h2>
+Before you can use the built-in mailer, you have to configure it
+in the <a href="../Configuring/nwmail.html">Mail/News</a> page of the
+<a href="../Configuring/settings.html#network">network settings window</a>.
+
+<h3>Required settings</h3>
+The following fields are required:
+<ul>
+<li>Your <a href="../Configuring/nwmail.html#email">e-mail address</a> and
+<li>your <a href="../Configuring/nwmail.html#realname">real name</a>.
+<li>The <a href="../Configuring/nwmail.html#smtphost">SMTP mail host</a> that
+   you are going to use, probably this is called "<code>mail.</code>"
+   or "<code>smtp.</code>" followed by the name of your provider.
+</ul>
+
+<h3>Optional settings</h3>
+The following fields are optional:
+<ul>
+<li>A <a href="../Configuring/nwmail.html#replyto">reply-to address</a> if
+   reactions in e-mail should go to a different address.
+<li>Your <a href="../Configuring/nwmail.html#signature">signature file</a>,
+   the contents of this file is appended to every mail message you send.
+</ul>
+<p>
+Optionally, you can use an <a href="../Configuring/nwmail.html#extmailer">
+external mailer</a> instead of the built-in one.
+<p>
+
+<h2>Writing a message</h2>
+Whenever you click a <code>mailto:</code> type URL, or you submit a
+"mailto-form", the <em>new mail</em> form is displayed. You can change
+the addressee (although this is not recommended), change the subject,
+and write your message.
+<p>
+If you entered the mailer to write a personal reply to a
+<a href="news.html">newsgroup</a> article, the original article is quoted
+(included in your article). Please spend a few seconds to cut down the
+quoted text until it only contains the lines that you are actually
+responding to.
+<p>
+You can <a href="../Configuring/nwmail.html#mailquote">customize</a> the quote
+header that appears above the quoted text.
+<p>
+You can add extra message headers to your article. To do so, check the
+<em>extra mail headers included</em> checkbox, and add the extra headers to
+the start of the message body. You must leave a blank line after the last
+header line to separate the extra headers from the message body.
+
+<p>
+<hr>
+<a href=../AWeb%20Manual.html><img src=../GlobalImages/back.gif width=32 height=16 alt="<-" border=0></a> Back to
+<a href=../AWeb%20Manual.html>index</a>.
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+; Sample script to start a TCP program that does not return when
+; the session is active.
+;
+; Note that this is the first part, you will have to change the
+; file _starttcpscript2 too.
+;
+; To use this script, configure AWeb to use for its Start TCP program:
+;    command = (path)/_starttcpscript
+;  arguments = (none)
+;
+; Make sure to change the path name for _starttcpscript2 below to the one
+; you're actually using.
+; =======================================================================
+
+.key DUMMY/K ; so we can use <$$>
+FailAt 10
+
+; Set variable to our process number so the _starttcpscript2 script
+; can break us if the connection fails
+
+SetEnv STARTTCPPROCESS <$$>
+
+; Start the TCP stack in a separate CLI
+;
+; ***********************************************************************
+; *** Change the path in the next line to the actual path where 
+; *** _starttcpscript2 can be found:
+
+Run Execute AWeb APL Lite:docs/_starttcpscript2
+
+; ***********************************************************************
+
+; Wait until the tcp library is present.
+
+FailAt 30
+Lab WaitForLib
+
+Wait 2
+
+Version >NIL: "bsdsocket.library"
+
+If WARN
+  Skip Back WaitForLib
+EndIf
+
+; Unset the variable holding our process number so if the TCP program
+; fails after some time the second script won't break some innocent process
+
+UnSetEnv STARTTCPPROCESS

@@ -1,0 +1,85 @@
+<html>
+<head>
+<title>Plugin example</title>
+</head>
+<body>
+<h1>Plugin example</h1>
+
+<h2>The module</h2>
+The <code>ilbmexample.awebplugin</code> module is included as an
+example of an AWeb plugin module, with complete sources.
+<p>
+It is a simple progressive decoder for ILBM images. Being an example,
+it is not optimized in any way. It is slow, it uses only standard
+bitmaps, it uses a simple colour allocation scheme, and it does not
+support scaling or transparency.
+<p>
+You can try the module. Open the browser settings, skip to the MIME
+(Viewers) page. Add or change the following entry:
+<table border width=100%>
+<tr>
+   <td>IMAGE/X-ILBM
+   <td nowrap>iff ilbm
+   <td>A
+   <td nowrap><i>path</i> /ilbmexample/ilbmexample.awebplugin
+</table>
+Then try any page containing ILBM images, like
+<a href=examplepage.html>this one</a>.
+
+<h2>The sources</h2>
+All sources are located in the <code>ilbmexample</code> drawer in
+this archive. They can be compiled with SAS/C 6.57. Before compiling
+with other compilers they will probably need some modifications.
+
+<h3><a href="../ilbmexample/pluginlib.h"><code>pluginlib.h</code></a></h3>
+This header file contains some project dependent definitions that are
+needed in <code>startup.c</code> and other files. Main reason for this
+file is that it allows to reuse <code>startup.c</code> in other
+plugin projects without modification.
+
+<h3><a href="../ilbmexample/startup.c"><code>startup.c</code></a></h3>
+The library startup code. It can be used unchanged in other plugin
+module projects.
+<p>
+It needs a couple of project dependent functions to be defined
+in other files:
+<table border>
+<tr><th align=left valign=top>Function
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>Initpluginlib()
+   <td valign=top>Called from the library initialization code.
+<tr><th align=left valign=top>Expungepluginlib()
+   <td valign=top>Called from the library expunge code. All resources
+      should be freed.
+<tr><th align=left valign=top>Initplugin()
+   <td valign=top>Implementation of the <a href=initplugin.html>Initplugin()</a>
+      library function.
+</table>
+In this example, these functions are defined in the <code>ilbmexample.c</code> file.
+
+<h3><a href="../ilbmexample/ilbmexample.h"><code>ilbmexample.h</code></a></h3>
+General prototypes and private attribute definitions used in other files.
+
+<h3><a href="../ilbmexample/ilbmexample.c"><code>ilbmexample.c</code></a></h3>
+Defines the library bases we use, and implements the project dependent
+functions that <code>startup.c</code> needs.
+
+<h3><a href="../ilbmexample/ilbmsource.c"><code>ilbmsource.c</code></a></h3>
+Implements the plugin <a href=sourcedriver.html>sourcedriver subclass</a>.
+
+<h3><a href="../ilbmexample/ilbmcopy.c"><code>ilbmcopy.c</code></a></h3>
+Implements the plugin <a href=copydriver.html>copydriver subclass</a>.
+
+<h3><a href="../ilbmexample/ilbmexample.lnk"><code>ilbmexample.lnk</code></a></h3>
+Source for the linker.
+
+<h3><a href="../ilbmexample/scoptions"><code>SCOPTIONS</code></a></h3>
+SAS/C compiler options.<p>
+Plugin modules should be compiled without stack checking.
+
+<h3><a href="../ilbmexample/smakefile"><code>smakefile</code></a></h3>
+SAS/C make file.
+
+</body>
+</html>
+

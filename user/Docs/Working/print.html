@@ -1,0 +1,136 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+<html>
+<head>
+<title>
+Print a document
+</title>
+</head>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<h1>&nbsp; Print a document</h1>
+
+<h2>The print parameters requester</h2>
+Before AWeb starts printing the current page, you can alter some parameters.
+You open the <em>print parameters</em> requester with the <code>Project /
+Print...</code> menu item.
+<p>
+Printer parameters that cannot be controlled in the print parameters window
+can be changed using the standard Workbench <em>PrinterGfx</em> preferences
+utility.
+
+<h3>Layout width</h3>
+With this chooser you tell AWeb which width to use to layout the document
+before sending it to the printer. You are offered three choices:
+<table>
+<tr><th align=left valign=top>Window
+   <td>The document will appear exactly as it is displayed in the window.
+      This means that if the document contains wide objects (tables, images) that
+      fall outside the window, these objects will fall off the paper, too.
+
+<tr><th align=left valign=top>Document
+   <td>The document takes the full paper width (unless you scale down).<br>
+      Even if the document contains wide items, the printout will contain
+      all the information. Note that in this case, the document will be laid
+      out again as if it was displayed in a window wide enough to contain
+      all the items. Because of this, it may appear differently from the exact
+      layout as currently displayed in the window.<br>
+      If the document takes up less space than the current window width, it will
+      appear blown up on the paper, because the document is made to take up the
+      full paper width.
+
+<tr><th align=left valign=top>Screen
+   <td>The document is printed as if the screen would take up the paper width.
+      This will produce more uniformly sized printouts, regardless of the
+      current window width or document width. The document is laid out again
+      so the exact layout may differ from that in the window.
+      Note that if the document is wider than the screen, some information
+      will still fall off the paper.
+
+</table>
+
+<h3>Scale (%)</h3>
+Here you can change the scale for printing the document. Printing at 100%
+takes up the full paper width. The document is always printed with an 1:1
+(square) aspect ratio, because many if not all pages are designed for this
+ratio. This means that if you use AWeb on a aspect ratio 1:2 screen (like
+640 x 256) the printout is about half in height compared to the screen.
+
+<h3>Center</h3>
+When printing with a scale less than 100%, this checkbox allows the printout
+to be horizontally centered on the paper.
+
+<h3>Formfeed</h3>
+If this is checked, a formfeed is sent to the printer after printing the
+document. Without formfeeds, you can print several small documents on one sheet
+of paper.
+
+<h3>Print backgrounds</h3>
+Some documents have a background colour or a background image that may make the printout
+quite unreadable. This is especially the case when printing in black and white or
+greyscale.
+<p>
+If this checkbox is <strong>not</strong> selected, the background of the page will not be
+printed, but is left white instead. Furthermore, to gain maximum readability
+all text is printed in black. The printout of embedded images is not affected.
+
+<h2>Print in progress</h2>
+While AWeb is printing the document, the <em>print in progress</em> requester
+is shown. You can cancel the current print with the <b>Cancel</b> button. Note
+that it can take a few seconds before the print is actually cancelled and the
+requester disappears.
+<p>
+While the document is being printed, you can go on and visit other documents.
+You cannot start another print though, you will either have to wait until the current
+printout is ready, or cancel it.
+
+<h2>When it doesn't print...</h2>
+If you run AWeb on a <a href=../Configuring/prscreen.html>screen</a> with more than
+256 colours with OS version 3.1 or lower, printing probably doesn't work.
+This is not the fault of AWeb, but
+of the printer driver you are using. Most printer drivers today cannot handle
+<em>bitmaps</em> with more than 256 colours (8 bits).
+<p>
+You will have to change the <a href=../Configuring/prscreen.html>screenmode</a> that
+AWeb is using, and optionally select to load a spread palette. Then printing
+shouldn't be a problem.
+<p>
+As soon as printer drivers become available that can handle more than 256 colours,
+like those that come with OS 3.5,
+you can print from screens with more colours directly.
+<p>
+<font size=-1>Technically AWeb could convert everything down to 8-bit, but that
+would be slow (all images on the page have to be remapped), would require more
+options (like <i>load spread palette</i>, and the option to disable the conversion
+if the user has a &gt;8 bit capable printer driver), the remapping of datatypes
+would need a real visible screen instead of the off-screen bitmap AWeb uses now
+(datatypes need a Screen to remap themselves to), and would of course make the
+executable bigger. I don't think applications should kludge around a limitation
+in other software this way.
+
+<p>
+<hr>
+<a href=../AWeb%20Manual.html><img src=../GlobalImages/back.gif width=32 height=16 alt="<-" border=0></a> Back to
+<a href=../AWeb%20Manual.html>index</a>.
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+
+<HTML>
+
+<HEAD>
+<TITLE>Browser settings: Viewers</TITLE>
+<META NAME="KEYWORDS" CONTENT="html,gif,jpg,jpeg,png,wav,midi,mpg,mpeg,lha,lzx">
+<META NAME="KEYWORDS" CONTENT="plugin,pipe">
+</HEAD>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<H1>&nbsp; Browser settings: Viewers</H1>
+
+<IMG SRC="Images/BrowserSettings-Viewers.png" ALIGN="RIGHT" ALT="Browser Settings: Viewers Tab" WIDTH="362" HEIGHT="355" HSPACE="20" VSPACE="20" BORDER="0">
+
+<H2>Purpose</H2>
+
+For objects that cannot be displayed directly in the browser window, AWeb starts an external program, called a <EM>viewer</EM>.  In spite of the name "viewer", this is not limited to graphical files.  The external viewer for an audio file, for example, will play the audio file.  For other objects, you may want to make use of an external <EM>plugin module</EM>, either because AWeb doesn't handle the object internally, or the plugin module offers more features.  Finally, you may know that you always want to save certain type of objects to disk (Lha archives, for example).
+<P>The type of the object, and thereby the particular action to take, is determined by the <A HREF="../Configuring/mime.html">MIME type</A> of the object.
+<P>For each MIME type you want to be recognized by AWeb, there should be an entry on this page with the appropriate action and viewer or plugin module name defined.
+
+<H2>Changing MIME types</H2>
+
+Select the MIME type you want to modify from the listview.  Use the <B>Add</B> button to add a new blank row.  Use the <B>Del</B> button to remove the selected row.  Note that the TEXT/HTML and TEXT/PLAIN types cannot be removed.
+
+<H2>MIME type and subtype</H2>
+
+In these string gadgets, you specify the MIME type and subtype.  See the <A HREF="../Configuring/mime.html">About MIME types</A> chapter for more information on MIME types.
+<P>You can use an asterisk to specify a wildcard subtype.  AWeb will use the external viewer defined in this row for files with the same type but a subtype for which no external viewer is defined.  See the <A HREF="#example">example</A>.
+
+<H2>Extensions</H2>
+
+Most servers send the MIME type together with the data.  AWeb will then use this MIME type, unless <A HREF="nwoptions.html#ignoremime">Ignore server MIME type</A> is selected.  If the server doesn't specify the MIME type (or if it is ignored), AWeb tries to determine the MIME type from the file name extension.  If that fails, AWeb looks at the data to see if it is HTML text or plain text.
+<P>The extensions are especially important when looking at local files.  As there is no server for local files, there is only the extension that tells AWeb about the type of the file.
+<P>In this string gadget, you type the extensions that could identify this MIME type.  Separate multiple extensions by spaces or commas.  The extensions are not case sensitive.
+
+<H2>Action</H2>
+
+Use this chooser to select the action to perform for the MIME type.
+
+<TABLE>
+<TR><TH ALIGN="LEFT" VALIGN="TOP">Default</TH><TD VALIGN="TOP">Specifying <EM>Default</EM> for a "TYPE/SUBTYPE" entry means to use the action specified for "TYPE/*".  For "TYPE/*" entries, <EM>Default</EM> is the same as <EM>Internal</EM>.</TD></TR>
+<TR><TH ALIGN="LEFT" VALIGN="TOP">Internal (I)</TH><TD VALIGN="TOP">For TEXT/HTML, TEXT/PLAIN, IMAGE/* and AUDIO/* types, AWeb has built-in drivers.  The image and audio drivers are based on datatypes, and therefore somewhat limited in their features.</TD></TR>
+<TR><TH ALIGN="LEFT" VALIGN="TOP">AWeb Plugin (A)</TH><TD VALIGN="TOP">AWeb supports the use of external <EM>plugin modules</EM>.  Plugin modules act as a replacement or addition to the internal drivers.<P>Use the <EM>Name</EM> field to select the name of the plugin module to be used.  Use the <EM>Arguments</EM> field to specify any additional arguments that the plugin module may need.  Refer to the documentation of the plugin module for the arguments allowed.<P><B>NOTE:</B> These plugin modules should not be confused with external ARexx scripts, sometimes also called "plugins".</TD></TR>
+<TR><TH ALIGN="LEFT" VALIGN="TOP">External program (E)</TH><TD VALIGN="TOP">An external program will be started for this file.<P>Use the <A HREF="cmdargs.html">Command and Arguments</A> fields to specify the viewer command to execute for this MIME type.  Argument parameters are:
+<TABLE>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%f</TH><TD>file name to "view"</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%n</TH><TD>screen name that AWeb is running on, in case your external viewer supports opening on a public screen.  Use this only if you want it to open on the same screen as AWeb.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%u</TH><TD>original URL of this object.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%m</TH><TD>the MIME type of the object.</TD></TR>
+</TABLE></TD></TR>
+<TR><TH ALIGN="LEFT" VALIGN="TOP">External program with PIPE (P)</TH><TD VALIGN="TOP">As with <EM>External program</EM>, an external program is started.  The difference is that using a PIPE the program is started as soon as data for the file arrives, and the data is sent to the program through a PIPE: file.  This speeds up the process, because you don't have to wait until all data has arrived before the program is started.<BR>Note that datatype based programs do not work with PIPEs.</TD></TR>
+<TR><TH ALIGN="LEFT" VALIGN="TOP">External program with No Fetch (F)</TH><TD VALIGN="TOP">Allows you to pass the URI onto an external program and cancels Aweb's fetch process.  You would do this if passing the URI to a external program that initiates its own network activity, where making AWeb fetch is needless and wasteful.  It was conceived in discussion with Paul Heanms (Bean), the author of Tunenet.</TD></TR>
+<TR><TH ALIGN="LEFT" VALIGN="TOP">Save to disk (S)</TH><TD VALIGN="TOP">The file is not processed, but always saved to disk instead.</TD></TR>
+<TR><TH ALIGN="LEFT" VALIGN="TOP">Cancel (C)</TH><TD VALIGN="TOP">Simply cancels the fetch for any MIME type you are not interested in.</TD></TR>
+</TABLE>
+
+<P>If AWeb can't determine the MIME type, or if the MIME type is known but not in the list, or if the MIME type is in the list but there is no valid action defined, AWeb will pop up a save requester.  You can than save the file, and try to process it later.
+<P><B>NOTE</B> that these MIME settings are used for <EM>every</EM> file.  Especially embedded images in a HTML document will be shown by an external viewer if you define one for images.  To display the images in the HTML document itself, set the action to internal, or configure an appropriate plugin module.  You can define a separate <A HREF="prprograms.html">image viewer</A> to be used for standalone images.
+
+<H2><A NAME="example">Example</A></H2>
+
+Suppose you want to play MIDI audio files using the GMPlay program, and other audio files using the (hypothetical) PowerEars program that can take a PIPE (streaming input).  It should open its window on the same screen as AWeb.  Since you have a WAV datatype, WAV sounds should be played by AWeb internally.
+<P>Then you would configure the following MIME types:
+
+<DL>
+
+<DT><TABLE BORDER="1" WIDTH="100%"><TR><TD WIDTH="20%">AUDIO/BASIC</TD><TD WIDTH="20%" NOWRAP>au</TD><TD WIDTH="1%">D</TD><TD WIDTH="59%"></TD></TR></TABLE>
+<DD>This row specifies that AU files can be recognized by their .au extension.  You specify the default action (D) because you want to use the default player, defined in the AUDIO/* row.
+
+<P><DT><TABLE BORDER="1" WIDTH="100%"><TR><TD WIDTH="20%">AUDIO/MIDI</TD><TD WIDTH="20%" NOWRAP>midi mid</TD><TD WIDTH="1%">E</TD><TD WIDTH="59%">GMPlay:GMPlay %f</TD></TR></TABLE>
+<DD>This row defines the possible extensions .midi and .mid for MIDI files.  It also specifies that MIDI files should be played using the external (E) GMPlay program.
+
+<P><DT><TABLE BORDER="1" WIDTH="100%"><TR><TD WIDTH="20%">AUDIO/WAV</TD><TD WIDTH="20%" NOWRAP>wav</TD><TD WIDTH="1%">I</TD><TD WIDTH="59%"></TD></TR></TABLE>
+<DD>This row specifies that WAV files can be recognized by their .wav extension, and that they should be played by AWeb internally (I).
+
+<P><DT><TABLE BORDER="1" WIDTH="100%"><TR><TD WIDTH="20%">AUDIO/X-8SVX</TD><TD WIDTH="20%" NOWRAP>8svx svx</TD><TD WIDTH="1%">D</TD><TD WIDTH="59%"></TD></TR></TABLE>
+<DD>This row defines an extension MIME type for 8SVX files.  Note that the subtype starts with <B>X-</B> because it is not an official MIME type.  This line is important when accessing at 8SVX files on your local computer, as AWeb has no way to identify them as 8SVX files other than the extensions given here.
+
+<P><DT><TABLE BORDER="1" WIDTH="100%"><TR><TD WIDTH="20%">AUDIO/*</TD><TD WIDTH="20%" NOWRAP></TD><TD WIDTH="1%">P</TD><TD WIDTH="59%">PE:PowerEars %f PUBSCREEN %n</TD></TR></TABLE>
+<DD>This row defines what player (the hypothetical Powerears program) to use for all other audio files but MIDI and WAV.  Even files with different subtypes than BASIC (but main type AUDIO) will be played using this player.
+<P>There are no extensions defined here, because all extensions are given in the different subtype rows.  As an alternative, you could remove the AUDIO/BASIC and AUDIO/X-8SVX rows, and specify all extensions (au 8svx svx) here.
+
+</DL>
+
+<P><HR>
+
+<A HREF="brcolours.html"><IMG SRC="../GlobalImages/back.gif" WIDTH="32" HEIGHT="16" ALT="&lt;-" BORDER="0">Colours</A>&nbsp;&nbsp;<A HREF="settings.html"><IMG SRC="../GlobalImages/up.gif" WIDTH="32" HEIGHT="20" ALT="^" BORDER="0">Settings requesters</A>&nbsp;&nbsp;<A HREF="broptions.html"><IMG SRC="../GlobalImages/next.gif" WIDTH="32" HEIGHT="16" ALT="-&gt;" BORDER="0">Options</A>
+
+</BODY>
+
+</HTML>

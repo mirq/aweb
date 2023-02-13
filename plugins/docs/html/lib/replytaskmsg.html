@@ -1,0 +1,39 @@
+<html>
+<head>
+<title>Replytaskmsg()</title>
+</head>
+<body>
+<h1>Replytaskmsg()</h1>
+
+<h2>Purpose</h2>
+Reply a previously obtained message within a <a href="../classes/task.html">subtask</a>.
+
+<h2>Synopsis</h2>
+<pre>
+   Replytaskmsg(taskmsg)
+                A0
+
+   void Replytaskmsg(<a href="../structs/taskmsg.html">struct Taskmsg</a> *)
+</pre>
+
+<h2>Function</h2>
+<a href="../classes/task.html">AOTP_TASK</a> support function. It replies a
+<a href="../structs/taskmsg.html">struct Taskmsg</a> previously obtained
+by the <a href=gettaskmsg.html><code>Gettaskmsg()</code></a> function.
+<p>
+Before replying the message, you may set its <code>result</code> field
+to an appropriate value.
+<p>
+You may not use this function outside subtask code.
+
+<h2>Inputs</h2>
+<table border>
+<tr><th align=left valign=top>Parameter
+   <th align=left valign=top>Description
+<tr><td valign=top><code>taskmsg</code>
+   <td valign=top>Pointer to a <a href="../structs/taskmsg.html">struct Taskmsg</a>
+      that you are done with.
+</table>
+
+<h2>See also</h2>
+<a href="gettaskmsg.html">Gettaskmsg()</a>

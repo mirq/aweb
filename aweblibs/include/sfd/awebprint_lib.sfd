@@ -1,0 +1,12 @@
+==id $Id: awebprint_lib.sfd,v 1.1 2004/10/04 01:35:43 broadblues Exp $
+==base _AwebPrintBase
+==basetype struct Library *
+==libname awebprint.library
+==bias 30
+==public
+==include <exec/types.h>
+void Printdebugprefs(struct Print * prt) (a0)
+void Printfinddimensions(struct Print * prt) (a0)
+void Printprintsection(struct Print * prt) (a0)
+void Printclosedebug(struct Print * prt) (a0)
+==end

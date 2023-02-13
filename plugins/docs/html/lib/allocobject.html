@@ -1,0 +1,45 @@
+<html>
+<head>
+<title>Allocobject()</title>
+</head>
+<body>
+<h1>Allocobject()</h1>
+
+<h2>Purpose</h2>
+Allocate and initialize instance data for a new object.
+
+<h2>Synopsis</h2>
+<pre>
+   object = Allocobject(classid, size, amset)
+   D0                   D0       D1    A0
+
+   void *Allocobject(ULONG, ULONG, <a href="../methods/new.html">struct Amset</a> *)
+</pre>
+
+<h2>Function</h2>
+Object oriented support function that allocates memory for a new object
+instance. The instance data is initialized with zeroes, and the object's
+class-ID (or object type) is set to the specified value.
+<p>
+Eventually you dispose the instance data by invoking the
+<a href="../methods/dispose.html">AOM_DISPOSE</a> method of your
+superclass object.
+
+<h2>Inputs</h2>
+<table border>
+<tr><th align=left valign=top>Parameter
+   <th align=left valign=top>Description
+<tr><td valign=top><code>classid</code>
+   <td valign=top>ID of the true class the new object instance is of.
+<tr><td valign=top><code>size</code>
+   <td valign=top>Size in bytes of the object instance data, including
+      the superclass object.
+<tr><td valign=top><code>amset</code>
+   <td valign=top>Pointer to the <a href="../methods/new.html">AOM_NEW</a>
+      message that caused creation of the object. This message might be used
+      for further initialization of the superclass object data.
+</table>
+
+<h2>Results</h2>
+A pointer to the new, initialized, instance data, or NULL in case of failure.
+

@@ -1,0 +1,62 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+
+<HTML>
+
+<HEAD>
+<TITLE>Using your own pointer images</TITLE>
+</HEAD>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<H1>&nbsp; Using your own pointer images</H1>
+
+<H2>Purpose</H2>
+
+To indicate special areas in a document, AWeb changes the default Intuition pointer into a different shape.  Such areas include hyperlinks and the borders of a resizeable frame.
+<P>Note that displaying a different pointer over a hyperlink can be <A HREF="../Configuring/broptions.html#handpointer">turned off</A>.
+
+<H2>Example</H2>
+
+Move the pointer over this <A HREF="x-nil:">hyperlink</A> to see its appearance change.
+<P><IFRAME ALIGN="MIDDLE" BORDER="4" WIDTH="50" HEIGHT="30" SRC="x-nil:">Turn frames on to see the frame.</IFRAME>&nbsp;&nbsp;&nbsp;Move the pointer over one of the borders of this frame to see its appearance change.
+<BR CLEAR="ALL">
+
+<H2>Installing your own images</H2>
+
+AWeb looks for the following special files to read the pointer image definition:
+
+<TABLE>
+<TR VALIGN="TOP"><TD><A HREF="///AWebPath:images/handpointer">AWebPath:images/handpointer</A></TD><TD>Contains the definition for the hand-shaped pointer to be displayed for a hyperlink.</TD></TR>
+<TR VALIGN="TOP"><TD><A HREF="///AWebPath:images/hsizepointer">AWebPath:images/hsizepointer</A></TD><TD>Contains the definition for the pointer to be displayed for a horizontal resizeable frame edge (top or bottom edge).</TD></TR>
+<TR VALIGN="TOP"><TD><A HREF="///AWebPath:images/vsizepointer">AWebPath:images/vsizepointer</A></TD><TD>Contains the definition for the pointer to be displayed for a vertical resizeable frame edge (left or right edge).</TD></TR>
+</TABLE>
+
+<P>You can replace these files with your own to change the appearance of the pointer.  Note that you will have to restart AWeb for any changes to take effect.  If one of the files is missing, a default shape will be used.
+<P>Each file should contain 1 to 16 lines describing the pointer imagery.  Each line should contain 1 to 16 digits, one for each pointer pixel.  Every 0, 1, 2 or 3 in a line specifies the corresponding pointer colour.  Add 4 to a digit to indicate the pointer hot spot.  Other characters (like spaces) will translate to colour 0.
+
+<P><HR>
+
+<A HREF="../AWeb%20Manual.html"><IMG SRC="../GlobalImages/back.gif" WIDTH="32" HEIGHT="16" ALT="<-" BORDER="0"></A> Back to <A HREF="../AWeb%20Manual.html">index</A>.
+
+</BODY>
+
+</HTML>

@@ -1,0 +1,6 @@
+MODULES := aweblib/cachebrowser.aweblib
+
+aweblib/cachebrowser.aweblib/TYPE := executable/library/amigashared
+aweblib/cachebrowser.aweblib/DEPS := $(MODULELIB) linklibs/libawebclib.a
+aweblib/cachebrowser.aweblib/CFILES := \
+cabrtask

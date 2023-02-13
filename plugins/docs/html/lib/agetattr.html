@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>Agetattr()</title>
+</head>
+<body>
+<h1>Agetattr()</h1>
+
+<h2>Purpose</h2>
+Perform the <a href="../methods/get.html">AOM_GET</a> method on an object
+for one attribute.
+
+<h2>Synopsis</h2>
+<pre>
+   result = Agetattr(object, attributeID)
+   D0                A0      D0
+
+   ULONG Agetattr(<a href="../classes/object.html">struct Aobject</a> *, ULONG)
+</pre>
+
+<h2>Function</h2>
+Object oriented support function that invokes the
+<a href="../methods/get.html">AOM_GET</a> method on the specified
+object, to get the current value of one of the object's attributes.
+To get the value of more than one attribute, the
+<a href="agetattrsa.html"><code>AgetattrsA()</code></a> function is more efficient.
+
+<h2>Inputs</h2>
+<table border>
+<tr><th align=left valign=top>Parameter
+   <th align=left valign=top>Description
+<tr><td valign=top><code>object</code>
+   <td valign=top>Pointer to object to invoke the method on
+<tr><td valign=top><code>attributeID</code>
+   <td valign=top>ID of the attribute to obtain
+</table>
+
+<h2>Results</h2>
+The result of this function is the current value of the attribute.
+
+<h2>See also</h2>
+<a href="agetattrsa.html">AgetattrsA()</a>

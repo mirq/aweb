@@ -1,0 +1,11 @@
+MODULES := aweblib/gopher.aweblib
+
+aweblib/gopher.aweblib/TYPE := executable/library/amigashared
+aweblib/gopher.aweblib/DEPS := $(MODULELIB) linklibs/libawebclib.a
+
+
+aweblib/gopher.aweblib/CFILES := \
+gopher
+
+aweblib/gopher.aweblib/CFILES/gopher/CPPFLAGS := $(NETINCLUDE2)
+

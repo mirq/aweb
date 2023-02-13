@@ -1,0 +1,68 @@
+<html>
+<head>
+<title>AOTP_COPY class</title>
+</head>
+<body>
+<h1>AOTP_COPY class</h1>
+
+<h2>Purpose</h2>
+
+The <b>AOTP_COPY</b> class represents a displayed copy of a loaded file.
+It delegates the actual rendering and directly related tasks to the attached
+<a href=copydriver.html>AOTP_COPYDRIVER</a> object.
+
+<h2>Supported methods</h2>
+
+<table border>
+<tr><th align=left valign=top>Method
+   <th align=left valign=top>Description
+<tr><th align=left valign=top><a href="../methods/set.html">AOM_SET</a>
+   <td valign=top>Set attribute values
+</table>
+
+<h2>Supported attributes</h2>
+
+<table border>
+<tr><th align=left valign=top>Attribute
+   <th align=left valign=top>Type
+   <th align=left valign=top>Description
+   <th align=left valign=top>Applicability
+<tr><th align=left valign=top>AOBJ_Changedchild
+   <td valign=top><a href=object.html>struct Aobject</a> *
+   <td valign=top>Let the AOTP_COPY object know that this object has
+      changed its dimensions. Probably a relayout is needed.
+   <td valign=top>AOM_SET
+<tr><th align=left valign=top>AOCPY_Onimganim
+   <td valign=top>BOOL
+   <td valign=top>Let the AOTP_COPY object know that last frame of
+      an animated GIF has been fully decoded and rendered.<p>
+      Only to be used by image decoders.
+   <td valign=top>AOM_SET
+<tr><th align=left valign=top>AOCPY_Onimgload
+   <td valign=top>BOOL
+   <td valign=top>Let the AOTP_COPY object know that the image has
+      been fully decoded and rendered.<p>
+      Only to be used by image decoders.
+   <td valign=top>AOM_SET
+<tr><th align=left valign=top>AOCPY_Portnumber
+   <td valign=top>long
+   <td valign=top>Get the ARexx port number for the window in which this
+      object is being displayed.
+      <p>
+      Supported by AWeb version 3.5 and higher.
+   <td valign=top>AOM_GET
+</table>
+
+<h2>Usage</h2>
+
+Whenever a <a href=copydriver.html>AOTP_COPYDRIVER</a> subclass object
+changes its dimensions, it must set the <b>AOBJ_Changedchild</b>
+attribute of the AOTP_COPY object that it belongs to. The value of
+this attribute is a pointer to the
+<a href=copydriver.html>AOTP_COPYDRIVER</a> subclass object.
+<p>
+The <b>AOCPY_Onimgload</b> and <b>AOCPY_Onimganim</b> attributes
+should only be set by image decoders. See the
+<a href="../plugin/copydriver.html#onload">JavaScript onLoad event</a>
+section in the <a href="../plugin/copydriver.html">plugin copydriver</a>
+description.

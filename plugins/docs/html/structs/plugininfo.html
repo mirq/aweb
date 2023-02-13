@@ -1,0 +1,36 @@
+<html>
+<head>
+<title>struct Plugininfo</title>
+</head>
+<body>
+<h1><code>struct Plugininfo</code></h1>
+
+<h2>Purpose</h2>
+
+The <b><code>struct Plugininfo</code></b> is used for holding the
+results of the <a href="../plugin/initplugin.html"><code>Initplugin()</code></a>
+function of a plugin module.
+
+<h2>Structure contents</h2>
+
+<pre>
+struct Plugininfo
+{  ULONG sourcedriver;
+   ULONG copydriver;
+};
+</pre>
+
+<h2>Usage</h2>
+
+<h3>Field: <code>sourcedriver</code></h3>
+Class ID (or object type) for the <a href="../plugin/sourcedriver.html">plugin
+sourcedriver</a> class.
+
+<h3>Field: <code>copydriver</code></h3>
+Class ID (or object type) for the <a href="../plugin/copydriver.html">plugin
+copydriver</a> class, or zero if the plugin module doesn't implement a
+copydriver.
+
+</body>
+</html>
+

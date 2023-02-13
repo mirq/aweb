@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>Writefilter()</title>
+</head>
+<body>
+<h1>Writefilter()</h1>
+
+<h2>Purpose</h2>
+Write data back from within a filter plugin. (V2.0)
+
+<h2>Synopsis</h2>
+<pre>
+   Writefilter(data, length)
+               A0    D0
+
+   Writefilter(char *, long)
+</pre>
+
+<h2>Function</h2>
+This function writes a block of data from within a filter type plugin.
+<p>
+This function can only be called from within the plugins
+<a href="../plugin/filterplugin.html"><code>Filterplugin()</code></a>
+function. It can be called multiple times, even when no input data
+was available.
+
+<h2>Inputs</h2>
+<table border>
+<tr><th align=left valign=top>Parameter
+   <th align=left valign=top>Description
+<tr><td valign=top><code>data</code>
+   <td valign=top>A block of data to be written. The block should not be
+      null-terminated.
+<tr><td valign=top><code>length</code>
+   <td valign=top>The length of the data block to be written.
+</table>
+
+<h2>Results</h2>
+After the plugins
+<a href="../plugin/filterplugin.html"><code>Filterplugin()</code></a>
+function returns, this data will be processed by AWeb.
+
+<h2>See also</h2>
+<a href="setfiltertype.html">Setfiltertype()</a>

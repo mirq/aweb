@@ -1,0 +1,30 @@
+<html>
+<head>
+<title>Introduction to AWeb plugin modules</title>
+</head>
+<body>
+<h1>Introduction to AWeb plugin modules</h1>
+
+<h2>Purpose</h2>
+A <b>plugin module</b> is a little program that handles a specific type
+of data. The user can configure AWeb to use a certain plugin module for
+certain MIME types. If a file of that MIME type is loaded, AWeb starts
+the plugin module to process the data. The plugin module can render
+directly in the AWeb browser window, or can open a separate window if
+that is more appropriate. When the module renders in the AWeb window,
+it can use the whole window or frame, or the object can be embedded
+in HTML documents.
+<p>
+Examples of embedded objects are inlined images, but more generally
+these objects are defined by the <code>&lt;OBJECT&gt;</code> tag.
+<p>
+Another type of plugin is a <b>filter</b>. A filter plugin reads
+all data for a certain MIME type, and passes changed, textual data
+back to AWeb. AWeb then processes and displayes this data internally.
+<p>
+Some plugin modules are distributed with AWeb, but since the interface
+is public, third parties can write plugin modules too. This archive
+contains full documentation needed to write AWeb plugin modules.
+
+</body>
+</html>

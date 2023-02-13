@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>Avprintf()</title>
+</head>
+<body>
+<h1>Avprintf()</h1>
+
+<h2>Purpose</h2>
+Output a debug message to the standard output stream.
+
+<h2>Synopsis</h2>
+<pre>
+   length = Avprintf(format, arguments)
+   D0                A0      A1
+
+   long Avprintf(UBYTE *, va_arg)
+
+   length = Aprintf(format, ...)
+
+   long Aprintf(UBYTE *, ...)
+</pre>
+
+<h2>Function</h2>
+In order to help debugging of plugin modules, this function outputs a
+formatted string to the standard output stream of AWeb. The
+<code><b>Avprintf()</b></code> function is used exactly like the standard
+<code>vprintf()</code> function, that cannot be used from within
+a shared library context.
+<p>
+The <code><b>Aprintf()</b></code> variant allows you to pass the arguments
+on the stack, just like the standard <code>printf()</code> function.
+<p>
+<font size=+1><b>Do not use this function in released plugins!</b><br></font>
+It is only there to make the debugging of your code easier.
+<p>
+Obviously this function only works if there is a standard output stream,
+that is if AWeb was started from a shell. You can use output redirection.
+<p>
+Although not really supported, this function also works from within
+<a href="../classes/task.html">subtasks</a>. Beware however that the
+output will mess up if two tasks are using this function simutaneously.
+
+<h2>Inputs</h2>
+<table border>
+<tr><th align=left valign=top>Parameter
+   <th align=left valign=top>Description
+<tr><td valign=top><code>format</code>
+   <td valign=top>A standard printf() type formatting string
+<tr><td valign=top><code>arguments</code>
+   <td valign=top>Array of arguments to the formatting string
+</table>
+
+<h2>Result</h2>
+The number of bytes written to the standard output stream.

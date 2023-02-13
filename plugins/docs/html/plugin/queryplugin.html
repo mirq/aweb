@@ -1,0 +1,47 @@
+<html>
+<head>
+<title>Queryplugin()</title>
+</head>
+<body>
+<h1>Queryplugin()</h1>
+
+<h2>Purpose</h2>
+Interrogation of the plugin module for the additional features it supports.
+
+<h2>Synopsis</h2>
+<pre>
+   Queryplugin(pluginquery)
+               A0
+
+   void Queryplugin(<a href="../structs/pluginquery.html">struct Pluginquery</a> *)
+</pre>
+
+<h2>Inputs</h2>
+<table border>
+<tr><th align=left valign=top>Parameter
+   <th align=left valign=top>Description
+<tr><td valign=top><code>pluginquery</code>
+   <td valign=top>Pointer to a <a href="../structs/pluginquery.html">struct Pluginquery</a>.
+</table>
+
+<h2>Implementation</h2>
+This function is called at least once before any additional feature
+of the plugin is used. 
+<p>
+This function should set the boolean fields in the supplied
+<a href="../structs/pluginquery.html">Pluginquery</a> structure for each
+additional feature that is supported by the plugin module.
+<p>
+The <b>structsize</b> field of this structure is set to its size before
+this function is called. Do not modify any fields beyond this size.
+
+<h2>Compatibility</h2>
+In pre-2.0 versions of the API this function was not defined. In order
+to gain backward compatibility, this function and all additional
+features are assumed to be absent if the plugins <b>lib_NegSize</b> is
+less than 36.
+
+<h2>Example</h2>
+Both examples of <a href=example.html>normal</a> and
+<a href=filterexample.html>filter type</a> plugins contain an example
+implementation of the <code>Queryplugin()</code> function.

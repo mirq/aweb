@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>Aaddchild()</title>
+</head>
+<body>
+<h1>Aaddchild()</h1>
+
+<h2>Purpose</h2>
+Perform the <a href="../methods/addchild.html">AOM_ADDCHILD</a> method on an object.
+
+<h2>Synopsis</h2>
+<pre>
+   result = Aaddchild(parent, child, relationship)
+   D0                 A0      A1     D0
+
+   ULONG Aaddchild(<a href="../classes/object.html">struct Aobject</a> *, <a href="../classes/object.html">struct Aobject</a> *, ULONG)
+</pre>
+
+<h2>Function</h2>
+Object oriented support function that invokes the
+<a href="../methods/addchild.html">AOM_ADDCHILD</a> method on the specified
+parent object, to add the specified child object to the relationship.
+
+<h2>Inputs</h2>
+<table border>
+<tr><th align=left valign=top>Parameter
+   <th align=left valign=top>Description
+<tr><td valign=top><code>parent</code>
+   <td valign=top>Pointer to the object that is parent in the relation,
+      this is the object on which the method is invoked
+<tr><td valign=top><code>child</code>
+   <td valign=top>Pointer to the object to add to the relation
+<tr><td valign=top><code>relationship</code>
+   <td valign=top>ID of the relationship to add the child object in
+</table>
+
+<h2>Result</h2>
+Specific to the method and the object's class.
+
+<h2>See also</h2>
+<a href="aremchild.html">Aremchild()</a>

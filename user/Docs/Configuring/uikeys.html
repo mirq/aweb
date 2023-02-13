@@ -1,0 +1,61 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+
+<HTML>
+
+<HEAD>
+<TITLE>GUI settings: Keys</TITLE>
+<META NAME="KEYWORDS" CONTENT="mouse wheel","wheel mouse">
+</HEAD>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<H1>&nbsp; GUI settings: Keys</H1>
+
+<IMG SRC="Images/GUISettings-Keys.png" ALIGN="RIGHT" ALT="GUI Settings: Keys Tab" WIDTH="508" HEIGHT="260" HSPACE="20" VSPACE="20" BORDER="0">
+
+<H2>Changing the user defined keys</H2>
+
+The list contains the keys (or key combinations), and actions for these keys.
+<P>Select the key you want to modify from the listview.  Note that some keys or key combinations might already be defined as commodity hotkey.  Although you can configure a command for these keys, you cannot use these keys from within AWeb as long as that commodity is running.
+<P>The last two entries in the list define the actions to be taken on moving the wheel of a wheel mouse.
+<P>To remove a key, just erase the command for it.
+
+<H2>Command</H2>
+
+In this field, you can type the <A HREF="../Advanced/ARexx/commands.html">Arexx command</A> that should be executed when you press the key or key combination.
+<P>In the command string, you can use the following parameter specifiers:
+
+<TABLE>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%u</TH><TD>URL currently displayed in the browser window.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%n</TH><TD>screen name that AWeb is running on.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%i</TH><TD>ID of frame that has focus.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%t</TH><TD>title of the document, as shown in the window title bar.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%c</TH><TD><A HREF="../Working/startup.html">configuration name</A>.</TD></TR>
+</TABLE>
+
+<P><HR>
+
+<A HREF="uipopup.html"><IMG SRC="../GlobalImages/back.gif" WIDTH="32" HEIGHT="16" ALT="&lt;-" BORDER="0">Popup</A>&nbsp;&nbsp;<A HREF="settings.html"><IMG SRC="../GlobalImages/up.gif" WIDTH="32" HEIGHT="20" ALT="^" BORDER="0">Settings requesters</A>&nbsp;&nbsp;<A HREF="uinavs.html"><IMG SRC="../GlobalImages/next.gif" WIDTH="32" HEIGHT="16" ALT="-&gt;" BORDER="0">Navigation</A>
+
+</BODY>
+
+</HTML>

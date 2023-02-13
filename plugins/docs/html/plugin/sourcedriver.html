@@ -1,0 +1,182 @@
+<html>
+<head>
+<title>Plugin sourcedriver subclass</title>
+</head>
+<body>
+<h1>Plugin sourcedriver subclass</h1>
+
+<h2>Purpose</h2>
+The <b>plugin sourcedriver subclass</b> processes incoming data for
+a file whose format it understands.
+
+<h2><a name=methods>Supported methods</a></h2>
+
+<table border>
+<tr><th align=left valign=top>Method
+   <th align=left valign=top>Description
+<tr><th align=left valign=top><a href="../methods/dispose.html">AOM_DISPOSE</a>
+   <td valign=top>Dispose the object
+<tr><th align=left valign=top><a href="../methods/get.html">AOM_GET</a>
+   <td valign=top>Get attribute values
+<tr><th align=left valign=top><a href="../methods/new.html">AOM_NEW</a>
+   <td valign=top>Create a new object instance
+<tr><th align=left valign=top><a href="../methods/set.html">AOM_SET</a>
+   <td valign=top>Set attribute values
+<tr><th align=left valign=top><a href="../methods/srcupdate.html">AOM_SRCUPDATE</a>
+   <td valign=top>Receive source data
+</table>
+
+Other <a href="../methods/index.html">methods</a> may be supported
+depending on the needs of the implementation.
+
+<h2>Supported attributes</h2>
+
+<table border>
+<tr><th align=left valign=top>Attribute
+   <th align=left valign=top>Type
+   <th align=left valign=top>Description
+   <th align=left valign=top>Applicability
+<tr><th align=left valign=top>AOSDV_Arguments
+   <td valign=top>STRPTR
+   <td valign=top>Optional argument string, as configured by the user.
+   <td valign=top>AOM_NEW<br>AOM_SET
+<tr><th align=left valign=top>AOSDV_Displayed
+   <td valign=top>BOOL
+   <td valign=top>Set to TRUE when the object is becoming displayed,
+      set to FALSE when the last copy of the object has left the
+      display.
+      <p>
+      A class might want to delay processing of its source until it is displayed.
+   <td valign=top>AOM_SET
+<tr><th align=left valign=top>AOSDV_Editsource
+   <td valign=top>BOOL
+   <td valign=top>Set to TRUE if the user wants to edit this object's
+      source. If supported, the class should spawn some appropriate 
+      internal or external editor and listen for source changes.
+      <p>
+      Plugin classes need not to support this attribute.
+   <td valign=top>AOM_SET
+<tr><th align=left valign=top>AOSDV_Getable
+   <td valign=top>BOOL
+   <td valign=top>Return TRUE if the class supports the AOSDV_Getsource
+      attribute.
+      <p>
+      Default is FALSE.
+   <td valign=top>AOM_GET
+<tr><th align=left valign=top>AOSDV_Getsource
+   <td valign=top>BOOL
+   <td valign=top>The source was requested as a contiguous block of memory.
+      If supported, the class should return a pointer to the nullbyte
+      terminated source. This source will only be used until the next
+      invokation of one of the classes methods, so a class may return
+      a pointer to memory that will disappear in furher processing.
+      <p>
+      Plugin classes need not to support this attribute.
+   <td valign=top>AOM_GET
+<tr><th align=left valign=top>AOSDV_Saveable
+   <td valign=top>BOOL
+   <td valign=top>Return TRUE if the class supports the AOSDV_Savesource
+      attribute.
+      <p>
+      Default is FALSE.
+   <td valign=top>AOM_GET
+<tr><th align=left valign=top>AOSDV_Savesource
+   <td valign=top><a href="../classes/file.html">struct Aobject</a> *
+   <td valign=top>Set to TRUE is the user wants to save the source.
+      The attribute's value is a pointer to the
+      <a href="../classes/file.html">AOTP_FILE</a> object that the
+      source must be written to.
+      <p>
+      Plugin classes need not to support this attribute.
+   <td valign=top>AOM_SET
+<tr><th align=left valign=top>AOSDV_Source
+   <td valign=top><a href="../classes/source.html">struct Aobject</a> *
+   <td valign=top>A pointer to the <a href="../classes/source.html">AOTP_SOURCE</a>
+      object that this sourcedriver subclass object is attached to.
+   <td valign=top>AOM_NEW<br>AOM_SET
+<tr><th align=left valign=top>AOSDV_Viewable
+   <td valign=top>BOOL
+   <td valign=top>Return TRUE if the source, when saved by the AOSDV_Savesource
+      attribute, is in human readable (ASCII) form.
+      <p>
+      Default is FALSE.
+   <td valign=top>AOM_GET
+<tr><th align=left valign=top>AOSDV_Volatile
+   <td valign=top>BOOL
+   <td valign=top>Return TRUE if the class cannot cache its source in memory.
+      Normally, if a file is already in memory, the same sourcedriver subclass
+      object will be used when the user requests the same url a second time.
+      If a class returns TRUE for this attribute, a new sourcedriver subclass
+      object instance will be created every time.
+      <p>
+      Default is FALSE.
+   <td valign=top>AOM_GET
+<tr><th align=left valign=top>AOURL_Contentlength
+   <td valign=top>LONG
+   <td valign=top>Expected length of the file, in bytes. Note that the
+      actual number of bytes received in
+      <a href="../methods/.html">AOM_SRCUPDATE</a> messages may be either
+      higher or lower if the server includes an incorrect Content-lenght
+      header.
+   <td valign=top>AOM_NEW<br>AOM_SET<br>AOM_SRCUPDATE
+<tr><th align=left valign=top>AOURL_Contenttype
+   <td valign=top>STRPTR
+   <td valign=top>The content type (also known as MIME type) of the file.
+   <td valign=top>AOM_NEW<br>AOM_SET<br>AOM_SRCUPDATE
+<tr><th align=left valign=top>AOURL_Data
+   <td valign=top>APTR
+   <td valign=top>A block of data. This attribute is always accompanied by
+      an AOURL_Datalength attribute.
+   <td valign=top>AOM_SRCUPDATE
+<tr><th align=left valign=top>AOURL_Datalength
+   <td valign=top>LONG
+   <td valign=top>Size in bytes of the data block passed with AOURL_Data.
+   <td valign=top>AOM_SRCUPDATE
+<tr><th align=left valign=top>AOURL_Eof
+   <td valign=top>BOOL
+   <td valign=top>If TRUE, then EOF has been reached on the file.
+      No more data fill follow, unless the AOURL_Reload attribute is set.
+   <td valign=top>AOM_SRCUPDATE
+<tr><th align=left valign=top>AOURL_Error
+   <td valign=top>BOOL
+   <td valign=top>If set to TRUE, the data is in error. This includes error
+      responses from the server, and cancelled transfers.
+   <td valign=top>AOM_SRCUPDATE
+</table>
+
+
+<h2>Implementation</h2>
+
+The class must be a subclass of
+<a href="../classes/sourcedriver.html">AOTP_SOURCEDRIVER</a>. It must at
+least support the methods listed <a href=#methods>above</a>.
+<p>
+File data received as <b>AOURL_Data</b> attributes should be cached and
+processed. Usually processing is done by the sourcedriver subclass, but
+certain implementations may require that the actual source data processing
+is done by the <a href=copydriver.html>copydriver subclass</a>.
+<p>
+Whenever processing source data changes the amount of memory
+occupied, the class should set the <b>AOSRC_Memory</b> attribute of the
+<a href="../classes/source.html">AOTP_SOURCE</a> object that this object
+is attached to. This also applies when memory is freed, for example
+when the object is disposed.
+<p>
+During processing, or when processing is complete, the class should
+signal its attached <a href=copydriver.html>copydriver subclass</a> objects
+to allow these to render. This is normally done by invoking the
+<a href="../methods/notify.html">AOM_NOTIFY</a> method of the
+<a href="../classes/source.html">AOTP_SOURCE</a> object that this object
+is attached to, <a href="../methods/set.html">AOM_SET</a>-ing one or
+more private attributes.
+<p>
+The <a href="../methods/addchild.html">AOM_ADDCHILD</a> and
+<a href="../methods/remchild.html">AOM_REMCHILD</a> methods of the class will be
+invoked when a new related <a href=copydriver.html>copydriver subclass</a>
+object is created. The <code>relation</code> field will be <b>AOREL_SRC_COPY</b>.
+The class need not to remember the added objects, but generally it will
+signal the new objects that processed data is available for rendering.
+
+<h2>Example</h2>
+The <a href="../ilbmexample/ilbmsource.c"><code>ilbmsource.c</code></a>
+file contains an example implementation of a sourcedriver subclass.

@@ -1,0 +1,13 @@
+==id $Id: awebauthorize_lib.sfd,v 1.3 2009/09/10 13:31:19 opi Exp $
+==base _AwebAuthorizeBase
+==basetype struct Library *
+==libname authorize.aweblib
+==bias 30
+==public
+==include <exec/types.h>
+==include <libraries/awebauthorize.h>
+==include "task.h"
+Subtaskfunction *AuthGetTaskFunc(ULONG id)(d0)
+void Authorreq(struct Authorreq *areq, BOOL onlypw)(a0,d0)
+void Authorset(struct Authorize *auth, UBYTE *userid, UBYTE *passwd)(a0,a1,a2)
+==end

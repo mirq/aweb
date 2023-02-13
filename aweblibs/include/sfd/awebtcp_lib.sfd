@@ -1,0 +1,24 @@
+==id $Id: awebtcp_lib.sfd,v 1.1 2004/10/04 01:35:44 broadblues Exp $
+==base _AwebTcpBase
+==basetype struct Library *
+==libname awebtcp.library
+==bias 30
+==public
+==include <exec/types.h>
+==include <sys/socket.h>
+int a_setup(struct Library * SocketBase) (a0)
+void a_cleanup(struct Library * SocketBase) (a0)
+struct hostent * a_gethostbyname(char * a, struct Library * SocketBase) (a0,a1)
+int a_socket(int a, int b, int c, struct Library * SocketBase) (d0,d1,d2,a0)
+int a_close(int a, struct Library * SocketBase) (d0,a0)
+int a_connect(int a, struct hostent * hent, int port, struct Library * SocketBase) (d0,a0,d1,a1)
+int a_connect2(int a, int addrtype, u_long addr, int port, struct Library * SocketBase) (d0,d1,d2,d3,a0)
+int a_bind(int a, struct sockaddr * b, int c, struct Library * SocketBase) (d0,a0,d1,a1)
+int a_listen(int a, int b, struct Library * SocketBase) (d0,d1,a0)
+int a_accept(int a, struct sockaddr * b, int * c, struct Library * SocketBase) (d0,a0,a1,a2)
+int a_shutdown(int a, int b, struct Library * SocketBase) (d0,d1,a0)
+int a_send(int a, char * b, int c, int d, struct Library * SocketBase) (d0,a0,d1,d2,a1)
+int a_recv(int a, char * b, int c, int d, struct Library * SocketBase) (d0,a0,d1,d2,a1)
+int a_getsockname(int a, struct sockaddr * b, int * c, struct Library * SocketBase) (d0,a0,a1,a2)
+int a_gethostname(char * a, int b, struct Library * SocketBase) (a0,d0,a1)
+==end

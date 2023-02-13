@@ -1,0 +1,92 @@
+<html>
+<head>
+<title>Method: AOM_GOACTIVE</title>
+</head>
+<body>
+<h1>Method: AOM_GOACTIVE</h1>
+
+<h2>Purpose</h2>
+
+The <b>AOM_GOACTIVE</b> method is used to make the object the current
+input focus. Before an AOM_GOACTIVE message is sent to an object, it must
+have replied an <a href=hittest.html>AOM_HITTEST</a> message with a
+AMR_NEWHIT or AMR_OLDHIT return value.
+
+<h2>Message structure</h2>
+
+The <b>AOM_GOACTIVE</b> method uses an <b>Amgoactive</b> structure:<p>
+
+<pre>
+struct Amgoactive
+{  <a href=index.html#Amessage>struct Amessage</a> amsg;
+   struct IntuiMessage *imsg;
+                           /* The IntuiMessage that caused activation. The
+                            * MouseX/Y coordinates in this message are RastPort
+                            * coordinates and have to be corrected with Coords
+                            * offsets (you have to request a Coords yourself). */
+   USHORT flags;           /* AMHF_DOWNLOAD or AMHF_POPUP qualifier */
+};
+</pre>
+
+<h2>Usage</h2>
+
+<h3>Field: <code>imsg</code></h3>
+A pointer to an IntuiMessage structure describing the input event that caused
+activation of the object. Because the object immediately (for the same mouse
+position) replied to an <a href=hittest.html>AOM_HITTEST</a> message with a
+AMR_NEWHIT or AMR_OLDHIT return value, the object can safely assume that the
+mouse coordinates fall inside an activatable area.
+<p>
+When processing mouse coordinates, the object must use the
+<a href="../lib/clipcoords.html"><code>Clipcoords()</code></a> function to
+obtain a <a href="../structs/coords.html"><code>struct Coords</code></a>,
+and use its coordinates to convert the RastPort relative coordinates in the
+IntuiMessage.
+
+<h3>Field: <code>flags</code></h3>
+Special indicators that may affect the processing of this message.
+<table border>
+<tr><th align=left valign=top>Flag
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>AMHF_DOWNLOAD
+   <td valign=top>The download qualifier (a SHIFT key) is activated
+<tr><th align=left valign=top>AMHF_POPUP
+   <td valign=top>The popup menu qualifier is activated
+</table>
+
+<h3>Return value</h3>
+The method must return one of the following values:
+<table border>
+<tr><th align=left valign=top>Value
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>AMR_ACTIVE
+   <td valign=top>The object wants to become the input focus. Future
+      IntuiMessages will be sent to the object by an
+      <a href="handleinput.html">AOM_HANDLEINPUT</a> message.
+<tr><th align=left valign=top>AMR_CHANGED
+   <td valign=top>The object has succesfully processed the activation event,
+      and possibly changed its status, but does not want to receive further
+      IntuiMessages.<p>
+      The object will be sent an <a href="goinactive.html">AOM_GOINACTIVE</a>
+      message immediately afterwards.
+<tr><th align=left valign=top>AMR_NOREUSE
+   <td valign=top>The object does not want to become the input focus.
+</table>
+
+<h2>Implementation</h2>
+
+Copydriver objects should implement this method if the visible object has
+user-selectable areas under the driver's control. Note that normal HTML
+image maps are handled by the AWeb core, and must not be implemented by
+the copydriver. If the copydriver understands this method, it should
+return TRUE to an AOM_GET of the AOCDV_Shapes attribute.
+<p>
+Implementation of this method largely depends on the type of user
+interaction supported by the object. However, a typical simple
+implementation of this method would be to send an
+<a href=render.html>AOM_RENDER</a> message to the object itself with the
+AMRF_UPDATESELECTED flag set, then return AMR_ACTIVE.
+
+</body>
+</html>
+

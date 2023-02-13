@@ -1,0 +1,142 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+<html>
+<head>
+<title>
+Common problems
+</title>
+</head>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<h1>&nbsp; Common problems</h1>
+
+Listed below are some common problems you might encounter, and their
+solution.
+
+<ul>
+<li><em>AWeb won't start. It says it can't find xxx.image or xxx.gadget.
+   </em><br>
+   Probably you haven't installed the latest ClassAct classes. You can find
+   them on <a href="ftp://ftp.thule.no/pub/classact/">ftp://ftp.thule.no/pub/classact/</a>.
+<p>
+<li><em>AWeb crashes when loading a GIF image
+   </em><br>
+   The commonly used ZGif datatype version 39.16 had a bug. Be sure to use
+   version 39.18 or better of the ZGif datatype, or another GIF datatype.
+<p>
+<li><em>When I try to print the document it just does nothing
+   </em><br>
+   You probably try to print from a screen with more than 256 colours. Most
+   printer drivers can't handle these kind of screens. You have to change
+   your screen mode used first.<br>
+   You might want to use TurboPrint (latest version). AWeb will detect that
+   TurboPrint is running, and <i>will</i> be able to print in more than
+   256 colours.
+   <p>
+   <strong>Tip:</strong> Create a separate configuration (using the CONFIG
+   <a HREF=../Working/startup.html>tooltype or argument</a>) with a 256 colour screen mode.
+   When you like to print a page, first continue surfing, and after you have
+   quit AWeb start it again with the other configuration. Now you can fetch
+   the document from cache and print it off-line.
+<p>
+<li><em>AWeb doesn't display all of the page. Other browsers display the
+   page correctly
+   </em><br>
+   Probably the page contains some erroneous HTML. One of the common errors
+   is the use of bad comments as a divider line in the HTML source. In
+   tolerant <a HREF=../Configuring/broptions.html#htmlmode>HTML mode</a>,
+   AWeb tries to interpret the comment as it was probably meant by the
+   author. In strict <a HREF=../Configuring/broptions.html#htmlmode>HTML mode</a>,
+   large parts of the page may be commented out because of the bad syntax.<br>
+   Try changing the <a HREF=../Configuring/broptions.html#htmlmode>HTML mode</a>
+   to tolerant or compatible.
+<p>
+<li><em>AWeb becomes terribly slow if I run it on its own screen.
+   </em><br>
+   This has something to do with chip memory usage and DMA bandwidth.
+   Apparently, the problem becomes worse when you have an accelerated
+   machine.<br>
+   The solution is to use either a lower or a higher speed ("baudrate") to communicate
+   with your modem. Start at the modem speed (so if you own a 14k4 modem,
+   start at 14k4 communication speed). Then increase the speed until you
+   find a dramatic slowdown. Then go one step back.<br>
+   Changing the communication speed with your modem might involve adapting
+   the settings for your dialler, TCP stack and/or your SANA driver. Refer
+   to the respective documentations.
+<p>
+<li><em>Backgrounds in AWeb are terribly slow, much slower than competitive
+   Amiga browsers.
+   </em><br>
+   This might be caused by an unsuited picture datatype. Use the 24-bit
+   picture datatype <strong>only</strong> on CyberGraphics screens; on
+   original Amiga screens this datatype becomes very slow. Use the
+   original picture.datatype from your Workbench diskette.
+<p>
+<li><em>The colour requester from the program settings: Palette page
+   messes things up on a CyberGraphics screen.
+   </em><br>
+   This is caused by the palette-orientated design of the Amiga OS. This
+   design works fine on Amiga chipset screens, but isn't really suited for
+   graphics cards.
+<p>
+<li><em>I run AWeb on a small screen, and the save, use, test, cancel buttons
+   in this settings window fall outside the screen.
+   </em><br>
+   Start the
+   ClassAct preference program, or if you run AWeb under OS 3.5 or higher, the
+   Reaction preference program, then go to the "Misc" page, and
+   set "layout spacing" to a lower number.
+<p>
+<li><em>Closing the AWeb public screen while there is a visitor window open
+   crashes if the screen is a CyberGraphics screen.
+   </em><br>
+   This is a bug in CyberGraphics V 2.15 and lower. The same thing happens on other
+   CyberGraphics screens.
+<p>
+<li><em>If the window is not active, a click in the scroller container
+   (outside the knob) moves the scroller but doesn't scroll the window
+   contents.
+   </em><br>
+   This is a bug in Intuition. The same thing happens sometimes with
+   MultiView.
+<p>
+<li><em>I use MagicMenu, and every now and then my system hangs if I open
+   a menu.
+   </em><br>
+   With Magic Menu version 2.15 or higher this problem should be gone.
+<p>
+<li><em>I don't use MagicMenu, but my system hangs if I click on the wide
+   part of the chooser gadget in the settings window.
+   </em><br>
+   Be sure to use the version of <code>chooser.gadget</code> included in
+   this archive.<br>
+   Also, some animated mouse pointer commodities are known to cause this
+   hang.
+</ul>
+
+<p>
+<hr>
+<a href=../AWeb%20Manual.html><img src=../GlobalImages/back.gif width=32 height=16 alt="<-" border=0></a> Back to
+<a href=../AWeb%20Manual.html>index</a>.
+
+</body>
+</html>

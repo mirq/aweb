@@ -1,0 +1,38 @@
+<html>
+<head>
+<title>Method: AOM_NOTIFY</title>
+</head>
+<body>
+<h1>Method: AOM_NOTIFY</h1>
+
+<h2>Purpose</h2>
+
+The <b>AOM_NOTIFY</b> method is used to send a message to an object,
+and let the object forward the message to all its children.
+
+<h2>Message structure</h2>
+
+The <b>AOM_NOTIFY</b> method uses an <b>Amnotify</b> structure:<p>
+
+<pre>
+struct Amnotify
+{  <a href=index.html#Amessage>struct Amessage</a> amsg;
+   <a href=index.html#Amessage>struct Amessage</a> *nmsg;
+};
+</pre>
+
+<h2>Usage</h2>
+
+<h3>nmsg</h3>
+This is a pointer to the <a href=index.html#Amessage>struct Amessage</a>
+to be forwarded.
+
+<h3>Return value</h3>
+The return value for this method is not defined.
+
+<h2>Implementation</h2>
+
+Plugin classes generally need not to implement this method.
+
+</body>
+</html>

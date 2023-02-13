@@ -1,0 +1,26 @@
+.key animation
+.bra {
+.ket }
+
+if "{animation}" eq ""
+  set animation "Storage/Animations/"
+  set animation `requestfile Storage/Animations title "Select AWeb animation" noicons`
+  if "$animation" eq "Storage/Animations/"
+    quit
+  endif
+else
+  set animation "{animation}"
+endif
+
+copy "$animation" images/def_transferanim
+if not warn
+  copy "$animation.info" images/def_transferanim.info
+  if not warn
+    requestchoice >NIL: "AWeb animations" "Animation $animation installed." "OK"
+    quit
+  endif
+endif
+
+requestchoice >NIL: "AWeb animations" "Couldn't install new animation.*NYou have to quit AWeb first" "OK"
+
+

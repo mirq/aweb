@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>AgetattrsA()</title>
+</head>
+<body>
+<h1>AgetattrsA()</h1>
+
+<h2>Purpose</h2>
+Perform the <a href="../methods/get.html">AOM_GET</a> method on an object.
+
+<h2>Synopsis</h2>
+<pre>
+   result = AgetattrsA(object, taglist)
+   D0                  A0      A1
+
+   ULONG AgetattrsA(<a href="../classes/object.html">struct Aobject</a> *, struct TagItem *)
+
+   result = Agetattrs(object, tag1, ...)
+
+   ULONG Agetattrs(<a href="../classes/object.html">struct Aobject</a> *, ULONG, ...)
+</pre>
+
+<h2>Function</h2>
+Object oriented support function that invokes the
+<a href="../methods/get.html">AOM_GET</a> method on the specified
+object, to get the current value of the object's attributes.
+<p>
+For each entry in the taglist, <code>ti_Tag</code> identifies the
+attribute, and <code>ti_Data</code> is a pointer to the long variable
+where you wish the result to be stored.
+<p>
+The <b><code>Agetattrs()</code></b> variant allows you to build the taglist on the stack.
+
+<h2>Inputs</h2>
+<table border>
+<tr><th align=left valign=top>Parameter
+   <th align=left valign=top>Description
+<tr><td valign=top><code>object</code>
+   <td valign=top>Pointer to object to invoke the method on
+<tr><td valign=top><code>taglist</code>
+   <td valign=top>Array of TagItem structures with attribute/storage pointer pairs
+</table>
+
+<h2>Results</h2>
+Specific to the method and the object's class.
+
+<h2>See also</h2>
+<a href="agetattr.html">Agetattr()</a>

@@ -1,0 +1,14 @@
+MODULES := AWebPlugin/awebjfif.awebplugin AWebPlugin/Docs/awebjfif.html
+
+AWebPlugin/awebjfif.awebplugin/TYPE := executable/library/amigashared
+AWebPlugin/awebjfif.awebplugin/DEPS := linklibs/libmoduleinit.a linklibs/libjpeg.a AWebPlugin/Docs/awebjfif.html
+AWebPlugin/awebjfif.awebplugin/LDFLAGS += -ljpeg
+AWebPlugin/awebjfif.awebplugin/CFILES := \
+startup awebjfif jfifsource jfifcopy
+
+AWebPlugin/awebjfif.awebplugin/CFILES/CPPFLAGS := -I plugins/include
+
+AWebPlugin/Docs/awebjfif.html/TYPE := document
+AWebPlugin/Docs/awebjfif.html/FILES := \
+awebjfif.html awebjfif.awebrx
+

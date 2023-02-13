@@ -1,0 +1,163 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+<html>
+<head>
+<title>
+The popup menu
+</title>
+</head>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<h1>&nbsp; The popup menu</h1>
+
+<h2>Purpose</h2>
+Given a link, an image or a frame,
+there are a number of things you might like to
+do with it. You might want to follow a link, download it, open it in a
+new window, load or flush an image, etc.
+The <em>popup menu</em> offers a way to choose from all these different
+functions in a clear and easy fashion.
+<p>
+Furthermore, you can <a HREF=../Configuring/uipopup.html>configure</a> the
+choices in the popup menu yourself the way they fit your needs best.
+
+<h2>Using the popup menu</h2>
+To open the popup menu, hold the <kbd>ALT</kbd> or the <kbd>Ctrl</kbd> key and click on a link
+or an image. Or, you can click on a link or an image using the middle mouse button
+if you own a three-button mouse.
+The menu opens and presents you a list of choices depending
+on the type of object you clicked on. Then you can click on the desired function.
+<p>
+To open the popup menu for a frame, just click in the same fashion anywhere in
+the frame, outside a link or foreground image. (Clicking on a link or image would
+present the popup menu for that object.)
+<p>
+You can <a HREF=../Configuring/uioptions.html#popup>configure</a> AWeb to open the
+popup menu also if you use the right mouse button, or when
+you hold down the <kbd>SHIFT</kbd> key, or not to open
+the popup menu if you hold down the <kbd>ALT</kbd> or the <kbd>Ctrl</kbd>key.
+<p>
+To close the menu without choosing a function, you can click the right mouse
+button, or click anywhere outside the popup menu.
+
+<h2>Image functions</h2>
+If you opened the popup menu for an <em>image</em>,
+by default
+it can contain the following functions as long as they are applicable:
+<p>
+<table>
+<tr valign=top>
+   <th align=left valign=top nowrap>Load image
+   <td>Load the image, just like if you had clicked on the image.
+<tr valign=top>
+   <th align=left valign=top nowrap>Flush image
+   <td>Flush this image from memory.
+<tr valign=top>
+   <th align=left valign=top nowrap>Reload image
+   <td>Reload this image.
+<tr valign=top>
+   <th align=left valign=top nowrap>Save image
+   <td>This will save the image, just like if you had shift-clicked on the image.
+<tr valign=top>
+   <th align=left valign=top nowrap>Download image
+   <td>This will download the image, just like if you had shift-clicked
+      on the unloaded-image icon.
+<tr valign=top>
+   <th align=left valign=top nowrap>Show image
+   <td>This function shows the image using the
+      <a HREF=../Configuring/brviewers.html>external viewer</a> for this
+      image type.
+</table>
+
+<h2>Link functions</h2>
+If you opened the popup menu for a <em>link</em>,
+by default
+it can contain the following functions as long as they are applicable:
+<p>
+<table>
+<tr valign=top>
+   <th align=left valign=top nowrap>Open link
+   <td>This will show the document behind the link in the current window,
+      just like if you had clicked on the link.
+<tr valign=top>
+   <th align=left valign=top nowrap>Open link in new window
+   <td>Open a new window, and display the document in the new window.
+<tr valign=top>
+   <th align=left valign=top nowrap>Load link in background
+   <td>This function retrieves the document, but doesn't display it in
+      any window. You will use this function to load a page into the
+      <a HREF=../Advanced/cache.html>cache</a>, to view it later.
+<tr valign=top>
+   <th align=left valign=top nowrap>Save link
+   <td>Save the document behind this link to disk, just like if you had
+      shift-clicked on the link.
+<tr valign=top>
+   <th align=left valign=top nowrap>Download link
+   <td>Download the document behind this link and saves it to disk, just
+      like if you had shift-clicked on the link.
+<tr valign=top>
+   <th align=left valign=top nowrap>Add link to hotlist
+   <td>This adds an entry to the <a HREF=../Working/hotlist.html>hotlist</a> for the
+      URL this link points to.
+</table>
+<p>
+If you open the popup menu for an image that is also a link, the popup menu will
+contain both sets of functions.
+
+<h2>Frame functions</h2>
+If you opened the popup menu for a <em>frame</em>, by default
+it contains the following functions:
+<p>
+<table>
+<tr valign=top>
+   <th align=left valign=top nowrap>Reload contents
+   <td>Reload the contents of the frame.
+<tr valign=top>
+   <th align=left valign=top nowrap>Save source
+   <td>Save the source of the file currently displayed in the frame.
+<tr valign=top>
+   <th align=left valign=top nowrap>View source
+   <td>Start the HTML viewer to show the HTML source of the file displayed in the frame.
+<tr valign=top>
+   <th align=left valign=top nowrap>Show separately
+   <td>Show the current contents of the frame in the entire browser window,
+      without usage of frames.
+<tr valign=top>
+   <th align=left valign=top nowrap>Search in contents
+   <td>Start the <a HREF=../Working/search.html>search function</a> for the page displayed
+      in the frame.
+<tr valign=top>
+   <th align=left valign=top nowrap>Info
+   <td>Open the <a HREF=infowindow.html>information window</a> for the page displayed
+      in the frame.
+</table>
+<p>
+If the document shown in the frame has a background image, the popup menu will
+contain the functions for that image and for the frame.
+
+<p>
+<hr>
+<a href=../AWeb%20Manual.html><img src=../GlobalImages/back.gif width=32 height=16 alt="<-" border=0></a> Back to
+<a href=../AWeb%20Manual.html>index</a>.
+
+</body>
+</html>

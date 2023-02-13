@@ -1,0 +1,46 @@
+<html>
+<head>
+<title>Obtaintasksemaphore()</title>
+</head>
+<body>
+<h1>Obtaintasksemaphore()</h1>
+
+<h2>Purpose</h2>
+Obtain a SignalSemaphore within a <a href="../classes/task.html">subtask</a>,
+and simultaneously watch for break requests.
+
+<h2>Synopsis</h2>
+<pre>
+   obtained = Obtaintasksemaphore(signalsemaphore)
+   D0                             A0
+
+   BOOL Obtaintasksemaphore(struct SignalSemaphore *)
+</pre>
+
+<h2>Function</h2>
+<a href="../classes/task.html">AOTP_TASK</a> support function. It obtains
+the specified SignalSemaphore, but while it is waiting for the semaphore
+this function also checks if the subtask is stopped by the main task.
+The main task can do so by setting the <a href="../classes/task.html">AOTP_TASK</a>
+object's <b>AOTSK_Stop</b> attribute to TRUE.
+<p>
+When the SignalSemaphore was obtained, you must eventually release it using
+the ReleaseSemaphore() function.
+<p>
+Subtasks should always use this function if the semaphore could be unavailable
+for a considerable amount of time.
+<p>
+You may not use this function outside subtask code.
+
+<h2>Inputs</h2>
+<table border>
+<tr><th align=left valign=top>Parameter
+   <th align=left valign=top>Description
+<tr><td valign=top><code>signalsemaphore</code>
+   <td valign=top>Pointer to the SignalSemaphore to obtain.
+</table>
+
+<h2>Result</h2>
+<b>TRUE</b>, if the SignalSemaphore could be obtained and the subtask was not stopped.<br>
+<b>FALSE</b>, if the subtask was stopped before the semaphore could be obtained.
+

@@ -1,0 +1,72 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+
+<HTML>
+
+<HEAD>
+<TITLE>Network settings: Privacy</TITLE>
+</HEAD>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<H1>&nbsp; Network settings: Privacy</H1>
+
+<IMG SRC="Images/NetworkSettings-Privacy.png" ALIGN="RIGHT" ALT="Network Settings: Privacy Tab" WIDTH="490" HEIGHT="330" HSPACE="20" VSPACE="20" BORDER="0">
+
+<H2>Suppress Referer while browsing<BR><FONT SIZE="-2">(Previously called "Browse anonymously")</FONT></H2>
+
+Normally, if you follow a hyperlink, AWeb sends the address of the page that link appeared on to the server (the "Referer").  This allows servers to generate lists of back-links for interest, logging, optimized caching, tracing obsolete or mistyped links, etc.  Some servers, like chat servers, actually need this information to let you get the page.
+<P>Because the source of a link may be private information, or may reveal an otherwise private information source, AWeb allows you to disable this feature.  If the checkbox is selected, AWeb doesn't send this address.
+
+<H2><A NAME="formwarn">Warn before sending unsecure form data</A></H2>
+
+If this checkbox is checked, a warning requester is given every time you have submitted a form over an <A HREF="../Working/secure.html">unsecure connection</A>.
+
+<H2><A NAME="spamblock">Activate spamblock when posting news</A></H2>
+
+Spammers (senders of unsolicited commercial e-mail) often scan all articles in <A HREF="../Working/news.html">newsgroups</A> for e-mail addresses.  If you check this checkbox, the articles you post will contain modified addresses to protect you against this practice.
+
+<H2><A NAME="ftpemail">Use e-mail address as FTP anon password</A></H2>
+
+FTP servers usually require a userid and password to obtain access.  Most links to FTP sites don't contain this details because most FTP sites can be accessed via <EM>anonymous FTP.</EM>   By convention, the word "<CODE>anonymous</CODE>" is used as userid, and your e-mail address is used as the password in this case.
+<P>If you check this option, and you have configured your <A HREF="nwmail.html#email">e-mail address</A>, it is sent as password for anonymous FTP.  Otherwise the string "<CODE>anonymous@anonymous</CODE>" is used.
+
+<H2><A NAME="cookie">Use cookies</A></H2>
+
+Use this chooser to select the protection level against privacy violation by <A HREF="../Working/cookies.html">cookies</A>.
+
+<H2><A NAME="rfc2109">RFC 2109</A></H2>
+
+The <A HREF="http://www.ietf.org/rfc/rfc2109.txt" TARGET="_blank">RFC 2109</A> standard for cookies provides a better <A HREF="../Working/cookies.html#rfc2109">privacy protection</A> than the original NetScape cookie mechanism.  Unfortunately, not all servers are compatible with the new standard.  Uncheck this checkbox to turn the new mechanism off, in case you have problems with a specific site.
+
+<H2><A NAME="nocookie">No cookies for domains</A></H2>
+
+If this list contains full or partial <EM>domain names</EM>, then AWeb will never remember or save cookies set by these domains, and never send cookies to these domains.  The <EM>domain</EM> name is checked against the domain as it is defined in the <A HREF="../Working/cookies.html">cookie</A> definition.
+<P>Use the <B>Add</B> button to add a new entry, and the <B>Del</B> button to delete the currently selected entry.  Double-click on an entry to edit the name <EM>in place</EM>.
+<P>You can also add a domain in this list by clicking the <B>Never</B> button in the <A HREF="../Working/cookies.html#alert">cookie alert requester</A>.
+
+<P><HR>
+
+<A HREF="nwcache.html"><IMG SRC="../GlobalImages/back.gif" WIDTH="32" HEIGHT="16" ALT="&lt;-" BORDER="0">Cache</A>&nbsp;&nbsp;<A HREF="settings.html"><IMG SRC="../GlobalImages/up.gif" WIDTH="32" HEIGHT="20" ALT="^" BORDER="0">Settings requesters</A>&nbsp;&nbsp;<A HREF="nwmail.html"><IMG SRC="../GlobalImages/next.gif" WIDTH="32" HEIGHT="16" ALT="-&gt;" BORDER="0">Mail/News</A>
+
+</BODY>
+
+</HTML>

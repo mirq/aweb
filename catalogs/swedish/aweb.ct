@@ -1,0 +1,2218 @@
+## version $VER: AWeb.catalog 3.4 (10.03.2001)
+## language svenska
+## codeset 0
+;
+; AWeb.cd - AWeb catalog description file
+;
+; $Id: aweb.ct,v 1.8 2009/09/11 11:46:21 opi Exp $
+;
+;  The MSG_DUMMY_nn labels are there because FlexCat doesn't
+;  understand the LABEL (+1//) syntax (C='s Catcomp uses this
+;  to skip 1 number)
+;
+;
+;-------------- General -----------------------------
+;
+MSG_REQUEST_TITLE
+AWeb - Förfrågan
+; AWeb request
+;
+MSG_REQUEST_YES_NO
+
+; Yes|No
+;
+; ***NEW***
+;
+;
+;-------------- About requester ---------------------
+;
+MSG_ABOUT_TITLE
+AWeb - Om
+; About AWeb
+;
+MSG_ABOUT_REGNR
+Registreringsnummer
+; Registration #
+;
+MSG_ABOUT_REGTO
+Registrerat till
+; Registered to
+;
+MSG_ABOUT_SCREENNAME
+Namn på allmän skärm
+; Public screen name
+;
+MSG_ABOUT_PORTNAME
+Namn på ARexx-port
+; ARexx port name
+;
+MSG_ABOUT_EMAIL
+E-post
+; E-mail
+;
+MSG_ABOUT_WWW
+WWW
+; WWW
+;
+MSG_ABOUT_OK
+_OK
+; _Ok
+;
+MSG_ABOUT_UNREGISTERED
+Oregistrerad version\n
+; Unregistered version\n
+;
+MSG_ABOUT_DEMO
+Oregistrerad demoversion\n
+; Unregistered demo version\n
+;
+MSG_ABOUT_DISTRIBUTED
+Distribuerad av %s
+; Distributed by %s
+;
+; Translators give yourself credit with this string.
+; It should read something like "(Language) translation by: (your name)\n"
+;
+MSG_ABOUT_TRANSLATOR
+Svensk översättning av Fredrik Sjögren, Jon Åslund,\n\
+Ulf Holm och Magnus Holmgren.\n
+; 
+;
+MSG_ABOUT_SPECIAL
+Specialversion för distribution med AmigaOS\n
+; Special version for distribution with Amiga OS\n
+;
+;-------------- Quit requester ----------------------
+;
+MSG_QUIT_TEXT
+Vill du verkligen avsluta AWeb?
+; Are you sure you want to quit AWeb?
+;
+MSG_QUIT_OK
+_OK
+; _Ok
+;
+MSG_QUIT_CANCEL
+A_vbryt
+; _Cancel
+;
+MSG_QUIT_WARNING
+VARNING: Alla överföringar\n\
+kommer att avbrytas!\n
+; WARNING: Transfers will be aborted!\n\n
+;
+;-------------- Demoversion requester ---------------
+;
+MSG_DEMO_TEXT
+Detta är en demoversion av AWeb.\n\
+Flera fönster är inte tillåtna.
+; This is the demo version of AWeb\nmultiple document windows are not supported
+;
+MSG_DEMO_OK
+_OK
+; _Ok
+;
+;
+;-------------- Close windows requester -------------
+;
+MSG_SCRCLOSE_TEXT
+AWeb kunde inte stänga sin skärm.\n\
+Var god stäng alla fönster.
+; AWeb can't close its screen.\nPlease close all windows.
+;
+MSG_SCRCLOSE_OK
+OK
+; Ok
+;
+;
+;-------------- Network status window ---------------
+;
+MSG_NWS_TITLE
+AWeb - Nätstatus
+; Network status
+;
+MSG_NWS_QUEUED
+Står i kö
+; Queued
+;
+MSG_NWS_STARTED
+Startad
+; Started
+;
+MSG_NWS_LOOKUP
+Letar upp
+; Looking up
+;
+MSG_NWS_CONNECT
+Kopplar upp
+; Connecting
+;
+MSG_NWS_WAIT
+Väntar
+; Waiting
+;
+MSG_NWS_PROCESS
+Behandlar
+; Processing
+;
+MSG_NWS_LOGIN
+Loggar in
+; Logging in
+;
+MSG_NWS_CPS
+%ld TPS
+; %ld cps
+;
+MSG_NWS_NEWSGROUP
+Läser
+; Scanning
+;
+MSG_NWS_UPLOAD
+Laddar upp
+; Uploading
+;
+;-------------- Authorization requester -------------
+;
+MSG_AUTH_TITLE
+AWeb - Autentisering
+; Authorization
+;
+MSG_AUTH_PROMPT
+Användarnamn och lösenord krävs för
+; Userid and password required for
+;
+MSG_AUTH_USERID
+Användar_namn
+; _Userid
+;
+MSG_AUTH_PASSWORD
+_Lösenord
+; _Password
+;
+MSG_AUTH_OK
+_OK
+; _Ok
+;
+MSG_AUTH_CANCEL
+A_vbryt
+; _Cancel
+;
+MSG_AUTH_PROMPT_FTP
+Lösenord krävs för
+; Password required for
+;
+MSG_AUTH_USERID_FTP
+Användarnamn
+; Userid
+;
+MSG_AUTH_PROMPT_PROXY
+Användarnamn och lösenord krävs för proxy
+; Userid and password required for proxy
+;
+MSG_AUTH_PROMPT_MASTER
+
+; Please enter the password to show the passwords.
+;
+; ***NEW***
+;
+;
+;-------------- File requesters ---------------------
+;
+MSG_FILE_SAVETITLE
+Välj fil att spara till
+; Select save filename
+;
+MSG_FILE_SAVE
+Spara
+; Save
+;
+MSG_FILE_INCTEXT
+Filen %s\n\
+är ofullständig!\n\
+Förväntat: %ld byte\n\
+Mottaget: %ld byte\n\n\
+Tryck OK för att ändå spara filen.
+; Incomplete file!\n%s\nExpected: %ld bytes\nReceived: %ld bytes\n\n\
+; Choose OK to keep the partial data.
+;
+MSG_DUMMY_1
+
+; 
+MSG_FILE_EXISTTEXT
+Filen\n\
+%s\n\
+finns redan!
+; File:\n%s\nalready exists!
+;
+MSG_FILE_EXISTBUTTONS
+_Skriv över|_Lägg till|_Annat namn|A_vbryt
+; _Overwrite|_Append|_New name|_Cancel
+;
+MSG_FILE_AREXXTITLE
+Välj ARexx-skript
+; Select ARexx macro
+;
+MSG_FILE_HOTLISTTITLE
+Välj hierarkiska bokmärken
+; Select hierarchical hotlist
+;
+MSG_FILE_LOCALTITLE
+Välj fil
+; Open local file
+;
+MSG_FILE_OPEN
+Öppna
+; Open
+;
+MSG_FILE_TEMPTITLE
+Kunde inte hitta temporär sökväg\n\
+%s\n\
+Använd T: istället.
+; Can't find temporary path:\n%s\nUse T: instead.
+;
+MSG_FILE_TEMPBUTTONS
+_OK
+; _Ok
+;
+MSG_FILE_INCBUTTONS2
+_OK|_Försök igen|A_vbryt
+; _Ok|_Retry|_Cancel
+;
+MSG_FILE_SETTINGSTITLE
+Välj inställningslåda
+; Select settings directory
+;
+MSG_FILE_UPLOADTITLE
+Välj fil att ladda upp
+; Select file to upload
+;
+;-------------- TCP close requester -----------------
+;
+MSG_TCP_ENDTCP
+AWeb avslutas.\n\
+Ska TCP/IP-kopplingen avslutas också?
+; AWeb is stopped.\nShould the TCP connection be terminated too?
+;
+MSG_TCP_BUTTONS
+_Ja|_Nej
+; _Yes|_No
+;
+;-------------- Startup requester -------------------
+; Mind the maximum length!
+;
+MSG_STARTUP_FONTS
+Laddar teckensnitt
+; Loading fonts
+;
+MSG_STARTUP_IMAGES
+Laddar bilder
+; Loading GUI images
+;
+MSG_STARTUP_CACHE
+Laddar cacheindex
+; Loading cache index
+;
+;-------------- Hotlist requester -------------------
+;
+MSG_HOTL_TITLE
+AWeb - Bokmärken
+; AWeb hotlist
+;
+MSG_HOTL_ADDLINK
+Lägg till _länk
+; _Add link
+;
+MSG_HOTL_ADDGROUP
+Lägg till _grupp
+; Add _group
+;
+; (No hotkey for this one please!)
+MSG_HOTL_REMOVE
+Ta bort
+; Remove
+;
+MSG_HOTL_FOLLOW
+_Följ
+; _Follow
+;
+MSG_HOTL_NAME
+_Namn
+; _Name
+;
+MSG_HOTL_URL
+_URL
+; _URL
+;
+MSG_HOTL_NEWGROUP
+Ny grupp
+; New group
+;
+MSG_HOTL_NEWLINK
+Ny länk
+; New link
+;
+; -- new hotlist viewer requester --
+;
+MSG_HOTL_TITLE_VIEWER
+AWeb - Bokmärkesvisare
+; AWeb hotlist viewer
+;
+MSG_HOTL_VURLS
+_URL
+; UR_Ls
+;
+MSG_HOTL_MANAGER
+_Hanteraren
+; _Manager
+;
+; -- new hotlist manager requester --
+;
+MSG_HOTL_TITLE_MANAGER
+AWeb - Bokmärkeshanterare
+; AWeb hotlist manager
+;
+MSG_HOTL_LTYPE
+V_isa
+; L_ist
+;
+MSG_HOTL_LTYPE_REST
+Resten
+; Rest
+;
+MSG_HOTL_LTYPE_ALL
+Alla
+; All
+;
+MSG_HOTL_LTYPE_GROUPS
+Grupper
+; Groups
+;
+MSG_HOTL_LSORT
+S_ortera
+; S_ort
+;
+MSG_HOTL_LSORT_TITLE
+Titel
+; Title
+;
+MSG_HOTL_LSORT_URL
+URL
+; URL
+;
+MSG_HOTL_MOVEIN
+_< In
+; _< In
+;
+MSG_HOTL_MOVEOUT
+Ut _>
+; Out _>
+;
+MSG_HOTL_MOVE
+< _Flytta
+; < _Move
+;
+MSG_HOTL_DEL
+Ta bort
+; _Delete
+;
+MSG_HOTL_WHERE
+_Var
+; _Where
+;
+MSG_HOTL_SHOW
+Vis_a
+; S_how
+;
+MSG_HOTL_SORT
+Sor_tera
+; Sor_t
+;
+MSG_HOTL_PARENT
+_Moder
+; _Parent
+;
+MSG_HOTL_ALL
+G_rupper
+; G_roups
+;
+MSG_HOTL_ADDENTRY
++ L_änk
+; + _Entry
+;
+MSG_HOTL_ADDGROUP2
++ _Grupp
+; + _Group
+;
+MSG_HOTL_URLS
+URL:er
+; UR_Ls
+;
+MSG_HOTL_REVERT
+Senast sparade
+; Re_vert
+;
+MSG_HOTL_SAVE
+Spara
+; _Save
+;
+MSG_HOTL_LADD
+_Lägg till
+; _Add
+;
+MSG_HOTL_FIND
+_Sök
+; _Find
+;
+MSG_HOTL_PATTERN
+Mat_cha
+; Mat_ch
+;
+MSG_HOTL_NEXT
+_Nästa
+; Ne_xt
+;
+MSG_HOTL_DEFAULT_TITLE
+** Ny länk **
+; ** New link **
+;
+MSG_HOTL_DEFAULT_GROUP
+** Ny grupp **
+; ** New group **
+;
+MSG_HOTL_TITLE_ALLGROUPS
+Alla grupper
+; All groups
+;
+MSG_HOTL_TITLE_WHERE
+Grupper med denna länk
+; Groups containing this entry
+;
+MSG_HOTL_TITLE_REST
+Ogrupperade länkar
+; Unassigned entries
+;
+MSG_HOTL_TITLE_ALL
+Alla länkar
+; All entries
+;
+MSG_HOTL_TITLE_ROOTGROUPS
+Grupper på rotnivå
+; Root-level groups
+;
+MSG_HOTL_LSORT_DATE
+Datum
+; Date
+;
+;
+;--------------  Window history requester -------------------
+;
+MSG_WHIS_TITLE
+AWeb - Fönsterhistorik
+; Window history
+;
+MSG_WHIS_FILTER
+_Filtrera
+; _Filter
+;
+MSG_WHIS_WINDOW
+F_önster
+; _Window
+;
+MSG_WHIS_ORDER
+S_ortering
+; _Order
+;
+MSG_WHIS_DISPLAY
+_Visa
+; _Display
+;
+MSG_WHIS_ORDER_NATURAL
+Naturlig
+; Natural
+;
+MSG_WHIS_ORDER_MAINLINE
+Huvudlinje
+; Mainline
+;
+MSG_WHIS_ORDER_RETRIEVED
+Hämtad
+; Retrieved
+;
+MSG_WHIS_ORDER_TITLE
+Titel
+; Title
+;
+MSG_WHIS_ORDER_URL
+URL
+; URL
+;
+;
+;-------------- Cache browser ---------------------------
+;
+MSG_CABR_TITLE
+AWeb - Cacheläsare
+; Cache browser
+;
+MSG_CABR_URL
+URL
+; URL
+;
+MSG_CABR_DATE
+Datum
+; Date
+;
+MSG_CABR_SIZE
+Storlek
+; Size
+;
+MSG_CABR_TYPE
+Typ
+; Type
+;
+MSG_CABR_FILE
+Fil
+; File
+;
+MSG_CABR_STATUS
+%ld filer, %ld kB
+; %ld files, %ld kB
+;
+MSG_CABR_SORTBY
+Sortera _efter
+; _Sort by
+;
+MSG_CABR_OPEN
+_Öppna
+; _Open
+;
+MSG_CABR_SAVE
+_Spara
+; Sa_ve
+;
+MSG_CABR_DELETE
+_Ta bort
+; _Delete
+;
+MSG_CABR_FIND
+Sö_k
+; _Find
+;
+MSG_CABR_PATTERN
+_Matcha
+; _Match
+;
+MSG_CABR_NEXT
+_Nästa
+; _Next
+;
+MSG_CABR_CHARSET
+
+; Charset
+;
+; ***NEW***
+;
+MSG_CABR_ETAG
+
+; Etag
+;
+; ***NEW***
+;
+;-------------- Progress requester ----------------------
+;
+MSG_PROGRESS_TITLE
+AWeb - Arbetarsmätare
+; AWeb progress
+;
+MSG_PROGRESS_CANCEL
+Avbryt
+; Cancel
+;
+;
+;-------------- Fix cache requesters ---------------------
+;
+MSG_FIXCACHE_WARNING
+VARNING!\n\
+Denna funktion kommer att ta bort alla okända filer från\n\
+lådan %s.
+; WARNING!\n\
+; This function will delete all foreign files from the\n\
+; %s drawer
+;
+MSG_FIXCACHE_BUTTONS
+_OK|A_vbryt
+; _Ok|_Cancel
+;
+MSG_FIXCACHE_PROGRESS
+Lagar diskcache
+; Fixing the disk cache...
+;
+MSG_FIXCACHE_DELETEPROGRESS
+
+; Delete %ld Files from disk cache...
+;
+; ***NEW***
+;
+MSG_FIXCACHE_DELETEIMAGES
+Är du säker på att du vill ta bort\n\
+alla filer från diskcachen?
+; Are you sure you want to delete\n\
+; all images from the cache?
+;
+MSG_FIXCACHE_DELETEDOCS
+Är du säker på att du vill ta bort\n\
+alla sidor från diskcachen?
+; Are you sure you want to delete\n\
+; all documents from the cache?
+;
+MSG_FIXCACHE_ERASE
+Är du säker på att du vill ta bort\n\
+alla bilder från diskcachen?
+; Are you sure you want to delete\n\
+; all documents and images from the cache?
+;
+MSG_FIXCACHE_CORRUPT
+Kunde inte läsa cacheregister.\n\
+Kan vara från en gammal version av AWeb.\n\
+Cache-filerna kan inte användas längre.\n\
+Vill du ta bort dem?
+; The cache registration is unreadable\n\
+; or from an older version of AWeb.\n\
+; Cached files cannot be used any more.\n\
+; Do you want to clean up now?
+;
+;-------------- Search requesters ---------------------
+;
+MSG_SEARCH_STRING
+Sök _efter
+; Search _for
+;
+MSG_SEARCH_IGNORECASE
+Skilj _inte på versaler och gemener
+; _Ignore case
+;
+MSG_SEARCH_SEARCH
+_Sök
+; _Search
+;
+MSG_SEARCH_FROMTOP
+_Från början
+; From _top
+;
+MSG_SEARCH_BACKWARDS
+_Bakåt
+; _Backwards
+;
+MSG_SEARCH_CANCEL
+A_vbryt
+; _Cancel
+;
+MSG_SEARCH_NOTFOUND
+Kunde inte hitta strängen
+; String not found
+;
+MSG_SEARCH_OK
+_OK
+; _Ok
+;
+;
+;-------------- Popup menu ---------------------------
+;
+MSG_POPUP_LOADIMAGE
+Ladda bild
+; Load image
+;
+MSG_POPUP_RELOADIMAGE
+Ladda om bild
+; Reload image
+;
+MSG_POPUP_SAVEIMAGE
+Spara bild...
+; Save image
+;
+MSG_POPUP_DOWNLOADIMAGE
+Ladda ner bild...
+; Download image
+;
+MSG_POPUP_FLUSHIMAGE
+Ta bort bild
+; Flush image
+;
+MSG_POPUP_SHOWIMAGE
+Visa bild
+; Show image
+;
+MSG_POPUP_OPENLINK
+Öppna länk
+; Open link
+;
+MSG_POPUP_OPENLINKNW
+Öppna länk i nytt fönster
+; Open link in new window
+;
+MSG_POPUP_LOADLINK
+Ladda länk i bakgrunden
+; Load link in background
+;
+MSG_POPUP_SAVELINK
+Spara länk...
+; Save link
+;
+MSG_POPUP_DOWNLOADLINK
+Ladda ner länk...
+; Download link
+;
+MSG_POPUP_ADDLINK
+Lägg till länk i bokmärkeslistan
+; Add link to hotlist
+;
+MSG_POPUP_RELOADFRAME
+Ladda om webbsidan
+; Reload contents
+;
+MSG_POPUP_SAVEFRAME
+Spara källkod...
+; Save source
+;
+MSG_POPUP_VIEWFRAME
+Visa källkod...
+; View source
+;
+MSG_POPUP_SHOWFRAME
+Visa separat
+; Show separately
+;
+MSG_POPUP_SEARCHFRAME
+Sök i innehåll...
+; Search in contents
+;
+MSG_POPUP_INFOFRAME
+Information...
+; Info
+;
+MSG_POPUP_IMAGE2CLIP
+
+; Image Url to Clipboard
+;
+; ***NEW***
+;
+;
+;-------------- Print --------------------------------
+;
+MSG_PRINTP_TITLE
+Skrivarinställningar
+; Print parameters
+;
+MSG_PRINTP_SCALE
+_Storleksanpassning (%)
+; _Scale (%)
+;
+MSG_PRINTP_PRINTBG
+Skriv ut _bakgrund
+; Print _backgrounds
+;
+MSG_PRINTP_FORMFEED
+_Mata ut sida
+; _Formfeed
+;
+MSG_PRINTP_CENTER
+Ce_ntrera
+; Ce_nter
+;
+MSG_PRINTP_PRINT
+Skriv _ut
+; _Print
+;
+MSG_PRINTP_CANCEL
+A_vbryt
+; _Cancel
+;
+MSG_PRINT_NOPRINTER
+Kunde inte komma åt skrivaren
+; Unable to access the printer
+;
+MSG_PRINT_OK
+_OK
+; _Ok
+;
+MSG_PRINT_PROGRESS
+Skriver ut ...
+; Printing in progress...
+;
+MSG_PRINTP_LAYOUTWIDTH
+_Bredd
+; _Layout Width
+;
+MSG_PRINTP_LW_WINDOW
+Fönster
+; Window
+;
+MSG_PRINTP_LW_DOCUMENT
+Webbsida
+; Document
+;
+MSG_PRINTP_LW_SCREEN
+Skärm
+; Screen
+;
+;
+;-------------- Cookie warning ----------------------
+;
+MSG_COOKIE_TITLE
+AWeb - Kakvarning
+; Cookie alert
+;
+MSG_COOKIE_WARNING
+Kommer sätta en Netscape-kaka!
+; About to set a NetScape cookie!
+;
+MSG_COOKIE_NAME
+Namn:
+; Cookie name:
+;
+MSG_COOKIE_VALUE
+Värde:
+; Cookie value:
+;
+MSG_COOKIE_DOMAIN
+Domän:
+; For domain:
+;
+MSG_COOKIE_PATH
+Sökväg:
+; Path:
+;
+MSG_COOKIE_COMMENT
+Kommentar:
+; Comment:
+;
+MSG_COOKIE_MAXAGE
+Max ålder:
+; Max-age:
+;
+MSG_COOKIE_EXPIRES
+Upphör:
+; Expires:
+;
+MSG_COOKIE_ONCE
+_En gång
+; _Once
+;
+MSG_COOKIE_ACCEPT
+_Acceptera
+; _Accept
+;
+MSG_COOKIE_NEVER
+A_ldrig
+; _Never
+;
+MSG_COOKIE_CANCEL
+A_vbryt
+; _Cancel
+;
+MSG_COOKIE_SECURE
+AWeb kommer endast att skicka tillbaka\n\
+denna kaka över en säker uppkoppling.
+; AWeb will send this cookie back\nover secure connections only.
+;
+MSG_COOKIE_UNSECURE
+AWeb kommer skicka denna kaka\n\
+över en OSÄKER uppkoppling.
+; AWeb will send this cookie back\nover UNSECURE connections too.
+;
+;
+;-------------- Info requester ----------------------
+;
+MSG_INFO_TITLE
+AWeb - Information
+; Information
+;
+MSG_INFO_FROMCACHE
+Läst från AWebs cache
+; Read from AWeb cache
+;
+MSG_INFO_XFER
+Överföringshuvud:
+; Transfer headers:
+;
+MSG_INFO_META
+Metainformation:
+; Meta information:
+;
+MSG_INFO_LINK
+Klickbara länkar:
+; Clickable links:
+;
+MSG_INFO_CIPHER
+HTTPS-krypteringsmetod: %s
+; HTTPS cipher method: %s
+;
+MSG_INFO_SSLLIBRARY
+SSL-bibliotek använt: %s
+; SSL library used: %s
+;
+;-------------- Default buttons ---------------------
+;
+MSG_USERBUTTON_CACHE
+Cache
+; Cache
+;
+MSG_USERBUTTON_CLOCK
+Klocka
+; Clock
+;
+MSG_USERBUTTON_SEARCH
+
+; Search
+;
+; ***NEW***
+;
+;-------------- Authorizations edit requester -------
+;
+MSG_AUTHEDIT_TITLE
+AWeb - Ändra autentiseringar
+; Edit authorizations
+;
+MSG_AUTHEDIT_TITLE_SERVER
+Server
+; Server
+;
+MSG_AUTHEDIT_TITLE_USERID
+Användarnamn
+; Userid
+;
+MSG_AUTHEDIT_TITLE_PASSWORD
+
+; Password
+;
+; ***NEW***
+;
+MSG_AUTHEDIT_DEL
+_Ta bort
+; _Del
+;
+MSG_AUTHEDIT_SERVER
+Server
+; Server
+;
+MSG_AUTHEDIT_USERID
+_Användarnamn
+; _Userid
+;
+MSG_AUTHEDIT_PASSWORD
+_Lösenord
+; _Password
+;
+MSG_AUTHEDIT_SHOWPASS
+
+; _Show Passwords
+;
+; ***NEW***
+;
+MSG_AUTHEDIT_SHOWPWREQ
+
+; To use this function you must first enter a\n\
+; master password then you can use the function\n\
+; to show all passwords.\n\
+; \n\
+; Warning:\n\
+; Please remember or notice your password\n\
+; because here is no chance to show or delete\n\
+; the password without the password!
+;
+; ***NEW***
+;
+MSG_AUTHEDIT_SHOWPWREQ_BUTTONS
+
+; _Ok|_Cancel
+;
+; ***NEW***
+;
+;-------------- JavaScript prompt requester ---------
+;
+MSG_JSPROMPT_OK
+_OK
+; _Ok
+;
+MSG_JSPROMPT_CANCEL
+A_vbryt
+; _Cancel
+;
+;
+;-------------- Unsecure form warning ---------------
+;
+MSG_FORMWARN_TITLE
+AWeb - Varning
+; AWeb warning
+;
+MSG_FORMWARN_WARNING
+Data från detta formulär kommer att skickas\n\
+över en OSÄKER uppkoppling.
+; Data from this form will be sent\nover an UNSECURE connection.
+;
+MSG_FORMWARN_BUTTONS
+_OK|A_vbryt
+; _Ok|_Cancel
+;
+;
+;-------------- Mailer messages ---------------------
+;
+MSG_MAIL_TITLE
+AWeb - E-postfel
+; AWeb mailer error
+;
+MSG_MAIL_NOSMTPHOST
+Du måste ange din SMTP-server först.\n\
+Se nätinställningarna, e-postfliken.
+; You have to configure your SMTP host first.\nSee Network/Mail settings.
+;
+MSG_MAIL_NOCONNECT
+Kunde inte koppla upp mot %s.
+; Can't connect to %s.
+;
+MSG_MAIL_MAILFAILED
+Kunde inte skicka brev.
+; Sending mail message failed.
+;
+MSG_MAIL_BUTTONS
+_Försök igen|_Spara|A_vbryt
+; _Retry|_Save|_Cancel
+;
+MSG_MAIL_SAVETITLE
+Spara meddelande som ej skickades
+; Save failed message
+;
+MSG_MAIL_MAILTO_TITLE
+Brev till %s
+; Mail to %s
+;
+MSG_MAIL_MAILTO_HEADER
+Brev till: %s
+; Mail to: %s
+;
+MSG_MAIL_TO
+Till:
+; To:
+;
+MSG_MAIL_SUBJECT
+Ärende:
+; Subject:
+;
+MSG_MAIL_MESSAGE_BODY
+Meddelande:
+; Message body:
+;
+MSG_MAIL_EXTRA_HEADERS
+Extra brevhuvuden inkluderade
+; Extra mail headers included
+;
+MSG_MAIL_SEND
+Skicka brev
+; Send mail
+;
+MSG_MAIL_RESET
+Rensa
+; Reset
+;
+MSG_MAIL_RETURN
+Återvänd
+; Return
+;
+MSG_MAIL_MAIL_SENT_TITLE
+Brev sänt till: %s
+; Mail sent to: %s
+;
+MSG_MAIL_MAIL_SENT
+<H1>Brev skickat</H1>\n\
+Ditt brev till <B>%s</B> har skickats.
+; <H1>Mail sent</H1>\nYour mail message to <B>%s</B> has been sent succesfully.
+;
+;
+;-------------- Newsreader messages -----------------
+;
+MSG_NEWS_TITLE
+AWeb - Diskussionsläsarfel
+; AWeb newsreader error
+;
+MSG_NEWS_NONNTPHOST
+Du måste ange din NNTP-server först.\n\
+Se nätinställningarna, diskussionsfliken.
+; You have to configure your NNTP host first.\nSee Network/News settings.
+;
+MSG_NEWS_NOCONNECT
+Kunde inte koppla upp mot %s.
+; Can't connect to %s.
+;
+MSG_NEWS_POSTFAILED
+Kunde inte posta inlägg.
+; Posting article failed.
+;
+MSG_NEWS_BUTTONS
+_Försök igen|_Spara|A_vbryt
+; _Retry|_Save|_Cancel
+;
+MSG_NEWS_SAVETITLE
+Spara meddelande som ej postats
+; Save failed article
+;
+MSG_NEWS_NEWS_HEADER
+Diskussioner
+; News
+;
+MSG_NEWS_SUBSCRIBED
+Valda diskussionsgrupper
+; Subscribed newsgroups
+;
+; Don't forget to include the '8' in the %8ld below:
+MSG_NEWS_NEW_ARTICLES
+%8ld nya inlägg
+; %8ld new articles
+;
+MSG_NEWS_CATCH_UP
+Markera som lästa
+; Catch up
+;
+MSG_NEWS_UNSUBSCRIBE
+Sluta prenumerera
+; Unsubscribe
+;
+MSG_NEWS_OTHER_GROUP
+Annan grupp
+; Other group
+;
+MSG_NEWS_SUBSCRIBE
+Prenumerera
+; Subscribe
+;
+MSG_NEWS_READ
+Läs
+; Read
+;
+MSG_NEWS_SEARCH_FOR_GROUP
+Sök efter grupp
+; Search for group
+;
+MSG_NEWS_SEARCH
+Sök
+; Search
+;
+MSG_NEWS_LONG_DOWNLOAD
+Första gången du söker efter en grupp\n\
+kommer en lista med alla diskussionsgrupper\n\
+laddas ner. Detta kan ta flera minuter.
+; The first time you search for a group,\n\
+; a list of all newsgroup names will be downloaded.\n\
+; This may take several minutes to complete.
+;
+MSG_NEWS_NO_SUBJECT
+(inget ärende)
+; (no subject)
+;
+MSG_NEWS_LINES
+(%s rader)
+; (%s lines)
+;
+MSG_NEWS_POST_NEW_ARTICLE
+Skriv nytt inlägg
+; Post new article
+;
+MSG_NEWS_GROUP_LIST
+Grupplista
+; Group list
+;
+MSG_NEWS_ERROR_NO_GROUP
+<H1>Fel</H1>\n\
+Diskussionsgrupp %s finns inte.
+; <h1>Error</h1>\nGroup %s does not exist.
+;
+MSG_NEWS_USE_FRAMES
+Diskussionsprogrammet använder ramar
+; News is configured to use frames
+;
+MSG_NEWS_ERROR_NO_ARTICLE
+Inlägget %s finns inte.<BR>
+; Article %s does not exist<BR>
+;
+MSG_NEWS_FOLLOW_UP
+Svara
+; Follow-up
+;
+MSG_NEWS_REPLY
+Svara med e-post
+; Reply in e-mail
+;
+MSG_NEWS_SAVE
+Spara inlägg
+; Save article
+;
+MSG_NEWS_SUBJECT
+Ärende:
+; Subject:
+;
+MSG_NEWS_NEWSGROUPS
+Diskussionsgrupper:
+; Newsgroups:
+;
+MSG_NEWS_ARTICLE_BODY
+Text:
+; Article body:
+;
+MSG_NEWS_EXTRA_HEADERS
+Extra brevhuvuden inkluderade
+; Extra news headers included
+;
+MSG_NEWS_POST_ARTICLE
+Posta inlägg
+; Post article
+;
+MSG_NEWS_RESET
+Rensa
+; Reset
+;
+MSG_NEWS_RETURN
+Återvänd
+; Return
+;
+MSG_NEWS_FOLLOWUP_TITLE
+Svara på inlägg
+; Follow-up to article
+;
+MSG_NEWS_FOLLOWUP_TO_GROUPS
+Svara till:
+; Follow-up to:
+;
+MSG_NEWS_PLEASE_DELETE
+Tänk på att ta bort onödiga citerade rader.
+; Please delete unnecessary quoted lines
+;
+MSG_NEWS_REPLY_TITLE
+Svara på inlägg
+; Reply to article
+;
+MSG_NEWS_REPLY_TO_ADDRESS
+Svara till:
+; Reply to:
+;
+MSG_NEWS_ARTICLE_POSTED_TITLE
+Inlägg postat
+; Article posted
+;
+MSG_NEWS_ARTICLE_POSTED
+<H1>Inlägg postat</H1>\n\
+Ditt inlägg har postats.
+; <H1>Article posted</h1>\n\
+; Your article has been posted.
+;
+MSG_NEWS_DOWNLOAD_TITLE
+Ladda ner lista med diskussionsgrupper
+; Download newsgroup list
+;
+MSG_NEWS_DOWNLOAD_BODY
+<H1>Laddar ner ...</H1>\n\
+Laddar ner lista med diskussionsgrupper.\n\
+Detta kan ta flera minuter.
+; <H1>Downloading...</H1>\n\
+; Downloading newsgroup list. This can take several minutes.
+;
+MSG_NEWS_SEARCH_RESULT
+Sökresultat
+; Search result
+;
+MSG_NEWS_FIRST_MATCHING
+De första %ld av %ld diskussionsgrupper som matchar <B>%s</B>.
+; First %ld of %ld newsgroup names matching <B>%s</B>
+;
+MSG_NEWS_FOUND_MATCHING
+Hittade %ld diskussionsgrupper som matchar <B>%s</B>.
+; Found %ld newsgroup names matching <B>%s</B>
+;
+;
+;-------------- Shell/ARexx command warning ---------
+;
+MSG_CMDWARN_TITLE
+AWeb - Varning
+; AWeb warning
+;
+MSG_CMDWARN_SHELL
+Kommer att köra ett shell-kommando:\n\
+%s
+; About to execute shell command:\n%s
+;
+MSG_CMDWARN_AREXX
+Kommer att starta ett ARexx-skript:\n\
+%s
+; About to start ARexx program:\n%s
+;
+MSG_CMDWARN_BUTTONS
+_OK|A_vbryt
+; _Ok|_Cancel
+;
+;
+;-------------- SSL related warnings ----------------
+;
+MSG_SSLWARN_SSL_TITLE
+AWeb - Varning
+; AWeb warning
+;
+MSG_SSLWARN_SSL_TEXT
+Kan inte skapa säker uppkoppling mot %s:\n\
+%s\n\
+\n\
+Vill du använda en osäker uppkoppling istället?
+; Cannot make secure connection to %s:\n%s\n \nUse an unsecure connection instead?
+;
+MSG_SSLWARN_SSL_BUTTONS
+_Osäker|A_vbryt
+; _Unsecure|_Cancel
+;
+MSG_SSLWARN_SSL_NO_SSL
+Säkra uppkopplingar fungerar bara med Miami och MiamiSSL.
+; Secure connections are only supported with the Miami TCP program and MiamiSSL.
+;
+MSG_SSLWARN_CERT_TITLE
+AWeb - Varning
+; AWeb warning
+;
+MSG_SSLWARN_CERT_TEXT
+Kunde inte verifiera certifikatet %s.\n\
+Detaljer: %s\n\
+\n\
+Om du fortsätter kommer data att skickas krypterat men\n\
+webbplatsens identitet kan inte verifieras.\n\
+Du SAKNAR HELT skydd mot bedrägeri.\n\
+\n\
+Vill du fortsätta?
+; Certificate for %s cannot be verified.\nDetails: %s\n \n\
+; If you continue the data will be encrypted (protection against eavesdropping), \
+; but the identity of the server cannot be verified (-NO- protection against fraud).\n \n\
+; Do you want to continue?
+;
+MSG_SSLWARN_CERT_BUTTONS
+_OK|A_vbryt
+; _Ok|_Cancel
+;
+MSG_SSLWARN_SSL_NO_SSL2
+Säkra uppkopplingar fungerar bara med AmiSSL eller MiamiSSL.
+; Secure connections are only supported when using AmiSSL or MiamiSSL.
+;
+;
+;-------------- Unknown MIME type -------------------
+;
+MSG_UNKMIME_TITLE
+Okänd innehållstyp
+; Unknown content type
+;
+MSG_UNKMIME_TEXT
+Okänd filtyp kommer att sparas.\n\
+\n\
+URL:   %s\n\
+Innehållstyp:   %s\n\
+Filändelse:   %s\n\
+\n\
+Du kan avbryta nu och ladda om filen efter\n\
+att ha ändrat visare eller händelse för denna\n\
+MIME-typ i webbinställningarna, visningsfliken.
+; Unrecognized file will be saved\n \n\
+; URL:   %s\nContent type:   %s\nExtension:   %s\n \n\
+; You might want to cancel the save now, and reload this file \
+; after configuring a viewer or action for this MIME type \
+; in the Browser settings (Viewers).
+;
+MSG_UNKMIME_BUTTONS
+_Spara|A_vbryt
+; _Save|_Cancel
+;
+MSG_REQUEST_COPYURL
+Kopiera _URL till urklipp
+; Copy _URL to clipboard
+;
+;-------------- Open URL requester ------------------
+;
+;
+MSG_OPENURL_TITLE
+AWeb - Öppna URL
+; AWeb request
+;
+MSG_OPENURL_TEXT
+Skriv in URL:
+; Type in the URL to open:
+;
+MSG_OPENURL_BUTTONS
+_OK|A_vbryt
+; _Ok|_Cancel
+;
+;
+;-------------- Save as IFF requester ---------------
+;
+;
+MSG_SAVEIFF_PROGRESS
+Sparar IFF-fil ...
+; Saving IFF file...
+;
+;
+;-------------- awebcharset.awebplugin ---------------
+;
+;
+MSG_CHARSET_CODESETTITLE
+
+; Awebcharset.awebplugin
+;
+; ***NEW***
+;
+MSG_CHARSET_CODESETWRONG
+
+; The Version of %s on the System is %ld.%ld,\n\
+; but for this Plugin at least Version %ld.%ld is needed.\n
+;
+; ***NEW***
+;
+MSG_CHARSET_CODESETFAIL
+
+; Can't open required %s - Version: %ld.%ld.\n
+;
+; ***NEW***
+;
+MSG_CHARSET_CODESETURL
+
+; \n\
+; Please visit http://sourceforge.net/projects/codesetslib\n\
+; for downloading the latest Version and make sure the\n\
+; Library is properly installed.
+;
+; ***NEW***
+;
+MSG_CHARSET_INFOTITLE
+
+; Awebcharset.awebplugin Info Window
+;
+; ***NEW***
+;
+MSG_CHARSET_INFOTEXT
+
+; Filter is : %s\n\
+; Replace is: %s\n\
+; Request is: %s\n\
+; \n\
+; URL='%s'\n\
+; \n\
+; Document Charsets:\n\
+; Header Charset     = '%s'\n\
+; Meta Charset       = '%s'\n\
+; \n\
+; Used Charsets:\n\
+; Source Charset     = '%s'\n\
+; Destination Charset= '%s'
+;
+; ***NEW***
+;
+MSG_CHARSET_DIFFREQTXT
+
+; The Server send 2 different Charsets for this Document:\n\
+; \n\
+; Header Charset  = '%s'\n\
+; Document Charset= '%s'\n\
+; \n\
+; Which Charset should be used?
+;
+; ***NEW***
+;
+MSG_CHARSET_DIFFREQBUT
+
+; Don't ask again
+;
+; ***NEW***
+;
+MSG_CHARSET_ON
+
+; On
+;
+; ***NEW***
+;
+MSG_CHARSET_OFF
+
+; Off
+;
+; ***NEW***
+;
+MSG_CHARSET_OK
+
+; _Ok
+;
+; ***NEW***
+;
+;
+;-------------- Menus -------------------------------
+;
+; If the second character in a menu item string is a slash (/),
+; then the first character is used as menu shortcut.
+;
+MSG_PROJECT_MENU
+Arkiv
+; Project
+;
+MSG_PROJECT_NEWWINDOW
+N/Nytt fönster
+; N/New window
+;
+MSG_PROJECT_CLOSEWINDOW
+K/Stäng fönster
+; K/Close window
+;
+MSG_PROJECT_OPENURL
+U/Öppna URL...
+; U/Open URL
+;
+MSG_PROJECT_OPENWWW
+W/Öppna WWW
+; W/Open WWW
+;
+MSG_PROJECT_OPENLOCAL
+O/Öppna fil...
+; L/Open local...
+;
+MSG_PROJECT_OPENSEARCH
+Ö/Sökmotorer
+; E/Search engines
+;
+MSG_PROJECT_SOURCE
+Visa källkod...
+; View source...
+;
+MSG_PROJECT_SAVEHTML
+Spara källkod...
+; S/Save source...
+;
+MSG_PROJECT_ABOUT
+Om...
+; About...
+;
+MSG_PROJECT_QUIT
+Q/Avsluta...
+; Q/Quit...
+;
+MSG_PROJECT_SEARCH
+S/Sök...
+; G/Search...
+;
+MSG_PROJECT_PRINT
+P/Skriv ut...
+; P/Print...
+;
+MSG_PROJECT_EDIT
+Ändra källkod...
+; Edit source...
+;
+MSG_PROJECT_INFO
+Information...
+; Info...
+;
+MSG_PROJECT_OPENNEWS
+Öppna diskussionsgrupper
+; Open News
+;
+; (Shortcut key is backslash)
+MSG_PROJECT_ICONIFY
+\\/Ikonifiera
+; \\/Iconify
+;
+MSG_PROJECT_SAVEIFF
+Spara som IFF...
+; Save as IFF...
+;
+MSG_CONTROL_MENU
+Kontroll
+; Control
+;
+MSG_CONTROL_LOADNOW
+Visa bilder nu
+; Load images now
+;
+MSG_CONTROL_LOADNOWALL
+I/Alla bilder
+; I/All images
+;
+MSG_CONTROL_LOADNOWMAPS
+M/Endast kartor
+; M/Maps only
+;
+MSG_CONTROL_NETWORKSTATUS
+?/Nätstatus...
+; ?/Network status...
+;
+MSG_DUMMY_2
+
+; 
+MSG_CONTROL_CANCEL
+V/Avbryt laddning
+; Z/Cancel load
+;
+MSG_CONTROL_NEXTWINDOW
+./Nästa fönster
+; ./Next window
+;
+MSG_CONTROL_PREVWINDOW
+,/Föregående fönster
+; ,/Previous window
+;
+MSG_CONTROL_NOPROXY
+Y/Stäng av proxy
+; Y/Disable proxy
+;
+MSG_CONTROL_RLOAD
+Ladda om
+; Reload
+;
+MSG_CONTROL_RLOADDOC
+D/nuvarande webbsida
+; R/Current document
+;
+MSG_CONTROL_RLOADIMGS
+bilder
+; Images in current
+;
+MSG_CONTROL_PLAYBGSOUND
+P/Spela bakgrundsljud
+; J/Play background sound
+;
+MSG_CONTROL_COPYURL
+Kopiera URL
+; Copy URL
+;
+MSG_CONTROL_PASTEURL
+Klistra in URL
+; Paste URL
+;
+MSG_CONTROL_COPYBLOCK
+C/Kopiera block
+; C/Copy block
+;
+MSG_CONTROL_DRAGGING
+Markering
+; Dragging
+;
+MSG_CONTROL_BREAKJS
+X/Avbryt Javaskript
+; X/Break JavaScript
+;
+MSG_CONTROL_DEBUGJS
+Felsök Javaskript
+; Debug JavaScript
+;
+MSG_CONTROL_RESET
+Återställ ramar
+; Reset frames
+;
+MSG_CACHE_MENU
+Cache
+; Cache
+;
+MSG_DUMMY_3
+
+; 
+MSG_DUMMY_4
+
+; 
+MSG_DUMMY_5
+
+; 
+MSG_DUMMY_6
+
+; 
+MSG_CACHE_SAVEAUTH
+Spara autentiseringar
+; Save authorizations
+;
+;**obsolete**
+MSG_CACHE_FLUSHAUTH
+Ta bort autentiseringar
+; Flush authorizations
+;
+MSG_CACHE_BROWSER
+Cacheläsaren...
+; Cache browser...
+;
+MSG_CACHE_FLUSH
+Ta bort från minnet
+; Flush from memory
+;
+MSG_CACHE_FLSHIMGSND
+Ej visade bilder
+; Nondisplayed images
+;
+MSG_CACHE_FLSHIMGS
+Alla bilder
+; All images
+;
+MSG_CACHE_FLSHDOCSND
+Ej visade webbsidor
+; Nondisplayed documents
+;
+MSG_CACHE_DELETE
+Ta bort från disk
+; Delete from disk
+;
+MSG_CACHE_DELIMGS
+Alla bilder
+; All images
+;
+MSG_CACHE_DELDOCS
+Alla webbsidor
+; All documents
+;
+MSG_CACHE_CLEAR
+Rensa cache
+; Erase cache
+;
+MSG_CACHE_FIX
+Laga cache...
+; Fix cache...
+;
+MSG_CACHE_EDITAUTH
+Ändra autentiseringar...
+; Edit authorizations...
+;
+MSG_NAVIGATE_MENU
+Navigera
+; Navigate
+;
+MSG_NAVIGATE_BACK
+B/Bakåt
+; B/Back
+;
+MSG_NAVIGATE_FWD
+F/Framåt
+; F/Forward
+;
+MSG_NAVIGATE_HOME
+H/Hem
+; D/Home document
+;
+MSG_NAVIGATE_HISTORY
+-/Fönsterhistorik...
+; -/Window history...
+;
+MSG_HOTLIST_MENU
+Bokmärken
+; Hotlist
+;
+MSG_HOTLIST_ADDHOT
+Ä/Lägg till URL
+; A/Add to hotlist
+;
+MSG_HOTLIST_SHOWHOT
+Å/Visa bokmärken
+; H/Show hotlist
+;
+;**obsolete**
+MSG_HOTLIST_MAINT
+T/Underhåll...
+; T/Maintenance...
+;
+MSG_HOTLIST_SAVE
+Spara bokmärken
+; Save hotlist
+;
+MSG_HOTLIST_RESTORE
+Återställ senast sparade
+; Restore last saved
+;
+MSG_HOTLIST_AMHOTRX
+AMosaic (ARexx)
+; AMosaic (ARexx)
+;
+MSG_HOTLIST_AMHOT20
+AMosaic (2.0)
+; AMosaic (2.0)
+;
+MSG_HOTLIST_IBHOT
+Annan...
+; Other...
+;
+MSG_HOTLIST_VIEW
+A/Visa bokmärken i fönster...
+; V/View hotlist...
+;
+MSG_HOTLIST_MGR
+L/Bokmärkeshanteraren...
+; T/Hotlist manager...
+;
+MSG_SETTINGS_MENU
+Inställningar
+; Settings
+;
+MSG_SETTINGS_LOADIMG
+Bildladdning
+; Image loading
+;
+MSG_SETTINGS_LOADIMGALL
+Alla bilder
+; All images
+;
+MSG_SETTINGS_LOADIMGMAPS
+Endast kartor
+; Maps only
+;
+MSG_SETTINGS_LOADIMGOFF
+Inga bilder
+; Off
+;
+MSG_DUMMY_7
+
+; 
+MSG_DUMMY_8
+
+; 
+MSG_SETTINGS_BROWSER
+Webbinställningar...
+; Browser settings...
+;
+MSG_SETTINGS_PROGRAM
+Programinställningar...
+; Program settings...
+;
+MSG_SETTINGS_NETWORK
+Nätinställningar...
+; Network settings...
+;
+MSG_SETTINGS_CLASSACT
+ClassAct-inställningar...
+; ClassAct settings...
+;
+MSG_SETTINGS_SAVEALL
+Spara inställningar
+; Save current settings
+;
+MSG_SETTINGS_SNAPSHOT
+Memorera fönsterplacering
+; Snapshot windows
+;
+;**obsolete
+MSG_SETTINGS_SNAPSHOTALT
+Memorera alternativ fönsterstorlek
+; Snapshot as alternate size
+;
+MSG_SETTINGS_BGIMAGES
+Bakgrundsbilder
+; Background images
+;
+MSG_SETTINGS_BGSOUND
+Bakgrundsljud
+; Background sound
+;
+MSG_SETTINGS_SAVEAS
+Spara inställningar som...
+; Save settings as...
+;
+MSG_SETTINGS_LOAD
+Ladda inställningar...
+; Load settings...
+;
+MSG_SETTINGS_GUI
+GUI-inställningar...
+; GUI settings...
+;
+MSG_HELP_MENU
+Hjälp
+; Help
+;
+MSG_HELP_HELP
+Dokumentation
+; Documentation
+;
+MSG_HELP_AWEBHOME
+AWebs webbplats
+; AWeb home page
+;
+MSG_HELP_AWEBFAQ
+AWebs FAQ
+; AWeb FAQ
+;
+MSG_HELP_REGISTER
+Registrering
+; Registration
+;
+MSG_AREXX_MENU
+ARexx
+; ARexx
+;
+MSG_AREXX_AREXX
+!/Starta ARexx-skript...
+; !/Start ARexx macro...
+;
+;--------------- Navigation Button Texts -------
+;
+MSG_NAVGAD_FORWARD
+
+; Fwd
+;
+; ***NEW***
+;
+MSG_NAVGAD_BACK
+
+; Back
+;
+; ***NEW***
+;
+MSG_NAVGAD_HOME
+
+; Home
+;
+; ***NEW***
+;
+MSG_NAVGAD_CANCEL
+
+; Stop
+;
+; ***NEW***
+;
+MSG_NAVGAD_IMAGES
+
+; Images
+;
+; ***NEW***
+;
+MSG_NAVGAD_STATUS
+
+; Status
+;
+; ***NEW***
+;
+MSG_NAVGAD_SEARCH
+
+; Find
+;
+; ***NEW***
+;
+MSG_NAVGAD_RELOAD
+
+; Reload
+;
+; ***NEW***
+;
+MSG_NAVGAD_ADDHOTLIST
+
+; Add
+;
+; ***NEW***
+;
+MSG_NAVGAD_HOTLIST
+
+; Hotlist
+;
+; ***NEW***
+;
+;
+;-------------- Error messages ----------------------
+;
+MSG_ERROR_CANTOPEN
+Kunde inte öppna %s.
+; Can't open %s
+;
+; NOTE - No locale formatters (like %1$s) possible in this string!
+;        Only plain C formatters allowed.
+MSG_ERROR_CANTOPENV
+Kunde inte öppna %s v%ld.
+; Can't open %s version %ld
+;
+MSG_ERROR_NEEDOS30
+AWeb kräver AmigaOS 3.0 eller senare.
+; AWeb needs OS 3.0 or better
+;
+MSG_ERROR_CANTQUIT
+Kunde inte avsluta.\n\
+%s\n\
+används fortfarande.
+; Cannot quit!\n%s\nis still in use
+;
+;-------------- partial error messages --------------
+;
+MSG_EPART_ERROR
+Fel
+; Error
+;
+MSG_EPART_RETURL
+Kunde inte hämta
+; While retrieving URL
+;
+MSG_EPART_ADDRSCHEME
+Protokollet %s stöds inte i denna version av AWeb.
+; The &quot;%s&quot; addressing scheme is not implemented in this version of AWeb
+;
+MSG_EPART_NOLIB
+En TCP/IP-stack måste startas först.
+; A TCP stack must be started first
+;
+MSG_EPART_NOHOST
+Kunde inte hitta &quot;%s&quot;.
+; Cannot resolve host name &quot;%s&quot;
+;
+MSG_EPART_NOCONNECT
+Kunde inte koppla upp mot &quot;%s&quot;.
+; Cannot connect to &quot;%s&quot;
+;
+MSG_EPART_NOFILE
+Kunde inte öppna filen &quot;%s&quot;.
+; Cannot open file &quot;%s&quot;
+;
+MSG_EPART_XAWEB
+Otillåtet namn &quot;%s&quot; på internprotokoll (x-aweb).
+; Invalid internal (x-aweb:) name &quot;%s&quot;
+;
+MSG_EPART_FLUSHED_HEAD
+Glömd
+; Flushed
+;
+MSG_EPART_FLUSHED_MSG
+Denna webbsida finns inte längre i minnet.
+; This document is no longer available in memory
+;
+MSG_EPART_FLUSHED_NORELOAD
+Denna webbsida kunde inte hämtas igen. Du måste skicka om formuläret som \
+skapade webbsidan. Tänk på att detta kan ha bieffekter vid till \
+exempel dubbla registreringar.
+; This document cannot be retrieved again. You will have to submit the form again that \
+; produced this page. Beware of undesired side-effects if you submit that form twice, \
+; like a duplicate registration.
+;
+MSG_EPART_NOLOGIN
+Kunde inte logga in på &quot;%s&quot; som &quot;%s&quot;.
+; Cannot login at &quot;%s&quot; as &quot;%s&quot;
+;
+MSG_EPART_NOAWEBLIB
+Kunde inte ladda AWebLib-modulen för &quot;%s&quot;.
+; Unable to load the AWebLib module for &quot;%s&quot;.
+;
+MSG_EPART_NOPROGRAM
+Du har inte angivit något program för protokollet &quot;%s&quot;.
+; You haven't configured a program for the &quot;%s&quot; addressing scheme.
+;
+;
+;-------------- Miscellaneous -----------------------
+;
+; (external program window title)
+MSG_AWEB_EXTWINTITLE
+AWeb - Externt program
+; AWeb External Program
+;
+; (status field text)
+MSG_AWEB_BYTESREAD
+byte lästa
+; Bytes read
+;
+; (form SUBMIT button default text)
+MSG_AWEB_FORMSUBMIT
+Skicka
+; Submit
+;
+; (form RESET button default text)
+MSG_AWEB_FORMRESET
+Rensa
+; Reset
+;
+; (ISINDEX default prompt)
+MSG_AWEB_INDEXPROMPT
+Detta är ett sökbart index. Skriv in sökord: 
+; This is a searchable index. Enter keywords:
+;
+; (window title)
+MSG_AWEB_NODOCTITLE
+(Ingen webbsida laddad)
+; (No document loaded)
+;
+; (screen title)
+MSG_AWEB_SCREENTITLE
+AWebs allmänna skärm - Namn: AWeb
+; AWeb public screen - Name AWeb
+;
+; (hotlist document title)
+MSG_AWEB_HOTLISTTITLE
+Bokmärken
+; Hotlist
+;
+; (gopher index title)
+MSG_AWEB_GOPHERINDEX
+Gopher-index
+; Gopher index
+;
+; (gopher menu title)
+MSG_AWEB_GOPHERMENU
+Gopher-meny
+; Gopher menu
+;
+; (window history title)
+MSG_AWEB_WINDOWHIS
+AWeb - Fönsterhistorik
+; Window history
+;
+; (partial title of other hotlist)
+MSG_AWEB_OTHER
+Andra
+; Other
+;
+; (transfer status messages)
+MSG_AWEB_LOOKUP
+Letar upp %s
+; Looking up %s
+;
+MSG_AWEB_CONNECT
+Skapar %s-uppkoppling mot %s
+; Making %s connection to %s
+;
+MSG_AWEB_WAITING
+%s-förfrågan skickad. Väntar på svar
+; %s request sent; waiting for response
+;
+MSG_AWEB_TCPSTART
+Skapar TCP/IP-uppkoppling
+; Establishing TCP connection
+;
+; (form image fieldstatus text)
+MSG_AWEB_FORMLOCATION
+Skicka formulär vid x=%ld, y=%ld
+; Submit form at x=%ld, y=%ld
+;
+; (form BUTTON button default text)
+MSG_AWEB_FORMBUTTON
+Starta
+; Start
+;
+; (frame resizing status prompt)
+MSG_AWEB_FRAME_RESIZE
+Förändra ramstorlek
+; Resize frame
+;
+; (transfer status message)
+MSG_AWEB_LOGIN
+Loggar in på %s
+; Logging in at %s
+;
+; (transfer status message)
+MSG_AWEB_NEWSGROUP
+Läser %s
+; Scanning %s
+;
+; (transfer status message)
+MSG_AWEB_NEWSSCAN
+Läser %s (%ld inlägg)
+; Scanning %s (%ld articles)
+;
+; (transfer status message)
+MSG_AWEB_NEWSSORT
+Sorterar %s
+; Sorting %s
+;
+; (transfer status message)
+MSG_AWEB_NEWSPOST
+Postar inlägg
+; Posting article
+;
+; (transfer status message)
+MSG_AWEB_MAILSEND
+Skickar brev
+; Sending mail message
+;
+; (transfer status message)
+MSG_AWEB_UPLOAD
+Laddar upp fil
+; Uploading file
+;
+; ** (don't use numbers 40001 or higher) **

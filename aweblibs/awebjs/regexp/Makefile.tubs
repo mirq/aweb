@@ -1,0 +1,18 @@
+MODULES := linklibs/libpcre.a linklibs/libpcreposix.a
+
+linklibs/libpcre.a/TYPE := executable/library/link
+linklibs/libpcre.a/CFILES := \
+maketables get study pcre
+
+linklibs/libpcre.a/CFILES/pcre/CPPFLAGS := -DPOSIX_MALLOC_THRESHOLD=10
+
+linklibs/libpcreposix.a/TYPE := executable/library/link
+linklibs/libpcreposix.a/CFILES := \
+pcreposix
+
+linklibs/libpcreposix.a/CFILES/pcreposix/CPPFLAGS := -DPOSIX_MALLOC_THRESHOLD=10
+
+
+
+
+

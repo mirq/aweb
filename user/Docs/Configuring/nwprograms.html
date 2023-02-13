@@ -1,0 +1,81 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+
+<HTML>
+
+<HEAD>
+<TITLE>Network settings: Programs</TITLE>
+</HEAD>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<H1>&nbsp; Network settings: Programs</H1>
+
+<IMG SRC="Images/NetworkSettings-Programs.png" ALIGN="RIGHT" ALT="Network Settings: Programs Tab" WIDTH="490" HEIGHT="330" HSPACE="20" VSPACE="20" BORDER="0">
+
+<H2>Telnet protocol "plug-in"</H2>
+
+Most internet protocols are handled by AWeb internally.  Only telnet will require an additional program, or "plug-in".
+
+<P>A <EM>telnet:</EM> address is used to start a telnet session.  If you own a telnet client that supports command line arguments.  you can use this feature.  A telnet address can contain:
+<PRE>&nbsp;&nbsp;&nbsp;telnet://username:password@hostname:port</PRE>
+<P>Argument parameters are:
+
+<TABLE>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%l</TH><TD>login name (user name) to use for logging in to this host</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%w</TH><TD>password to use with this user name</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%h</TH><TD>host name</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%p</TH><TD>port number</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%n</TH><TD>screen name that AWeb is running on, in case your telnet program supports opening on a public screen.</TD></TR>
+</TABLE>
+
+<P>If your telnet client does not support all these parameters, you can use this <A HREF="ExampleScripts/_telnetscript">example script</A>.  It will pop up a requester with the user name and password to use, if these were given in the address.
+
+<H2><A NAME="tcp">Start and stop your TCP stack</A></H2>
+
+AWeb is able to start your TCP connection <A HREF="../Working/starttcp.html">automatically</A>when it is needed.
+<P>Use the chooser to select one of the entries below.  Then use the <A HREF="cmdargs.html">Command and Arguments</A> fields to specify the necessary command and arguments.
+
+<TABLE>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">Start TCP</TH><TD>This command is used to start your TCP stack automatically.
+<P>For example, if you use the AmiTCP/IP package, you would set <EM>command</EM> to:
+<PRE>&nbsp;&nbsp;&nbsp;AmiTCP:bin/startnet</PRE>
+<P>and leave the <EM>arguments</EM> field blank.
+<P>Argument parameters are:
+<TABLE><TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%n</TH><TD>screen name that AWeb is running on, in case your TCP script or program supports opening windows on a public screen.</TD></TR></TABLE>
+<P><STRONG>Important note:</STRONG>
+<BR>The start TCP command should return when the TCP connection is active or fails.  If your TCP program remains active during the session, you cannot use it directly.  You have to use a script instead, like this <A HREF="ExampleScripts/_starttcpscript">example script</A>, it uses this <A HREF="ExampleScripts/_starttcpscript2">second script</A> too.
+<P>OS4 users should also note that the native TCP stack, Roadshow, is started automatically during boot in the startup-sequence.
+</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">End TCP</TH><TD>This command is used to stop your TCP connection after your confirmation.
+<P>There are no argument parameter substitutions.
+<P><STRONG>Important note:</STRONG>
+<BR>If you used the example script for the <EM>Start TCP</EM> command, here is another <A HREF="ExampleScripts/_stoptcpscript">example script</A> to stop your TCP program.
+</TD></TR>
+</TABLE>
+
+<P><HR>
+
+<A HREF="nwoptions.html"><IMG SRC="../GlobalImages/back.gif" WIDTH="32" HEIGHT="16" ALT="&lt;-" BORDER="0">Options</A>&nbsp;&nbsp;<A HREF="settings.html"><IMG SRC="../GlobalImages/up.gif" WIDTH="32" HEIGHT="20" ALT="^" BORDER="0">Settings requesters</A>&nbsp;&nbsp;<A HREF="nwproxy.html"><IMG SRC="../GlobalImages/next.gif" WIDTH="32" HEIGHT="16" ALT="-&gt;" BORDER="0">Proxy</A>
+
+</BODY>
+
+</HTML>

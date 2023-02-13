@@ -1,0 +1,193 @@
+/* awebjfif.awebrx - Install or uninstall the AWeb JFIF plugin */
+
+options results
+
+if left(address(),5)~="AWEB." then do
+   ports=show("P")
+   parse var ports dummy "AWEB." portnr .
+   if portnr="" then do
+      address command "run AWeb_APL:AWeb"
+      address command "WaitForPort AWEB.1"
+      portnr=1
+   end
+   address value "AWEB."portnr
+   'get activeport'
+   address value result
+end
+
+parse arg args
+parse source dummy1 dummy2 called .
+i=lastpos(called,'/')
+if i==0 then i=lastpos(called,':')
+if i>0 then path=left(called,i)
+else path=''
+
+if args='' then do
+   if ~open(tf,"T:awebjfifsetup.html","W") then exit
+
+   call writeln tf,"<html><head><title>AWeb JFIF Setup</title></head>"
+   call writeln tf,"<body><h1>AWeb JFIF Setup</h1>"
+
+   if exists("AWebPath:AWebPlugin/awebjfif.awebplugin") then do
+      installed=0
+      progress=4
+      multipass=1
+      dither=2
+      grayscale=0
+      maxmem=1024
+      lowpri=0
+      'getcfg MIME stem m'
+      do i=1 to m.0
+         if upper(left(m.i.value,11))="IMAGE/JPEG;" then do
+            parse var m.i.value type ";" ext ";" action ";" file ";" args
+            if action='A' & upper(right(file,19))="AWEBJFIF.AWEBPLUGIN" then do
+               installed=1
+               j=index(upper(args),"PROGRESS=")
+               if j>0 then do
+                  progress=substr(args,j+9)
+                  j=verify(progress,"0123456789")
+                  if j>0 then progress=left(progress,j-1)
+               end
+               j=index(upper(args),"MULTIPASS=")
+               if j>0 then multipass=substr(args,j+10,1)
+               j=index(upper(args),"DITHER=")
+               if j>0 then dither=substr(args,j+7,1)
+               grayscale=(index(upper(args),"GRAYSCALE")>0)
+               j=index(upper(args),"MAXMEM=")
+               if j>0 then do
+                  maxmem=substr(args,j+7)
+                  j=verify(maxmem,"0123456789")
+                  if j>0 then maxmem=left(maxmem,j-1)
+               end
+               lowpri=(index(upper(args),"LOWPRI")>0)
+            end
+            leave
+         end
+      end
+
+      call writeln tf,"<table border width=100% bgcolor=#aaccaa><tr><td>"
+      call writeln tf,"<form action='x-aweb:rexx/"called"'>"
+      call writeln tf,"This form configures AWeb-II to use the <strong> AWeb JFIF plugin</strong>."
+      call writeln tf,"<input type=hidden name=defprogress value="progress">"
+      call writeln tf,"<ol><li>Select the required modes of operation "
+      call writeln tf,"(see <a href='file:///AWebPath:AWebPlugin/docs/awebjfif.html#parameters'>documentation</a> for details)"
+
+      call writeln tf,"<p><ul><li>Progressive display:<br>"
+      call writeln tf,"<input type=radio name=progress value=0"
+      if progress=0 then call writeln tf," checked"
+      call writeln tf,"> No progressive display (fastest)<br>"
+      call writeln tf,"<input type=radio name=progress value=4"
+      if progress=4 then call writeln tf," checked"
+      call writeln tf,"> Standard progressive display<br>"
+      call writeln tf,"<input type=radio name=progress value=1"
+      if progress=1 then call writeln tf," checked"
+      call writeln tf,"> Smooth progressive display (slowest)<br>"
+
+      call writeln tf,"<p><li>Display &quot;progressive&quot; JPEG images:<br>"
+      call writeln tf,"<input type=radio name=multipass value=0"
+      if multipass=0 then call writeln tf," checked"
+      call writeln tf,"> The final image only (fastest)<br>"
+      call writeln tf,"<input type=radio name=multipass value=1"
+      if multipass=1 then call writeln tf," checked"
+      call writeln tf,"> Several passes with increasing image quality<br>"
+
+      call writeln tf,"<p><li>Dither mode. This will only take effect on screens with 256 colours or less.<br>"
+      call writeln tf,"<input type=radio name=dither value=0"
+      if dither=0 then call writeln tf," checked"
+      call writeln tf,"> No dithering (fast but low quality)<br>"
+      call writeln tf,"<input type=radio name=dither value=1"
+      if dither=1 then call writeln tf," checked"
+      call writeln tf,"> Ordered (medium quality, medium speed)<br>"
+      call writeln tf,"<input type=radio name=dither value=2"
+      if dither=2 then call writeln tf," checked"
+      call writeln tf,"> Floyd-Steinberg (good quality but slower)<br>"
+
+      call writeln tf,"<p><li><input type=checkbox name=grayscale value=GRAYSCALE"
+      if grayscale>0 then call writeln tf," checked"
+      call writeln tf,"> Grayscale images"
+
+      call writeln tf,"<p><li>Maximum scratch memory usage per image during the decoding process."
+      call writeln tf,"If more memory is needed, a virtual memory system will be used.<br>"
+      call writeln tf,"<input name=maxmem size=8 value="maxmem"> kB"
+
+      call writeln tf,"<p><li>Multitasking:<br>"
+      call writeln tf,"<input type=checkbox name=lowpri value='LOWPRI'"
+      if lowpri then call writeln tf," checked"
+      call writeln tf,"> Run decoder at low priority<br>"
+
+      call writeln tf,"</ul>"
+      call writeln tf,"<p><li><input type=checkbox name=save value=yes checked> Save the new settings"
+      call writeln tf,"<p><li><input type=submit value='Install AWeb JFIF plugin'>"
+      call writeln tf,"</ol></form></table>"
+
+      if installed>0 then do
+         call writeln tf,"<p><table border width=100% bgcolor=#ccaaaa><tr><td>"
+         call writeln tf,"<form action='x-aweb:rexx/"called"'>"
+         call writeln tf,"<input type=hidden name=deinstall value=''>"
+         call writeln tf,"This form will deinstall the AWeb JFIF plugin and reset the default (datatypes) decoder for JFIF images."
+         call writeln tf,"<ol><li><input type=checkbox name=save value=yes checked> Save the new settings"
+         call writeln tf,"<p><li><input type=submit value='De-install AWeb JFIF plugin'>"
+         call writeln tf,"</ol></form></table>"
+      end
+
+   end
+   else do
+      call writeln tf,"Plugin file not found. You have to run the install script first."
+   end
+
+   call writeln tf,"<p><hr><p><a href='file:///AWebPath:AWebPlugin/docs/awebjfif.html'>Back to documentation</a>"
+
+   call close tf
+   'open "file:///T:awebjfifsetup.html" reload'
+   'wait "file:///T:awebjfifsetup.html"'
+   'allowcmd'
+   address command 'delete T:awebjfifsetup.html quiet'
+
+end
+else do
+
+   ext="jpg jpeg jfif"
+   rest=";"
+
+   'getcfg MIME stem m'
+   do i=1 to m.0
+      if upper(left(m.i.value,11))="IMAGE/JPEG;" then do
+         parse var m.i.value type ";" ext ";" action ";" rest
+         leave
+      end
+   end
+
+   if upper(left(args,9))="DEINSTALL" then do
+      mime="IMAGE/JPEG;"ext";;"rest
+   end
+   else do
+      progress=""
+      defprogress="4"
+      multipass="1"
+      dither="2"
+      grayscale=""
+      maxmem="1024"
+      lowpri=""
+      save=""
+
+      do while args~=""
+         parse var args nextarg args
+         interpret nextarg
+      end
+
+      if progress="" then progress=defprogress
+      mime="IMAGE/JPEG;"ext";A;AWebPath:AWebPlugin/awebjfif.awebplugin;PROGRESS="progress" MULTIPASS="multipass" DITHER="dither" "grayscale" MAXMEM="maxmem lowpri
+   end
+
+   'setcfg MIME "'mime'" ADD'
+
+   if upper(save)="YES" then do
+      'savesettings'
+   end
+
+   'open "file:///AWebPath:AWebPlugin/docs/awebjfif.html"'
+
+end
+
+exit
+

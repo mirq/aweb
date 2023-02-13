@@ -1,0 +1,52 @@
+<html>
+<body>
+<h1>Locale</h1>
+
+The following files and drawers are used in localization.
+
+<table border>
+<tr align=left valign=top>
+<td>aweb.cd
+<td>Defines all strings for the AWeb-II main program.
+
+<tr align=left valign=top>
+<td>compcd
+<td>Script to compile aweb.cd. This compilation is also done in the smakefile.
+
+<tr align=left valign=top>
+<td>locale.h
+<td>Generated include file for AWeb-II main program.
+
+<tr align=left valign=top>
+<td>awebcfg.cd
+<td>Defines all strings for the AWebCfg program.
+
+<tr align=left valign=top>
+<td>compcfgcd
+<td>Script to compile awebcfg.cd. This compilation is also done in the smakefile.
+
+<tr align=left valign=top>
+<td>cfglocale.h
+<td>Generated include file for the AWebCfg program.
+
+<tr align=left valign=top>
+<td>ct/<i>language</i>/aweb.ct
+ct/<i>language</i>/awebcfg.ct
+<td>Translation files for each language. An extra drawer "ct/empty" contains empty ct files.
+
+<tr align=left valign=top>
+<td>compcat&nbsp;<i>language</i>
+<td>Script to compile one set of .ct files into .catalog files for one language.
+
+<tr align=left valign=top>
+<td>catalogs
+<td>Contains translated catalog files.
+
+<tr align=left valign=top>
+<td>updatect&nbsp;<i>language</i>
+<td>After editing aweb.ct or awebcfg.ct, use this script to update the .ct files for one language.
+
+</table>
+
+<p>
+The scripts need both the catcomp and flexcat tools.

@@ -1,0 +1,8 @@
+MODULES := aweblib/news.aweblib
+
+aweblib/news.aweblib/TYPE := executable/library/amigashared
+aweblib/news.aweblib/DEPS := $(MODULELIB) linklibs/libawebclib.a
+aweblib/news.aweblib/CFILES := \
+news
+
+aweblib/news.aweblib/CFILES/news/CPPFLAGS := $(NETINCLUDE2)

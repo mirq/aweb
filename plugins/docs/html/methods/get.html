@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>Method: AOM_GET</title>
+</head>
+<body>
+<h1>Method: AOM_GET</h1>
+
+<h2>Purpose</h2>
+
+The <b>AOM_GET</b> method is used to inquire the value of attributes from an object.
+
+<h2>Message structure</h2>
+
+The <b>AOM_GET</b> method uses an <b>Amset</b> structure:<p>
+
+<pre>
+struct Amset
+{  <a href=index.html#Amessage>struct Amessage</a> amsg;
+   struct TagItem *tags;
+};
+</pre>
+
+<h2>Usage</h2>
+
+<h3>Tags</h3>
+The taglist holds the requested attribute ID in <b>ti_Tag</b>, and a
+pointer in <b>ti_Data</b>. The value will be stored in the longword
+pointed to by this pointer.
+<p>
+Some classes use a &lt;tag,value&gt; pair to set additional parameters
+that influence following requested attribute values.
+
+<h3>Return value</h3>
+The return value for this method is not defined.
+
+<h2>Implementation</h2>
+
+All classes should implement this method.
+<p>
+Typically, the class scans the taglist, and stores attribute values
+in the locations pointed to.
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<html>
+<head>
+<title>Method: AOM_REMCHILD</title>
+</head>
+<body>
+<h1>Method: AOM_REMCHILD</h1>
+
+<h2>Purpose</h2>
+
+The <b>AOM_REMCHILD</b> method is used to remove a child object from
+a relationship. The child must have been added to the relation earlier
+by the <a href=addchild.html>AOM_ADDCHILD</a> method.
+
+<h2>Message structure</h2>
+
+The <b>AOM_REMCHILD</b> method uses an <b>Amadd</b> structure:<p>
+
+<pre>
+struct Amadd
+{  <a href=index.html#Amessage>struct Amessage</a> amsg;
+   <a href="../classes/object.html">struct Aobject</a> *child;
+   ULONG relation;
+};
+</pre>
+
+<h2>Usage</h2>
+
+<h3>child</h3>
+The child object to be removed from the relationship.
+
+<h3>relation</h3>
+Identifies the relationship to remove the child object from.
+
+<h3>Return value</h3>
+The return value for this method is not defined.
+
+<h2>Implementation</h2>
+
+Plugin classes generally need not to implement this method.
+
+</body>
+</html>

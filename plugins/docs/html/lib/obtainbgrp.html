@@ -1,0 +1,59 @@
+<html>
+<head>
+<title>Obtainbgrp()</title>
+</head>
+<body>
+<h1>Obtainbgrp()</h1>
+
+<h2>Purpose</h2>
+Obtain a section of the current background.
+
+<h2>Synopsis</h2>
+<pre>
+   Obtainbgrp(cframe, coords, minx, miny, maxx, maxy)
+   D0         A0      A1      D0    D1    D2    D3
+
+   struct RastPort *Obtainbgrp(<a href="../classes/object.html">struct Aobject</a> *, <a href="../structs/coords.html">struct Coords</a> *, LONG, LONG, LONG, LONG)
+</pre>
+
+<h2>Function</h2>
+This function allocates a RastPort and a BitMap of the specified size, and
+erases it using the current background image or background colour. The background
+image is offset by the specified <var>minx</var> and <var>miny</var> in
+such a way, that copying the resulting RastPort to that position in the
+frame (using the usual <a href="../structs/coords.html">struct Coords</a>
+offsets) yields a continuous background pattern.
+<p>
+The BitMap is allocated as a friend of the bitmap of AWeb's screen.
+<p>
+Whenever you receive an <a href="../methods/set.html">AOM_SET</a> message
+with the <a href="../plugin/copydriver.html">AOCDV_Displayed</a> attribute
+set to FALSE, or with the <a href="../plugin/copydriver.html">AOCDV_Bgchanged</a>
+attribute set to TRUE, you must release the RastPort using the
+<a href=releasebg.html><code>Releasebgrp()</code></a> function.
+
+
+<h2>Inputs</h2>
+<table border>
+<tr><th align=left valign=top>Parameter
+   <th align=left valign=top>Description
+<tr><td valign=top><code>cframe</code>
+   <td valign=top>Pointer to the context frame
+      object for which you want to obtain the background section.
+      Usually you get the context frame set in the AOBJ_Cframe attribute.
+<tr><td valign=top><code>coords</code>
+   <td valign=top>Pointer to a valid rendering context information block,
+      <a href="../structs/coords.html">struct Coords</a>.
+      You obtain valid context information using the
+      <a href=clipcoords.html>Clipcoords()</a> function.
+<tr><td valign=top><code>(minx, miny), (maxx, maxy)</code>
+   <td valign=top>Coordinates of the upper left and lower right corner of
+      the rectangle to erase. These coordinates are relative to the frame
+      (that is, they are in the same coordinate system as your object's
+      AOBJ_Left and AOBJ_Top).
+</table>
+
+<h2>See also</h2>
+<a href="clipcoords.html">Clipcoords()</a>,
+<a href="erasebg.html">Erasebg()</a>,
+<a href="Releasebgrp.html">Releasebgrp()</a>

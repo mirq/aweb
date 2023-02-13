@@ -1,0 +1,56 @@
+<html>
+<head>
+<title>Initplugin()</title>
+</head>
+<body>
+<h1>Initplugin()</h1>
+
+<h2>Purpose</h2>
+Initialization of the plugin module. At the very least for a normal plugin, the dispatcher
+functions for the plugin's <a href=sourcedriver.html>sourcedriver subclass</a>
+and <a href=copydriver.html>copydriver subclass</a> must be installed if that
+was not done before.
+
+<h2>Synopsis</h2>
+<pre>
+   success = Initplugin(plugininfo)
+   D0                   A0
+
+   BOOL Initplugin(<a href="../structs/plugininfo.html">struct Plugininfo</a> *)
+</pre>
+
+<h2>Inputs</h2>
+<table border>
+<tr><th align=left valign=top>Parameter
+   <th align=left valign=top>Description
+<tr><td valign=top><code>plugininfo</code>
+   <td valign=top>Pointer to a <a href="../structs/plugininfo.html">struct Plugininfo</a>.
+</table>
+
+<h2>Result</h2>
+<b>TRUE</b>, if initialization of the plugin module was successful.<br>
+<b>FALSE</b>, if initialization of the plugin module failed.
+
+<h2>Implementation</h2>
+This function is called each time the plugin library is opened. If the
+plugin module does not already know class IDs for its 
+<a href=sourcedriver.html>sourcedriver subclass</a> and
+<a href=copydriver.html>copydriver subclass</a>, it must obtain them now
+using the <a href="../methods/install.html">AOM_INSTALL</a> method.
+<p>
+This function must return the newly or previously obtained class IDs
+in the supplied <a href="../structs/plugininfo.html">Plugininfo</a> structure.
+A <b>filter</b> type plugin should set both fields to zero.
+<p>
+If the plugin module implements other, private, classes, these would also
+be <a href="../methods/install.html">installed</a> in this function if
+that was not done before.
+<p>
+Eventually all installed classes must be
+<a href="../methods/install.html">de-installed</a> in the library's
+ExpungeLib function.
+
+<h2>Example</h2>
+Both examples of <a href=example.html>normal</a> and
+<a href=filterexample.html>filter type</a> plugins contain an example
+of the <code>Initplugin()</code> function.

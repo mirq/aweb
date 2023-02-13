@@ -1,0 +1,1914 @@
+## version $VER: AWebCfg.catalog 3.4 (24.11.2000)
+## language türkçe
+## codeset 0
+;
+; AWebcfg.cd - AWeb configuration program catalog description file
+;
+;
+;  The MSG_DUMMY_nn labels are there because FlexCat doesn't
+;  understand the LABEL (+1//) syntax (C='s Catcomp uses this
+;  to skip 1 number)
+;
+;
+;-------------- Error messages ----------------------
+;
+; NOTE - No locale formatters (like %1$s) possible in this string!
+;        Only plain C formatters allowed.
+MSG_ERROR_CANTOPENV
+%s sürüm %ld açýlamýyor
+; Can't open %s version %ld
+;
+MSG_ERROR_COMMANDLINE
+
+; Please check the commandline options.\n\
+; E.g. you must use at least one of the 4 switches.\n\
+; The Template is:
+;
+; ***NEW***
+;
+;
+;-------------- Settings requesters- ------------------
+;
+;  General
+;
+MSG_SET_REQTITLE_FONT
+Fontu seç
+; Select font
+;
+MSG_SET_REQTITLE_SCREEN
+Ekranmodu seç
+; Select screenmode
+;
+MSG_SET_REQTITLE_MAILTO
+mailto: komutunu seç
+; Select mailto: command
+;
+MSG_SET_REQTITLE_FTP
+ftp: komutunu seç
+; Select ftp: command
+;
+MSG_SET_REQTITLE_TELNET
+telnet: komutunu seç
+; Select telnet: command
+;
+MSG_SET_REQTITLE_NEWS
+news: komutunu seç
+; Select news: command
+;
+MSG_SET_REQTITLE_STARTTCP
+TCP baþlat komutunu seç
+; Select TCP start command
+;
+MSG_SET_REQTITLE_ENDTCP
+TCP bitir komutunu seç
+; Select TCP end command
+;
+MSG_SET_REQTITLE_TEMPPATH
+Geçici yolu seç
+; Select temp path
+;
+MSG_SET_REQTITLE_SAVEPATH
+Geçici kayýt yolunu seç
+; Select save path
+;
+MSG_SET_REQTITLE_EDITOR
+Editör komutunu seç
+; Select Editor command
+;
+MSG_SET_REQTITLE_HTMLVIEWER
+HTML gösterici komutunu seç
+; Select HTML viewer command
+;
+MSG_SET_REQTITLE_MIMEVIEWER
+Gösterici komutunu seç
+; Select viewer command
+;
+MSG_SET_REQTITLE_AREXXMACRO
+ARexx makrosunu seç
+; Select ARexx macro
+;
+MSG_SET_REQTITLE_BROWSERWINDOW
+AWeb tarayýcý ayarlarý
+; AWeb browser settings
+;
+MSG_SET_REQTITLE_PROGRAMWINDOW
+AWeb program ayarlarý
+; AWeb program settings
+;
+MSG_SET_REQTITLE_NETWORKWINDOW
+AWeb að ayarlarý
+; AWeb network settings
+;
+MSG_SET_REQTITLE_OPENBROWSER
+Tarayýcý ayarlarýný yükle
+; Open browser settings
+;
+MSG_SET_REQTITLE_SAVEBROWSER
+Tarayýcý ayarlarýný ismiyle kaydet
+; Save browser settings as
+;
+MSG_SET_REQTITLE_OPENPROGRAM
+Program ayarlarýný yükle
+; Open program settings
+;
+MSG_SET_REQTITLE_SAVEPROGRAM
+Program ayarlarýný ismiyle kaydet
+; Save program settings as
+;
+MSG_SET_REQTITLE_OPENNETWORK
+Að ayarlarýný yükle
+; Open network settings
+;
+MSG_SET_REQTITLE_SAVENETWORK
+Að ayarlarýný kaydet
+; Save network settings as
+;
+MSG_SET_REQTITLE_CACHEPATH
+Kaþe yolunu seç
+; Select cache path
+;
+MSG_SET_REQTITLE_IMGVIEWER
+Ýmaj gösterici komutunu seçin
+; Select image viewer command
+;
+MSG_SET_REQTITLE_GUIWINDOW
+AWeb arabirim ayarlarý
+; AWeb GUI settings
+;
+MSG_SET_REQTITLE_OPENGUI
+Arabirim ayarlarýný yükle
+; Open GUI settings
+;
+MSG_SET_REQTITLE_SAVEGUI
+Arabirim ayarlarýný kaydet
+; Save GUI settings as
+;
+MSG_SET_REQTITLE_SIGNATURE
+Ýmza dosyasýný seç
+; Select signature file
+;
+MSG_SET_REQTITLE_STARTUPSCRIPT
+Baþlangýç Arexx senaryosunu seç
+; Select startup ARexx script
+;
+MSG_SET_REQTITLE_SHUTDOWNSCRIPT
+Kapanýþ ARexx senaryosunu seç
+; Select shutdown ARexx script
+;
+;  Clicktab labels - Browser
+;
+MSG_SET_CTBR_OPTIONS
+_1 Opsiyonlar
+; _1 Options
+;
+MSG_SET_CTBR_FONTS
+_2 Fontlar
+; _2 Fonts
+;
+MSG_SET_CTBR_STYLES
+_3 Stil
+; _3 Styles
+;
+MSG_SET_CTBR_COLOURS
+_4 Renkler
+; _4 Colours
+;
+MSG_SET_CTBR_MIME
+_5 Göstericiler
+; _5 Viewers
+;
+;  Clicktab labels - Program
+;
+MSG_SET_CTPR_SCREEN
+_1 Ekran
+; _1 Screen
+;
+MSG_SET_CTPR_PALETTE
+_2 Palet
+; _2 Palette
+;
+MSG_SET_CTPR_OPTIONS
+_3 Opsiyonlar
+; _3 Options
+;
+MSG_SET_CTPR_PROGRAMS
+_4 Programlar
+; _4 Programs
+;
+MSG_SET_CTPR_AREXX
+_5 ARexx
+; _5 ARexx
+;
+;  Clicktab labels - Network
+;
+MSG_SET_CTNW_OPTIONS
+_1 Opsiyonlar
+; _1 Options
+;
+MSG_SET_CTNW_PROGRAMS
+_2 Programlar
+; _2 Programs
+;
+MSG_SET_CTNW_PROXY
+_3 Proxy
+; _3 Proxy
+;
+MSG_SET_CTNW_CACHE
+_4 Kaþe
+; _4 Cache
+;
+MSG_SET_CTNW_PRIVACY
+_5 Gizlilik
+; _5 Privacy
+;
+MSG_SET_CTNW_MAIL
+_6 Posta/Haber
+; _6 Mail/News
+;
+;  Clicktab labels - GUI
+;
+MSG_SET_CTUI_OPTIONS
+_1 Opsiyonlar
+; _1 Options
+;
+MSG_DUMMY_8
+
+; 
+;
+MSG_SET_CTUI_BUTTONS
+_3 Düðmeler
+; _3 Buttons
+;
+MSG_SET_CTUI_POPUP
+_4 Öne-Çýk
+; _4 Popup
+;
+MSG_SET_CTUI_KEYS
+_5 Tuþlar
+; _5 Keys
+;
+MSG_SET_CTUI_MENUS
+_2 Menüler
+; _2 Menus
+;
+MSG_SET_CTUI_NAV
+_6 Navigasyon
+; _6 Navigation
+;
+;  Popup help
+;
+; (don't use 40200-40208)
+;
+MSG_SET_HLP_NOARGS
+(Yer kaplayan yok)
+; (No placeholders)
+;
+MSG_SET_HLP_A
+%a = habergrubu veya makale
+; %%a = newsgroup or article
+;
+MSG_SET_HLP_E
+%e = e-posta adresi
+; %%e = e-mail address
+;
+MSG_SET_HLP_F
+%f = yol/dosya ismi
+; %%f = path/file name
+;
+MSG_SET_HLP_H
+%h = host ismi
+; %%h = host name
+;
+MSG_SET_HLP_L
+%l = kullanýcý ismi
+; %%l = login name
+;
+MSG_SET_HLP_N
+%n = ekran ismi
+; %%n = screen name
+;
+MSG_SET_HLP_P
+%p = port numarasý
+; %%p = port number
+;
+MSG_SET_HLP_U
+%u = orjinal URL
+; %%u = original URL
+;
+MSG_SET_HLP_W
+%w = þifre
+; %%w = password
+;
+MSG_SET_HLP_T
+%t = baþlýk
+; %%t = title
+;
+MSG_SET_HLP_U2
+%u = þu andaki URL
+; %%u = current URL
+;
+MSG_SET_HLP_U3
+%u = obje URL
+; %%u = object URL
+;
+MSG_SET_HLP_I
+%i = çerçeve ID
+; %%i = frame ID
+;
+MSG_SET_HLP_I2
+%i = hedef çerçeve ID
+; %%i = target frame ID
+;
+MSG_SET_HLP_M
+%m = MIME tipi
+; %%m = MIME type
+;
+MSG_SET_HLP_S
+%s = arama argümaný
+; %%s = search argument
+;
+MSG_SET_HLP_D
+%d = tarih
+; %%d = date
+;
+MSG_SET_HLP_G
+%g = grup ismi
+; %%g = group name
+;
+MSG_SET_HLP_I3
+%i = mesaj id
+; %%i = message id
+;
+MSG_SET_HLP_N2
+%n = gerçek isim
+; %%n = real name
+;
+MSG_SET_HLP_S2
+%s = konu
+; %%s = subject
+;
+MSG_SET_HLP_I4
+%i = focus çerçeve ID
+; %%i = focus frame ID
+;
+MSG_SET_HLP_C
+%c = konfig ismi
+; %%c = config name
+;
+;  Font descriptions
+;
+MSG_SET_FD_NORMALTAG
+Normal
+; Normal
+;
+MSG_SET_FD_NORMAL
+Normal metin
+; Normal text
+;
+MSG_SET_FD_H1
+<H1> : Baþlýk düzey 1, en geniþ
+; <H1> : Headers level 1, largest
+;
+MSG_SET_FD_H2
+<H2> : Baþlýk düzey 2
+; <H2> : Headers level 2
+;
+MSG_SET_FD_H3
+<H3> : Baþlýk düzey 3
+; <H3> : Headers level 3
+;
+MSG_SET_FD_H4
+<H4> : Baþlýk düzey 4
+; <H4> : Headers level 4
+;
+MSG_SET_FD_H5
+<H5> : Baþlýk düzey 5
+; <H5> : Headers level 5
+;
+MSG_SET_FD_H6
+<H6> : Baþlýk düzey 6
+; <H6> : Headers level 6, smallest
+;
+MSG_SET_FD_CITE
+<CITE> : italik
+; <CITE> : citations, typically italics
+;
+MSG_SET_FD_CODE
+<CODE> : kod örneði
+; <CODE> : code example, typically monospaced
+;
+MSG_SET_FD_DFN
+<DFN> : taným
+; <DFN> : definition, typically italics
+;
+MSG_SET_FD_EM
+<EM> : italik
+; <EM> : emphasized, typically italics
+;
+MSG_SET_FD_KBD
+<KBD> : klavye giriþi
+; <KBD> : keyboard input, typically monospaced
+;
+MSG_SET_FD_SAMP
+<SAMP> : örnek çýkýþý
+; <SAMP> : sample output, typically monospaced
+;
+MSG_SET_FD_STRONG
+<STRONG> : baskýlý, kalýn
+; <STRONG> : strong emphasis, typically bold
+;
+MSG_SET_FD_VAR
+<VAR> : yer deðiþkeni
+; <VAR> : placeholder variable, typically italics
+;
+MSG_DUMMY_1
+
+; 
+; (Note the leading space in the next 3 strings)
+MSG_SET_FD_BOLD
+ Kalýn
+;  Bold
+;
+MSG_SET_FD_ITALIC
+ Ýtalik
+;  Italic
+;
+MSG_SET_FD_UNDERLINED
+ Alt Çizgili
+;  Underlined
+;
+MSG_SET_FD_NORMALFONT
+ Normal font
+; Normal font
+;
+MSG_SET_FD_FIXEDFONT
+ Sabit geniþlik font
+; Fixed width font
+;
+MSG_SET_FD_SIZE
+ boyut
+; size
+;
+MSG_SET_FD_BIG
+<BIG> : geniþ font
+; <BIG> : large font
+;
+MSG_SET_FD_SMALL
+<SMALL> : küçük font
+; <SMALL> : small font
+;
+MSG_SET_FD_SUB
+<SUB> : küçük alt font
+; <SUB> : small subscript font
+;
+MSG_SET_FD_SUP
+<SUP> : küçük üst font
+; <SUP> : small superscript font
+;
+MSG_SET_FD_ADDRESS
+<ADDRES> : adres, italik
+; <ADDRESS> : address, typically italics
+;
+MSG_SET_FD_BLOCKQUOTE
+<BLOCKQUOTE> : uzun alýntýlar, italik
+; <BLOCKQUOTE> : long quotations, typically italics
+;
+MSG_SET_FD_PRE
+<PRE> : önceden düzenli metin
+; <PRE> : preformatted text, should be fixed width
+;
+;  HTML modes
+;
+MSG_SET_HTML_STRICT
+Sert
+; Strict
+;
+MSG_SET_HTML_TOLERANT
+Toleranslý
+; Tolerant
+;
+MSG_SET_HTML_COMPATIBLE
+Uyumlu
+; Compatible
+;
+;  Screen types
+;
+MSG_SET_SCRT_DEFAULT
+Standart ortak ekran
+; Default public screen
+;
+MSG_SET_SCRT_NAMED
+Ýsimli ortak ekran
+; Named public screen
+;
+MSG_SET_SCRT_OWN
+Kendi ortak ekran
+; Own public screen
+;
+;  Image loading types
+;
+MSG_SET_IMGL_OFF
+Kapalý
+; Off
+;
+MSG_SET_IMGL_MAPS
+Haritalar sadece
+; Maps only
+;
+MSG_SET_IMGL_ALL
+Bütün Ýmajlar
+; All images
+;
+;  MIME list column names
+;
+MSG_SET_MLCN_TYPE
+Tip
+; Type
+;
+MSG_SET_MLCN_EXT
+Geniþlemeler
+; Extensions
+;
+;**obsolete
+MSG_SET_MLCN_COMMAND
+Gösterici komutu
+; Viewer command
+;
+MSG_SET_MLCN_ACTION
+A
+; A
+;
+MSG_SET_MLCN_NAME
+Ýsim ve argümanlar
+; Name and arguments
+;
+;  Browser pen names
+;
+MSG_SET_BRPEN_LINK
+Yeni baðlantý
+; New link
+;
+MSG_SET_BRPEN_VLINK
+Ziyaret edilmiþ baðlantý
+; Visited link
+;
+MSG_SET_BRPEN_ALINK
+Seçilmiþ baðlantý
+; Selected link
+;
+MSG_SET_BRPEN_BGCOLOR
+Arkaplan
+; Background
+;
+MSG_SET_BRPEN_TEXT
+Metin
+; Text
+;
+;  Screen colour names
+;
+MSG_SET_SCRPEN_TEXT
+Normail metin
+; Normal text
+;
+MSG_SET_SCRPEN_SHINE
+Parlak köþeler
+; Bright edges
+;
+MSG_SET_SCRPEN_SHADOW
+Karanlýk köþeler
+; Dark edges
+;
+MSG_SET_SCRPEN_FILL
+Aktif pencere baþlýk çubuklarý
+; Active window title bars
+;
+MSG_SET_SCRPEN_FILLTEXT
+Aktif pencere baþlýklarý
+; Active window titles
+;
+MSG_SET_SCRPEN_BACKGROUND
+Arkaplan
+; Background
+;
+MSG_SET_SCRPEN_HIGHLIGHTTEXT
+Önemli metin
+; Important text
+;
+MSG_SET_SCRPEN_BARDETAIL
+Menü metni
+; Menu text
+;
+MSG_SET_SCRPEN_BARBLOCK
+Menü arkaplaný
+; Menu background
+;
+;  ARexx menu shortcut
+;
+MSG_SET_AREX_NONE
+hiçbiri
+; none
+;
+;  Network external program types
+;
+MSG_SET_NWPRG_STARTTCP
+TCP baþlat
+; Start TCP
+;
+MSG_SET_NWPRG_ENDTCP
+TCP bitir
+; End TCP
+;
+;  Font types and sizes (fonts page)
+;
+MSG_SET_FTYPE_NORMAL
+Normal fontlar
+; Normal fonts
+;
+MSG_SET_FTYPE_FIXED
+Sabit geniþlikli fontlar
+; Fixed width fonts
+;
+MSG_SET_FSIZE_1
+1 (en küçük)
+; 1 (smallest)
+;
+MSG_SET_FSIZE_3
+3 (normal)
+; 3 (normal)
+;
+MSG_SET_FSIZE_7
+7 (en geniþ)
+; 7 (largest)
+;
+;  Font list headers
+;
+MSG_SET_FLH_SIZE
+Boyut
+; Size
+;
+MSG_SET_FLH_FONTFACE
+Font ismi ve boyut
+; Font name and size
+;
+;  Style list headers
+;
+MSG_SET_SLH_TAG
+Etiket
+; Tag
+;
+MSG_SET_SLH_STYLE
+Olarak Çizildi
+; Rendered as
+;
+;  Cache verify modes
+;
+MSG_SET_CAVERIFY_ALWAYS
+Daima
+; Always
+;
+MSG_SET_CAVERIFY_ONCE
+Oturum baþýna bir kere
+; Once per session
+;
+MSG_SET_CAVERIFY_NEVER
+Asla
+; Never
+;
+;  Palette loading
+;
+MSG_SET_LPAL_OFF
+Kapalý
+; Off
+;
+MSG_SET_LPAL_COLOURS
+Renkler
+; Colours
+;
+MSG_SET_LPAL_GRAY
+Gri
+; Grayscale
+;
+;  MIME action names and abbreviationss
+;
+MSG_SET_MACT_DEFAULT
+Standart
+; Default
+;
+MSG_SET_MACT_INTERNAL
+Dahili (I)
+; Internal (I)
+;
+MSG_SET_MACT_PLUGIN
+AWeb Plugin (A)
+; AWeb Plugin (A)
+;
+MSG_SET_MACT_EXTERNAL
+Harici program (E)
+; Extl. program (E)
+;
+MSG_SET_MACT_EXTPIPE
+Harici w/PIPE (P)
+; Extl. w/PIPE (P)
+;
+MSG_SET_MACT_SAVEDISK
+Diske kaydet (S)
+; Save to disk (S)
+;
+MSG_SET_MACT_EXTCAN
+
+; Extl. No Fetch (F)
+;
+; ***NEW***
+;
+MSG_SET_MACT_CANCEL
+
+; Cancel (C)
+;
+; ***NEW***
+;
+; 1-letter abbreviations to use for the above in the MIME list
+MSG_SET_MACT_ABBREV
+ IAEPFSC
+;  IAEPFSC
+;
+;  Cookie settings
+;
+MSG_SET_COOKIES_NEVER
+Asla
+; Never
+;
+MSG_SET_COOKIES_ASK
+Ayarlamandan önce sor
+; Ask before set
+;
+MSG_SET_COOKIES_QUIET
+Daima (sessiz)
+; Always (quiet)
+;
+;  Pupup menu types
+;
+MSG_SET_PUPTYPE_IMAGE
+Imaj öne-çýk menüsü
+; Image popup menu
+;
+MSG_SET_PUPTYPE_LINK
+Baðlantý öne-çýk menüsü
+; Link popup menu
+;
+MSG_SET_PUPTYPE_FRAME
+Çerçeve öne-çýk menüsü
+; Frame popup menu
+;
+;  Menu entry types (used in the chooser)
+;
+MSG_SET_MENUTYPE_MENU
+Menü
+; Menu
+;
+MSG_SET_MENUTYPE_ITEM
+Obje
+; Item
+;
+MSG_SET_MENUTYPE_SUB
+Alt
+; Sub
+;
+;  Menu entry types used in the first list column.
+;  For best effects, make sure the string for "MENU" is
+;  wider than the string for "Item".
+;
+MSG_SET_MENULABEL_MENU
+MENÜ
+; MENU
+;
+MSG_SET_MENULABEL_ITEM
+Obje
+; Item
+;
+;  Javascript choices
+;
+MSG_SET_JS_OFF
+Kapalý
+; Off
+;
+MSG_SET_JS_11
+Hýzlý
+; Fastidious
+;
+MSG_SET_JS_ALL
+Uyumlu
+; Omnivorous
+;
+;  Gadget labels - general
+;
+MSG_SET_PAGE
+_Sayfa
+; _Page
+;
+MSG_SET_SAVE
+_Kaydet
+; _Save
+;
+MSG_SET_USE
+K_ullan
+; _Use
+;
+MSG_SET_CANCEL
+_Vazgeç
+; _Cancel
+;
+MSG_SET_TEST
+_Test
+; _Test
+;
+;  Gadget labels - fonts
+;
+MSG_SET_FONT_FONT
+_Font
+; _Font
+;
+MSG_SET_FONT_FONTTYPE
+Font t_ipi
+; Font t_ype
+;
+MSG_SET_FONT_SETALL
+He_psini bu font ismine al
+; Set _all to this font name
+;
+MSG_SET_FONT_FONTTYPE2
+Font tipi
+; Font type
+;
+MSG_SET_FONT_ALIAS
+A_lias
+; A_lias
+;
+MSG_SET_FONT_ADD
+Ekle
+; Add
+;
+MSG_SET_FONT_DEL
+Sil
+; Del
+;
+;  Gadget labels - colours
+;
+MSG_SET_APP_CHGCOLOUR
+Re_nk deðiþtir
+; C_hange colour
+;
+MSG_SET_APP_SCREENPENS
+Ekran metin ve _arkaplan kalemlerini kullan
+; Use screen text and _background pens
+;
+;  Gadget labels - browser options/gui options
+;
+MSG_SET_BROPT_HTMLMODE
+HTML _modu
+; HTML _mode
+;
+MSG_SET_BROPT_ULLINKS
+_Alt çizgili baðlantýlar
+; Under_lined links
+;
+MSG_SET_BROPT_CYCLETOLIST
+Dönen alanlarý _liste olarak göster
+; Show c_ycle fields as list
+;
+MSG_SET_BROPT_DOCOLORS
+Ar_kaplan ve renkleri kullan
+; Use _background and colours
+;
+MSG_SET_BROPT_POPUPLABEL
+Öne-çýk menü aktivasyonu
+; Popup menu activation
+;
+MSG_SET_BROPT_POPUPSHIFT
+S_HIFT tuþu
+; S_HIFT key
+;
+MSG_SET_BROPT_POPUPALT
+_ALT tuþu
+; _ALT key
+;
+MSG_SET_BROPT_POPUPCONTROL
+CT_RL tuþu
+; CT_RL key
+;
+MSG_SET_BROPT_POPUPMIDBUTTON
+Or_ta fare tuþu
+; M_iddle mouse button
+;
+MSG_SET_BROPT_DOBGSOUND
+Arkaplan _sesini kullan
+; Use background soun_d
+;
+MSG_SET_BROPT_BLINK
+Yaný_p Sönen (0.1 s)
+; Blin_k (0.1 s)
+;
+MSG_SET_BROPT_POPUPRBUTTON
+S_að fare düðmesi
+; Ri_ght mouse button
+;
+MSG_SET_BROPT_JAVASCRIPT
+_Javascript kullan
+; Use _JavaScript
+;
+MSG_SET_BROPT_FRAMES
+Çerçe_ve kullan
+; Use _frames
+;
+MSG_SET_BROPT_INCTABLE
+_Yükselen tablo görüntüsü
+; _Incremental table display
+;
+MSG_SET_BROPT_NOMINALFRAME
+_Nominal çerçeve yüksekliði
+; _Nominal frame height
+;
+MSG_SET_BROPT_JSERRORS
+Javascript _hatalarýný göster
+; Show JavaScript _errors
+;
+MSG_SET_BROPT_NOBANNERS
+Banner pencerelerini atla
+; Su_ppress banner windows
+;
+MSG_SET_BROPT_TOOLTIPS
+Ýmajlar için araçtiplerini _göster
+; Display t_ooltips for images
+;
+MSG_SET_BROPT_HANDPOINTER
+_Baðlantýlar üzerinde el simgesi
+; _Hand pointer over links
+;
+MSG_SET_BROPT_JSWATCH
+JavaScript hatasý için _uyar
+; _Warn for suspect JavaScript
+;
+MSG_SET_BROPT_TEMPRP
+
+; Use double buffered _rendering
+;
+; ***NEW***
+;
+MSG_SET_BROPT_CHARSET
+
+; Default ch_aracter set
+;
+; ***NEW***
+;
+MSG_SET_BROPT_IMGBORDER
+
+; Border around ima_ges
+;
+; ***NEW***
+;
+;  Gadget labels - screen
+;
+MSG_SET_SCREEN_OPENON
+Ü_stünde aç
+; _Open on
+;
+MSG_SET_SCREEN_NAME
+Ekran i_smi
+; Screen _name
+;
+MSG_SET_SCREEN_MODE
+Ekran _modu
+; Screen _mode
+;
+MSG_SET_SCREEN_PALETTE
+Ayrýk paleti _yükle
+; _Load spread palette
+;
+;  Gadget labels - palette
+;
+MSG_SET_PALL_PENLABEL
+Kalem ayarlarý
+; Pen settings
+;
+MSG_SET_PALL_PEN
+Ka_lem
+; P_en
+;
+MSG_SET_PALL_PALLETTELABEL
+Paleti deðiþtir
+; Change palette
+;
+MSG_SET_PALL_PALLPEN
+K_alem
+; Pe_n
+;
+MSG_SET_PALL_CHGCOLOUR
+Ren_gi deðiþtir
+; C_hange colour
+;
+;  Gadget labels - network options and privacy
+;
+MSG_SET_NETWORK_IMGLOAD
+Ý_maj yükleme
+; _Image loading
+;
+MSG_SET_NETWORK_MAXCONN
+Mak. _að baðlantýsý
+; Max. _network connections
+;
+MSG_SET_NETWORK_HOMEPAGE
+_Ana sayfa
+; _Home page
+;
+MSG_SET_NETWORK_LOCALINDEX
+_Yerel indeks
+; _Local index
+;
+MSG_SET_NETWORK_STARTHOME
+Ana S_ayfa ile baþla
+; St_art with home page
+;
+MSG_SET_NETWORK_ANONYMOUS
+Gezeren _Referer`ý Atla
+; Suppress _Referer while browsing
+;
+MSG_SET_NETWORK_IGNORE
+Sunucu _MIME tipi dikkate alma
+; I_gnore server MIME type
+;
+MSG_SET_NETWORK_MAXDISK
+_disk okumalarý
+; _disk reads
+;
+MSG_SET_NETWORK_COOKIES
+Coo_kie`leri Kullan
+; Use coo_kies
+;
+MSG_SET_NETWORK_NOCOOKIELABEL
+Domain için cookie yok
+; No cookies for domains
+;
+MSG_SET_NETWORK_NOCOOKIEADD
+Ekle
+; Add
+;
+MSG_SET_NETWORK_NOCOOKIEDEL
+Sil
+; Del
+;
+MSG_SET_NETWORK_FORMWARN
+Güvensiz form verisi göndermeden önce _uyar
+; _Warn before sending unsecure form data
+;
+MSG_SET_NETWORK_AUTOSEARCHURL
+URL otama_tik ara
+; Autosea_rch URL
+;
+MSG_SET_NETWORK_AUTOSEARCH
+Otomatik arama_yý aç
+; _Enable autosearch
+;
+MSG_SET_NETWORK_SPAMBLOCK
+Haber postalarken _Spamblokajýný aç
+; _Activate spamblock when posting news
+;
+MSG_SET_NETWORK_FTPEMAILADDR
+e-posta adresini _FTP anonim þifresi olarak kullan
+; Use e-mail address as _FTP anon password
+;
+MSG_SET_NETWORK_SPOOFID
+_Olarak
+; Spoo_f as
+;
+MSG_SET_NETWORK_CONTANIM
+_Devamlý animasyon
+; C_ontinuous animation
+;
+MSG_SET_NETWORK_SPOOFID_EXPL
+(Listeden bir giriþ seçin\nveya kendi tarayýcý ID`nizi girin)
+; (Select an entry from the list\n or type your own browser ID)
+;
+MSG_SET_NETWORK_RESTRICT_IMAGES
+Ýmajlarý hos_ta sýnýrla
+; Restrict i_mages to same host
+;
+;  Gadget labels - network proxy
+;
+MSG_SET_PROXY_TYPE
+T_ip
+; T_ype
+;
+MSG_SET_PROXY_NAME
+_Proxy
+; _Proxy
+;
+MSG_SET_PROXY_LIMITED
+_Limitli proxy kullanýmý
+; _Limited proxy usage
+;
+MSG_SET_PROXY_NOPROXYLABEL
+Bu siteler için proxy yok
+; No proxy for these sites
+;
+MSG_SET_PROXY_NOPROXYADD
+Ekle
+; Add
+;
+MSG_SET_PROXY_NOPROXYDEL
+Sil
+; Del
+;
+MSG_SET_PROXY_PASSIVEFTP
+Pasi_f FTP
+; Passi_ve FTP
+;
+;  Gadget labels - network external programs
+;
+MSG_SET_NWPRG_TYPE
+T_ip
+; T_ype
+;
+MSG_SET_NWPRG_CMD
+Ko_mut
+; Co_mmand
+;
+MSG_SET_NWPRG_ARGS
+_Argümanlar
+; _Arguments
+;
+;  Gadget labels - program options
+;
+MSG_SET_PROGRAM_SAVEPATH
+Yol_u kaydet
+; S_ave path
+;
+MSG_SET_PROGRAM_OVERLAP
+Kayma üstüne kaplama (piksel)
+; Scroll _overlap (pixels)
+;
+MSG_SET_PROGRAM_ALLOW
+Baðlantýlarda Shell komutlarýna izin ver
+; A_llow Shell commands in links
+;
+MSG_SET_PROGRAM_HOTCLOSE
+_Favoriler istemcisi otomatik kapama
+; _Hotlist requester auto close
+;
+MSG_SET_PROGRAM_HOTREQ
+Favoriler düðmesi _istemci verir
+; Hotlist button gives _requester
+;
+MSG_SET_PROGRAM_HOTSINGLECLICK
+
+; Use Singleclic_k in Hotlist Viewer
+;
+; ***NEW***
+;
+MSG_SET_PROGRAM_WHISCLOSE
+Geçmiþ _penceresi otomatik kapama
+; History _window auto close
+;
+MSG_SET_PROGRAM_SAVEICONS
+Ý_kon yarat
+; Create _icons
+;
+MSG_SET_PROGRAM_AAHOTLIST
+Otomatik açma favoriler
+; Auto ope_n hotlist
+;
+MSG_SET_PROGRAM_AAWINHIS
+Otomatik açma geçmiþ penceresi
+; Auto open window histor_y
+;
+MSG_SET_PROGRAM_AANETSTAT
+Otomatik _að durumu
+; Auto open n_etwork status
+;
+MSG_SET_PROGRAM_DRAGGING
+SÜ_rüklemeye izin ver
+; Allow _dragging
+;
+MSG_SET_PROGRAM_CENTERREQS
+Ýstemciler Ortala
+; Center re_questers
+;
+;  Gadget labels - external programs
+;
+MSG_SET_EDITOR_LABEL
+Editör
+; Editor
+;
+MSG_SET_EDITOR_CMD
+Ko_mut
+; Co_mmand
+;
+MSG_SET_EDITOR_ARGS
+_Argümanlar
+; _Arguments
+;
+MSG_SET_VIEWER_LABEL
+HTML kaynak gösterici
+; HTML source viewer
+;
+;**OBSOLETE**
+MSG_SET_VIEWER_CMD
+K_omut
+; C_ommand
+;
+;**OBSOLETE**
+MSG_SET_VIEWER_ARGS
+A_rgümanlar
+; A_rguments
+;
+MSG_SET_CONSOLE
+K_onsol
+; Co_nsole
+;
+MSG_SET_PRPROGRAMS_TYPE
+Ti_p
+; T_ype
+;
+MSG_SET_IMGVIEWER_LABEL
+Ýmaj gösterici
+; Image viewer
+;
+MSG_SET_STARTUP_LABEL
+Baþlangýçta Çalýþacak Senaryo
+; Script run at startup
+;
+MSG_SET_SHUTDOWN_LABEL
+Kapanýþta Çalýþacak Senaryo
+; Script run at shutdown
+;
+;  Gadget labels - cache
+;
+MSG_SET_CACHE_TEMPPATH
+Geçici _yol
+; Temp _path
+;
+MSG_DUMMY_2
+
+; 
+MSG_SET_CACHE_DOCMEM
+_Bellek (kB)
+; _Memory (kB)
+;
+MSG_SET_CACHE_DOCDISK
+_Disk (kB)
+; _Disk (kB)
+;
+MSG_DUMMY_3
+
+; 
+MSG_DUMMY_4
+
+; 
+MSG_DUMMY_5
+
+; 
+MSG_DUMMY_6
+
+; 
+MSG_DUMMY_7
+
+; 
+MSG_SET_CACHE_CACHEPATH
+Kaþe _yolu
+; Cache _path
+;
+MSG_SET_CACHE_SIZELABEL
+Kaþe boyutu
+; Cache size
+;
+MSG_SET_CACHE_FREELABEL
+Minimum serbest býrak
+; Keep minimum free
+;
+MSG_SET_CACHE_CHIP
+G_rafik (kB)
+; C_hip (kB)
+;
+MSG_SET_CACHE_FAST
+_Diðer (kB)
+; _Fast (kB)
+;
+MSG_CACHE_VERIFICATION_LABEL
+
+; Cache Verification
+;
+; ***NEW***
+;
+MSG_SET_CACHE_VERIFY_DYN
+
+; Verify d_ynamic objects
+;
+; ***NEW***
+;
+MSG_SET_CACHE_VERIFY_STAT
+
+; Verify _static objects
+;
+; ***NEW***
+;
+MSG_SET_CACHE_FASTRESPONSE_DYN
+
+; Fast _response
+;
+; ***NEW***
+;
+MSG_SET_CACHE_FASTRESPONSE_STAT
+
+; Fas_t response
+;
+; ***NEW***
+;
+MSG_SET_CACHE_NOCACHELABEL
+Bu siteleri kaþeleme
+; Do not cache these sites
+;
+MSG_SET_CACHE_NOCACHEADD
+Ekle
+; Add
+;
+MSG_SET_CACHE_NOCACHEDEL
+Sil
+; Del
+;
+;  Gadget labels - MIME types and external viewers
+;
+MSG_SET_MIME_TYPE
+Ti_p
+; T_ype
+;
+MSG_SET_MIME_ADD
+_Ekle
+; _Add
+;
+MSG_SET_MIME_DEL
+_Sil
+; _Del
+;
+MSG_SET_MIME_EXTENSIONS
+_Geniþlemeler
+; _Extensions
+;
+;**obsolete
+MSG_SET_MIME_CMD
+K_omut
+; C_ommand
+;
+MSG_SET_MIME_ARGS
+_Argümanlar
+; A_rguments
+;
+MSG_SET_MIME_NAME
+Ýs_im
+; Na_me
+;
+MSG_SET_MIME_ACTION
+Aksi_yon
+; Act_ion
+;
+;  Settings colour requester
+;
+MSG_SET_COLOUR_TITLE
+Renk seç
+; Select colour
+;
+MSG_SET_COLOUR_CANCEL
+Vazgeç
+; Cancel
+;
+MSG_SET_COLOUR_OK
+Ok
+; Ok
+;
+MSG_SET_COLOUR_RED
+R
+; R
+;
+MSG_SET_COLOUR_GREEN
+G
+; G
+;
+MSG_SET_COLOUR_BLUE
+B
+; B
+;
+;  Gadget labels - Menu (was: ARexx menu)
+;
+MSG_SET_AREXX_SORT
+S_ýrala
+; S_ort
+;
+MSG_SET_AREXX_ADD
+_Ekle
+; _Add
+;
+MSG_SET_AREXX_DEL
+_Sil
+; _Del
+;
+MSG_SET_AREXX_TITLE
+Baþ_lýk
+; T_itle
+;
+MSG_DUMMY_9
+
+; 
+;
+MSG_DUMMY_10
+
+; 
+;
+MSG_SET_MENUS_INVALID
+GEÇERSÝZ
+; INVALID
+;
+MSG_SET_MENUS_TYPE
+Ti_p
+; T_ype
+;
+MSG_SET_MENUS_COMMAND
+Ko_mut
+; Co_mmand
+;
+;  Gadget labels - Styles page
+;
+MSG_SET_STYLE_FIXED
+_Sabit geniþlik
+; _Fixed width
+;
+MSG_SET_STYLE_ABSSIZE
+_Mut boyut
+; _Abs size
+;
+MSG_SET_STYLE_RELSIZE
+_Rel boyut
+; _Rel size
+;
+MSG_SET_STYLE_NORMAL
+_Normal
+; _Normal
+;
+MSG_SET_STYLE_BOLD
+_Kalýn
+; _Bold
+;
+MSG_SET_STYLE_ITALIC
+Ý_talik
+; _Italic
+;
+MSG_SET_STYLE_UNDERLINED
+A_lltan çizgili
+; Under_lined
+;
+;  Gadget labels - User buttons
+;
+MSG_SET_BUTTON_SORT
+Sý_rala
+; S_ort
+;
+MSG_SET_BUTTON_ADD
+_Ekle
+; _Add
+;
+MSG_SET_BUTTON_DEL
+_Sil
+; _Del
+;
+MSG_SET_BUTTON_LABEL
+_Etiket
+; _Label
+;
+MSG_SET_BUTTON_CMD
+K_omut
+; Co_mmand
+;
+;  Gadget labels - Popup menus
+;
+MSG_SET_POPUP_TYPE
+Ti_p
+; T_ype
+;
+MSG_SET_POPUP_SORT
+Sý_rala
+; S_ort
+;
+MSG_SET_POPUP_ADD
+_Ekle
+; _Add
+;
+MSG_SET_POPUP_DEL
+_Sil
+; _Del
+;
+MSG_SET_POPUP_TITLE
+Baþ_lýk
+; T_itle
+;
+MSG_SET_POPUP_CMD
+Ko_mut
+; Co_mmand
+;
+MSG_SET_POPUP_SHOWIF
+Obje ise göster
+; Show if object
+;
+MSG_SET_POPUP_INMEM
+bellek_te
+; in m_em
+;
+MSG_SET_POPUP_NOTINMEM
+bellekte d_eðil
+; _not in mem
+;
+;  Gadget labels - GUI options
+;
+MSG_SET_GUIOPT_SHOWBUTTONS
+Kullanýcý düð_melerini göster
+; Show user _buttons
+;
+MSG_SET_GUIOPT_SHOWNAV
+_Navigasyon düðmelerini göster
+; Show _navigation gadgets
+;
+MSG_SET_GUIOPT_BORDERLESS
+
+; Border_less gadgets
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTTONTYPE
+
+; Gadget _Type
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_TEXTONLY
+
+; Text Only
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_TEXTIMAGE
+
+; Image & Text
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_IMAGEONLY
+
+; Image Only
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTTONPOS
+
+; Gadget _Position
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTPOS_LEFT
+
+; Left
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTPOS_RIGHT
+
+; Right
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTPOS_TOPLEFT
+
+; Top Left
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTPOS_TOPRIGHT
+
+; Top Right
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTPOS_BIGLEFT
+
+; Big Left
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTPOS_BIGRIGHT
+
+; Big Right
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_WINBDR
+
+; Window Borders
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_WINBDR_STANDARD
+
+; Standard
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_WINBDR_GADGETLESS
+
+; Gadgetless
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_WINBDR_BORDERLESS
+
+; Borderless
+;
+; ***NEW***
+;
+;  Gadget labels - Network Mail/News
+;
+MSG_SET_MAIL_TAB_ADDRESS
+_Adres
+; _Address
+;
+MSG_SET_MAIL_TAB_MAIL
+_Posta
+; _Mail
+;
+MSG_SET_MAIL_TAB_NEWS
+_Haberler
+; _News
+;
+MSG_SET_MAIL_TAB_OPTIONS
+_Opsiyonlar
+; _Options
+;
+MSG_SET_MAIL_ADDRESS
+_E-posta adresi
+; _E-mail address
+;
+MSG_SET_MAIL_REALNAME
+_Gerçek isim
+; _Real name
+;
+MSG_SET_MAIL_REPLYTO
+Adrese _cevap ver
+; Re_ply to address
+;
+MSG_SET_MAIL_ORGANIZATION
+_Organizasyon
+; Or_ganization
+;
+MSG_SET_MAIL_SIGNATURE
+Ým_za dosyasý
+; S_ignature file
+;
+MSG_SET_MAIL_SMTPHOST
+Posta _hostu (SMTP)
+; Mail _host (SMTP)
+;
+MSG_SET_MAIL_MAILQUOTEHDR
+_Baþlýk alýnýtýsý
+; _Quote header
+;
+MSG_SET_MAIL_EXTMAILER
+Harici bir _postacý kullan
+; Use _external mailer
+;
+MSG_SET_MAIL_EXTMCOMMAND
+Komu_t
+; Comman_d
+;
+MSG_SET_MAIL_EXTMARGS
+Ar_gümanlar
+; Ar_guments
+;
+MSG_SET_MAIL_NNTPHOST
+Haber _host (NNTP)
+; News _host (NNTP)
+;
+MSG_SET_MAIL_NEWSQUOTEHDR
+Baþ_lýk Al
+; _Quote header
+;
+MSG_SET_MAIL_NEWSUSER
+Haber k_ullanýcý ismi
+; News use_r name
+;
+MSG_SET_MAIL_NEWSPASSWORD
+Haber þi_fresi
+; News _password
+;
+MSG_SET_MAIL_EXTNEWS
+Harici _haber okuyucu kullan
+; Use _external newsreader
+;
+MSG_SET_MAIL_EXTNCOMMAND
+Ko_mut
+; Comman_d
+;
+MSG_SET_MAIL_EXTNARGS
+Ar_gümanlar
+; Ar_guments
+;
+MSG_SET_MAIL_MAXARTICLES
+Ma_k makale sayýsý
+; Ma_x nr of articles
+;
+MSG_SET_MAIL_SORTED
+Makaleleri sýrala
+; So_rt articles
+;
+MSG_SET_MAIL_FRAMED
+Ekraný _böl
+; S_plit screen
+;
+MSG_SET_MAIL_LONGHDRS
+_Uzun baþlýklar
+; _Long headers
+;
+MSG_SET_MAIL_PROPFONT
+O_ranlý font
+; Proportional _font
+;
+MSG_SET_MAIL_NEWSBYNUMBER
+Rakam _ile al
+; Retrieve by num_ber
+;
+;  Gadget labels - GUI keys
+;
+MSG_SET_KEYS_KEY
+Tuþ
+; Key
+;
+MSG_SET_KEYS_COMMAND
+Ko_ut
+; Co_mmand
+;
+;  Key names
+;
+MSG_SET_KEYS_ENTER
+Enter
+; Enter
+;
+MSG_SET_KEYS_TAB
+Tab
+; Tab
+;
+MSG_SET_KEYS_BS
+BS
+; BS
+;
+MSG_SET_KEYS_SPACE
+Space
+; Space
+;
+MSG_SET_KEYS_UP
+Yukarý
+; Up
+;
+MSG_SET_KEYS_LEFT
+Sol
+; Left
+;
+MSG_SET_KEYS_RIGHT
+Sað
+; Right
+;
+MSG_SET_KEYS_DOWN
+Aþaðý
+; Down
+;
+MSG_SET_KEYS_NUM
+Num
+; Num
+;
+MSG_SET_KEYS_SHIFT
+Shift
+; Shift
+;
+MSG_SET_KEYS_WHEELUP
+Tekerlek yukarý
+; Wheel up
+;
+MSG_SET_KEYS_WHEELDOWN
+Tekerlek aþaðý
+; Wheel down
+;
+;  Gadget labels - Navigation buttons
+;
+MSG_SET_NAVS_BUTTON
+Düðme
+; Button
+;
+MSG_SET_NAVS_COMMAND
+Ko_mut
+; Co_mmand
+;
+;  Navigation button names
+;
+MSG_SET_NAVS_BACK
+Geri
+; Back
+;
+MSG_SET_NAVS_FORWARD
+Ýleri
+; Forward
+;
+MSG_SET_NAVS_HOME
+Ev
+; Home
+;
+MSG_SET_NAVS_ADDHOT
+Favorilere ekle
+; Add to hotlist
+;
+MSG_SET_NAVS_HOTLIST
+Favorileri göster
+; Show hotlist
+;
+MSG_SET_NAVS_CANCEL
+Vazgeç
+; Cancel
+;
+MSG_SET_NAVS_NETSTATUS
+Að durumu
+; Network status
+;
+MSG_SET_NAVS_SEARCH
+Ara
+; Search
+;
+MSG_SET_NAVS_RELOAD
+Tekrar yükle
+; Reload
+;
+MSG_SET_NAVS_LOADIMAGES
+Ýmajlarý yükle
+; Load images
+;
+;  Settings menu strings
+;
+MSG_SET_PROJECT_MENU
+Proje
+; Project
+;
+MSG_SET_PROJECT_OPEN
+O/Aç...
+; O/Open...
+;
+MSG_SET_PROJECT_SAVEAS
+A/Ýsmiyle kaydet...
+; A/Save as...
+;
+MSG_SET_PROJECT_QUIT
+Q/Ayarlardan çýk
+; Q/Quit settings
+;
+MSG_SET_EDIT_MENU
+Edit
+; Edit
+;
+MSG_SET_EDIT_DEFAULTS
+D/Standartlara dön
+; D/Reset to defaults
+;
+MSG_SET_EDIT_LASTSAVED
+L/En son kaydedilen
+; L/Last saved
+;
+MSG_SET_EDIT_RESTORE
+R/Geri Getir
+; R/Restore
+;
+MSG_SET_WINDOWS_MENU
+Pencereler
+; Windows
+;
+MSG_SET_WINDOWS_BROWSER
+Tarayýcý ayarlarý...
+; Browser settings...
+;
+MSG_SET_WINDOWS_PROGRAM
+Program ayarlarý...
+; Program settings...
+;
+MSG_SET_WINDOWS_NETWORK
+Að ayarlarý...
+; Network settings...
+;
+MSG_SET_WINDOWS_CLASSACT
+ClassAct ayarlarý...
+; ClassAct settings...
+;
+MSG_SET_WINDOWS_SNAPSHOT
+Konumu Kaydet
+; Snapshot
+;
+MSG_SET_WINDOWS_GUI
+Arabirim ayarlarý...
+; GUI settings...
+;

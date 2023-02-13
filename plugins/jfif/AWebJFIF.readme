@@ -1,0 +1,22 @@
+Short:    AWeb-II 'official' JFIF/JPEG plugin v1.10
+Uploader: tom@carrott.org (Tom Parker)
+Author:   yrozijn@xs4all.nl (Yvon Rozijn)
+Type:     comm/www
+Version:  1.10
+
+AWebJFIF plugin
+===============
+
+The AWebJFIF plugin for AWeb-II (version 3.0 or higher) allows you
+to view all kind of JFIF (JPEG) images.
+
+Features include:
+
+ * Optional progressive display of loading images
+ * Support for scaling
+ * Support for CyberGraphics
+
+The AWeb JFIF plugin is copyright © 1998 by Yvon Rozijn.
+It uses code from the JPEG library that was written by the Independent
+JPEG Group (IJG).
+

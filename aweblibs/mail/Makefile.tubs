@@ -1,0 +1,8 @@
+MODULES := aweblib/mail.aweblib
+
+aweblib/mail.aweblib/TYPE := executable/library/amigashared
+aweblib/mail.aweblib/DEPS := $(MODULELIB) linklibs/libawebclib.a
+aweblib/mail.aweblib/CFILES := \
+mail
+
+aweblib/mail.aweblib/CFILES/mail/CPPFLAGS := $(NETINCLUDE2)

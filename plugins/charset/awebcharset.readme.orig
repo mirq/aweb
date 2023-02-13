@@ -1,0 +1,166 @@
+
+awebcharset.awebplugin
+======================
+
+Description:
+------------
+The awebcharset.awebplugin for AWeb APL Lite (3.5.09 beta or higher)
+allows you to use the features of the codesets.library.
+
+The codesets.library provides general character conversion routines,
+e.g. for converting from one (source) charset (e.g. UTF-8) into another
+(destination) charset (e.g. ISO-8859-1) or vice versa.
+
+You can download the codesets.library at
+http://www.sf.net/projects/codesetslib/ or
+http://aminet.net/package.php?package=util/libs/codesets.lha
+
+
+Installation:
+-------------
+First install the codesets.library. Then copy the awebcharset.awebplugin
+to AWebPlugin directory. Now run AWeb and open the Browser settings
+(usually use the Menu Settings->Browser settings...
+Here skip to the Viewers page and add or change the following entry:
+
+Type: TEXT/HTML
+Extensions:
+Action: AWeb Plugin (A)
+Name: AWebPath:AWebPlugin/awebcharset.awebplugin
+
+
+Features:
+---------
+At startup the plugin is using the system default charset
+and the filter is turned on.
+
+
+The awebcharset.awebplugin implements the follow plugin commands:
+
+ON -  turns the filter on.
+OFF -  turns the filter off.
+
+STATUS - Show in a requester the On/Off State and the Scr and Dest Codeset.
+
+
+If a charset (supported from codeset.library) is given as command then
+the filter is turned on (for the case it was turned off before) and this
+charset is used as destination charset.
+
+e.g. if you want to convert to the koi8-r charset then send koi8-r
+to the plugin. See also Usage section.
+
+
+The commands are case-insensitive. e.g. 'On', 'ON' and 'oN' do the same.
+
+
+If a not supported command is send to the plugin then the plugin
+return with RC=10 and the default (system) codeset is used.
+
+
+If the codesets.library isn't found or you run a wrong AWeb Version you
+get a requester which inform you about that and the charset support is disabled.
+
+
+Usage:
+------
+Usually you don't need the command function. But if you want to change the used
+charset you must send a command to the Pugin.
+
+Here are 3 ways to do this:
+
+1. Use a menu entry.
+--------------------
+Make a menu entry in GUI settings->Menus:
+Type: Item
+Title: Awebcharset-OFF
+Command: PLUGIN awebcharset.awebplugin Off
+
+(BTW: Don't forget to hit the Enter/Return key after insert
+the text into the string gadgeds)
+
+2. Use a user button
+--------------------
+Make a User Button in GUI settings->Buttons:
+Label: Off
+Command: Command: PLUGIN awebcharset.awebplugin Off
+
+
+3. Use a Arexx command
+-----------------------
+Send a command like 'PLUGIN awebcharset.awebplugin Off'
+to the AWeb ARexx port. For more Information about ARexx see:
+file:///AWebPAth:docs/arexx/program.html#PLUGIN
+
+
+
+Similar with all the other supported commands.
+
+After you use the command function you must reload the page.
+The page should then displayed with you new settings.
+
+
+Disadvantages
+-------------
+If you first time use the command function you must send
+the command and load another page. Reload doesn't work for
+the first use.
+
+
+If you want to save the original page you have to turn off
+the plugin, reload the page and save the source.
+If you don't do that the page is saved in converted format.
+
+
+How it works:
+-------------
+The awebcharset plugin look if the server provides a valid header charset
+description. If such description is found then use this charset as source
+charset. If such description isn't found then the plugin search in the
+first data block of the file for a valid charset definiton and if found
+use this charset as source charset.
+If both not found the default charset (ISO-8859-1) is used.
+
+The codesets.library do always a foreign->local charset translation.
+There isn't always a 100% mapping of chars. So for every unknown char
+which can't be expressed in the locale charset a "?" will be inserted.
+
+
+TODO:
+-----
+Change the Version (in startup.c Line 432) and remove line 433 before
+include in CVS and before the next release.
+
+It's NOT save if the doc is split in several blocks on unfavorable positions!
+
+
+History: (DateFormat: YY-MM-DD)
+--------
+Version 0.3 - 2006-09-10
+
+Port to OS4 - thanks to Andy Broad <andy@broad.ology.org.uk>.
+(also use another startup.c file.)
+Make this awebcharset.readme and delete the 'how to use' from source files.
+Add the 'ON' command to Commandplugin again.
+Moved the code which open/close the needed libraries from Initpluginlib()
+and Expungepluginlib() (in awebcharset.c) to Openlib()/Closelib() (in startup.c)
+Add a Intuition requester if the plugin run on a very old Version. (e.g AWeb-II 3.0b).
+Add a AWeb requester if run on a old Version - but keep AWeb usable
+(do not Filter via codesets.library).
+Add a AWeb (localized) requester if the codesets.library isn't found.
+
+Version 0.2 - 2006-05-05
+
+Remove the ON command and add the destination charset as ON command
+Add header charset support and add a check for a valid Charset in the
+Command, header and first Block definition.
+
+Version 0.1 - 2006-05-02
+
+First release
+
+
+Author:
+-------
+Frank (Opi) Weber <opionline@yahoo.de>
+

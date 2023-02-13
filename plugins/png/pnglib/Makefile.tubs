@@ -1,0 +1,12 @@
+MODULES := linklibs/libpng.a
+
+linklibs/libpng.a/TYPE := executable/library/link
+linklibs/libpng.a/CFILES = \
+png pngset pngget pngrutil pngtrans pngwutil pngpread \
+pngread pngerror pngwrite pngrtran pngwtran pngrio pngwio pngmem
+
+
+
+
+
+

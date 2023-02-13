@@ -1,0 +1,297 @@
+<html>
+<head>
+<title>Plugin copydriver subclass</title>
+</head>
+<body>
+<h1>Plugin copydriver subclass</h1>
+
+<h2>Purpose</h2>
+The <b>plugin copydriver subclass</b> formats and renders processed
+data received from the <a href=souredriver.html>sourcedriver subclass</a>.
+
+<h2><a name=methods>Supported methods</a></h2>
+
+<table border>
+<tr><th align=left valign=top>Method
+   <th align=left valign=top>Description
+<tr><th align=left valign=top><a href="../methods/dispose.html">AOM_DISPOSE</a>
+   <td valign=top>Dispose the object
+<tr><th align=left valign=top><a href="../methods/get.html">AOM_GET</a>
+   <td valign=top>Get attribute values
+<tr><th align=left valign=top><a href="../methods/layout.html">AOM_LAYOUT</a>
+   <td valign=top>Format data before rendering
+<tr><th align=left valign=top><a href="../methods/measure.html">AOM_MEASURE</a>
+   <td valign=top>Inquire for dimensions
+<tr><th align=left valign=top><a href="../methods/new.html">AOM_NEW</a>
+   <td valign=top>Create a new object instance
+<tr><th align=left valign=top><a href="../methods/render.html">AOM_RENDER</a>
+   <td valign=top>Render the object
+<tr><th align=left valign=top><a href="../methods/set.html">AOM_SET</a>
+   <td valign=top>Set attribute values
+</table>
+
+Other <a href="../methods/index.html">methods</a> may be supported
+depending on the needs of the implementation.
+
+<h2>Supported attributes</h2>
+
+<table border>
+<tr><th align=left valign=top>Attribute
+   <th align=left valign=top>Type
+   <th align=left valign=top>Description
+   <th align=left valign=top>Applicability
+<tr><th align=left valign=top>AOBJ_Cframe
+   <td valign=top><a href="../classes/object.html">struct Aobject</a> *
+   <td valign=top>If set to a value other than NULL, the object is
+      attached to a rendering context frame. If set to NULL, the object is
+      deattached from its rendering context frame.
+      <p>
+      Plugin classes need not to support this attribute, usually it
+      is dealt with by the superclass.
+   <td valign=top>AOM_NEW<br>AOM_SET
+<tr><th align=left valign=top>AOCDV_Bgchanged
+   <td valign=top>BOOL
+   <td valign=top>When set to TRUE, the background has changed.
+      If the object has obtained a background RastPort (using the
+      <a href="../lib/obtainbgrp.html"><code>Obtainbgrp()</code></a>
+      function), then it should release it now and obtain a new one.
+   <td valign=top>AOM_SET
+<tr><th align=left valign=top>AOCDV_Copy
+   <td valign=top><a href="../classes/copy.html">struct Aobject</a> *
+   <td valign=top>Pointer to the <a href="../classes/copy.html">AOTP_COPY</a>
+      object this copydriver subclass object is attached to.
+   <td valign=top>AOM_NEW<br>AOM_SET
+<tr><th align=left valign=top>AOCDV_Displayed
+   <td valign=top>BOOL
+   <td valign=top>When set to TRUE, the object is becoming displayed. The
+      object is allowed to render itself.<p>
+      When set to FALSE, the object is not in a displayed context. It is
+      not allowed to render itself. If the object has obtained a background
+      RastPort (using the
+      <a href="../lib/obtainbgrp.html"><code>Obtainbgrp()</code></a>
+      function), then it should release it now.
+   <td valign=top>AOM_NEW<br>AOM_SET
+<tr><th align=left valign=top>AOCDV_Hlayout<br>AOCDV_VLayout
+   <td valign=top>BOOL
+   <td valign=top>Return TRUE if the object's layout is sensitive to
+      changes in horizontal and vertical window dimensions, respectively.
+      <p>
+      Default is FALSE, meaning changes in window or frame dimensions
+      don't influence the object's layout.
+   <td valign=top>AOM_GET
+<tr><th align=left valign=top>AOCDV_Imagebitmap
+   <td valign=top>struct BitMap *
+   <td valign=top>Return a pointer to a BitMap that can be blitted to
+      render the object. This is only used for objects that act as
+      background image in HTML documents.
+      <p>
+      Plugin classes need not to support this attribute.
+   <td valign=top>AOM_GET
+<tr><th align=left valign=top>AOCDV_Imagemask
+   <td valign=top>APTR
+   <td valign=top>Return a pointer to the transparent mask coresponding
+      to the BitMap returned for the AOCDV_Imagebitmap attribute, or
+      NULL if no transparent mask exists.
+      <p>
+      Plugin classes need not to support this attribute.
+   <td valign=top>AOM_GET
+<tr><th align=left valign=top>AOCDV_Imagewidth<br>AOCDV_Imageheight
+   <td valign=top>LONG
+   <td valign=top>Return the width and height of the image in the
+      BitMap returned for the AOCDV_Imagebitmap attribute.
+      <p>
+      Plugin classes need not to support this attribute.
+   <td valign=top>AOM_GET
+<tr><th align=left valign=top>AOCDV_Objectparam
+   <td valign=top><a href="../structs/objectparam.html">struct Objectparam</a> *
+   <td valign=top>Pointer to the first general purpose parameter for this
+      object instance. More than one
+      <a href="../structs/objectparam.html">struct Objectparam *</a> may be
+      linked together in an exec linked list, this attribute points to the
+      first node in the list.
+      <p>
+      Plugin classes need not to support this attribute.
+   <td valign=top>AOM_SET
+<tr><th align=left valign=top>AOCDV_Playsound
+   <td valign=top>BOOL
+   <td valign=top>If set to TRUE, and the class implements sound,
+      the sound should be played now.
+      <p>
+      Plugin classes need not to support this attribute.
+   <td valign=top>AOM_SET
+<tr><th align=left valign=top>AOCDV_Ready
+   <td valign=top>BOOL
+   <td valign=top>Return TRUE if the class is ready to render something.
+      <p>
+      Default is FALSE.
+   <td valign=top>AOM_GET
+<tr><th align=left valign=top>AOCDV_Shapes
+   <td valign=top>BOOL
+   <td valign=top>Return TRUE if the class supports user interaction.
+      <p>
+      Default is FALSE.
+   <td valign=top>AOM_GET
+<tr><th align=left valign=top>AOCDV_Soundloop
+   <td valign=top>LONG
+   <td valign=top>The number of times the sound should play, or -1 if
+      it should play forever. Ony applicable if the class implements
+      sound.
+      <p>
+      If set to 0, the sound should be played once.
+      <p>
+      Plugin classes need not to support this attribute.
+   <td valign=top>AOM_NEW<br>AOM_SET
+<tr><th align=left valign=top>AOCDV_Sourcedriver
+   <td valign=top><a href=sourcedriver.html>struct Aobject</a> *
+   <td valign=top>Pointer to the related
+      <a href=sourcedriver.html>sourcedriver subclass</a> object.
+   <td valign=top>AOM_NEW<br>AOM_SET
+<tr><th align=left valign=top>AOCDV_Title
+   <td valign=top>STRPTR
+   <td valign=top>Return the string to be used as title, if the object
+      is displayed on its own in a window.
+      <p>
+      Default is NULL, meaning the URL of the object is used as window
+      title.
+   <td valign=top>AOM_GET
+<tr><th align=left valign=top>AOCDV_Undisplayed
+   <td valign=top>BOOL
+   <td valign=top>Return TRUE if you never want to render yourself. An
+      example would be a class implementing sound.
+      <p>
+      Default is FALSE.
+   <td valign=top>AOM_GET
+<tr><th align=left valign=top>AOCDV_Width<br>AOCDV_Height
+   <td valign=top>LONG
+   <td valign=top>Suggested width and height. If possible, the object
+      should scale itself to these dimensions.
+   <td valign=top>AOM_NEW<br>AOM_SET
+</table>
+
+<h2>Implementation</h2>
+
+The class must be a subclass of
+<a href="../classes/copydriver.html">AOTP_COPYDRIVER</a>. It must at
+least support the methods listed <a href=#methods>above</a>.
+<p>
+Data is processed by the related <a href=sourcedriver.html>sourcedriver
+subclass</a> object. Usually that class will use the
+<a href="../methods/set.html">AOM_SET</a> method to set one or more
+private attributes, to let the copydriver subclass object know what
+to render. When receiving processed data, there are three possibilities.
+<ol>
+<li>The <b>AOCDV_Displayed</b> attribute was set to FALSE, or never set
+   to TRUE.<br>
+   The class must <a href="../methods/set.html">set</a>
+   the <b>AOBJ_Changedchild</b> attribute of the owner
+   <a href="../classes/copy.html">AOTP_COPY</a> object, but only if the
+   class can render a complete copy.
+<p>
+<li>The <b>AOCDV_Displayed</b> attribute was set to TRUE, and the
+   object's dimensions have changed because of the new data.<br>
+   The class must <a href="../methods/set.html">set</a>
+   the <b>AOBJ_Changedchild</b> attribute of the owner
+   <a href="../classes/copy.html">AOTP_COPY</a> object. Eventually
+   its <a href="../methods/render.html">AOM_RENDER</a> method will
+   be invoked.
+<p>
+<li>The <b>AOCDV_Displayed</b> attribute was set to TRUE, and the
+   object's dimensions did not change.<br>
+   The object is allowed to render itself, or update its rendering.
+   Before doing so, it must obtain a valid rendering context, using
+   the <a href="../lib/clipcoords.html"><code>Clipcoords</code></a>
+   function.<p>
+   Alternatively, the class could <a href="../methods/set.html">set</a>
+   the <b>AOBJ_Changedchild</b> attribute of the owner
+   <a href="../classes/copy.html">AOTP_COPY</a> object, but this will
+   be slower.
+</ol>
+
+<h4>Image class</h4>
+Classes implementing an image decoder should support the <b>AOCDV_Imagebitmap</b>,
+<b>AOCDV_Imagemask</b>, <b>AOCDV_Imagewidth</b> and <b>AOCDV_Imageheight</b>
+attributes in the <a href="../methods/get.html">AOM_GET</a> method.
+<p>
+If <b>AOCDV_Width</b> and <b>AOCDV_Height</b> are set, the class
+should scale the image to this dimensions before rendering. If the class
+supports scaling, it must set its dimensions to the scaled dimensions
+in the <a href="../methods/measure.html">AOM_MEASURE</a> and
+<a href="../methods/layout.html">AOM_LAYOUT</a> methods. If the class
+does not support scaling, it should set its dimensions to the true
+dimensions of the image.
+
+<h5><a name=onload>JavaScript onLoad events</a></h5>
+With JavaScript, the web author can add an <b>onLoad</b> event handler
+to the &lt;IMG&gt; tag. This JavaScript event handler is executed in
+the following cases:
+<ul>
+<li>When a static image is fully decoded and displayed.
+<li>When an animated GIF is fully decoded, and every time the last
+   animation frame is displayed.
+<li>When the image created by the JavaScript Image() constructor
+   is fully decoded (not displayed because these images are never
+   displayed).
+</ul>
+AWeb does the most important part of this, but needs to know when any
+of these events happen.
+<p>
+Therefore, every image decoder must set the <b>AOCPY_Onimgload</b>
+attribute of its owner <a href="../classes/copy.html">AOTP_COPY</a>
+object to TRUE when:
+<ul>
+<li>The decoding is fully complete. The attribute must also be set
+   when decoding was already complete when the plugin copydriver
+   object was created.
+<li><b>Only</b> if the image is static (not an animation):<br>
+   When the image is rendered.
+</ul>
+
+In case of an animation (like an animated GIF), the image decoder
+must set the <b>AOCPY_Onimganim</b> attribute of its owner
+<a href="../classes/copy.html">AOTP_COPY</a> object to TRUE when:
+<ul>
+<li>The animation sequence hits the last frame.
+</ul>
+
+It is safe to set both AOCPY_Onimgload and AOCPY_Onimganim when
+decoding is ready and the last animation frame is rendered
+immediately. On the other hand, it is also allowed to omit
+setting of AOCPY_Onimganim the first time if that is more convenient
+for the implementation. <b>AOCPY_Onimgload</b> <em>must</em> be set
+regardless whether AOCPY_Onimganim is set or not.
+See also the comments in the
+<a href="../ilbmexample/ilbmcopy.c">example source</a>.
+
+<h4>Sound class</h4>
+Classes implementing a sound decoder and player will probably
+return TRUE for the <b>AOCDV_Undisplayed</b> attribute in the
+<a href="../methods/get.html">AOM_GET</a> method. Otherwise the object
+will be shown on its own in the window when the user clicks on a
+hyperlink to the sound, instead of the sound just playing in the
+background.
+<p>
+A sound class should play its sound once the object is created, as soon
+as sound is available. It should also support the <b>AOCDV_Playsound</b>
+attribute and start playing the sound again when this is set to TRUE.
+<p>
+Furthermore, sound classes should listen to changes in
+the <b>AOBJ_Frame</b> attribute. If set to NULL, the playing of the
+sound should be cancelled. If set to a nonNULL value, the sound should
+be played again.
+
+<h4>User interaction</h4>
+Classes may support user interaction. Note that HTML image maps are
+handled by the AWeb core and should not be implemented by the copydriver
+subclass.
+<p>
+To enable user interaction, the class must return TRUE for the
+<b>AOCDV_Shapes</b> attribute in the <a href="../methods/get.html">AOM_GET</a>
+method. Also the class must support the
+<a href="../methods/hittest.html">AOM_HITTEST</a>,
+<a href="../methods/goactive.html">AOM_GOACTIVE</a>,
+<a href="../methods/handleinput.html">AOM_HANDLEINPUT</a> and
+<a href="../methods/goinactive.html">AOM_GOINACTIVE</a> methods.
+
+<h2>Example</h2>
+The <a href="../ilbmexample/ilbmcopy.c"><code>ilbmcopy.c</code></a>
+file contains an example implementation of a copydriver subclass.

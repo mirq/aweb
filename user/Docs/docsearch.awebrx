@@ -1,0 +1,140 @@
+/*******************************************************************
+ *                                                                 *
+ * Docsearch.awebrx                                                *
+ *                                                                 *
+ * © 1997 Yvon Rozijn                                              *
+ * 2007-07-09 - Fixed incorrect "Back to Index" link, thanks Frank Weber <sbowman> *
+ * 2006-05-17 - Changes to accomodate new docs structure, few other minor errors corrected <sbowman> *
+ * 2006-06-30 - Removed superfluous entry in makeindex var <sbowman> *
+ *                                                                 *
+ * Search in AWeb documentation. Generate index if requested or    *
+ * no index file exists yet. Search the index file and pass        *
+ * results on to AWeb.                                             *
+ *                                                                 *
+ *******************************************************************/
+
+/*******************************************************************
+ *                                                                 *
+ * To use this as a search engine for your own set of local HTML   *
+ * files, adjust the following variables:                          *
+ *                                                                 *
+ * index = path of index file                                      */
+
+index = 'AWebPath:Docs/docsearch.index'
+
+/* makeindexcommand = full command line to make the index.                *
+ * The makeindex program takes template: DIR/A/M,TO/A              *
+ * DIR = directories to search for #?.html files (not recursive)   *
+ * TO = name of index file to create                               */
+
+makeindexcommand = 'AWebPath:Docs/makeindex AWebPath:Docs AWebPath:Docs/Advanced  AWebPath:Docs/Advanced/ARexx  AWebPath:Docs/Advanced/ExampleScripts AWebPath:Docs/Beginning AWebPath:Docs/Configuring  AWebPath:Docs/Configuring/ExampleScripts AWebPath:Docs/Introduction AWebPath:Docs/Miscellaneous AWebPath:Docs/Starting AWebPath:Docs/Working '||index
+
+/* resultfile = path of file to store search result                */
+
+resultfile = 'T:docsearch'
+
+/* searchindex = full command line to search the index, the search *
+ * argument will be appended.                                      *
+ * The searchindex program takes template: INDEX/A,TO/A,SEARCH/A/F *
+ * INDEX = path of index file                                      *
+ * TO = path of search result                                      *
+ * SEARCH = string to search                                       */
+
+searchindex = 'AWebPath:Docs/searchindex' index resultfile
+
+/* and adjust the HTML used in the search result to fit your       *
+ * application.                                                    *
+ *                                                                 *
+ *******************************************************************/
+
+options results
+options failat 20
+/*trace results*/
+
+parse source dummy1 dummy2 programname .
+
+parse arg sarg
+
+search=''
+regenerate=''
+interpret sarg
+
+if search='' & regenerate='' then exit
+
+su=upper(search)
+
+nl='0a'x
+
+if regenerate~='' | ~exists(index) then do
+   'chanopen "x-nil:docsearch/creating index"'
+   ch=result
+
+   'open "x-nil:docsearch/creating index"'
+
+   'chanheader' ch '"content-type: text/html"'
+   'chanheader' ch '"pragma: no-cache"'
+
+   doc='<HTML><TITLE>Creating search index</TITLE>*N'
+   doc=doc || '<BODY><H1>Creating index</H1>*N'
+   doc=doc || 'A search index is being created. Please be patient...'
+
+   'chandata' ch '"' || doc || '" nl'
+   'chanclose' ch
+
+   address command makeindexcommand
+end
+
+if search='' then do
+   'go back'
+   exit
+end
+
+if ~exists(index) then exit
+
+'chanopen "file:///nil:docsearch/' || search || '"'
+ch=result
+
+'chanheader' ch '"content-type: text/html"'
+'chanheader' ch '"pragma: no-cache"'
+
+doc='<HTML><TITLE>Search result:' search '</TITLE>*N'
+doc=doc || '<BASE HREF=file:///AWebPath:Docs/AWeb%20Manual.html>*N'
+doc=doc || '<BODY BACKGROUND=GlobalImages/awebbg.gif>*N'
+doc=doc || '<H1><IMG SRC=GlobalImages/aweb.gif width="199" height="92" alt=(logo)>&nbsp; Search result:' search '</H1>*N'
+
+'chandata' ch '"' || doc || '" nl'
+
+doc='<FORM ACTION=x-aweb:rexx/' || programname || '>*N'
+doc=doc || 'Search in documentation: <input name=search size=25 value=*"' || search || '*"> <input type=submit value=Search>*N'
+doc=doc || '</FORM>*N'
+doc=doc || '<OL>'
+
+'chandata' ch '"' || doc || '" nl'
+
+'open "file:///nil:docsearch/' || search || '"'
+'allowcmd'
+
+address command searchindex '"' || search || '"'
+
+if open(f,resultfile,'R') then do
+   do until length(block)<480
+      block=readch(f,480)
+      if right(block,1)='*' then do
+         block=block||readch(f,1)
+      end
+      'chandata' ch '"' || block || '"'
+   end
+   call close f
+   address command 'delete' resultfile 'quiet'
+end
+
+doc='</OL>*N'
+doc=doc || '<HR><A HREF=file:///AWebPath:Docs/AWeb%20Manual.html>Back to Index</a>*N'
+
+doc=doc || '<BR><BR><HR><FORM ACTION=x-aweb:rexx/' || programname || '>*N'
+doc=doc || '<B>TIP:</B> After you have added new documentation files,*N'
+doc=doc || '<INPUT TYPE=SUBMIT NAME=Regenerate VALUE=Regenerate>*N'
+doc=doc || 'the search index for correct search results.*N</FORM>'
+
+'chandata' ch '"' || doc || '" nl'
+'chanclose' ch

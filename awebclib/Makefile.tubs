@@ -1,0 +1,14 @@
+MODULES := linklibs/libawebclib.a
+
+# temporary replacements for function missing in clib2
+
+linklibs/libawebclib.a/TYPE := executable/library/link
+linklibs/libawebclib.a/CFILES := \
+rand48 \
+isinf \
+debug
+
+
+
+
+

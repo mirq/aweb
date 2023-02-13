@@ -1,0 +1,106 @@
+/*
+Scan headers for tag values
+*/
+
+options results
+
+awebdevpath = "SDK:Projects/AWeb/"
+
+typesfile = awebdevpath || "aweb/tools/oodebug/objecttypes"
+tagsfile  = awebdevpath || "aweb/tools/oodebug/tagsfile"
+headerdir = awebdevpath || "aweb/aweb/include/"
+
+
+
+tagbase = a3eb
+
+parse arg outfile .
+
+if open('TYPES', typesfile, 'R') then do
+
+    i = 0
+    do until eof('TYPES')
+        i = i + 1
+        line = readln('TYPES');
+        parse VAR line tname "0x" thexval .
+        type.i.name = strip(tname,'B',' ')
+        type.i.hexval = thexval
+    end
+    type.0 = i
+    call close('TYPES')
+end
+else do
+    Say "Couldn't open typesfile: " || typesfile
+    exit
+end
+
+
+list_cmd = "C:list files " || headerdir || " LFORMAT %p%n TO T:List_headers"
+
+address command list_cmd
+
+
+if open('LIST',"T:List_Headers",'R') then do
+
+    do until eof('LIST')
+    headerfile = readln('LIST')
+        if open('HEADER',headerfile,'R') then do
+
+            if open('OUT',outfile,'A') then do
+
+                do until eof('HEADER')
+                    line = readln('HEADER')
+                    if (pos("#define",line) > 0) & (pos("_Dummy",line) > 0) then do
+                        parse var line "#define" tagname  "(" tagvalue ")" junk .
+                        if(pos("_Dummy",tagname) = 0) &( pos("_ ",tagname) =0) then do
+                            parse var tagvalue tagtype"_Dummy" "+" tagoffset
+                            if(tagtype ~= "STATGA" & tagtype ~= "LEDGGA") then do
+                                if(tagtype = "AOFCC") then do
+                                    tagoffset = tagoffset + 128
+                                    tagtype = "AOFCH"
+                                end
+                                taghexval = findtype(strip(tagtype,'B',' '));
+                                tagvalue = tagbase || taghexval || D2X(tagoffset,2)
+                                tagvalue=translate(tagvalue,"abcdef",ABCDEF)
+                                tagname = strip(tagname,'B',' ')
+                                call writeln('OUT',tagname || X2C('09') || X2C('09') || tagvalue)
+                            end
+                        end
+                    end
+
+                end
+                call close('OUT')
+            end
+
+            call close('HEADER')
+        end
+        else do
+            say "Couldn't open header file " headerfile
+            exit
+        end
+    end
+    call close('LIST')
+
+end
+else do
+say "Could open list file"
+end
+exit
+
+findtype:
+procedure expose type.
+
+parse arg typename
+
+say searching for typename
+do i = 1 to type.0
+
+    if(type.i.name = typename) then do
+        hexval = type.i.hexval
+        return hexval
+    end
+end
+
+
+return
+

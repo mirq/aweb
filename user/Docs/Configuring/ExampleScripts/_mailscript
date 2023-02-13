@@ -1,0 +1,47 @@
+.KEY TOADDRESS/A
+.BRA {
+.KET }
+
+; Sample script to use your editor and mail post program
+; to send mail from within AWeb for a mailto: address
+; To use this script, configure AWeb to use for its Mailto: program
+;    command = (path)/_mailscript
+;  arguments = %s
+;
+; Make sure to change all path names, program names, etc. in this script
+; to the ones you're actually using.
+
+; Generate To: and Subject: headers
+
+echo >T:AWeb.mailto.msg.{$$} "To: {TOADDRESS}*NSubject: *N"
+
+; Append signature (change $HOME/.signature to the path and filename
+; where your signature resides).
+
+type >>T:AWeb.mailto.msg.{$$} $HOME/.signature
+
+; Call editor (make sure it's in your path). In case you use CygnusED:
+; do not follow more than one mailto: link at the same time. CED has a bug
+; that may prevent this script from calling sendmail (IO is not returned for
+; last message if more than one message is edited on the same screen).
+; Commodore's ED and other editors do not have this problem.
+;
+; Change this line to call your favourite editor. E.g. if you want to
+; use CygnusEd, you will change this line to:
+;  CED T:AWeb.mailto.msg.{$$} -keepio ; CygnusED V2
+; or
+;  CED -s T:AWeb.mailto.msg.{$$}      ; CygnusED V3.5
+
+ED T:AWeb.mailto.msg.{$$}
+
+; Send the mail with a mail delivery program, like SMTPpost, or UUCP's
+; sendmail. Make sure it is in your path, or else include the full
+; path in the command.
+; Change this line to use your mail delivery program. Refer to that
+; program's documentation for the exact options to use.
+
+PutMail MAIL=T:AWeb.mailto.msg.{$$} NOSIG NOHEAD
+
+; Clean up temporary files.
+
+delete >NIL: T:AWeb.mailto.msg.{$$}

@@ -1,0 +1,102 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+
+<HTML>
+
+<HEAD>
+<TITLE>Network settings: Options</TITLE>
+<META NAME="KEYWORDS" CONTENT="firefox,opera,netscape,mozilla,explorer,msie">
+</HEAD>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<H1>&nbsp; Network settings: Options</H1>
+
+<IMG SRC="Images/NetworkSettings-Options.png" ALIGN="RIGHT" ALT="Network Settings: Options Tab" WIDTH="490" HEIGHT="330" HSPACE="20" VSPACE="20" BORDER="0">
+
+<H2><A NAME="imgload">Image loading</A></H2>
+
+This chooser lets you select if you want AWeb to load images:
+
+<TABLE>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP" NOWRAP>All images</TH><TD>AWeb will start loading every image as soon as it is encountered in a page.  This could consume a lot of bandwidth, especially if you are using a slow connection.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP" NOWRAP>Maps only</TH><TD>This option doesn't load all images, but only clickable maps.  This can save a lot of traffic, and still lets you use clickable maps, as these are often essential navigation tools.
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP" NOWRAP>Off</TH><TD>AWeb will never load images automatically.  If you want to see an image, you have to click on its icon.</TD></TR>
+</TABLE>
+
+<H2><A NAME="localindex">Local index</A></H2>
+
+If the name of a local file requested ends in a slash (/), this name is appended to the file name.  This allows setting up your own WWW pages locally without having to change the names.
+
+<H2><A NAME="maxconn">Max. network connections</A></H2>
+
+AWeb is capable of handling an unlimited number of parallel network connections.  You might want to limit this number to a reasonable maximum, to avoid overloading your network line.
+<P>The status of all connections can be viewed in the <A HREF="../Working/nws.html">network status window</A>.
+
+<H2><A NAME="maxdisk">Max. disk reads</A></H2>
+
+Although you may have set the number of network connections to a reasonable maximum, it could cause disk trashing when you try to load local files.
+<P>Disk trashing is the phenomena you may encounter when two or more files from the same device are read simultaneously.  Most of the time the disk is busy moving its read heads to and fro, causing the speed of data transfer to drop dramatically.
+<P>To avoid this, you can limit the number of local disk reads independently.
+
+<H2><A NAME="home">Home page</A></H2>
+
+This is the URL of your <EM>home page</EM> as far as AWeb is concerned.  It doesn't need to be the same as your home page on the WWW.  It is merely the page that will be shown if you select <CODE>&quot;Navigate-&gt;Home&nbsp;document&quot;</CODE> from the menu, or click the <EM>Home</EM> button.
+
+<H2><A NAME="autosearchurl">Autosearch URL</A></H2>
+
+Enter the URL of the search engine you want to use for <A HREF="../Working/autosearch.html">autosearch</A> here.  You should use the form of the URL sent by the search entry form.  Use <B><CODE>%s</CODE></B> as a placeholder for the search argument.
+
+<H2>Start with homepage</H2>
+
+If this checkbox is checked, AWeb will retrieve the page defined as your <A HREF="#home">home page</A> immediately when you start the program.  If this option is not checked, you will initially get an empty window.
+
+<H2><A NAME="ignoremime">Ignore server MIME type</A></H2>
+
+As explained in the <A HREF="brviewers.html">external viewers</A> section, most servers send the MIME type along with the data.  Unfortunately, some servers send the wrong MIME type if they fail to recognize the true type of the data.  This may lead to a file being saved instead of passed to an external viewer as expected.
+<P>In those cases, it is best to ignore the MIME type as reported by the server, and let AWeb identify the MIME type by the file name extension.
+<P>If this checkbox is selected, the MIME type as reported by the server is ignored.
+
+<H2><A NAME="autosearch">Enable autosearch</A></H2>
+
+If you check this checkbox, <A HREF="../Working/autosearch.html">autosearch</A> is enabled.
+
+<H2><A NAME="contanim">Continuous animation</A></H2>
+
+Controls the way the <A HREF="../Starting/gui.html#backstat">background status</A> indicator (or transfer animation) works.  By default, this indicator is moved one step ahead at each bit of network activity.  If you enable continuous animation, the animation plays at constant speed as long as transfers are going on.
+
+<H2><A NAME="restrictimages">Restrict images to same host</A></H2>
+
+If you check this checkbox, images that originate from a different host than the document in which they appear, will not be loaded automatically.  Use this to prevent many banners to be loaded and displayed.
+<P>With this option unchecked, all images will be loaded automatically regardless of their origin (provided the <A HREF="#imgload">Image loading</A> setting allows image loading in the first place).
+
+<H2><A NAME="spoofas">Spoof as</A></H2>
+
+This field enables you to change the browser ID that is used to identify the browser with the server.  Some servers use this information to return different versions of a document.  The drop down list contains a few suggested IDs, but you can type any ID you like.
+<P>Leave the field empty (choose "(AWeb)" from the drop down list) to use the original AWeb ID.
+
+<P><HR>
+
+<A HREF="nwmail.html"><IMG SRC="../GlobalImages/back.gif" WIDTH="32" HEIGHT="16" ALT="&lt;-" BORDER="0">Mail/News</A>&nbsp;&nbsp;<A HREF="settings.html"><IMG SRC="../GlobalImages/up.gif" WIDTH="32" HEIGHT="20" ALT="^" BORDER="0">Settings requesters</A>&nbsp;&nbsp;<A HREF="nwprograms.html"><IMG SRC="../GlobalImages/next.gif" WIDTH="32" HEIGHT="16" ALT="-&gt;" BORDER="0">Programs</A>
+
+</BODY>
+
+</HTML>

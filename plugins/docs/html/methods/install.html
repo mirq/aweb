@@ -1,0 +1,60 @@
+<html>
+<head>
+<title>Method: AOM_INSTALL</title>
+</head>
+<body>
+<h1>Method: AOM_INSTALL</h1>
+
+<h2>Purpose</h2>
+
+The <b>AOM_INSTALL</b> method is used to install or remove the dispatcher
+for a class.
+
+<h2>Message structure</h2>
+
+The <b>AOM_INSTALL</b> method uses an <b>Aminstall</b> structure:<p>
+
+<pre>
+struct Aminstall
+{  <a href=index.html#Amessage>struct Amessage</a> amsg;
+   LONG objecttype;
+   LONG (*dispatcher)(<a href="../classes/object.html">struct Aobject</a> *,<a href="../methods/index.html#amessage">struct Amessage</a> *);
+};
+</pre>
+
+<h2>Usage</h2>
+
+<h3>Message</h3>
+Unlike other messages, this message is <b>sent</b> by the class itself
+to the OO system (to a NULL object).
+
+<h3>Field: <code>objecttype</code></h3>
+The unique class ID of the class wanting to install or remove itself.
+<p>
+When installing, plugin classes <b>must</b> pass zero; a unique ID will be
+allocated by the OO system and returned.
+<p>
+When removing, a class must pass its ID and a NULL dispatcher.
+
+<h3>Field: <code>dispatcher</code></h3>
+The <a href="../oomodel.html#dispatcher">dispatcher</a> function for this class,
+or NULL to remove the dispatcher for this class.
+
+<h3>Return value</h3>
+The class ID, or zero in case of failure.
+
+<h2>Implementation</h2>
+
+All classes <b>must</b> use this method in their initialization and
+expunge functions.
+<p>
+Typically, the class initializes static global resources like lists, then installs
+itself using this method, and finally allocates any other global resources.
+<p>
+When expunging, the class typically releases all global resources, and
+removes itself from the OO system by sending it an AOM_INSTALL message
+with a NULL dispatcher.
+
+</body>
+</html>
+

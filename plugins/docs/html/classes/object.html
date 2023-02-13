@@ -1,0 +1,47 @@
+<html>
+<head>
+<title>AOTP_OBJECT class</title>
+</head>
+<body>
+<h1>AOTP_OBJECT class</h1>
+
+<h2>Purpose</h2>
+
+The <b>AOTP_OBJECT</b> class is the root class of AWeb's object oriented hierarchy.
+
+<h2>Supported methods</h2>
+
+<table border>
+<tr><th align=left valign=top>Method
+   <th align=left valign=top>Description
+<tr><th align=left valign=top><a href="../methods/dispose.html">AOM_DISPOSE</a>
+   <td valign=top>Dispose the object
+</table>
+
+<h2>Supported attributes</h2>
+
+The AOTP_OBJECT class does not support any attributes itself. It defines
+a number of attributes that are used by many of the derived classes,
+however.
+
+<h2>Instance data structure</h2>
+
+The AOTP_OBJECT class uses the following data structure:
+<p>
+<pre>
+struct Aobject
+{  APTR next;
+   APTR prev;
+   SHORT objecttype;
+};
+</pre>
+
+Every object that is a direct subclass of AOTP_OBJECT <b>must</b> have this
+structure as the first item in its instance data structure.
+
+<h2>Usage</h2>
+
+<h3>Field: <code>next, prev</code></h3>
+These two fields effectively form a <code>MinNode</code> structure. You may
+use these fields to link objects of your own classes in a list.
+

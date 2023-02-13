@@ -1,0 +1,98 @@
+<html>
+<head>
+<title>Plugin example (filter type)</title>
+</head>
+<body>
+<h1>Plugin example (filter type)</h1>
+
+<h2>The module</h2>
+The <code>filterexample.awebplugin</code> module is included as an
+example of a filter type AWeb plugin module, with complete sources.
+<p>
+It is simple filter that turns plain text into HTML, allowing to
+view plain text files in a proportional font.
+<p>
+You can try the module. Open the browser settings, skip to the MIME
+(Viewers) page. Add or change the following entry:
+<table border width=100%>
+<tr>
+   <td>TEXT/PLAIN
+   <td nowrap>txt
+   <td>A
+   <td nowrap><i>path</i> /filterexample/filterexample.awebplugin
+</table>
+Then try any plain text file, for example
+<a href="../readme">this one</a>.
+<p>
+This plugin also implements two commands. Assign the following
+ARexx commands to any two keys (using the GUI settings):
+<pre>
+   PLUGIN "filterexample.awebplugin" "On"
+   PLUGIN "filterexample.awebplugin" "Off"
+</pre>
+<br>
+You can now use these two keys to turn the filter on and off. Try reloading
+the same plain text file with the filter on and off.
+
+<h2>The sources</h2>
+All sources are located in the <code>filterexample</code> drawer in
+this archive. They can be compiled with SAS/C 6.57. Before compiling
+with other compilers they will probably need some modifications.
+
+<h3><a href="../filterexample/pluginlib.h"><code>pluginlib.h</code></a></h3>
+This header file contains some project dependent definitions that are
+needed in <code>startup.c</code> and other files. Main reason for this
+file is that it allows to reuse <code>startup.c</code> in other
+plugin projects without modification.
+
+<h3><a href="../filterexample/startup.c"><code>startup.c</code></a></h3>
+The library startup code. It can be used unchanged in other plugin
+module projects.
+<p>
+It needs a couple of project dependent functions to be defined
+in other files:
+<table border>
+<tr><th align=left valign=top>Function
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>Initpluginlib()
+   <td valign=top>Called from the library initialization code.
+<tr><th align=left valign=top>Expungepluginlib()
+   <td valign=top>Called from the library expunge code. All resources
+      should be freed.
+<tr><th align=left valign=top>Initplugin()
+   <td valign=top>Implementation of the <a href=initplugin.html>Initplugin()</a>
+      library function.
+<tr><th align=left valign=top>Queryplugin()
+   <td valign=top>Implementation of the <a href=queryplugin.html>Queryplugin()</a>
+      library function.
+<tr><th align=left valign=top>Commandplugin()
+   <td valign=top>Optional implementation of the <a href=commandplugin.html>Commandplugin()</a>
+      library function.
+<tr><th align=left valign=top>Filterplugin()
+   <td valign=top>Optional implementation of the <a href=filterplugin.html>Filterplugin()</a>
+      library function.
+</table>
+In this example, these functions are defined in the <code>filterexample.c</code> file.
+
+<h3><a href="../filterexample/filterexample.h"><code>filterexample.h</code></a></h3>
+General prototypes and private attribute definitions used in other files.
+
+<h3><a href="../filterexample/filterexample.c"><code>filterexample.c</code></a></h3>
+Defines the library bases we use, and implements the project dependent
+functions that <code>startup.c</code> needs. This includes the functions that
+do the actual work, <a href=commandplugin.html><code>Commandplugin()</code></a>
+and <a href=filterplugin.html><code>Filterplugin()</code></a>.
+
+<h3><a href="../filterexample/filterexample.lnk"><code>filterexample.lnk</code></a></h3>
+Source for the linker.
+
+<h3><a href="../filterexample/scoptions"><code>SCOPTIONS</code></a></h3>
+SAS/C compiler options.<p>
+Plugin modules should be compiled without stack checking.
+
+<h3><a href="../filterexample/smakefile"><code>smakefile</code></a></h3>
+SAS/C make file.
+
+</body>
+</html>
+

@@ -1,0 +1,7 @@
+MODULES := aweblib/print.aweblib
+
+aweblib/print.aweblib/TYPE := executable/library/amigashared
+aweblib/print.aweblib/DEPS := $(MODULELIB) linklibs/libawebclib.a
+aweblib/print.aweblib/CFILES := \
+printlib
+

@@ -1,0 +1,1914 @@
+## version $VER: AWebCfg.catalog 3.4 (26.01.2001)
+## language català
+## codeset 0
+;
+; AWebcfg.cd - AWeb configuration program catalog description file
+;
+;
+;  The MSG_DUMMY_nn labels are there because FlexCat doesn't
+;  understand the LABEL (+1//) syntax (C='s Catcomp uses this
+;  to skip 1 number)
+;
+;
+;-------------- Error messages ----------------------
+;
+; NOTE - No locale formatters (like %1$s) possible in this string!
+;        Only plain C formatters allowed.
+MSG_ERROR_CANTOPENV
+No es pot obrir %s versió %ld
+; Can't open %s version %ld
+;
+MSG_ERROR_COMMANDLINE
+
+; Please check the commandline options.\n\
+; E.g. you must use at least one of the 4 switches.\n\
+; The Template is:
+;
+; ***NEW***
+;
+;
+;-------------- Settings requesters- ------------------
+;
+;  General
+;
+MSG_SET_REQTITLE_FONT
+Seleccioneu el tipus de lletra
+; Select font
+;
+MSG_SET_REQTITLE_SCREEN
+Seleccioneu el mode de pantalla
+; Select screenmode
+;
+MSG_SET_REQTITLE_MAILTO
+Seleccioneu la comanda mailto:
+; Select mailto: command
+;
+MSG_SET_REQTITLE_FTP
+Seleccioneu la comanda ftp:
+; Select ftp: command
+;
+MSG_SET_REQTITLE_TELNET
+Seleccioneu la comanda telnet:
+; Select telnet: command
+;
+MSG_SET_REQTITLE_NEWS
+Seleccioneu la comanda news:
+; Select news: command
+;
+MSG_SET_REQTITLE_STARTTCP
+Seleccioneu la comanda d'inici de TCP
+; Select TCP start command
+;
+MSG_SET_REQTITLE_ENDTCP
+Seleccioneu la comanda de fi de TCP
+; Select TCP end command
+;
+MSG_SET_REQTITLE_TEMPPATH
+Seleccioneu el camí temporal
+; Select temp path
+;
+MSG_SET_REQTITLE_SAVEPATH
+Seleccioneu el camí on desar
+; Select save path
+;
+MSG_SET_REQTITLE_EDITOR
+Seleccioneu la comanda de l'Editor
+; Select Editor command
+;
+MSG_SET_REQTITLE_HTMLVIEWER
+Seleccioneu la comanda pel visualitzador HTML
+; Select HTML viewer command
+;
+MSG_SET_REQTITLE_MIMEVIEWER
+Seleccioneu la comanda per visualitzar
+; Select viewer command
+;
+MSG_SET_REQTITLE_AREXXMACRO
+Seleccioneu la macro ARexx
+; Select ARexx macro
+;
+MSG_SET_REQTITLE_BROWSERWINDOW
+Paràmetres del navegador
+; AWeb browser settings
+;
+MSG_SET_REQTITLE_PROGRAMWINDOW
+Paràmetres del programa
+; AWeb program settings
+;
+MSG_SET_REQTITLE_NETWORKWINDOW
+Paràmetres de la xarxa
+; AWeb network settings
+;
+MSG_SET_REQTITLE_OPENBROWSER
+Obriu els paràmetres del navegador
+; Open browser settings
+;
+MSG_SET_REQTITLE_SAVEBROWSER
+Deseu els paràmetres del navegador com
+; Save browser settings as
+;
+MSG_SET_REQTITLE_OPENPROGRAM
+Obriu els paràmetres del programa
+; Open program settings
+;
+MSG_SET_REQTITLE_SAVEPROGRAM
+Deseu els paràmetres del programa com
+; Save program settings as
+;
+MSG_SET_REQTITLE_OPENNETWORK
+Obriu els paràmetres de la xarxa
+; Open network settings
+;
+MSG_SET_REQTITLE_SAVENETWORK
+Deseu els paràmetres de la xarxa com
+; Save network settings as
+;
+MSG_SET_REQTITLE_CACHEPATH
+Seleccioneu el camí de la memòria cau
+; Select cache path
+;
+MSG_SET_REQTITLE_IMGVIEWER
+Seleccioneu la comanda pel visualitzador d'imatges
+; Select image viewer command
+;
+MSG_SET_REQTITLE_GUIWINDOW
+Paràmetres del GUI
+; AWeb GUI settings
+;
+MSG_SET_REQTITLE_OPENGUI
+Obriu els paràmetres del GUI
+; Open GUI settings
+;
+MSG_SET_REQTITLE_SAVEGUI
+Deseu els paràmetres del GUI com
+; Save GUI settings as
+;
+MSG_SET_REQTITLE_SIGNATURE
+Seleccioneu el fitxer de signatura
+; Select signature file
+;
+MSG_SET_REQTITLE_STARTUPSCRIPT
+Seleccioneu el guió ARexx d'inici
+; Select startup ARexx script
+;
+MSG_SET_REQTITLE_SHUTDOWNSCRIPT
+Seleccioneu el guió ARexx de sortida
+; Select shutdown ARexx script
+;
+;  Clicktab labels - Browser
+;
+MSG_SET_CTBR_OPTIONS
+_1 Opcions
+; _1 Options
+;
+MSG_SET_CTBR_FONTS
+_2 Tipus de lletres
+; _2 Fonts
+;
+MSG_SET_CTBR_STYLES
+_3 Estils
+; _3 Styles
+;
+MSG_SET_CTBR_COLOURS
+_4 Colors
+; _4 Colours
+;
+MSG_SET_CTBR_MIME
+_5 Visualitzadors
+; _5 Viewers
+;
+;  Clicktab labels - Program
+;
+MSG_SET_CTPR_SCREEN
+_1 Pantalla
+; _1 Screen
+;
+MSG_SET_CTPR_PALETTE
+_2 Paleta
+; _2 Palette
+;
+MSG_SET_CTPR_OPTIONS
+_3 Opcions
+; _3 Options
+;
+MSG_SET_CTPR_PROGRAMS
+_4 Programes
+; _4 Programs
+;
+MSG_SET_CTPR_AREXX
+_5 ARexx
+; _5 ARexx
+;
+;  Clicktab labels - Network
+;
+MSG_SET_CTNW_OPTIONS
+_1 Opcions
+; _1 Options
+;
+MSG_SET_CTNW_PROGRAMS
+_2 Programes
+; _2 Programs
+;
+MSG_SET_CTNW_PROXY
+_3 Servidor intermediari
+; _3 Proxy
+;
+MSG_SET_CTNW_CACHE
+_4 Memòria cau
+; _4 Cache
+;
+MSG_SET_CTNW_PRIVACY
+_5 Privacitat
+; _5 Privacy
+;
+MSG_SET_CTNW_MAIL
+_6 Correu/Notícies
+; _6 Mail/News
+;
+;  Clicktab labels - GUI
+;
+MSG_SET_CTUI_OPTIONS
+_1 Opcions
+; _1 Options
+;
+MSG_DUMMY_8
+
+; 
+;
+MSG_SET_CTUI_BUTTONS
+_3 Botons
+; _3 Buttons
+;
+MSG_SET_CTUI_POPUP
+_4 Emergents
+; _4 Popup
+;
+MSG_SET_CTUI_KEYS
+_5 Teclat
+; _5 Keys
+;
+MSG_SET_CTUI_MENUS
+_2 Menús
+; _2 Menus
+;
+MSG_SET_CTUI_NAV
+_6 Navegació
+; _6 Navigation
+;
+;  Popup help
+;
+; (don't use 40200-40208)
+;
+MSG_SET_HLP_NOARGS
+(No placeholders)
+; (No placeholders)
+;
+MSG_SET_HLP_A
+%a = grup de missatges o article
+; %%a = newsgroup or article
+;
+MSG_SET_HLP_E
+%e = adreça electrònica
+; %%e = e-mail address
+;
+MSG_SET_HLP_F
+%f = nom camí/fitxer
+; %%f = path/file name
+;
+MSG_SET_HLP_H
+%h = nom de l'ordinador central
+; %%h = host name
+;
+MSG_SET_HLP_L
+%l = nom d'entrada
+; %%l = login name
+;
+MSG_SET_HLP_N
+%n = nom de pantalla
+; %%n = screen name
+;
+MSG_SET_HLP_P
+%p = número del port
+; %%p = port number
+;
+MSG_SET_HLP_U
+%u = URL original
+; %%u = original URL
+;
+MSG_SET_HLP_W
+%w = contrasenya
+; %%w = password
+;
+MSG_SET_HLP_T
+%t = títol
+; %%t = title
+;
+MSG_SET_HLP_U2
+%u = URL actual
+; %%u = current URL
+;
+MSG_SET_HLP_U3
+%u = URL objecte
+; %%u = object URL
+;
+MSG_SET_HLP_I
+%i = ID de marc
+; %%i = frame ID
+;
+MSG_SET_HLP_I2
+%i = ID marc objectiu
+; %%i = target frame ID
+;
+MSG_SET_HLP_M
+%m = tipus MIME
+; %%m = MIME type
+;
+MSG_SET_HLP_S
+%s = argument de cerca
+; %%s = search argument
+;
+MSG_SET_HLP_D
+%d = data
+; %%d = date
+;
+MSG_SET_HLP_G
+%g = nom del grup
+; %%g = group name
+;
+MSG_SET_HLP_I3
+%i = id del missatge
+; %%i = message id
+;
+MSG_SET_HLP_N2
+%n = nom real
+; %%n = real name
+;
+MSG_SET_HLP_S2
+%s = assumpte
+; %%s = subject
+;
+MSG_SET_HLP_I4
+%i = ID de marc focus
+; %%i = focus frame ID
+;
+MSG_SET_HLP_C
+%c = nom de la config.
+; %%c = config name
+;
+;  Font descriptions
+;
+MSG_SET_FD_NORMALTAG
+Normal
+; Normal
+;
+MSG_SET_FD_NORMAL
+Text normal
+; Normal text
+;
+MSG_SET_FD_H1
+<H1> : Nivell de Capçaleres 1, la més gran
+; <H1> : Headers level 1, largest
+;
+MSG_SET_FD_H2
+<H2> : Nivell de Capçaleres 2
+; <H2> : Headers level 2
+;
+MSG_SET_FD_H3
+<H3> : Nivell de Capçaleres 3
+; <H3> : Headers level 3
+;
+MSG_SET_FD_H4
+<H4> : Nivell de Capçaleres 4
+; <H4> : Headers level 4
+;
+MSG_SET_FD_H5
+<H5> : Nivell de Capçaleres 5
+; <H5> : Headers level 5
+;
+MSG_SET_FD_H6
+<H6> : Nivell de Capçaleres 6, la més petita
+; <H6> : Headers level 6, smallest
+;
+MSG_SET_FD_CITE
+<CITE> : citacions, normalment cursives
+; <CITE> : citations, typically italics
+;
+MSG_SET_FD_CODE
+<CODE> : exemple de codi, normalment mono-espai
+; <CODE> : code example, typically monospaced
+;
+MSG_SET_FD_DFN
+<DFN> : definició, normalment cursives
+; <DFN> : definition, typically italics
+;
+MSG_SET_FD_EM
+<EM> : destacada, normalment cursives
+; <EM> : emphasized, typically italics
+;
+MSG_SET_FD_KBD
+<KBD> : entrada de teclat, normalment mono-espai
+; <KBD> : keyboard input, typically monospaced
+;
+MSG_SET_FD_SAMP
+<SAMP> : mostra de sortida, normalment mono-espai
+; <SAMP> : sample output, typically monospaced
+;
+MSG_SET_FD_STRONG
+<STRONG> : molt destacada, normalment negreta
+; <STRONG> : strong emphasis, typically bold
+;
+MSG_SET_FD_VAR
+<VAR> : variable placeholder, normalment cursives
+; <VAR> : placeholder variable, typically italics
+;
+MSG_DUMMY_1
+
+; 
+; (Note the leading space in the next 3 strings)
+MSG_SET_FD_BOLD
+ Negreta
+;  Bold
+;
+MSG_SET_FD_ITALIC
+ Cursiva
+;  Italic
+;
+MSG_SET_FD_UNDERLINED
+ Subratllada
+;  Underlined
+;
+MSG_SET_FD_NORMALFONT
+Lletra normal
+; Normal font
+;
+MSG_SET_FD_FIXEDFONT
+Lletra fixe
+; Fixed width font
+;
+MSG_SET_FD_SIZE
+mida
+; size
+;
+MSG_SET_FD_BIG
+<BIG> : lletra gran
+; <BIG> : large font
+;
+MSG_SET_FD_SMALL
+<SMALL> : lletra petita
+; <SMALL> : small font
+;
+MSG_SET_FD_SUB
+<SUB> : lletra subíndex petita
+; <SUB> : small subscript font
+;
+MSG_SET_FD_SUP
+<SUP> : lletra superíndex petita
+; <SUP> : small superscript font
+;
+MSG_SET_FD_ADDRESS
+<ADDRESS> : adreça, normalment cursives
+; <ADDRESS> : address, typically italics
+;
+MSG_SET_FD_BLOCKQUOTE
+<BLOCKQUOTE> : citations llargues, normalment cursives
+; <BLOCKQUOTE> : long quotations, typically italics
+;
+MSG_SET_FD_PRE
+<PRE> : text pre-formatat, hauria de ser amb l'amplada fixada
+; <PRE> : preformatted text, should be fixed width
+;
+;  HTML modes
+;
+MSG_SET_HTML_STRICT
+Estricte
+; Strict
+;
+MSG_SET_HTML_TOLERANT
+Tolerant
+; Tolerant
+;
+MSG_SET_HTML_COMPATIBLE
+Compatible
+; Compatible
+;
+;  Screen types
+;
+MSG_SET_SCRT_DEFAULT
+Pantalla pública per defecte
+; Default public screen
+;
+MSG_SET_SCRT_NAMED
+Nom de la pantalla pública
+; Named public screen
+;
+MSG_SET_SCRT_OWN
+Pantalla pública pròpia
+; Own public screen
+;
+;  Image loading types
+;
+MSG_SET_IMGL_OFF
+Inactiva
+; Off
+;
+MSG_SET_IMGL_MAPS
+Només mapes
+; Maps only
+;
+MSG_SET_IMGL_ALL
+Totes les imatges
+; All images
+;
+;  MIME list column names
+;
+MSG_SET_MLCN_TYPE
+Tipus
+; Type
+;
+MSG_SET_MLCN_EXT
+Extensions
+; Extensions
+;
+;**obsolete
+MSG_SET_MLCN_COMMAND
+Comanda de visualització
+; Viewer command
+;
+MSG_SET_MLCN_ACTION
+A
+; A
+;
+MSG_SET_MLCN_NAME
+Nom i arguments
+; Name and arguments
+;
+;  Browser pen names
+;
+MSG_SET_BRPEN_LINK
+Enllaç nou
+; New link
+;
+MSG_SET_BRPEN_VLINK
+Enllaç visitat
+; Visited link
+;
+MSG_SET_BRPEN_ALINK
+Enllaç seleccionat
+; Selected link
+;
+MSG_SET_BRPEN_BGCOLOR
+Fons
+; Background
+;
+MSG_SET_BRPEN_TEXT
+Text
+; Text
+;
+;  Screen colour names
+;
+MSG_SET_SCRPEN_TEXT
+Text normal
+; Normal text
+;
+MSG_SET_SCRPEN_SHINE
+Arestes brillants
+; Bright edges
+;
+MSG_SET_SCRPEN_SHADOW
+Arestes fosques
+; Dark edges
+;
+MSG_SET_SCRPEN_FILL
+Barra de títol de la finestra activa
+; Active window title bars
+;
+MSG_SET_SCRPEN_FILLTEXT
+Títols de la finestra activa
+; Active window titles
+;
+MSG_SET_SCRPEN_BACKGROUND
+Fons
+; Background
+;
+MSG_SET_SCRPEN_HIGHLIGHTTEXT
+Text important
+; Important text
+;
+MSG_SET_SCRPEN_BARDETAIL
+Text del menú
+; Menu text
+;
+MSG_SET_SCRPEN_BARBLOCK
+Fons del menú
+; Menu background
+;
+;  ARexx menu shortcut
+;
+MSG_SET_AREX_NONE
+cap
+; none
+;
+;  Network external program types
+;
+MSG_SET_NWPRG_STARTTCP
+Iniciar TCP
+; Start TCP
+;
+MSG_SET_NWPRG_ENDTCP
+Finalitzar TCP
+; End TCP
+;
+;  Font types and sizes (fonts page)
+;
+MSG_SET_FTYPE_NORMAL
+Lletres normals
+; Normal fonts
+;
+MSG_SET_FTYPE_FIXED
+Lletres amb ample fixe
+; Fixed width fonts
+;
+MSG_SET_FSIZE_1
+1 (la més petita)
+; 1 (smallest)
+;
+MSG_SET_FSIZE_3
+3 (normal)
+; 3 (normal)
+;
+MSG_SET_FSIZE_7
+7 (la més gran)
+; 7 (largest)
+;
+;  Font list headers
+;
+MSG_SET_FLH_SIZE
+Mida
+; Size
+;
+MSG_SET_FLH_FONTFACE
+Nom i mida de la lletra
+; Font name and size
+;
+;  Style list headers
+;
+MSG_SET_SLH_TAG
+Marcador
+; Tag
+;
+MSG_SET_SLH_STYLE
+Generat com
+; Rendered as
+;
+;  Cache verify modes
+;
+MSG_SET_CAVERIFY_ALWAYS
+Sempre
+; Always
+;
+MSG_SET_CAVERIFY_ONCE
+Una per sessió
+; Once per session
+;
+MSG_SET_CAVERIFY_NEVER
+Mai
+; Never
+;
+;  Palette loading
+;
+MSG_SET_LPAL_OFF
+Inactiva
+; Off
+;
+MSG_SET_LPAL_COLOURS
+Colors
+; Colours
+;
+MSG_SET_LPAL_GRAY
+Escala de grisos
+; Grayscale
+;
+;  MIME action names and abbreviationss
+;
+MSG_SET_MACT_DEFAULT
+Per defecte
+; Default
+;
+MSG_SET_MACT_INTERNAL
+Intern (I)
+; Internal (I)
+;
+MSG_SET_MACT_PLUGIN
+Connector d'AWeb (A)
+; AWeb Plugin (A)
+;
+MSG_SET_MACT_EXTERNAL
+Programa Extern (E)
+; Extl. program (E)
+;
+MSG_SET_MACT_EXTPIPE
+w/PIPE ext. (P)
+; Extl. w/PIPE (P)
+;
+MSG_SET_MACT_SAVEDISK
+Desar a disc (S)
+; Save to disk (S)
+;
+MSG_SET_MACT_EXTCAN
+
+; Extl. No Fetch (F)
+;
+; ***NEW***
+;
+MSG_SET_MACT_CANCEL
+
+; Cancel (C)
+;
+; ***NEW***
+;
+; 1-letter abbreviations to use for the above in the MIME list
+MSG_SET_MACT_ABBREV
+ IAEPFSC
+;  IAEPFSC
+;
+;  Cookie settings
+;
+MSG_SET_COOKIES_NEVER
+Mai
+; Never
+;
+MSG_SET_COOKIES_ASK
+Preguntar abans
+; Ask before set
+;
+MSG_SET_COOKIES_QUIET
+Sempre (silenciós)
+; Always (quiet)
+;
+;  Pupup menu types
+;
+MSG_SET_PUPTYPE_IMAGE
+Menú emergent d'imatge
+; Image popup menu
+;
+MSG_SET_PUPTYPE_LINK
+Menú emergent d'enllaç
+; Link popup menu
+;
+MSG_SET_PUPTYPE_FRAME
+Menú emergent de marc
+; Frame popup menu
+;
+;  Menu entry types (used in the chooser)
+;
+MSG_SET_MENUTYPE_MENU
+Menú
+; Menu
+;
+MSG_SET_MENUTYPE_ITEM
+Ítem
+; Item
+;
+MSG_SET_MENUTYPE_SUB
+Sub
+; Sub
+;
+;  Menu entry types used in the first list column.
+;  For best effects, make sure the string for "MENU" is
+;  wider than the string for "Item".
+;
+MSG_SET_MENULABEL_MENU
+MENU
+; MENU
+;
+MSG_SET_MENULABEL_ITEM
+Ítem
+; Item
+;
+;  Javascript choices
+;
+MSG_SET_JS_OFF
+Inactiu
+; Off
+;
+MSG_SET_JS_11
+Fastigós
+; Fastidious
+;
+MSG_SET_JS_ALL
+Omnívor
+; Omnivorous
+;
+;  Gadget labels - general
+;
+MSG_SET_PAGE
+_Pàgina
+; _Page
+;
+MSG_SET_SAVE
+De_sar
+; _Save
+;
+MSG_SET_USE
+_Utilitzar
+; _Use
+;
+MSG_SET_CANCEL
+_Cancel·lar
+; _Cancel
+;
+MSG_SET_TEST
+Pro_var
+; _Test
+;
+;  Gadget labels - fonts
+;
+MSG_SET_FONT_FONT
+_Lletra
+; _Font
+;
+MSG_SET_FONT_FONTTYPE
+T_ipus de font
+; Font t_ype
+;
+MSG_SET_FONT_SETALL
+Ajusta tot a aquest nom de font
+; Set _all to this font name
+;
+MSG_SET_FONT_FONTTYPE2
+Tipografia
+; Font type
+;
+MSG_SET_FONT_ALIAS
+_Alias
+; A_lias
+;
+MSG_SET_FONT_ADD
+Afegir
+; Add
+;
+MSG_SET_FONT_DEL
+Esborrar
+; Del
+;
+;  Gadget labels - colours
+;
+MSG_SET_APP_CHGCOLOUR
+C_anviar el color
+; C_hange colour
+;
+MSG_SET_APP_SCREENPENS
+Emprar el text de pantalla i els _llapis de fons
+; Use screen text and _background pens
+;
+;  Gadget labels - browser options/gui options
+;
+MSG_SET_BROPT_HTMLMODE
+Mode _HTML
+; HTML _mode
+;
+MSG_SET_BROPT_ULLINKS
+Enlla_ços subratllats
+; Under_lined links
+;
+MSG_SET_BROPT_CYCLETOLIST
+Mostrar cicles de camp com a _llista
+; Show c_ycle fields as list
+;
+MSG_SET_BROPT_DOCOLORS
+Emprar fons i colo_rs
+; Use _background and colours
+;
+MSG_SET_BROPT_POPUPLABEL
+Activació dels menús emergents
+; Popup menu activation
+;
+MSG_SET_BROPT_POPUPSHIFT
+Tecla S_HIFT
+; S_HIFT key
+;
+MSG_SET_BROPT_POPUPALT
+Tecla _ALT
+; _ALT key
+;
+MSG_SET_BROPT_POPUPCONTROL
+Tecla C_TRL
+; CT_RL key
+;
+MSG_SET_BROPT_POPUPMIDBUTTON
+Botó centra_l del ratolí
+; M_iddle mouse button
+;
+MSG_SET_BROPT_DOBGSOUND
+Emprar s_o de fons
+; Use background soun_d
+;
+MSG_SET_BROPT_BLINK
+P_arpelleig (0.1 s)
+; Blin_k (0.1 s)
+;
+MSG_SET_BROPT_POPUPRBUTTON
+Botó _dret del ratolí
+; Ri_ght mouse button
+;
+MSG_SET_BROPT_JAVASCRIPT
+Emprar _JavaScript
+; Use _JavaScript
+;
+MSG_SET_BROPT_FRAMES
+Emprar _marcs
+; Use _frames
+;
+MSG_SET_BROPT_INCTABLE
+Mostrar l'_increment de taules
+; _Incremental table display
+;
+MSG_SET_BROPT_NOMINALFRAME
+Alçada _nominal dels marcs
+; _Nominal frame height
+;
+MSG_SET_BROPT_JSERRORS
+Mostrar els _errors JavaScript
+; Show JavaScript _errors
+;
+MSG_SET_BROPT_NOBANNERS
+Eliminar les finestres de ci_bertires
+; Su_ppress banner windows
+;
+MSG_SET_BROPT_TOOLTIPS
+Mostrar too_ltips per les imatges
+; Display t_ooltips for images
+;
+MSG_SET_BROPT_HANDPOINTER
+_Punter de mà sobre els enllaços
+; _Hand pointer over links
+;
+MSG_SET_BROPT_JSWATCH
+Avisar de JavaScrip_t sospitós
+; _Warn for suspect JavaScript
+;
+MSG_SET_BROPT_TEMPRP
+
+; Use double buffered _rendering
+;
+; ***NEW***
+;
+MSG_SET_BROPT_CHARSET
+
+; Default ch_aracter set
+;
+; ***NEW***
+;
+MSG_SET_BROPT_IMGBORDER
+
+; Border around ima_ges
+;
+; ***NEW***
+;
+;  Gadget labels - screen
+;
+MSG_SET_SCREEN_OPENON
+_Obrir en
+; _Open on
+;
+MSG_SET_SCREEN_NAME
+_Nom de la pantalla
+; Screen _name
+;
+MSG_SET_SCREEN_MODE
+_Mode de pantalla
+; Screen _mode
+;
+MSG_SET_SCREEN_PALETTE
+Carregar la pa_leta
+; _Load spread palette
+;
+;  Gadget labels - palette
+;
+MSG_SET_PALL_PENLABEL
+Paràmetres dels llapis
+; Pen settings
+;
+MSG_SET_PALL_PEN
+Llap_is
+; P_en
+;
+MSG_SET_PALL_PALLETTELABEL
+Canviar la paleta
+; Change palette
+;
+MSG_SET_PALL_PALLPEN
+_Llapis
+; Pe_n
+;
+MSG_SET_PALL_CHGCOLOUR
+C_anviar el color
+; C_hange colour
+;
+;  Gadget labels - network options and privacy
+;
+MSG_SET_NETWORK_IMGLOAD
+Carregar _imatges
+; _Image loading
+;
+MSG_SET_NETWORK_MAXCONN
+Màx. _número de connexions
+; Max. _network connections
+;
+MSG_SET_NETWORK_HOMEPAGE
+Pà_gina inicial
+; _Home page
+;
+MSG_SET_NETWORK_LOCALINDEX
+Índex _local
+; _Local index
+;
+MSG_SET_NETWORK_STARTHOME
+Iniciar a_mb la pàgina inicial
+; St_art with home page
+;
+MSG_SET_NETWORK_ANONYMOUS
+Suprimir el _Referer mentre es navega
+; Suppress _Referer while browsing
+;
+MSG_SET_NETWORK_IGNORE
+Ignorar el _tipus MIME
+; I_gnore server MIME type
+;
+MSG_SET_NETWORK_MAXDISK
+llegits de _disc
+; _disk reads
+;
+MSG_SET_NETWORK_COOKIES
+Emprar _galetes
+; Use coo_kies
+;
+MSG_SET_NETWORK_NOCOOKIELABEL
+Cap galeta pels dominis
+; No cookies for domains
+;
+MSG_SET_NETWORK_NOCOOKIEADD
+Afegir
+; Add
+;
+MSG_SET_NETWORK_NOCOOKIEDEL
+Esborrar
+; Del
+;
+MSG_SET_NETWORK_FORMWARN
+Avisar a_bans d'enviar dades de forma insegura
+; _Warn before sending unsecure form data
+;
+MSG_SET_NETWORK_AUTOSEARCHURL
+Auto-rece_rca d'URL
+; Autosea_rch URL
+;
+MSG_SET_NETWORK_AUTOSEARCH
+Activar l'auto-r_ecerca
+; _Enable autosearch
+;
+MSG_SET_NETWORK_SPAMBLOCK
+_Activar el blocador d'spam a l'enviar missatges
+; _Activate spamblock when posting news
+;
+MSG_SET_NETWORK_FTPEMAILADDR
+Emprar l'adreça electrònica com a contrasenya anònima al _FTP
+; Use e-mail address as _FTP anon password
+;
+MSG_SET_NETWORK_SPOOFID
+Spoo_f com
+; Spoo_f as
+;
+MSG_SET_NETWORK_CONTANIM
+Animació c_ontínua
+; C_ontinuous animation
+;
+MSG_SET_NETWORK_SPOOFID_EXPL
+(Seleccioneu una entrada de la\nllista o entreu el vostre ID)
+; (Select an entry from the list\n or type your own browser ID)
+;
+MSG_SET_NETWORK_RESTRICT_IMAGES
+Restringir imatges a un ordinador centra_l
+; Restrict i_mages to same host
+;
+;  Gadget labels - network proxy
+;
+MSG_SET_PROXY_TYPE
+T_ipus
+; T_ype
+;
+MSG_SET_PROXY_NAME
+Servidor inter_mediari
+; _Proxy
+;
+MSG_SET_PROXY_LIMITED
+Ús limitat del servidor intermediari
+; _Limited proxy usage
+;
+MSG_SET_PROXY_NOPROXYLABEL
+No emprar cap servidor intermediari per aquests llocs
+; No proxy for these sites
+;
+MSG_SET_PROXY_NOPROXYADD
+Afegir
+; Add
+;
+MSG_SET_PROXY_NOPROXYDEL
+Esborrar
+; Del
+;
+MSG_SET_PROXY_PASSIVEFTP
+_FTP Passiu
+; Passi_ve FTP
+;
+;  Gadget labels - network external programs
+;
+MSG_SET_NWPRG_TYPE
+T_ipus
+; T_ype
+;
+MSG_SET_NWPRG_CMD
+Co_manda
+; Co_mmand
+;
+MSG_SET_NWPRG_ARGS
+_Arguments
+; _Arguments
+;
+;  Gadget labels - program options
+;
+MSG_SET_PROGRAM_SAVEPATH
+Camí de descàrregues
+; S_ave path
+;
+MSG_SET_PROGRAM_OVERLAP
+Lliscamen_t sobreposat (píxels)
+; Scroll _overlap (pixels)
+;
+MSG_SET_PROGRAM_ALLOW
+Permetre comandes Shell en enlla_ços
+; A_llow Shell commands in links
+;
+MSG_SET_PROGRAM_HOTCLOSE
+Auto-tancar la sol·licitud de _favorits
+; _Hotlist requester auto close
+;
+MSG_SET_PROGRAM_HOTREQ
+El botó de favor_its obre sol·licitud
+; Hotlist button gives _requester
+;
+MSG_SET_PROGRAM_HOTSINGLECLICK
+
+; Use Singleclic_k in Hotlist Viewer
+;
+; ***NEW***
+;
+MSG_SET_PROGRAM_WHISCLOSE
+Auto-tancar la finestra d'_historial
+; History _window auto close
+;
+MSG_SET_PROGRAM_SAVEICONS
+Crear ic_ones
+; Create _icons
+;
+MSG_SET_PROGRAM_AAHOTLIST
+Auto-o_brir els favorits
+; Auto ope_n hotlist
+;
+MSG_SET_PROGRAM_AAWINHIS
+Auto-obrir finestra d'historia_l
+; Auto open window histor_y
+;
+MSG_SET_PROGRAM_AANETSTAT
+Auto-obrir l'estat de la _xarxa
+; Auto open n_etwork status
+;
+MSG_SET_PROGRAM_DRAGGING
+Permetre l'_arrossegament
+; Allow _dragging
+;
+MSG_SET_PROGRAM_CENTERREQS
+C_entrar les peticions
+; Center re_questers
+;
+;  Gadget labels - external programs
+;
+MSG_SET_EDITOR_LABEL
+Editor
+; Editor
+;
+MSG_SET_EDITOR_CMD
+Co_manda
+; Co_mmand
+;
+MSG_SET_EDITOR_ARGS
+_Arguments
+; _Arguments
+;
+MSG_SET_VIEWER_LABEL
+Visualitzador del codi HTML
+; HTML source viewer
+;
+;**OBSOLETE**
+MSG_SET_VIEWER_CMD
+C_omanda
+; C_ommand
+;
+;**OBSOLETE**
+MSG_SET_VIEWER_ARGS
+A_rguments
+; A_rguments
+;
+MSG_SET_CONSOLE
+Co_nsola
+; Co_nsole
+;
+MSG_SET_PRPROGRAMS_TYPE
+T_ipus
+; T_ype
+;
+MSG_SET_IMGVIEWER_LABEL
+Visualitzador d'imatge
+; Image viewer
+;
+MSG_SET_STARTUP_LABEL
+Guió executat a l'inici
+; Script run at startup
+;
+MSG_SET_SHUTDOWN_LABEL
+Guió executat al sortir
+; Script run at shutdown
+;
+;  Gadget labels - cache
+;
+MSG_SET_CACHE_TEMPPATH
+Camí Tem_poral
+; Temp _path
+;
+MSG_DUMMY_2
+
+; 
+MSG_SET_CACHE_DOCMEM
+_Memòria (kB)
+; _Memory (kB)
+;
+MSG_SET_CACHE_DOCDISK
+_Disc (kB)
+; _Disk (kB)
+;
+MSG_DUMMY_3
+
+; 
+MSG_DUMMY_4
+
+; 
+MSG_DUMMY_5
+
+; 
+MSG_DUMMY_6
+
+; 
+MSG_DUMMY_7
+
+; 
+MSG_SET_CACHE_CACHEPATH
+Camí de la memòria cau
+; Cache _path
+;
+MSG_SET_CACHE_SIZELABEL
+Mida de la memòria cau
+; Cache size
+;
+MSG_SET_CACHE_FREELABEL
+Mínim lliure
+; Keep minimum free
+;
+MSG_SET_CACHE_CHIP
+X_ip (kB)
+; C_hip (kB)
+;
+MSG_SET_CACHE_FAST
+_Ràpida (kB)
+; _Fast (kB)
+;
+MSG_CACHE_VERIFICATION_LABEL
+
+; Cache Verification
+;
+; ***NEW***
+;
+MSG_SET_CACHE_VERIFY_DYN
+
+; Verify d_ynamic objects
+;
+; ***NEW***
+;
+MSG_SET_CACHE_VERIFY_STAT
+
+; Verify _static objects
+;
+; ***NEW***
+;
+MSG_SET_CACHE_FASTRESPONSE_DYN
+
+; Fast _response
+;
+; ***NEW***
+;
+MSG_SET_CACHE_FASTRESPONSE_STAT
+
+; Fas_t response
+;
+; ***NEW***
+;
+MSG_SET_CACHE_NOCACHELABEL
+No incloure a la memòria cau aquests llocs
+; Do not cache these sites
+;
+MSG_SET_CACHE_NOCACHEADD
+Afegir
+; Add
+;
+MSG_SET_CACHE_NOCACHEDEL
+Esborrar
+; Del
+;
+;  Gadget labels - MIME types and external viewers
+;
+MSG_SET_MIME_TYPE
+Ti_pus
+; T_ype
+;
+MSG_SET_MIME_ADD
+_Afegir
+; _Add
+;
+MSG_SET_MIME_DEL
+_Esborrar
+; _Del
+;
+MSG_SET_MIME_EXTENSIONS
+E_xtensions
+; _Extensions
+;
+;**obsolete
+MSG_SET_MIME_CMD
+C_omanda
+; C_ommand
+;
+MSG_SET_MIME_ARGS
+A_rguments
+; A_rguments
+;
+MSG_SET_MIME_NAME
+No_m
+; Na_me
+;
+MSG_SET_MIME_ACTION
+Acc_ió
+; Act_ion
+;
+;  Settings colour requester
+;
+MSG_SET_COLOUR_TITLE
+Seleccioneu un color
+; Select colour
+;
+MSG_SET_COLOUR_CANCEL
+Cancel·lar
+; Cancel
+;
+MSG_SET_COLOUR_OK
+D'acord
+; Ok
+;
+MSG_SET_COLOUR_RED
+R
+; R
+;
+MSG_SET_COLOUR_GREEN
+G
+; G
+;
+MSG_SET_COLOUR_BLUE
+B
+; B
+;
+;  Gadget labels - Menu (was: ARexx menu)
+;
+MSG_SET_AREXX_SORT
+_Ordenar
+; S_ort
+;
+MSG_SET_AREXX_ADD
+_Afegir
+; _Add
+;
+MSG_SET_AREXX_DEL
+_Esborrar
+; _Del
+;
+MSG_SET_AREXX_TITLE
+Tí_tol
+; T_itle
+;
+MSG_DUMMY_9
+
+; 
+;
+MSG_DUMMY_10
+
+; 
+;
+MSG_SET_MENUS_INVALID
+NO VÀLID
+; INVALID
+;
+MSG_SET_MENUS_TYPE
+T_ipus
+; T_ype
+;
+MSG_SET_MENUS_COMMAND
+Co_manda
+; Co_mmand
+;
+;  Gadget labels - Styles page
+;
+MSG_SET_STYLE_FIXED
+Amplada _fixa
+; _Fixed width
+;
+MSG_SET_STYLE_ABSSIZE
+Mida _abs
+; _Abs size
+;
+MSG_SET_STYLE_RELSIZE
+Mida _rel
+; _Rel size
+;
+MSG_SET_STYLE_NORMAL
+_Normal
+; _Normal
+;
+MSG_SET_STYLE_BOLD
+Ne_greta
+; _Bold
+;
+MSG_SET_STYLE_ITALIC
+Curs_iva
+; _Italic
+;
+MSG_SET_STYLE_UNDERLINED
+Subrat_llada
+; Under_lined
+;
+;  Gadget labels - User buttons
+;
+MSG_SET_BUTTON_SORT
+_Ordenar
+; S_ort
+;
+MSG_SET_BUTTON_ADD
+_Afegir
+; _Add
+;
+MSG_SET_BUTTON_DEL
+_Esborrar
+; _Del
+;
+MSG_SET_BUTTON_LABEL
+E_tiqueta
+; _Label
+;
+MSG_SET_BUTTON_CMD
+Co_manda
+; Co_mmand
+;
+;  Gadget labels - Popup menus
+;
+MSG_SET_POPUP_TYPE
+T_ipus
+; T_ype
+;
+MSG_SET_POPUP_SORT
+_Ordenar
+; S_ort
+;
+MSG_SET_POPUP_ADD
+_Afegir
+; _Add
+;
+MSG_SET_POPUP_DEL
+_Esborrar
+; _Del
+;
+MSG_SET_POPUP_TITLE
+Tí_tol
+; T_itle
+;
+MSG_SET_POPUP_CMD
+Coman_da
+; Co_mmand
+;
+MSG_SET_POPUP_SHOWIF
+Mostrar si l'objecte és
+; Show if object
+;
+MSG_SET_POPUP_INMEM
+en _memòria
+; in m_em
+;
+MSG_SET_POPUP_NOTINMEM
+_no en memòria
+; _not in mem
+;
+;  Gadget labels - GUI options
+;
+MSG_SET_GUIOPT_SHOWBUTTONS
+Mostrar els _botons d'usuari
+; Show user _buttons
+;
+MSG_SET_GUIOPT_SHOWNAV
+Mostrar els artilugis de _navegació
+; Show _navigation gadgets
+;
+MSG_SET_GUIOPT_BORDERLESS
+
+; Border_less gadgets
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTTONTYPE
+
+; Gadget _Type
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_TEXTONLY
+
+; Text Only
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_TEXTIMAGE
+
+; Image & Text
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_IMAGEONLY
+
+; Image Only
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTTONPOS
+
+; Gadget _Position
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTPOS_LEFT
+
+; Left
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTPOS_RIGHT
+
+; Right
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTPOS_TOPLEFT
+
+; Top Left
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTPOS_TOPRIGHT
+
+; Top Right
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTPOS_BIGLEFT
+
+; Big Left
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTPOS_BIGRIGHT
+
+; Big Right
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_WINBDR
+
+; Window Borders
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_WINBDR_STANDARD
+
+; Standard
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_WINBDR_GADGETLESS
+
+; Gadgetless
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_WINBDR_BORDERLESS
+
+; Borderless
+;
+; ***NEW***
+;
+;  Gadget labels - Network Mail/News
+;
+MSG_SET_MAIL_TAB_ADDRESS
+_Adreça
+; _Address
+;
+MSG_SET_MAIL_TAB_MAIL
+Corr_eu
+; _Mail
+;
+MSG_SET_MAIL_TAB_NEWS
+_Notícies
+; _News
+;
+MSG_SET_MAIL_TAB_OPTIONS
+_Opcions
+; _Options
+;
+MSG_SET_MAIL_ADDRESS
+Adreça Elec_trònica
+; _E-mail address
+;
+MSG_SET_MAIL_REALNAME
+Nom _real
+; _Real name
+;
+MSG_SET_MAIL_REPLYTO
+Respon a l'adre_ça
+; Re_ply to address
+;
+MSG_SET_MAIL_ORGANIZATION
+Or_ganització
+; Or_ganization
+;
+MSG_SET_MAIL_SIGNATURE
+Fitxer de s_ignatura
+; S_ignature file
+;
+MSG_SET_MAIL_SMTPHOST
+Correu (S_MTP)
+; Mail _host (SMTP)
+;
+MSG_SET_MAIL_MAILQUOTEHDR
+Ca_pçalera
+; _Quote header
+;
+MSG_SET_MAIL_EXTMAILER
+Usar un programa de correu ex_tern
+; Use _external mailer
+;
+MSG_SET_MAIL_EXTMCOMMAND
+Coman_da
+; Comman_d
+;
+MSG_SET_MAIL_EXTMARGS
+Ar_guments
+; Ar_guments
+;
+MSG_SET_MAIL_NNTPHOST
+_Host de notícies (NNTP)
+; News _host (NNTP)
+;
+MSG_SET_MAIL_NEWSQUOTEHDR
+Ca_pçalera
+; _Quote header
+;
+MSG_SET_MAIL_NEWSUSER
+Nom d'usua_ri de notícies
+; News use_r name
+;
+MSG_SET_MAIL_NEWSPASSWORD
+Constrasen_ya de notícies
+; News _password
+;
+MSG_SET_MAIL_EXTNEWS
+Emprar un lector de notícies ex_tern
+; Use _external newsreader
+;
+MSG_SET_MAIL_EXTNCOMMAND
+Coman_da
+; Comman_d
+;
+MSG_SET_MAIL_EXTNARGS
+Ar_guments
+; Ar_guments
+;
+MSG_SET_MAIL_MAXARTICLES
+N° mà_xim d'articles
+; Ma_x nr of articles
+;
+MSG_SET_MAIL_SORTED
+O_rdenar els articles
+; So_rt articles
+;
+MSG_SET_MAIL_FRAMED
+_Dividir la _pantalla
+; S_plit screen
+;
+MSG_SET_MAIL_LONGHDRS
+Capçaleres _llargues
+; _Long headers
+;
+MSG_SET_MAIL_PROPFONT
+Lle_tra proporcional
+; Proportional _font
+;
+MSG_SET_MAIL_NEWSBYNUMBER
+Recuperar per no_mbre
+; Retrieve by num_ber
+;
+;  Gadget labels - GUI keys
+;
+MSG_SET_KEYS_KEY
+Tecla
+; Key
+;
+MSG_SET_KEYS_COMMAND
+Co_manda
+; Co_mmand
+;
+;  Key names
+;
+MSG_SET_KEYS_ENTER
+Enter
+; Enter
+;
+MSG_SET_KEYS_TAB
+Tab
+; Tab
+;
+MSG_SET_KEYS_BS
+BS
+; BS
+;
+MSG_SET_KEYS_SPACE
+Espai
+; Space
+;
+MSG_SET_KEYS_UP
+Amunt
+; Up
+;
+MSG_SET_KEYS_LEFT
+Esquerra
+; Left
+;
+MSG_SET_KEYS_RIGHT
+Dreta
+; Right
+;
+MSG_SET_KEYS_DOWN
+Avall
+; Down
+;
+MSG_SET_KEYS_NUM
+Núm
+; Num
+;
+MSG_SET_KEYS_SHIFT
+Shift
+; Shift
+;
+MSG_SET_KEYS_WHEELUP
+Wheel up
+; Wheel up
+;
+MSG_SET_KEYS_WHEELDOWN
+Wheel down
+; Wheel down
+;
+;  Gadget labels - Navigation buttons
+;
+MSG_SET_NAVS_BUTTON
+Botó
+; Button
+;
+MSG_SET_NAVS_COMMAND
+Co_manda
+; Co_mmand
+;
+;  Navigation button names
+;
+MSG_SET_NAVS_BACK
+Endarrere
+; Back
+;
+MSG_SET_NAVS_FORWARD
+Endavant
+; Forward
+;
+MSG_SET_NAVS_HOME
+Inici
+; Home
+;
+MSG_SET_NAVS_ADDHOT
+Afegir als favorits
+; Add to hotlist
+;
+MSG_SET_NAVS_HOTLIST
+Mostrar favorits
+; Show hotlist
+;
+MSG_SET_NAVS_CANCEL
+Cancel·lar
+; Cancel
+;
+MSG_SET_NAVS_NETSTATUS
+Estat de la xarxa
+; Network status
+;
+MSG_SET_NAVS_SEARCH
+Cercar
+; Search
+;
+MSG_SET_NAVS_RELOAD
+Actualitzar
+; Reload
+;
+MSG_SET_NAVS_LOADIMAGES
+Carregar imatges
+; Load images
+;
+;  Settings menu strings
+;
+MSG_SET_PROJECT_MENU
+Projecte
+; Project
+;
+MSG_SET_PROJECT_OPEN
+O/Obrir...
+; O/Open...
+;
+MSG_SET_PROJECT_SAVEAS
+A/Desar com...
+; A/Save as...
+;
+MSG_SET_PROJECT_QUIT
+Q/Sortir dels paràmetres
+; Q/Quit settings
+;
+MSG_SET_EDIT_MENU
+Editar
+; Edit
+;
+MSG_SET_EDIT_DEFAULTS
+D/Reinicialitzar valors
+; D/Reset to defaults
+;
+MSG_SET_EDIT_LASTSAVED
+L/Restablir valors
+; L/Last saved
+;
+MSG_SET_EDIT_RESTORE
+R/Recuperar valors
+; R/Restore
+;
+MSG_SET_WINDOWS_MENU
+Finestres
+; Windows
+;
+MSG_SET_WINDOWS_BROWSER
+Paràmetres del navegador...
+; Browser settings...
+;
+MSG_SET_WINDOWS_PROGRAM
+Paràmetres del programa...
+; Program settings...
+;
+MSG_SET_WINDOWS_NETWORK
+Paràmetres de la xarxa...
+; Network settings...
+;
+MSG_SET_WINDOWS_CLASSACT
+Paràmetres de ClassAct
+; ClassAct settings...
+;
+MSG_SET_WINDOWS_SNAPSHOT
+Congelar
+; Snapshot
+;
+MSG_SET_WINDOWS_GUI
+Paràmetres del GUI...
+; GUI settings...
+;

@@ -1,0 +1,71 @@
+<html>
+<head>
+<title>Method: AOM_MEASURE</title>
+</head>
+<body>
+<h1>Method: AOM_MEASURE</h1>
+
+<h2>Purpose</h2>
+
+The <b>AOM_MEASURE</b> method is used to inquire a copydriver object about
+its dimensions.
+
+<h2>Message structure</h2>
+
+The <b>AOM_MEASURE</b> method uses an <b>Ammeasure</b> structure:<p>
+
+<pre>
+struct Ammeasure
+{  <a href=index.html#Amessage>struct Amessage</a> amsg;
+   LONG width,height;      /* Target width and height */
+   LONG addwidth;
+   USHORT flags;
+   APTR text;
+   struct Ammresult *ammr;
+};
+</pre>
+Additional return values should be returned in an <b>Ammresult</b> structure:<p>
+<pre>
+struct Ammresult
+{  LONG width;             /* Nominal (maximum) width of object */
+   LONG minwidth;          /* Minimum needed for this object */
+   LONG minheight;
+   LONG addwidth;
+   BOOL newline;
+};
+</pre>
+
+<h2>Usage</h2>
+
+<h3>Fields: <code>width, height</code></h3>
+These are the target width and height of the current window or frame.
+
+<h3>Field: <code>ammr</code></h3>
+A pointer to a structure accomodating special return values. Note that this
+pointer may be NULL.
+
+<h4>Field: <code>ammr->width</code></h3>
+The resulting width of the visible object, given the target width and height.
+
+<h4>Field: <code>ammr->minwidth</code></h3>
+The minimum width that the object could be squeezed into.
+
+<h3>Return value</h3>
+The return value for this method is not defined.
+
+<h2>Implementation</h2>
+
+Only copydriver objects must implement this method.
+<p>
+The object should compute its width and height, given the target width and height,
+and set its <b>AOBJ_Width</b> and <b>AOBJ_Height</b> attributes (the
+<a href="../classes/copydriver.html"><code>struct Copydriver</code></a>'s
+<code>aow</code> and <code>aoh</code> fields).
+<p>
+If there is an <b><code>ammr</code></b> supplied, the object should fill in its
+<b><code>ammr->width</code></b> and <b><code>amm->minwidth</code></b>
+fields.
+
+</body>
+</html>
+

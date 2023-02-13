@@ -1,0 +1,82 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+<html>
+<head>
+<title>AWeb ARexx shell</title>
+</head>
+
+<BODY BACKGROUND="../../GlobalImages/awebbg.gif">
+
+<IMG SRC="../../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<h1>&nbsp; AWeb ARexx shell</h1>
+In order to assist you in exploring the vast set of ARexx commands, a
+special <em>shell</em> program is included.
+<p>
+If you have turned <a href="../../Configuring/proptions.html#shellcmd">Allow shell commands</a>
+on, you can start the shell now:
+<a href="x-aweb:rexx/AWebPath:Extras/awebshell.rexx">Extras/awebshell.rexx</a>.
+<p>
+A window is opened. In this window, you can type ARexx commands which will be
+executed by AWeb. If the command returns a value in the reserved variable RESULT,
+the value is displayed.
+<p>
+If you want the command to return its result in another variable, or needs a
+stem variable, use the VAR or STEM argument as defined for the command. You can
+use any variable name, except names that start with "<code>S_</code>".
+<p>
+To display the contents of a single variable, use the command:
+<pre>
+   -v <i>variable</i>
+</pre>
+To display the contents of a stem variable, use:
+<pre>
+   -s <i>stem</i> <i>name</i> <i>name</i>...
+</pre>
+<i>stem</i> is the name of the stem variable; <i>name</i> are the names of
+the items in the <a href="commands.html#structured">array of structured
+information</a>.
+<p>
+Other special commands you can use in the shell window are:
+<table>
+<tr>
+   <th nowrap align=left valign=top><code>-a <i>port_number</i></code>
+   <td align=left valign=top>Switches the addressed port to
+      "<code>AWeb.<i>port_number</i></code>".
+<tr>
+   <th nowrap align=left valign=top><code>-d</code>
+   <td align=left valign=top>Opens a new window and displays the
+      <a href="commands.html">command list</a>.
+      If the window is still open from the previous time this command was used, that
+      window is used again.
+<tr>
+   <th nowrap align=left valign=top><code>-h</code>
+   <td align=left valign=top>Displays a few lines explaining the special commands.
+<tr>
+   <th nowrap align=left valign=top><code>-x</code>
+   <td align=left valign=top>Exits the shell.
+</table>
+
+<p>
+
+<hr>
+<a href=arexx.html><img src=../../GlobalImages/up.gif width=32 height=20 border=0 alt="^">ARexx</a> &nbsp;
+
+</body>
+</html>

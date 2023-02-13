@@ -1,0 +1,153 @@
+<html>
+<head>
+<title>AWeb PNG plugin</title>
+</head>
+<body background="file:///AWebPath:Docs/GlobalImages/awebbg.gif">
+<h1><img src="file:///AWebPath:Docs/GlobalImages/aweb.gif" width=192 height=93 alt="(logo)">&nbsp;
+   AWeb PNG plugin</h1>
+
+<h2>General</h2>
+The <em>awebpng</em> plugin for AWeb allows you to view all PNG images.
+Features include:
+<ul>
+<li>Optional progressive display of loading images
+<li>Support for transparent images
+<li>Support for scaling
+<li>Support for CyberGraphics
+</ul>
+
+<h2>Installation</h2>
+Follow these steps to install the AWeb PNG plugin.
+<ol>
+<li>
+Run the supplied Installer script. It will copy the necessary files to a
+drawer <code>AWebPlugins</code> in the drawer where the AWeb program is
+located.
+<br><br>
+<li>
+<form action="x-aweb:rexx/AWebPath:AWebPlugin/Docs/awebpng.awebrx">
+Run the <input type=submit value="Setup script">.
+</form>
+</ol>
+
+<h2>Manual Installation</h2>
+If, for some reason, you don't want to install the plugin automatically, you
+can install it by hand.
+<ol>
+<li>
+Copy the file named <code>awebpng.awebplugin</code> to a location of your
+choice. The recommended location for plugins like this is a drawer
+<code>AWebPlugins</code> in the drawer where the AWeb program is located.
+<br><br>
+<li>
+Start AWeb, open the browser settings and bring up the <em>Viewers</em> page.
+Select the entry for MIME type <code>IMAGE/PNG</code> and change the following
+settings:
+<ul>
+   <li>Action: "AWeb Plugin (A)"
+   <li>Name: the location where you copied the file <code>awebpng.awebplugin</code>
+   <li>Arguments: leave blank or supply optional parameters, see below
+</ul>
+<br><br>
+<li>
+Don't forget to save your settings.
+</ol>
+
+<h2><a name=parameters>Parameters</a></h2>
+The awebpng plugin supports two optional parameters. You can type the chosen
+parameters in the "Arguments:" field of the settings window. Separate the
+parameters by a comma or space, if you specify more than one.
+
+<dl>
+<dt><code><b>PROGRESS=</b>0|<var>number</var></code>
+<dd>Specifies the number of image scan lines to decode before the display is
+   updated. A higher number is faster but results in chunkier building of the
+   image. PROGRESS=1 gives the smoothest progressive display but is relatively
+   slow. The default value is 4, which is a good compromise between speed and
+   visual attractiveness.
+<p>
+   If you specify PROGRESS=0, progressive display is disabled. The image is
+   not displayed until decoding is ready.
+<p>
+<dt><code><b>MULTIPASS=</b>0|1</code>
+<dd>Specifies if interlaced PNG images should be rendered progressively.
+   MULTIPASS=1 (the default) will display interlaced PNGs in multiple passes,
+   each with increasing quality.
+   <p>
+   Use MULTIPASS=0 to disable rendering in multiple passes, and only display
+   the final image. This may be faster when reading from fast connections or
+   from local files. This also disables PROGRESS (sets to 0) otherwise
+   interlaced PNGs would still appear to decode in a multipass manner.
+<p>
+
+<dt><code><b>GAMMA=</b>number</code>
+<dd>Specifies the gamma colour correction factor for your configuration. It is
+   usually a number in the range 1.0 through 2.5. Default is 2.0.
+<p>
+<dt><code><b>LOWPRI</b></code>
+<dd>The LOWPRI argument will run the decoder at a lower priority than default.
+   If you are using your Amiga for other tasks while AWeb is downloading images,
+   this feature helps you to keep the GUI responsive when many images are being
+   decoded.
+   However, if you are running CPU intensive tasks this argument could stop
+   images from being processed alltogether.
+<p>
+   Note that the LOWPRI argument might not be effective when you use a custom task
+   scheduler like Executive. Use task name "AWebPng decoder" to configure the
+   decoder task in custom schedulers.
+</dl>
+
+<h2>Support</h2>
+This distribution of AWeb comes with no support, however the AWeb Mailing list has many users and you are <A HREF="FILE:///AWebPath:Docs/GettingHelp.html">encouraged to subscribe</A> if you haven't aleady done so.
+
+<h2>Disclaimer</h2>
+This software is provided "as is". No warranties are made, either
+expressed or implied, with respect to reliability, quality, performance,
+or operation of this software. The use of this program is at your own risk.
+Yvon Rozijn assumes no responsibility or liability for any damage or
+losses resulting from the use of this software, even if advised of the
+possibility of such damage or loss.
+
+<h2>Copyright</h2>
+<P><strong>Copyright &copy; 2002-2007 by the respective contributers of <A HREF="http://aweb.sunsite.dk" TARGET="_blank">The AWeb Open Source Project</A>.  All rights reserved.</strong>
+<P>Any code or files that remain in their original, unmodified form are
+<P><strong>Copyright &copy; 1998-2000 by Yvon Rozijn.  All rights reserved.</strong>
+<P>It uses the <A HREF="http://www.libpng.org/pub/png/libpng.html" TARGET="_blank">PNG reference library</A> that was written by Guy Eric Schalnat, Group 42, Inc., Andreas Dilger, Glenn Randers-Pehrson.
+<BR>It also uses the <A HREF="http://www.zlib.net" TARGET="_blank">ZLIB general purpose compression library</A> that was written by Jean-loup Gailly and Mark Adler.
+
+<h2>History</h2>
+awebpng.awebplugin 1.9 (1-12-2000)
+<ul>
+<li>Added support for scaling after completion, necessary for percentage scaling.
+</ul>
+
+awebpng.awebplugin 1.8 (5-9-1999)
+<ul>
+<li>Cleaned up the code a bit.
+</ul>
+
+awebpng.awebplugin 1.7 (1-5-1998)
+<ul>
+<li>No longer uses chip memory if CyberGraphics is used.
+</ul>
+
+awebpng.awebplugin 1.6 (19-10-1998)
+<ul>
+<li>Added support for proportional scaling (only one of WIDTH and HEIGHT specified).
+</ul>
+
+awebpng.awebplugin 1.2 (01-03-1998)
+<ul>
+<li>Added LOWPRI argument.
+</ul>
+
+awebpng.awebplugin 1.1 (25-02-1998)
+<ul>
+<li>Removed possible decoder stalls.
+<li>Much faster progressive display of scaled images.
+</ul>
+
+awebpng.awebplugin 1.0 (22-02-1998)
+<ul>
+<li>Initial version
+</ul>

@@ -1,0 +1,34 @@
+<html>
+<head>
+<title>Method: AOM_DISPOSE</title>
+</head>
+<body>
+<h1>Method: AOM_DISPOSE</h1>
+
+<h2>Purpose</h2>
+
+The <b>AOM_DISPOSE</b> method is used to delete an object instance.
+
+<h2>Message structure</h2>
+
+The <b>AOM_DISPOSE</b> method uses a standard
+<a href=index.html#Amessage>Amessage</a> structure.
+
+<h2>Usage</h2>
+
+<h3>Return value</h3>
+The return value for this method is not defined.
+<p>
+After sending this message, the object does no longer exist.
+
+<h2>Implementation</h2>
+
+All classes <b>must</b> implement this method.
+<p>
+Typically, the class frees all resources allocated by the object, then passes this
+method to its superclass object. The root class AOTP_OBJECT
+will delete the memory occupied by the object data structure itself.
+
+</body>
+</html>
+

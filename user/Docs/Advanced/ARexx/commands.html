@@ -1,0 +1,169 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+<html>
+<head>
+<title>AWeb ARexx Commands</title>
+</head>
+
+<BODY BACKGROUND="../../GlobalImages/awebbg.gif">
+
+<IMG SRC="../../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<h1>&nbsp; AWeb ARexx Commands</h1>
+
+<h2>Available commands</h2>
+
+<table cellspacing=0 cellpadding=0 width=100%>
+<tr valign=top><td>
+<a href=program.html#ADDHOTLIST>ADDHOTLIST</a><br>
+<a href=program.html#ALLOWCMD>ALLOWCMD</a><br>
+<a href=program.html#BACKGROUND>BACKGROUND</a><br>
+<a href=program.html#BGSOUND>BGSOUND</a><br>
+<a href=window.html#CANCEL>CANCEL</a><br>
+<a href=window.html#CHANCLOSE>CHANCLOSE</a><br>
+<a href=window.html#CHANDATA>CHANDATA</a><br>
+<a href=window.html#CHANHEADER>CHANHEADER</a><br>
+<a href=window.html#CHANOPEN>CHANOPEN</a><br>
+<a href=program.html#CLEARSELECTION>CLEARSELECTION</a><br>
+<a href=window.html#CLOSE>CLOSE</a><br>
+<a href=program.html#COPYBLOCK>COPYBLOCK</a><br>
+<a href=window.html#COPYURL>COPYURL</a><br>
+<a href=program.html#DELETECACHE>DELETECACHE</a><br>
+<a href=program.html#DRAGGING>DRAGGING</a><br>
+<a href=program.html#EDITSOURCE>EDITSOURCE</a><br>
+<a href=program.html#FIXCACHE>FIXCACHE</a><br>
+<td>
+<a href=program.html#FLUSHCACHE>FLUSHCACHE</a><br>
+<a href=window.html#FOCUS>FOCUS</a><br>
+<a href=get.html#GET>GET</a><br>
+<a href=cfg.html#GETCFG>GETCFG</a><br>
+<a href=program.html#GETHISTORY>GETHISTORY</a><br>
+<a href=window.html#GO>GO</a><br>
+<a href=program.html#HOTLIST>HOTLIST</a><br>
+<a href=program.html#ICONIFY>ICONIFY</a><br>
+<a href=program.html#IMAGELOADING>IMAGELOADING</a><br>
+<a href=program.html#INFO>INFO</a><br>
+<a href=program.html#JAVASCRIPT>JAVASCRIPT</a><br>
+<a href=program.html#JSBREAK>JSBREAK</a><br>
+<a href=program.html#JSDEBUG>JSDEBUG</a><br>
+<a href=window.html#LOAD>LOAD</a><br>
+<a href=program.html#LOADIMAGES>LOADIMAGES</a><br>
+<a href=program.html#LOADSETTINGS>LOADSETTINGS</a><br>
+<a href=program.html#MIMETYPE>MIMETYPE</a><br>
+<td>
+<a href=window.html#NEW>NEW</a><br>
+<a href=window.html#OPEN>OPEN</a><br>
+<a href=window.html#OPENREQ>OPENREQ</a><br>
+<a href=program.html#PLUGIN>PLUGIN</a><br>
+<a href=program.html#PLAYBGSOUND>PLAYBGSOUND</a><br>
+<a href=program.html#PRINT>PRINT</a><br>
+<a href=program.html#QUIT>QUIT</a><br>
+<a href=window.html#RELOAD>RELOAD</a><br>
+<a href=program.html#REQUEST>REQUEST</a><br>
+<a href=program.html#REQUESTFILE>REQUESTFILE</a><br>
+<a href=program.html#REQUESTSTRING>REQUESTSTRING</a><br>
+<a href=window.html#RESETFRAME>RESETFRAME</a><br>
+<a href=program.html#RUN>RUN</a><br>
+<a href=window.html#SAVEAS>SAVEAS</a><br>
+<a href=program.html#SAVEAUTHORIZE>SAVEAUTHORIZE</a><br>
+<a href=window.html#SAVEIFF>SAVEIFF</a><br>
+<a href=program.html#SAVESETTINGS>SAVESETTINGS</a><br>
+<td>
+<a href=program.html#SCREENTOBACK>SCREENTOBACK</a><br>
+<a href=program.html#SCREENTOFRONT>SCREENTOFRONT</a><br>
+<a href=window.html#SCROLL>SCROLL</a><br>
+<a href=program.html#SEARCH>SEARCH</a><br>
+<a href=cfg.html#SETCFG>SETCFG</a><br>
+<a href=program.html#SETCLIP>SETCLIP</a><br>
+<a href=program.html#SNAPSHOT>SNAPSHOT</a><br>
+<a href=window.html#STATUSFIELD>STATUSFIELD</a><br>
+<a href=program.html#SUBWINDOW>SUBWINDOW</a><br>
+<a href=program.html#SYSTEM>SYSTEM</a><br>
+<a href=program.html#URLENCODE>URLENCODE</a><br>
+<a href=window.html#URLFIELD>URLFIELD</a><br>
+<a href=program.html#USEPROXY>USEPROXY</a><br>
+<a href=program.html#VIEWSOURCE>VIEWSOURCE</a><br>
+<a href=window.html#WAIT>WAIT</a><br>
+<a href=window.html#WINDOW>WINDOW</a><br>
+</table>
+
+<h2>Functional classification</h2>
+
+<a href=program.html>Program related commands</a><br>
+<a href=window.html>Window and transfer related commands</a><br>
+<a href=get.html>Inquiry commands</a><br>
+<a href=cfg.html>Configuration commands</a><br>
+
+<h2>Obsolete commands</h2>
+
+These commands appeared in previous versions of AWeb, but are replaced by
+other, more powerful commands. Do not use these commands in new scripts.
+Future versions of AWeb may not support these commands any more.
+<p>
+<table cellspacing=0 cellpadding=0>
+<tr><td>
+<a href=obsolete.html#ACTIVATEWINDOW>ACTIVATEWINDOW</a><br>
+<a href=obsolete.html#WINDOWTOBACK>WINDOWTOBACK</a><br>
+<a href=obsolete.html#WINDOWTOFRONT>WINDOWTOFRONT</a><br>
+</table>
+
+<h2><a name=target>Target names</a></h2>
+Several commands allow specification of a <b>target</b> name or ID. Using
+the target name, individual frames in the window can be addressed. Current
+target names and IDs can be obtained using the <a href=get.html#frames>GET FRAMES</a>
+command.
+<p>
+When no target is specified, the command will operate on the main window.
+If a nonexisting target name is specified, a new window will be opened with
+the given name.
+
+<h2><a name=rect>Rectangles</a></h2>
+Some commands return or take a window <b>rectangle</b> as input. A rectangle
+is represented by four numbers, separated by commas. The numbers denote the
+left edge, the top edge, the width and the height, respectively.
+
+<h2><a name=structured>Array of structured information</a></h2>
+Some commands return an array of structured information, and some commands take
+such an array as input.
+You specify the name of the stem variable where the array should be stored, or
+where you built the array to be used.
+<p>
+The array is structured in the following way.
+The variable <b><var>stem</var><code>.0</code></b>
+contains the number of array elements. The individual array elements
+are <b><var>stem</var><code>.</code><var>n</var></b>, where <var>n</var> is in the
+range 1 through <b><var>stem</var><code>.0</code></b>. The individual array
+elements are in turn stem variables. The names of the atomic variables depend
+on the context, see the individual command descriptions.
+<p>
+Example: after completion of the command<pre>
+   <a href=get.html#FRAMES>GET FRAMES</a> STEM FR
+</pre>
+the symbol <code>FR.0</code> may contain 3, then symbols <code>FR.1.NAME</code> through
+<code>FR.3.NAME</code> contain the frame names, and symbols <code>FR.1.ID</code> through
+<code>FR.3.ID</code> contain the frame IDs.
+
+<p>
+<hr>
+<a href=ports.html><img src=../../GlobalImages/back.gif width=32 height=16 border=0 alt="<-">Ports</a> &nbsp;
+<a href=arexx.html><img src=../../GlobalImag../../GlobalImages/up.gif width=32 height=20 border=0 alt="^">ARexx</a> &nbsp;
+<a href=returns.html><img src=../../GlobalImag../../GlobalImages/next.gif width=32 height=16 border=0 alt="-&gt;">Return codes</a>
+
+</body>
+</html>

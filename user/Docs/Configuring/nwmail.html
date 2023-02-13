@@ -1,0 +1,171 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+
+<HTML>
+
+<HEAD>
+<TITLE>Network settings: Mail/News</TITLE>
+</HEAD>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<H1>&nbsp; Network settings: Mail/News</H1>
+
+This settings tab is subdivided into four further tabs:
+
+<OL>
+<LI><A HREF="#Address">address</A></LI>
+<LI><A HREF="#mail">Mail</A></LI>
+<LI><A HREF="#news">News</A></LI>
+<LI><A HREF="#options">Options</A></LI>
+</OL>
+
+<H2><A NAME="address">Address tab</A></H2>
+
+<IMG SRC="Images/NetworkSettings-MN-Address.png" ALIGN="RIGHT" ALT="Network Settings: Mail/News->Address Tab" WIDTH="490" HEIGHT="330" HSPACE="20" VSPACE="20" BORDER="0">
+
+This tab contains fields to configure your e-mail address and related data common to mail and news.  All fields only apply if you use the internal <A HREF="../Working/mail.html">mailer</A> or <A HREF="../Working/news.html">newsreader</A>.
+
+<H3><A NAME="email">E-mail address</A></H3>
+Enter your e-mail address here.  Required for sending mail or news.
+<P>You should enter your real e-mail address.  Don't enter a modified address here to protect yourself against spam, because this will cause your mails to be rejected if the receiving server checks the validity of your address.  You can use the <A HREF="nwprivacy.html#spamblock">spamblock option</A> to protect yourself from unsolicited e-mail instead.
+
+<H3><A NAME="realname">Real name</A></H2>
+
+Enter your real, full name here.  Required for news only.
+
+<H3><A NAME="replyto">Reply to address</A></H3>
+
+If you want to receive e-mail replies to another address as entered in the <A HREF="#email">E-mail address</A> field, enter this address here.  Used with both mail and news.
+
+<H3><A NAME="organization">Organization</A></H3>
+
+Used when posting news.  If you post news for some organization, enter its name here.
+
+<H3><A NAME="signature">Signature file</A></H3>
+
+Enter the file name that contains your signature.  The contents of this file will be appended to outgoing mail and news.
+
+<H2><A NAME="address">Mail tab</A></H2>
+
+<IMG SRC="Images/NetworkSettings-MN-Mail.png" ALIGN="RIGHT" ALT="Network Settings: Mail/News->Mail Tab" WIDTH="490" HEIGHT="330" HSPACE="20" VSPACE="20" BORDER="0">
+
+This tab contains fields relating to the internal <A HREF="../Working/mail.html"> mailer</A>.
+
+<H3><A NAME="smtphost">Mail host (SMTP)</A></H3>
+
+Enter the name of the mail server (SMTP) to use.  This is required to use the internal <A HREF="../Working/mail.html">mailer</A>.
+
+<H3><A NAME="mailquote">Quote header</A></H3>
+
+When you reply in e-mail to a news article, this header line will appear above the quoted text.  In the header, you can use the following argument parameters:
+
+<TABLE>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%d</TH><TD>Date and time that the original article was posted.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%e</TH><TD>E-mail address of the poster of the article.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%g</TH><TD>Newsgroup name where you read the article.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%i</TH><TD>The usenet message ID of the article.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%n</TH><TD>The real name of the poster of the article.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%s</TH><TD>The subject of the article.</TD></TR>
+</TABLE>
+
+<H3><A NAME="extmailer">Use external mailer</A></H3>
+
+If you check this checkbox, the internal mailer will not be used.  You have to supply an external mailer in the <A HREF="cmdargs.html">Command and Arguments</A> fields below the checkbox.  Argument parameters are:
+
+<TABLE>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%e</TH><TD>E-mail address to send the mail to.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%n</TH><TD>Screen name that AWeb is running on, in case your mail program supports opening on a public screen.</TD></TR>
+</TABLE>
+
+<H2><A NAME="news">News tab</A></H2>
+
+<IMG SRC="Images/NetworkSettings-MN-News.png" ALIGN="RIGHT" ALT="Network Settings: Mail/News->News Tab" WIDTH="490" HEIGHT="330" HSPACE="20" VSPACE="20" BORDER="0">
+
+This tab contains fields relating to the internal <A HREF="../Working/news.html"> newsreader</A>.
+
+<H3><A NAME="nntphost">News host (NNTP)</A></H3>
+
+Enter the name of the news server (NNTP) to use.  This is required to use the internal <A HREF="../Working/news.html">newsreader</A>.
+
+<H3><A NAME="newsquote">Quote header</A></H3>
+
+When you compose a follow-up to an article article, this header line will appear above the quoted text.  In the header, you can use the following argument parameters:
+
+<TABLE>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%d</TH><TD>Date and time that the original article was posted.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%e</TH><TD>E-mail address of the poster of the article.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%g</TH><TD>Newsgroup name where you read the article.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%i</TH><TD>The usenet message ID of the article.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%n</TH><TD>The real name of the poster of the article.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%s</TH><TD>The subject of the article.</TD></TR>
+</TABLE>
+
+<H3><A NAME="user">News user name and password</A></H3>
+
+If you use a news server that requires authorization, enter your username and password in these fields.  If you don't use such a news server (or if you don't know), leave these fields blank.
+
+<H3><A NAME="extnewsreader">Use external newsreader</A></H3>
+
+If you check this checkbox, the internal newsreader will not be used.  You have to supply an external newsreader in the <A HREF="cmdargs.html">Command and Arguments</A> fields below the checkbox. Argument parameters are:
+
+<TABLE>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%a</TH><TD>Newsgroup name or article identification.</TD></TR>
+<TR VALIGN="TOP"><TH ALIGN="LEFT" VALIGN="TOP">%n</TH><TD>Screen name that AWeb is running on, in case your mail program supports opening on a public screen.</TD></TR>
+</TABLE>
+
+<H2><A NAME="options">Options tab</A></H2>
+
+<IMG SRC="Images/NetworkSettings-MN-Options.png" ALIGN="RIGHT" ALT="Network Settings: Mail/News->Options Tab" WIDTH="490" HEIGHT="330" HSPACE="20" VSPACE="20" BORDER="0">
+
+This tab contains options for the internal <A HREF="../Working/news.html"> newsreader</A>.
+
+<H3><A NAME="maxarticles">Max nr of articles</A></H3>
+
+This field contains the maximum number of article headers that are retrieved when you enter a newsgroup.  If you set this to 0, there is no maximum (all article headers are retrieved).
+
+<H3><A NAME="sort">Sort articles</A></H3>
+
+If you check this checkbox, the article headers within a group are sorted on subject.
+
+<H3><A NAME="frames">Split screen</A></H3>
+
+If you check this checkbox, frames will be used when you read articles from a newsgroup.  The top frame will contain the article index, and the bottom frame contains the currently selected article.
+
+<H3><A NAME="longheaders">Long headers</A></H3>
+
+If you check this checkbox, all article transfer headers are shown, instead of just From, Subject and Date.
+
+<H3><A NAME="propfont">Proportional font</A></H3>
+
+If you use this checkbox, article text is displayed in a normal font, instead of a fixed-width font.  This will make the text generally prettier to read, but it will make tables and "ASCII-art" look distorted.
+
+<H3><A NAME="bynumber">Retrieve by number</A></H3>
+
+If your news server does not allow retrieving all articles the normal way, check this checkbox to have the articles <A HREF="../Working/news.html#bynumber">retrieved by their local number</A>.
+
+<P><HR>
+
+<A HREF="nwprivacy.html"><IMG SRC="../GlobalImages/back.gif" WIDTH="32" HEIGHT="16" ALT="&lt;-" BORDER="0">Privacy</A>&nbsp;&nbsp;<A HREF="settings.html"><IMG SRC="../GlobalImages/up.gif" WIDTH="32" HEIGHT="20" ALT="^" BORDER="0">Settings requesters</A>&nbsp;&nbsp;<A HREF="nwoptions.html"><IMG SRC="../GlobalImages/next.gif" WIDTH="32" HEIGHT="16" ALT="-&gt;" BORDER="0">Options</A>
+
+</BODY>
+
+</HTML>

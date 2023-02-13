@@ -1,0 +1,92 @@
+<html>
+<head>
+<title>Plugin module</title>
+</head>
+<body>
+<h1>Plugin module</h1>
+
+<h2>General</h2>
+Plugin modules are opened by AWeb as shared libraries. Thus, plugin
+modules must follow the rules that hold for shared libraries.
+<p>
+The plugin module is opened each time AWeb loads a file that the plugin
+module should process. For each time it is opened, the
+<a href=initplugin.html><code>Initplugin()</code></a> function is called
+to obtain the class IDs. Then AWeb will <a href="../methods/new.html">create</a>
+instances of the <a href=sourcedriver.html>sourcedriver subclass</a>
+and <a href=copydriver.html>copydriver subclass</a>.
+<p>
+Optionally the plugin module may support external commands
+(passed to the plugin by AWeb when executing an ARexx <b>PLUGIN</b>
+command). See <a href=commandplugin.html><code>Commandplugin()</code></a>.
+<p>
+A <b>filter</b> type plugin doesn't implement any classes. It merely
+supplies a <a href=filterplugin.html><code>Filterplugin()</code></a>
+function to filter the data.
+<p>
+When the plugin object is flushed from memory, the object instances are
+<a href="../methods/dispose.html">disposed</a>. Then the library is
+closed. If the plugin module isn't needed any more, it is expunged.
+
+<h2>Required library functions</h2>
+Each plugin must implement the following functions:
+<table border>
+<tr><th align=left valign=top>Function
+   <th align=left valign=top>Offset
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>InitLib
+   <td valign=top>none
+   <td valign=top>Initialization of the library after loading.
+      Usually other libraries (like the
+      <a href="../lib/index.html">awebsupport.library</a> are opened here.
+<tr><th align=left valign=top>OpenLib
+   <td valign=top>-6
+   <td valign=top>Standard shared library Open function.
+<tr><th align=left valign=top>CloseLib
+   <td valign=top>-12
+   <td valign=top>Standard shared library Close function.
+<tr><th align=left valign=top>ExpungeLib
+   <td valign=top>-18
+   <td valign=top>Standard shared library Expunge function.<p>
+      You must invoke the <a href="../methods/install.html">AOM_INSTALL</a>
+      method to deinstall the plugin classes you have installed in
+      the <a href=initplugin.html>Initplugin</a> function.
+      <p>
+      Any other libraries opened in the InitLib function should be closed
+      here.
+<tr><th align=left valign=top>ExtFuncLib
+   <td valign=top>-24
+   <td valign=top>Standard shared library ExtFuncLib function.
+<tr><th align=left valign=top><a href=initplugin.html>Initplugin</a>
+   <td valign=top>-30
+   <td valign=top>Initialization of the plugin classes.
+<tr><th align=left valign=top><a href=queryplugin.html>Queryplugin</a>
+   <td valign=top>-36
+   <td valign=top>Query the plugin module for its features.
+<tr><th colspan=3>Optional functions
+<tr><th align=left valign=top>Function
+   <th align=left valign=top>Offset
+   <th align=left valign=top>Description
+<tr><th align=left valign=top><a href=commandplugin.html>Commandplugin</a>
+   <td valign=top>-42
+   <td valign=top>Process a textual command for the plugin.
+<tr><th align=left valign=top><a href=filterplugin.html>Filterplugin</a>
+   <td valign=top>-48
+   <td valign=top>Process a block of data and write back filtered data.
+</table>
+
+<h2>Required classes to implement</h2>
+Every non-filter type plugin module must at least implement a
+<a href=sourcedriver.html>sourcedriver subclass</a>. This class is used
+to process the incoming data in a plugin specific way.
+<p>
+Ususally plugin modules also implement a
+<a href=copydriver.html>copydriver subclass</a>. This class does
+everything that is needed to display the file and possibly interact
+with the user. If the plugin never needs to display anything
+(for examply, a fancy "save to disk" module), it does not need
+to implement the copydriver subclass.
+
+<h2>Examples</h2>
+Example implementations are available for a <a href=example.html>normal
+plugin</a> and for a <a href=filterexample.html>filter type plugin</a>.

@@ -1,0 +1,13 @@
+MODULES := AWebPlugin/awebcharset.awebplugin AWebPlugin/Docs/awebcharset.readme
+
+AWebPlugin/awebcharset.awebplugin/TYPE := executable/library/amigashared
+AWebPlugin/awebcharset.awebplugin/DEPS := ${MODULELIB} linklibs/libawebclib.a
+AWebPlugin/awebcharset.awebplugin/CFILES := \
+startup awebcharset
+
+
+AWebPlugin/awebcharset.awebplugin/CFILES/CPPFLAGS := -I plugins/include
+
+AWebPlugin/Docs/awebcharset.readme/TYPE := document
+AWebPlugin/Docs/awebcharset.readme/FILES := \
+awebcharset.readme

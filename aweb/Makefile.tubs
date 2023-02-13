@@ -1,0 +1,47 @@
+MODULES     := AWeb AWeb.developer
+
+AWeb/DEPS := linklibs/libawebcommon.a Charsets/koi8-r.charset linklibs/libawebclib.a linklibs/libaz.a
+
+#asyncio
+AWeb/CFILES := \
+application area arexx author aweb awebamitcp awebtcp \
+body boopsi break bullet button cabrowse cache checkbox clip cookie \
+copy copydriver copyjs docext docjs  docsource document editor \
+element event extprog fetch field file filefield filereq form frame \
+framejs frameset hidden hotlist html http idn imgcopy imgsource info input \
+link local locale map mime name nameserv netstat object \
+parse popup prefs print printwin radio request ruler saveas saveiff scroller \
+search select simplerexx soundcopy soundsource source sourcedriver splashimages support \
+table task tcp tcperr text textarea timer tooltip url version whiswin window \
+winhis winrexx xaweb amissl miamissl
+
+AWeb/LDFLAGS := -L. -lm -lawebcommon  -g -laz $(ALPHALIB) $(AWEBJSLIB)
+
+AWeb/CFILES/awebamitcp/CPPFLAGS := $(NETINCLUDE)
+AWeb/CFILES/awebtcp/CPPFLAGS    := $(NETINCLUDE2)
+AWeb/CFILES/amissl/CPPFLAGS     := $(SSLINCLUDE) $(NETINCLUDE2)
+AWeb/CFILES/miamissl/CPPFLAGS   := $(MIAMISSLINCLUDE) $(NETINCLUDE2)
+AWeb/CFILES/http/CPPFLAGS       := $(NETINCLUDE2) -I zlib/
+AWeb/CFILES/nameserv/CPPFLAGS   := $(NETINCLUDE2)
+AWeb/CFILES/tcp/CPPFLAGS        := $(NETINCLUDE2)
+
+AWeb.developer/DEPS := linklibs/libawebdevcommon.a
+
+AWeb.developer/CFILES := $(AWeb/CFILES)
+
+AWeb.developer/LDFLAGS := -L. -lm -lawebdevcommon  -laz -gstabs $(ALPHALIB) $(AWEBJSLIB)
+AWeb.developer/CFILES/CPPFLAGS  := -DDEVELOPER -DBETAKEYFILE
+AWeb.developer/CFILES/CFLAGS := -gstabs
+
+AWeb.developer/CFILES/awebamitcp/CPPFLAGS := $(NETINCLUDE)
+AWeb.developer/CFILES/amissl/CPPFLAGS     := $(SSLINCLUDE)
+AWeb.developer/CFILES/miamissl/CPPFLAGS   := $(MIAMISSLINCLUDE)
+AWeb.developer/CFILES/http/CPPFLAGS       := $(NETINCLUDE2) -I zlib/
+
+#AWeb.developer/CFILES/netstat/CFLAGS := -O0
+#AWeb.developer/CFILES/http/CFLAGS := -O0 -gstabs
+#AWeb.developer/CFILES/fetch/CFLAGS := -O0 -gstabs
+
+
+
+

@@ -1,0 +1,62 @@
+<html>
+<head>
+<title>Clipcoords()</title>
+</head>
+<body>
+<h1>Clipcoords()</h1>
+
+<h2>Purpose</h2>
+Obtain rendering context information.
+
+<h2>Synopsis</h2>
+<pre>
+   newcoords = Clipcoords(cframe, coords)
+   D0                     A0      A1
+
+   <a href="../structs/coords.html">struct Coords</a> *Clipcoords(<a href="../classes/object.html">struct Aobject</a> *, <a href="../structs/coords.html">struct Coords</a> *)
+</pre>
+
+<h2>Function</h2>
+This function validates an existing rendering context information block,
+or creates a new one if none was supplied. You <b>must</b> use this function
+with <b>every</b> <a href="../structs/coords.html">struct Coords</a> that
+you receive before using it in rendering, or coordinate transformation.
+<p>
+When you are finished with the information, you <b>must</b> free the obtained
+data using the <a href=unclipcoords.html>Unclipcoords()</a> function.
+<p>
+This function nests. You may use it any number of times on the same context
+information block, provided that you pair each call with one call of the
+<a href=unclipcoords.html>Unclipcoords()</a> function.
+
+<h2>Inputs</h2>
+<table border>
+<tr><th align=left valign=top>Parameter
+   <th align=left valign=top>Description
+<tr><td valign=top><code>cframe</code>
+   <td valign=top>Pointer to the context frame
+      object that your object is displayed within.
+      Usually you get the context frame set in the AOBJ_Cframe attribute.
+<tr><td valign=top><code>coords</code>
+   <td valign=top>Pointer to an existing <a href="../structs/coords.html">struct Coords</a>,
+      or NULL.
+</table>
+
+<h2>Result</h2>
+A pointer to a properly initialized <a href="../structs/coords.html">struct Coords</a>.
+If you supplied a <a href="../structs/coords.html">struct Coords</a> as input,
+the result will be the same information block (though the contents may have
+changed). If you supply NULL for the <code>coords</code> parameter, a new
+context information block will be allocated.
+<p>
+If successful, the rastport (pointed to by <code>rp</code> field) is clipped
+to the rendering limits (the <code>minx, miny, maxx, maxy</code> fields) so
+you will not render outside the display area.
+<p>
+This function may fail, and return NULL. It also fails if it returns a valid
+pointer, but the <code>rp</code> field in the structure is NULL. You <b>must</b>
+call the <a href=unclipcoords.html>Unclipcoords()</a> function in this case too.
+
+<h2>See also</h2>
+<a href="unclipcoords.html">Unclipcoords()</a>
+

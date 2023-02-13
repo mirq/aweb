@@ -1,0 +1,20 @@
+MODULES := linklibs/libawebcommon.a linklibs/libawebdevcommon.a
+
+linklibs/libawebcommon.a/TYPE := executable/library/link
+linklibs/libawebcommon.a/CFILES := \
+defprefs\
+memory \
+libraries
+
+linklibs/libawebcommon.a/CFILES/CPPFLAGS := -I awebcfg/include
+
+
+linklibs/libawebdevcommon.a/TYPE := executable/library/link
+linklibs/libawebdevcommon.a/CFILES := \
+defprefs\
+memory \
+libraries
+
+linklibs/libawebdevcommon.a/CFILES/CPPFLAGS := -DDEVELOPER -DBETAKEYFILE -I awebcfg/include
+linklibs/libawebdevcommon.a/CFILES/CFLAGS := -gstabs
+

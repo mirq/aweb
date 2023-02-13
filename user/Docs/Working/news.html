@@ -1,0 +1,247 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+<html>
+<head>
+<title>
+Reading news
+</title>
+</head>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<h1>&nbsp; Reading news</h1>
+
+You can use the built-in newsreader to read newsgroups and post articles.
+This newsreader includes full support for <code>news:</code> type URLs.
+
+<h2>Setup</h2>
+Before you can use the built-in newsreader, you have to configure it
+in the <a href="../Configuring/nwmail.html">Mail/News</a> page of the
+<a href="../Configuring/settings.html#network">network settings window</a>.
+
+<h3>Required settings</h3>
+The following fields are required:
+<ul>
+<li>Your <a href="../Configuring/nwmail.html#email">e-mail address</a> and
+<li>your <a href="../Configuring/nwmail.html#realname">real name</a>.
+<li>The <a href="../Configuring/nwmail.html#nntphost">NNTP news host</a> that
+   you are going to use, probably this is called "<code>news.</code>"
+   followed by the name of your provider.
+<li>Only if the news server you use requires authorization, you have to enter
+   your <a href="../Configuring/nwmail.html#user">user name and password</a>
+   for this server.
+</ul>
+
+<h3>Optional settings</h3>
+The following fields are optional:
+<ul>
+<li>A <a href="../Configuring/nwmail.html#replyto">reply-to address</a> if
+   reactions in e-mail should go to a different address.
+<li>The name of the <a href="../Configuring/nwmail.html#organization">organization</a>
+   you represent when writing news articles, or just a fake name for fun.
+<li>Your <a href="../Configuring/nwmail.html#signature">signature file</a>,
+   the contents of this file is appended to every article you write.
+</ul>
+<p>
+Optionally, you can use an <a href="../Configuring/nwmail.html#extnewsreader">
+external newsreader</a> instead of the built-in one.
+<p>
+The <a href="../Configuring/nwmail.html#options">options</a> sub-page in the
+settings window contains a few options to customize the newsreader. These
+options are discussed below.
+
+<h2><a name=main>Starting the newsreader</a></h2>
+You can start the newsreader from the <code>Project / Open&nbsp;News</code>
+menu item, or by entering <a href="news:"><kbd>news:</kbd></a> in the URL
+field. The main news page is displayed.
+
+<h2><a name=subscribe>Subscribing to newsgroups</a></h2>
+Probably the most convenient way to read news is to <em>subscribe</em> to
+one or more newsgroups. This won't cost you any money, it just means adding
+a newsgroup to the list of groups you are interested in. Then you can easily
+enter the group from this list.
+<p>
+To subscribe to a newsgroup, enter the name of the group in the field at
+the bottom of the main news page and click the <b>Subscribe</b> button. Once you
+are subscribed to one or more groups, these are listed on this page. If you
+are online, the number of <a href=#catchup>new articles</a> in each group is
+displayed.
+<p>
+To unsubscribe from a subscribed group, click the <b>unsubscribe</b>
+link after that group.
+
+<h2>Reading a newsgroup</h2>
+To enter a newsgroup, just click on its name in the main news page. If
+you like to read a group but don't want to subscribe to it, you can
+enter its name in the field at the bottom of this page and click the <b>Read</b>
+button.
+<p>
+When you enter a group, a list of articles in that group is built. You can
+set a <a href="../Configuring/nwmail.html#maxarticles">maximum number of articles</a>
+to be included in this list, or use 0 for this setting to retrieve all
+<a href=#catchup>new</a> articles in the group.
+<p>
+If you have enabled the <a href="../Configuring/nwmail.html#frames">split screen</a>
+option, the window is split in two parts (using frames). The upper section
+contains the article list, the lower part will be used to display articles.
+<p>
+You have the option to <a href="../Configuring/nwmail.html#sort">sort</a> the
+list of articles on their subject. That way followups to an article appear
+grouped together with the original article in the list.
+<p>
+To <a href=#read>read</a> an article, just click on the subject.
+<p>
+
+<h2><a name=catchup>Old and new articles</a></h2>
+Generally articles remain some time on the news server, and probably you
+are only interested in new articles, not the old ones you've already read.
+To have old articles ignored in the future, you can <em>catch up</em> with
+a newsgroup, this means
+that all articles in that group are marked as being <em>old</em>. You won't
+see these articles again when you enter the newsgroup again.
+<p>
+There are two places where you can catch up, with a slightly different
+result. First, you can click the <b>Catch up</b> link for a group on the
+main news page. <strong>All</strong> articles currently in that
+group will be marked as <em>old</em> (in other words, there will be no new
+articles left).
+<p>
+Secondly, you can use the <b>Catch up</b> link in the article index of
+a newsgroup. This will only mark the articles listed in the index as <em>old</em>.
+If you have set a <a href="../Configuring/nwmail.html#maxarticles">maximum
+number</a> of articles, or if you have interrupted the building of the
+article index, those articles not in the list are not marked. This way
+you can read a group with many articles in "chunks", each time you enter
+the group again after <em>catch up</em> you'll see a new bunch of articles.
+<p>
+You cannot undo a <em>catch up</em> operation. You can however unsubscribe
+and subscribe again to a newsgroup, and all articles will be <em>new</em>
+again.
+
+<h2><a name=read>Reading articles</a></h2>
+To read an article, click on its subject in the article index. The article
+text will be displayed in the lower part of the window (or in the entire
+window if you have disabled the <a href="../Configuring/nwmail.html#frames">split
+screen</a> option).
+<p>
+By default the only <em>headers</em> shown are From, Subject and Date. If you
+select <a href="../Configuring/nwmail.html#longheaders">long headers</a>, <em>all</em>
+headers are included in the display.
+<p>
+You can <a href="../Configuring/nwmail.html#propfont">choose</a> between using
+a normal font or a proportional font for the article text. A normal font
+might be prettier to read, but any formatting (like tables or "ASCII-art")
+will be lost.
+<p>
+In case you want to save an article, don't use the normal <em>save source</em>
+option. Because AWeb converts the article text to HTML, the saved source
+will contain this HTML that the original article hadn't. Use the <b>Save
+article</b> link at the bottom instead, it will save the original article text.
+<p>
+<a name=bynumber>
+Some news readers</a> don't allow retrieval of all available articles the usual
+way (by the unique article-ID). If you can't access older articles, try
+selecting the <a href="../Configuring/nwmail.html#bynumber">Retrieve by number</a>
+option. If this option is selected, articles are retrieved by their local
+sequence number instead.
+
+<h2><a name=post>Posting an article</a></h2>
+To post a new article in a group, click the <b>Post new article</b> link
+on the group article index. To post a follow-up (reply) to another article,
+click the <b>Follow-up</b> link at the bottom of the article text.
+<p>
+Either way, the <em>new article form</em> is displayed. You can enter or
+change the subject, add or remove newsgroup names, and write your article.
+<p>
+If you post a follow-up, the original article is quoted (included in your
+article). Please spend a few seconds to cut down the quoted text until it
+only contains the lines that you are actually responding to.
+<p>
+You can <a href="../Configuring/nwmail.html#newsquote">customize</a> the quote
+header that appears above the quoted text.
+
+<h3>Netiquette</h3>
+There are a few rules ("netiquette") that you should obey when posting
+to newsgroups. Nobody will stop you from breaking these rules, but you
+will annoy many people if you do.
+<ul>
+<li>Don't change the subject for a follow-up, unless it doesn't cover
+   the actual article subject any more.
+<li>Don't post the same article to many newsgroups at once.
+<li>Don't quote an entire article and only add 1 or 2 lines.
+<li>Don't use overly large signatures (more than 3-4 lines).
+</ul>
+
+<h3><a name=privacy>Privacy aspects</a></h3>
+Spammers (senders of unsollicited bulk e-mail, mostly of commercial
+nature) often use software to scan articles posted in newsgroups for
+e-mail addresses to which they can send their electronic ads. If you use
+your real e-mail address in
+an article you post, it is likely that you will receive spam mails in
+the future. To protect yourself against this, you have two options:
+<p>
+You can configure a false or modified <a href="../Configuring/nwmail.html#email">
+E-mail address</a>. The scanning software used by spammers will find a
+false e-mail address, and their spam mail will never reach you.
+Unfortunately, this has the risk that your e-mails sent with the
+<a href="mail.html">internal mailer</a> will be rejected by the mail server
+of the addressee. For protection against spam mails, some mail servers
+check the address from which e-mail messages are sent, and ignore all mails
+coming from nonexistent addresses.
+<p>
+A better option is to configure your real <a href="../Configuring/nwmail.html#email">
+E-mail address</a> and enable the <a href="../Configuring/nwprivacy.html#spamblock">
+spamblock</a> mechanism. If this option is enabled, a random string is inserted in
+your e-mail address before it is included in the <code>From:</code> and
+<code>Reply-to:</code> headers of articles you post. To enable human readers of
+your article to e-mail you directly, a line is inserted in your article saying
+that this random string should be removed before replying in e-mail.
+
+<h2>Replying to an article</h2>
+If you want to reply to an article, but feel that it isn't appropriate
+for the public newsgroup, you can e-mail a reply. To do so, click the
+<b>Reply in e-mail</b> link at the bottom of the article. The
+<a href="mail.html">internal mailer</a> is started to allow you to write
+the reply.
+
+<h2>Searching for newsgroups</h2>
+You can search for newsgroup names using the search field at the bottom
+of the <a href=#main>main news page</a>. You can enter a DOS pattern to
+search with pattern matching, or you can enter a simple string for a
+normal search.
+<p>
+The first time you use this option, a list of all available newsgroups is
+downloaded. This list may be very long (many thousands of newsgroups),
+and can take several minutes to download. For your subsequent searches,
+the already downloaded list will be used. In order to keep up to date with
+the news server, AWeb will look for new groups when you use the search option,
+but not more often than once a day.
+<p>
+The search result is limited to 200 group names. If more groups are found, you
+should narrow your search.
+
+<p>
+<hr>
+<a href=../AWeb%20Manual.html><img src=../GlobalImages/back.gif width=32 height=16 alt="<-" border=0></a> Back to
+<a href=../AWeb%20Manual.html>index</a>.
+
+</body>
+</html>

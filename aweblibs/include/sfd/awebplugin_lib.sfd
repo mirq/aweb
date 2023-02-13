@@ -1,0 +1,12 @@
+==id $Id: awebplugin_lib.sfd,v 1.3 2005/01/28 03:38:55 falemagn Exp $
+==base _AwebPluginBase
+==basetype struct Library *
+==libname awebplugin.library
+==bias 30
+==public
+==include <exec/types.h>
+ULONG Initplugin(struct Plugininfo * plugininfo) (a0)
+void Queryplugin(struct Pluginquery * pluginquery) (a0)
+void Commandplugin(struct Plugincommand * plugincommand) (a0)
+void Filterplugin(struct Pluginfilter * pf) (a0)
+==end

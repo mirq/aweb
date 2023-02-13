@@ -1,0 +1,52 @@
+<html>
+<head>
+<title>UpdatetaskattrsA()</title>
+</head>
+<body>
+<h1>UpdatetaskattrsA()</h1>
+
+<h2>Purpose</h2>
+Send an <a href="../methods/update.html">AOM_UPDATE</a> message from a
+<a href="../classes/task.html">subtask</a> to the main task.
+
+<h2>Synopsis</h2>
+<pre>
+   result = UpdatetaskattrsA(taglist)
+   D0                        A0
+
+   ULONG UpdatetaskattrsA(struct TagItem *)
+
+   result = Updatetaskattrs(tag1, ...)
+
+   ULONG Updatetaskattrs(ULONG, ...)
+</pre>
+
+<h2>Function</h2>
+<a href="../classes/task.html">AOTP_TASK</a> support function. It builds an
+<a href="../methods/update.html">AOM_UPDATE</a> message using the supplied taglist.
+Then it sends this message to the main task, invoking the target object's
+<a href="../methods/update.html">AOM_UPDATE</a> method.
+<p>
+If you include the <b>AOTSK_Async,TRUE</b> tag,value pair in the taglist,
+this function is asynchroneous. It will return immediately. If you don't include
+this tag,value pair, the function is synchroneous. That is, it waits until the main
+task has returned from the method.
+<p>
+You may not use this function outside subtask code.
+
+<h2>Inputs</h2>
+<table border>
+<tr><th align=left valign=top>Parameter
+   <th align=left valign=top>Description
+<tr><td valign=top><code>taglist</code>
+   <td valign=top>Array of TagItem structures with attribute/value pairs
+</table>
+
+<h2>Result</h2>
+The return value of the target object's
+<a href="../methods/update.html">AOM_UPDATE</a> method, if used synchroneously.
+<p>
+If used asynchroneously, the result is undefined.
+
+<h2>See also</h2>
+<a href="updatetask.html">Updatetask()</a>

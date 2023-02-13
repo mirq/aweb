@@ -1,0 +1,79 @@
+<html>
+<head>
+<title>struct Objectparam</title>
+</head>
+<body>
+<h1><code>struct Objectparam</code></h1>
+
+<h2>Purpose</h2>
+
+The <b><code>struct Objectparam</code></b> is used to pass a general purpose
+parameter to a <a href="../objects/copydriver.html">Copydriver</a> object.
+<p>
+Such parameters are defined in <code>&lt;PARAM&gt;</code> HTML elements within
+an <code>&lt;OBJECT&gt;</code> containter, or as attributes in an
+<code>&lt;EMBED&gt;</code> HTML element.
+
+<h2>Structure contents</h2>
+
+<pre>
+struct Objectparam
+{  struct MinNode node;
+   STRPTR name;               /* Parameter name */
+   STRPTR value;              /* Parameter value */
+   STRPTR valuetype;          /* Type of value: "DATA", "REF", "URL" or "OBJECT" */
+   STRPTR type;               /* MIME type of parameter, only for REF or URL. */
+};
+</pre>
+
+<h2>Usage</h2>
+
+<h3>General</h3>
+If parameters are defined for an object, the
+<a href="../plugin/copydriver.html">plugin copydriver</a> object will
+receive a pointer to the first <code>struct Objectparam</code> as the
+<b>AOCDV_Objectparam</b> attribute in a <a href="../methods/set.html">AOM_SET</a>
+message.
+<p>
+Note that the structures are linked in an Amiga linked list, but you will
+not get a pointer to the list head, but to the first node in the list. A typical
+way of parsing the list would be:
+<p>
+<pre>
+   struct Objectparam *op;
+   
+   for(op=(struct Objectparam *)tag->ti_Data; op->node.mln_Succ;
+      op=(struct Objectparam *)op->node.mln_Succ)
+   {  /* Process the parameter */
+   }
+</pre>
+
+<h3>Field: <code>node</code></h3>
+Used to link the parameter details in a MinList.
+
+<h3>Field: <code>name</code></h3>
+Name of the parameter. Corresponds to the <code>NAME</code> attribute in the
+<code>&lt;PARAM&gt;</code> tag, or to the attribute name in the
+<code>&lt;EMBED&gt;</code> tag. This pointer might be NULL.
+
+<h3>Field: <code>value</code></h3>
+Value of the parameter. Corresponds to the <code>VALUE</code> attribute in the
+<code>&lt;PARAM&gt;</code> tag, or to the attribute value in the
+<code>&lt;EMBED&gt;</code> tag. This pointer might be NULL.
+
+<h3>Field: <code>valuetype</code></h3>
+Type of parameter value. Corresponds to the <code>VALUETYPE</code> attribute in the
+<code>&lt;PARAM&gt;</code> tag.
+Defined types are "DATA", "REF", "URL" and "OBJECT", but other values may appear
+in HTML documents. This pointer might be NULL.
+
+<h3>Field: <code>type</code></h3>
+MIME type of parameter value. Corresponds to the <code>TYPE</code> attribute in the
+<code>&lt;PARAM&gt;</code> tag.
+Its meaning is only defined if VALUETYPE is "REF" or "URL".
+This pointer might be NULL.
+
+</body>
+</html>
+
+

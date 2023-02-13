@@ -1,0 +1,117 @@
+==id $Id: awebsupport_lib.sfd,v 1.5 2006/04/11 13:01:50 broadblues Exp $
+==base _AwebSupportBase
+==basetype struct Library *
+==libname awebsupport.library
+==bias 30
+==public
+==include <exec/types.h>
+ULONG AmethodA(struct Aobject * par1, struct Amessage * tags) (a0,a1)
+==varargs
+ULONG Amethod(struct Aobject * par1, int dummy, ...) (a0,a1)
+ULONG AmethodasA(ULONG par1, struct Aobject * par2, struct Amessage * tags) (d0,a0,a1)
+==varargs
+ULONG Amethodas(ULONG par1, struct Aobject * par2, int dummy, ...) (d0,a0,a1)
+APTR AnewobjectA(ULONG par1, struct TagItem * tags) (d0,a0)
+==varargs
+APTR Anewobject(ULONG par1, int dummy, ...) (d0,a0)
+void Adisposeobject(struct Aobject * last) (a0)
+ULONG AsetattrsA(struct Aobject * par1, struct TagItem * tags) (a0,a1)
+==varargs
+ULONG Asetattrs(struct Aobject * par1, int dummy, ...) (a0,a1)
+ULONG AgetattrsA(struct Aobject * par1, struct TagItem * tags) (a0,a1)
+==varargs
+ULONG Agetattrs(struct Aobject * par1, int dummy, ...) (a0,a1)
+ULONG Agetattr(struct Aobject * par1, ULONG last) (a0,d0)
+ULONG AupdateattrsA(struct Aobject * par1, struct TagItem * par2, struct TagItem * tags) (a0,a1,a2)
+==varargs
+ULONG Aupdateattrs(struct Aobject * par1, struct TagItem * par2, int dummy, ...) (a0,a1,a2)
+ULONG Arender(struct Aobject * par1, struct Coords * par2, LONG par3, LONG par4,
+        LONG par5, LONG par6, USHORT par7, APTR last) (a0,a1,d0,d1,d2,d3,d4,a2)
+ULONG Aaddchild(struct Aobject * par1, struct Aobject * par2, ULONG last) (a0,a1,d0)
+ULONG Aremchild(struct Aobject * par1, struct Aobject * par2, ULONG last) (a0,a1,d0)
+ULONG Anotify(struct Aobject * par1, struct Amessage * last) (a0,a1)
+APTR Allocobject(ULONG par1, LONG par2, struct Amset * last) (d0,d1,a0)
+ULONG AnotifysetA(struct Aobject * par1, struct TagItem * tags) (a0,a1)
+==varargs
+ULONG Anotifyset(struct Aobject * par1, int dummy, ...) (a0,a1)
+APTR Allocmem(ULONG par1, ULONG last) (d0,d1)
+STRPTR Dupstr(STRPTR par1, LONG last) (a0,d0)
+void Freemem(APTR last) (a0)
+struct Coords * Clipcoords(struct Aobject * par1, struct Coords * last) (a0,a1)
+void Unclipcoords(struct Coords * last) (a0)
+void Erasebg(struct Aobject * par1, struct Coords * par2, LONG par3, LONG par4,
+        LONG par5, LONG last) (a0,a1,d0,d1,d2,d3)
+struct Aobject * Aweb() ()
+void AsetattrsasyncA(struct Aobject * par1, struct TagItem * tags) (a0,a1)
+==varargs
+void Asetattrsasync(struct Aobject * par1, int dummy, ...) (a0,a1)
+ULONG Waittask(ULONG last) (d0)
+struct Taskmsg * Gettaskmsg() ()
+void Replytaskmsg(struct Taskmsg * last) (a0)
+ULONG Checktaskbreak() ()
+ULONG Updatetask(struct Amessage * last) (a0)
+ULONG UpdatetaskattrsA(struct TagItem * tags) (a0)
+==varargs
+ULONG Updatetaskattrs(ULONG tags, ...) (a0)
+ULONG Obtaintasksemaphore(struct SignalSemaphore * last) (a0)
+LONG Avprintf(char * par1, ULONG * last) (a0,a1)
+==varargs
+LONG Aprintf(char * par1, ...) (a0,a1)
+UBYTE * Awebstr(ULONG last) (d0)
+void TcperrorA(struct Fetchdriver * par1, ULONG par2, ULONG * tags) (a0,d0,a1)
+==varargs
+void Tcperror(struct Fetchdriver * par1, ULONG par2,  ...) (a0,d0,a1)
+void TcpmessageA(struct Fetchdriver * par1, ULONG par2, ULONG * tags) (a0,d0,a1)
+==varargs
+void Tcpmessage(struct Fetchdriver * par1, ULONG par2, ...) (a0,d0,a1)
+struct Library * Opentcp(struct Library ** par1, struct Fetchdriver * par2,
+        BOOL last) (a0,a1,d0)
+struct hostent * Lookup(UBYTE * par1, struct Library * last) (a0,a1)
+BOOL Expandbuffer(struct Buffer * par1, long last) (a0,d0)
+BOOL Insertinbuffer(struct Buffer * par1, UBYTE * par2, long par3, long last) (a0,a1,d0,d1)
+BOOL Addtobuffer(struct Buffer * par1, UBYTE * par2, long last) (a0,a1,d0)
+void Deleteinbuffer(struct Buffer * par1, long par2, long last) (a0,d0,d1)
+void Freebuffer(struct Buffer * last) (a0)
+struct Locale * Locale() ()
+long Lprintdate(UBYTE * par1, UBYTE * par2, struct DateStamp * last) (a0,a1,a2)
+struct RastPort * Obtainbgrp(struct Aobject * par1, struct Coords * par2, LONG par3,
+        LONG par4, LONG par5, LONG last) (a0,a1,d0,d1,d2,d3)
+void Releasebgrp(struct RastPort * last) (a0)
+void Setstemvar(struct Arexxcmd * par1, UBYTE * par2, long par3, UBYTE * par4,
+        UBYTE * last) (a0,a1,d0,a2,a3)
+void Copyprefs(struct AwebPrefs * par1, struct AwebPrefs * last) (a0,a1)
+void Saveprefs(struct AwebPrefs * last) (a0)
+void Disposeprefs(struct AwebPrefs * last) (a0)
+void Freemenuentry(struct Menuentry * last) (a0)
+struct Menuentry * Addmenuentry(void * par1, USHORT par2, UBYTE * par3, UBYTE par4,
+        UBYTE * last) (a0,d0,a1,d1,a2)
+void Freemimeinfo(struct Mimeinfo * last) (a0)
+struct Mimeinfo * Addmimeinfo(void * par1, UBYTE * par2, UBYTE * par3, UBYTE * par4,
+        USHORT par5, UBYTE * par6, UBYTE * last) (a0,a1,a2,a3,d0,a4,d1)
+void Freenocache(struct Nocache * last) (a0)
+struct Nocache * Addnocache(void * par1, UBYTE * last) (a0,a1)
+UBYTE * Getstemvar(struct Arexxcmd * par1, UBYTE * par2, long par3, UBYTE * last) (a0,a1,d0,a2)
+void Freeuserbutton(struct Userbutton * last) (a0)
+struct Userbutton * Adduserbutton(void * par1, UBYTE * par2, UBYTE * last) (a0,a1,a2)
+void Freepopupitem(struct Popupitem * last) (a0)
+struct Popupitem * Addpopupitem(void * par1, USHORT par2, UBYTE * par3, UBYTE * last) (a0,d0,a1,a2)
+UBYTE * Awebversion() ()
+long Syncrequest(UBYTE * par1, UBYTE * par2, UBYTE * last) (a0,a1,a2)
+UBYTE * PprintfA(UBYTE * par1, UBYTE * par2, UBYTE ** tags) (a0,a1,a2)
+==varargs
+UBYTE * Pprintf(UBYTE * par1, UBYTE * par2, int dummy, ...) (a0,a1,a2)
+ULONG Today() ()
+void Freeuserkey(struct Userkey * last) (a0)
+struct Userkey * Adduserkey(void * par1, USHORT par2, UBYTE * last) (a0,d0,a1)
+long LprintfA(UBYTE * par1, UBYTE * par2, void * tags) (a0,a1,a2)
+==varargs
+long Lprintf(UBYTE * par1, UBYTE * par2, int dummy, ...) (a0,a1,a2)
+BOOL Fullversion() ()
+void Setfiltertype(void * par1, UBYTE * last) (a0,a1)
+void Writefilter(void * par1, UBYTE * par2, long last) (a0,a1,d0)
+long Awebcommand(long par1, UBYTE * par2, UBYTE * par3, long last) (d0,a0,a1,d1)
+BOOL Awebactive() ()
+void Freefontalias(struct Fontalias * last) (a0)
+struct Fontalias * Addfontalias(void * par1, UBYTE * last) (a0,a1)
+void Freestemvar(UBYTE *last) (a0)
+==end

@@ -1,0 +1,116 @@
+##base _AwebSupportBase
+##bias 30
+##public
+*
+*--- object dispatcher
+*
+AmethodA(aobject,amessage)(a0,a1)
+AmethodasA(objtype,aobject,amessage)(d0,a0,a1)
+* 
+*--- object methods
+* 
+AnewobjectA(objtype,taglist)(d0,a0)
+Adisposeobject(aobject)(a0)
+AsetattrsA(aobject,taglist)(a0,a1)
+AgetattrsA(aobject,taglist)(a0,a1)
+Agetattr(aobject,attrid)(a0,d0)
+AupdateattrsA(aobject,maplist,taglist)(a0,a1,a2)
+Arender(aobject,coords,minx,miny,maxx,maxy,flags,text)(a0,a1,d0,d1,d2,d3,d4,a2)
+Aaddchild(aobject,child,relation)(a0,a1,d0)
+Aremchild(aobject,child,relation)(a0,a1,d0)
+Anotify(aobject,amessage)(a0,a1)
+* 
+*--- object support
+* 
+Allocobject(objtype,size,amset)(d0,d1,a0)
+AnotifysetA(aobject,taglist)(a0,a1)
+* 
+*--- memory
+* 
+Allocmem(size,flags)(d0,d1)
+Dupstr(string,length)(a0,d0)
+Freemem(mem)(a0)
+* 
+*--- render
+* 
+Clipcoords(cframe,coords)(a0,a1)
+Unclipcoords(coords)(a0)
+Erasebg(cframe,coords,xmin,ymin,xmax,ymax)(a0,a1,d0,d1,d2,d3)
+* 
+*--- application
+* 
+Aweb()()
+* 
+*--- task
+* 
+AsetattrsasyncA(task,taglist)(a0,a1)
+Waittask(signals)(d0)
+Gettaskmsg()()
+Replytaskmsg(taskmsg)(a0)
+Checktaskbreak()()
+Updatetask(amessage)(a0)
+UpdatetaskattrsA(taglist)(a0)
+Obtaintasksemaphore(signalsemaphore)(a0)
+*
+*--- debug
+*
+Avprintf(format,args)(a0,a1)
+*
+##private
+Awebprivate1()()
+Awebprivate2()()
+Awebprivate3()()
+Awebprivate4()()
+Awebprivate5()()
+Awebprivate6()()
+Awebprivate7()()
+Awebprivate8()()
+Awebprivate9()()
+Awebprivate10()()
+Awebprivate11()()
+Awebprivate12()()
+##public
+*
+*--- render
+*
+Obtainbgrp(cframe,coords,xmin,ymin,xmax,ymax)(a0,a1,d0,d1,d2,d3)
+Releasebgrp(bgrp)(a0)
+*
+##private
+AWebprivate13()()
+AWebprivate14()()
+AWebprivate15()()
+AWebprivate16()()
+AWebprivate17()()
+AWebprivate18()()
+AWebprivate19()()
+AWebprivate20()()
+AWebprivate21()()
+AWebprivate22()()
+AWebprivate23()()
+AWebprivate24()()
+AWebprivate25()()
+AWebprivate26()()
+AWebprivate27()()
+AWebprivate28()()
+AWebprivate29()()
+AWebprivate30()()
+AWebprivate31()()
+AWebprivate32()()
+AWebprivate33()()
+AWebprivate34()()
+AWebprivate35()()
+##public
+*
+* Library version 2.0
+*
+*--- filter type plugins
+*
+Setfiltertype(handle,type)(a0,a1)
+Writefilter(handle,data,length)(a0,a1,d0)
+*
+*--- commands
+*
+Awebcommand(port,command,resultbuf,length)(d0,a0,a1,d1)
+*
+##end

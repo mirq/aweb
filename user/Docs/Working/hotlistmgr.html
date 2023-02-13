@@ -1,0 +1,343 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+<html>
+<head>
+<title>Hotlist Manager</title>
+</head>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<h1>&nbsp; Hotlist Manager</h1>
+
+<h2>Introduction</h2>
+The hotlist manager is a powerful tool to edit and rearrange your
+<a href=hotlist.html>AWeb hotlist</a>. It allows you to add, change
+or delete entries, and combine entries in groups, where each entry can
+be stored in more than one group. You
+can easily find your entries again with the <a href=#find>find</a>,
+<a href=#match>match</a> and <a href=#where>where</a> functions.
+<p>
+You open the hotlist manager by selecting the <code>Hotlist /
+Hotlist&nbsp;manager</code> menu item, or clicking the <b>Manager</b>
+button in the <a href=hotlist.html#viewer>hotlist viewer</a> window.
+
+<h2>Overview</h2>
+The hotlist manager window looks like this:
+<table border width=100%>
+<tr align=center valign=middle>
+   <td colspan=4>Hotlist title
+   <td nowrap><a href=#switch>&lt; &gt;</a>
+   <td colspan=3>Resource title
+<tr align=center valign=middle>
+   <td colspan=4 rowspan=8><a href=#hotlist>Hotlist display</a>
+   <td nowrap><a href=#addin>&lt; In</a>
+   <td colspan=3 rowspan=8><a href=#resource>Resource display</a>
+<tr align=center valign=middle>
+   <td nowrap><a href=#move>&lt; Move</a>
+<tr align=center valign=middle>
+   <td nowrap><a href=#moveout>Out &gt;</a>
+<tr align=center valign=middle>
+   <td nowrap><a href=#delete>Delete</a>
+<tr align=center valign=middle>
+   <td nowrap><a href=#where>Where</a>
+<tr align=center valign=middle>
+   <td nowrap><a href=#show>Show</a>
+<tr align=center valign=middle>
+   <td nowrap><br><br>
+<tr align=center valign=middle>
+   <td nowrap><a href=#urls>Urls</a>
+<tr align=center valign=middle>
+   <td nowrap><a href=#move>Up</a>
+   <td nowrap><a href=#move>Down</a>
+   <td nowrap><a href=#sort>Sort</a>
+   <td nowrap><a href=#addentry>+ Entry</a>
+   <td nowrap><a href=#revert>Revert</a>
+   <td colspan=2 nowrap><a href=#add>Add</a>
+   <td nowrap><a href=#list>List type</a>
+<tr align=center valign=middle>
+   <td nowrap colspan=2><a href=#groups>Groups</a>
+   <td nowrap><a href=#parent>Parent</a>
+   <td nowrap><a href=#addgroup>+ Group</a>
+   <td nowrap><a href=#save>Save</a>
+   <td nowrap><a href=#find>Find</a>
+   <td nowrap><a href=#match>Match</a>
+   <td nowrap><a href=#rsort>List sort</a>
+<tr align=center valign=middle>
+   <td colspan=4><a href=#name>Name</a>
+   <td colspan=4><a href=#name>Url</a>
+<tr align=center valign=middle>
+   <td colspan=4 rowspan=2>
+   <td colspan=3><a href=#find>Find string</a>
+   <td nowrap><a href=#find>Next</a>
+<tr align=center valign=middle>
+   <td colspan=4><a href=#match>Match string</a>
+</table>
+The components on the left side are directly related to the hotlist and
+its subdivision in groups. The right side of the window contains items
+related to the resources, these are the entries to include in the
+hotlist groups. The middle set of gadgets contain functions that apply
+to both sides of the window.
+<p>
+The bottom row can contain three different sets of text-entry fields,
+depending on the <a href=#find>find</a> and <a href=#match>match</a>
+button states.
+
+<h2><a name=switch>Switch focus &lt;&nbsp;&gt;</a></h2>
+In the hotlist manager window, the focus is that half (right or left) that
+the cursor key functions apply to. Also, the exact meaning of some of the
+middle column buttons, and the <a href=#name>name</a> and <a href=#name>url</a>
+input fields depend on the current focus.
+<p>
+This button contains an arrow pointing to the half that has the focus.
+Also the background of the list title in the window half that has the focus,
+is changed to black.
+Using one of the functions on each window half, automatically sets the
+focus to that half. Click the button to switch the focus manually.
+<p>
+You can also use the left or right cursor keys to select the focus
+by hand.
+
+<h2><a name=hotlist>Hotlist display</a></h2>
+This left-hand list contains one of the following:
+<ol>
+<li>An outline of all groups defined in the hotlist, without their
+   actual entries. From here you can select a group for further
+   processing.
+<li>All entries within a group, including the names of the direct
+   subgroups.
+<li>A list of group names, as the result of the <a href=#where>where</a>
+   function.
+</ol>
+You can select from the list by clicking an entry. If you double-click
+on a group name, this group is shown in detail. If you double-click
+on a link, that page is loaded in the browser window.
+<p>
+Many functions support multiple selections. Drag the mouse or hold the
+<kbd>SHIFT</kbd> key while you click to select more than one entry.
+<p>
+The cursor up and down keys move the selection. Holding the <kbd>SHIFT</kbd>
+key with the cursor up and down enables multiple selection. The
+<kbd>Enter</kbd> key has the same function as double-clicking.
+
+<h2><a name=resource>Resource display</a></h2>
+The right-hand list contains the resources, the things you build your
+groups from. It contains one of the following:
+<ol>
+<li>All links that are not yet assigned to any group.
+<li>All links, both unassigned and already assigned to a group.
+   Entries in <i>italics</i> are not yet assigned, items that are displayed
+   in normal text are links that are already assigned to one or
+   more groups.
+<li>The groups at the root level.
+</ol>
+Use the <a href=#list>List type</a> chooser to set the contents to one
+of these three.
+<p>
+Amongst other functions, you can use the <a href=#addin>Move In</a>
+function to move selected entries to the group currently displayed
+in the left-hand list.
+<p>
+Selecting and keyboard support is like that of the <a href=#hotlist>Hotlist
+display</a>.
+
+<h2>General functions</h2>
+
+<h3><a name=addin>Add In &lt;</a></h3>
+This function adds the selected entry or entries from the right-hand
+(<a href=#resource>resource</a>) list to the left-hand (<a href=#hotlist>hotlist</a>)
+list. The left-hand list must display a group. The focus switches to
+the left-hand list.
+<p>
+If one or more moved entries were already assigned to other groups,
+they will stay assigned to those groups. Use the <a href=#move>Move</a>
+function to <em>move</em> (not <em>add</em>) entries.
+<p>
+The <kbd>SHIFT</kbd> + cursor left key combination is an alternate
+way to perform this function.
+
+<h3><a name=move>Move &lt;</a></h3>
+This function moves the selected entry or entries from the right-hand
+(<a href=#resource>resource</a>) list to the left-hand (<a href=#hotlist>hotlist</a>)
+list. The left-hand list must display a group. The focus switches to
+the left-hand list. Use the <a href=#addin>Add In</a>
+function to <em>add</em> (not <em>move</em>) entries.
+<p>
+If one or more moved entries were already assigned to other groups,
+they will be removed from those groups.
+
+<h3><a name=moveout>Move Out &gt;</a></h3>
+If the left-hand (<a href=#hotlist>hotlist</a>) list contains the
+details of a group, and you have selected one or more entries, this
+function removes the selected entries from the group. The entry
+details are not deleted.
+<p>
+The focus switches to the right-hand list.
+The removed entries may appear in the right-hand (<a href=#resource>resource</a>)
+list. This depends on the current contents of the right-hand
+list, and whether the removed entry is still assigned to another
+group or not.
+<p>
+The <kbd>SHIFT</kbd> + cursor right key combination is an alternate
+way to perform this function.
+
+<h3><a name=delete>Delete</a></h3>
+The delete function deletes selected entries from the list that has
+the focus. All details of the selected entries are deleted. If you
+delete a link that is also included in another group, it is deleted
+from that other group too. If you delete a group, all entries in that
+group are deleted also.
+
+<h3><a name=where>Where</a></h3>
+Use this function to locate the group or groups that contain a
+certain link. The search operates on the selected entry in the
+right-hand (<a href=#resource>resource</a>) list. It must be
+a single entry, multiple selection doesn't work for this function.
+<p>
+As a result, the left-hand (<a href=#hotlist>hotlist</a>) list
+will contain the details of the group that contains this link, and
+the link that was searched fore becomes selected.
+If the link is assigned to more than one group, the left-hand list will
+show a list of all groups containing the link.
+
+<h3><a name=show>Show</a></h3>
+This function loads the selected link in the browser window. It
+operates on a single link only, from the list that has the focus.
+<p>
+Double-clicking on a link in either list will do the same.
+
+<h3><a name=urls>URLs</a></h3>
+By default both lists contain the page titles only. Use this checkbox
+to enable display of the URLs along with the titles.
+
+<h3><a name=revert>Revert</a></h3>
+Clicking this button reverts to the last saved version of the hotlist.
+All changes made since last saving the list are lost.
+
+<h3><a name=save>Save</a></h3>
+Save the current hotlist. If you have made changes to the list, these
+will be saved automatically when you quit AWeb. Use this button to save
+the list immediately.
+
+<h2>Functions in the left-hand half window</h2>
+
+<h3><a name=move>Move up and down</a></h3>
+Use the up and down arrow buttons to move the selected entry up or down.
+This works only for single items, multiple selection doesn't work.
+<p>
+Using the <kbd>CTRL</kbd> + cursor up or down key combination does
+the same.
+
+<h3><a name=sort>Sort</a></h3>
+Sort the hotlist, or the currently displayed group. Subgroups are
+sorted first in alphabetical order, then come the individual links,
+also sorted alphabetically.
+
+<h3><a name=addentry>+ Entry</a></h3>
+Add a new link entry to the currently displayed group. Use the
+<a href=#name>name</a> and <a href=#name>url</a> input fields to change
+its details.
+
+<h3><a name=addgroup>+ Group</a></h3>
+Add a new group to the hotlist, or a new subgroup to the currently
+displayed group. Use the <a href=#name>name</a> input field to change
+its name.
+
+<h3><a name=groups>Groups</a></h3>
+Show an outline of all groups in the hotlist. The complete subgroup
+hierarchy is displayed, but links are omitted.
+
+<h3><a name=parent>Parent</a></h3>
+When group details are displayed, this button switches to the parent
+group. If there is no parent group, the hotlist outline is displayed.
+<p>
+The <kbd>Backspace</kbd> key performs the same function.
+
+<h2>Functions in the right-hand half window</h2>
+
+<h3><a name=add>Add</a></h3>
+Add a new link entry. Use the <a href=#name>name</a> and <a href=#name>url</a>
+input fields to change its details. Unlike the result of the
+<a href=#addentry>+ Entry</a> button, the new entry is not assigned to a group.
+
+<h3><a name=list>List type</a></h3>
+Use this chooser to select from the three possible content types of
+the right-hand list.
+<p>
+<b>Rest</b> shows a list of all links that are not yet assigned to any group.<br>
+<b>All</b> shows a list of all links.<br>
+<b>Groups</b> shows a list of groups at the root level. You can
+<a href=#addin>move</a> a group from the root level into another group too,
+then the group becomes a subgroup.
+
+<h3><a name=find>Find</a></h3>
+Enable the find function. This button toggles, clicking it again
+(or clicking the <a href=#match>match</a> button) disables the find function.
+<p>
+You can now type a search string in the entry field at the bottom.
+After you hit <kbd>Enter</kbd> in the entry field, or click the <b>Next</b>
+button, the string is located in the right-hand list. Clicking the
+<b>Next</b> button again finds the next occurrence.
+<p>
+If <a href=#urls>URLs</a> are displayed, these are searched for the string
+too, otherwise only the titles are searched.
+
+<h3><a name=match>Match</a></h3>
+Enable the match function. This button toggles, clicking it again
+(or clicking the <a href=#find>find</a> button) disables the match function.
+<p>
+You can now type a search string or pattern in the entry field at the bottom.
+After you hit <kbd>Enter</kbd> in the entry field, all entries in the
+right-hand list matching the string or pattern become selected.
+<p>
+If <a href=#urls>URLs</a> are displayed, these are searched for the string
+too, otherwise only the titles are searched.
+<p>
+The match function supports both plain search strings and patterns.
+If the search string typed contains a DOS pattern matching character,
+it uses pattern matching against the full entry titles (and optionally URLs).
+Otherwise a search is made for any occurrence of the search string
+within the titles (or URLs).
+<p>
+When URLs are searched with pattern matching, and the pattern does not
+contain the addressing scheme part (the part like "http://"), then the
+scheme part of every URL is ignored. So a pattern "foo.bar#?" matches URLs
+"http://foo.bar/xyz.html" and "ftp://foo.bar/zoo".
+
+<h3><a name=rsort>List sort</a></h3>
+This chooser determines the order in which the link entries in the right-hand
+list are displayed. You can choose between sorted by date (most recently added
+entry first), sorted by title or sorted by URL.
+
+<h3><a name=name>Name and URL</a></h3>
+These fields contain the group name or link title, and the URL of
+the currently selected item in the list that has the focus. The entry
+fields allow you to change the name or the URL for any group or link by hand.
+<p>
+If you change the title or URL of a link from the right-hand
+(<a href=#resource>resource</a>) list, these details are changed for
+<em>every instance</em> of this link, in any group.<br>
+If, on the other hand, you change the details of a link from the
+left-hand (<a href=#hotlist>hotlist</a>) list, these are <em>only</em> changed
+for the entry in the current group. If another group contains the same
+link, that entry is not affected.
+
+</body>
+</html>

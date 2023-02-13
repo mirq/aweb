@@ -1,0 +1,2183 @@
+## version $VER: AWeb.catalog 3.4 (26.01.2001)
+## language català
+## codeset 0
+;
+; AWeb.cd - AWeb catalog description file
+;
+; $Id: aweb.ct,v 1.8 2009/09/11 11:41:43 opi Exp $
+;
+;  The MSG_DUMMY_nn labels are there because FlexCat doesn't
+;  understand the LABEL (+1//) syntax (C='s Catcomp uses this
+;  to skip 1 number)
+;
+;
+;-------------- General -----------------------------
+;
+MSG_REQUEST_TITLE
+Sol·licitud d'AWeb
+; AWeb request
+;
+MSG_REQUEST_YES_NO
+
+; Yes|No
+;
+; ***NEW***
+;
+;
+;-------------- About requester ---------------------
+;
+MSG_ABOUT_TITLE
+Sobre l'AWeb
+; About AWeb
+;
+MSG_ABOUT_REGNR
+Registre #
+; Registration #
+;
+MSG_ABOUT_REGTO
+Registrat a
+; Registered to
+;
+MSG_ABOUT_SCREENNAME
+Nom de la pantalla pública
+; Public screen name
+;
+MSG_ABOUT_PORTNAME
+Nom del port ARexx
+; ARexx port name
+;
+MSG_ABOUT_EMAIL
+Correu electrònic
+; E-mail
+;
+MSG_ABOUT_WWW
+WWW
+; WWW
+;
+MSG_ABOUT_OK
+_D'acord
+; _Ok
+;
+MSG_ABOUT_UNREGISTERED
+Versió no registrada\n
+; Unregistered version\n
+;
+MSG_ABOUT_DEMO
+Versió demostració no registrada\n
+; Unregistered demo version\n
+;
+MSG_ABOUT_DISTRIBUTED
+Distribuït per %s
+; Distributed by %s
+;
+; Translators give yourself credit with this string.
+; It should read something like "(Language) translation by: (your name)\n"
+;
+MSG_ABOUT_TRANSLATOR
+Traducció al català per Llorenç Grau\n
+; 
+;
+MSG_ABOUT_SPECIAL
+Versió especial per ser distribuïda amb l'Amiga OS\n
+; Special version for distribution with Amiga OS\n
+;
+;-------------- Quit requester ----------------------
+;
+MSG_QUIT_TEXT
+Segur que voleu sortir d'AWeb?
+; Are you sure you want to quit AWeb?
+;
+MSG_QUIT_OK
+_D'acord
+; _Ok
+;
+MSG_QUIT_CANCEL
+_Cancel·lar
+; _Cancel
+;
+MSG_QUIT_WARNING
+ADVERTÈNCIA: Les transferències seran avortades!\n\n
+; WARNING: Transfers will be aborted!\n\n
+;
+;-------------- Demoversion requester ---------------
+;
+MSG_DEMO_TEXT
+Aquesta és la versió demostració d'AWeb\nno suporta distintes finestres de documents
+; This is the demo version of AWeb\nmultiple document windows are not supported
+;
+MSG_DEMO_OK
+_D'acord
+; _Ok
+;
+;
+;-------------- Close windows requester -------------
+;
+MSG_SCRCLOSE_TEXT
+AWeb no pot tancar la seva pantalla.\nSi us plau, tanqueu totes les finestres.
+; AWeb can't close its screen.\nPlease close all windows.
+;
+MSG_SCRCLOSE_OK
+D'acord
+; Ok
+;
+;
+;-------------- Network status window ---------------
+;
+MSG_NWS_TITLE
+Estat de la xarxa
+; Network status
+;
+MSG_NWS_QUEUED
+En cua
+; Queued
+;
+MSG_NWS_STARTED
+Començat
+; Started
+;
+MSG_NWS_LOOKUP
+S'està cercant
+; Looking up
+;
+MSG_NWS_CONNECT
+S'està connectant
+; Connecting
+;
+MSG_NWS_WAIT
+Esperant
+; Waiting
+;
+MSG_NWS_PROCESS
+S'està processant
+; Processing
+;
+MSG_NWS_LOGIN
+S'està entrant
+; Logging in
+;
+MSG_NWS_CPS
+%ld cps
+; %ld cps
+;
+MSG_NWS_NEWSGROUP
+S'està escanejant
+; Scanning
+;
+MSG_NWS_UPLOAD
+S'està penjant
+; Uploading
+;
+;-------------- Authorization requester -------------
+;
+MSG_AUTH_TITLE
+Autorització
+; Authorization
+;
+MSG_AUTH_PROMPT
+Es necessita nom d'usuari i contrasenya
+; Userid and password required for
+;
+MSG_AUTH_USERID
+Nom d'_usuari
+; _Userid
+;
+MSG_AUTH_PASSWORD
+Contrasen_ya
+; _Password
+;
+MSG_AUTH_OK
+_D'acord
+; _Ok
+;
+MSG_AUTH_CANCEL
+_Cancel·lar
+; _Cancel
+;
+MSG_AUTH_PROMPT_FTP
+Es necessita contrasenya
+; Password required for
+;
+MSG_AUTH_USERID_FTP
+Nom d'usuari
+; Userid
+;
+MSG_AUTH_PROMPT_PROXY
+Es necessita nom d'usuari i contrasenya pel servidor intermediari
+; Userid and password required for proxy
+;
+MSG_AUTH_PROMPT_MASTER
+
+; Please enter the password to show the passwords.
+;
+; ***NEW***
+;
+;
+;-------------- File requesters ---------------------
+;
+MSG_FILE_SAVETITLE
+Seleccioneu un nom pel fitxer a desar
+; Select save filename
+;
+MSG_FILE_SAVE
+Desar
+; Save
+;
+MSG_FILE_INCTEXT
+Fitxer incomplet!\n%s\nS'esperaven: %ld octecs\nS'han rebut: %ld octects\n\n\
+Premeu sobre D'acord per desar les dades parcials.
+; Incomplete file!\n%s\nExpected: %ld bytes\nReceived: %ld bytes\n\n\
+; Choose OK to keep the partial data.
+;
+MSG_DUMMY_1
+
+; 
+MSG_FILE_EXISTTEXT
+El fitxer:\n%s\nja existeix!
+; File:\n%s\nalready exists!
+;
+MSG_FILE_EXISTBUTTONS
+_Sobreescriure|_Afegir|_Nom nou|_Cancel·lar
+; _Overwrite|_Append|_New name|_Cancel
+;
+MSG_FILE_AREXXTITLE
+Seleccioneu una macro ARexx
+; Select ARexx macro
+;
+MSG_FILE_HOTLISTTITLE
+Seleccioneu una llista jeràrquica de favorits
+; Select hierarchical hotlist
+;
+MSG_FILE_LOCALTITLE
+Obriu un fitxer local
+; Open local file
+;
+MSG_FILE_OPEN
+Obrir
+; Open
+;
+MSG_FILE_TEMPTITLE
+No es pot trobar el camí temporal:\n%s\nEs farà servir T: en el seu lloc.
+; Can't find temporary path:\n%s\nUse T: instead.
+;
+MSG_FILE_TEMPBUTTONS
+_D'acord
+; _Ok
+;
+MSG_FILE_INCBUTTONS2
+_D'acord|_Reintentar|_Cancel·lar
+; _Ok|_Retry|_Cancel
+;
+MSG_FILE_SETTINGSTITLE
+Seleccioneu un directori pels paràmetres
+; Select settings directory
+;
+MSG_FILE_UPLOADTITLE
+Seleccioneu el fitxer a penjar
+; Select file to upload
+;
+;-------------- TCP close requester -----------------
+;
+MSG_TCP_ENDTCP
+AWeb està aturat.\nVoleu finalitzar la connexió TCP, també?
+; AWeb is stopped.\nShould the TCP connection be terminated too?
+;
+MSG_TCP_BUTTONS
+_Sí|_No
+; _Yes|_No
+;
+;-------------- Startup requester -------------------
+; Mind the maximum length!
+;
+MSG_STARTUP_FONTS
+S'estan carregant les lletres
+; Loading fonts
+;
+MSG_STARTUP_IMAGES
+Carregant les imatges del GUI
+; Loading GUI images
+;
+MSG_STARTUP_CACHE
+Carregant l'índex memòria cau
+; Loading cache index
+;
+;-------------- Hotlist requester -------------------
+;
+MSG_HOTL_TITLE
+Favorits d'AWeb
+; AWeb hotlist
+;
+MSG_HOTL_ADDLINK
+_Afegir enllaç
+; _Add link
+;
+MSG_HOTL_ADDGROUP
+Afegir _grup
+; Add _group
+;
+; (No hotkey for this one please!)
+MSG_HOTL_REMOVE
+Eliminar
+; Remove
+;
+MSG_HOTL_FOLLOW
+_Continuar
+; _Follow
+;
+MSG_HOTL_NAME
+Nom
+; _Name
+;
+MSG_HOTL_URL
+_URL
+; _URL
+;
+MSG_HOTL_NEWGROUP
+Grup nou
+; New group
+;
+MSG_HOTL_NEWLINK
+Enllaç nou
+; New link
+;
+; -- new hotlist viewer requester --
+;
+MSG_HOTL_TITLE_VIEWER
+Visualitzador de favorits d'AWeb
+; AWeb hotlist viewer
+;
+MSG_HOTL_VURLS
+UR_LS
+; UR_Ls
+;
+MSG_HOTL_MANAGER
+_Gestor
+; _Manager
+;
+; -- new hotlist manager requester --
+;
+MSG_HOTL_TITLE_MANAGER
+Gestor de favorits d'AWeb
+; AWeb hotlist manager
+;
+MSG_HOTL_LTYPE
+Ll_ista
+; L_ist
+;
+MSG_HOTL_LTYPE_REST
+Resta
+; Rest
+;
+MSG_HOTL_LTYPE_ALL
+Tots
+; All
+;
+MSG_HOTL_LTYPE_GROUPS
+Grups
+; Groups
+;
+MSG_HOTL_LSORT
+_Ordenar
+; S_ort
+;
+MSG_HOTL_LSORT_TITLE
+Títol
+; Title
+;
+MSG_HOTL_LSORT_URL
+URL
+; URL
+;
+MSG_HOTL_MOVEIN
+_< Dins
+; _< In
+;
+MSG_HOTL_MOVEOUT
+Fora _>
+; Out _>
+;
+MSG_HOTL_MOVE
+< _Moure
+; < _Move
+;
+MSG_HOTL_DEL
+Es_borrar
+; _Delete
+;
+MSG_HOTL_WHERE
+O_n
+; _Where
+;
+MSG_HOTL_SHOW
+Mos_trar
+; S_how
+;
+MSG_HOTL_SORT
+Ordena_r
+; Sor_t
+;
+MSG_HOTL_PARENT
+Anterior
+; _Parent
+;
+MSG_HOTL_ALL
+Grups
+; G_roups
+;
+MSG_HOTL_ADDENTRY
++ Entra_da
+; + _Entry
+;
+MSG_HOTL_ADDGROUP2
++ Gru_p
+; + _Group
+;
+MSG_HOTL_URLS
+UR_LS
+; UR_Ls
+;
+MSG_HOTL_REVERT
+Re_vertir
+; Re_vert
+;
+MSG_HOTL_SAVE
+De_sar
+; _Save
+;
+MSG_HOTL_LADD
+Afe_gir
+; _Add
+;
+MSG_HOTL_FIND
+_Cercar
+; _Find
+;
+MSG_HOTL_PATTERN
+_Filtre
+; Mat_ch
+;
+MSG_HOTL_NEXT
+Següent
+; Ne_xt
+;
+MSG_HOTL_DEFAULT_TITLE
+** Enllaç nou **
+; ** New link **
+;
+MSG_HOTL_DEFAULT_GROUP
+** Grup nou **
+; ** New group **
+;
+MSG_HOTL_TITLE_ALLGROUPS
+Tots els grups
+; All groups
+;
+MSG_HOTL_TITLE_WHERE
+Grups que contenen aquesta entrada
+; Groups containing this entry
+;
+MSG_HOTL_TITLE_REST
+Entrades no assignades
+; Unassigned entries
+;
+MSG_HOTL_TITLE_ALL
+Totes les entrades
+; All entries
+;
+MSG_HOTL_TITLE_ROOTGROUPS
+Grups a nivell-arrel
+; Root-level groups
+;
+MSG_HOTL_LSORT_DATE
+Data
+; Date
+;
+;
+;--------------  Window history requester -------------------
+;
+MSG_WHIS_TITLE
+Finestra d'historial
+; Window history
+;
+MSG_WHIS_FILTER
+_Filtre
+; _Filter
+;
+MSG_WHIS_WINDOW
+F_inestra
+; _Window
+;
+MSG_WHIS_ORDER
+_Ordenar
+; _Order
+;
+MSG_WHIS_DISPLAY
+_Mostrar
+; _Display
+;
+MSG_WHIS_ORDER_NATURAL
+Natural
+; Natural
+;
+MSG_WHIS_ORDER_MAINLINE
+Principal
+; Mainline
+;
+MSG_WHIS_ORDER_RETRIEVED
+Recuperat
+; Retrieved
+;
+MSG_WHIS_ORDER_TITLE
+Títol
+; Title
+;
+MSG_WHIS_ORDER_URL
+URL
+; URL
+;
+;
+;-------------- Cache browser ---------------------------
+;
+MSG_CABR_TITLE
+Navegador de la memòria cau
+; Cache browser
+;
+MSG_CABR_URL
+URL
+; URL
+;
+MSG_CABR_DATE
+Data
+; Date
+;
+MSG_CABR_SIZE
+Mida
+; Size
+;
+MSG_CABR_TYPE
+Tipus
+; Type
+;
+MSG_CABR_FILE
+Fitxer
+; File
+;
+MSG_CABR_STATUS
+%ld fitxers, %ld kB
+; %ld files, %ld kB
+;
+MSG_CABR_SORTBY
+O_rdenar per
+; _Sort by
+;
+MSG_CABR_OPEN
+_Obrir
+; _Open
+;
+MSG_CABR_SAVE
+De_sar
+; Sa_ve
+;
+MSG_CABR_DELETE
+_Esborrar
+; _Delete
+;
+MSG_CABR_FIND
+_Cercar
+; _Find
+;
+MSG_CABR_PATTERN
+Coinci_dir
+; _Match
+;
+MSG_CABR_NEXT
+Se_güent
+; _Next
+;
+MSG_CABR_CHARSET
+
+; Charset
+;
+; ***NEW***
+;
+MSG_CABR_ETAG
+
+; Etag
+;
+; ***NEW***
+;
+;-------------- Progress requester ----------------------
+;
+MSG_PROGRESS_TITLE
+Control de progrés d'AWeb
+; AWeb progress
+;
+MSG_PROGRESS_CANCEL
+Cancel·lar
+; Cancel
+;
+;
+;-------------- Fix cache requesters ---------------------
+;
+MSG_FIXCACHE_WARNING
+ADVERTÈNCIA!\n\
+Aquesta funció esborrarà tots els fitxers del\n\
+calaix %s
+; WARNING!\n\
+; This function will delete all foreign files from the\n\
+; %s drawer
+;
+MSG_FIXCACHE_BUTTONS
+_D'acord|_Cancel·lar
+; _Ok|_Cancel
+;
+MSG_FIXCACHE_PROGRESS
+S'està arreglant la memòria cau de disc...
+; Fixing the disk cache...
+;
+MSG_FIXCACHE_DELETEPROGRESS
+
+; Delete %ld Files from disk cache...
+;
+; ***NEW***
+;
+MSG_FIXCACHE_DELETEIMAGES
+Segur que voleu esborrar totes\n\
+les imatges de la memòria cau?
+; Are you sure you want to delete\n\
+; all images from the cache?
+;
+MSG_FIXCACHE_DELETEDOCS
+Segur que voleu esborrar tots els\n\
+documents de la memòria cau?
+; Are you sure you want to delete\n\
+; all documents from the cache?
+;
+MSG_FIXCACHE_ERASE
+Segur que voleu esborrar totes les\n\
+imatges i documents de la memòria cau?
+; Are you sure you want to delete\n\
+; all documents and images from the cache?
+;
+MSG_FIXCACHE_CORRUPT
+El registre de la memòria cau no es pot\n\
+llegir o és d'una antiga versió d'AWeb.\n\
+Els fitxers en la memória cau ja no es\n\
+poden fer servir més. Voleu buidar-ho ara?
+; The cache registration is unreadable\n\
+; or from an older version of AWeb.\n\
+; Cached files cannot be used any more.\n\
+; Do you want to clean up now?
+;
+;-------------- Search requesters ---------------------
+;
+MSG_SEARCH_STRING
+Cercar _per
+; Search _for
+;
+MSG_SEARCH_IGNORECASE
+_Ignorar maj/min
+; _Ignore case
+;
+MSG_SEARCH_SEARCH
+Cerc_ar
+; _Search
+;
+MSG_SEARCH_FROMTOP
+Des de _dalt
+; From _top
+;
+MSG_SEARCH_BACKWARDS
+_Endarrere
+; _Backwards
+;
+MSG_SEARCH_CANCEL
+_Cancel·lar
+; _Cancel
+;
+MSG_SEARCH_NOTFOUND
+No s'ha trobat la cadena
+; String not found
+;
+MSG_SEARCH_OK
+_D'acord
+; _Ok
+;
+;
+;-------------- Popup menu ---------------------------
+;
+MSG_POPUP_LOADIMAGE
+Carregar imatge
+; Load image
+;
+MSG_POPUP_RELOADIMAGE
+Actualitzar imatge
+; Reload image
+;
+MSG_POPUP_SAVEIMAGE
+Desar imatge
+; Save image
+;
+MSG_POPUP_DOWNLOADIMAGE
+Baixar imatge
+; Download image
+;
+MSG_POPUP_FLUSHIMAGE
+Eliminar imatge
+; Flush image
+;
+MSG_POPUP_SHOWIMAGE
+Mostrar imatge
+; Show image
+;
+MSG_POPUP_OPENLINK
+Obrir enllaç
+; Open link
+;
+MSG_POPUP_OPENLINKNW
+Obrir enllaç en nova finestra
+; Open link in new window
+;
+MSG_POPUP_LOADLINK
+Carregar enllaç en fons
+; Load link in background
+;
+MSG_POPUP_SAVELINK
+Desar enllaç
+; Save link
+;
+MSG_POPUP_DOWNLOADLINK
+Baixar enllaç
+; Download link
+;
+MSG_POPUP_ADDLINK
+Afegir enllaç als favorits
+; Add link to hotlist
+;
+MSG_POPUP_RELOADFRAME
+Actualitzar contingut
+; Reload contents
+;
+MSG_POPUP_SAVEFRAME
+Desar codi
+; Save source
+;
+MSG_POPUP_VIEWFRAME
+Veure codi
+; View source
+;
+MSG_POPUP_SHOWFRAME
+Mostrar separadament
+; Show separately
+;
+MSG_POPUP_SEARCHFRAME
+Cercar en continguts
+; Search in contents
+;
+MSG_POPUP_INFOFRAME
+Informació
+; Info
+;
+MSG_POPUP_IMAGE2CLIP
+
+; Image Url to Clipboard
+;
+; ***NEW***
+;
+;
+;-------------- Print --------------------------------
+;
+MSG_PRINTP_TITLE
+Paràmetres d'impressió
+; Print parameters
+;
+MSG_PRINTP_SCALE
+_Reduir (%)
+; _Scale (%)
+;
+MSG_PRINTP_PRINTBG
+Imprimir _Fons
+; Print _backgrounds
+;
+MSG_PRINTP_FORMFEED
+F_ulla
+; _Formfeed
+;
+MSG_PRINTP_CENTER
+Ce_ntrat
+; Ce_nter
+;
+MSG_PRINTP_PRINT
+_Imprimir
+; _Print
+;
+MSG_PRINTP_CANCEL
+_Cancel·lar
+; _Cancel
+;
+MSG_PRINT_NOPRINTER
+No s'ha pogut accedir a la impressora
+; Unable to access the printer
+;
+MSG_PRINT_OK
+_D'acord
+; _Ok
+;
+MSG_PRINT_PROGRESS
+Impressió en curs...
+; Printing in progress...
+;
+MSG_PRINTP_LAYOUTWIDTH
+Format d'_amplada
+; _Layout Width
+;
+MSG_PRINTP_LW_WINDOW
+Finestra
+; Window
+;
+MSG_PRINTP_LW_DOCUMENT
+Document
+; Document
+;
+MSG_PRINTP_LW_SCREEN
+Pantalla
+; Screen
+;
+;
+;-------------- Cookie warning ----------------------
+;
+MSG_COOKIE_TITLE
+Avís de galeta
+; Cookie alert
+;
+MSG_COOKIE_WARNING
+Com ajustar una galeta de Netscape!
+; About to set a NetScape cookie!
+;
+MSG_COOKIE_NAME
+Nom de la galeta:
+; Cookie name:
+;
+MSG_COOKIE_VALUE
+Valor de la galeta:
+; Cookie value:
+;
+MSG_COOKIE_DOMAIN
+Pel domini:
+; For domain:
+;
+MSG_COOKIE_PATH
+Camí:
+; Path:
+;
+MSG_COOKIE_COMMENT
+Comentari:
+; Comment:
+;
+MSG_COOKIE_MAXAGE
+Edat-màx:
+; Max-age:
+;
+MSG_COOKIE_EXPIRES
+Expira:
+; Expires:
+;
+MSG_COOKIE_ONCE
+_Un cop
+; _Once
+;
+MSG_COOKIE_ACCEPT
+_Acceptar
+; _Accept
+;
+MSG_COOKIE_NEVER
+_Mai
+; _Never
+;
+MSG_COOKIE_CANCEL
+_Cancel·lar
+; _Cancel
+;
+MSG_COOKIE_SECURE
+AWeb enviarà aquesta galeta només\nen connexions segures.
+; AWeb will send this cookie back\nover secure connections only.
+;
+MSG_COOKIE_UNSECURE
+AWeb també enviarà aquesta galeta\ntambé en connexions INSEGURES.
+; AWeb will send this cookie back\nover UNSECURE connections too.
+;
+;
+;-------------- Info requester ----------------------
+;
+MSG_INFO_TITLE
+Informació
+; Information
+;
+MSG_INFO_FROMCACHE
+Llegit de la memòria cau d'AWeb
+; Read from AWeb cache
+;
+MSG_INFO_XFER
+Capçaleres de transferència:
+; Transfer headers:
+;
+MSG_INFO_META
+Meta informació:
+; Meta information:
+;
+MSG_INFO_LINK
+Enllaços clicables:
+; Clickable links:
+;
+MSG_INFO_CIPHER
+Mètode de xifrat HTTPS: %s
+; HTTPS cipher method: %s
+;
+MSG_INFO_SSLLIBRARY
+Biblioteca SSL emprada: %s
+; SSL library used: %s
+;
+;-------------- Default buttons ---------------------
+;
+MSG_USERBUTTON_CACHE
+Memòria cau
+; Cache
+;
+MSG_USERBUTTON_CLOCK
+Rellotge
+; Clock
+;
+MSG_USERBUTTON_SEARCH
+
+; Search
+;
+; ***NEW***
+;
+;-------------- Authorizations edit requester -------
+;
+MSG_AUTHEDIT_TITLE
+Editar autoritzacions
+; Edit authorizations
+;
+MSG_AUTHEDIT_TITLE_SERVER
+Servidor
+; Server
+;
+MSG_AUTHEDIT_TITLE_USERID
+Nom d'usuari
+; Userid
+;
+MSG_AUTHEDIT_TITLE_PASSWORD
+
+; Password
+;
+; ***NEW***
+;
+MSG_AUTHEDIT_DEL
+_Esborrar
+; _Del
+;
+MSG_AUTHEDIT_SERVER
+Servidor
+; Server
+;
+MSG_AUTHEDIT_USERID
+_Nom d'usuari
+; _Userid
+;
+MSG_AUTHEDIT_PASSWORD
+Contrasen_ya
+; _Password
+;
+MSG_AUTHEDIT_SHOWPASS
+
+; _Show Passwords
+;
+; ***NEW***
+;
+MSG_AUTHEDIT_SHOWPWREQ
+
+; To use this function you must first enter a\n\
+; master password then you can use the function\n\
+; to show all passwords.\n\
+; \n\
+; Warning:\n\
+; Please remember or notice your password\n\
+; because here is no chance to show or delete\n\
+; the password without the password!
+;
+; ***NEW***
+;
+MSG_AUTHEDIT_SHOWPWREQ_BUTTONS
+
+; _Ok|_Cancel
+;
+; ***NEW***
+;
+;-------------- JavaScript prompt requester ---------
+;
+MSG_JSPROMPT_OK
+_D'acord
+; _Ok
+;
+MSG_JSPROMPT_CANCEL
+_Cancel·lar
+; _Cancel
+;
+;
+;-------------- Unsecure form warning ---------------
+;
+MSG_FORMWARN_TITLE
+Avís d'AWeb
+; AWeb warning
+;
+MSG_FORMWARN_WARNING
+Les dades d'aquest formulari seran\nenviades de forma INSEGURA.
+; Data from this form will be sent\nover an UNSECURE connection.
+;
+MSG_FORMWARN_BUTTONS
+_D'acord|_Cancel·lar
+; _Ok|_Cancel
+;
+;
+;-------------- Mailer messages ---------------------
+;
+MSG_MAIL_TITLE
+Error del gestor de correu
+; AWeb mailer error
+;
+MSG_MAIL_NOSMTPHOST
+Heu de configurar primer l'SMTP.\nMireu dins Paràmetres de la xarxa/Correu.
+; You have to configure your SMTP host first.\nSee Network/Mail settings.
+;
+MSG_MAIL_NOCONNECT
+No es pot connectar amb %s.
+; Can't connect to %s.
+;
+MSG_MAIL_MAILFAILED
+No s'ha pogut enviar el correu.
+; Sending mail message failed.
+;
+MSG_MAIL_BUTTONS
+_Reintentar|De_sar|_Cancel·lar
+; _Retry|_Save|_Cancel
+;
+MSG_MAIL_SAVETITLE
+Missatge fallit desat
+; Save failed message
+;
+MSG_MAIL_MAILTO_TITLE
+Enviar un correu a %s
+; Mail to %s
+;
+MSG_MAIL_MAILTO_HEADER
+Enviar un correu a: %s
+; Mail to: %s
+;
+MSG_MAIL_TO
+A:
+; To:
+;
+MSG_MAIL_SUBJECT
+Assumpte:
+; Subject:
+;
+MSG_MAIL_MESSAGE_BODY
+Cos del missatge:
+; Message body:
+;
+MSG_MAIL_EXTRA_HEADERS
+Capçaleres extra incloses
+; Extra mail headers included
+;
+MSG_MAIL_SEND
+Enviar correu
+; Send mail
+;
+MSG_MAIL_RESET
+Inicialitzar
+; Reset
+;
+MSG_MAIL_RETURN
+Retornar
+; Return
+;
+MSG_MAIL_MAIL_SENT_TITLE
+Correu enviat a: %s
+; Mail sent to: %s
+;
+MSG_MAIL_MAIL_SENT
+<H1>Correu enviat</H1>\nEl vostre missatge a <B>%s</B> ha estat enviat correctament.
+; <H1>Mail sent</H1>\nYour mail message to <B>%s</B> has been sent succesfully.
+;
+;
+;-------------- Newsreader messages -----------------
+;
+MSG_NEWS_TITLE
+Error del lector de notícies
+; AWeb newsreader error
+;
+MSG_NEWS_NONNTPHOST
+Heu de configurar primer l'NNTP.\nMireu dins Paràmetres de la xarxa/Notícies.
+; You have to configure your NNTP host first.\nSee Network/News settings.
+;
+MSG_NEWS_NOCONNECT
+No es pot connectar amb %s.
+; Can't connect to %s.
+;
+MSG_NEWS_POSTFAILED
+No s'ha pogut enviar l'article.
+; Posting article failed.
+;
+MSG_NEWS_BUTTONS
+_Reintentar|De_sar|_Cancel·lar
+; _Retry|_Save|_Cancel
+;
+MSG_NEWS_SAVETITLE
+Article fallit desat
+; Save failed article
+;
+MSG_NEWS_NEWS_HEADER
+Notícies
+; News
+;
+MSG_NEWS_SUBSCRIBED
+Grups de missatges subscrits
+; Subscribed newsgroups
+;
+; Don't forget to include the '8' in the %8ld below:
+MSG_NEWS_NEW_ARTICLES
+%8ld articles nous
+; %8ld new articles
+;
+MSG_NEWS_CATCH_UP
+Capturar
+; Catch up
+;
+MSG_NEWS_UNSUBSCRIBE
+Cancel·lar la subscripció
+; Unsubscribe
+;
+MSG_NEWS_OTHER_GROUP
+Altre grup
+; Other group
+;
+MSG_NEWS_SUBSCRIBE
+Subscriure
+; Subscribe
+;
+MSG_NEWS_READ
+Llegir
+; Read
+;
+MSG_NEWS_SEARCH_FOR_GROUP
+Cercar un grup
+; Search for group
+;
+MSG_NEWS_SEARCH
+Cercar
+; Search
+;
+MSG_NEWS_LONG_DOWNLOAD
+La primera vegada que cerqueu un grup, es descarregarà\n\
+una llista de tots els grups de missatges. Això podrà\n\
+durar uns quants minuts en completar-se.
+; The first time you search for a group,\n\
+; a list of all newsgroup names will be downloaded.\n\
+; This may take several minutes to complete.
+;
+MSG_NEWS_NO_SUBJECT
+(sense assumpte)
+; (no subject)
+;
+MSG_NEWS_LINES
+(%s línies)
+; (%s lines)
+;
+MSG_NEWS_POST_NEW_ARTICLE
+Enviar article nou
+; Post new article
+;
+MSG_NEWS_GROUP_LIST
+Llista de grups
+; Group list
+;
+MSG_NEWS_ERROR_NO_GROUP
+<h1>Error</h1>\nEl grup %s no existeix.
+; <h1>Error</h1>\nGroup %s does not exist.
+;
+MSG_NEWS_USE_FRAMES
+Els missatges estan configurats per emprar marcs
+; News is configured to use frames
+;
+MSG_NEWS_ERROR_NO_ARTICLE
+L'article %s no existeix<BR>
+; Article %s does not exist<BR>
+;
+MSG_NEWS_FOLLOW_UP
+Seguiment
+; Follow-up
+;
+MSG_NEWS_REPLY
+Respondre en correu
+; Reply in e-mail
+;
+MSG_NEWS_SAVE
+Desar article
+; Save article
+;
+MSG_NEWS_SUBJECT
+Assumpte:
+; Subject:
+;
+MSG_NEWS_NEWSGROUPS
+Grups de missatges:
+; Newsgroups:
+;
+MSG_NEWS_ARTICLE_BODY
+Cos de l'article:
+; Article body:
+;
+MSG_NEWS_EXTRA_HEADERS
+Capçaleres extra incloses
+; Extra news headers included
+;
+MSG_NEWS_POST_ARTICLE
+Enviar article
+; Post article
+;
+MSG_NEWS_RESET
+Inicialitzar
+; Reset
+;
+MSG_NEWS_RETURN
+Retornar
+; Return
+;
+MSG_NEWS_FOLLOWUP_TITLE
+Seguiment de l'article
+; Follow-up to article
+;
+MSG_NEWS_FOLLOWUP_TO_GROUPS
+Seguiment a:
+; Follow-up to:
+;
+MSG_NEWS_PLEASE_DELETE
+Esborreu les línies no necessàries
+; Please delete unnecessary quoted lines
+;
+MSG_NEWS_REPLY_TITLE
+Respondre l'article
+; Reply to article
+;
+MSG_NEWS_REPLY_TO_ADDRESS
+Respondre a:
+; Reply to:
+;
+MSG_NEWS_ARTICLE_POSTED_TITLE
+Article enviat
+; Article posted
+;
+MSG_NEWS_ARTICLE_POSTED
+<H1>Article enviat</h1>\n\
+El vostre article ha estat enviat.
+; <H1>Article posted</h1>\n\
+; Your article has been posted.
+;
+MSG_NEWS_DOWNLOAD_TITLE
+Descarregar la llista de grups de missatges
+; Download newsgroup list
+;
+MSG_NEWS_DOWNLOAD_BODY
+<H1>S'està descarregant...</H1>\n\
+Descarregant la llista de grups de missatges. Això pot durar uns minuts.
+; <H1>Downloading...</H1>\n\
+; Downloading newsgroup list. This can take several minutes.
+;
+MSG_NEWS_SEARCH_RESULT
+Resultat de la cerca
+; Search result
+;
+MSG_NEWS_FIRST_MATCHING
+Primers %ld de %ld noms de grups coincideixen amb <B>%s</B>
+; First %ld of %ld newsgroup names matching <B>%s</B>
+;
+MSG_NEWS_FOUND_MATCHING
+Trobats %ld noms de grups que coincideixen amb <B>%s</B>
+; Found %ld newsgroup names matching <B>%s</B>
+;
+;
+;-------------- Shell/ARexx command warning ---------
+;
+MSG_CMDWARN_TITLE
+Avís d'Aweb
+; AWeb warning
+;
+MSG_CMDWARN_SHELL
+Sobre l'execució d'una comanda shell:\n%s
+; About to execute shell command:\n%s
+;
+MSG_CMDWARN_AREXX
+Sobre l'inici d'un programa ARexx:\n%s
+; About to start ARexx program:\n%s
+;
+MSG_CMDWARN_BUTTONS
+_D'acord|_Cancel·lar
+; _Ok|_Cancel
+;
+;
+;-------------- SSL related warnings ----------------
+;
+MSG_SSLWARN_SSL_TITLE
+Avís d'AWeb
+; AWeb warning
+;
+MSG_SSLWARN_SSL_TEXT
+No es pot fer una connexió segura amb %s:\n%s\n \nVoleu fer servir una connexió insegura?
+; Cannot make secure connection to %s:\n%s\n \nUse an unsecure connection instead?
+;
+MSG_SSLWARN_SSL_BUTTONS
+_Insegura|_Cancel·lar
+; _Unsecure|_Cancel
+;
+MSG_SSLWARN_SSL_NO_SSL
+Les connexions segures només estan suportades amb Miami i MiamiSSL.
+; Secure connections are only supported with the Miami TCP program and MiamiSSL.
+;
+MSG_SSLWARN_CERT_TITLE
+Avís d'AWeb
+; AWeb warning
+;
+MSG_SSLWARN_CERT_TEXT
+La certificació per %s no es pot verificar.\nDetalls: %s\n \n\
+Si contineu, les dades seran xifrades (protecció envers espionatge), \
+però la identitat del servidor no es pot verificar (-NO- protecció envers frau).\n \n\
+Voleu continuar?
+; Certificate for %s cannot be verified.\nDetails: %s\n \n\
+; If you continue the data will be encrypted (protection against eavesdropping), \
+; but the identity of the server cannot be verified (-NO- protection against fraud).\n \n\
+; Do you want to continue?
+;
+MSG_SSLWARN_CERT_BUTTONS
+_D'acord|_Cancel·lar
+; _Ok|_Cancel
+;
+MSG_SSLWARN_SSL_NO_SSL2
+Les connexions segures només estan suportades amb AmiSSL o MiamiSSL.
+; Secure connections are only supported when using AmiSSL or MiamiSSL.
+;
+;
+;-------------- Unknown MIME type -------------------
+;
+MSG_UNKMIME_TITLE
+Contigut desconegut
+; Unknown content type
+;
+MSG_UNKMIME_TEXT
+El fitxer no reconegut serà desat\n \n\
+URL:  %s\nContingut:  %s\nExtensió:  %s\n \n\
+Podeu cancel·lar el desar ara, i recarregar aquest fitxer \
+després de configurar un visualitzador o acció per aquest tipus MIME \
+en els paràmetres del navegador (Visualitzadors).
+; Unrecognized file will be saved\n \n\
+; URL:   %s\nContent type:   %s\nExtension:   %s\n \n\
+; You might want to cancel the save now, and reload this file \
+; after configuring a viewer or action for this MIME type \
+; in the Browser settings (Viewers).
+;
+MSG_UNKMIME_BUTTONS
+De_sar|_Cancel·lar
+; _Save|_Cancel
+;
+MSG_REQUEST_COPYURL
+Copiar l'_URL al porta-retalls
+; Copy _URL to clipboard
+;
+;-------------- Open URL requester ------------------
+;
+;
+MSG_OPENURL_TITLE
+Petició d'AWeb
+; AWeb request
+;
+MSG_OPENURL_TEXT
+Escriviu la URL a obrir:
+; Type in the URL to open:
+;
+MSG_OPENURL_BUTTONS
+_D'acord|_Cancel·lar
+; _Ok|_Cancel
+;
+;
+;-------------- Save as IFF requester ---------------
+;
+;
+MSG_SAVEIFF_PROGRESS
+S'està desant el fitxer IFF...
+; Saving IFF file...
+;
+;
+;-------------- awebcharset.awebplugin ---------------
+;
+;
+MSG_CHARSET_CODESETTITLE
+
+; Awebcharset.awebplugin
+;
+; ***NEW***
+;
+MSG_CHARSET_CODESETWRONG
+
+; The Version of %s on the System is %ld.%ld,\n\
+; but for this Plugin at least Version %ld.%ld is needed.\n
+;
+; ***NEW***
+;
+MSG_CHARSET_CODESETFAIL
+
+; Can't open required %s - Version: %ld.%ld.\n
+;
+; ***NEW***
+;
+MSG_CHARSET_CODESETURL
+
+; \n\
+; Please visit http://sourceforge.net/projects/codesetslib\n\
+; for downloading the latest Version and make sure the\n\
+; Library is properly installed.
+;
+; ***NEW***
+;
+MSG_CHARSET_INFOTITLE
+
+; Awebcharset.awebplugin Info Window
+;
+; ***NEW***
+;
+MSG_CHARSET_INFOTEXT
+
+; Filter is : %s\n\
+; Replace is: %s\n\
+; Request is: %s\n\
+; \n\
+; URL='%s'\n\
+; \n\
+; Document Charsets:\n\
+; Header Charset     = '%s'\n\
+; Meta Charset       = '%s'\n\
+; \n\
+; Used Charsets:\n\
+; Source Charset     = '%s'\n\
+; Destination Charset= '%s'
+;
+; ***NEW***
+;
+MSG_CHARSET_DIFFREQTXT
+
+; The Server send 2 different Charsets for this Document:\n\
+; \n\
+; Header Charset  = '%s'\n\
+; Document Charset= '%s'\n\
+; \n\
+; Which Charset should be used?
+;
+; ***NEW***
+;
+MSG_CHARSET_DIFFREQBUT
+
+; Don't ask again
+;
+; ***NEW***
+;
+MSG_CHARSET_ON
+
+; On
+;
+; ***NEW***
+;
+MSG_CHARSET_OFF
+
+; Off
+;
+; ***NEW***
+;
+MSG_CHARSET_OK
+
+; _Ok
+;
+; ***NEW***
+;
+;
+;-------------- Menus -------------------------------
+;
+; If the second character in a menu item string is a slash (/),
+; then the first character is used as menu shortcut.
+;
+MSG_PROJECT_MENU
+Projecte
+; Project
+;
+MSG_PROJECT_NEWWINDOW
+N/Finestra nova
+; N/New window
+;
+MSG_PROJECT_CLOSEWINDOW
+K/Tancar finestra
+; K/Close window
+;
+MSG_PROJECT_OPENURL
+U/Obrir URL
+; U/Open URL
+;
+MSG_PROJECT_OPENWWW
+W/Obrir WWW
+; W/Open WWW
+;
+MSG_PROJECT_OPENLOCAL
+L/Obrir arxiu local...
+; L/Open local...
+;
+MSG_PROJECT_OPENSEARCH
+E/Cercador
+; E/Search engines
+;
+MSG_PROJECT_SOURCE
+Veure el codi...
+; View source...
+;
+MSG_PROJECT_SAVEHTML
+S/Desar el codi...
+; S/Save source...
+;
+MSG_PROJECT_ABOUT
+Sobre...
+; About...
+;
+MSG_PROJECT_QUIT
+Q/Sortir...
+; Q/Quit...
+;
+MSG_PROJECT_SEARCH
+G/Cercar...
+; G/Search...
+;
+MSG_PROJECT_PRINT
+P/Imprimir...
+; P/Print...
+;
+MSG_PROJECT_EDIT
+Editar el codi...
+; Edit source...
+;
+MSG_PROJECT_INFO
+Informació...
+; Info...
+;
+MSG_PROJECT_OPENNEWS
+Obrir Notícies
+; Open News
+;
+; (Shortcut key is backslash)
+MSG_PROJECT_ICONIFY
+\\/Iconificar
+; \\/Iconify
+;
+MSG_PROJECT_SAVEIFF
+Desar com IFF...
+; Save as IFF...
+;
+MSG_CONTROL_MENU
+Control
+; Control
+;
+MSG_CONTROL_LOADNOW
+Carregar les imatges ara
+; Load images now
+;
+MSG_CONTROL_LOADNOWALL
+I/Totes les imatges
+; I/All images
+;
+MSG_CONTROL_LOADNOWMAPS
+M/Només els mapes
+; M/Maps only
+;
+MSG_CONTROL_NETWORKSTATUS
+?/Estat de la xarxa...
+; ?/Network status...
+;
+MSG_DUMMY_2
+
+; 
+MSG_CONTROL_CANCEL
+Z/Cancel·lar la càrrega
+; Z/Cancel load
+;
+MSG_CONTROL_NEXTWINDOW
+./Finestra següent
+; ./Next window
+;
+MSG_CONTROL_PREVWINDOW
+,/Finestra anterior
+; ,/Previous window
+;
+MSG_CONTROL_NOPROXY
+Y/Inhab. serv. intermediari
+; Y/Disable proxy
+;
+MSG_CONTROL_RLOAD
+Actualitzar
+; Reload
+;
+MSG_CONTROL_RLOADDOC
+R/Document actual
+; R/Current document
+;
+MSG_CONTROL_RLOADIMGS
+Imatges actuals
+; Images in current
+;
+MSG_CONTROL_PLAYBGSOUND
+J/Reproduir so de fons
+; J/Play background sound
+;
+MSG_CONTROL_COPYURL
+Copiar la URL
+; Copy URL
+;
+MSG_CONTROL_PASTEURL
+Enganxar la URL
+; Paste URL
+;
+MSG_CONTROL_COPYBLOCK
+C/Copiar el bloc
+; C/Copy block
+;
+MSG_CONTROL_DRAGGING
+Arrossegar
+; Dragging
+;
+MSG_CONTROL_BREAKJS
+X/Aturar JavaScript
+; X/Break JavaScript
+;
+MSG_CONTROL_DEBUGJS
+Depurar JavaScript
+; Debug JavaScript
+;
+MSG_CONTROL_RESET
+Inicialitzar els marcs
+; Reset frames
+;
+MSG_CACHE_MENU
+Memòria cau
+; Cache
+;
+MSG_DUMMY_3
+
+; 
+MSG_DUMMY_4
+
+; 
+MSG_DUMMY_5
+
+; 
+MSG_DUMMY_6
+
+; 
+MSG_CACHE_SAVEAUTH
+Desar autoritzacions
+; Save authorizations
+;
+;**obsolete**
+MSG_CACHE_FLUSHAUTH
+Alliberar autoritzacions
+; Flush authorizations
+;
+MSG_CACHE_BROWSER
+Navegador de mem. cau...
+; Cache browser...
+;
+MSG_CACHE_FLUSH
+Alliberar de la memòria
+; Flush from memory
+;
+MSG_CACHE_FLSHIMGSND
+Imatges no visualitzades
+; Nondisplayed images
+;
+MSG_CACHE_FLSHIMGS
+Totes les imatges
+; All images
+;
+MSG_CACHE_FLSHDOCSND
+Documents no visualitzats
+; Nondisplayed documents
+;
+MSG_CACHE_DELETE
+Esborrar del disc
+; Delete from disk
+;
+MSG_CACHE_DELIMGS
+Totes les imatges
+; All images
+;
+MSG_CACHE_DELDOCS
+Tots els documents
+; All documents
+;
+MSG_CACHE_CLEAR
+Eliminar la mem. cau
+; Erase cache
+;
+MSG_CACHE_FIX
+Arreglar la mem. cau
+; Fix cache...
+;
+MSG_CACHE_EDITAUTH
+Editar autoritzacions...
+; Edit authorizations...
+;
+MSG_NAVIGATE_MENU
+Navegació
+; Navigate
+;
+MSG_NAVIGATE_BACK
+B/Endarrera
+; B/Back
+;
+MSG_NAVIGATE_FWD
+F/Endavant
+; F/Forward
+;
+MSG_NAVIGATE_HOME
+D/Document d'inici
+; D/Home document
+;
+MSG_NAVIGATE_HISTORY
+-/Finestra d'historial...
+; -/Window history...
+;
+MSG_HOTLIST_MENU
+Favorits
+; Hotlist
+;
+MSG_HOTLIST_ADDHOT
+A/Afegir als favorits
+; A/Add to hotlist
+;
+MSG_HOTLIST_SHOWHOT
+H/Mostrar els favorits
+; H/Show hotlist
+;
+;**obsolete**
+MSG_HOTLIST_MAINT
+T/Manteniment...
+; T/Maintenance...
+;
+MSG_HOTLIST_SAVE
+Desar els favorits
+; Save hotlist
+;
+MSG_HOTLIST_RESTORE
+Restaurar darrer desat
+; Restore last saved
+;
+MSG_HOTLIST_AMHOTRX
+AMosaic (ARexx)
+; AMosaic (ARexx)
+;
+MSG_HOTLIST_AMHOT20
+AMosaic (2.0)
+; AMosaic (2.0)
+;
+MSG_HOTLIST_IBHOT
+Altre...
+; Other...
+;
+MSG_HOTLIST_VIEW
+V/Veure els favorits...
+; V/View hotlist...
+;
+MSG_HOTLIST_MGR
+T/Editor dels favorits...
+; T/Hotlist manager...
+;
+MSG_SETTINGS_MENU
+Paràmetres
+; Settings
+;
+MSG_SETTINGS_LOADIMG
+Carregar les imatges
+; Image loading
+;
+MSG_SETTINGS_LOADIMGALL
+Totes les imatges
+; All images
+;
+MSG_SETTINGS_LOADIMGMAPS
+Només els mapes
+; Maps only
+;
+MSG_SETTINGS_LOADIMGOFF
+Inactiu
+; Off
+;
+MSG_DUMMY_7
+
+; 
+MSG_DUMMY_8
+
+; 
+MSG_SETTINGS_BROWSER
+Paràmetres del navegador...
+; Browser settings...
+;
+MSG_SETTINGS_PROGRAM
+Paràmetres del programa...
+; Program settings...
+;
+MSG_SETTINGS_NETWORK
+Paràmetres de la xarxa...
+; Network settings...
+;
+MSG_SETTINGS_CLASSACT
+Paràmetres de ClassAct...
+; ClassAct settings...
+;
+MSG_SETTINGS_SAVEALL
+Desar els paràmetres actuals
+; Save current settings
+;
+MSG_SETTINGS_SNAPSHOT
+Desar posicions de finestres
+; Snapshot windows
+;
+;**obsolete
+MSG_SETTINGS_SNAPSHOTALT
+Desar posicions alternatives
+; Snapshot as alternate size
+;
+MSG_SETTINGS_BGIMAGES
+Imatges de fons
+; Background images
+;
+MSG_SETTINGS_BGSOUND
+So de fons
+; Background sound
+;
+MSG_SETTINGS_SAVEAS
+Desar els paràmetres com...
+; Save settings as...
+;
+MSG_SETTINGS_LOAD
+Carregar els paràmetres...
+; Load settings...
+;
+MSG_SETTINGS_GUI
+Paràmetres del GUI...
+; GUI settings...
+;
+MSG_HELP_MENU
+Ajuda
+; Help
+;
+MSG_HELP_HELP
+Documentació
+; Documentation
+;
+MSG_HELP_AWEBHOME
+Pàgina inicial d'AWeb
+; AWeb home page
+;
+MSG_HELP_AWEBFAQ
+PMF d'AWeb
+; AWeb FAQ
+;
+MSG_HELP_REGISTER
+Registre
+; Registration
+;
+MSG_AREXX_MENU
+ARexx
+; ARexx
+;
+MSG_AREXX_AREXX
+!/Iniciar una macro ARexx...
+; !/Start ARexx macro...
+;
+;--------------- Navigation Button Texts -------
+;
+MSG_NAVGAD_FORWARD
+
+; Fwd
+;
+; ***NEW***
+;
+MSG_NAVGAD_BACK
+
+; Back
+;
+; ***NEW***
+;
+MSG_NAVGAD_HOME
+
+; Home
+;
+; ***NEW***
+;
+MSG_NAVGAD_CANCEL
+
+; Stop
+;
+; ***NEW***
+;
+MSG_NAVGAD_IMAGES
+
+; Images
+;
+; ***NEW***
+;
+MSG_NAVGAD_STATUS
+
+; Status
+;
+; ***NEW***
+;
+MSG_NAVGAD_SEARCH
+
+; Find
+;
+; ***NEW***
+;
+MSG_NAVGAD_RELOAD
+
+; Reload
+;
+; ***NEW***
+;
+MSG_NAVGAD_ADDHOTLIST
+
+; Add
+;
+; ***NEW***
+;
+MSG_NAVGAD_HOTLIST
+
+; Hotlist
+;
+; ***NEW***
+;
+;
+;-------------- Error messages ----------------------
+;
+MSG_ERROR_CANTOPEN
+No es pot obrir %s
+; Can't open %s
+;
+; NOTE - No locale formatters (like %1$s) possible in this string!
+;        Only plain C formatters allowed.
+MSG_ERROR_CANTOPENV
+No es pot obrir %s versió %ld
+; Can't open %s version %ld
+;
+MSG_ERROR_NEEDOS30
+AWeb necessita l'AmigaOS 3.0 o superior
+; AWeb needs OS 3.0 or better
+;
+MSG_ERROR_CANTQUIT
+No es pot sortir!\n%s\nestà en ús
+; Cannot quit!\n%s\nis still in use
+;
+;-------------- partial error messages --------------
+;
+MSG_EPART_ERROR
+Error
+; Error
+;
+MSG_EPART_RETURL
+Mentre demanava la URL
+; While retrieving URL
+;
+MSG_EPART_ADDRSCHEME
+La &quot;%s&quot; esquema d'adreça no està implementada en aquesta versió d'AWeb
+; The &quot;%s&quot; addressing scheme is not implemented in this version of AWeb
+;
+MSG_EPART_NOLIB
+Primer heu d'iniciar una pila TCP
+; A TCP stack must be started first
+;
+MSG_EPART_NOHOST
+No es pot resoldre el nom de l'ordinador central &quot;%s&quot;
+; Cannot resolve host name &quot;%s&quot;
+;
+MSG_EPART_NOCONNECT
+No es pot connectar amb &quot;%s&quot;
+; Cannot connect to &quot;%s&quot;
+;
+MSG_EPART_NOFILE
+No es pot obrir el fitxer &quot;%s&quot;
+; Cannot open file &quot;%s&quot;
+;
+MSG_EPART_XAWEB
+Nom intern (x-aweb:) no vàlid &quot;%s&quot;
+; Invalid internal (x-aweb:) name &quot;%s&quot;
+;
+MSG_EPART_FLUSHED_HEAD
+Alliberat
+; Flushed
+;
+MSG_EPART_FLUSHED_MSG
+Aquest document ja no resta disponible en memòria
+; This document is no longer available in memory
+;
+MSG_EPART_FLUSHED_NORELOAD
+Aquest document no pot ser recuperat altre cop. Heu d'enviar el formulari que ha \
+produït aquesta pàgina. Aneu amb compte amb els efectes col·laterals ocasionats \
+a l'enviar dues vegades un formulari, com ara un doble registre.
+; This document cannot be retrieved again. You will have to submit the form again that \
+; produced this page. Beware of undesired side-effects if you submit that form twice, \
+; like a duplicate registration.
+;
+MSG_EPART_NOLOGIN
+No es pot accedir a &quot;%s&quot; com &quot;%s&quot;
+; Cannot login at &quot;%s&quot; as &quot;%s&quot;
+;
+MSG_EPART_NOAWEBLIB
+No es pot carregar el mòdul AWebLib per &quot;%s&quot;
+; Unable to load the AWebLib module for &quot;%s&quot;.
+;
+MSG_EPART_NOPROGRAM
+No heu configurat un programa per &quot;%s&quot; esquema d'adreçament.
+; You haven't configured a program for the &quot;%s&quot; addressing scheme.
+;
+;
+;-------------- Miscellaneous -----------------------
+;
+; (external program window title)
+MSG_AWEB_EXTWINTITLE
+Programa Extern d'AWeb
+; AWeb External Program
+;
+; (status field text)
+MSG_AWEB_BYTESREAD
+Octets llegits
+; Bytes read
+;
+; (form SUBMIT button default text)
+MSG_AWEB_FORMSUBMIT
+Trametre
+; Submit
+;
+; (form RESET button default text)
+MSG_AWEB_FORMRESET
+Inicialitzar
+; Reset
+;
+; (ISINDEX default prompt)
+MSG_AWEB_INDEXPROMPT
+Aquest és un índex cercable. Entreu lletres: 
+; This is a searchable index. Enter keywords:
+;
+; (window title)
+MSG_AWEB_NODOCTITLE
+(No hi ha cap document carregat)
+; (No document loaded)
+;
+; (screen title)
+MSG_AWEB_SCREENTITLE
+Pantalla pública d'AWeb - Nom Aweb
+; AWeb public screen - Name AWeb
+;
+; (hotlist document title)
+MSG_AWEB_HOTLISTTITLE
+Favorits
+; Hotlist
+;
+; (gopher index title)
+MSG_AWEB_GOPHERINDEX
+Índex Gopher
+; Gopher index
+;
+; (gopher menu title)
+MSG_AWEB_GOPHERMENU
+Menú Gopher
+; Gopher menu
+;
+; (window history title)
+MSG_AWEB_WINDOWHIS
+Finestra d'historial
+; Window history
+;
+; (partial title of other hotlist)
+MSG_AWEB_OTHER
+Altre
+; Other
+;
+; (transfer status messages)
+MSG_AWEB_LOOKUP
+Cercant %s
+; Looking up %s
+;
+MSG_AWEB_CONNECT
+Fent que %s connecti amb %s
+; Making %s connection to %s
+;
+MSG_AWEB_WAITING
+%s petició enviada; esperant resposta
+; %s request sent; waiting for response
+;
+MSG_AWEB_TCPSTART
+Establint connexió TCP
+; Establishing TCP connection
+;
+; (form image fieldstatus text)
+MSG_AWEB_FORMLOCATION
+Trametre el formulari a x=%ld, y=%ld
+; Submit form at x=%ld, y=%ld
+;
+; (form BUTTON button default text)
+MSG_AWEB_FORMBUTTON
+Iniciar
+; Start
+;
+; (frame resizing status prompt)
+MSG_AWEB_FRAME_RESIZE
+Canviar la mida del marc
+; Resize frame
+;
+; (transfer status message)
+MSG_AWEB_LOGIN
+S'està entrant a %s
+; Logging in at %s
+;
+; (transfer status message)
+MSG_AWEB_NEWSGROUP
+S'està escanejant %s
+; Scanning %s
+;
+; (transfer status message)
+MSG_AWEB_NEWSSCAN
+S'està escanejant %s (%ld articles)
+; Scanning %s (%ld articles)
+;
+; (transfer status message)
+MSG_AWEB_NEWSSORT
+Ordenant %s
+; Sorting %s
+;
+; (transfer status message)
+MSG_AWEB_NEWSPOST
+Enviant article
+; Posting article
+;
+; (transfer status message)
+MSG_AWEB_MAILSEND
+Enviant missatge de correu
+; Sending mail message
+;
+; (transfer status message)
+MSG_AWEB_UPLOAD
+Pujant fitxer
+; Uploading file
+;
+; ** (don't use numbers 40001 or higher) **

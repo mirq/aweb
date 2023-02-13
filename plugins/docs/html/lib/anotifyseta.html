@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>AnotifysetA()</title>
+</head>
+<body>
+<h1>AnotifysetA()</h1>
+
+<h2>Purpose</h2>
+Perform the <a href="../methods/notify.html">AOM_NOTIFY</a> method on an object
+using an adhoc <a href="../methods/set.html">AOM_SET</a> message.
+
+<h2>Synopsis</h2>
+<pre>
+   result = AnotifysetA(object, taglist)
+   D0                   A0      A1
+
+   ULONG AnotifysetA(<a href="../classes/object.html">struct Aobject</a> *, struct TagItem *)
+
+   result = Anotifyset(object, tag1, ...)
+
+   ULONG Anotifyset(<a href="../classes/object.html">struct Aobject</a> *, ULONG, ...)
+</pre>
+
+<h2>Function</h2>
+Object oriented support function. First it builds an adhoc
+<a href="../methods/set.html">AOM_SET</a> message using the supplied taglist.
+Then it invokes the <a href="../methods/notify.html">AOM_NOTIFY</a> method on
+the specified object, using this adhoc message.
+<p>
+The <b><code>Anotifyset()</code></b> variant allows you to build the
+taglist on the stack.
+
+<h2>Inputs</h2>
+<table border>
+<tr><th align=left valign=top>Parameter
+   <th align=left valign=top>Description
+<tr><td valign=top><code>object</code>
+   <td valign=top>Pointer to object to invoke the method on
+<tr><td valign=top><code>taglist</code>
+   <td valign=top>Array of TagItem structures with attribute/value pairs,
+      to be used in the adhoc <a href="../methods/set.html">AOM_SET</a> message.
+</table>
+
+<h2>Result</h2>
+Specific to the method and the object's class.
+
+<h2>See also</h2>
+<a href="anotify.html">Anotify()</a>

@@ -1,0 +1,322 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+<html>
+<head>
+<title>
+Programming in JavaScript
+</title>
+</head>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<h1>&nbsp; Programming in JavaScript</h1>
+
+<h2>Learning JavaScript</h2>
+An overview of JavaScript falls outside the scope of this manual. For more
+information, search the web for an explanatory page you like, or look at NetScape's
+<A HREF="http://home.netscape.com/eng/mozilla/3.0/handbook/javascript/" TARGET="_blank">
+JavaScript 1.1</A> guide.
+
+<h2><a name=AWebJS>AWebJS</a></h2>
+AWebJS is a standalone JavaScript interpreter, to facilitate testing of your
+JavaScript programs that doesn't rely on browser objects.
+
+<h3>Starting from the shell</h3>
+You can run AWebJS only from the Shell (or CLI).
+<dl>
+<dt>Format:
+<dd><code><b>AWebJS <i>filename</i>... [ PUBSCREEN <i>public_screen_name</i> ]
+   [ DEBUG ]</b></code>
+<p>
+<dt>Template:
+<dd><code><b>FILES/M/A,PUBSCREEN/K,DEBUG/S</b></code>
+</dl>
+The files in the FILES argument are executed in the given order, using
+a shared variable space. That is, global variables and functions defined in one
+file are still available in later files (during the same invocation of AWebJS).
+<p>
+The screen name in the PUBSCREEN argument is used to open any error requesters on,
+and the <a href=#debugger>debugger</a> window. By default these windows are
+opened on the default public screen.
+<p>
+If you set the DEBUG switch, the <a href=#debugger>debugger</a> is started
+when executing each file.
+
+<h3>Special functions</h3>
+When a program is run using AWebJS, the browser objects like <code>document</code>
+and <code>window</code> are not available. Because it wouldn't make much sense
+to run a program without any input or output facilities, AWebJS defines a couple
+of predefined I/O functions.
+
+<h4>write, writeln</h4>
+Writes one or more expressions to the standard output stream (the Shell window).
+
+<h5>Syntax</h5>
+<pre>
+write(<i>expression1</i> [,<i>expression2</i>], ...[,<i>expressionN</i>])
+writeln(<i>expression1</i> [,<i>expression2</i>], ...[,<i>expressionN</i>])
+</pre>
+
+<h5>Parameters</h5>
+<i>expression1</i> through <i>expressionN</i> are any JavaScript expressions.
+
+<h5>Description</h5>
+The <code>write</code> function converts each expression to string, and outputs
+the result to the standard output stream. Usually this will be the shell
+window, unless you have redirected the output of AWebJS.
+<p>
+The <code>writeln</code> function does the same as the <code>write</code>
+function, but adds a newline after the last expression.
+<p>
+When you want to include your JavaScript program in an HTML document, you'll
+have to use <code>document.write</code> instead of just <code>write</code>.
+To avoid the need of changing your program again after you've completed
+testing with AWebJS, use the following code fragment:
+<p>
+<pre>
+function Document()
+{  this.write=write;
+   this.writeln=writeln;
+}
+
+var document=new Document();
+
+</pre>
+
+Add these lines to the start of your program (and remove them before including
+the JavaScript program in your HTML document). Or save these lines in a separate
+file and specify the file as the first FILES argument on the AWebJS call.
+<p>
+By using this code fragment, you can use <code>document.write</code> and
+<code>document.writeln</code> in your JavaScript program even when testing
+with AWebJS.
+
+<h4>readln</h5>
+Reads a line from the standard input stream (the Shell window).
+
+<h5>Syntax</h5>
+<pre>
+readln()
+</pre>
+
+<h5>Description</h5>
+The <code>readln</code> function reads a line from the standard input
+stream and returns it as a string value. Usually the standard input stream
+will be the shell window, unless you have redirected the input of AWebJS.
+<p>
+The string returned has a maximum length of 80 characters.
+
+
+<h2><a name=debugger>JavaScript debugger</a></h2>
+The built-in JavaScript debugger facilitates in adding JavaScript functions
+to your own HTML pages. You can step through any script, and investigate variable
+values.
+
+<h3>Invocation</h3>
+You can invoke the debugger in two ways:
+<p>
+To start the debugger with every piece of JavaScript executed, you check the
+<code>Control / Debug&nbsp;JavaScript</code> menu option.
+<p>
+Alternatively, you can select the <code>Debug</code> button from a run-time
+JavaScript error requester to invoke the debugger.
+
+<h3>Functions</h3>
+When the debugger is active, the program is executed step by step. You can
+control how big these steps are.
+<p>
+In the top region of the debugger window, the current line number and the
+<em>current code fragment</em> is shown. "Code fragment" can be anything:
+a statement, a partial expression, or even an entire function. Note the
+code shown here is a result of decompilation, so it may look a bit different
+from the actual source code.
+<p>
+You control what is done next by clicking one button in the button row.
+
+<table>
+<tr valign=top>
+   <th align=left valign=top>Over
+   <td>Step over the current fragment.<br>
+      The current fragment is executed, and execution is halted again afterwards.
+
+<tr valign=top>
+   <th align=left valign=top>Into
+   <td>Step into the current fragment.<br>
+      The first part of the current fragment is made the new current fragment.
+      For example, if the current fragment is a compound statement (between braces,
+      {...}), the first contained statement will become the next current fragment.
+      If the current
+      fragment is an assignment statement, the operand on the left-hand side
+      of the assignment operator is made the next current fragment.
+      <p>
+      Note: If the current fragment is atomic (like a number, or an identifier),
+      execution is advanced one step.
+
+<tr valign=top>
+   <th align=left valign=top>Test
+   <td>Test the current fragment.<br>
+      The current fragment is executed, but execution is not advanced. The result
+      of the current fragment is shown in the result field at the bottom of the
+      debugger window.
+      <p>
+      Note: <b>this function has side effects!</b> If the value of a variable
+      is changed in the current fragment (like the = or the ++ operators), this
+      change is permanent.
+
+<tr valign=top>
+   <th align=left valign=top>Dump
+   <td>Dump all variables.<br>
+      A <a href="#dump">variable dump</a>, listing all variables and objects,
+      is written to a file.
+
+<tr valign=top>
+   <th align=left valign=top>Run
+   <td>Run the program.<br>
+      The debugger window is closed, and execution is resumed without further
+      interruption.
+
+<tr valign=top>
+   <th align=left valign=top>Stop
+   <td>Stop the program.<br>
+      The debugger window is closed and execution is cancelled.
+</table>
+
+Below the button row is a text entry field labelled <em>Expression</em>. You can
+type any expression in this field. When you hit <kbd>Enter</kbd> the expression
+is evaluated and the result is shown in the result field at the bottom of the
+window. Note: <b>this function has side effects!</b> If the value of a variable
+is changed in the current fragment (like the = or the ++ operators), this
+change is permanent.
+
+<h3><a name=dump>Variable dump</a></h3>
+The <b>Dump</b> function of the debugger writes a listing of all variables
+and objects into a file. A file requester is opened to let you select the
+path and file name for the dump.
+<p>
+Suppose the following script:
+<pre>
+
+    1 function Foo(a,b)
+    2 {
+    3    var i=2*a+b+bar;
+    4    return i;
+    5 }
+    6
+    7 var bar=77;
+    8 var x=Foo(17,8);
+
+</pre>
+was run in AWebJS until line 4 and then a dump was made. The dump would look like this:
+<pre>
+
+    1 ---------------------------------------------------
+    2 Function call stack
+    3 ---------------------------------------------------
+    4
+    5 In function 'Foo'
+    6     a           [N]=17
+    7     arguments   [O]=(see #1) object 'Array'
+    8                     17,8
+    9     b           [N]=8
+   10     caller      [O]=null
+   11     Foo         [O]=(see #2) function 'Foo'
+   12     i           [N]=119
+   13     + global variables (see #3)
+   14
+   15 In program
+   16     + global variables (see #3)
+   17
+   18 ---------------------------------------------------
+   19 Referenced objects
+   20 ---------------------------------------------------
+   21
+   22   1 -- Object 'Array'
+   23     0           [N]=17
+   24     1           [N]=8
+   25
+   26   2 -- Function 'Foo'
+   27     arguments   [O]=(see #1) object 'Array'
+   28                     17,8
+   29     prototype   [O]=object 'Foo'
+   30
+   31   3 -- Object
+   32     bar         [N]=77
+   33     Foo         [O]=(see #2) function 'Foo'
+   34     x           [?]=undefined
+
+</pre>
+Notes:
+<dl>
+<dt>Line 1-17
+<dd>The first part lists all nested functions that were called before the
+current execution point was reached.
+
+<dt>Line 5-13
+<dd>A function entry appears for each function in the call stack. Below the
+function name the local variables are listed.
+
+<dt>Line 6
+<dd>The local variable <code>a</code> has a numeric value of 17. The letter
+between brackets indicates the value type:
+<table cellspacing=0 cellpadding=0>
+<tr><td><code> [N] </code><td>Numeric
+<tr><td><code> [S] </code><td>String
+<tr><td><code> [B] </code><td>Boolean
+<tr><td><code> [O] </code><td>Object or Function
+<tr><td><code> [?] </code><td>undefined
+</table>
+
+<dt>Line 7,8
+<dd>The local variable <code>arguments</code> (defined automatically by JavaScript)
+is an object of type 'Array', and has the value <code>17,8</code>.
+The <code>(See&nbsp;#1)</code> note refers to the second part (line 22),
+where the object is broken down further.
+
+<dt>Line 13
+<dd>The global variables for this function are listed in the second part
+under number 3.
+
+<dt>Line 15,16
+<dd>The last entry in the first part is that for the program itself. The
+global variables are defined in object number 3.
+
+<dt>Line 18-34
+<dd>The second part lists all objects referenced in both parts of the
+listing.
+
+<dt>Line 22-24
+<dd>Object number 1 lists the object of type 'Array' that was referenced from
+line 7. Its individual properties are listed.
+
+<dt>Line 26-29
+<dd>Functions are a JavaScript object, too.
+
+<dt>Line 31-34
+<dd>The object holding the global variables for this program.
+</dl>
+
+<p>
+<hr>
+<a href=../AWeb%20Manual.html><img src=../GlobalImages/back.gif width=32 height=16 alt="<-" border=0></a> Back to
+<a href=../AWeb%20Manual.html>index</a>.
+
+</body>
+</html>

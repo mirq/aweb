@@ -1,0 +1,81 @@
+<html>
+<head>
+<title>AOTP_TIMER class</title>
+</head>
+<body>
+<h1>AOTP_TIMER class</h1>
+
+<h2>Purpose</h2>
+
+The <b>AOTP_TIMER</b> class is used to get the system time, or receive
+an <a href="../methods/update.html">AOM_UPDATE</a> message after a specified
+amount of time.
+
+<h2>Supported methods</h2>
+
+<table border>
+<tr><th align=left valign=top>Method
+   <th align=left valign=top>Description
+<tr><th align=left valign=top><a href="../methods/dispose.html">AOM_DISPOSE</a>
+   <td valign=top>Dispose the object
+<tr><th align=left valign=top><a href="../methods/get.html">AOM_GET</a>
+   <td valign=top>Get attribute values
+<tr><th align=left valign=top><a href="../methods/new.html">AOM_NEW</a>
+   <td valign=top>Create a new object
+<tr><th align=left valign=top><a href="../methods/set.html">AOM_SET</a>
+   <td valign=top>Set attribute values
+</table>
+
+<h2>Supported attributes</h2>
+
+<table border>
+<tr><th align=left valign=top>Attribute
+   <th align=left valign=top>Type
+   <th align=left valign=top>Description
+   <th align=left valign=top>Applicability
+<tr><th align=left valign=top>AOBJ_Map
+   <td valign=top>struct TagItem *
+   <td valign=top>Array of TagItem structures used to map the attributes
+      send by the timer in an <a href="../methods/update.html">AOM_UPDATE</a>
+      message.
+   <td valign=top>AOM_NEW<br>AOM_SET
+<tr><th align=left valign=top rowspan=2>AOBJ_Target
+   <td valign=top rowspan=2><a href="../classes/object.html">struct Aobject</a> *
+   <td valign=top>Object that the <a href="../methods/update.html">AOM_UPDATE</a>
+      messages from the timer will be sent to.
+   <td valign=top>AOM_NEW<br>AOM_SET
+<tr>
+   <td valign=top>Pointer to the AOTP_TIMER object sending this
+      <a href="../methods/update.html">AOM_UPDATE</a> message.
+   <td valign=top>Received on AOM_UPDATE
+<tr><th align=left valign=top>AOTIM_Ready
+   <td valign=top>BOOL
+   <td valign=top>This attribute is set in the
+      <a href="../methods/update.html">AOM_UPDATE</a> message send when the
+      specified wait period is over.
+   <td valign=top>Received on AOM_UPDATE
+<tr><th align=left valign=top>AOTIM_Seconds<br>AOTIM_Micros
+   <td valign=top>LONG
+   <td valign=top>Current system time.
+   <td valign=top>AOM_GET
+<tr><th align=left valign=top>AOTIM_Waitseconds<br>AOTIM_Waitmicros
+   <td valign=top>LONG
+   <td valign=top>The time period to wait before the AOTP_TIMER object
+      sends an <a href="../methods/update.html">AOM_UPDATE</a> message
+      to its target object.
+   <td valign=top>AOM_SET<br>AOM_GET
+</table>
+
+<h2>Usage</h2>
+
+Objects can use this class to time their actions. If the <b>AOTIM_Waitseconds</b>
+or <b>AOTIM_Waitmicros</b> attributes are set, the AOTP_TIMER object will
+send an <a href="../methods/update.html">AOM_UPDATE</a> message to the object
+specified in the <b>AOBJ_Target</b> attribute after the specified period.
+<p>
+After receiving this <a href="../methods/update.html">AOM_UPDATE</a> message
+you may set the <b>AOTIM_Waitseconds</b> or <b>AOTIM_Waitmicros</b> again
+to start a new wait period.
+
+</body>
+</html>

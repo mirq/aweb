@@ -1,0 +1,118 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+<html>
+<head>
+<title>The history window</title>
+</head>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<h1>&nbsp; The history window</h1>
+
+<h2>Purpose</h2>
+In the history window, you can check all the pages you have visited
+in the current AWeb session. You can select old pages to display again.
+The history window offers filtering and ordering options.
+
+<h2>Opening the window</h2>
+Select <code>Navigate / Window&nbsp;history</code> from the menu to open the history
+window. The display will be <a href=#filter>filtered</a> automatically
+for the window in which you selected the menu item.
+<p>
+If the history window is already open, it will pop up to front, and
+will be activated. Also, the <a href=#filter>selected window</a> will
+change to the window for which you opened the history.
+
+<h2>The history list</h2>
+In the list, all visited pages are shown.
+<p>
+The <strong>first column</strong> contains the <em>window number</em>.
+This is the same number as appears in the title bar of the window.
+<p>
+The <strong>second column</strong> contains the
+<em>frame indicator</em> and the <em>mainline indicator</em>.<br>
+The <em>frame indicator</em> is a plus sign ("+"). It indicates that the
+entry in the history list was an update of a frame, not a reload in the
+entire window.<br>
+The <em>mainline indicator</em>
+is a little arrow: <img src="Images/whismain.gif" alt="v" width=10 height=12>.
+Suppose you retrieve pages <b>A</b> - <b>B</b> - <b>C</b> - <b>D</b>, then go back
+to <b>C</b>, back to <b>B</b>, and then retrieve page <b>E</b>. In this case the
+mainline is <b>A</b> - <b>B</b> - <b>E</b>. These are the pages that
+the back and forward buttons will walk along.
+<p>
+The <strong>third column</strong> contains the <em>title</em> of the page, or
+the URL if no title is known.
+<p>
+If you selected <em>natural</em> or <em>mainline</em> <a href=#order>order</a>,
+the current document will be highlighted. The two fields below the list show
+the title and URL for the highlighted page.
+
+<h2>Redisplay a page</h2>
+Select the page you want to see again from the list. You can click on the
+entry, or use the arrow keys to move the highlight. Then click the <em>display</em>
+button, or hit the <kbd>Enter</kbd> key.
+<p>
+Another way to redisplay a page is to doubleclick on the entry.
+<p>
+If you have the <a href=../Configuring/proptions.html#hwclose>History window auto close</a>
+setting selected, the window will close automatically.
+
+<h2><a name=filter>Filtering</a></h2>
+If the <em>Filter</em> checkbox is selected, the list will only show entries
+for the window number selected in the <em>window</em> field.
+<p>
+If you deselect the <em>Filter</em> checkbox, the list will show entries for
+all windows.
+
+<h2><a name=order>Ordering</a></h2>
+With the <em>Order</em> chooser, you can select how the entries in the list
+should be ordered.
+<dl>
+<dt><strong>Natural</strong>
+<dd>Natural ordering shows all displayed pages in the order you have displayed
+   them. If you go back a few pages, then go to another page, the latest page
+   is added at the end of the list. If you redisplay a page that was displayed before,
+   it is also added again to the end of the list.
+<br><br>
+<dt><strong>Mainline</strong>
+<dd>The list shows only the pages on the mainline. That is, entries for which the
+   <em>mainline indicator</em> is off will not be shown.
+<br><br>
+<dt><strong>Retrieved</strong>
+<dd>The list contains the pages in the order as they were retrieved for the
+   first time. The list will show every page only once.
+<br><br>
+<dt><strong>Title</strong>
+<dd>The entries in the list are sorted by their title.
+<br><br>
+<dt><strong>URL</strong>
+<dd>The entries in the list are sorted by their URL (network address). The list
+   will show URLs instead of titles if you select this ordering.
+</dl>
+
+<p>
+<hr>
+<a href=../AWeb%20Manual.html><img src=../GlobalImages/back.gif width=32 height=16 alt="<-" border=0></a> Back to
+<a href=../AWeb%20Manual.html>index</a>.
+
+</body>
+</html>

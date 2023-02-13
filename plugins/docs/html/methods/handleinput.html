@@ -1,0 +1,183 @@
+<html>
+<head>
+<title>Method: AOM_HANDLEINPUT</title>
+</head>
+<body>
+<h1>Method: AOM_HANDLEINPUT</h1>
+
+<h2>Purpose</h2>
+
+The <b>AOM_HANDLEINPUT</b> method is used to send incoming IntuiMessages to
+the copydriver object that has become the input focus.
+
+<h2>Message structure</h2>
+
+The <b>AOM_HANDLEINPUT</b> method uses an <b>Aminput</b> structure:<p>
+
+<pre>
+struct Aminput
+{  <a href=index.html#Amessage>struct Amessage</a> amsg;
+   struct IntuiMessage *imsg;
+                           /* The IntuiMessage to be handled. */
+   USHORT flags;           /* AMHF_DOWNLOAD or AMHF_POPUP qualifier */
+   struct Amiresult *amir;
+};
+</pre>
+Additional return values should be returned in an <b>Amiresult</b> structure:<p>
+<pre>
+struct Amiresult
+{  STRPTR text;            /* New status gadget text. Dynamic string. */
+   <a href="../classes/object.html">struct Aobject</a> *newobject;
+                           /* If not NULL, this object wants to become the active one. */
+};
+</pre>
+
+<h2>Usage</h2>
+
+<h3>Field: <code>imsg</code></h3>
+The incoming IntuiMessage to be handled.<p>
+Note that when processing mouse coordinates, the object must use the
+<a href="../lib/clipcoords.html"><code>Clipcoords()</code></a> function to
+obtain a <a href="../structs/coords.html"><code>struct Coords</code></a>,
+and use its coordinates to convert the RastPort relative coordinates in the
+IntuiMessage.
+<p>
+This field will be NULL if the AMHF_DEFER flag is set.
+
+<h3>Field: <code>flags</code></h3>
+Special indicators that may affect the processing of this message.
+<table border>
+<tr><th align=left valign=top>Flag
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>AMHF_DOWNLOAD
+   <td valign=top>The download qualifier (a SHIFT key) is activated
+<tr><th align=left valign=top>AMHF_POPUP
+   <td valign=top>The popup menu qualifier is activated
+<tr><th align=left valign=top>AMHF_DEFER
+   <td valign=top>This message terminates a stream of input events. See
+      the description of the <a href=#AMR_DEFER>AMR_DEFER</a> return
+      value.
+</table>
+Note that the state of the AMHF_DOWNLOAD and AMHF_POPUP flags may have been
+changed when receiving a IDCMP_RAWKEY event.
+
+<h3>Field: <code>amir</code></h3>
+A pointer to a structure accomodating special return values. Note that this
+pointer may be NULL.
+
+<h4>Field: <code>amir->text</code></h4>
+If this is set to a dynamically allocated string, its contents will replace
+the current contents of the
+window's status gadget. The string <b>must</b> be allocated by one of
+the <a href="../lib/index.html">awebsupport.library</a>'s
+memory functions (<a href="../lib/allocmem.html">Allocmem()</a> or
+<a href="../lib/dupstr.html">Dupstr()</a>).
+
+<h4>Field: <code>amir->newobject</code></h4>
+If the input event causes another object to become active (like when the
+TAB key was hit), set this to a pointer to the other object. You must
+also return AMR_NOREUSE.<p>
+Of course this feature can only be used if you have a way to determine
+the other object, so you must own both objects yourself.
+
+<h3>Return value</h3>
+The method must return one of the following values:
+<table border>
+<tr><th align=left valign=top>Value
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>AMR_ACTIVE
+   <td valign=top>The object wants to remain the input focus.
+<tr><th align=left valign=top><a name=AMR_DEFER>AMR_DEFER</a>
+   <td valign=top>The object wants to remain the input focus, but wants
+      to be notified when the current stream of input events stops.<p>
+      This is most useful for objects handling large streams of events
+      like mouse movements, while the resulting action may take quite
+      some time. Instead of doing the lenghty processing after each mouse
+      movement, the object can choose to do only some visual feedback,
+      and do the full processing when the mouse movement stops.<p>
+      To achieve this, return AMR_DEFER. As long as there are IntuiMessages
+      waiting, you will be sent more AOM_HANDLEINPUT messages. When no more
+      IntuiMessages are available, you will receive one extra AOM_HANDLEINPUT
+      message with a NULL <code>imsg</code> pointer, and the AMHF_DEFER
+      flag set.
+<tr><th align=left valign=top>AMR_REUSE
+   <td valign=top>The object wants to be removed from the input focus,
+      and the IntuiMessage must be reused. This may cause activation
+      of other objects.<p>
+      This object will be sent an <a href="goinactive.html">AOM_GOINACTIVE</a>
+      message.
+<tr><th align=left valign=top>AMR_NOREUSE
+   <td valign=top>The object wants to be removed from the input focus,
+      and the IntuiMessage must be thrown away.<p>
+      This object will be sent an <a href="goinactive.html">AOM_GOINACTIVE</a>
+      message.
+<tr><th align=left valign=top>AMR_NOCARE
+   <td valign=top>The object does not know how to process this input event.
+      You will remain active or be deactivated, as per default.
+</table>
+
+
+<h2>Implementation</h2>
+
+Copydriver objects should implement this method if the visible object has
+user-selectable areas under the driver's control. Note that normal HTML
+image maps are handled by the AWeb core, and must not be implemented by
+the copydriver. If the copydriver understands this method, it should
+return TRUE to an AOM_GET of the AOCDV_Shapes attribute.
+<p>
+Implementation of this method largely depends on the type of user
+interaction supported by the object. However, a typical simple
+implementation of this method would be:
+<p>
+<pre>
+   ULONG retval;
+   struct Coords *coo;
+   long x,y;
+
+   /* Let the AWeb core decide for IDCMP classes we don't use */
+   retval=AMR_NOCARE;
+
+   if(aminput->imsg)
+   {  switch(aminput->imsg->Class)
+      {  case IDCMP_MOUSEMOVE:
+            /* Check if mouse pointer is still over us. Note that 
+             * the mouse pointer may have moved outside our bounds */
+            coo=Clipcoords(object->cframe,NULL);
+            x=aminput->imsg->MouseX - coo->dx - object->aox;
+            y=aminput->imsg->MouseY - coo->dy - object->aoy;
+            if(x>=0 && x<object->aow && y>=0 && y<object->aoh)
+            {  /* If appropriate, check if mouse pointer is over
+                * any 'hot' area and return a new aminput->amir->text */
+               retval=AMR_ACTIVE;
+            }
+            else
+            {  /* Mouse pointer has moved away from us. */
+               retval=AMR_REUSE;
+            }
+            Unclipcoords(coo);
+            break;
+
+         case IDCMP_RAWKEY:
+            /* Check if the AMHF_DOWNLOAD or AMHF_POPUP flag in
+             * aminput->flags have changed and take appropriate
+             * action. */
+            retval=AMR_ACTIVE;
+            break;
+
+         case IDCMP_MOUSEBUTTONS:
+            if(aminput->imsg->Code==SELECTUP)
+            {  /* Mouse button was released above us.
+                * Do any appropriate action.
+                */
+            }
+            /* In any case, deactivate. */
+            retval=AMR_NOREUSE;
+            break;
+      }
+   }
+   return retval;
+</pre>
+
+</body>
+</html>
+

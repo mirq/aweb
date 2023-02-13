@@ -1,0 +1,79 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+<html>
+<head>
+<title>
+Network Status Window
+</title>
+</head>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<h1>&nbsp; Network Status Window</h1>
+<h2>Purpose</h2>
+The Network Status Window shows all pending network and local file accesses.
+There are possibilities to cancel selected transfers, or all transfers.
+<h2>Opening the window</h2>
+You can open the window in three ways:
+<ul>
+<li>By clicking the <em>network status</em> button
+<li>By selecting the <code><b>Control / Network Status...</b></code> menu item
+<li>By using the hotkey <b><i>A</i></b> ?
+</ol>
+<h2>Contents of the list</h2>
+The listview contains a line for each pending or queued transfer. The
+line consists of the filename retrieved (without hostname and path), and
+the <em>current status</em>.
+<p>
+<em>Current status</em> can be one of the following:
+<br><tt><b>Queued &nbsp; &nbsp; &nbsp;</b></tt>Image will be loaded when network slots become available
+<br><tt><b>Started &nbsp; &nbsp; </b></tt>Transfer process has started
+<br><tt><b>Looking up &nbsp;</b></tt>Looking up host name
+<br><tt><b>Connecting &nbsp;</b></tt>Making connection
+<br><tt><b>Waiting &nbsp; &nbsp; </b></tt>Request sent; waiting for response
+<br><tt><b>99999/99999 </b></tt>Reading
+<h2>Cancel transfers</h2>
+You can cancel one or more specific transfers by first selecting the entries in the
+listview, then click the <em>cancel</em> button at the bottom left. You can select
+more than one entry by holding the <kbd>SHIFT</kbd> key while clicking on the
+second and later entries. <kbd>SHIFT</kbd>-clicking on a selected entry will
+deselect it.
+<p>
+You can cancel all transfers by clicking the <em>cancel all</em> button at
+the bottom right.
+
+<h2>Transfer rate</h2>
+At the bottom of the window the current transfer rate is shown, in characters
+per second. The time needed to make the connection, and to wait for the response
+from the server, is not included in the calculation. The figure is an average
+over the last minute, but only since the moment AWeb actually receives data from the
+network.
+<p>
+Only network transfers are included in this figure, not loading from the cache
+or from local files.
+
+<p>
+<hr>
+<a href=../AWeb%20Manual.html><img src=../GlobalImages/back.gif width=32 height=16 alt="<-" border=0></a> Back to
+<a href=../AWeb%20Manual.html>index</a>.
+
+</body>
+</html>

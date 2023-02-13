@@ -1,0 +1,8 @@
+MODULES := aweblib/gopher.aweblib
+
+aweblib/gopher.aweblib/TYPE := executable/library/amigashared
+aweblib/gopher.aweblib/DEPS := linklibs/libmoduleinit.a
+aweblib/gopher.aweblib/CFILES := \
+gopher
+
+

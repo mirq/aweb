@@ -1,0 +1,46 @@
+<html>
+<head>
+<title>AnewobjectA()</title>
+</head>
+<body>
+<h1>AnewobjectA()</h1>
+
+<h2>Purpose</h2>
+Perform the <a href="../methods/new.html">AOM_NEW</a> method to create an object.
+
+<h2>Synopsis</h2>
+<pre>
+   object = AnewobjectA(classid, taglist)
+   D0                   D0       A1
+
+   void *AnewobjectA(ULONG, struct TagItem *)
+
+   object = Anewobject(classid, tag1, ...)
+
+   void *Anewobject(ULONG, ULONG, ...)
+</pre>
+
+<h2>Function</h2>
+Object oriented support function that creates a new object instance.
+The function invokes the <a href="../methods/new.html">AOM_NEW</a> method
+for the specified class id (or object type), using the supplied taglist.
+<p>
+The <b><code>Anewobject()</code></b> variant allows you to build the taglist on the stack.
+
+<h2>Inputs</h2>
+<table border>
+<tr><th align=left valign=top>Parameter
+   <th align=left valign=top>Description
+<tr><td valign=top><code>classid</code>
+   <td valign=top>Class ID, or object type, of the object to create
+<tr><td valign=top><code>taglist</code>
+   <td valign=top>Array of TagItem structures with attribute/value pairs
+</table>
+
+<h2>Result</h2>
+An AWeb object, or NULL in case of failure.
+<p>
+You eventually free the object using <a href=adisposeobject.html>Adisposeobject()</a>.
+
+<h2>See also</h2>
+<a href="adisposeobject.html">Adisposeobject()</a>

@@ -1,0 +1,1915 @@
+## version $VER: AWebCfg.catalog 3.4 (16.04.2002)
+## language greek
+## codeset 0
+;
+; AWebcfg.cd - AWeb configuration program catalog description file
+;
+;
+;  The MSG_DUMMY_nn labels are there because FlexCat doesn't
+;  understand the LABEL (+1//) syntax (C='s Catcomp uses this
+;  to skip 1 number)
+;
+;
+;-------------- Error messages ----------------------
+;
+; NOTE - No locale formatters (like %1$s) possible in this string!
+;        Only plain C formatters allowed.
+MSG_ERROR_CANTOPENV
+Δεν μπορεί να ανοιχθεί %s έκδοση %ld
+; Can't open %s version %ld
+;
+MSG_ERROR_COMMANDLINE
+
+; Please check the commandline options.\n\
+; E.g. you must use at least one of the 4 switches.\n\
+; The Template is:
+;
+; ***NEW***
+;
+;
+;-------------- Settings requesters- ------------------
+;
+;  General
+;
+MSG_SET_REQTITLE_FONT
+Επιλογή γραμματοσειράς
+; Select font
+;
+MSG_SET_REQTITLE_SCREEN
+Επιλογή τύπου οθόνης
+; Select screenmode
+;
+MSG_SET_REQTITLE_MAILTO
+Επιλογή εντολής mailto:
+; Select mailto: command
+;
+MSG_SET_REQTITLE_FTP
+Επιλογή εντολής ftp:
+; Select ftp: command
+;
+MSG_SET_REQTITLE_TELNET
+Επιλογή εντολής telnet:
+; Select telnet: command
+;
+MSG_SET_REQTITLE_NEWS
+Επιλογή εντολής news:
+; Select news: command
+;
+MSG_SET_REQTITLE_STARTTCP
+Επιλογή εντολής εκκίνησης TCP
+; Select TCP start command
+;
+MSG_SET_REQTITLE_ENDTCP
+Επιλογή εντολής τερματισμού TCP
+; Select TCP end command
+;
+MSG_SET_REQTITLE_TEMPPATH
+Επιλογή διαδρομής temp
+; Select temp path
+;
+MSG_SET_REQTITLE_SAVEPATH
+Επιλογή διαδρομής αποθήκευσης
+; Select save path
+;
+MSG_SET_REQTITLE_EDITOR
+Επιλογή εντολής Editor
+; Select Editor command
+;
+MSG_SET_REQTITLE_HTMLVIEWER
+Επιλογή εντολής HTML viewer
+; Select HTML viewer command
+;
+MSG_SET_REQTITLE_MIMEVIEWER
+Επιλογή εντολής viewer
+; Select viewer command
+;
+MSG_SET_REQTITLE_AREXXMACRO
+Επιλογή μακροεντολής ARexx
+; Select ARexx macro
+;
+MSG_SET_REQTITLE_BROWSERWINDOW
+Ρυθμίσεις φυλλομετρητή AWeb
+; AWeb browser settings
+;
+MSG_SET_REQTITLE_PROGRAMWINDOW
+Ρυθμίσεις προγράμματος AWeb
+; AWeb program settings
+;
+MSG_SET_REQTITLE_NETWORKWINDOW
+Ρυθμίσεις δικτύου AWeb
+; AWeb network settings
+;
+MSG_SET_REQTITLE_OPENBROWSER
+Άνοιγμα ρυθμίσεων φυλλομετρητή
+; Open browser settings
+;
+MSG_SET_REQTITLE_SAVEBROWSER
+Αποθήκευση ρυθμίσεων φυλλομετρητή ως
+; Save browser settings as
+;
+MSG_SET_REQTITLE_OPENPROGRAM
+Άνοιγμα ρυθμίσεων προγράμματος
+; Open program settings
+;
+MSG_SET_REQTITLE_SAVEPROGRAM
+Αποθήκευση ρυθμίσεων προγράμματος ως
+; Save program settings as
+;
+MSG_SET_REQTITLE_OPENNETWORK
+Άνοιγμα ρυθμίσεων δικτύου
+; Open network settings
+;
+MSG_SET_REQTITLE_SAVENETWORK
+Αποθήκευση ρυθμίσεων δικτύου ως
+; Save network settings as
+;
+MSG_SET_REQTITLE_CACHEPATH
+Επιλογή διαδρομής cache
+; Select cache path
+;
+MSG_SET_REQTITLE_IMGVIEWER
+Επιλογή εντολής image viewer
+; Select image viewer command
+;
+MSG_SET_REQTITLE_GUIWINDOW
+Ρυθμίσεις GUI AWeb
+; AWeb GUI settings
+;
+MSG_SET_REQTITLE_OPENGUI
+Άνοιγμα ρυθμίσεων GUI
+; Open GUI settings
+;
+MSG_SET_REQTITLE_SAVEGUI
+Αποθήκευση ρυθμίσεων GUI
+; Save GUI settings as
+;
+MSG_SET_REQTITLE_SIGNATURE
+Επιλογή αρχείου υπογραφής
+; Select signature file
+;
+MSG_SET_REQTITLE_STARTUPSCRIPT
+Επιλογή ARexx script εκκίνησης
+; Select startup ARexx script
+;
+MSG_SET_REQTITLE_SHUTDOWNSCRIPT
+Επιλογή ARexx script τερματισμού
+; Select shutdown ARexx script
+;
+;  Clicktab labels - Browser
+;
+MSG_SET_CTBR_OPTIONS
+_1 Επιλογές
+; _1 Options
+;
+MSG_SET_CTBR_FONTS
+_2 Γραμματοσειρές
+; _2 Fonts
+;
+MSG_SET_CTBR_STYLES
+_3 Στυλ
+; _3 Styles
+;
+MSG_SET_CTBR_COLOURS
+_4 Χρώματα
+; _4 Colours
+;
+MSG_SET_CTBR_MIME
+_5 Viewers
+; _5 Viewers
+;
+;  Clicktab labels - Program
+;
+MSG_SET_CTPR_SCREEN
+_1 Οθόνη
+; _1 Screen
+;
+MSG_SET_CTPR_PALETTE
+_2 Παλέτα
+; _2 Palette
+;
+MSG_SET_CTPR_OPTIONS
+_3 Επιλογές
+; _3 Options
+;
+MSG_SET_CTPR_PROGRAMS
+_4 Προγράμματα
+; _4 Programs
+;
+MSG_SET_CTPR_AREXX
+_5 ARexx
+; _5 ARexx
+;
+;  Clicktab labels - Network
+;
+MSG_SET_CTNW_OPTIONS
+_1 Επιλογές
+; _1 Options
+;
+MSG_SET_CTNW_PROGRAMS
+_2 Προγράμματα
+; _2 Programs
+;
+MSG_SET_CTNW_PROXY
+_3 Proxy
+; _3 Proxy
+;
+MSG_SET_CTNW_CACHE
+_4 Cache
+; _4 Cache
+;
+MSG_SET_CTNW_PRIVACY
+_5 Privacy
+; _5 Privacy
+;
+MSG_SET_CTNW_MAIL
+_6 Ταχυδρομείο/Ειδήσεις
+; _6 Mail/News
+;
+;  Clicktab labels - GUI
+;
+MSG_SET_CTUI_OPTIONS
+_1 Επιλογές
+; _1 Options
+;
+MSG_DUMMY_8
+
+; 
+;
+MSG_SET_CTUI_BUTTONS
+_3 Κουμπιά
+; _3 Buttons
+;
+MSG_SET_CTUI_POPUP
+_4 Αναδυόμενο
+; _4 Popup
+;
+MSG_SET_CTUI_KEYS
+_5 Πλήκτρα
+; _5 Keys
+;
+MSG_SET_CTUI_MENUS
+_2 Μενού
+; _2 Menus
+;
+MSG_SET_CTUI_NAV
+_6 Πλοήγηση
+; _6 Navigation
+;
+;  Popup help
+;
+; (don't use 40200-40208)
+;
+MSG_SET_HLP_NOARGS
+(Χωρίς σημεία μετακίνησης)
+; (No placeholders)
+;
+MSG_SET_HLP_A
+%a = ομάδα ειδήσεων ή άρθρο
+; %%a = newsgroup or article
+;
+MSG_SET_HLP_E
+%e = διεύθυνση e-mail
+; %%e = e-mail address
+;
+MSG_SET_HLP_F
+%f = όνομα διαδρομής/αρχείου
+; %%f = path/file name
+;
+MSG_SET_HLP_H
+%h = host όνομα
+; %%h = host name
+;
+MSG_SET_HLP_L
+%l = login όνομα
+; %%l = login name
+;
+MSG_SET_HLP_N
+%n = όνομα οθόνης
+; %%n = screen name
+;
+MSG_SET_HLP_P
+%p = αριθμός θύρας
+; %%p = port number
+;
+MSG_SET_HLP_U
+%u = αρχικό URL
+; %%u = original URL
+;
+MSG_SET_HLP_W
+%w = κωδικός
+; %%w = password
+;
+MSG_SET_HLP_T
+%t = τίτλος
+; %%t = title
+;
+MSG_SET_HLP_U2
+%u = τρέχον URL
+; %%u = current URL
+;
+MSG_SET_HLP_U3
+%u = αντικείμενο URL
+; %%u = object URL
+;
+MSG_SET_HLP_I
+%i = ID κάδρου
+; %%i = frame ID
+;
+MSG_SET_HLP_I2
+%i = ID στοχευόμενου κάδρου
+; %%i = target frame ID
+;
+MSG_SET_HLP_M
+%m = τύπος MIME
+; %%m = MIME type
+;
+MSG_SET_HLP_S
+%s = αντικείμενο έρευνας
+; %%s = search argument
+;
+MSG_SET_HLP_D
+%d = ημερομηνία
+; %%d = date
+;
+MSG_SET_HLP_G
+%g = όνομα ομάδας
+; %%g = group name
+;
+MSG_SET_HLP_I3
+%i = id μηνύματος
+; %%i = message id
+;
+MSG_SET_HLP_N2
+%n = όνομα αρχείου
+; %%n = real name
+;
+MSG_SET_HLP_S2
+%s = θέμα
+; %%s = subject
+;
+MSG_SET_HLP_I4
+%i = ID εστιαζόμενου κάδρου
+; %%i = focus frame ID
+;
+MSG_SET_HLP_C
+%c = όνομα ρυθμισεων
+; %%c = config name
+;
+;  Font descriptions
+;
+MSG_SET_FD_NORMALTAG
+Κανονικό
+; Normal
+;
+MSG_SET_FD_NORMAL
+Κανονικό κείμενο
+; Normal text
+;
+MSG_SET_FD_H1
+<H1> : Επικεφαλίδες επιπέδου 1, μεγαλύτερες
+; <H1> : Headers level 1, largest
+;
+MSG_SET_FD_H2
+<H2> : Επικεφαλίδες επιπέδου 2
+; <H2> : Headers level 2
+;
+MSG_SET_FD_H3
+<H3> : Επικεφαλίδες επιπέδου 3
+; <H3> : Headers level 3
+;
+MSG_SET_FD_H4
+<H4> : Επικεφαλίδες επιπέδου 4
+; <H4> : Headers level 4
+;
+MSG_SET_FD_H5
+<H5> : Επικεφαλίδες επιπέδου 5
+; <H5> : Headers level 5
+;
+MSG_SET_FD_H6
+<H6> : Επικεφαλίδες επιπέδου 6, μικρότερες
+; <H6> : Headers level 6, smallest
+;
+MSG_SET_FD_CITE
+<CITE> : σημειώσεις, συνήθως με πλάγια γραφή
+; <CITE> : citations, typically italics
+;
+MSG_SET_FD_CODE
+<CODE> : παράδειγμα κώδικα, συνήθως ενός διαστήματος
+; <CODE> : code example, typically monospaced
+;
+MSG_SET_FD_DFN
+<DFN> : ορισμός, συνήθως με πλάγια γραφή
+; <DFN> : definition, typically italics
+;
+MSG_SET_FD_EM
+<EM> : με έμφαση, συνήθως με πλάγια γραφή
+; <EM> : emphasized, typically italics
+;
+MSG_SET_FD_KBD
+<KBD> : input πληκτρολογίου, συνήθως ενός διαστήματος
+; <KBD> : keyboard input, typically monospaced
+;
+MSG_SET_FD_SAMP
+<SAMP> : δείγμα output, συνήθως ενός διαστήματος
+; <SAMP> : sample output, typically monospaced
+;
+MSG_SET_FD_STRONG
+<STRONG> : έντονη έμφαση, συνήθως έντονη γραφή
+; <STRONG> : strong emphasis, typically bold
+;
+MSG_SET_FD_VAR
+<VAR> : μεταβλητές σημείου μετακίνησης, συνήθως πλάγια γραφή
+; <VAR> : placeholder variable, typically italics
+;
+MSG_DUMMY_1
+
+; 
+; (Note the leading space in the next 3 strings)
+MSG_SET_FD_BOLD
+Έντονη γραφή
+;  Bold
+;
+MSG_SET_FD_ITALIC
+Πλάγια γραφή
+;  Italic
+;
+MSG_SET_FD_UNDERLINED
+Υπογραμμισμένη γραφή
+;  Underlined
+;
+MSG_SET_FD_NORMALFONT
+Κανονική γραφή
+; Normal font
+;
+MSG_SET_FD_FIXEDFONT
+Γραμματοσειρά σταθερού εύρους
+; Fixed width font
+;
+MSG_SET_FD_SIZE
+μέγεθος
+; size
+;
+MSG_SET_FD_BIG
+<BIG> : μεγάλη γραμματοσειρά
+; <BIG> : large font
+;
+MSG_SET_FD_SMALL
+<SMALL> : μικρή γραμματοσειρά
+; <SMALL> : small font
+;
+MSG_SET_FD_SUB
+<SUB> : μικρή υποκείμενη γραμματοσειρά
+; <SUB> : small subscript font
+;
+MSG_SET_FD_SUP
+<SUP> : μικρή υπερκείμενη γραμματοσειρά
+; <SUP> : small superscript font
+;
+MSG_SET_FD_ADDRESS
+<ADDRESS> : διεύθυνση, συνήθως με πλάγια γραφή
+; <ADDRESS> : address, typically italics
+;
+MSG_SET_FD_BLOCKQUOTE
+<BLOCKQUOTE> : μακρές παραθέσεις, συνήθως με πλάγια γραφή
+; <BLOCKQUOTE> : long quotations, typically italics
+;
+MSG_SET_FD_PRE
+<PRE> : προφορμαρισμένο κείμενο, θα έπρεπε να έχει σταθερό εύρος
+; <PRE> : preformatted text, should be fixed width
+;
+;  HTML modes
+;
+MSG_SET_HTML_STRICT
+Αυστηρό
+; Strict
+;
+MSG_SET_HTML_TOLERANT
+Ανεκτικό
+; Tolerant
+;
+MSG_SET_HTML_COMPATIBLE
+Συμβατό
+; Compatible
+;
+;  Screen types
+;
+MSG_SET_SCRT_DEFAULT
+Προκαθορισμένη δημόσια οθόνη
+; Default public screen
+;
+MSG_SET_SCRT_NAMED
+Δημόσια οθόνη με όνομα
+; Named public screen
+;
+MSG_SET_SCRT_OWN
+Ίδια δημόσια οθόνη
+; Own public screen
+;
+;  Image loading types
+;
+MSG_SET_IMGL_OFF
+Off
+; Off
+;
+MSG_SET_IMGL_MAPS
+Μόνο χάρτες
+; Maps only
+;
+MSG_SET_IMGL_ALL
+Όλες οι εικόνες
+; All images
+;
+;  MIME list column names
+;
+MSG_SET_MLCN_TYPE
+Τύπος
+; Type
+;
+MSG_SET_MLCN_EXT
+Προεκτάσεις
+; Extensions
+;
+;**obsolete
+MSG_SET_MLCN_COMMAND
+Εντολή Viewer
+; Viewer command
+;
+MSG_SET_MLCN_ACTION
+A
+; A
+;
+MSG_SET_MLCN_NAME
+Όνομα και παράμετροι
+; Name and arguments
+;
+;  Browser pen names
+;
+MSG_SET_BRPEN_LINK
+Νέος σύνδεσμος
+; New link
+;
+MSG_SET_BRPEN_VLINK
+σύνδεσμος που έχω ήδη επισκεφθεί
+; Visited link
+;
+MSG_SET_BRPEN_ALINK
+Επιλεγμένος σύνδεσμο
+; Selected link
+;
+MSG_SET_BRPEN_BGCOLOR
+Υπόβαθρο
+; Background
+;
+MSG_SET_BRPEN_TEXT
+Κείμενο
+; Text
+;
+;  Screen colour names
+;
+MSG_SET_SCRPEN_TEXT
+Κανονικό κείμενο
+; Normal text
+;
+MSG_SET_SCRPEN_SHINE
+Φωτεινές άκρες
+; Bright edges
+;
+MSG_SET_SCRPEN_SHADOW
+Σκοτεινές άκρες
+; Dark edges
+;
+MSG_SET_SCRPEN_FILL
+Τίτλος μπάρας ενεργού παραθύρου
+; Active window title bars
+;
+MSG_SET_SCRPEN_FILLTEXT
+Τίτλοι ενεργού παραθύρου
+; Active window titles
+;
+MSG_SET_SCRPEN_BACKGROUND
+Υπόβαθρο
+; Background
+;
+MSG_SET_SCRPEN_HIGHLIGHTTEXT
+Σημαντικό κείμενο
+; Important text
+;
+MSG_SET_SCRPEN_BARDETAIL
+Κείμενο μενού
+; Menu text
+;
+MSG_SET_SCRPEN_BARBLOCK
+Υπόβαθρο μενού
+; Menu background
+;
+;  ARexx menu shortcut
+;
+MSG_SET_AREX_NONE
+κανένα
+; none
+;
+;  Network external program types
+;
+MSG_SET_NWPRG_STARTTCP
+Εκκίνηση TCP
+; Start TCP
+;
+MSG_SET_NWPRG_ENDTCP
+Τερματισμός TCP
+; End TCP
+;
+;  Font types and sizes (fonts page)
+;
+MSG_SET_FTYPE_NORMAL
+Κανονική γραμματοσειρά
+; Normal fonts
+;
+MSG_SET_FTYPE_FIXED
+Γραμματοσειρά σταθερού πλάτους
+; Fixed width fonts
+;
+MSG_SET_FSIZE_1
+1 (μικρότερη)
+; 1 (smallest)
+;
+MSG_SET_FSIZE_3
+3 (κανονική)
+; 3 (normal)
+;
+MSG_SET_FSIZE_7
+7 (μεγαλύτερη)
+; 7 (largest)
+;
+;  Font list headers
+;
+MSG_SET_FLH_SIZE
+Μέγεθος
+; Size
+;
+MSG_SET_FLH_FONTFACE
+Όνομα και μέγεθος γραμματοσειράς
+; Font name and size
+;
+;  Style list headers
+;
+MSG_SET_SLH_TAG
+Ταμπέλα
+; Tag
+;
+MSG_SET_SLH_STYLE
+Σχηματισμένο ως
+; Rendered as
+;
+;  Cache verify modes
+;
+MSG_SET_CAVERIFY_ALWAYS
+Πάντα
+; Always
+;
+MSG_SET_CAVERIFY_ONCE
+Μια φορά ανά session
+; Once per session
+;
+MSG_SET_CAVERIFY_NEVER
+Ποτέ
+; Never
+;
+;  Palette loading
+;
+MSG_SET_LPAL_OFF
+Kλειστό
+; Off
+;
+MSG_SET_LPAL_COLOURS
+Χρώματα
+; Colours
+;
+MSG_SET_LPAL_GRAY
+Κλίμακα του γκρι
+; Grayscale
+;
+;  MIME action names and abbreviationss
+;
+MSG_SET_MACT_DEFAULT
+Προκαθορισμένο
+; Default
+;
+MSG_SET_MACT_INTERNAL
+Εσωτερικό (I)
+; Internal (I)
+;
+MSG_SET_MACT_PLUGIN
+AWeb Plugin (A)
+; AWeb Plugin (A)
+;
+MSG_SET_MACT_EXTERNAL
+Εξωτ. πρόγραμμα (E)
+; Extl. program (E)
+;
+MSG_SET_MACT_EXTPIPE
+Εξωτ. w/PIPE (P)
+; Extl. w/PIPE (P)
+;
+MSG_SET_MACT_SAVEDISK
+Αποθήκευση στον δίσκο (S)
+; Save to disk (S)
+;
+MSG_SET_MACT_EXTCAN
+
+; Extl. No Fetch (F)
+;
+; ***NEW***
+;
+MSG_SET_MACT_CANCEL
+
+; Cancel (C)
+;
+; ***NEW***
+;
+; 1-letter abbreviations to use for the above in the MIME list
+MSG_SET_MACT_ABBREV
+ IAEPFSC
+;  IAEPFSC
+;
+;  Cookie settings
+;
+MSG_SET_COOKIES_NEVER
+Ποτέ
+; Never
+;
+MSG_SET_COOKIES_ASK
+Ερώτηση πριν ορίστει
+; Ask before set
+;
+MSG_SET_COOKIES_QUIET
+Πάντα (ήσυχα)
+; Always (quiet)
+;
+;  Pupup menu types
+;
+MSG_SET_PUPTYPE_IMAGE
+Αναδυόμενο μενού εικόνας
+; Image popup menu
+;
+MSG_SET_PUPTYPE_LINK
+Αναδυόμενο μενού συνδέσμων
+; Link popup menu
+;
+MSG_SET_PUPTYPE_FRAME
+Αναδυόμενο μενού περιθωρίων
+; Frame popup menu
+;
+;  Menu entry types (used in the chooser)
+;
+MSG_SET_MENUTYPE_MENU
+Μενού
+; Menu
+;
+MSG_SET_MENUTYPE_ITEM
+Αντικείμενο
+; Item
+;
+MSG_SET_MENUTYPE_SUB
+Υπό
+; Sub
+;
+;  Menu entry types used in the first list column.
+;  For best effects, make sure the string for "MENU" is
+;  wider than the string for "Item".
+;
+MSG_SET_MENULABEL_MENU
+Μενού
+; MENU
+;
+MSG_SET_MENULABEL_ITEM
+Αντικείμενο
+; Item
+;
+;  Javascript choices
+;
+MSG_SET_JS_OFF
+Κλειστό
+; Off
+;
+MSG_SET_JS_11
+Ενοχλητικό
+; Fastidious
+;
+MSG_SET_JS_ALL
+Παμφάγο
+; Omnivorous
+;
+;  Gadget labels - general
+;
+MSG_SET_PAGE
+_Σελίδα
+; _Page
+;
+MSG_SET_SAVE
+_Αποθήκευση
+; _Save
+;
+MSG_SET_USE
+_Χρήση
+; _Use
+;
+MSG_SET_CANCEL
+Ά_κυρο
+; _Cancel
+;
+MSG_SET_TEST
+_Δοκιμή
+; _Test
+;
+;  Gadget labels - fonts
+;
+MSG_SET_FONT_FONT
+_Γραμματοσειρά
+; _Font
+;
+MSG_SET_FONT_FONTTYPE
+_Τύπος γραμματοσειράς
+; Font t_ype
+;
+MSG_SET_FONT_SETALL
+_Χρήση αυτής της γραμματοσειράς για όλα
+; Set _all to this font name
+;
+MSG_SET_FONT_FONTTYPE2
+Τύπος γραμματοσειράς
+; Font type
+;
+MSG_SET_FONT_ALIAS
+_Αντώνυμο
+; A_lias
+;
+MSG_SET_FONT_ADD
+Πρόσθεση
+; Add
+;
+MSG_SET_FONT_DEL
+Διαγραφή
+; Del
+;
+;  Gadget labels - colours
+;
+MSG_SET_APP_CHGCOLOUR
+_Αλλάγη χρώματος
+; C_hange colour
+;
+MSG_SET_APP_SCREENPENS
+Χρήση κειμένου οθόνης και χρωμάτων _υποβάθρο
+; Use screen text and _background pens
+;
+;  Gadget labels - browser options/gui options
+;
+MSG_SET_BROPT_HTMLMODE
+_Κατάσταση HTML
+; HTML _mode
+;
+MSG_SET_BROPT_ULLINKS
+Υπο_γραμμισμένοι σύνδεσμοι
+; Under_lined links
+;
+MSG_SET_BROPT_CYCLETOLIST
+Επίδειξη κ_υκλικών πεδίων ως καταλόγων
+; Show c_ycle fields as list
+;
+MSG_SET_BROPT_DOCOLORS
+Χρήση _υποβάθρου και χρωμάτων
+; Use _background and colours
+;
+MSG_SET_BROPT_POPUPLABEL
+Ενεργοποίηση αναδυόμενων μενού
+; Popup menu activation
+;
+MSG_SET_BROPT_POPUPSHIFT
+Πλήκτρο S_HIFT
+; S_HIFT key
+;
+MSG_SET_BROPT_POPUPALT
+Πλήκτρο _ALT
+; _ALT key
+;
+MSG_SET_BROPT_POPUPCONTROL
+Πλήκτρο CT_RL
+; CT_RL key
+;
+MSG_SET_BROPT_POPUPMIDBUTTON
+Μ_εσαίο πλήκτρο ποντικιού
+; M_iddle mouse button
+;
+MSG_SET_BROPT_DOBGSOUND
+Χρήση ή_χου υποβάθρο
+; Use background soun_d
+;
+MSG_SET_BROPT_BLINK
+Ανα_βόσβησμα (0.1 s)
+; Blin_k (0.1 s)
+;
+MSG_SET_BROPT_POPUPRBUTTON
+_Δεξί πλήκτρο ποντικιού
+; Ri_ght mouse button
+;
+MSG_SET_BROPT_JAVASCRIPT
+Χρήση _JavaScript
+; Use _JavaScript
+;
+MSG_SET_BROPT_FRAMES
+Χρήση _frames
+; Use _frames
+;
+MSG_SET_BROPT_INCTABLE
+_Τμηματική απεικόνιση πίνακα
+; _Incremental table display
+;
+MSG_SET_BROPT_NOMINALFRAME
+_Ονομαστικό ύψος πλαισίου
+; _Nominal frame height
+;
+MSG_SET_BROPT_JSERRORS
+Εμφάνιση _λαθών JavaScript
+; Show JavaScript _errors
+;
+MSG_SET_BROPT_NOBANNERS
+Καταστολή διαφημιστικών παραθύρων
+; Su_ppress banner windows
+;
+MSG_SET_BROPT_TOOLTIPS
+Επιδειξη των t_ooltips για τις εικόνες
+; Display t_ooltips for images
+;
+MSG_SET_BROPT_HANDPOINTER
+Ο δείκτης ως _χεράκι επάνω από συνδέσμους
+; _Hand pointer over links
+;
+MSG_SET_BROPT_JSWATCH
+_Ειδοποιήση για ύποπτα JavaScript
+; _Warn for suspect JavaScript
+;
+MSG_SET_BROPT_TEMPRP
+
+; Use double buffered _rendering
+;
+; ***NEW***
+;
+MSG_SET_BROPT_CHARSET
+
+; Default ch_aracter set
+;
+; ***NEW***
+;
+MSG_SET_BROPT_IMGBORDER
+
+; Border around ima_ges
+;
+; ***NEW***
+;
+;  Gadget labels - screen
+;
+MSG_SET_SCREEN_OPENON
+Ά_νοιγμα σε
+; _Open on
+;
+MSG_SET_SCREEN_NAME
+Ό_νομα οθόνης
+; Screen _name
+;
+MSG_SET_SCREEN_MODE
+_τύπος οθόνης
+; Screen _mode
+;
+MSG_SET_SCREEN_PALETTE
+_Φόρτωση διάχυτης παλέτας
+; _Load spread palette
+;
+;  Gadget labels - palette
+;
+MSG_SET_PALL_PENLABEL
+Ρυθμίσεις Χρώματος
+; Pen settings
+;
+MSG_SET_PALL_PEN
+_Χρώμα
+; P_en
+;
+MSG_SET_PALL_PALLETTELABEL
+Αλλάγη παλέτας
+; Change palette
+;
+MSG_SET_PALL_PALLPEN
+_Χρώμα
+; Pe_n
+;
+MSG_SET_PALL_CHGCOLOUR
+Αλλάγη _χρώματος
+; C_hange colour
+;
+;  Gadget labels - network options and privacy
+;
+MSG_SET_NETWORK_IMGLOAD
+_Φόρτωση εικόνας
+; _Image loading
+;
+MSG_SET_NETWORK_MAXCONN
+Μεγ. αριθμός συνδέσεων _δικτύου
+; Max. _network connections
+;
+MSG_SET_NETWORK_HOMEPAGE
+_Αρχική σελίδα
+; _Home page
+;
+MSG_SET_NETWORK_LOCALINDEX
+_Τοπικό ευρετήριο
+; _Local index
+;
+MSG_SET_NETWORK_STARTHOME
+_Εκκίνηση από την αρχική σελίδα
+; St_art with home page
+;
+MSG_SET_NETWORK_ANONYMOUS
+Καταστολή _Συνδέσμου κατά την πλοήγηση
+; Suppress _Referer while browsing
+;
+MSG_SET_NETWORK_IGNORE
+_Αγνόησε τύπο MIME του διακομιστή
+; I_gnore server MIME type
+;
+MSG_SET_NETWORK_MAXDISK
+α_ναγνώσεις δίσκου
+; _disk reads
+;
+MSG_SET_NETWORK_COOKIES
+Χρήση coo_kies
+; Use coo_kies
+;
+MSG_SET_NETWORK_NOCOOKIELABEL
+Όχι cookies για τα domain
+; No cookies for domains
+;
+MSG_SET_NETWORK_NOCOOKIEADD
+Πρόσθεση
+; Add
+;
+MSG_SET_NETWORK_NOCOOKIEDEL
+Διαγραφή
+; Del
+;
+MSG_SET_NETWORK_FORMWARN
+Ε_ιδοποίηση προτού σταλεί ανασφαλής τύπος δεδομένων
+; _Warn before sending unsecure form data
+;
+MSG_SET_NETWORK_AUTOSEARCHURL
+Αυτόματη έρ_ευνα URL
+; Autosea_rch URL
+;
+MSG_SET_NETWORK_AUTOSEARCH
+Ενερ_γοποίηση αυτόματης έρευνας
+; _Enable autosearch
+;
+MSG_SET_NETWORK_SPAMBLOCK
+Εν_εργοποιήση του spamblock κατά την αποστολή ειδήσεων
+; _Activate spamblock when posting news
+;
+MSG_SET_NETWORK_FTPEMAILADDR
+Χρήση διεύθυνσης e-mail ως ανώνυμου κωδικού _FTP
+; Use e-mail address as _FTP anon password
+;
+MSG_SET_NETWORK_SPOOFID
+Π_ροσποίηση ως
+; Spoo_f as
+;
+MSG_SET_NETWORK_CONTANIM
+_Συνεχή κινούμενα γραφικά
+; C_ontinuous animation
+;
+MSG_SET_NETWORK_SPOOFID_EXPL
+(Επιλέξτε μια καταχώρηση από τη λίστα\n\
+ ή δώστε το δικό σας browser ID)
+; (Select an entry from the list\n or type your own browser ID)
+;
+MSG_SET_NETWORK_RESTRICT_IMAGES
+Περιορισμός εικόνων στο ίδιο host
+; Restrict i_mages to same host
+;
+;  Gadget labels - network proxy
+;
+MSG_SET_PROXY_TYPE
+Τ_ύπος
+; T_ype
+;
+MSG_SET_PROXY_NAME
+_Proxy
+; _Proxy
+;
+MSG_SET_PROXY_LIMITED
+_Περιορισμένη χρήση proxy
+; _Limited proxy usage
+;
+MSG_SET_PROXY_NOPROXYLABEL
+Όχι proxy για αυτά τα sites
+; No proxy for these sites
+;
+MSG_SET_PROXY_NOPROXYADD
+Πρόσθεση
+; Add
+;
+MSG_SET_PROXY_NOPROXYDEL
+Διαγραφή
+; Del
+;
+MSG_SET_PROXY_PASSIVEFTP
+_Παθητικό FTP
+; Passi_ve FTP
+;
+;  Gadget labels - network external programs
+;
+MSG_SET_NWPRG_TYPE
+Τ_ύπος
+; T_ype
+;
+MSG_SET_NWPRG_CMD
+_Εντολή
+; Co_mmand
+;
+MSG_SET_NWPRG_ARGS
+_Παράμετροι
+; _Arguments
+;
+;  Gadget labels - program options
+;
+MSG_SET_PROGRAM_SAVEPATH
+Απο_θήκευση διαδρομής
+; S_ave path
+;
+MSG_SET_PROGRAM_OVERLAP
+_Επικάλυψη κύλισης (pixels)
+; Scroll _overlap (pixels)
+;
+MSG_SET_PROGRAM_ALLOW
+Επιτρέπονται _εντολές Shell στους συνδέσμους
+; A_llow Shell commands in links
+;
+MSG_SET_PROGRAM_HOTCLOSE
+Αυτόματο κλείσιμο της αίτησης _Hotlist
+; _Hotlist requester auto close
+;
+MSG_SET_PROGRAM_HOTREQ
+το κουμπί λίστας διευθύνσεων βγάζει παράθυρο _αιτήματος
+; Hotlist button gives _requester
+;
+MSG_SET_PROGRAM_HOTSINGLECLICK
+
+; Use Singleclic_k in Hotlist Viewer
+;
+; ***NEW***
+;
+MSG_SET_PROGRAM_WHISCLOSE
+Αυτόματο κλείσιμο παραθύρου _ιστορικού
+; History _window auto close
+;
+MSG_SET_PROGRAM_SAVEICONS
+Δημιουργία ε_ικονιδίων
+; Create _icons
+;
+MSG_SET_PROGRAM_AAHOTLIST
+Αυτόματο άνοιγμα της λίστας διευθύνσεων
+; Auto ope_n hotlist
+;
+MSG_SET_PROGRAM_AAWINHIS
+Αυτόματο άνοιγμα παραθύρου ιστο_ρικού
+; Auto open window histor_y
+;
+MSG_SET_PROGRAM_AANETSTAT
+Αυτόματο άνοιγμα κατάστασης _δικτύου
+; Auto open n_etwork status
+;
+MSG_SET_PROGRAM_DRAGGING
+Επιτρέπεται η μ_ετακίνηση
+; Allow _dragging
+;
+MSG_SET_PROGRAM_CENTERREQS
+_Κεντράρισμα παραθύρων αιτήματος
+; Center re_questers
+;
+;  Gadget labels - external programs
+;
+MSG_SET_EDITOR_LABEL
+Επεξεργαστής
+; Editor
+;
+MSG_SET_EDITOR_CMD
+Ε_ντολή
+; Co_mmand
+;
+MSG_SET_EDITOR_ARGS
+_Παράμετροι
+; _Arguments
+;
+MSG_SET_VIEWER_LABEL
+HTML viewer κώδικα
+; HTML source viewer
+;
+;**OBSOLETE**
+MSG_SET_VIEWER_CMD
+Ε_ντολή
+; C_ommand
+;
+;**OBSOLETE**
+MSG_SET_VIEWER_ARGS
+_Παράμετροι
+; A_rguments
+;
+MSG_SET_CONSOLE
+_Κονσόλα
+; Co_nsole
+;
+MSG_SET_PRPROGRAMS_TYPE
+_Τύπος
+; T_ype
+;
+MSG_SET_IMGVIEWER_LABEL
+Viewer Eικόνων
+; Image viewer
+;
+MSG_SET_STARTUP_LABEL
+Script που τρέχει στην εκκίνηση
+; Script run at startup
+;
+MSG_SET_SHUTDOWN_LABEL
+Script που τρέχει στον τερματισμό
+; Script run at shutdown
+;
+;  Gadget labels - cache
+;
+MSG_SET_CACHE_TEMPPATH
+_Διαδρομή temp
+; Temp _path
+;
+MSG_DUMMY_2
+
+; 
+MSG_SET_CACHE_DOCMEM
+_Μνήμη (kB)
+; _Memory (kB)
+;
+MSG_SET_CACHE_DOCDISK
+_Δίσκος (kB)
+; _Disk (kB)
+;
+MSG_DUMMY_3
+
+; 
+MSG_DUMMY_4
+
+; 
+MSG_DUMMY_5
+
+; 
+MSG_DUMMY_6
+
+; 
+MSG_DUMMY_7
+
+; 
+MSG_SET_CACHE_CACHEPATH
+_Διαδρομή της cache
+; Cache _path
+;
+MSG_SET_CACHE_SIZELABEL
+Μέγεθος cache
+; Cache size
+;
+MSG_SET_CACHE_FREELABEL
+Διατήρηση ελαχίστου ελευθέρου
+; Keep minimum free
+;
+MSG_SET_CACHE_CHIP
+C_hip (kB)
+; C_hip (kB)
+;
+MSG_SET_CACHE_FAST
+_Fast (kB)
+; _Fast (kB)
+;
+MSG_CACHE_VERIFICATION_LABEL
+
+; Cache Verification
+;
+; ***NEW***
+;
+MSG_SET_CACHE_VERIFY_DYN
+
+; Verify d_ynamic objects
+;
+; ***NEW***
+;
+MSG_SET_CACHE_VERIFY_STAT
+
+; Verify _static objects
+;
+; ***NEW***
+;
+MSG_SET_CACHE_FASTRESPONSE_DYN
+
+; Fast _response
+;
+; ***NEW***
+;
+MSG_SET_CACHE_FASTRESPONSE_STAT
+
+; Fas_t response
+;
+; ***NEW***
+;
+MSG_SET_CACHE_NOCACHELABEL
+Μη διατήρηση στην cache αυτών των sites
+; Do not cache these sites
+;
+MSG_SET_CACHE_NOCACHEADD
+Πρόσθεση
+; Add
+;
+MSG_SET_CACHE_NOCACHEDEL
+Διαγραφή
+; Del
+;
+;  Gadget labels - MIME types and external viewers
+;
+MSG_SET_MIME_TYPE
+_Τύπος
+; T_ype
+;
+MSG_SET_MIME_ADD
+_Πρόσθεση
+; _Add
+;
+MSG_SET_MIME_DEL
+_Διαγραφή
+; _Del
+;
+MSG_SET_MIME_EXTENSIONS
+_Προεκτάσεις
+; _Extensions
+;
+;**obsolete
+MSG_SET_MIME_CMD
+_Εντολή
+; C_ommand
+;
+MSG_SET_MIME_ARGS
+_Παράμετροι
+; A_rguments
+;
+MSG_SET_MIME_NAME
+Όν_ομα
+; Na_me
+;
+MSG_SET_MIME_ACTION
+_Ενέργεια
+; Act_ion
+;
+;  Settings colour requester
+;
+MSG_SET_COLOUR_TITLE
+Επιλογή χρώματος
+; Select colour
+;
+MSG_SET_COLOUR_CANCEL
+Άκυρο
+; Cancel
+;
+MSG_SET_COLOUR_OK
+Εντάξει
+; Ok
+;
+MSG_SET_COLOUR_RED
+R
+; R
+;
+MSG_SET_COLOUR_GREEN
+G
+; G
+;
+MSG_SET_COLOUR_BLUE
+B
+; B
+;
+;  Gadget labels - Menu (was: ARexx menu)
+;
+MSG_SET_AREXX_SORT
+_Ταξινόμηση
+; S_ort
+;
+MSG_SET_AREXX_ADD
+_Πρόσθεση
+; _Add
+;
+MSG_SET_AREXX_DEL
+_Διαγραφή
+; _Del
+;
+MSG_SET_AREXX_TITLE
+_Τίτλος
+; T_itle
+;
+MSG_DUMMY_9
+
+; 
+;
+MSG_DUMMY_10
+
+; 
+;
+MSG_SET_MENUS_INVALID
+INVALID
+; INVALID
+;
+MSG_SET_MENUS_TYPE
+_Τύπος
+; T_ype
+;
+MSG_SET_MENUS_COMMAND
+_Εντολή
+; Co_mmand
+;
+;  Gadget labels - Styles page
+;
+MSG_SET_STYLE_FIXED
+_Σταθερό πλάτος
+; _Fixed width
+;
+MSG_SET_STYLE_ABSSIZE
+_Απόλυτο μέγεθος
+; _Abs size
+;
+MSG_SET_STYLE_RELSIZE
+_Σχετικό μέγεθος
+; _Rel size
+;
+MSG_SET_STYLE_NORMAL
+_Κανονικό
+; _Normal
+;
+MSG_SET_STYLE_BOLD
+Έ_ντονη γραφή
+; _Bold
+;
+MSG_SET_STYLE_ITALIC
+_Πλάγια γραφή
+; _Italic
+;
+MSG_SET_STYLE_UNDERLINED
+_Υπογραμμισμένη
+; Under_lined
+;
+;  Gadget labels - User buttons
+;
+MSG_SET_BUTTON_SORT
+_Ταξινόμηση
+; S_ort
+;
+MSG_SET_BUTTON_ADD
+_Πρόσθεση
+; _Add
+;
+MSG_SET_BUTTON_DEL
+_Διαγραφή
+; _Del
+;
+MSG_SET_BUTTON_LABEL
+_Ταμπέλα
+; _Label
+;
+MSG_SET_BUTTON_CMD
+_Εντολή
+; Co_mmand
+;
+;  Gadget labels - Popup menus
+;
+MSG_SET_POPUP_TYPE
+_Τύπος
+; T_ype
+;
+MSG_SET_POPUP_SORT
+_Ταξινόμηση
+; S_ort
+;
+MSG_SET_POPUP_ADD
+_Πρόσθεση
+; _Add
+;
+MSG_SET_POPUP_DEL
+_Διαγραφή
+; _Del
+;
+MSG_SET_POPUP_TITLE
+Τίτ_λος
+; T_itle
+;
+MSG_SET_POPUP_CMD
+_Εντολή
+; Co_mmand
+;
+MSG_SET_POPUP_SHOWIF
+Εμφάνιση αντικειμένου if
+; Show if object
+;
+MSG_SET_POPUP_INMEM
+στη _μνήμη
+; in m_em
+;
+MSG_SET_POPUP_NOTINMEM
+ό_χι στην μνήμη
+; _not in mem
+;
+;  Gadget labels - GUI options
+;
+MSG_SET_GUIOPT_SHOWBUTTONS
+Εμφάνιση _κουμπιών χρήστη
+; Show user _buttons
+;
+MSG_SET_GUIOPT_SHOWNAV
+Εμφάνιση των gadgets πλοήγησης
+; Show _navigation gadgets
+;
+MSG_SET_GUIOPT_BORDERLESS
+
+; Border_less gadgets
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTTONTYPE
+
+; Gadget _Type
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_TEXTONLY
+
+; Text Only
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_TEXTIMAGE
+
+; Image & Text
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_IMAGEONLY
+
+; Image Only
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTTONPOS
+
+; Gadget _Position
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTPOS_LEFT
+
+; Left
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTPOS_RIGHT
+
+; Right
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTPOS_TOPLEFT
+
+; Top Left
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTPOS_TOPRIGHT
+
+; Top Right
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTPOS_BIGLEFT
+
+; Big Left
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTPOS_BIGRIGHT
+
+; Big Right
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_WINBDR
+
+; Window Borders
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_WINBDR_STANDARD
+
+; Standard
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_WINBDR_GADGETLESS
+
+; Gadgetless
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_WINBDR_BORDERLESS
+
+; Borderless
+;
+; ***NEW***
+;
+;  Gadget labels - Network Mail/News
+;
+MSG_SET_MAIL_TAB_ADDRESS
+_Διεύθυνση
+; _Address
+;
+MSG_SET_MAIL_TAB_MAIL
+_Ταχυδρομείο
+; _Mail
+;
+MSG_SET_MAIL_TAB_NEWS
+_Ειδήσεις
+; _News
+;
+MSG_SET_MAIL_TAB_OPTIONS
+_Επιλογές
+; _Options
+;
+MSG_SET_MAIL_ADDRESS
+_Διεύθυνση ηλ. ταχυδρομείου
+; _E-mail address
+;
+MSG_SET_MAIL_REALNAME
+_Πραγματικό όνομα
+; _Real name
+;
+MSG_SET_MAIL_REPLYTO
+Απά_ντηση στην διεύθυνση
+; Re_ply to address
+;
+MSG_SET_MAIL_ORGANIZATION
+Ορ_γανισμός
+; Or_ganization
+;
+MSG_SET_MAIL_SIGNATURE
+Αρχείο _υπογραφής
+; S_ignature file
+;
+MSG_SET_MAIL_SMTPHOST
+_Host Ταχυδρομείου (SMTP)
+; Mail _host (SMTP)
+;
+MSG_SET_MAIL_MAILQUOTEHDR
+_Παράθεση κεφαλίδας
+; _Quote header
+;
+MSG_SET_MAIL_EXTMAILER
+Χρήση ε_ξωτ. προγράμματος ταχυδρομείου
+; Use _external mailer
+;
+MSG_SET_MAIL_EXTMCOMMAND
+_Εντολή
+; Comman_d
+;
+MSG_SET_MAIL_EXTMARGS
+Παράμετροι
+; Ar_guments
+;
+MSG_SET_MAIL_NNTPHOST
+_Host Νέων (NNTP)
+; News _host (NNTP)
+;
+MSG_SET_MAIL_NEWSQUOTEHDR
+_Παράθεση κεφαλίδας
+; _Quote header
+;
+MSG_SET_MAIL_NEWSUSER
+Όνομα χρήστη Ειδήσεων
+; News use_r name
+;
+MSG_SET_MAIL_NEWSPASSWORD
+_Κωδικός Ειδήσεων
+; News _password
+;
+MSG_SET_MAIL_EXTNEWS
+Χρήση ε_ξωτερικού προγράμματος Ειδήσεων
+; Use _external newsreader
+;
+MSG_SET_MAIL_EXTNCOMMAND
+_Εντολή
+; Comman_d
+;
+MSG_SET_MAIL_EXTNARGS
+_Παράμετροι
+; Ar_guments
+;
+MSG_SET_MAIL_MAXARTICLES
+_Μέγιστος αριθμός άρθρων
+; Ma_x nr of articles
+;
+MSG_SET_MAIL_SORTED
+_Ταξινόμηση άρθρων
+; So_rt articles
+;
+MSG_SET_MAIL_FRAMED
+_Χωρισμός οθόνης
+; S_plit screen
+;
+MSG_SET_MAIL_LONGHDRS
+_Μακρές κεφαλίδες
+; _Long headers
+;
+MSG_SET_MAIL_PROPFONT
+Διανυσματική _γραμματοσειρά
+; Proportional _font
+;
+MSG_SET_MAIL_NEWSBYNUMBER
+Ανάκτηση κατ'_αριθμό
+; Retrieve by num_ber
+;
+;  Gadget labels - GUI keys
+;
+MSG_SET_KEYS_KEY
+Πλήκτρο
+; Key
+;
+MSG_SET_KEYS_COMMAND
+_Εντολή
+; Co_mmand
+;
+;  Key names
+;
+MSG_SET_KEYS_ENTER
+Enter
+; Enter
+;
+MSG_SET_KEYS_TAB
+Tab
+; Tab
+;
+MSG_SET_KEYS_BS
+BS
+; BS
+;
+MSG_SET_KEYS_SPACE
+Κενό
+; Space
+;
+MSG_SET_KEYS_UP
+Επάνω
+; Up
+;
+MSG_SET_KEYS_LEFT
+Αριστερά
+; Left
+;
+MSG_SET_KEYS_RIGHT
+Δεξιά
+; Right
+;
+MSG_SET_KEYS_DOWN
+Κάτω
+; Down
+;
+MSG_SET_KEYS_NUM
+Num
+; Num
+;
+MSG_SET_KEYS_SHIFT
+Shift
+; Shift
+;
+MSG_SET_KEYS_WHEELUP
+Ροδέλα πάνω
+; Wheel up
+;
+MSG_SET_KEYS_WHEELDOWN
+Ροδέλα κάτω
+; Wheel down
+;
+;  Gadget labels - Navigation buttons
+;
+MSG_SET_NAVS_BUTTON
+Κουμπί
+; Button
+;
+MSG_SET_NAVS_COMMAND
+_Εντολή
+; Co_mmand
+;
+;  Navigation button names
+;
+MSG_SET_NAVS_BACK
+Πίσω
+; Back
+;
+MSG_SET_NAVS_FORWARD
+Μπροστά
+; Forward
+;
+MSG_SET_NAVS_HOME
+Αρχική σελίδα
+; Home
+;
+MSG_SET_NAVS_ADDHOT
+Πρόσθεση στη λίστα διευθύνσεων
+; Add to hotlist
+;
+MSG_SET_NAVS_HOTLIST
+Επίδειξη λίστας διευθύνσεων
+; Show hotlist
+;
+MSG_SET_NAVS_CANCEL
+Άκυρο
+; Cancel
+;
+MSG_SET_NAVS_NETSTATUS
+Κατάσταση δικτύου
+; Network status
+;
+MSG_SET_NAVS_SEARCH
+Έρευνα
+; Search
+;
+MSG_SET_NAVS_RELOAD
+Επαναφόρτωση
+; Reload
+;
+MSG_SET_NAVS_LOADIMAGES
+Φόρτωση εικόνων
+; Load images
+;
+;  Settings menu strings
+;
+MSG_SET_PROJECT_MENU
+Εργασία
+; Project
+;
+MSG_SET_PROJECT_OPEN
+O/Άνοιγμα...
+; O/Open...
+;
+MSG_SET_PROJECT_SAVEAS
+A/Αποθήκευση ως...
+; A/Save as...
+;
+MSG_SET_PROJECT_QUIT
+Q/Έξοδος ρυθμίσεων
+; Q/Quit settings
+;
+MSG_SET_EDIT_MENU
+Επεξεργασία
+; Edit
+;
+MSG_SET_EDIT_DEFAULTS
+D/Επαναφορά στα προκαθορισμένα
+; D/Reset to defaults
+;
+MSG_SET_EDIT_LASTSAVED
+L/Τελευταία αποθηκευμένα
+; L/Last saved
+;
+MSG_SET_EDIT_RESTORE
+R/Επαναφορά
+; R/Restore
+;
+MSG_SET_WINDOWS_MENU
+Παράθυρα
+; Windows
+;
+MSG_SET_WINDOWS_BROWSER
+Ρυθμίσεις Φυλλομετρητή...
+; Browser settings...
+;
+MSG_SET_WINDOWS_PROGRAM
+Ρυθμίσεις Προγράμματος...
+; Program settings...
+;
+MSG_SET_WINDOWS_NETWORK
+Ρυμίσεις Δικτύου...
+; Network settings...
+;
+MSG_SET_WINDOWS_CLASSACT
+Ρυθμίσεις ClassAct...
+; ClassAct settings...
+;
+MSG_SET_WINDOWS_SNAPSHOT
+Αποθήκευση θέσης
+; Snapshot
+;
+MSG_SET_WINDOWS_GUI
+Ρυθμίσεις GUI...
+; GUI settings...
+;

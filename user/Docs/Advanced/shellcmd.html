@@ -1,0 +1,199 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+<html>
+<head>
+<title>
+Execute shell commands and ARexx macros
+</title>
+</head>
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<h1>&nbsp; Execute shell commands
+and ARexx macros</h1>
+
+AWeb offers a unique and powerful facility to execute Amiga DOS Shell
+commands and ARexx macros
+from a page, just by clicking on a hyperlink or by submitting
+a form. With some effort, you can create complex applications using
+AWeb as the user interface, starting scripts that dynamically compose
+new documents that are loaded into AWeb via
+<a href=ARexx/arexx.html>ARexx</a>, etcetera.
+<p>
+Although this feature can be very useful, it could also be very dangerous.
+Therefore this feature works only from local pages (with a URL starting
+with <code>file://localhost/</code>), and only if the
+<a href=../Configuring/proptions.html#shellcmd>Allow Shell commands</a> setting
+is selected. If you haven't selected this setting, a warning requester is
+displayed whenever you try to follow such a hyperlink. In this requester you can
+abandon the command, or allow it to continue.
+
+<h2>Simple shell commands</h2>
+To include a simple command, just add a normal hyperlink in your document
+that points to a URL of the form
+<pre>
+   x-aweb:command/<i>your_DOS_command</i>
+
+</pre>If the user clicks on the hyperlink, <i>your_DOS_command</i> is
+executed. The output of the command is directed to an auto opening console
+window, unless you specify another output redirection in your command.
+<p>
+Because <a href=htmlmode.html#compatible>compatible HTML mode</a> stops the
+URL at a space, make sure you have escaped all spaces in the command
+by "<code><b>&amp;#32;</b></code>" or else the command won't work if the
+user has selected compatible HTML mode.
+<p>
+Example:
+<code>&lt;a href="x-aweb:command/dir&amp;#32;sys:&amp;#32;all"&gt;get dir&lt;/a&gt;</code>
+would allow the user to execute the <code>dir&nbsp;sys:&nbsp;all</code>
+command by a click on the words "<code>get dir</code>".
+<p>
+<strong>Note:</strong> The DOS command is executed in a separate shell,
+with a current directory set equal to the current directory of AWeb. You
+are advised to use only absolute path names in the DOS command, or else
+the result will depend on which directory happened to be the current
+directory when you started AWeb. When AWeb is running, you can use the
+assign name <code>AWebPath:</code> as an absolute reference to the
+directory where the AWeb executable is located.
+
+<h2>ARexx macros</h2>
+Starting ARexx macros from your page works in a similar way. Just add a
+normal hyperlink that points to a URL of the form
+<pre>
+   x-aweb:rexx/<i>your_ARexx_macro</i>
+
+</pre>If the user clicks on the hyperlink, <i>your_ARexx_macro</i> is
+started with the ARexx port for this window as the default command port.
+
+<h2>Parameters</h2>
+You can use a HTML <em>form</em> or a <em>clickable map</em> to pass
+parameters to your DOS command or ARexx macro.
+
+<h3>Forms</h3>
+Supply a <code>ACTION="x-aweb:command/<i>your_command</i>"</code>
+attribute in your <code>&lt;FORM&gt;</code> tag to execute the command
+if the user submits the form. Similarly, you can include a
+<code>ACTION="x-aweb:rexx/<i>your_macro</i>"</code> attribute to start
+the ARexx macro.
+
+<h4>METHOD=GET</h4>
+For forms defined with <code>METHOD=GET</code> (the default), form
+parameters are converted to Amiga DOS style parameters: the field
+name will be used as the argument name, and the field value will be
+used as argument value. The value will be quoted, with the <em>escape</em>,
+<em>newline</em> and <em>quote</em> characters in the value escaped as
+required by Amiga DOS.
+<p>
+Note: <em>switch arguments</em> (/S) cannot be passed in this way. You
+could use a script instead, like the example below.
+<p>
+Parameters for ARexx macros are passed in the same format as for DOS
+scripts. The argument string will contain the name, an equal sign, and
+a quoted value for each form parameter. Have a look at the second
+example below for one possible way of parsing this.
+<p>
+Note that the total length of all arguments passed in this way is
+limited to about 4000 characters. The excess is truncated. If your
+form might yield a longer argument set, use METHOD=POST instead.
+
+<h4>METHOD=POST</h4>
+For forms defined with <code>METHOD=POST</code>, a temporary file is
+created. The command or ARexx script will be called with exactly one
+argument, the file name. The temporary file contains the message in
+exactly the same way as it would have been sent to a HTTP server.
+In short, this means:<ul>
+<li>Fields are separated by the <code>&amp;</code> character.
+<li>Spaces are replaced by <code>+</code> characters.
+<li>Most non-alphanumerical characters are replaced by a <code>%XX</code> sequence,
+   where <code>XX</code> is the hexadecimal representation of the character.
+</ul>
+It is the responsibility of the command or script to delete the
+temporary file afterwards.
+<p>
+Note that you should use the default form encoding
+(<code>ENCTYPE="application/x-www-form-urlencoded"</code>, or don't specify
+the <code>ENCTYPE</code> attribute). The <code>multipart/form-data</code>
+encoding type is not supported for Shell and ARexx forms.<br>
+For file upload fields (<code>&lt;INPUT TYPE=FILE&gt;</code>) the file
+<em>name</em> is included in the message when using default encoding, not
+the file <em>contents</em> as it would for <code>multipart/form-data</code>
+forms. This is probably what you want in your command or script.
+
+<h3>Clickable maps</h3>
+When using a clickable map, the x and y coordinates of the mouse pointer
+within the image are passed to the command as parameters without keyword.
+
+<h2>Load the result back into AWeb</h2>
+If your script or macro has created an HTML document (or just a plain
+text file), you can automatically load this file back into AWeb. Use the
+ARexx <a href="ARexx/window.html#OPEN"><code>OPEN</code></a> command for
+this purpose. If you re-use the name of your file for different responses,
+be sure to add the <code>RELOAD</code> switch to prevent AWeb from showing
+the previous (cached) document again.
+<p>
+Of course, this will work better from within an ARexx macro than from
+within a DOS script. In a DOS script, you have no way of determining to
+which ARexx port you should address the <code>OPEN</code> command.
+<p>
+Another way is to load the resulting document directly into AWeb while
+you are creating it, without the need to create a temporary file. Look
+at the description of the
+<a href="ARexx/window.html#CHANOPEN"><code>CHANOPEN</code></a> command
+for details.
+
+<h2>Examples</h2>
+Below are two examples of this feature. Have a look
+at the source of this page, and at the executed
+<a href=ExampleScripts/_getdir.rexx>macro</a>
+first to convince yourself that following the link or
+submitting the form won't do any harm.
+Then select <a href=../Configuring/proptions.html#shellcmd>Allow Shell commands</a>
+in the program settings requester and play with this form.
+
+<h3>Simple shell command</h3>
+This example just gets the directory of SYS: and shows it in a separate
+console window: <a href="x-aweb:command/dir&#32;SYS:">show dir</a>.
+
+<h3>ARexx macro</h3>
+This example gets the directory contents of a selected drawer.
+<p>
+<form action="x-aweb:rexx/AWebPath:Docs/Advanced/ExampleScripts/_getdir.rexx">
+Drawer:
+<select name=drawer>
+<option value=''>(current)
+<option>Docs
+<option>Icons
+<option>Classes
+</select>
+<p>
+<input type=checkbox name=dirsopt value=dirs> Show only directories, not files
+<p>
+<input type=checkbox name=allopt value=all> Walk through subdirectories
+<p>
+<input type=submit value="OK">
+</form>
+
+<p>
+<hr>
+<a href=../AWeb%20Manual.html><img src=../GlobalImages/back.gif width=32 height=16 alt="<-" border=0></a> Back to
+<a href=../AWeb%20Manual.html>index</a>.
+
+</body>
+</html>

@@ -1,0 +1,519 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+<html>
+<head>
+<title>
+AWeb supported HTML (T-Z)
+</title>
+</head>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<h1>&nbsp; AWeb supported HTML</h1>
+
+<h2>Tags (T-Z)</h2>
+
+The <em>Mode</em> column in the tables below contains the <a href=htmlmode.html>HTML
+mode</a> that recognizes the tag or attribute. Elements recognized in <em>strict</em>
+mode will also be recognized in <em>tolerant</em> mode, but elements marked as
+<em>tolerant</em> will not be recognized in <em>strict</em> mode.
+
+<h3><a name=TABLE>TABLE</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;TABLE&gt; ... &lt;/TABLE&gt;
+   <td>Defines a table. The table element can contain (in this order):
+      <ul>
+      <li>An optional <a href=html-ad.html#CAPTION>CAPTION</a> element.
+      <li>Optionally one or more <a href=html-ad.html#COLGROUP>COLGROUP</a> elements,
+         or one or more <a href=html-ad.html#COL>COL</a> elements.
+      <li>An optional <a href=html-tz.html#THEAD>THEAD</a> element.
+      <li>An optional <a href=html-tz.html#TFOOT>TFOOT</a> element.
+      <li>Either one or more <a href=html-tz.html#TBODY>TBODY</a> elements,
+         or one or more <a href=html-tz.html#TR>TR</a> elements.
+      <li>An optional <a href=html-ad.html#CAPTION>CAPTION</a> element.
+         Only one CAPTION can occur within a table.
+      </ul>
+   <td>Strict
+<tr valign=top><th align=left>Attribute<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>ALIGN=LEFT<br>ALIGN=CENTER<br>ALIGN=RIGHT
+   <td>Specifies the location where to render the table in the window.
+      Default is left aligned.
+   <td>Strict
+<tr align=left valign=top><td>BACKGROUND="url"
+   <td>Specifies a background image. The image is tiled across all cells in the table.
+   <td>Tolerant (NS)
+<tr align=left valign=top><td>BGCOLOR=#rrggbb<br>BGCOLOR=colourname
+   <td>Specifies the background colour for all cells in the table.<br>
+      See <a href=html.html#colours>colour specifications</a> for a list of valid names.
+   <td>Strict
+<tr align=left valign=top><td>FRAME="framespec"
+   <td>Specifies the type of frame to put around the table. Possible values are:
+      <table cellpadding=0>
+         <tr><th align=left>FRAME<th align=left>Meaning
+         <tr valign=top><td>void<td>No sides. This is the default value.
+         <tr valign=top><td>above<td>The top side only.
+         <tr valign=top><td>below<td>The bottom side only.
+         <tr valign=top><td>hsides<td>The top and bottom sides only.
+         <tr valign=top><td>vsides<td>The right and left sides only.
+         <tr valign=top><td>lhs<td>The left-hand side only.
+         <tr valign=top><td>rhs<td>The right-hand side only.
+         <tr valign=top><td>box<td>All four sides.
+         <tr valign=top><td>border<td>All four sides.
+      </table>
+      If a border is requested, its thickness can be specified with the BORDER
+      attribute.
+   <td>Strict
+<tr align=left valign=top><td>RULES="rulespec"
+   <td>Specifies the type of rules to render between the cells. Possible values are:
+      <table cellpadding=0>
+         <tr><th align=left>RULES<th align=left>Meaning
+         <tr valign=top><td>none<td>No rules. This is the default value.
+         <tr valign=top><td>groups<td>Rules will appear between row groups
+            (see <a href=html-tz.html#THEAD>THEAD</a>, <a href=html-tz.html#TFOOT>TFOOT</a>
+            and <a href=html-tz.html#TBODY>TBODY</a>) and column groups (see
+            <a href=html-ad.html#COLGROUP>COLGROUP</a>) only.
+         <tr valign=top><td>rows<td>Rules will appear between rows only.
+         <tr valign=top><td>cols<td>Rules will appear between columns only.
+         <tr valign=top><td>all<td>Rules will appear between all rows and columns.
+      </table>
+   <td>Strict
+<tr align=left valign=top><td>BORDER=nn<br>BORDER
+   <td>Specifies the thickness of the frame around the table, if a frame was
+      requested by the FRAME attribute.
+      <p>
+      If no FRAME attribute is given, then the presence of the BORDER attribute
+      implies FRAME="border", unless BORDER=0 is given.<br>
+      If no RULES attribute is given, then the presence of the BORDER attribute
+      implies RULES="all", unless BORDER=0 is given.
+   <td>Strict
+<tr align=left valign=top><td>BORDERCOLOR=#rrggbb<br>BORDERCOLOR=colourname
+   <td>Specifies the colour to render the borders in for the entire table. Borders will
+      be solid, not 3-D.<br>
+      See <a href=html.html#colours>colour specifications</a> for a list of valid names.
+   <td>Tolerant (MS)
+<tr align=left valign=top><td>BORDERCOLORDARK=#rrggbb<br>BORDERCOLORDARK=colourname<br>
+      BORDERCOLORLIGHT=#rrggbb<br>BORDERCOLORLIGHT=colourname
+   <td>Specifies the colours to use for the dark and light edges of the 3-D borders in the
+      entire table.<br>
+      See <a href=html.html#colours>colour specifications</a> for a list of valid names.
+   <td>Tolerant (MS)
+<tr align=left valign=top><td>CELLPADDING=nn
+   <td>Specifies the distance between the cell contents and the cell border, in
+      pixels.
+   <td>Strict
+<tr align=left valign=top><td>CELLSPACING=nn
+   <td>Specifies the distance that adjacing cells should be separated, in pixels.
+      This is including any borders.
+   <td>Strict
+<tr align=left valign=top><td>WIDTH=nn%<br>WIDTH=nn
+   <td>Specifies the width of the table, either in a percentage of the window
+      width, or as a number of pixels.
+      <p>
+      Default is to make the table the minimum size for which all elements can be
+      rendered without wrapping, but not wider than the window.
+   <td>Strict
+</table>
+
+<h3><a name=TBODY>TBODY</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;TBODY&gt; ... &lt;/TBODY&gt;
+   <td><em>Can only appear within a <a href=html-tz.html#TABLE>TABLE</a> element</em><br>
+      Defines the body of a table. A table can contain more than one TBODY element.
+      The TBODY element must contain one or more <a href=html-tz.html#TR>TR</a> elements
+      <p>The end tag is optional.
+   <td>Strict
+<tr valign=top><th align=left>Attribute<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>ALIGN=LEFT<br>ALIGN=CENTER<br>ALIGN=RIGHT
+   <td>Renders the text and other elements within table cells in these rows left aligned,
+      centered within the cell width, or right aligned with the cell border.
+   <td>Strict
+<tr align=left valign=top><td>VALIGN=TOP<br>VALIGN=MIDDLE<br>VALIGN=BOTTOM<br>VALIGN=BASELINE
+   <td>Specifies the vertical alignment of the contents of the cells in these rows:
+      <table cellpadding=0>
+         <tr><th align=left>ALIGN<th align=left>Meaning
+         <tr valign=top><td>TOP<td>places the cell contents at the top of the cell
+         <tr valign=top><td>MIDDLE<td>places the cell contents vertically centered
+            within the cell
+         <tr valign=top><td>BOTTOM<td>places the cell contents at the bottom of the cell
+         <tr valign=top><td>BASELINE<td>aligns the text in all cells in these rows
+      </table>
+      <p>
+      This attribute overrides the VALIGN attribute of the
+      <a href=html-ad.html#COLGROUP>COLGROUP</a> and <a href=html-ad.html#COL>COL</a>
+      elements.
+   <td>Strict
+</table>
+
+<h3><a name=TD>TD</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;TD&gt; ... &lt;/TD&gt;
+   <td><em>Can only appear within a <a href=html-tz.html#TR>TR</a> element</em><br>
+      Defines a table cell.<p>
+      The end tag is optional.
+   <td>Strict
+<tr valign=top><th align=left>Attribute<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>ALIGN=LEFT<br>ALIGN=CENTER<br>ALIGN=RIGHT
+   <td>Renders the text and other elements within the table cell left aligned, centered
+      within the cell width, or right aligned with the cell border.
+      <p>
+      This attribute overrides the ALIGN attribute of all other table elements.
+   <td>Strict
+<tr align=left valign=top><td>BACKGROUND="url"
+   <td>Specifies a background image for this table cell.
+   <td>Tolerant (NS)
+<tr align=left valign=top><td>BGCOLOR=#rrggbb<br>BGCOLOR=colourname
+   <td>Specifies the background colour for this table cell.<br>
+      See <a href=html.html#colours>colour specifications</a> for a list of valid names.
+   <td>Strict
+<tr align=left valign=top><td>BORDERCOLOR=#rrggbb<br>BORDERCOLOR=colourname
+   <td>Specifies the colour to render the borders in for this table cell. Borders will
+      be solid, not 3-D.<br>
+      See <a href=html.html#colours>colour specifications</a> for a list of valid names.
+   <td>Tolerant (MS)
+<tr align=left valign=top><td>BORDERCOLORDARK=#rrggbb<br>BORDERCOLORDARK=colourname<br>
+      BORDERCOLORLIGHT=#rrggbb<br>BORDERCOLORLIGHT=colourname
+   <td>Specifies the colours to use for the dark and light edges of the 3-D borders
+      for this table cell.<br>
+      See <a href=html.html#colours>colour specifications</a> for a list of valid names.
+   <td>Tolerant (MS)
+<tr align=left valign=top><td>COLSPAN=nn
+   <td>This cell spans several adjacent columns.
+   <td>Strict
+<tr align=left valign=top><td>ROWSPAN=nn
+   <td>This cell spans several adjacent rows.
+   <td>Strict
+<tr align=left valign=top><td>NOWRAP
+   <td>Text in this cell will not word wrap. The cell will be made wide enough to
+      show the text without wrapping.
+   <td>Strict
+<tr align=left valign=top><td>VALIGN=TOP<br>VALIGN=MIDDLE<br>VALIGN=BOTTOM<br>VALIGN=BASELINE
+   <td>Specifies the vertical alignment of the cell contents:
+      <table cellpadding=0>
+         <tr><th align=left>ALIGN<th align=left>Meaning
+         <tr valign=top><td>TOP<td>places the cell contents at the top of the cell
+         <tr valign=top><td>MIDDLE<td>places the cell contents vertically centered
+            within the cell
+         <tr valign=top><td>BOTTOM<td>places the cell contents at the bottom of the cell
+         <tr valign=top><td>BASELINE<td>aligns the text in this cell with the text
+            in other cells in the same row that have VALIGN=BASELINE specified
+      </table>
+      <p>
+      This attribute overrides the VALIGN attribute of all other table elements.
+   <td>Strict
+<tr align=left valign=top><td>WIDTH=nn%<br>WIDTH=nn
+   <td>Specifies the width of this column, either in a percentage of the table width
+      or as a number of pixels.
+   <td>Strict
+<tr align=left valign=top><td>HEIGHT=nn%<br>HEIGHT=nn
+   <td>Specifies the height of this column, either in a percentage of the window height
+      or as a number of pixels.
+   <td>Strict
+</table>
+
+<h3><a name=TEXTAREA>TEXTAREA</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;TEXTAREA&gt; ... &lt;/TEXTAREA&gt;
+   <td><em>Can only appear within a <a href=html-ej.html#FORM>FORM</a> element</em><br>
+      Defines a multi line, scrollable text entry field in a form.<p>
+      The text contained in this element will be the initial text displayed
+      in the field, including line breaks.
+   <td>Strict
+<tr valign=top><th align=left>Attribute<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>COLS=nn
+   <td>Width of the field in text columns.
+   <td>Strict
+<tr align=left valign=top><td>ROWS=nn
+   <td>Height of the field in rows.
+   <td>Strict
+<tr align=left valign=top><td>NAME="name"
+   <td>Gives this field a name. Fields without a name will not be included in the
+      form data sent.
+   <td>Strict
+</table>
+
+<h3><a name=TFOOT>TFOOT</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;TFOOT&gt; ... &lt;/TFOOT&gt;
+   <td><em>Can only appear within a <a href=html-tz.html#TABLE>TABLE</a> element</em><br>
+      Defines the head of a table. A table can contain at most one TFOOT element. Note
+      that the TFOOT element must occur <em>before</em> the
+      <a href=html-tz.html#TBODY>TBODY</a> element within the table definition.
+      The TFOOT element must contain one or more <a href=html-tz.html#TR>TR</a> elements.
+      <p>The end tag is optional.
+   <td>Strict
+<tr valign=top><th align=left>Attribute<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>ALIGN=LEFT<br>ALIGN=CENTER<br>ALIGN=RIGHT
+   <td>Renders the text and other elements within table cells in these rows left aligned,
+      centered within the cell width, or right aligned with the cell border.
+   <td>Strict
+<tr align=left valign=top><td>VALIGN=TOP<br>VALIGN=MIDDLE<br>VALIGN=BOTTOM<br>VALIGN=BASELINE
+   <td>Specifies the vertical alignment of the contents of the cells in these rows:
+      <table cellpadding=0>
+         <tr><th align=left>ALIGN<th align=left>Meaning
+         <tr valign=top><td>TOP<td>places the cell contents at the top of the cell
+         <tr valign=top><td>MIDDLE<td>places the cell contents vertically centered
+            within the cell
+         <tr valign=top><td>BOTTOM<td>places the cell contents at the bottom of the cell
+         <tr valign=top><td>BASELINE<td>aligns the text in all cells in these rows
+      </table>
+      <p>
+      This attribute overrides the VALIGN attribute of the
+      <a href=html-ad.html#COLGROUP>COLGROUP</a> and <a href=html-ad.html#COL>COL</a>
+      elements.
+   <td>Strict
+</table>
+
+<h3><a name=TH>TH</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;TH&gt; ... &lt;/TH&gt;
+   <td><em>Can only appear within a <a href=html-tz.html#TR>TR</a> element</em><br>
+      Defines a table header cell.<p>
+      The end tag is optional.
+   <td>Strict
+<tr valign=top><th align=left>Attribute<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>ALIGN=LEFT<br>ALIGN=CENTER<br>ALIGN=RIGHT
+   <td>Horizontal alignment, see <a href=html-tz.html#TD>TD</a>.<p>
+      Default is ALIGN=CENTER.
+   <td>Strict
+<tr align=left valign=top><td>BACKGROUND="url"
+   <td>Specifies a background image for this table cell.
+   <td>Tolerant (NS)
+<tr align=left valign=top><td>BGCOLOR=#rrggbb<br>BGCOLOR=colourname
+   <td>Specifies the background colour for this table cell.<br>
+      See <a href=html.html#colours>colour specifications</a> for a list of valid names.
+   <td>Strict
+<tr align=left valign=top><td>BORDERCOLOR=#rrggbb<br>BORDERCOLOR=colourname
+   <td>Specifies the colour to render the borders in for this table cell. Borders will
+      be solid, not 3-D.<br>
+      See <a href=html.html#colours>colour specifications</a> for a list of valid names.
+   <td>Tolerant (MS)
+<tr align=left valign=top><td>BORDERCOLORDARK=#rrggbb<br>BORDERCOLORDARK=colourname<br>
+      BORDERCOLORLIGHT=#rrggbb<br>BORDERCOLORLIGHT=colourname
+   <td>Specifies the colours to use for the dark and light edges of the 3-D borders
+      for this table cell.<br>
+      See <a href=html.html#colours>colour specifications</a> for a list of valid names.
+   <td>Tolerant (MS)
+<tr align=left valign=top><td>COLSPAN=nn
+   <td>This cell spans several adjacent columns.
+   <td>Strict
+<tr align=left valign=top><td>ROWSPAN=nn
+   <td>This cell spans several adjacent rows.
+   <td>Strict
+<tr align=left valign=top><td>NOWRAP
+   <td>Text in this cell will not word wrap. The cell will be made wide enough to
+      show the text without wrapping.
+   <td>Strict
+<tr align=left valign=top><td>VALIGN=TOP<br>VALIGN=MIDDLE<br>VALIGN=BOTTOM<br>VALIGN=BASELINE
+   <td>Vertical alignment, see <a href=html-tz.html#TD>TD</a>.<p>
+      Default is VALIGN=MIDDLE.
+   <td>Strict
+<tr align=left valign=top><td>WIDTH=nn%<br>WIDTH=nn
+   <td>Specifies the width of this column, either in a percentage of the table width
+      or as a number of pixels.
+   <td>Strict
+<tr align=left valign=top><td>HEIGHT=nn%<br>HEIGHT=nn
+   <td>Specifies the height of this column, either in a percentage of the window height
+      or as a number of pixels.
+   <td>Strict
+</table>
+
+<h3><a name=THEAD>THEAD</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;THEAD&gt; ... &lt;/THEAD&gt;
+   <td><em>Can only appear within a <a href=html-tz.html#TABLE>TABLE</a> element</em><br>
+      Defines the head of a table. A table can contain at most one THEAD element.
+      The THEAD element must contain one or more <a href=html-tz.html#TR>TR</a> elements.
+      <p>The end tag is optional.
+   <td>Strict
+<tr valign=top><th align=left>Attribute<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>ALIGN=LEFT<br>ALIGN=CENTER<br>ALIGN=RIGHT
+   <td>Renders the text and other elements within table cells in these rows left aligned,
+      centered within the cell width, or right aligned with the cell border.
+   <td>Strict
+<tr align=left valign=top><td>VALIGN=TOP<br>VALIGN=MIDDLE<br>VALIGN=BOTTOM<br>VALIGN=BASELINE
+   <td>Specifies the vertical alignment of the contents of the cells in these rows:
+      <table cellpadding=0>
+         <tr><th align=left>ALIGN<th align=left>Meaning
+         <tr valign=top><td>TOP<td>places the cell contents at the top of the cell
+         <tr valign=top><td>MIDDLE<td>places the cell contents vertically centered
+            within the cell
+         <tr valign=top><td>BOTTOM<td>places the cell contents at the bottom of the cell
+         <tr valign=top><td>BASELINE<td>aligns the text in all cells in these rows
+      </table>
+      <p>
+      This attribute overrides the VALIGN attribute of the
+      <a href=html-ad.html#COLGROUP>COLGROUP</a> and <a href=html-ad.html#COL>COL</a>
+      elements.
+   <td>Strict
+</table>
+
+<h3><a name=TITLE>TITLE</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;TITLE&gt; ... &lt;/TITLE&gt;
+   <td><em>Can only appear within a <a href=html-ej.html#HEAD>HEAD</a> element</em><br>
+      Gives the document a title. Every document should have a title.
+   <td>Strict
+</table>
+
+<h3><a name=TR>TR</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;TR&gt; ... &lt;/TR&gt;
+   <td><em>Can only appear within a <a href=html-tz.html#TABLE>TABLE</a> element</em><br>
+      Defines a table row.<p>
+      The end tag is optional.
+   <td>Strict
+<tr valign=top><th align=left>Attribute<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>ALIGN=LEFT<br>ALIGN=CENTER<br>ALIGN=RIGHT
+   <td>Renders the text and other elements within table cells in this row left aligned,
+      centered within the cell width, or right aligned with the cell border.
+      <p>
+      This attribute overrides the ALIGN tag of the <a href=html-tz.html#THEAD>THEAD</a>,
+      <a href=html-tz.html#TFOOT>TFOOT</a> and <a href=html-tz.html#TBODY>TBODY</a>
+      elements.
+   <td>Strict
+<tr align=left valign=top><td>BACKGROUND="url"
+   <td>Specifies a background image. The image is tiled across all cells in the table row.
+   <td>Tolerant (NS)
+<tr align=left valign=top><td>BGCOLOR=#rrggbb<br>BGCOLOR=colourname
+   <td>Specifies the background colour for all cells in the table row.<br>
+      See <a href=html.html#colours>colour specifications</a> for a list of valid names.
+   <td>Strict
+<tr align=left valign=top><td>BORDERCOLOR=#rrggbb<br>BORDERCOLOR=colourname
+   <td>Specifies the colour to render the borders in for the table row. Borders will
+      be solid, not 3-D.<br>
+      See <a href=html.html#colours>colour specifications</a> for a list of valid names.
+   <td>Tolerant (MS)
+<tr align=left valign=top><td>BORDERCOLORDARK=#rrggbb<br>BORDERCOLORDARK=colourname<br>
+      BORDERCOLORLIGHT=#rrggbb<br>BORDERCOLORLIGHT=colourname
+   <td>Specifies the colours to use for the dark and light edges of the 3-D borders in the
+      table row.<br>
+      See <a href=html.html#colours>colour specifications</a> for a list of valid names.
+   <td>Tolerant (MS)
+<tr align=left valign=top><td>VALIGN=TOP<br>VALIGN=MIDDLE<br>VALIGN=BOTTOM<br>VALIGN=BASELINE
+   <td>Specifies the vertical alignment of the contents of the cells in this row:
+      <table cellpadding=0>
+         <tr><th align=left>ALIGN<th align=left>Meaning
+         <tr valign=top><td>TOP<td>places the cell contents at the top of the cell
+         <tr valign=top><td>MIDDLE<td>places the cell contents vertically centered
+            within the cell
+         <tr valign=top><td>BOTTOM<td>places the cell contents at the bottom of the cell
+         <tr valign=top><td>BASELINE<td>aligns the text in all cells in this row
+      </table>
+      <p>
+      This attribute overrides the VALIGN tag of the
+      <a href=html-ad.html#COLGROUP>COLGROUP</a>, <a href=html-ad.html#COL>COL</a>,
+      <a href=html-tz.html#THEAD>THEAD</a>, <a href=html-tz.html#TFOOT>TFOOT</a> and
+      <a href=html-tz.html#TBODY>TBODY</a> elements.
+   <td>Strict
+</table>
+
+<h3><a name=TT>TT</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;TT&gt; ... &lt;/TT&gt;
+   <td>Renders text in a fixed width font ("teletype").
+      Usually it is better to use one of the logical
+      styles (like <a href=html-ad.html#CODE>CODE</a>) instead of phisycal styles like TT.
+   <td>Strict
+</table>
+
+<h3><a name=U>U</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;U&gt; ... &lt;/U&gt;
+   <td>Renders text underscored. Usually it is better to use one of the logical
+      styles (like <a href=html-ks.html#STRONG>STRONG</a>) instead of phisycal styles
+      like U.
+   <td>Strict
+</table>
+
+<h3><a name=UL>UL</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;UL&gt; ... &lt;/UL&gt;
+   <td>Defines an unordered list. Items in the list are preceded by bullets.<br>
+      An unordered list should contain one or more <a href=html-ks.html#LI>LI</a> elements.
+   <td>Strict
+<tr valign=top><th align=left>Attribute<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>TYPE=CIRCLE<br>TYPE=DISK<br>TYPE=SQUARE
+   <td>Sets the type of bullet for this list.
+   <td>Strict
+<tr align=left valign=top><td>DINGBAT="name"
+   <td>Specifies the type of <a href=iconentities.html>icon entity</a> to use as a bullet
+      in this list.
+   <td>Tolerant
+<tr align=left valign=top><td>SRC="url"
+   <td>Specifies the source of an image to use as a bullet in this list.
+   <td>Tolerant (HTML 3.0)
+<tr align=left valign=top><td>PLAIN
+   <td>The list items will not be preceded by bullets.
+   <td>Tolerant (HTML 3.0)
+</table>
+
+<h3><a name=VAR>VAR</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;VAR&gt; ... &lt;/VAR&gt;
+   <td>Specifies a variable (e.g. in formulas). Typically rendered in italics.
+   <td>Strict
+</table>
+
+<h3><a name=WBR>WBR</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;WBR&gt;
+   <td>Specifies the location where a line break may occur within text within
+      the <a href=html-ks.html#NOBR>NOBR</a> element.
+   <td>Tolerant (NS)
+</table>
+
+<h3><a name=XMP>XMP</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;LISTING&gt; ... &lt;/LISTING&gt;
+   <td>Specifies an example text. The text is rendered in a fixed width font, exactly
+      as it appears in the document source. No word-wrapping is done.
+   <td>Strict
+</table>
+
+<p>
+<hr>
+<a href=html.html>Back to overview</a><br>
+More HTML tags:
+<a href=html-ad.html>A-D</a>,
+<a href=html-ej.html>E-J</a>,
+<a href=html-ks.html>K-S</a><BR>
+<br>
+
+<a href=../AWeb%20Manual.html><img src=../GlobalImages/back.gif width=32 height=16 alt="<-" border=0></a> Back to
+<a href=../AWeb%20Manual.html>index</a>.
+
+</body>
+</html>

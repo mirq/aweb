@@ -1,0 +1,184 @@
+<html>
+<head>
+<title>Awebplugin library</title>
+</head>
+<body>
+<h1>Awebplugin library</h1>
+
+<h2>Purpose</h2>
+
+The <b>awebsupport.library</b> contains some vital functions for plugin
+implementations to use.
+
+<h2>Library functions</h2>
+
+Only the functions labelled "Yes" in the <b>Sub</b> column are allowed
+within a <a href="../classes/task.html">subtask</a>.
+<p>
+The <b>Ver</b> column shows the minimum version of the library that
+supports this function.
+<p>
+<table border>
+<tr><th align=left valign=top>Function
+   <th align=left valign=top>Short description
+   <th align=left valign=top>Sub
+   <th align=left valign=top>Ver
+<tr><th align=left valign=top><a href=aaddchild.html>Aaddchild()</a>
+   <td valign=top>Invoke the AOM_ADDCHILD method
+   <td valign=top>No
+   <td valign=top>1
+<tr><th align=left valign=top><a href=adisposeobject.html>Adisposeobject()</a>
+   <td valign=top>Invoke the AOM_DISPOSE method
+   <td valign=top>No
+   <td valign=top>1
+<tr><th align=left valign=top><a href=agetattr.html>Agetattr()</a>
+   <td valign=top>Invoke the AOM_GET method to obtain one attribute value
+   <td valign=top>No
+   <td valign=top>1
+<tr><th align=left valign=top><a href=agetattrsa.html>AgetattrsA()</a>
+   <td valign=top>Invoke the AOM_GET method
+   <td valign=top>No
+   <td valign=top>1
+<tr><th align=left valign=top><a href=allocmem.html>Allocmem()</a>
+   <td valign=top>Allocate memory within AWebs memory system
+   <td valign=top>Yes
+   <td valign=top>1
+<tr><th align=left valign=top><a href=allocobject.html>Allocobject()</a>
+   <td valign=top>Allocate memory for a new object instance
+   <td valign=top>No
+   <td valign=top>1
+<tr><th align=left valign=top><a href=amethoda.html>AmethodA()</a>
+   <td valign=top>Invoke a method
+   <td valign=top>No
+   <td valign=top>1
+<tr><th align=left valign=top><a href=amethodasa.html>AmethodasA()</a>
+   <td valign=top>Send a message to a different dispatcher
+   <td valign=top>No
+   <td valign=top>1
+<tr><th align=left valign=top><a href=anewobjecta.html>AnewobjectA()</a>
+   <td valign=top>Invoke the AOM_NEW method
+   <td valign=top>No
+   <td valign=top>1
+<tr><th align=left valign=top><a href=anotify.html>Anotify()</a>
+   <td valign=top>Invoke the AOM_NOTIFY method
+   <td valign=top>No
+   <td valign=top>1
+<tr><th align=left valign=top><a href=anotifyseta.html>AnotifysetA()</a>
+   <td valign=top>Invoke the AOM_NOTIFY method with an adhoc AOM_SET message
+   <td valign=top>No
+   <td valign=top>1
+<tr><th align=left valign=top><a href=avprintf.html>Aprintf()</a>
+   <td valign=top>Debug printing to stdout
+   <td valign=top>Yes
+   <td valign=top>1
+<tr><th align=left valign=top><a href=aremchild.html>Aremchild()</a>
+   <td valign=top>Invoke the AOM_REMCHILD method
+   <td valign=top>No
+   <td valign=top>1
+<tr><th align=left valign=top><a href=arender.html>Arender()</a>
+   <td valign=top>Invoke the AOM_RENDER method
+   <td valign=top>No
+   <td valign=top>1
+<tr><th align=left valign=top><a href=asetattrsa.html>AsetattrsA()</a>
+   <td valign=top>Invoke the AOM_SET method
+   <td valign=top>No
+   <td valign=top>1
+<tr><th align=left valign=top><a href=asetattrsasynca.html>AsetattrsasyncA()</a>
+   <td valign=top>Set attributes of a subtask in an asynchroneous fashion
+   <td valign=top>No
+   <td valign=top>1
+<tr><th align=left valign=top><a href=aupdateattrsa.html>AupdateattrsA()</a>
+   <td valign=top>Invoke the AOM_UPDATE method
+   <td valign=top>No
+   <td valign=top>1
+<tr><th align=left valign=top><a href=avprintf.html>Avprintf()</a>
+   <td valign=top>Debug printing to stdout
+   <td valign=top>Yes
+   <td valign=top>1
+<tr><th align=left valign=top><a href=aweb.html>Aweb()</a>
+   <td valign=top>Obtain the application object
+   <td valign=top>No
+   <td valign=top>1
+<tr><th align=left valign=top><a href=awebcommand.html>Awebcommand()</a>
+   <td valign=top>Execute an AWeb ARexx command
+   <td valign=top>No
+   <td valign=top>2
+<tr><th align=left valign=top><a href=checktaskbreak.html>Checktaskbreak()</a>
+   <td valign=top>Check if subtask was cancelled
+   <td valign=top>Yes
+   <td valign=top>1
+<tr><th align=left valign=top><a href=clipcoords.html>Clipcoords()</a>
+   <td valign=top>Obtain rendering context information
+   <td valign=top>No
+   <td valign=top>1
+<tr><th align=left valign=top><a href=dupstr.html>Dupstr()</a>
+   <td valign=top>Duplicate a string within AWebs memory system
+   <td valign=top>Yes
+   <td valign=top>1
+<tr><th align=left valign=top><a href=erasebg.html>Erasebg()</a>
+   <td valign=top>Erase the window background
+   <td valign=top>No
+   <td valign=top>1
+<tr><th align=left valign=top><a href=freemem.html>Freemem()</a>
+   <td valign=top>Free memory within AWebs memory system
+   <td valign=top>Yes
+   <td valign=top>1
+<tr><th align=left valign=top><a href=gettaskmsg.html>Gettaskmsg()</a>
+   <td valign=top>Check for waiting messages in a subtask
+   <td valign=top>Yes
+   <td valign=top>1
+<tr><th align=left valign=top><a href=obtainbgrp.html>Obtainbgrp()</a>
+   <td valign=top>Obtain a background section
+   <td valign=top>No
+   <td valign=top>1
+<tr><th align=left valign=top><a href=obtaintasksemaphore.html>Obtaintasksemaphore()</a>
+   <td valign=top>Obtain semaphore in a subtask
+   <td valign=top>Yes
+   <td valign=top>1
+<tr><th align=left valign=top><a href=releasebgrp.html>Releasebgrp()</a>
+   <td valign=top>Release obtained background section
+   <td valign=top>No
+   <td valign=top>1
+<tr><th align=left valign=top><a href=replytaskmsg.html>Replytaskmsg()</a>
+   <td valign=top>Reply a message in a subtask
+   <td valign=top>Yes
+   <td valign=top>1
+<tr><th align=left valign=top><a href=setfiltertype.html>Setfiltertype()</a>
+   <td valign=top>Set the content type for filtered data
+   <td valign=top>No
+   <td valign=top>2
+<tr><th align=left valign=top><a href=unclipcoords.html>Unclipcoords()</a>
+   <td valign=top>Release rendering context information
+   <td valign=top>No
+   <td valign=top>1
+<tr><th align=left valign=top><a href=updatetask.html>Updatetask()</a>
+   <td valign=top>Send a message to the main task from within a subtask
+   <td valign=top>Yes
+   <td valign=top>1
+<tr><th align=left valign=top><a href=updatetaskattrsa.html>UpdatetaskattrsA()</a>
+   <td valign=top>Set attributes of the main task from within a subtask
+   <td valign=top>Yes
+   <td valign=top>1
+<tr><th align=left valign=top><a href=waittask.html>Waittask()</a>
+   <td valign=top>Wait for signals in a subtask
+   <td valign=top>Yes
+   <td valign=top>1
+<tr><th align=left valign=top><a href=writefilter.html>Writefilter()</a>
+   <td valign=top>Write filtered data
+   <td valign=top>No
+   <td valign=top>2
+</table>
+
+<h2>Using the library</h2>
+Before any of the functions can be used, the library must be opened:
+<p>
+<pre>
+   AwebSupportBase = OpenLibrary("awebsupport.library",2)
+</pre>
+<br>
+Note that the library is <b>only</b> available when AWeb is running.
+Also, any attempt to use the library from within other programs, not
+AWeb plugins, will most likely cause a crash.
+<p>
+If a plugin has opened the library, it must close it before expunging,
+or else AWeb will not be able to quit.

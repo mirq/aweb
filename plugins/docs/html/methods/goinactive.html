@@ -1,0 +1,40 @@
+<html>
+<head>
+<title>Method: AOM_GOINACTIVE</title>
+</head>
+<body>
+<h1>Method: AOM_GOINACTIVE</h1>
+
+<h2>Purpose</h2>
+
+The <b>AOM_GOINACTIVE</b> method is used to let an object know that
+it has been removed from the input focus.
+
+<h2>Message structure</h2>
+
+The <b>AOM_GOINACTIVE</b> method uses a standard
+<a href=index.html#Amessage>Amessage</a> structure.
+
+<h2>Usage</h2>
+
+<h3>Return value</h3>
+The return value for this method is not defined.
+
+<h2>Implementation</h2>
+
+Copydriver objects should implement this method if the visible object has
+user-selectable areas under the driver's control. Note that normal HTML
+image maps are handled by the AWeb core, and must not be implemented by
+the copydriver. If the copydriver understands this method, it should
+return TRUE to an AOM_GET of the AOCDV_Shapes attribute.
+<p>
+Implementation of this method largely depends on the type of user
+interaction supported by the object. However, a typical simple
+implementation of this method would be to send an
+<a href=render.html>AOM_RENDER</a> message to the object itself with the
+AMRF_UPDATENORMAL flag set.
+
+
+</body>
+</html>
+

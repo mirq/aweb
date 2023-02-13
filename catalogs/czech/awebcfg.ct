@@ -1,0 +1,1915 @@
+## version $VER: AWebCfg.catalog 3.4 (05.01.2001)
+## language czech
+## codeset 0
+;
+; AWebcfg.cd - AWeb configuration program catalog description file
+;
+;
+;  The MSG_DUMMY_nn labels are there because FlexCat doesn't
+;  understand the LABEL (+1//) syntax (C='s Catcomp uses this
+;  to skip 1 number)
+;
+;
+;-------------- Error messages ----------------------
+;
+; NOTE - No locale formatters (like %1$s) possible in this string!
+;        Only plain C formatters allowed.
+MSG_ERROR_CANTOPENV
+Nelze otevêít %s verze %ld
+; Can't open %s version %ld
+;
+MSG_ERROR_COMMANDLINE
+
+; Please check the commandline options.\n\
+; E.g. you must use at least one of the 4 switches.\n\
+; The Template is:
+;
+; ***NEW***
+;
+;
+;-------------- Settings requesters- ------------------
+;
+;  General
+;
+MSG_SET_REQTITLE_FONT
+Zvolte font
+; Select font
+;
+MSG_SET_REQTITLE_SCREEN
+Zvolte zobrazovací mód
+; Select screenmode
+;
+MSG_SET_REQTITLE_MAILTO
+Zvolte program pro mailto:
+; Select mailto: command
+;
+MSG_SET_REQTITLE_FTP
+Zvolte program pro ftp:
+; Select ftp: command
+;
+MSG_SET_REQTITLE_TELNET
+Zvolte program pro telnet:
+; Select telnet: command
+;
+MSG_SET_REQTITLE_NEWS
+Zvolte program pro news:
+; Select news: command
+;
+MSG_SET_REQTITLE_STARTTCP
+Zvolte spouîtëcí skript
+; Select TCP start command
+;
+MSG_SET_REQTITLE_ENDTCP
+Zvolte ukonçovací skript
+; Select TCP end command
+;
+MSG_SET_REQTITLE_TEMPPATH
+Zvolte cestu pro doçasné soubory
+; Select temp path
+;
+MSG_SET_REQTITLE_SAVEPATH
+Zvolte cestu pro ukládání
+; Select save path
+;
+MSG_SET_REQTITLE_EDITOR
+Zvolte editor
+; Select Editor command
+;
+MSG_SET_REQTITLE_HTMLVIEWER
+Zvolte zobrazovaç HTML
+; Select HTML viewer command
+;
+MSG_SET_REQTITLE_MIMEVIEWER
+Zvolte zobrazovaç
+; Select viewer command
+;
+MSG_SET_REQTITLE_AREXXMACRO
+Zvolte ARexxové makro
+; Select ARexx macro
+;
+MSG_SET_REQTITLE_BROWSERWINDOW
+AWeb - nastavení prohlíùeçe
+; AWeb browser settings
+;
+MSG_SET_REQTITLE_PROGRAMWINDOW
+AWeb - nastavení programu
+; AWeb program settings
+;
+MSG_SET_REQTITLE_NETWORKWINDOW
+AWeb - nastavení sítë
+; AWeb network settings
+;
+MSG_SET_REQTITLE_OPENBROWSER
+Zvolte nastavení prohlíùeçe
+; Open browser settings
+;
+MSG_SET_REQTITLE_SAVEBROWSER
+Uloùte nastavení prohlíùeçe
+; Save browser settings as
+;
+MSG_SET_REQTITLE_OPENPROGRAM
+Zvolte nastavení programu
+; Open program settings
+;
+MSG_SET_REQTITLE_SAVEPROGRAM
+Uloùte nastavení programu
+; Save program settings as
+;
+MSG_SET_REQTITLE_OPENNETWORK
+Zvolte nastavení sítë
+; Open network settings
+;
+MSG_SET_REQTITLE_SAVENETWORK
+Uloùte nastavení sítë
+; Save network settings as
+;
+MSG_SET_REQTITLE_CACHEPATH
+Zvolte cestu pro cache
+; Select cache path
+;
+MSG_SET_REQTITLE_IMGVIEWER
+Zvolte zobrazovaç
+; Select image viewer command
+;
+MSG_SET_REQTITLE_GUIWINDOW
+AWeb - nastavení GUI
+; AWeb GUI settings
+;
+MSG_SET_REQTITLE_OPENGUI
+Zvolte nastavení GUI
+; Open GUI settings
+;
+MSG_SET_REQTITLE_SAVEGUI
+Uloùte nastavení GUI
+; Save GUI settings as
+;
+MSG_SET_REQTITLE_SIGNATURE
+Zvolte soubor s podpisem
+; Select signature file
+;
+MSG_SET_REQTITLE_STARTUPSCRIPT
+Zvolte arexxový skript pro spuîtëní
+; Select startup ARexx script
+;
+MSG_SET_REQTITLE_SHUTDOWNSCRIPT
+Zvolte arexxový skript pro ukonçení
+; Select shutdown ARexx script
+;
+;  Clicktab labels - Browser
+;
+MSG_SET_CTBR_OPTIONS
+_1 Moùnosti
+; _1 Options
+;
+MSG_SET_CTBR_FONTS
+_2 Fonty
+; _2 Fonts
+;
+MSG_SET_CTBR_STYLES
+_3 Styly
+; _3 Styles
+;
+MSG_SET_CTBR_COLOURS
+_4 Barvy
+; _4 Colours
+;
+MSG_SET_CTBR_MIME
+_5 Zobrazovaçe
+; _5 Viewers
+;
+;  Clicktab labels - Program
+;
+MSG_SET_CTPR_SCREEN
+_1 Obrazovka
+; _1 Screen
+;
+MSG_SET_CTPR_PALETTE
+_2 Paleta
+; _2 Palette
+;
+MSG_SET_CTPR_OPTIONS
+_3 Moùnosti
+; _3 Options
+;
+MSG_SET_CTPR_PROGRAMS
+_4 Programy
+; _4 Programs
+;
+MSG_SET_CTPR_AREXX
+_5 ARexx
+; _5 ARexx
+;
+;  Clicktab labels - Network
+;
+MSG_SET_CTNW_OPTIONS
+_1 Moùnosti
+; _1 Options
+;
+MSG_SET_CTNW_PROGRAMS
+_2 Programy
+; _2 Programs
+;
+MSG_SET_CTNW_PROXY
+_3 Proxy
+; _3 Proxy
+;
+MSG_SET_CTNW_CACHE
+_4 Cache
+; _4 Cache
+;
+MSG_SET_CTNW_PRIVACY
+_5 Soukromí
+; _5 Privacy
+;
+MSG_SET_CTNW_MAIL
+_6 Poîta/News
+; _6 Mail/News
+;
+;  Clicktab labels - GUI
+;
+MSG_SET_CTUI_OPTIONS
+_1 Moùnosti
+; _1 Options
+;
+MSG_DUMMY_8
+
+; 
+;
+MSG_SET_CTUI_BUTTONS
+_3 Tlaçítka
+; _3 Buttons
+;
+MSG_SET_CTUI_POPUP
+_4 Kontext
+; _4 Popup
+;
+MSG_SET_CTUI_KEYS
+_5 Klávesy
+; _5 Keys
+;
+MSG_SET_CTUI_MENUS
+_2 Menu
+; _2 Menus
+;
+MSG_SET_CTUI_NAV
+_6 Navigace
+; _6 Navigation
+;
+;  Popup help
+;
+; (don't use 40200-40208)
+;
+MSG_SET_HLP_NOARGS
+(ùádné)
+; (No placeholders)
+;
+MSG_SET_HLP_A
+%a = diskusní skupina nebo çlánek
+; %%a = newsgroup or article
+;
+MSG_SET_HLP_E
+%e = e-mail
+; %%e = e-mail address
+;
+MSG_SET_HLP_F
+%f = cesta/soubor
+; %%f = path/file name
+;
+MSG_SET_HLP_H
+%h = hostitel
+; %%h = host name
+;
+MSG_SET_HLP_L
+%l = uùivatel
+; %%l = login name
+;
+MSG_SET_HLP_N
+%n = obrazovka
+; %%n = screen name
+;
+MSG_SET_HLP_P
+%p = çíslo portu
+; %%p = port number
+;
+MSG_SET_HLP_U
+%u = pûvodní URL
+; %%u = original URL
+;
+MSG_SET_HLP_W
+%w = heslo
+; %%w = password
+;
+MSG_SET_HLP_T
+%t = titulek
+; %%t = title
+;
+MSG_SET_HLP_U2
+%u = aktuální URL
+; %%u = current URL
+;
+MSG_SET_HLP_U3
+%u = objekt URL
+; %%u = object URL
+;
+MSG_SET_HLP_I
+%i = çíslo rámce
+; %%i = frame ID
+;
+MSG_SET_HLP_I2
+%i = çíslo cílového rámce
+; %%i = target frame ID
+;
+MSG_SET_HLP_M
+%m = typ MIME
+; %%m = MIME type
+;
+MSG_SET_HLP_S
+%s = argument pro hledání
+; %%s = search argument
+;
+MSG_SET_HLP_D
+%d = datum
+; %%d = date
+;
+MSG_SET_HLP_G
+%g = diskusní skupina
+; %%g = group name
+;
+MSG_SET_HLP_I3
+%i = çíslo zprávy
+; %%i = message id
+;
+MSG_SET_HLP_N2
+%n = skuteçné jméno
+; %%n = real name
+;
+MSG_SET_HLP_S2
+%s = pêedmët
+; %%s = subject
+;
+MSG_SET_HLP_I4
+%i = çíslo akt. rámce
+; %%i = focus frame ID
+;
+MSG_SET_HLP_C
+%c = konfiguraçní soubor
+; %%c = config name
+;
+;  Font descriptions
+;
+MSG_SET_FD_NORMALTAG
+Normální
+; Normal
+;
+MSG_SET_FD_NORMAL
+Normální text
+; Normal text
+;
+MSG_SET_FD_H1
+<H1> : hlaviçka 1, nejvëtîí
+; <H1> : Headers level 1, largest
+;
+MSG_SET_FD_H2
+<H2> : hlaviçka 2
+; <H2> : Headers level 2
+;
+MSG_SET_FD_H3
+<H3> : hlaviçka 3
+; <H3> : Headers level 3
+;
+MSG_SET_FD_H4
+<H4> : hlaviçka 4
+; <H4> : Headers level 4
+;
+MSG_SET_FD_H5
+<H5> : hlaviçka 5
+; <H5> : Headers level 5
+;
+MSG_SET_FD_H6
+<H6> : hlaviçka 6, nejmenîí
+; <H6> : Headers level 6, smallest
+;
+MSG_SET_FD_CITE
+<CITE> : citace, typicky kurzíva
+; <CITE> : citations, typically italics
+;
+MSG_SET_FD_CODE
+<CODE> : kód, typicky fixní font
+; <CODE> : code example, typically monospaced
+;
+MSG_SET_FD_DFN
+<DFN> : definice, typicky kurzíva
+; <DFN> : definition, typically italics
+;
+MSG_SET_FD_EM
+<EM> : zdûraznëní, typicky kurzíva
+; <EM> : emphasized, typically italics
+;
+MSG_SET_FD_KBD
+<KBD> : vstup z klávesnice, typicky fixní font
+; <KBD> : keyboard input, typically monospaced
+;
+MSG_SET_FD_SAMP
+<SAMP> : vzorek nëçeho, typicky fixní font
+; <SAMP> : sample output, typically monospaced
+;
+MSG_SET_FD_STRONG
+<STRONG> : silné zdûraznëní, typicky tuçný
+; <STRONG> : strong emphasis, typically bold
+;
+MSG_SET_FD_VAR
+<VAR> : promënná, typicky kurzíva
+; <VAR> : placeholder variable, typically italics
+;
+MSG_DUMMY_1
+
+; 
+; (Note the leading space in the next 3 strings)
+MSG_SET_FD_BOLD
+ tuçný
+;  Bold
+;
+MSG_SET_FD_ITALIC
+ kurzíva
+;  Italic
+;
+MSG_SET_FD_UNDERLINED
+ podtrùený
+;  Underlined
+;
+MSG_SET_FD_NORMALFONT
+Normální font
+; Normal font
+;
+MSG_SET_FD_FIXEDFONT
+Fixní font
+; Fixed width font
+;
+MSG_SET_FD_SIZE
+velikost
+; size
+;
+MSG_SET_FD_BIG
+<BIG> : velký font
+; <BIG> : large font
+;
+MSG_SET_FD_SMALL
+<SMALL> : malý font
+; <SMALL> : small font
+;
+MSG_SET_FD_SUB
+<SUB> : malý font pro dolní index
+; <SUB> : small subscript font
+;
+MSG_SET_FD_SUP
+<SUP> : malý font pro horní index
+; <SUP> : small superscript font
+;
+MSG_SET_FD_ADDRESS
+<ADDRESS> : adresa, typicky kurzíva
+; <ADDRESS> : address, typically italics
+;
+MSG_SET_FD_BLOCKQUOTE
+<BLOCKQUOTE> : delîí citace, typicky kurzíva
+; <BLOCKQUOTE> : long quotations, typically italics
+;
+MSG_SET_FD_PRE
+<PRE> : pêedformátovaný text, mël by být fixním fontem
+; <PRE> : preformatted text, should be fixed width
+;
+;  HTML modes
+;
+MSG_SET_HTML_STRICT
+Striktní
+; Strict
+;
+MSG_SET_HTML_TOLERANT
+Tolerantní
+; Tolerant
+;
+MSG_SET_HTML_COMPATIBLE
+Kompatibilní
+; Compatible
+;
+;  Screen types
+;
+MSG_SET_SCRT_DEFAULT
+Základní veêejná obrazovka
+; Default public screen
+;
+MSG_SET_SCRT_NAMED
+Cizí veêejná obrazovka
+; Named public screen
+;
+MSG_SET_SCRT_OWN
+Vlastní veêejná obrazovka
+; Own public screen
+;
+;  Image loading types
+;
+MSG_SET_IMGL_OFF
+Vypnuto
+; Off
+;
+MSG_SET_IMGL_MAPS
+Pouze mapy
+; Maps only
+;
+MSG_SET_IMGL_ALL
+Vîechny
+; All images
+;
+;  MIME list column names
+;
+MSG_SET_MLCN_TYPE
+Typ
+; Type
+;
+MSG_SET_MLCN_EXT
+Pêípony
+; Extensions
+;
+;**obsolete
+MSG_SET_MLCN_COMMAND
+Zobrazovaç
+; Viewer command
+;
+MSG_SET_MLCN_ACTION
+A
+; A
+;
+MSG_SET_MLCN_NAME
+Název a argumenty
+; Name and arguments
+;
+;  Browser pen names
+;
+MSG_SET_BRPEN_LINK
+Nový odkaz
+; New link
+;
+MSG_SET_BRPEN_VLINK
+Navîtívený odkaz
+; Visited link
+;
+MSG_SET_BRPEN_ALINK
+Zvolený odkaz
+; Selected link
+;
+MSG_SET_BRPEN_BGCOLOR
+Podklad
+; Background
+;
+MSG_SET_BRPEN_TEXT
+Text
+; Text
+;
+;  Screen colour names
+;
+MSG_SET_SCRPEN_TEXT
+Normální text
+; Normal text
+;
+MSG_SET_SCRPEN_SHINE
+Svëtlé okraje
+; Bright edges
+;
+MSG_SET_SCRPEN_SHADOW
+Tmavé okraje
+; Dark edges
+;
+MSG_SET_SCRPEN_FILL
+Titulní liîta aktivního okna
+; Active window title bars
+;
+MSG_SET_SCRPEN_FILLTEXT
+Titulky aktivního okna
+; Active window titles
+;
+MSG_SET_SCRPEN_BACKGROUND
+Podklad
+; Background
+;
+MSG_SET_SCRPEN_HIGHLIGHTTEXT
+Dûleùitý text
+; Important text
+;
+MSG_SET_SCRPEN_BARDETAIL
+Text menu
+; Menu text
+;
+MSG_SET_SCRPEN_BARBLOCK
+Podklad menu
+; Menu background
+;
+;  ARexx menu shortcut
+;
+MSG_SET_AREX_NONE
+ùádná
+; none
+;
+;  Network external program types
+;
+MSG_SET_NWPRG_STARTTCP
+Spuîtëní podpory TCP/IP
+; Start TCP
+;
+MSG_SET_NWPRG_ENDTCP
+Ukonçení podpory TCP/IP
+; End TCP
+;
+;  Font types and sizes (fonts page)
+;
+MSG_SET_FTYPE_NORMAL
+Normální
+; Normal fonts
+;
+MSG_SET_FTYPE_FIXED
+Fixní
+; Fixed width fonts
+;
+MSG_SET_FSIZE_1
+1 (nejmenîí)
+; 1 (smallest)
+;
+MSG_SET_FSIZE_3
+3 (základní)
+; 3 (normal)
+;
+MSG_SET_FSIZE_7
+7 (nejvëtîí)
+; 7 (largest)
+;
+;  Font list headers
+;
+MSG_SET_FLH_SIZE
+Velikost
+; Size
+;
+MSG_SET_FLH_FONTFACE
+Název fontu a jeho velikost
+; Font name and size
+;
+;  Style list headers
+;
+MSG_SET_SLH_TAG
+Klíçové slovo
+; Tag
+;
+MSG_SET_SLH_STYLE
+Zpracovat jako
+; Rendered as
+;
+;  Cache verify modes
+;
+MSG_SET_CAVERIFY_ALWAYS
+Vùdy
+; Always
+;
+MSG_SET_CAVERIFY_ONCE
+Jednou za spojení
+; Once per session
+;
+MSG_SET_CAVERIFY_NEVER
+Vûbec ne
+; Never
+;
+;  Palette loading
+;
+MSG_SET_LPAL_OFF
+Ne
+; Off
+;
+MSG_SET_LPAL_COLOURS
+Barevná
+; Colours
+;
+MSG_SET_LPAL_GRAY
+Îkála îedi
+; Grayscale
+;
+;  MIME action names and abbreviationss
+;
+MSG_SET_MACT_DEFAULT
+Základní
+; Default
+;
+MSG_SET_MACT_INTERNAL
+Interní (I)
+; Internal (I)
+;
+MSG_SET_MACT_PLUGIN
+AWeb Plugin (A)
+; AWeb Plugin (A)
+;
+MSG_SET_MACT_EXTERNAL
+Ext. program (E)
+; Extl. program (E)
+;
+MSG_SET_MACT_EXTPIPE
+Ext. pêes PIPE (P)
+; Extl. w/PIPE (P)
+;
+MSG_SET_MACT_SAVEDISK
+Uloùit na disk (S)
+; Save to disk (S)
+;
+MSG_SET_MACT_EXTCAN
+
+; Extl. No Fetch (F)
+;
+; ***NEW***
+;
+MSG_SET_MACT_CANCEL
+
+; Cancel (C)
+;
+; ***NEW***
+;
+; 1-letter abbreviations to use for the above in the MIME list
+MSG_SET_MACT_ABBREV
+ IAEPFSC
+;  IAEPFSC
+;
+;  Cookie settings
+;
+MSG_SET_COOKIES_NEVER
+Nikdy
+; Never
+;
+MSG_SET_COOKIES_ASK
+Na dotaz
+; Ask before set
+;
+MSG_SET_COOKIES_QUIET
+Vùdy
+; Always (quiet)
+;
+;  Pupup menu types
+;
+MSG_SET_PUPTYPE_IMAGE
+Kontextové menu pro obrázky
+; Image popup menu
+;
+MSG_SET_PUPTYPE_LINK
+Kontextové menu pro odkazy
+; Link popup menu
+;
+MSG_SET_PUPTYPE_FRAME
+Kontextové menu pro rámce
+; Frame popup menu
+;
+;  Menu entry types (used in the chooser)
+;
+MSG_SET_MENUTYPE_MENU
+Menu
+; Menu
+;
+MSG_SET_MENUTYPE_ITEM
+Poloùka
+; Item
+;
+MSG_SET_MENUTYPE_SUB
+Zanoêená
+; Sub
+;
+;  Menu entry types used in the first list column.
+;  For best effects, make sure the string for "MENU" is
+;  wider than the string for "Item".
+;
+MSG_SET_MENULABEL_MENU
+MENU
+; MENU
+;
+MSG_SET_MENULABEL_ITEM
+Poloùka
+; Item
+;
+;  Javascript choices
+;
+MSG_SET_JS_OFF
+Vypnuto
+; Off
+;
+MSG_SET_JS_11
+Striktní
+; Fastidious
+;
+MSG_SET_JS_ALL
+Tolerantní
+; Omnivorous
+;
+;  Gadget labels - general
+;
+MSG_SET_PAGE
+Stránka
+; _Page
+;
+MSG_SET_SAVE
+_Uloùit
+; _Save
+;
+MSG_SET_USE
+_Pouùít
+; _Use
+;
+MSG_SET_CANCEL
+_Zruîit
+; _Cancel
+;
+MSG_SET_TEST
+Vyzkouîe_t
+; _Test
+;
+;  Gadget labels - fonts
+;
+MSG_SET_FONT_FONT
+_Font
+; _Font
+;
+MSG_SET_FONT_FONTTYPE
+T_yp fontu
+; Font t_ype
+;
+MSG_SET_FONT_SETALL
+N_astavit vîe podle zvoleného fontu
+; Set _all to this font name
+;
+MSG_SET_FONT_FONTTYPE2
+Typ fontu
+; Font type
+;
+MSG_SET_FONT_ALIAS
+A_lias
+; A_lias
+;
+MSG_SET_FONT_ADD
+Pêidat
+; Add
+;
+MSG_SET_FONT_DEL
+Odebrat
+; Del
+;
+;  Gadget labels - colours
+;
+MSG_SET_APP_CHGCOLOUR
+Z_mënit barvu...
+; C_hange colour
+;
+MSG_SET_APP_SCREENPENS
+Pouùít _barvy obrazovky a pozadí
+; Use screen text and _background pens
+;
+;  Gadget labels - browser options/gui options
+;
+MSG_SET_BROPT_HTMLMODE
+_Mód HTML
+; HTML _mode
+;
+MSG_SET_BROPT_ULLINKS
+Po_dtrùené odkazy
+; Under_lined links
+;
+MSG_SET_BROPT_CYCLETOLIST
+C_yklovací tlaçítka jako seznam
+; Show c_ycle fields as list
+;
+MSG_SET_BROPT_DOCOLORS
+Zobrazovat podklad a _barvy
+; Use _background and colours
+;
+MSG_SET_BROPT_POPUPLABEL
+Kontextové menu
+; Popup menu activation
+;
+MSG_SET_BROPT_POPUPSHIFT
+Klávesa S_HIFT
+; S_HIFT key
+;
+MSG_SET_BROPT_POPUPALT
+Klávesa _ALT
+; _ALT key
+;
+MSG_SET_BROPT_POPUPCONTROL
+Klávesa CT_RL
+; CT_RL key
+;
+MSG_SET_BROPT_POPUPMIDBUTTON
+Stêední tlaçítko myî_i
+; M_iddle mouse button
+;
+MSG_SET_BROPT_DOBGSOUND
+Povo_lit zvuk
+; Use background soun_d
+;
+MSG_SET_BROPT_BLINK
+Bli_kání (0,1 sek.)
+; Blin_k (0.1 s)
+;
+MSG_SET_BROPT_POPUPRBUTTON
+Pravé tlaçítko _myîi
+; Ri_ght mouse button
+;
+MSG_SET_BROPT_JAVASCRIPT
+_JavaScript
+; Use _JavaScript
+;
+MSG_SET_BROPT_FRAMES
+P_ovolit rámce
+; Use _frames
+;
+MSG_SET_BROPT_INCTABLE
+T_abulky po çástech
+; _Incremental table display
+;
+MSG_SET_BROPT_NOMINALFRAME
+Jme_novitá výîka rámcû
+; _Nominal frame height
+;
+MSG_SET_BROPT_JSERRORS
+Zobrazovat _chyby JavaScriptu
+; Show JavaScript _errors
+;
+MSG_SET_BROPT_NOBANNERS
+Potlaçovat _reklamní okna
+; Su_ppress banner windows
+;
+MSG_SET_BROPT_TOOLTIPS
+Zobrazovat alt. te_xt u obrázkû
+; Display t_ooltips for images
+;
+MSG_SET_BROPT_HANDPOINTER
+Mën_it îipku myîi nad odkazy
+; _Hand pointer over links
+;
+MSG_SET_BROPT_JSWATCH
+_Varovat pêed podezêelými JavaScripty
+; _Warn for suspect JavaScript
+;
+MSG_SET_BROPT_TEMPRP
+
+; Use double buffered _rendering
+;
+; ***NEW***
+;
+MSG_SET_BROPT_CHARSET
+
+; Default ch_aracter set
+;
+; ***NEW***
+;
+MSG_SET_BROPT_IMGBORDER
+
+; Border around ima_ges
+;
+; ***NEW***
+;
+;  Gadget labels - screen
+;
+MSG_SET_SCREEN_OPENON
+T_yp
+; _Open on
+;
+MSG_SET_SCREEN_NAME
+_Název obrazovky
+; Screen _name
+;
+MSG_SET_SCREEN_MODE
+Zobrazovací _mód
+; Screen _mode
+;
+MSG_SET_SCREEN_PALETTE
+Naçítat pa_letu
+; _Load spread palette
+;
+;  Gadget labels - palette
+;
+MSG_SET_PALL_PENLABEL
+Nastavení per
+; Pen settings
+;
+MSG_SET_PALL_PEN
+P_ero
+; P_en
+;
+MSG_SET_PALL_PALLETTELABEL
+Nastavení palety
+; Change palette
+;
+MSG_SET_PALL_PALLPEN
+Pe_ro
+; Pe_n
+;
+MSG_SET_PALL_CHGCOLOUR
+Z_mënit barvu...
+; C_hange colour
+;
+;  Gadget labels - network options and privacy
+;
+MSG_SET_NETWORK_IMGLOAD
+Naçítání o_brázkû
+; _Image loading
+;
+MSG_SET_NETWORK_MAXCONN
+Max. poçet spoje_ní
+; Max. _network connections
+;
+MSG_SET_NETWORK_HOMEPAGE
+Do_movská stránka
+; _Home page
+;
+MSG_SET_NETWORK_LOCALINDEX
+_Lokální index
+; _Local index
+;
+MSG_SET_NETWORK_STARTHOME
+Z_açít domovskou stránkou
+; St_art with home page
+;
+MSG_SET_NETWORK_ANONYMOUS
+Prohlíùet stránky anonymnë (potlaçením _Referer)
+; Suppress _Referer while browsing
+;
+MSG_SET_NETWORK_IGNORE
+I_gnorovat typ MIME ze serveru
+; I_gnore server MIME type
+;
+MSG_SET_NETWORK_MAXDISK
+çtení z _disku
+; _disk reads
+;
+MSG_SET_NETWORK_COOKIES
+Nastavit coo_kies
+; Use coo_kies
+;
+MSG_SET_NETWORK_NOCOOKIELABEL
+Z tëchto domén ignorovat cookies
+; No cookies for domains
+;
+MSG_SET_NETWORK_NOCOOKIEADD
+Pêidat
+; Add
+;
+MSG_SET_NETWORK_NOCOOKIEDEL
+Odebrat
+; Del
+;
+MSG_SET_NETWORK_FORMWARN
+Up_ozorñovat pêed odesláním nezajiîtëných dat
+; _Warn before sending unsecure form data
+;
+MSG_SET_NETWORK_AUTOSEARCHURL
+U_RL pro autom. hledání
+; Autosea_rch URL
+;
+MSG_SET_NETWORK_AUTOSEARCH
+Povolit autom. hl_edání
+; _Enable autosearch
+;
+MSG_SET_NETWORK_SPAMBLOCK
+_Aktivovat ochranu proti nevyùádaným zprávám z News
+; _Activate spamblock when posting news
+;
+MSG_SET_NETWORK_FTPEMAILADDR
+Pouùívat e-mail jako heslo pro anonymní pêístup na _FTP
+; Use e-mail address as _FTP anon password
+;
+MSG_SET_NETWORK_SPOOFID
+_Hlásit se jako
+; Spoo_f as
+;
+MSG_SET_NETWORK_CONTANIM
+Povolit k_ontinuální animaci
+; C_ontinuous animation
+;
+MSG_SET_NETWORK_SPOOFID_EXPL
+(Vyberte poloùku ze seznamu anebo zadejte\n\
+identifikaci podle vlastního uváùení)
+; (Select an entry from the list\n or type your own browser ID)
+;
+MSG_SET_NETWORK_RESTRICT_IMAGES
+Staho_vat obrázky pouze z jednoho hostitele
+; Restrict i_mages to same host
+;
+;  Gadget labels - network proxy
+;
+MSG_SET_PROXY_TYPE
+T_yp
+; T_ype
+;
+MSG_SET_PROXY_NAME
+Pro_xy
+; _Proxy
+;
+MSG_SET_PROXY_LIMITED
+Pouùívat proxy _omezenë
+; _Limited proxy usage
+;
+MSG_SET_PROXY_NOPROXYLABEL
+Pro tyto hostitele nepouùívat proxy
+; No proxy for these sites
+;
+MSG_SET_PROXY_NOPROXYADD
+Pêidat
+; Add
+;
+MSG_SET_PROXY_NOPROXYDEL
+Odebrat
+; Del
+;
+MSG_SET_PROXY_PASSIVEFTP
+Pouùívat pasí_vní FTP
+; Passi_ve FTP
+;
+;  Gadget labels - network external programs
+;
+MSG_SET_NWPRG_TYPE
+T_yp
+; T_ype
+;
+MSG_SET_NWPRG_CMD
+Pêí_kaz
+; Co_mmand
+;
+MSG_SET_NWPRG_ARGS
+_Argumenty
+; _Arguments
+;
+;  Gadget labels - program options
+;
+MSG_SET_PROGRAM_SAVEPATH
+Cest_a pro ukládání
+; S_ave path
+;
+MSG_SET_PROGRAM_OVERLAP
+Posun d_okumentu (v pixelech)
+; Scroll _overlap (pixels)
+;
+MSG_SET_PROGRAM_ALLOW
+Povo_lit pêíkazy Shellu v odkazech
+; A_llow Shell commands in links
+;
+MSG_SET_PROGRAM_HOTCLOSE
+Auto_m. zavírat okno se záloùkami
+; _Hotlist requester auto close
+;
+MSG_SET_PROGRAM_HOTREQ
+Tlaçítko záloùek vyvolá _requester
+; Hotlist button gives _requester
+;
+MSG_SET_PROGRAM_HOTSINGLECLICK
+
+; Use Singleclic_k in Hotlist Viewer
+;
+; ***NEW***
+;
+MSG_SET_PROGRAM_WHISCLOSE
+Autom. zavírat okno s _historií
+; History _window auto close
+;
+MSG_SET_PROGRAM_SAVEICONS
+Vytváêet _ikony
+; Create _icons
+;
+MSG_SET_PROGRAM_AAHOTLIST
+Autom. otevírat záloùk_y
+; Auto ope_n hotlist
+;
+MSG_SET_PROGRAM_AAWINHIS
+Autom. otevírat ok_no s historií
+; Auto open window histor_y
+;
+MSG_SET_PROGRAM_AANETSTAT
+Autom. ot_evírat okno s údaji o pêenosu
+; Auto open n_etwork status
+;
+MSG_SET_PROGRAM_DRAGGING
+Po_volit oznaçování
+; Allow _dragging
+;
+MSG_SET_PROGRAM_CENTERREQS
+Stêedit re_questery
+; Center re_questers
+;
+;  Gadget labels - external programs
+;
+MSG_SET_EDITOR_LABEL
+Editor zdrojového textu HTML
+; Editor
+;
+MSG_SET_EDITOR_CMD
+Pêí_kaz
+; Co_mmand
+;
+MSG_SET_EDITOR_ARGS
+_Argumenty
+; _Arguments
+;
+MSG_SET_VIEWER_LABEL
+Zobrazovaç zdrojového textu HTML
+; HTML source viewer
+;
+;**OBSOLETE**
+MSG_SET_VIEWER_CMD
+Pêíkaz
+; C_ommand
+;
+;**OBSOLETE**
+MSG_SET_VIEWER_ARGS
+A_rgumenty
+; A_rguments
+;
+MSG_SET_CONSOLE
+Ko_nzola
+; Co_nsole
+;
+MSG_SET_PRPROGRAMS_TYPE
+T_yp
+; T_ype
+;
+MSG_SET_IMGVIEWER_LABEL
+Prohlíùeç obrázkû
+; Image viewer
+;
+MSG_SET_STARTUP_LABEL
+Skript pêi spuîtëní
+; Script run at startup
+;
+MSG_SET_SHUTDOWN_LABEL
+Skript pêi ukonçení
+; Script run at shutdown
+;
+;  Gadget labels - cache
+;
+MSG_SET_CACHE_TEMPPATH
+Cesta _pro doçasné
+; Temp _path
+;
+MSG_DUMMY_2
+
+; 
+MSG_SET_CACHE_DOCMEM
+Pa_mëï (kB)
+; _Memory (kB)
+;
+MSG_SET_CACHE_DOCDISK
+_Disk (kB)
+; _Disk (kB)
+;
+MSG_DUMMY_3
+
+; 
+MSG_DUMMY_4
+
+; 
+MSG_DUMMY_5
+
+; 
+MSG_DUMMY_6
+
+; 
+MSG_DUMMY_7
+
+; 
+MSG_SET_CACHE_CACHEPATH
+Cesta _pro cache
+; Cache _path
+;
+MSG_SET_CACHE_SIZELABEL
+Velikost cache
+; Cache size
+;
+MSG_SET_CACHE_FREELABEL
+Minimum volné pamëti
+; Keep minimum free
+;
+MSG_SET_CACHE_CHIP
+Grafická (kB)
+; C_hip (kB)
+;
+MSG_SET_CACHE_FAST
+Ostatní (kB)
+; _Fast (kB)
+;
+MSG_CACHE_VERIFICATION_LABEL
+
+; Cache Verification
+;
+; ***NEW***
+;
+MSG_SET_CACHE_VERIFY_DYN
+
+; Verify d_ynamic objects
+;
+; ***NEW***
+;
+MSG_SET_CACHE_VERIFY_STAT
+
+; Verify _static objects
+;
+; ***NEW***
+;
+MSG_SET_CACHE_FASTRESPONSE_DYN
+
+; Fast _response
+;
+; ***NEW***
+;
+MSG_SET_CACHE_FASTRESPONSE_STAT
+
+; Fas_t response
+;
+; ***NEW***
+;
+MSG_SET_CACHE_NOCACHELABEL
+Pro tyto hostitele nepouùívat cache
+; Do not cache these sites
+;
+MSG_SET_CACHE_NOCACHEADD
+Pêidat
+; Add
+;
+MSG_SET_CACHE_NOCACHEDEL
+Odebrat
+; Del
+;
+;  Gadget labels - MIME types and external viewers
+;
+MSG_SET_MIME_TYPE
+T_yp
+; T_ype
+;
+MSG_SET_MIME_ADD
+Pêid_at
+; _Add
+;
+MSG_SET_MIME_DEL
+Odeb_rat
+; _Del
+;
+MSG_SET_MIME_EXTENSIONS
+Pêíp_ony
+; _Extensions
+;
+;**obsolete
+MSG_SET_MIME_CMD
+Pêí_kaz
+; C_ommand
+;
+MSG_SET_MIME_ARGS
+Ar_gumenty
+; A_rguments
+;
+MSG_SET_MIME_NAME
+_Název
+; Na_me
+;
+MSG_SET_MIME_ACTION
+A_kce
+; Act_ion
+;
+;  Settings colour requester
+;
+MSG_SET_COLOUR_TITLE
+Zvolte barvu
+; Select colour
+;
+MSG_SET_COLOUR_CANCEL
+Zruîit
+; Cancel
+;
+MSG_SET_COLOUR_OK
+Ok
+; Ok
+;
+MSG_SET_COLOUR_RED
+R
+; R
+;
+MSG_SET_COLOUR_GREEN
+G
+; G
+;
+MSG_SET_COLOUR_BLUE
+B
+; B
+;
+;  Gadget labels - Menu (was: ARexx menu)
+;
+MSG_SET_AREXX_SORT
+Setêí_dit
+; S_ort
+;
+MSG_SET_AREXX_ADD
+Pêid_at
+; _Add
+;
+MSG_SET_AREXX_DEL
+Odeb_rat
+; _Del
+;
+MSG_SET_AREXX_TITLE
+T_itulek
+; T_itle
+;
+MSG_DUMMY_9
+
+; 
+;
+MSG_DUMMY_10
+
+; 
+;
+MSG_SET_MENUS_INVALID
+NEPLATNÁ
+; INVALID
+;
+MSG_SET_MENUS_TYPE
+T_yp
+; T_ype
+;
+MSG_SET_MENUS_COMMAND
+Pêí_kaz
+; Co_mmand
+;
+;  Gadget labels - Styles page
+;
+MSG_SET_STYLE_FIXED
+_Fixní îíêka
+; _Fixed width
+;
+MSG_SET_STYLE_ABSSIZE
+_Abs. velikost
+; _Abs size
+;
+MSG_SET_STYLE_RELSIZE
+_Rel. velikost
+; _Rel size
+;
+MSG_SET_STYLE_NORMAL
+_Normální
+; _Normal
+;
+MSG_SET_STYLE_BOLD
+Tuçný
+; _Bold
+;
+MSG_SET_STYLE_ITALIC
+_Kurzíva
+; _Italic
+;
+MSG_SET_STYLE_UNDERLINED
+Po_dtrùený
+; Under_lined
+;
+;  Gadget labels - User buttons
+;
+MSG_SET_BUTTON_SORT
+Setêí_dit
+; S_ort
+;
+MSG_SET_BUTTON_ADD
+Pêid_at
+; _Add
+;
+MSG_SET_BUTTON_DEL
+Odeb_rat
+; _Del
+;
+MSG_SET_BUTTON_LABEL
+P_opis
+; _Label
+;
+MSG_SET_BUTTON_CMD
+Pêí_kaz
+; Co_mmand
+;
+;  Gadget labels - Popup menus
+;
+MSG_SET_POPUP_TYPE
+T_yp
+; T_ype
+;
+MSG_SET_POPUP_SORT
+Setêí_dit
+; S_ort
+;
+MSG_SET_POPUP_ADD
+Pêid_at
+; _Add
+;
+MSG_SET_POPUP_DEL
+Odeb_rat
+; _Del
+;
+MSG_SET_POPUP_TITLE
+T_itulek
+; T_itle
+;
+MSG_SET_POPUP_CMD
+Pêí_kaz
+; Co_mmand
+;
+MSG_SET_POPUP_SHOWIF
+Zobrazit pokud objekt
+; Show if object
+;
+MSG_SET_POPUP_INMEM
+j_e v pamëti
+; in m_em
+;
+MSG_SET_POPUP_NOTINMEM
+_není v pamëti
+; _not in mem
+;
+;  Gadget labels - GUI options
+;
+MSG_SET_GUIOPT_SHOWBUTTONS
+Zo_brazovat rychlé odkazy
+; Show user _buttons
+;
+MSG_SET_GUIOPT_SHOWNAV
+Zobrazovat _navigaçní tlaçítka
+; Show _navigation gadgets
+;
+MSG_SET_GUIOPT_BORDERLESS
+
+; Border_less gadgets
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTTONTYPE
+
+; Gadget _Type
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_TEXTONLY
+
+; Text Only
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_TEXTIMAGE
+
+; Image & Text
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_IMAGEONLY
+
+; Image Only
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTTONPOS
+
+; Gadget _Position
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTPOS_LEFT
+
+; Left
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTPOS_RIGHT
+
+; Right
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTPOS_TOPLEFT
+
+; Top Left
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTPOS_TOPRIGHT
+
+; Top Right
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTPOS_BIGLEFT
+
+; Big Left
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTPOS_BIGRIGHT
+
+; Big Right
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_WINBDR
+
+; Window Borders
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_WINBDR_STANDARD
+
+; Standard
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_WINBDR_GADGETLESS
+
+; Gadgetless
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_WINBDR_BORDERLESS
+
+; Borderless
+;
+; ***NEW***
+;
+;  Gadget labels - Network Mail/News
+;
+MSG_SET_MAIL_TAB_ADDRESS
+_Adresa
+; _Address
+;
+MSG_SET_MAIL_TAB_MAIL
+P_oîta
+; _Mail
+;
+MSG_SET_MAIL_TAB_NEWS
+_News
+; _News
+;
+MSG_SET_MAIL_TAB_OPTIONS
+_Moùnosti
+; _Options
+;
+MSG_SET_MAIL_ADDRESS
+_E-mail
+; _E-mail address
+;
+MSG_SET_MAIL_REALNAME
+_Skuteçné jméno
+; _Real name
+;
+MSG_SET_MAIL_REPLYTO
+O_dpovëð na
+; Re_ply to address
+;
+MSG_SET_MAIL_ORGANIZATION
+Or_ganizace
+; Or_ganization
+;
+MSG_SET_MAIL_SIGNATURE
+Soubor s podp_isem
+; S_ignature file
+;
+MSG_SET_MAIL_SMTPHOST
+_Hostitel (SMTP)
+; Mail _host (SMTP)
+;
+MSG_SET_MAIL_MAILQUOTEHDR
+Ko_mentáê
+; _Quote header
+;
+MSG_SET_MAIL_EXTMAILER
+Pouùít _externí poîtovní program
+; Use _external mailer
+;
+MSG_SET_MAIL_EXTMCOMMAND
+Pêí_kaz
+; Comman_d
+;
+MSG_SET_MAIL_EXTMARGS
+Ar_gumenty
+; Ar_guments
+;
+MSG_SET_MAIL_NNTPHOST
+_Hostitel (NNTP)
+; News _host (NNTP)
+;
+MSG_SET_MAIL_NEWSQUOTEHDR
+Ko_mentáê
+; _Quote header
+;
+MSG_SET_MAIL_NEWSUSER
+Uùi_vatel
+; News use_r name
+;
+MSG_SET_MAIL_NEWSPASSWORD
+He_slo
+; News _password
+;
+MSG_SET_MAIL_EXTNEWS
+Pouùít _externí prohlíùeç News
+; Use _external newsreader
+;
+MSG_SET_MAIL_EXTNCOMMAND
+Pêí_kaz
+; Comman_d
+;
+MSG_SET_MAIL_EXTNARGS
+Ar_gumenty
+; Ar_guments
+;
+MSG_SET_MAIL_MAXARTICLES
+Ma_x. poçet çlánkû
+; Ma_x nr of articles
+;
+MSG_SET_MAIL_SORTED
+Têí_dit çlánky
+; So_rt articles
+;
+MSG_SET_MAIL_FRAMED
+_Rozdëlit obrazovku
+; S_plit screen
+;
+MSG_SET_MAIL_LONGHDRS
+D_louhé hlaviçky
+; _Long headers
+;
+MSG_SET_MAIL_PROPFONT
+Proporcionální _font
+; Proportional _font
+;
+MSG_SET_MAIL_NEWSBYNUMBER
+_Stahovat podle çísla
+; Retrieve by num_ber
+;
+;  Gadget labels - GUI keys
+;
+MSG_SET_KEYS_KEY
+Klávesa
+; Key
+;
+MSG_SET_KEYS_COMMAND
+Pêí_kaz
+; Co_mmand
+;
+;  Key names
+;
+MSG_SET_KEYS_ENTER
+Enter
+; Enter
+;
+MSG_SET_KEYS_TAB
+Tab
+; Tab
+;
+MSG_SET_KEYS_BS
+BS
+; BS
+;
+MSG_SET_KEYS_SPACE
+Space
+; Space
+;
+MSG_SET_KEYS_UP
+Up
+; Up
+;
+MSG_SET_KEYS_LEFT
+Left
+; Left
+;
+MSG_SET_KEYS_RIGHT
+Right
+; Right
+;
+MSG_SET_KEYS_DOWN
+Down
+; Down
+;
+MSG_SET_KEYS_NUM
+Num
+; Num
+;
+MSG_SET_KEYS_SHIFT
+Shift
+; Shift
+;
+MSG_SET_KEYS_WHEELUP
+Koleçko nahoru
+; Wheel up
+;
+MSG_SET_KEYS_WHEELDOWN
+Koleçko dolû
+; Wheel down
+;
+;  Gadget labels - Navigation buttons
+;
+MSG_SET_NAVS_BUTTON
+Tlaçítko
+; Button
+;
+MSG_SET_NAVS_COMMAND
+Pêí_kaz
+; Co_mmand
+;
+;  Navigation button names
+;
+MSG_SET_NAVS_BACK
+Zpët
+; Back
+;
+MSG_SET_NAVS_FORWARD
+Vpêed
+; Forward
+;
+MSG_SET_NAVS_HOME
+Domovská stránka
+; Home
+;
+MSG_SET_NAVS_ADDHOT
+Pêidat do záloùek
+; Add to hotlist
+;
+MSG_SET_NAVS_HOTLIST
+Zobrazit záloùky
+; Show hotlist
+;
+MSG_SET_NAVS_CANCEL
+Zruîit
+; Cancel
+;
+MSG_SET_NAVS_NETSTATUS
+Údaje o pêenosu
+; Network status
+;
+MSG_SET_NAVS_SEARCH
+Hledat
+; Search
+;
+MSG_SET_NAVS_RELOAD
+Aktualizovat
+; Reload
+;
+MSG_SET_NAVS_LOADIMAGES
+Naçíst obrázky
+; Load images
+;
+;  Settings menu strings
+;
+MSG_SET_PROJECT_MENU
+Projekt
+; Project
+;
+MSG_SET_PROJECT_OPEN
+O/Otevêít...
+; O/Open...
+;
+MSG_SET_PROJECT_SAVEAS
+A/Uloùit jako...
+; A/Save as...
+;
+MSG_SET_PROJECT_QUIT
+Q/Ukonçit
+; Q/Quit settings
+;
+MSG_SET_EDIT_MENU
+Úpravy
+; Edit
+;
+MSG_SET_EDIT_DEFAULTS
+D/Základní stav
+; D/Reset to defaults
+;
+MSG_SET_EDIT_LASTSAVED
+L/Naposledy uloùené
+; L/Last saved
+;
+MSG_SET_EDIT_RESTORE
+R/Obnovit pêedchozí
+; R/Restore
+;
+MSG_SET_WINDOWS_MENU
+Okna
+; Windows
+;
+MSG_SET_WINDOWS_BROWSER
+Nastavení prohlíùeçe...
+; Browser settings...
+;
+MSG_SET_WINDOWS_PROGRAM
+Nastavení programu...
+; Program settings...
+;
+MSG_SET_WINDOWS_NETWORK
+Nastavení sítë...
+; Network settings...
+;
+MSG_SET_WINDOWS_CLASSACT
+Nastavení ClassAct...
+; ClassAct settings...
+;
+MSG_SET_WINDOWS_SNAPSHOT
+Zapsat umístëní
+; Snapshot
+;
+MSG_SET_WINDOWS_GUI
+Nastavení GUI...
+; GUI settings...
+;

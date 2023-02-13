@@ -1,0 +1,5 @@
+MODULES:= Charsets/koi8-r.charset
+
+Charsets/koi8-r.charset/TYPE := document
+Charsets/koi8-r.charset/FILES := \
+koi8-r.charset iso-8859-2.charset iso-8859-1.charset windows-1252.charset

@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>Method: AOM_SRCUPDATE</title>
+</head>
+<body>
+<h1>Method: AOM_SRCUPDATE</h1>
+
+<h2>Purpose</h2>
+
+The <b>AOM_SRCUPDATE</b> method is used to send input to a sourcedriver.
+
+<h2>Message structure</h2>
+
+The <b>AOM_SRCUPDATE</b> method uses an <b>Amsrcupdate</b> structure:<p>
+
+<pre>
+struct Amsrcupdate
+{  <a href=index.html#Amessage>struct Amessage</a> amsg;
+   APTR fetch;
+   struct TagItem *tags;
+};
+</pre>
+
+<h2>Usage</h2>
+
+Plugin classes will never send an AOM_SRCUPDATE message.
+
+<h3>tags</h3>
+The taglist holds the tags that set the attributes of the object.
+
+<h3>Return value</h3>
+The return value for this method is not defined.
+
+<h2>Implementation</h2>
+
+Only sourcedrivers must implement this method.
+<p>
+An AOM_SRCUPDATE message needs not be forwarded to the superclass object.
+<p>
+The class scans the taglist, changes its attributes accordingly,
+and does any necessary resulting processing.
+
+</body>
+</html>

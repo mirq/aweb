@@ -1,0 +1,648 @@
+<html>
+<body>
+<h1>Sources</h1>
+<h2>AWeb-II</h2>
+These are sources that form the AWeb-II program.
+
+<h3>Version</h3>
+<table border>
+<tr align=left valign=top>
+<td>keyfile.h
+<td>Contains version numbers and strings, and #defines that control
+the version (beta, commercial, demo; local-only; etc) that will be
+generated. This file is included in every source.
+
+<tr align=left valign=top>
+<td>version.c
+<td>Contains the version string data.
+
+</table>
+
+<h3>General</h3>
+<table border>
+<tr align=left valign=top>
+<td>awebdef.h
+<td>General #includes, #defines and definitions used in both the AWeb-II main program
+and AWebLib modules.
+
+<tr align=left valign=top>
+<td>aweb.h
+<td>General #defines, definitions and declarations for the AWeb-II program.
+
+<tr align=left valign=top>
+<td>plugin.h plugin_pragmas.h
+<td>Defines the awebsupport interface from the AWeb-II's point of view.
+
+<tr align=left valign=top>
+<td>awebprotos.h
+<td>General function prototypes.
+
+<tr align=left valign=top>
+<td>haiku.h
+<td>Alternative error messages :-)
+
+<tr align=left valign=top>
+<td>profile.h
+<td>Definitions for my own code profiler (defined in aweb.c)
+
+<tr align=left valign=top>
+<td>aweb.c aweb.lnk
+<td>main(), general support functions.
+
+<tr align=left valign=top>
+<td>gst.c awebgst
+<td>Global symbol table source, contains all includes. awebgst is compiled from gst.c.
+
+<tr align=left valign=top>
+<td>memory.c
+<td>Pooled memory manager.
+
+<tr align=left valign=top>
+<td>aweb.cd locale.h
+<td>Locale strings. locale.h is generated from aweb.cd.
+
+<tr align=left valign=top>
+<td>asyncio.h asyncio.c
+<td>Asynchroneous I/O.
+
+<tr align=left valign=top>
+<td>boopsi.c
+<td>Defines BOOPSI classes for default gadget imagery.
+
+<tr align=left valign=top>
+<td>simplerexx.h simplerexx.c
+<td>General ARexx system functions.
+
+<tr align=left valign=top>
+<td>arexx.h arexx.c
+<td>Implements ARexx ports, issues ARexx commands.
+
+<tr align=left valign=top>
+<td>clip.c
+<td>Copies text to and from clipboard.
+
+<tr align=left valign=top>
+<td>request.c
+<td>All kinds of requesters.
+
+<tr align=left valign=top>
+<td>support.c
+<td>Implements awebsupport.library for use by AwebLib and plugin modules.
+
+<tr align=left valign=top>
+<td>tooltip.c
+<td>Implements tooltip popups.
+
+</table>
+
+<h3>Preferences</h3>
+<table border>
+<tr align=left valign=top>
+<td>awebprefs.h
+<td>Definition of preferences structure.
+
+<tr align=left valign=top>
+<td>defprefs.c
+<td>Preferences data, defaults, load, save, copy functions. Also used in AWebCfg.
+
+<tr align=left valign=top>
+<td>prefs.c
+<td>Notification of prefs file changes, processing of changed settings.
+
+<tr align=left valign=top>
+<td>mime.c
+<td>Manages MIME settings, selects action from MIME type or extension.
+
+</table>
+
+<h3>Objects</h3>
+Most AWeb functions are organized in BOOPSI-like objects. The .h files generally
+contain comments describing the interface in detail. All objects are assigned id
+numbers, shown here (in hex), that are also used to identify the tags for that object class.
+Some .c files contain general functions, that are also described in the .h file.
+<p>
+See <a href="oomodel.html">AWeb Object model diagram</a>.
+<p>
+Some objects are implemented in more that one .c source, they generally share their 
+definitions in an xxxprivate.h header file. A xxxjs.c file contains javascript processing for
+that object.
+<table border>
+<tr><td colspan=2><h4>General</h4>
+
+<tr align=left valign=top>
+<td>object.h object.c
+<td>[00] General object interface and dispatcher. All other objects are derived from this.
+
+<tr><td colspan=2><h4>Core</h4>
+
+<tr align=left valign=top>
+<td>application.h application.c
+<td>[01] The application object, owns the screen, the preferences, and other application wide data.
+
+<tr align=left valign=top>
+<td>url.h url.c
+<td>[02] Remembers all visited URLs. A URL is linked to a cache(03), fetch(04) and source(05) objects,
+and to one of more hyperlink(34) objects.
+
+<tr align=left valign=top>
+<td>cache.h caprivate.h cache.c
+<td>[03] Link to a cache entry for an URL. Also general functions to read and write cache index.
+
+<tr align=left valign=top>
+<td>fetch.h fetch.c
+<td>[04] Controls retrieval of an URL. It delegates the actual fetch to the appropriate
+fetch driver (see below).
+
+<tr align=left valign=top>
+<td>source.h source.c
+<td>[05] Stores the retrieved source data for an URL. Delegates processing of this data to
+a source driver (see below).
+
+<tr align=left valign=top>
+<td>copy.h copyprivate.h copy.c copyjs.c
+<td>[06] The actual instantiation of a retrieved URL after processing the data. It can be
+a HTML document, an image, a sound, or anything else that a plugin is written for. It
+delegates formatting and rendering to the appropriate copy driver object (see below). The
+copy object is derived from form field(47) to implement clickable maps in forms.
+
+<tr align=left valign=top>
+<td>task.h task.c
+<td>[07] A child process. Some other objects are derived from this.
+
+<tr align=left valign=top>
+<td>scroller.h scroller.c
+<td>[10] A scroller. USed by frame and some form elements.
+
+<tr align=left valign=top>
+<td>file.h file.c
+<td>[11] A permanent or temporary file.
+
+<tr align=left valign=top>
+<td>filereq.h filereq.c
+<td>[12] An ASL file requester. Also displays the "unknown MIME type" requester.
+
+<tr align=left valign=top>
+<td>editor.h editor.c
+<td>[13] Spawns the external editor.
+
+<tr align=left valign=top>
+<td>timer.h timer.c
+<td>[14] A general timer.
+
+<tr align=left valign=top>
+<td>window.h winprivate.h window.c event.c winrexx.c
+<td>[20] A window. window.c contains code to open and close the window. event.c contains
+code to handle all input events. winrexx.c processes ARexx commands after parsing by arexx.c.
+A window contains a frame object(46) that displays any data.
+
+<tr align=left valign=top>
+<td>winhis.h whisprivate.h winhis.c 
+<td>[21] The window and frame history. Also plays a crucial role in displaying new documents.
+
+<tr align=left valign=top>
+<td>whiswin.c
+<td>[22] Controls the history window. The actual window is implemented by an AWebLib module.
+
+<tr align=left valign=top>
+<td>netstat.c
+<td>[23] The network status window.
+
+<tr align=left valign=top>
+<td>cabrowse.c
+<td>[24] Controls the cache browser. The actual window is implemented by an AWebLib module.
+
+<tr align=left valign=top>
+<td>hotlist.h hotlist.c
+<td>[25] Remembers the hotlist, controls the hotlist windows.
+The actual windows are implemented by an AWebLib module. 
+
+<tr align=left valign=top>
+<td>popup.h popup.c
+<td>[26] The popup menu.
+
+<tr align=left valign=top>
+<td>search.h search.c
+<td>[27] The search window.
+
+<tr align=left valign=top>
+<td>printwin.h printwin.c
+<td>[28] An off-screen window-like object used while printing.
+
+<tr align=left valign=top>
+<td>print.h print.c
+<td>[29] The print process. Some processing is implemented by an AWebLib module.
+
+<tr align=left valign=top>
+<td>info.h info.c
+<td>[2A] The info window.
+
+<tr align=left valign=top>
+<td>author.c
+<td>[2B] HTTP authorizations. The authorization requesters are implemented by an AWebLib module.
+
+<tr align=left valign=top>
+<td>saveiff.c
+<td>[2C] Save page as IFF.
+
+<tr><td colspan=2><h4>Document</h4>
+These objects implement the document source- and copydrivers.
+
+<tr align=left valign=top>
+<td>docprivate.h docsource.c 
+<td>[30] The document source driver. Remembers the HTML source.
+
+<tr align=left valign=top>
+<td>document.h docprivate.h document.c parse.c html.h colours.h html.c docjs.c
+<td>[31] The document object. parse.c parses the HTML source (or plain text), html.c
+translate HTML tags into elements.
+
+<tr align=left valign=top>
+<td>frameset.h frameset.c
+<td>[32] A frameset. Shares its interface with frame(46) and with body(33).
+
+<tr align=left valign=top>
+<td>body.h body.c
+<td>[33] A document body.
+
+<tr align=left valign=top>
+<td>link.h linkprivate.h link.c
+<td>[34] A hyperlink.
+
+<tr align=left valign=top>
+<td>map.h map.c
+<td>[35] A client side image map.
+
+<tr align=left valign=top>
+<td>form.h form.c
+<td>[36] A HTML form.
+
+<tr align=left valign=top>
+<td>area.h linkprivate.h area.c
+<td>[37] Derived from link(34), defines an area within a map(35).
+
+<tr align=left valign=top>
+<td>element.h element.c
+<td>[38] General HTML element. All specific element are derived from this.
+
+<tr align=left valign=top>
+<td>break.h break.c
+<td>[40] A line break &lt;BR>.
+
+<tr align=left valign=top>
+<td>text.h text.c
+<td>[41] Plain text.
+
+<tr align=left valign=top>
+<td>ruler.h ruler.c
+<td>[42] A ruler &lt;HR>.
+
+<tr align=left valign=top>
+<td>bullet.h bullet.c
+<td>[43] A buller for use in &lt;UL> lists.
+
+<tr align=left valign=top>
+<td>table.h table.c
+<td>[44] A table &lt;TABLE>.
+
+<tr align=left valign=top>
+<td>name.h name.c
+<td>[45] Invisible name object &lt;A NAME=xxx>.
+
+<tr align=left valign=top>
+<td>frame.h frprivate.h frame.c framejs.c
+<td>[46] A frame: the top level frame in a window, or a frame &lt;FRAME> in a frameset, or an
+inline frame &lt;IFRAME> within a document body.
+
+<tr align=left valign=top>
+<td>field.h field.c
+<td>[47] A general form field. All form fields are derived from this.
+
+<tr align=left valign=top>
+<td>input.h input.c
+<td>[48] A textual input field &lt;INPUT TYPE=TEXT>, &lt;INPUT TYPE=PASSWORD>.
+
+<tr align=left valign=top>
+<td>checkbox.h checkbox.c
+<td>[49] A checkbox field &lt;INPUT TYPE=CHECKBOX>.
+
+<tr align=left valign=top>
+<td>radio.h radio.c
+<td>[4A] A radio button &lt;INPUT TYPE=RADIO>.
+
+<tr align=left valign=top>
+<td>select.h select.c
+<td>[4B] A selection list &lt;SELECT>.
+
+<tr align=left valign=top>
+<td>textarea.h textarea.c
+<td>[4C] A text area &lt;TEXTAREA>.
+
+<tr align=left valign=top>
+<td>button.h button.c
+<td>[4D] A button field &lt;INPUT TYPE=BUTTON,SUBMIT,RESET>, &lt;BUTTON>.
+
+<tr align=left valign=top>
+<td>hidden.c
+<td>[4E] A hidden input field &lt;INPUT TYPE=HIDDEN>.
+
+<tr align=left valign=top>
+<td>filefield.h filefield.c
+<td>[4F] A file input field &lt;INPUT TYPE=FILE>. Contains an input(48) field for text entry.
+
+<tr><td colspan=2><h4>Other source- and copy drivers</h4>
+
+<tr align=left valign=top>
+<td>imgprivate.h imgsource.c
+<td>[60] Datatype image source driver. Stores the image data and let the datatype object decode it.
+
+<tr align=left valign=top>
+<td>imgprivate.h imgcopy.c
+<td>[61] Datatype image copy driver. Implement a displayed copy of an image.
+
+<tr align=left valign=top>
+<td>extprog.c
+<td>[62] Saves the data to file or pipe and spawns an external program.
+
+<tr align=left valign=top>
+<td>saveas.c
+<td>[63] Displayes file requester and saves data to file.
+
+<tr align=left valign=top>
+<td>soundprivate.h soundsource.c
+<td>[64] Stores the data.
+
+<tr align=left valign=top>
+<td>soundprivate.h soundcopy.c
+<td>[65] Let the datatype object play the sound.
+
+<tr align=left valign=top>
+<td>docext.c
+<td>[66] An external source (script, style) for a document.
+
+<tr align=left valign=top>
+<td>sourcedriver.h sourcedriver.c
+<td>[71] The general source driver object, from which the other source drivers
+are derived.
+
+<tr align=left valign=top>
+<td>copydriver.h copydriver.c
+<td>[72] The general copy driver object, from which the other copy drivers
+are derived.
+
+</table>
+<h3>Fetchdrivers</h3>
+These modules each implement a fetch method.
+
+<table border>
+<tr align=left valign=top>
+<td>fetchdriver.h
+<td>The general interface for a fetch driver. All modules implement this interface.
+
+<tr align=left valign=top>
+<td>http.c
+<td>The HTTP fetchdriver.
+
+<tr align=left valign=top>
+<td>gopher.c gopher.lnk
+<td>The GOPHER fetchdriver, implemented as an AWebLib module.
+
+<tr align=left valign=top>
+<td>ftp.c ftp.lnk
+<td>The FTP fetchdriver, implemented as an AWebLib module.
+
+<tr align=left valign=top>
+<td>local.c
+<td>The local files fetchdriver.
+
+<tr align=left valign=top>
+<td>xaweb.c
+<td>The fetchdriver for x-aweb: URLs.
+
+<tr align=left valign=top>
+<td>ftp.c ftp.lnk
+<td>The FTP fetchdriver, implemented as an AWebLib module.
+
+<tr align=left valign=top>
+<td>mail.c mail.lnk
+<td>The MAILTO: fetchdriver, implemented as an AWebLib module.
+
+<tr align=left valign=top>
+<td>news.c news.lnk
+<td>The NEWS: fetchdriver, implemented as an AWebLib module.
+</table>
+
+<h3>TCP en SSL support</h3>
+<table border>
+<tr align=left valign=top>
+<td>tcp.c
+<td>Opens TCP library, spawns external program to dial up if necessary.
+
+<tr align=left valign=top>
+<td>tcperr.h tcperr.c
+<td>Issues common TCP errors and messages.
+
+<tr align=left valign=top>
+<td>nameserv.c
+<td>Caches DNS lookups.
+
+<tr align=left valign=top>
+<td>cookie.c
+<td>Parse, issue, save, load cookies.
+
+<tr align=left valign=top>
+<td>awebtcp.h awebtcp.c awebamitcp.c awebinet225.c awebssl.h amissl.c miamissl.c
+<td>Internal libraries for accessing TCP stack (either AmiTCP-alike or INet225)
+and SSL library (MiamiSSL or AmiSSL).
+</table>
+
+<h3>AWebLib modules</h3>
+Gopher, Ftp, Mail, News are already listed above.
+<table border>
+<tr align=left valign=top>
+<td>aweblib.h
+<td>General include file for AWebLib modules. Includes awebdef.h (see above) and
+awebsupport.h
+
+<tr align=left valign=top>
+<td>awebsupport.h
+<td>Prototypes and pragmas of all public and private entries in awebsupport.library.
+
+<tr align=left valign=top>
+<td>cfgrexx.c arexx.lnk
+<td>arexx.aweblib: Processes SETCFG and GETCFG commands.
+
+<tr align=left valign=top>
+<td>authorlib.c authorize.lnk
+<td>authorize.aweblib: Contains authorization requester and editor.
+
+<tr align=left valign=top>
+<td>caprivate.h cabrtask.c cachebrowser.lnk
+<td>cachebrowser.aweblib: The cache browser window.
+
+<tr align=left valign=top>
+<td>hotlisttask.h hotlisttask.c hotmanager.c hotviewer.c hotlist.lnk
+<td>hotlist.aweblib: The hotlist viewer and hotlist manager windows.
+
+<tr align=left valign=top>
+<td>printlib.c print.lnk
+<td>print.aweblib: Some print processing.
+
+<tr align=left valign=top>
+<td>startup.h startup.c startup.lnk
+<td>startup.aweblib: The splash window during startup.
+
+<tr align=left valign=top>
+<td>whistask.c history.lnk
+<td>history.aweblib: The history window.
+</table>
+
+<h3>Javascript</h3>
+See also <a href="jsmodel.html">Javascript data model diagram</a>.<p>
+<table border>
+<tr align=left valign=top>
+<td>jslib.h
+<td>Public interface to the javascript library.
+
+<tr align=left valign=top>
+<td>awebjs.h
+<td>Definitions private to awebjs.aweblib.
+
+<tr align=left valign=top>
+<td>jslib.c jslib.lnk
+<td>Main library source for awebjs.aweblib.
+
+<tr align=left valign=top>
+<td>jprotos.h
+<td>General private prototypes within this library.
+
+<tr align=left valign=top>
+<td>jmemory.c
+<td>Pooled memory handler.
+
+<tr align=left valign=top>
+<td>jparse.c
+<td>Source parser.
+
+<tr align=left valign=top>
+<td>jcomp.c
+<td>Compiles parsed source into internal structures. Contains decompiler also.
+
+<tr align=left valign=top>
+<td>jexe.c
+<td>Executes internal compiled structure.
+
+<tr align=left valign=top>
+<td>jdata.c
+<td>Manages object and property data.
+
+<tr align=left valign=top>
+<td>jdebug.c
+<td>The debugger.
+
+<tr align=left valign=top>
+<td>jobject.c
+<td>The Object class.
+
+<tr align=left valign=top>
+<td>jarray.c
+<td>The Array object class.
+
+<tr align=left valign=top>
+<td>jboolean.c
+<td>The Boolean object class.
+
+<tr align=left valign=top>
+<td>jdate.c
+<td>The Date object class.
+
+<tr align=left valign=top>
+<td>jfunction.c
+<td>The Function object class.
+
+<tr align=left valign=top>
+<td>jmath.c
+<td>The Math object class.
+
+<tr align=left valign=top>
+<td>jnumber.c
+<td>The Number object class.
+
+<tr align=left valign=top>
+<td>jstring.c
+<td>The String object class.
+</table>
+
+<h2>AWebCfg</h2>
+These are the sources that form AWebCfg.
+<table border>
+<tr align=left valign=top>
+<td>keyfile.h awebprefs.h defprefs.c
+<td>These files are shared with the AWeb-II main program.
+
+<tr align=left valign=top>
+<td>awebcfg.h awebcfg.c awebcfg.lnk
+<td>The main program source.
+
+<tr align=left valign=top>
+<td>awebcfg.cd cfglocale.h
+<td>Locale strings for AWebCfg. cfglocale.h is generated from awebcfg.cd.
+
+<tr align=left valign=top>
+<td>cfgmainstr.c locale.h
+<td>Includes strings for the main program into the AWebCfg executable.
+locale.h is shared with AWeb-II.
+
+<tr align=left valign=top>
+<td>cfgbr.c
+<td>Browser settings window.
+
+<tr align=left valign=top>
+<td>cfgui.c
+<td>GUI settings window.
+
+<tr align=left valign=top>
+<td>cfgpr.c
+<td>Program settings window.
+
+<tr align=left valign=top>
+<td>cfgnw.c
+<td>Network settings window.
+</table>
+
+<h2>Other programs</h2>
+
+<table border>
+<tr align=left valign=top>
+<td>awebjs.c awebjs.lnk
+<td>The AWebJS additional program.
+
+<tr align=left valign=top>
+<td>makeindex.c makeindex.lnk
+<td>The Docs/makeindex program to generate the documentation search index.
+
+<tr align=left valign=top>
+<td>searchindex.c searchindex.lnk
+<td>The Docs/searchindex program to search the documentation index.
+</table>
+
+<h2>Additional files</h2>
+
+<table border>
+<tr align=left valign=top>
+<td>smakefile
+<td>The SAS/C makefile for the complete project.
+
+<tr align=left valign=top>
+<td>SCOPTIONS
+<td>The SAS/C options.
+
+<tr align=left valign=top>
+<td>C/remlib
+<td>Program to remove an unused(!) library from memory. This is used in the makefile.
+
+<tr align=left valign=top>
+<td>Include/ezlists.h
+<td>Macros to define MinList compatible structures that need no casting when used.
+This file should be copied to the SAS/C Include: drawer.
+</table>
+

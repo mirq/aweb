@@ -1,0 +1,2161 @@
+## version $VER: AWeb.catalog 3.4 (23.11.2000)
+## language bosanski
+## codeset 0
+;
+; AWeb.cd - AWeb catalog description file
+;
+; $Id: aweb.ct,v 1.8 2009/09/11 11:41:36 opi Exp $
+;
+;  The MSG_DUMMY_nn labels are there because FlexCat doesn't
+;  understand the LABEL (+1//) syntax (C='s Catcomp uses this
+;  to skip 1 number)
+;
+;
+;-------------- General -----------------------------
+;
+MSG_REQUEST_TITLE
+Zahtjev AWeb-a
+; AWeb request
+;
+MSG_REQUEST_YES_NO
+
+; Yes|No
+;
+; ***NEW***
+;
+;
+;-------------- About requester ---------------------
+;
+MSG_ABOUT_TITLE
+Informacije o AWeb-u
+; About AWeb
+;
+MSG_ABOUT_REGNR
+Registracijski br.
+; Registration #
+;
+MSG_ABOUT_REGTO
+Registriran na
+; Registered to
+;
+MSG_ABOUT_SCREENNAME
+Ime javnog ekrana
+; Public screen name
+;
+MSG_ABOUT_PORTNAME
+Ime ARexx vrata
+; ARexx port name
+;
+MSG_ABOUT_EMAIL
+E-mail
+; E-mail
+;
+MSG_ABOUT_WWW
+WWW
+; WWW
+;
+MSG_ABOUT_OK
+_OK
+; _Ok
+;
+MSG_ABOUT_UNREGISTERED
+Neregistrirana verzija\n
+; Unregistered version\n
+;
+MSG_ABOUT_DEMO
+Neregistrirana demo verzija\n
+; Unregistered demo version\n
+;
+MSG_ABOUT_DISTRIBUTED
+Distribucija: %s
+; Distributed by %s
+;
+; Translators give yourself credit with this string.
+; It should read something like "(Language) translation by: (your name)\n"
+;
+MSG_ABOUT_TRANSLATOR
+Bosanski prijevod: Alen Hadzihasanovic\n
+; 
+;
+MSG_ABOUT_SPECIAL
+Specijalna verzija za distribuciju sa AmigaOS-om\n
+; Special version for distribution with Amiga OS\n
+;
+;-------------- Quit requester ----------------------
+;
+MSG_QUIT_TEXT
+Zelis li stvarno izaci iz AWeb-a?
+; Are you sure you want to quit AWeb?
+;
+MSG_QUIT_OK
+_OK
+; _Ok
+;
+MSG_QUIT_CANCEL
+O_dustani
+; _Cancel
+;
+MSG_QUIT_WARNING
+PAZNJA: Svi prijenosi ce biti prekinuti!\n\n
+; WARNING: Transfers will be aborted!\n\n
+;
+;-------------- Demoversion requester ---------------
+;
+MSG_DEMO_TEXT
+Ovo je demo verzija AWeb-a\nNije moguce otvoriti vise prozora od jednom
+; This is the demo version of AWeb\nmultiple document windows are not supported
+;
+MSG_DEMO_OK
+_OK
+; _Ok
+;
+;
+;-------------- Close windows requester -------------
+;
+MSG_SCRCLOSE_TEXT
+AWeb ne moze zatvoriti svoj ekran.\nMolim zatvori sve prozore.
+; AWeb can't close its screen.\nPlease close all windows.
+;
+MSG_SCRCLOSE_OK
+OK
+; Ok
+;
+;
+;-------------- Network status window ---------------
+;
+MSG_NWS_TITLE
+Status mreze
+; Network status
+;
+MSG_NWS_QUEUED
+Na cekanju
+; Queued
+;
+MSG_NWS_STARTED
+Pokrenut
+; Started
+;
+MSG_NWS_LOOKUP
+Trazim
+; Looking up
+;
+MSG_NWS_CONNECT
+Prikljucujem se
+; Connecting
+;
+MSG_NWS_WAIT
+Cekam
+; Waiting
+;
+MSG_NWS_PROCESS
+Procesiram
+; Processing
+;
+MSG_NWS_LOGIN
+Ulazim
+; Logging in
+;
+MSG_NWS_CPS
+%ld kps
+; %ld cps
+;
+MSG_NWS_NEWSGROUP
+Citam
+; Scanning
+;
+MSG_NWS_UPLOAD
+Saljem
+; Uploading
+;
+;-------------- Authorization requester -------------
+;
+MSG_AUTH_TITLE
+Autorizacija
+; Authorization
+;
+MSG_AUTH_PROMPT
+Potrebni us UserID i sifra za
+; Userid and password required for
+;
+MSG_AUTH_USERID
+_UserID
+; _Userid
+;
+MSG_AUTH_PASSWORD
+S_ifra
+; _Password
+;
+MSG_AUTH_OK
+_OK
+; _Ok
+;
+MSG_AUTH_CANCEL
+O_dustani
+; _Cancel
+;
+MSG_AUTH_PROMPT_FTP
+Potrebna je sifra za
+; Password required for
+;
+MSG_AUTH_USERID_FTP
+UserID
+; Userid
+;
+MSG_AUTH_PROMPT_PROXY
+Potrebni su UserID i sifra za proxy
+; Userid and password required for proxy
+;
+MSG_AUTH_PROMPT_MASTER
+
+; Please enter the password to show the passwords.
+;
+; ***NEW***
+;
+;
+;-------------- File requesters ---------------------
+;
+MSG_FILE_SAVETITLE
+Izaberi ime fila na koji snimiti
+; Select save filename
+;
+MSG_FILE_SAVE
+Snimi
+; Save
+;
+MSG_FILE_INCTEXT
+File je nepotpun!\n%s\nOcekivano: %ld bajta\nPrimljeno: %ld bajta\n\nPritisni OK da zadrzis nepotpuni file.
+; Incomplete file!\n%s\nExpected: %ld bytes\nReceived: %ld bytes\n\n\
+; Choose OK to keep the partial data.
+;
+MSG_DUMMY_1
+
+; 
+MSG_FILE_EXISTTEXT
+File:\n%s\nvec postoji!
+; File:\n%s\nalready exists!
+;
+MSG_FILE_EXISTBUTTONS
+_Presnimi|_Zakaci|P_romijeni ime|O_dustani
+; _Overwrite|_Append|_New name|_Cancel
+;
+MSG_FILE_AREXXTITLE
+Izaberi ARexx makro
+; Select ARexx macro
+;
+MSG_FILE_HOTLISTTITLE
+Izaberi hotlistu poretka
+; Select hierarchical hotlist
+;
+MSG_FILE_LOCALTITLE
+Otvori lokalni file
+; Open local file
+;
+MSG_FILE_OPEN
+Otvori
+; Open
+;
+MSG_FILE_TEMPTITLE
+Ne mogu pronaci trenutnu putanju:\n%s\nKoristim T:.
+; Can't find temporary path:\n%s\nUse T: instead.
+;
+MSG_FILE_TEMPBUTTONS
+_OK
+; _Ok
+;
+MSG_FILE_INCBUTTONS2
+_OK|_Ponovi|O_dustani
+; _Ok|_Retry|_Cancel
+;
+MSG_FILE_SETTINGSTITLE
+Izaberi ladicu za opcije
+; Select settings directory
+;
+MSG_FILE_UPLOADTITLE
+Izaberi file za slanje
+; Select file to upload
+;
+;-------------- TCP close requester -----------------
+;
+MSG_TCP_ENDTCP
+AWeb je zaustavljen.\nTrebam li prekinuti i TCP prikljucak?
+; AWeb is stopped.\nShould the TCP connection be terminated too?
+;
+MSG_TCP_BUTTONS
+_Da|_Ne
+; _Yes|_No
+;
+;-------------- Startup requester -------------------
+; Mind the maximum length!
+;
+MSG_STARTUP_FONTS
+Ucitavam slova
+; Loading fonts
+;
+MSG_STARTUP_IMAGES
+Ucitavam slike za GUI
+; Loading GUI images
+;
+MSG_STARTUP_CACHE
+Ucitavam sadrzaj kesa
+; Loading cache index
+;
+;-------------- Hotlist requester -------------------
+;
+MSG_HOTL_TITLE
+Hotlista AWeb-a
+; AWeb hotlist
+;
+MSG_HOTL_ADDLINK
+Dod_aj link
+; _Add link
+;
+MSG_HOTL_ADDGROUP
+Dodaj _grupu
+; Add _group
+;
+; (No hotkey for this one please!)
+MSG_HOTL_REMOVE
+Izbrisi
+; Remove
+;
+MSG_HOTL_FOLLOW
+Sli_jedi
+; _Follow
+;
+MSG_HOTL_NAME
+_Ime
+; _Name
+;
+MSG_HOTL_URL
+_URL
+; _URL
+;
+MSG_HOTL_NEWGROUP
+Nova grupa
+; New group
+;
+MSG_HOTL_NEWLINK
+Novi link
+; New link
+;
+; -- new hotlist viewer requester --
+;
+MSG_HOTL_TITLE_VIEWER
+Hotlista AWeb-a
+; AWeb hotlist viewer
+;
+MSG_HOTL_VURLS
+UR_L-ovi
+; UR_Ls
+;
+MSG_HOTL_MANAGER
+_Menadzer
+; _Manager
+;
+; -- new hotlist manager requester --
+;
+MSG_HOTL_TITLE_MANAGER
+Menadzer hotliste AWeb-a
+; AWeb hotlist manager
+;
+MSG_HOTL_LTYPE
+Listaj
+; L_ist
+;
+MSG_HOTL_LTYPE_REST
+Ostalo
+; Rest
+;
+MSG_HOTL_LTYPE_ALL
+Sve
+; All
+;
+MSG_HOTL_LTYPE_GROUPS
+Grupe
+; Groups
+;
+MSG_HOTL_LSORT
+P_oredaj
+; S_ort
+;
+MSG_HOTL_LSORT_TITLE
+Naslov
+; Title
+;
+MSG_HOTL_LSORT_URL
+URL
+; URL
+;
+MSG_HOTL_MOVEIN
+_< Ubaci
+; _< In
+;
+MSG_HOTL_MOVEOUT
+Izbaci _>
+; Out _>
+;
+MSG_HOTL_MOVE
+< Pre_mjesti
+; < _Move
+;
+MSG_HOTL_DEL
+Iz_brisi
+; _Delete
+;
+MSG_HOTL_WHERE
+_Gdje
+; _Where
+;
+MSG_HOTL_SHOW
+Po_kazi
+; S_how
+;
+MSG_HOTL_SORT
+Poreda_j
+; Sor_t
+;
+MSG_HOTL_PARENT
+P_rethodni
+; _Parent
+;
+MSG_HOTL_ALL
+Grup_e
+; G_roups
+;
+MSG_HOTL_ADDENTRY
++ Elemen_t
+; + _Entry
+;
+MSG_HOTL_ADDGROUP2
++ Grupa
+; + _Group
+;
+MSG_HOTL_URLS
+URL_-ovi
+; UR_Ls
+;
+MSG_HOTL_REVERT
+Okreni
+; Re_vert
+;
+MSG_HOTL_SAVE
+_Snimi
+; _Save
+;
+MSG_HOTL_LADD
+Dod_aj
+; _Add
+;
+MSG_HOTL_FIND
+Pro_nadji
+; _Find
+;
+MSG_HOTL_PATTERN
+Odgovaraju_ci
+; Mat_ch
+;
+MSG_HOTL_NEXT
+Sli_jedeci
+; Ne_xt
+;
+MSG_HOTL_DEFAULT_TITLE
+** Novi link **
+; ** New link **
+;
+MSG_HOTL_DEFAULT_GROUP
+** Nova grupa **
+; ** New group **
+;
+MSG_HOTL_TITLE_ALLGROUPS
+Sve grupe
+; All groups
+;
+MSG_HOTL_TITLE_WHERE
+Grupe koje sadrze ovaj element
+; Groups containing this entry
+;
+MSG_HOTL_TITLE_REST
+Neodredjeni elementi
+; Unassigned entries
+;
+MSG_HOTL_TITLE_ALL
+Svi elementi
+; All entries
+;
+MSG_HOTL_TITLE_ROOTGROUPS
+Grupe na glavnom nivou
+; Root-level groups
+;
+MSG_HOTL_LSORT_DATE
+Datum
+; Date
+;
+;
+;--------------  Window history requester -------------------
+;
+MSG_WHIS_TITLE
+Historija
+; Window history
+;
+MSG_WHIS_FILTER
+_Filter
+; _Filter
+;
+MSG_WHIS_WINDOW
+_Prozor
+; _Window
+;
+MSG_WHIS_ORDER
+_Red
+; _Order
+;
+MSG_WHIS_DISPLAY
+Po_kazi
+; _Display
+;
+MSG_WHIS_ORDER_NATURAL
+Prirodni
+; Natural
+;
+MSG_WHIS_ORDER_MAINLINE
+Po glavnoj liniji
+; Mainline
+;
+MSG_WHIS_ORDER_RETRIEVED
+Po primanju
+; Retrieved
+;
+MSG_WHIS_ORDER_TITLE
+Ime
+; Title
+;
+MSG_WHIS_ORDER_URL
+URL
+; URL
+;
+;
+;-------------- Cache browser ---------------------------
+;
+MSG_CABR_TITLE
+Cache browser
+; Cache browser
+;
+MSG_CABR_URL
+URL
+; URL
+;
+MSG_CABR_DATE
+Datum
+; Date
+;
+MSG_CABR_SIZE
+Velicina
+; Size
+;
+MSG_CABR_TYPE
+Tip
+; Type
+;
+MSG_CABR_FILE
+File
+; File
+;
+MSG_CABR_STATUS
+%ld fileova, %ld Kb
+; %ld files, %ld kB
+;
+MSG_CABR_SORTBY
+R_ed
+; _Sort by
+;
+MSG_CABR_OPEN
+_Otvori
+; _Open
+;
+MSG_CABR_SAVE
+_Snimi
+; Sa_ve
+;
+MSG_CABR_DELETE
+I_zbrisi
+; _Delete
+;
+MSG_CABR_FIND
+_Pronadji
+; _Find
+;
+MSG_CABR_PATTERN
+Odgovarajuci
+; _Match
+;
+MSG_CABR_NEXT
+Slijedeci
+; _Next
+;
+MSG_CABR_CHARSET
+
+; Charset
+;
+; ***NEW***
+;
+MSG_CABR_ETAG
+
+; Etag
+;
+; ***NEW***
+;
+;-------------- Progress requester ----------------------
+;
+MSG_PROGRESS_TITLE
+Napredak AWeb-a
+; AWeb progress
+;
+MSG_PROGRESS_CANCEL
+Odustani
+; Cancel
+;
+;
+;-------------- Fix cache requesters ---------------------
+;
+MSG_FIXCACHE_WARNING
+PANJA!\nOva funkcija ce izbrisati sve nepoznate fileove iz\n%s ladice
+; WARNING!\n\
+; This function will delete all foreign files from the\n\
+; %s drawer
+;
+MSG_FIXCACHE_BUTTONS
+_OK|O_dustani
+; _Ok|_Cancel
+;
+MSG_FIXCACHE_PROGRESS
+Cistim kes na disku...
+; Fixing the disk cache...
+;
+MSG_FIXCACHE_DELETEPROGRESS
+
+; Delete %ld Files from disk cache...
+;
+; ***NEW***
+;
+MSG_FIXCACHE_DELETEIMAGES
+Jesi li siguran da zelis izbrisati\nsve slike iz kesa?
+; Are you sure you want to delete\n\
+; all images from the cache?
+;
+MSG_FIXCACHE_DELETEDOCS
+Jesi li siguran da zelis izbrisati\nsve dokumente iz kesa?
+; Are you sure you want to delete\n\
+; all documents from the cache?
+;
+MSG_FIXCACHE_ERASE
+Jesi li siguran da zelis izbrisati\nsve dokumente i slike iz kesa?
+; Are you sure you want to delete\n\
+; all documents and images from the cache?
+;
+MSG_FIXCACHE_CORRUPT
+Ne mogu procitati sadrzaj kesa.\nKes moze biti iz starije verzije AWeb-a.\nFileovi u kesu se ne mogu vise koristiti.\nZelis li ih izbrisati?
+; The cache registration is unreadable\n\
+; or from an older version of AWeb.\n\
+; Cached files cannot be used any more.\n\
+; Do you want to clean up now?
+;
+;-------------- Search requesters ---------------------
+;
+MSG_SEARCH_STRING
+_Trazi
+; Search _for
+;
+MSG_SEARCH_IGNORECASE
+_Zanemari vel./mala slova
+; _Ignore case
+;
+MSG_SEARCH_SEARCH
+T_razi
+; _Search
+;
+MSG_SEARCH_FROMTOP
+_Naprijed
+; From _top
+;
+MSG_SEARCH_BACKWARDS
+Na_zad
+; _Backwards
+;
+MSG_SEARCH_CANCEL
+O_dustani
+; _Cancel
+;
+MSG_SEARCH_NOTFOUND
+String nije pronadjen
+; String not found
+;
+MSG_SEARCH_OK
+_OK
+; _Ok
+;
+;
+;-------------- Popup menu ---------------------------
+;
+MSG_POPUP_LOADIMAGE
+Ucitaj sliku
+; Load image
+;
+MSG_POPUP_RELOADIMAGE
+Ucitaj sliku ponovo
+; Reload image
+;
+MSG_POPUP_SAVEIMAGE
+Snimi sliku
+; Save image
+;
+MSG_POPUP_DOWNLOADIMAGE
+Download-iraj sliku
+; Download image
+;
+MSG_POPUP_FLUSHIMAGE
+Izbaci sliku
+; Flush image
+;
+MSG_POPUP_SHOWIMAGE
+Pokazi sliku
+; Show image
+;
+MSG_POPUP_OPENLINK
+Otvori link
+; Open link
+;
+MSG_POPUP_OPENLINKNW
+Otvori link u novom prozoru
+; Open link in new window
+;
+MSG_POPUP_LOADLINK
+Ucitaj link u pozadini
+; Load link in background
+;
+MSG_POPUP_SAVELINK
+Snimi link
+; Save link
+;
+MSG_POPUP_DOWNLOADLINK
+Download-iraj link
+; Download link
+;
+MSG_POPUP_ADDLINK
+Dodaj link na hotlistu
+; Add link to hotlist
+;
+MSG_POPUP_RELOADFRAME
+Ucitaj ponovo sadrzaj
+; Reload contents
+;
+MSG_POPUP_SAVEFRAME
+Snimi HTML
+; Save source
+;
+MSG_POPUP_VIEWFRAME
+Pokazi HTML
+; View source
+;
+MSG_POPUP_SHOWFRAME
+Pokazi posebno
+; Show separately
+;
+MSG_POPUP_SEARCHFRAME
+Trazi u sadrzaju
+; Search in contents
+;
+MSG_POPUP_INFOFRAME
+Info
+; Info
+;
+MSG_POPUP_IMAGE2CLIP
+
+; Image Url to Clipboard
+;
+; ***NEW***
+;
+;
+;-------------- Print --------------------------------
+;
+MSG_PRINTP_TITLE
+Parametri stampanja
+; Print parameters
+;
+MSG_PRINTP_SCALE
+_Skala (%)
+; _Scale (%)
+;
+MSG_PRINTP_PRINTBG
+S_tampati pozadinu
+; Print _backgrounds
+;
+MSG_PRINTP_FORMFEED
+_Formfeed
+; _Formfeed
+;
+MSG_PRINTP_CENTER
+Ce_ntrirano
+; Ce_nter
+;
+MSG_PRINTP_PRINT
+_Stampaj
+; _Print
+;
+MSG_PRINTP_CANCEL
+O_dustani
+; _Cancel
+;
+MSG_PRINT_NOPRINTER
+Ne mogu pristupiti stampacu
+; Unable to access the printer
+;
+MSG_PRINT_OK
+_OK
+; _Ok
+;
+MSG_PRINT_PROGRESS
+Stampam...
+; Printing in progress...
+;
+MSG_PRINTP_LAYOUTWIDTH
+S_irina stranice
+; _Layout Width
+;
+MSG_PRINTP_LW_WINDOW
+Prozor
+; Window
+;
+MSG_PRINTP_LW_DOCUMENT
+Dokument
+; Document
+;
+MSG_PRINTP_LW_SCREEN
+Ekran
+; Screen
+;
+;
+;-------------- Cookie warning ----------------------
+;
+MSG_COOKIE_TITLE
+Upozorenje: cookie
+; Cookie alert
+;
+MSG_COOKIE_WARNING
+Primam Netscape-ov cookie!
+; About to set a NetScape cookie!
+;
+MSG_COOKIE_NAME
+Ime:
+; Cookie name:
+;
+MSG_COOKIE_VALUE
+Vrijednost:
+; Cookie value:
+;
+MSG_COOKIE_DOMAIN
+Za domen:
+; For domain:
+;
+MSG_COOKIE_PATH
+Putanja:
+; Path:
+;
+MSG_COOKIE_COMMENT
+Komentar:
+; Comment:
+;
+MSG_COOKIE_MAXAGE
+Vrijednost:
+; Max-age:
+;
+MSG_COOKIE_EXPIRES
+Istice:
+; Expires:
+;
+MSG_COOKIE_ONCE
+_Jednom
+; _Once
+;
+MSG_COOKIE_ACCEPT
+_Prihvati
+; _Accept
+;
+MSG_COOKIE_NEVER
+_Nijedan
+; _Never
+;
+MSG_COOKIE_CANCEL
+O_dustani
+; _Cancel
+;
+MSG_COOKIE_SECURE
+AWeb ce uzvratiti ovaj cookie\nsamo preko sigurnih linija.
+; AWeb will send this cookie back\nover secure connections only.
+;
+MSG_COOKIE_UNSECURE
+AWeb ce uzvratiti ovaj cookie\npreko NESIGURNIH linija.
+; AWeb will send this cookie back\nover UNSECURE connections too.
+;
+;
+;-------------- Info requester ----------------------
+;
+MSG_INFO_TITLE
+Informacije
+; Information
+;
+MSG_INFO_FROMCACHE
+Ucitan iz kesa
+; Read from AWeb cache
+;
+MSG_INFO_XFER
+Zaglavlja prijenosa:
+; Transfer headers:
+;
+MSG_INFO_META
+Meta informacije:
+; Meta information:
+;
+MSG_INFO_LINK
+Aktivni linkovi:
+; Clickable links:
+;
+MSG_INFO_CIPHER
+HTTPS cipher metod: %s
+; HTTPS cipher method: %s
+;
+MSG_INFO_SSLLIBRARY
+Koristena SSL biblioteka: %s
+; SSL library used: %s
+;
+;-------------- Default buttons ---------------------
+;
+MSG_USERBUTTON_CACHE
+Kes
+; Cache
+;
+MSG_USERBUTTON_CLOCK
+Sat
+; Clock
+;
+MSG_USERBUTTON_SEARCH
+
+; Search
+;
+; ***NEW***
+;
+;-------------- Authorizations edit requester -------
+;
+MSG_AUTHEDIT_TITLE
+Izmijeni ovlastenja
+; Edit authorizations
+;
+MSG_AUTHEDIT_TITLE_SERVER
+Server
+; Server
+;
+MSG_AUTHEDIT_TITLE_USERID
+UserID
+; Userid
+;
+MSG_AUTHEDIT_TITLE_PASSWORD
+
+; Password
+;
+; ***NEW***
+;
+MSG_AUTHEDIT_DEL
+_Izb
+; _Del
+;
+MSG_AUTHEDIT_SERVER
+Server
+; Server
+;
+MSG_AUTHEDIT_USERID
+_UserID
+; _Userid
+;
+MSG_AUTHEDIT_PASSWORD
+_Sifra
+; _Password
+;
+MSG_AUTHEDIT_SHOWPASS
+
+; _Show Passwords
+;
+; ***NEW***
+;
+MSG_AUTHEDIT_SHOWPWREQ
+
+; To use this function you must first enter a\n\
+; master password then you can use the function\n\
+; to show all passwords.\n\
+; \n\
+; Warning:\n\
+; Please remember or notice your password\n\
+; because here is no chance to show or delete\n\
+; the password without the password!
+;
+; ***NEW***
+;
+MSG_AUTHEDIT_SHOWPWREQ_BUTTONS
+
+; _Ok|_Cancel
+;
+; ***NEW***
+;
+;-------------- JavaScript prompt requester ---------
+;
+MSG_JSPROMPT_OK
+_OK
+; _Ok
+;
+MSG_JSPROMPT_CANCEL
+O_dustani
+; _Cancel
+;
+;
+;-------------- Unsecure form warning ---------------
+;
+MSG_FORMWARN_TITLE
+Upozorenje
+; AWeb warning
+;
+MSG_FORMWARN_WARNING
+Podaci iz ovog form-a ce biti\nposlani preko NESIGURNE veze.
+; Data from this form will be sent\nover an UNSECURE connection.
+;
+MSG_FORMWARN_BUTTONS
+_OK|O_dustani
+; _Ok|_Cancel
+;
+;
+;-------------- Mailer messages ---------------------
+;
+MSG_MAIL_TITLE
+Greska u AWeb-ovom maileru
+; AWeb mailer error
+;
+MSG_MAIL_NOSMTPHOST
+Moras konfigurirati prvo tvoj SMPT host.\nPogleda Mreza/Posta opcije.
+; You have to configure your SMTP host first.\nSee Network/Mail settings.
+;
+MSG_MAIL_NOCONNECT
+Ne mogu se prikljuciti na %s.
+; Can't connect to %s.
+;
+MSG_MAIL_MAILFAILED
+Ne mogu poslati poruku.
+; Sending mail message failed.
+;
+MSG_MAIL_BUTTONS
+_Ponovi|_Snimi|O_dustani
+; _Retry|_Save|_Cancel
+;
+MSG_MAIL_SAVETITLE
+Snimi neposlanu poruku
+; Save failed message
+;
+MSG_MAIL_MAILTO_TITLE
+Slanje na %s
+; Mail to %s
+;
+MSG_MAIL_MAILTO_HEADER
+Posalji na: %s
+; Mail to: %s
+;
+MSG_MAIL_TO
+Za:
+; To:
+;
+MSG_MAIL_SUBJECT
+Naslov:
+; Subject:
+;
+MSG_MAIL_MESSAGE_BODY
+Tekst poruke:
+; Message body:
+;
+MSG_MAIL_EXTRA_HEADERS
+Dodatna zaglavlja
+; Extra mail headers included
+;
+MSG_MAIL_SEND
+Posalji poruku
+; Send mail
+;
+MSG_MAIL_RESET
+Izbrisi
+; Reset
+;
+MSG_MAIL_RETURN
+Povratak
+; Return
+;
+MSG_MAIL_MAIL_SENT_TITLE
+Poruka je poslana na: %s
+; Mail sent to: %s
+;
+MSG_MAIL_MAIL_SENT
+<H1>Poruka poslana</H1>\nTvoja poruka je uspjesno poslana na adresu <B>%s</B>.
+; <H1>Mail sent</H1>\nYour mail message to <B>%s</B> has been sent succesfully.
+;
+;
+;-------------- Newsreader messages -----------------
+;
+MSG_NEWS_TITLE
+Greska AWeb-ovog newsreader-a
+; AWeb newsreader error
+;
+MSG_NEWS_NONNTPHOST
+Moras konfigurirati prvo NNTP host.\nPogledaj Mreza/News opcije.
+; You have to configure your NNTP host first.\nSee Network/News settings.
+;
+MSG_NEWS_NOCONNECT
+Ne mogu se prikljuciti na %s.
+; Can't connect to %s.
+;
+MSG_NEWS_POSTFAILED
+Ne mogu poslati clanak.
+; Posting article failed.
+;
+MSG_NEWS_BUTTONS
+_Ponovi|_Snimi|O_dustani
+; _Retry|_Save|_Cancel
+;
+MSG_NEWS_SAVETITLE
+Snimi nepotpuni clanak
+; Save failed article
+;
+MSG_NEWS_NEWS_HEADER
+News
+; News
+;
+MSG_NEWS_SUBSCRIBED
+Pretplacene news grupe
+; Subscribed newsgroups
+;
+; Don't forget to include the '8' in the %8ld below:
+MSG_NEWS_NEW_ARTICLES
+%8ld novih clanaka
+; %8ld new articles
+;
+MSG_NEWS_CATCH_UP
+Slijedi
+; Catch up
+;
+MSG_NEWS_UNSUBSCRIBE
+Prekini pretplatu
+; Unsubscribe
+;
+MSG_NEWS_OTHER_GROUP
+Druga grupa
+; Other group
+;
+MSG_NEWS_SUBSCRIBE
+Pretplati se
+; Subscribe
+;
+MSG_NEWS_READ
+Citaj
+; Read
+;
+MSG_NEWS_SEARCH_FOR_GROUP
+Trazi grupu
+; Search for group
+;
+MSG_NEWS_SEARCH
+Trazi
+; Search
+;
+MSG_NEWS_LONG_DOWNLOAD
+Ovo je prvi put da trazis neku grupu.\nMoram primiti listu svih grupa.\nOvo moze potrajati.
+; The first time you search for a group,\n\
+; a list of all newsgroup names will be downloaded.\n\
+; This may take several minutes to complete.
+;
+MSG_NEWS_NO_SUBJECT
+(bez naslova)
+; (no subject)
+;
+MSG_NEWS_LINES
+(%s linija)
+; (%s lines)
+;
+MSG_NEWS_POST_NEW_ARTICLE
+Posalji novi clanak
+; Post new article
+;
+MSG_NEWS_GROUP_LIST
+Spisak grupa
+; Group list
+;
+MSG_NEWS_ERROR_NO_GROUP
+<h1>Greska</h1>\nGrupa %s ne postoji.
+; <h1>Error</h1>\nGroup %s does not exist.
+;
+MSG_NEWS_USE_FRAMES
+News je konfiguriran da koristi frame-ove.
+; News is configured to use frames
+;
+MSG_NEWS_ERROR_NO_ARTICLE
+Clanak ne postoji<BR>
+; Article %s does not exist<BR>
+;
+MSG_NEWS_FOLLOW_UP
+Slijedi
+; Follow-up
+;
+MSG_NEWS_REPLY
+Odgovori postom
+; Reply in e-mail
+;
+MSG_NEWS_SAVE
+Snimi clanak
+; Save article
+;
+MSG_NEWS_SUBJECT
+Naslov:
+; Subject:
+;
+MSG_NEWS_NEWSGROUPS
+News grupe:
+; Newsgroups:
+;
+MSG_NEWS_ARTICLE_BODY
+Tekst clanka:
+; Article body:
+;
+MSG_NEWS_EXTRA_HEADERS
+Dodatna zaglavlja
+; Extra news headers included
+;
+MSG_NEWS_POST_ARTICLE
+Posalji clanak
+; Post article
+;
+MSG_NEWS_RESET
+Izbrisi
+; Reset
+;
+MSG_NEWS_RETURN
+Povratak
+; Return
+;
+MSG_NEWS_FOLLOWUP_TITLE
+Slijedi clanak
+; Follow-up to article
+;
+MSG_NEWS_FOLLOWUP_TO_GROUPS
+Slijedi do:
+; Follow-up to:
+;
+MSG_NEWS_PLEASE_DELETE
+Izbrisi bezpotrebne stare linije
+; Please delete unnecessary quoted lines
+;
+MSG_NEWS_REPLY_TITLE
+Odgovori na clanak
+; Reply to article
+;
+MSG_NEWS_REPLY_TO_ADDRESS
+Odgovori na:
+; Reply to:
+;
+MSG_NEWS_ARTICLE_POSTED_TITLE
+Clanak je poslan
+; Article posted
+;
+MSG_NEWS_ARTICLE_POSTED
+<H1>Clanak je poslan</h1>\nTvoj clanak je uspjesno poslan.
+; <H1>Article posted</h1>\n\
+; Your article has been posted.
+;
+MSG_NEWS_DOWNLOAD_TITLE
+Download-iraj listu news grupa.
+; Download newsgroup list
+;
+MSG_NEWS_DOWNLOAD_BODY
+<H1>Primam...</H1>\nDownloading newsgroup list. This can take several minutes.
+; <H1>Downloading...</H1>\n\
+; Downloading newsgroup list. This can take several minutes.
+;
+MSG_NEWS_SEARCH_RESULT
+Rezultat pretrage
+; Search result
+;
+MSG_NEWS_FIRST_MATCHING
+Prvih %ld od %ld imena grupa odgovara stringu <B>%s</B>
+; First %ld of %ld newsgroup names matching <B>%s</B>
+;
+MSG_NEWS_FOUND_MATCHING
+Pronadjeno %ld imena grupa koje odgovaraju stringu <B>%s</B>
+; Found %ld newsgroup names matching <B>%s</B>
+;
+;
+;-------------- Shell/ARexx command warning ---------
+;
+MSG_CMDWARN_TITLE
+Upozorenje
+; AWeb warning
+;
+MSG_CMDWARN_SHELL
+Izvrsavanje shell komande:\n%s
+; About to execute shell command:\n%s
+;
+MSG_CMDWARN_AREXX
+Pokretanje ARexz programa:\n%s
+; About to start ARexx program:\n%s
+;
+MSG_CMDWARN_BUTTONS
+_Nastavi|O_dustani
+; _Ok|_Cancel
+;
+;
+;-------------- SSL related warnings ----------------
+;
+MSG_SSLWARN_SSL_TITLE
+Upozorenje
+; AWeb warning
+;
+MSG_SSLWARN_SSL_TEXT
+Ne mogu uspostaviti sigurnu vezu sa %s:\n%s\nKoristiti nesigurnu vezu?
+; Cannot make secure connection to %s:\n%s\n \nUse an unsecure connection instead?
+;
+MSG_SSLWARN_SSL_BUTTONS
+_Nesigurnu|O_dustani
+; _Unsecure|_Cancel
+;
+MSG_SSLWARN_SSL_NO_SSL
+Sigurne veze su podrzane samo sa Miami TCP programom e MiamiSSL.
+; Secure connections are only supported with the Miami TCP program and MiamiSSL.
+;
+MSG_SSLWARN_CERT_TITLE
+Upozorenje
+; AWeb warning
+;
+MSG_SSLWARN_CERT_TEXT
+Ne mogu provjeriti ovjeru za %s.\nDetalji: %s\n \nAko zelis nastaviti podaci ce biti kodirani, ali identitet servera se ne moze provjeriti (nema zastite protiv prevare).\n \nZelis li nastaviti?
+; Certificate for %s cannot be verified.\nDetails: %s\n \n\
+; If you continue the data will be encrypted (protection against eavesdropping), \
+; but the identity of the server cannot be verified (-NO- protection against fraud).\n \n\
+; Do you want to continue?
+;
+MSG_SSLWARN_CERT_BUTTONS
+_Nastavi|O_dustani
+; _Ok|_Cancel
+;
+MSG_SSLWARN_SSL_NO_SSL2
+Sigurne veze su podrzane samo kod upotrebe AmiSSL-a ili MiamiSSL-a.
+; Secure connections are only supported when using AmiSSL or MiamiSSL.
+;
+;
+;-------------- Unknown MIME type -------------------
+;
+MSG_UNKMIME_TITLE
+Neponzat sadrzaj
+; Unknown content type
+;
+MSG_UNKMIME_TEXT
+Nepoznati file ce biti snimljen\n \nURL:   %s\nTip sadrzaja:   %s\nEkstenzija:   %s\n \nAko zelis mozes prekinuti snimanje ovog filea, pa konfigurirati ispravno MIME tipove za prikazivanje ove vrste dokumenta.
+; Unrecognized file will be saved\n \n\
+; URL:   %s\nContent type:   %s\nExtension:   %s\n \n\
+; You might want to cancel the save now, and reload this file \
+; after configuring a viewer or action for this MIME type \
+; in the Browser settings (Viewers).
+;
+MSG_UNKMIME_BUTTONS
+_Snimi|O_dustani
+; _Save|_Cancel
+;
+MSG_REQUEST_COPYURL
+Kopiraj _URL u clipboard
+; Copy _URL to clipboard
+;
+;-------------- Open URL requester ------------------
+;
+;
+MSG_OPENURL_TITLE
+Zahtjev
+; AWeb request
+;
+MSG_OPENURL_TEXT
+Upisi URL koji zelis otvoriti:
+; Type in the URL to open:
+;
+MSG_OPENURL_BUTTONS
+_OK|O_dustani
+; _Ok|_Cancel
+;
+;
+;-------------- Save as IFF requester ---------------
+;
+;
+MSG_SAVEIFF_PROGRESS
+Snimam IFF file...
+; Saving IFF file...
+;
+;
+;-------------- awebcharset.awebplugin ---------------
+;
+;
+MSG_CHARSET_CODESETTITLE
+
+; Awebcharset.awebplugin
+;
+; ***NEW***
+;
+MSG_CHARSET_CODESETWRONG
+
+; The Version of %s on the System is %ld.%ld,\n\
+; but for this Plugin at least Version %ld.%ld is needed.\n
+;
+; ***NEW***
+;
+MSG_CHARSET_CODESETFAIL
+
+; Can't open required %s - Version: %ld.%ld.\n
+;
+; ***NEW***
+;
+MSG_CHARSET_CODESETURL
+
+; \n\
+; Please visit http://sourceforge.net/projects/codesetslib\n\
+; for downloading the latest Version and make sure the\n\
+; Library is properly installed.
+;
+; ***NEW***
+;
+MSG_CHARSET_INFOTITLE
+
+; Awebcharset.awebplugin Info Window
+;
+; ***NEW***
+;
+MSG_CHARSET_INFOTEXT
+
+; Filter is : %s\n\
+; Replace is: %s\n\
+; Request is: %s\n\
+; \n\
+; URL='%s'\n\
+; \n\
+; Document Charsets:\n\
+; Header Charset     = '%s'\n\
+; Meta Charset       = '%s'\n\
+; \n\
+; Used Charsets:\n\
+; Source Charset     = '%s'\n\
+; Destination Charset= '%s'
+;
+; ***NEW***
+;
+MSG_CHARSET_DIFFREQTXT
+
+; The Server send 2 different Charsets for this Document:\n\
+; \n\
+; Header Charset  = '%s'\n\
+; Document Charset= '%s'\n\
+; \n\
+; Which Charset should be used?
+;
+; ***NEW***
+;
+MSG_CHARSET_DIFFREQBUT
+
+; Don't ask again
+;
+; ***NEW***
+;
+MSG_CHARSET_ON
+
+; On
+;
+; ***NEW***
+;
+MSG_CHARSET_OFF
+
+; Off
+;
+; ***NEW***
+;
+MSG_CHARSET_OK
+
+; _Ok
+;
+; ***NEW***
+;
+;
+;-------------- Menus -------------------------------
+;
+; If the second character in a menu item string is a slash (/),
+; then the first character is used as menu shortcut.
+;
+MSG_PROJECT_MENU
+Projekt
+; Project
+;
+MSG_PROJECT_NEWWINDOW
+N/Novi prozor
+; N/New window
+;
+MSG_PROJECT_CLOSEWINDOW
+K/Zatvori prozor
+; K/Close window
+;
+MSG_PROJECT_OPENURL
+U/Otvori URL
+; U/Open URL
+;
+MSG_PROJECT_OPENWWW
+W/Otvori WWW
+; W/Open WWW
+;
+MSG_PROJECT_OPENLOCAL
+L/Otvori lokalni...
+; L/Open local...
+;
+MSG_PROJECT_OPENSEARCH
+E/Motori pretrage
+; E/Search engines
+;
+MSG_PROJECT_SOURCE
+Pokazi HTML...
+; View source...
+;
+MSG_PROJECT_SAVEHTML
+S/Snimi HTML...
+; S/Save source...
+;
+MSG_PROJECT_ABOUT
+Informacije...
+; About...
+;
+MSG_PROJECT_QUIT
+Q/Izlaz...
+; Q/Quit...
+;
+MSG_PROJECT_SEARCH
+G/Pretraga...
+; G/Search...
+;
+MSG_PROJECT_PRINT
+P/Stampaj...
+; P/Print...
+;
+MSG_PROJECT_EDIT
+Izmijeni HTML...
+; Edit source...
+;
+MSG_PROJECT_INFO
+Info...
+; Info...
+;
+MSG_PROJECT_OPENNEWS
+Procitaj news
+; Open News
+;
+; (Shortcut key is backslash)
+MSG_PROJECT_ICONIFY
+\\/Ikonifikuj
+; \\/Iconify
+;
+MSG_PROJECT_SAVEIFF
+Snimi kao IFF...
+; Save as IFF...
+;
+MSG_CONTROL_MENU
+Kontrola
+; Control
+;
+MSG_CONTROL_LOADNOW
+Ucitaj slike odmah
+; Load images now
+;
+MSG_CONTROL_LOADNOWALL
+I/Sve slike
+; I/All images
+;
+MSG_CONTROL_LOADNOWMAPS
+M/Samo mape
+; M/Maps only
+;
+MSG_CONTROL_NETWORKSTATUS
+?/Status mreze...
+; ?/Network status...
+;
+MSG_DUMMY_2
+
+; 
+MSG_CONTROL_CANCEL
+Z/Prekini ucitavanje
+; Z/Cancel load
+;
+MSG_CONTROL_NEXTWINDOW
+./Slijedeci prozor
+; ./Next window
+;
+MSG_CONTROL_PREVWINDOW
+,/Prethodni prozor
+; ,/Previous window
+;
+MSG_CONTROL_NOPROXY
+Y/Iskljuci proxy
+; Y/Disable proxy
+;
+MSG_CONTROL_RLOAD
+Ucitaj ponovo
+; Reload
+;
+MSG_CONTROL_RLOADDOC
+R/Trenutni dokument
+; R/Current document
+;
+MSG_CONTROL_RLOADIMGS
+Trenutne slike
+; Images in current
+;
+MSG_CONTROL_PLAYBGSOUND
+J/Sviraj zvukove u pozadini
+; J/Play background sound
+;
+MSG_CONTROL_COPYURL
+Kopiraj URL
+; Copy URL
+;
+MSG_CONTROL_PASTEURL
+Zalijepi URL
+; Paste URL
+;
+MSG_CONTROL_COPYBLOCK
+C/Kopiraj blok
+; C/Copy block
+;
+MSG_CONTROL_DRAGGING
+Prebacivanje
+; Dragging
+;
+MSG_CONTROL_BREAKJS
+X/Prekini javascript
+; X/Break JavaScript
+;
+MSG_CONTROL_DEBUGJS
+Debug javascript-a
+; Debug JavaScript
+;
+MSG_CONTROL_RESET
+Resetiraj frame-ove
+; Reset frames
+;
+MSG_CACHE_MENU
+Kes
+; Cache
+;
+MSG_DUMMY_3
+
+; 
+MSG_DUMMY_4
+
+; 
+MSG_DUMMY_5
+
+; 
+MSG_DUMMY_6
+
+; 
+MSG_CACHE_SAVEAUTH
+Snimi ovlastenja
+; Save authorizations
+;
+;**obsolete**
+MSG_CACHE_FLUSHAUTH
+Izbrisi ovlastenja
+; Flush authorizations
+;
+MSG_CACHE_BROWSER
+Browser kesa...
+; Cache browser...
+;
+MSG_CACHE_FLUSH
+Izbrisi kes iz memorije
+; Flush from memory
+;
+MSG_CACHE_FLSHIMGSND
+Neprikazane slike
+; Nondisplayed images
+;
+MSG_CACHE_FLSHIMGS
+Sve slike
+; All images
+;
+MSG_CACHE_FLSHDOCSND
+Neprikazane dokumente
+; Nondisplayed documents
+;
+MSG_CACHE_DELETE
+Izbrisi sa diska
+; Delete from disk
+;
+MSG_CACHE_DELIMGS
+Sve slike
+; All images
+;
+MSG_CACHE_DELDOCS
+Sve dokumente
+; All documents
+;
+MSG_CACHE_CLEAR
+Izbrisi kes
+; Erase cache
+;
+MSG_CACHE_FIX
+Pocisti kes...
+; Fix cache...
+;
+MSG_CACHE_EDITAUTH
+Izmijeni ovlastenja...
+; Edit authorizations...
+;
+MSG_NAVIGATE_MENU
+Navigacija
+; Navigate
+;
+MSG_NAVIGATE_BACK
+B/Nazad
+; B/Back
+;
+MSG_NAVIGATE_FWD
+F/Naprijed
+; F/Forward
+;
+MSG_NAVIGATE_HOME
+D/Pocetni dokument
+; D/Home document
+;
+MSG_NAVIGATE_HISTORY
+-/Historija...
+; -/Window history...
+;
+MSG_HOTLIST_MENU
+Hotlista
+; Hotlist
+;
+MSG_HOTLIST_ADDHOT
+A/Dodaj hotlisti
+; A/Add to hotlist
+;
+MSG_HOTLIST_SHOWHOT
+H/Pokazi hotlistu
+; H/Show hotlist
+;
+;**obsolete**
+MSG_HOTLIST_MAINT
+T/Odrzavanje...
+; T/Maintenance...
+;
+MSG_HOTLIST_SAVE
+Snimi hotlistu
+; Save hotlist
+;
+MSG_HOTLIST_RESTORE
+Vrati zadnju snimljenu
+; Restore last saved
+;
+MSG_HOTLIST_AMHOTRX
+AMosaic (ARexx)
+; AMosaic (ARexx)
+;
+MSG_HOTLIST_AMHOT20
+AMosaic (2.0)
+; AMosaic (2.0)
+;
+MSG_HOTLIST_IBHOT
+Drugi...
+; Other...
+;
+MSG_HOTLIST_VIEW
+V/Pokazi hotlistu...
+; V/View hotlist...
+;
+MSG_HOTLIST_MGR
+T/Menadzer hotliste...
+; T/Hotlist manager...
+;
+MSG_SETTINGS_MENU
+Opcije
+; Settings
+;
+MSG_SETTINGS_LOADIMG
+Ucitavanje slika
+; Image loading
+;
+MSG_SETTINGS_LOADIMGALL
+Sve slike
+; All images
+;
+MSG_SETTINGS_LOADIMGMAPS
+Samo mape
+; Maps only
+;
+MSG_SETTINGS_LOADIMGOFF
+Iskljuceno
+; Off
+;
+MSG_DUMMY_7
+
+; 
+MSG_DUMMY_8
+
+; 
+MSG_SETTINGS_BROWSER
+Opcije browsera...
+; Browser settings...
+;
+MSG_SETTINGS_PROGRAM
+Opcije programa...
+; Program settings...
+;
+MSG_SETTINGS_NETWORK
+Opcije mreze...
+; Network settings...
+;
+MSG_SETTINGS_CLASSACT
+Opcije ClassAct...
+; ClassAct settings...
+;
+MSG_SETTINGS_SAVEALL
+Snimi trenutne opcije
+; Save current settings
+;
+MSG_SETTINGS_SNAPSHOT
+Zapamti poziciju prozora
+; Snapshot windows
+;
+;**obsolete
+MSG_SETTINGS_SNAPSHOTALT
+Zapamti poziciju kao alternativnu
+; Snapshot as alternate size
+;
+MSG_SETTINGS_BGIMAGES
+Slike u pozadini
+; Background images
+;
+MSG_SETTINGS_BGSOUND
+Zvuk u pozadini
+; Background sound
+;
+MSG_SETTINGS_SAVEAS
+Snimi opcije kao...
+; Save settings as...
+;
+MSG_SETTINGS_LOAD
+Ucitaj opcije...
+; Load settings...
+;
+MSG_SETTINGS_GUI
+Opcije GUI-ja...
+; GUI settings...
+;
+MSG_HELP_MENU
+Pomoc
+; Help
+;
+MSG_HELP_HELP
+Dokumentacija
+; Documentation
+;
+MSG_HELP_AWEBHOME
+Home page AWeb-a
+; AWeb home page
+;
+MSG_HELP_AWEBFAQ
+FAQ AWeb-a
+; AWeb FAQ
+;
+MSG_HELP_REGISTER
+Registracija
+; Registration
+;
+MSG_AREXX_MENU
+ARexx
+; ARexx
+;
+MSG_AREXX_AREXX
+!/Pokreni ARexx makro...
+; !/Start ARexx macro...
+;
+;--------------- Navigation Button Texts -------
+;
+MSG_NAVGAD_FORWARD
+
+; Fwd
+;
+; ***NEW***
+;
+MSG_NAVGAD_BACK
+
+; Back
+;
+; ***NEW***
+;
+MSG_NAVGAD_HOME
+
+; Home
+;
+; ***NEW***
+;
+MSG_NAVGAD_CANCEL
+
+; Stop
+;
+; ***NEW***
+;
+MSG_NAVGAD_IMAGES
+
+; Images
+;
+; ***NEW***
+;
+MSG_NAVGAD_STATUS
+
+; Status
+;
+; ***NEW***
+;
+MSG_NAVGAD_SEARCH
+
+; Find
+;
+; ***NEW***
+;
+MSG_NAVGAD_RELOAD
+
+; Reload
+;
+; ***NEW***
+;
+MSG_NAVGAD_ADDHOTLIST
+
+; Add
+;
+; ***NEW***
+;
+MSG_NAVGAD_HOTLIST
+
+; Hotlist
+;
+; ***NEW***
+;
+;
+;-------------- Error messages ----------------------
+;
+MSG_ERROR_CANTOPEN
+Ne mogu otvoriti %s
+; Can't open %s
+;
+; NOTE - No locale formatters (like %1$s) possible in this string!
+;        Only plain C formatters allowed.
+MSG_ERROR_CANTOPENV
+Ne mogu otvoriti %s verziju %ld
+; Can't open %s version %ld
+;
+MSG_ERROR_NEEDOS30
+AWeb zahtijeva OS 3.0 ili visi
+; AWeb needs OS 3.0 or better
+;
+MSG_ERROR_CANTQUIT
+Ne mogu izaci!\n%s\nje jos uvijek u upotrebi
+; Cannot quit!\n%s\nis still in use
+;
+;-------------- partial error messages --------------
+;
+MSG_EPART_ERROR
+Greska
+; Error
+;
+MSG_EPART_RETURL
+tokom pristupa URL-u
+; While retrieving URL
+;
+MSG_EPART_ADDRSCHEME
+&quot;%s&quot; vrsta adresiranja nije ugradjena u ovoj verziji AWeb-a
+; The &quot;%s&quot; addressing scheme is not implemented in this version of AWeb
+;
+MSG_EPART_NOLIB
+Moras prvo pokrenuti TCP stack
+; A TCP stack must be started first
+;
+MSG_EPART_NOHOST
+Ne mogu pronaci ime host-a &quot;%s&quot;
+; Cannot resolve host name &quot;%s&quot;
+;
+MSG_EPART_NOCONNECT
+Ne mogu se prikljuciti na &quot;%s&quot;
+; Cannot connect to &quot;%s&quot;
+;
+MSG_EPART_NOFILE
+Ne mogu otvoriti file &quot;%s&quot;
+; Cannot open file &quot;%s&quot;
+;
+MSG_EPART_XAWEB
+Neodgovarajuce unutrasnje (x-aweb:) ime &quot;%s&quot;
+; Invalid internal (x-aweb:) name &quot;%s&quot;
+;
+MSG_EPART_FLUSHED_HEAD
+Izbrisan
+; Flushed
+;
+MSG_EPART_FLUSHED_MSG
+Ovaj dokument vise nije u memoriji
+; This document is no longer available in memory
+;
+MSG_EPART_FLUSHED_NORELOAD
+Ova dokument ne moze biti ponovo ucitan. Moraces poslati ponovo form koji je stvorio ovu stranicu. Pazi na nezeljene efekte koji se mogu desiti ako posaljes dvaput taj form, na primjer dupla registracija na neku uslugu.
+; This document cannot be retrieved again. You will have to submit the form again that \
+; produced this page. Beware of undesired side-effects if you submit that form twice, \
+; like a duplicate registration.
+;
+MSG_EPART_NOLOGIN
+Ne mogu uci u &quot;%s&quot; kao &quot;%s&quot;
+; Cannot login at &quot;%s&quot; as &quot;%s&quot;
+;
+MSG_EPART_NOAWEBLIB
+Ne mogu ucitati AwebLib modul za &quot;%s&quot;
+; Unable to load the AWebLib module for &quot;%s&quot;.
+;
+MSG_EPART_NOPROGRAM
+Nisi konfigurirao program za &quot;%s&quot; vrstu adresiranja.
+; You haven't configured a program for the &quot;%s&quot; addressing scheme.
+;
+;
+;-------------- Miscellaneous -----------------------
+;
+; (external program window title)
+MSG_AWEB_EXTWINTITLE
+Vanjski program
+; AWeb External Program
+;
+; (status field text)
+MSG_AWEB_BYTESREAD
+Bajta procitano
+; Bytes read
+;
+; (form SUBMIT button default text)
+MSG_AWEB_FORMSUBMIT
+Posalji
+; Submit
+;
+; (form RESET button default text)
+MSG_AWEB_FORMRESET
+Resetiraj
+; Reset
+;
+; (ISINDEX default prompt)
+MSG_AWEB_INDEXPROMPT
+Ovo je sadrzaj za pretragu. Unesi kljucnu rijec:
+; This is a searchable index. Enter keywords:
+;
+; (window title)
+MSG_AWEB_NODOCTITLE
+(Dokument nije ucitan)
+; (No document loaded)
+;
+; (screen title)
+MSG_AWEB_SCREENTITLE
+Javni ekran AWeb-a - Ime AWeb
+; AWeb public screen - Name AWeb
+;
+; (hotlist document title)
+MSG_AWEB_HOTLISTTITLE
+Hotlista
+; Hotlist
+;
+; (gopher index title)
+MSG_AWEB_GOPHERINDEX
+Sadrzaj gopher-a
+; Gopher index
+;
+; (gopher menu title)
+MSG_AWEB_GOPHERMENU
+Meni gopher-a
+; Gopher menu
+;
+; (window history title)
+MSG_AWEB_WINDOWHIS
+Historija
+; Window history
+;
+; (partial title of other hotlist)
+MSG_AWEB_OTHER
+Ostalo
+; Other
+;
+; (transfer status messages)
+MSG_AWEB_LOOKUP
+Trazim %s
+; Looking up %s
+;
+MSG_AWEB_CONNECT
+Prikljucujem %s na %s
+; Making %s connection to %s
+;
+MSG_AWEB_WAITING
+Poslan zahtjev %s; cekam odgovor
+; %s request sent; waiting for response
+;
+MSG_AWEB_TCPSTART
+Uspostavljam TCP vezu
+; Establishing TCP connection
+;
+; (form image fieldstatus text)
+MSG_AWEB_FORMLOCATION
+Posalji form sa x=%ld, y=%ld
+; Submit form at x=%ld, y=%ld
+;
+; (form BUTTON button default text)
+MSG_AWEB_FORMBUTTON
+Pokreni
+; Start
+;
+; (frame resizing status prompt)
+MSG_AWEB_FRAME_RESIZE
+Promijeni dimenziju frame-a
+; Resize frame
+;
+; (transfer status message)
+MSG_AWEB_LOGIN
+Ulazim u %s
+; Logging in at %s
+;
+; (transfer status message)
+MSG_AWEB_NEWSGROUP
+Citam %s
+; Scanning %s
+;
+; (transfer status message)
+MSG_AWEB_NEWSSCAN
+Citam %s (%ld clanaka)
+; Scanning %s (%ld articles)
+;
+; (transfer status message)
+MSG_AWEB_NEWSSORT
+Redam %s
+; Sorting %s
+;
+; (transfer status message)
+MSG_AWEB_NEWSPOST
+Saljem clanak
+; Posting article
+;
+; (transfer status message)
+MSG_AWEB_MAILSEND
+Saljem poruku
+; Sending mail message
+;
+; (transfer status message)
+MSG_AWEB_UPLOAD
+Saljem file
+; Uploading file
+;
+; ** (don't use numbers 40001 or higher) **

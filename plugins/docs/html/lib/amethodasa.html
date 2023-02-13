@@ -1,0 +1,46 @@
+<html>
+<head>
+<title>AmethodasA()</title>
+</head>
+<body>
+<h1>AmethodasA()</h1>
+
+<h2>Purpose</h2>
+Perform a method on a coerced object.
+
+<h2>Synopsis</h2>
+<pre>
+   result = AmethodasA(classid, object, message)
+   D0                  D0       A0      A1
+
+   ULONG AmethodasA(ULONG, <a href="../classes/object.html">struct Aobject</a> *, <a href="../methods/index.html#amessage">struct Amessage</a> *)
+
+   result = Amethod(classid, object, tag1, ...)
+
+   ULONG Amethod(ULONG, <a href="../classes/object.html">struct Aobject</a> *, ULONG, ...)
+</pre>
+
+<h2>Function</h2>
+Object oriented support function that invokes the supplied message on the
+specified object, as though it were the specified class.
+<p>
+The <b><code>Amethodas()</code></b> variant allows you to build the message on the stack.
+
+<h2>Inputs</h2>
+<table border>
+<tr><th align=left valign=top>Parameter
+   <th align=left valign=top>Description
+<tr><td valign=top><code>classid</code>
+   <td valign=top>ID of object class to receive the message
+<tr><td valign=top><code>object</code>
+   <td valign=top>Pointer to an AWeb OO object
+<tr><td valign=top><code>message</code>
+   <td valign=top>Pointer to <a href="../methods/index.html">method</a>-specific
+      message to send
+</table>
+
+<h2>Result</h2>
+Specific to the message and the class.
+
+<h2>See also</h2>
+<a href="amethoda.html">AmethodA()</a>

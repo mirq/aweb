@@ -1,0 +1,123 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+
+<HTML>
+
+<HEAD>
+<TITLE>
+Browser settings: Options
+</TITLE>
+</HEAD>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<H1>&nbsp; Browser Settings: Options</H1>
+
+<IMG SRC="Images/BrowserSettings-Options.png" ALIGN="RIGHT" ALT="Browser Settings: Options Tab" WIDTH="362" HEIGHT="355" HSPACE="20" VSPACE="20" BORDER="0">
+
+<H2><A NAME="htmlmode">HTML mode</A></H2>
+Use this chooser to select the <A HREF="../Advanced/htmlmode.html">HTML mode</A>.  It is recommended that you leave this set to <EM>Tolerant</EM> unless you encounter problems with a page.
+
+<H2><A NAME="javascript">Use JavaScript</A></H2>
+This chooser determines if and how AWeb will interpret <A HREF="../Working/javascript.html">JavaScript</A> in documents.  It offers you the following choices:
+
+<P><TABLE BORDER="0">
+<TR><TH ALIGN="LEFT" VALIGN="TOP">Off</TH><TD>No JavaScript is interpreted.</TD></TR>
+<TR><TH ALIGN="LEFT" VALIGN="TOP">Fastidious</TH><TD>Picky mode - all JavaScript is executed, but execution stops on the first error detected.
+<TR><TH ALIGN="LEFT" VALIGN="TOP">Omnivorous</TH><TD>Execution of all JavaScript programs is attempted, even of those with versions that are not yet implemented in AWeb. In this mode, no run-time error requesters are shown, and execution will continue even after errors are encountered.<BR><B>WARNING:</B> Because execution continues even after possibly vital JavaScript commands were in error, execution might go on endlessly. Use the &quot;Break JavaScript&quot; menu item or its shortcut (Amiga-X by default) to stop execution in this case.</TD></TR>
+</TABLE>
+
+<H2><A NAME="defcharset">Default character set</A></H2>
+
+A character set defines which numerical value in received text represents which character.  It is essentially a lookup table.
+<P>Some languages have more than a single character set in use, for example Russian documents may use either the "koi8-r" or "iso-8859-2" character set.  However, most Amiga fonts support only one character set at a time.
+<P>AWeb now supports simple character set translation which enables documents in one character set to be displayed in another.  You should set the Default character set to the character set of the fonts you are using in AWeb.  This would typically be the same as that set in Workbench Locale preferences, or the nearest equivalent.
+
+<H2><A NAME="jserrors">Show JavaScript errors</A></H2>
+
+This checkbox controls if error requesters are shown when a JavaScript program stops in error, or not.
+
+<H2><A NAME="watchjs">Warn for suspect JavaScript</A></H2>
+
+If this option is selected, AWeb warns you for two types of suspect scripts.
+<P>A warning is given when a script runs for one minute, indicating a possible endless loop.  You now have the option to stop the script, but beware that some valid scripts just take up that much time.  If you select to continue, you will be warned again after one minute.
+<P>A warning is also issued when during script execution the amount of free memory drops below one quarter of the free memory amount at the time the script was started.  This might indicate that the script is allocating "many" objects and is about to eat up all available memory.  Again, you have now the option to stop the script.  Note that the cleaning up process might take a considerable amount of time, during which AWeb seems to hang, but is in fact returning the allocated memory to the system.  If you decide to continue after this warning, you'll be warned again if the amount of free memory drops below one quarter of the free memory at the time of the latest warning.
+
+<H2><A NAME="nobanners">Suppress banner windows</A></H2>
+
+Many pages on the net automatically open a banner or advertisement window as soon as they are loaded.  Select this checkbox to get rid of those windows.
+<P>See <A HREF="../Working/javascript.html#nobanners">here</A> for an explanation what this option exactly does.
+
+<H2><A NAME="tooltips">Display tooltips for images</A></H2>
+
+If this checkbox is selected, a small tooltip window will pop up when you keep the mouse still over an image that has an alternate text associated with it.
+
+<H2><A NAME="handpointer">Hand pointer over links</A></H2>
+
+If this checkbox is selected, a different pointer image is used when the mouse pointer is over a hyperlink.  By default a hand image is used, but you can <A HREF="pointers.html">change</A> this.
+
+<H2><A NAME="underline">Underlined links</A></H2>
+
+The checkbox determines whether links should be displayed underlined or not.  If Underlined is selected, <EM>new links</EM> are underlined with a solid line, and <EM>visited links</EM> will have a dashed line.
+<P>If this checkbox is selected, images that are links have a border in the appropriate colour.
+
+<H2><A NAME="ImageBorder">Border around images</A></H2>
+
+This checkbox determines whether a border is rendered around an image in the event the HTML of the viewed page does not specify a BORDER attribute for a given IMG element.
+
+<H2><A NAME="blink">Blink rate</A></H2>
+
+This field determines the rate at which blinking text blinks.  The number is the number of tenths of a second that each blinking phase (on or off) lasts.  When you set this number to zero, blinking is disabled.
+
+<H2><A NAME="frames">Use frames</A></H2>
+
+This checkbox determines if AWeb will use and display frames.
+
+<H2><A NAME="nominal">Nominal frame height</A></H2>
+
+On small windows (like those on 200 or 256 high screens), a framed page often appears squeezed.  If you check this checkbox, a larger height is used to layout the framed page against if the window has a small height.  This will make the individual frames larger and easier to use.
+
+<H2><A NAME="inctable">Incremental table display</A></H2>
+
+When reading a page that contain a large table, most browsers don't display anything until the entire table is read in, which can take some time if you have a slow connection.  AWeb supports <EM>incremental table display</EM>, which means the table is displayed while it is read in.  The advantage is clear: you see more of the page in an earlier stage of loading.
+<P>There are however two drawbacks.  First, a later section of the table may enforce different column widths, resulting in a redisplay of the entire table.  In the worst case, this means that the table is redisplayed with every block of data read, causing an ugly flicker.  Second, incremental table display may be about 10% slower than normal display, but probably this is more than compensated for by the earlier display.
+<P>With this checkbox you can switch between incremental and non-incremental table display.
+
+<H2><A NAME="background">Use background and colours</A></H2>
+
+Many pages contain background images or background colours.  AWeb will display these only if this checkbox is checked.  If it is unchecked, AWeb will use only the colours defined in the <A HREF="brcolours.html">Browser colours</A> settings page.
+
+<H2><A NAME="bgsound">Use background sound</A></H2>
+
+Some pages have a background sound attached.  If this checkbox is selected, the sound plays every time you display the page.  If it is unselected, the sound will not be played automatically.  You can hear the sound only after selecting the <CODE>&quot;Control-&gt;Play background sound&quot;</CODE> menu item.
+
+<H2><A NAME="blink">Use double buffered rendering</A></H2>
+
+Double buffering is a rendering technique whereby web content is first rendered to a buffer in memory while is is being downloaded and the result being displayed when a section is complete.  With this option disabled, AWeb simply renders content directly to the display as it comes in.  However this may have undesirable side effects.  For example, many modern websites typically use nested tables, which causes continuous "flickering" when the tables are relaid anew out as content arrives, which some may find visually undesirable.
+<P>There is a small performance penalty with double buffering, mostly noticable on 68K Amigas using a graphics card in a Zorro slot.  You should leave this feature on unless you are using this type of Amiga and find the speed penalty too much.
+
+<P><HR>
+
+<A HREF="brviewers.html"><IMG SRC="../GlobalImages/back.gif" WIDTH="32" HEIGHT="16" ALT="&lt;-" BORDER="0">Viewers</A>&nbsp;&nbsp;<A HREF="settings.html"><IMG SRC="../GlobalImages/up.gif" WIDTH="32" HEIGHT="20" ALT="^" BORDER="0">Settings requesters</A>&nbsp;&nbsp;<A HREF="brfonts.html"><IMG SRC="../GlobalImages/next.gif" WIDTH="32" HEIGHT="16" ALT="-&gt;" BORDER="0">Fonts</A>
+
+</BODY>
+
+</HTML>

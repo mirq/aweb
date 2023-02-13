@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>AsetattrsasyncA()</title>
+</head>
+<body>
+<h1>AsetattrsasyncA()</h1>
+
+<h2>Purpose</h2>
+Set attributes of a <a href="../classes/task.html">subtask</a> in an
+asynchroneous fashion.
+
+<h2>Synopsis</h2>
+<pre>
+   AsetattrsasyncA(task, taglist)
+                   A0    A1
+
+   void AsetattrsasyncA(<a href="../classes/object.html">struct Aobject</a> *, struct TagItem *)
+
+   Asetattrsasync(task, ULONG, ...)
+
+   void Asetattrsasync(<a href="../classes/object.html">struct Aobject</a> *, ULONG, ...)
+</pre>
+
+<h2>Function</h2>
+<a href="../classes/task.html">AOTP_TASK</a> support function. It builds an
+<a href="../methods/set.html">AOM_SET</a> message using the supplied taglist, and
+sends it asynchroneously to the subtask.
+<p>
+You may include the <b>AOTSK_Replied</b> attribute in the taglist to have a
+function called when the message is replied by the subtask.
+<p>
+The <b><code>Asetattrsasync()</code></b> variant allows you to build the taglist on the stack.
+
+<h2>Inputs</h2>
+<table border>
+<tr><th align=left valign=top>Parameter
+   <th align=left valign=top>Description
+<tr><td valign=top><code>task</code>
+   <td valign=top>Pointer to the <a href="../classes/task.html">AOTP_TASK</a> object
+      that owns the subtask.
+<tr><td valign=top><code>taglist</code>
+   <td valign=top>Array of TagItem structures with attribute/value pairs.
+</table>
+

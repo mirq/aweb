@@ -1,0 +1,135 @@
+<html>
+<head>
+<title>Method: AOM_HITTEST</title>
+</head>
+<body>
+<h1>Method: AOM_HITTEST</h1>
+
+<h2>Purpose</h2>
+
+The <b>AOM_HITTEST</b> method is used to check if a copydriver object
+would accept a mouse click on the current position. This message is only
+sent if the current mouse position falls within the object's boundaries
+defined by AOBJ_Left, AOBJ_Top, AOBJ_Width and AOBJ_Height.
+
+<h2>Message structure</h2>
+
+The <b>AOM_HITTEST</b> method uses an <b>Amhittest</b> structure:<p>
+
+<pre>
+struct Amhittest
+{  <a href=index.html#Amessage>struct Amessage</a> amsg;
+   <a href="../structs/coords.html">struct Coords</a> *coords;  /* Coordinate offsets */
+   long xco,yco;           /* Rastport coordinates to check. Offset these with
+                            * the (coords) values */
+   USHORT flags;
+   <a href="../classes/object.html">struct Aobject</a> *oldobject;
+                           /* Previously hit object, checked again after mouse move. */
+   struct Amhresult *amhr;
+};
+</pre>
+Additional return values should be returned in an <b>Amhresult</b> structure:<p>
+<pre>
+struct Amhresult
+{  <a href="../classes/object.html">struct Aobject</a> *object; /* The object hit, should be ready to receive AOM_GOACTIVE. */
+   UBYTE *text;            /* Status gadget text. Dynamic string. */
+};
+</pre>
+
+<h2>Usage</h2>
+
+<h3>Field: <code>coords</code></h3>
+Pointer to a <a href="../structs/coords.html"><code>struct Coords</code></a>
+containing coordinate offsets.
+Note that this <code>struct Coords</code> is <b>not</b> valid for use in rendering code.
+
+<h3>Field: <code>xco, yco</code></h3>
+The RastPort relative coordinates of the mouse pointer. The copydriver should
+subtract the coords's dx (dy) and the object's AOBJ_Left (AOBJ_Top) to gain
+the object relative coordinates.
+
+<h3>Field: <code>flags</code></h3>
+Special indicators that may affect the processing of this message.
+<table border>
+<tr><th align=left valign=top>Flag
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>AMHF_DOWNLOAD
+   <td valign=top>The download qualifier (a SHIFT key) is activated
+<tr><th align=left valign=top>AMHF_POPUP
+   <td valign=top>The popup menu qualifier is activated
+</table>
+
+<h3>Field: <code>oldobject</code></h3>
+The previously hit object, to check if it is unchanged.
+
+<h3>Field: <code>amhr</code></h3>
+A pointer to a structure accomodating special return values. Note that this
+pointer may be NULL.
+
+<h4>Field: <code>amhr->object</code></h4>
+Set this to a pointer to yourself if you accept the mouse coordinates.
+
+<h4>Field: <code>amhr->text</code></h4>
+If this is set to a dynamically allocated string, its contents will be shown in the
+window's status gadget. The string <b>must</b> be allocated by one of
+the <a href="../lib/index.html">awebsupport.library</a>'s
+memory functions (<a href="../lib/allocmem.html">Allocmem()</a> or
+<a href="../lib/dupstr.html">Dupstr()</a>).
+
+<h3>Return value</h3>
+The method must return one of the following values:
+<table border>
+<tr><th align=left valign=top>Value
+   <th align=left valign=top>Description
+<tr><th align=left valign=top>AMHR_NOHIT
+   <td valign=top>The coordinates don't fall inside an activatable area
+      of the object.
+<tr><th align=left valign=top>AMHR_NEWHIT
+   <td valign=top>The coordinates fall inside an activatable area of
+      the object.<p>
+      The object should set <code>amhr->object</code>, and optionally supply a
+      prompt string in <code>amhr->text</code>.
+<tr><th align=left valign=top>AMHR_OLDHIT
+   <td valign=top>The coordinates fall inside an activatable area of
+      the same object as the previous AOM_HITTEST returned (as indicated by
+      the <code>oldobject</code> field).<p>
+      You may supply a new prompt string in <code>amhr->text</code> to replace
+      the previous one. If you leave this field NULL, the prompt is unchanged.
+</table>
+
+<h2>Implementation</h2>
+
+Copydriver objects should implement this method if the visible object has
+user-selectable areas under the driver's control. Note that normal HTML
+image maps are handled by the AWeb core, and must not be implemented by
+the copydriver. If the copydriver understands this method, it should
+return TRUE to an AOM_GET of the AOCDV_Shapes attribute.
+<p>
+Outline of implementation:
+<pre>
+   long retval;
+   long x,y;
+   x=amhittest->xco - amhittest->coords->dx - object->aox;
+   y=amhittest->yco - amhittest->coords->dy - object->aoy;
+   /* Now x and y are coordinates within the object */
+   if(coordinates_fall_within_area(x,y))
+   {  if(amhittest->oldobject==object)
+      {  retval=AMHR_OLDHIT;
+      }
+      else
+      {  retval=AMHR_NEWHIT;
+         if(amhittest->amhr)
+         {  amhittest->amhr->object=object;
+            amhittest->amhr->text=<a href="../lib/dupstr.html">Dupstr</a>("My prompt string",-1);
+         }
+      }
+   }
+   else
+   {  retval=AMHR_NOHIT;
+   }
+   return retval;
+</pre>
+
+</body>
+</html>
+

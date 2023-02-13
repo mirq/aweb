@@ -1,0 +1,78 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+<html>
+<head>
+<title>Information window</title>
+</head>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<h1>&nbsp; Information window</h1>
+
+<h2>Purpose</h2>
+The information window shows miscellaneous details about the current document.
+
+<h2>Opening the window</h2>
+You can open the window by selecting the <code><b>Project / Info...</b></code>
+menu item, or by selecting the <code><b>Info</b></code> item from the default
+frame <a href=popup.html>popup menu</a>.
+
+<h2>Contents of the window</h2>
+The information window shows the url of the current document, and a list with
+details about this document. The list contains the following sections:
+<p>
+<dl>
+<dt><b>Read from AWeb cache</b>
+<dd>This line is included if the document was read from the AWeb
+<a href=../Advanced/cache.html>cache</a>, not directly from the network.
+<p>
+<dt><b>SSL library used</b>
+<dd>This line contains the ID string of the SSL library used if the document
+was retrieved over a <a href="../Working/secure.html">secure connection</a>.
+<p>
+<dt><b>HTTPS cipher method</b>
+<dd>This line contains the cipher (encryption) method used if the document
+was retrieved over a <a href="../Working/secure.html">secure connection</a>.
+<p>
+<dt><b>Transfer headers</b>
+<dd>This section lists all the HTTP transfer headers as they were sent by
+the server.
+<p>
+If the document was read from the AWeb cache, the header information as it
+was reconstructed by the cache is shown, not the original HTTP headers.
+<p>
+<dt><b>Meta information</b>
+<dd>This section contains information from &lt;META&gt; tags in the document.
+These details are purely informational.
+<p>
+<dt><b>Clickable links</b>
+<dd>This section contains clickable entries. Each entry corresponds with
+a &lt;LINK&gt; tag in the document. Clicking an entry will generally load
+another document.
+</dl>
+
+<p>
+<hr>
+<a href=../AWeb%20Manual.html><img src=../GlobalImages/back.gif width=32 height=16 alt="<-" border=0></a> Back to
+<a href=../AWeb%20Manual.html>index</a>.
+
+</body>
+</html>

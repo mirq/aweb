@@ -1,0 +1,94 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+<html>
+<head>
+<title>
+Extension URLs
+</title>
+</head>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<h1>&nbsp; Extension URLs</h1>
+
+Internally, AWeb uses an extension to the URL scheme for some tasks. You
+can take advantage of this, by using the same URLs. These extension URLs
+always start with "<code><b>x-aweb:</b></code>". Note that you should only
+include such extension URLs in pages that will only be viewed by AWeb,
+because other browsers will not recognize these URLs.
+<p>
+A good place for extension URLs would be your hotlist. You can, for
+instance, access other hotlists from within your hotlist,
+or even configure one of these as your
+<a href=../Configuring/nwoptions.html#home>home page</a> within AWeb.
+
+<h2>Hotlists</h2>
+AWeb uses extension URLs to identify its hotlist, and other browser's
+hotlists.
+<dl>
+<dt><code><b>x-aweb:hotlist</b></code>
+<dd>Identifies AWeb's own hotlist.
+<p>
+<dt><code><b>x-aweb:amhotlist.rexx</b></code>
+<dd>Identifies the ARexx based hotlist of AMosaic version 1.2. It uses the
+   file <code>ENV:mosaic/hotlist.html</code>.
+<p>
+<dt><code><b>x-aweb:amhotlist.20</b></code>
+<dd>Identifies the hierarchical hotlist of AMosaic 2.0 prerelease. It uses
+   the file <code>ENV:mosaic/.mosaic-hotlist-default</code>.
+<p>
+<dt><code><b>x-aweb:ibhotlist/<i>path</i></b></code>
+<dd>Identifies other hierarchical hotlists, like other AWeb hotlists
+   or the format used by early prereleases of IBrowse.
+   Because this hotlist doesn't have a
+   fixed location, you must specify the full path and file name in the
+   URL.
+</dl>
+
+<h2>Shell commands and ARexx macros</h2>
+Two extension URLs exist to start shell commands or ARexx macros.
+<dl>
+<dt><code><b>x-aweb:command/<i>shell_command</i></b></code>
+<dd>Forms the interface to start <a href=shellcmd.html>Shell commands</a>.
+<p>
+<dt><code><b>x-aweb:rexx/<i>ARexx_macro</i></b></code>
+<dd>Forms the interface to start <a href=shellcmd.html>ARexx macros</a>.
+</dl>
+
+<h2>Miscellaneous</h2>
+<dl>
+<dt><code><b>x-nil:</b></code>
+<dd>A null URL. Clicking on a link to this URL, or loading an image with
+   this URL as source, does nothing. This can be useful to create "harmless"
+   examples.
+</dl>
+
+<h2>Undocumented</h2>
+URLs of the form <code>x-aweb:mail/...</code> and <code>x-aweb:news/...</code>
+are intentionally undocumented. Never try and use these URLs directly.
+
+<p>
+<hr>
+<a href=../AWeb%20Manual.html><img src=../GlobalImages/back.gif width=32 height=16 alt="<-" border=0></a> Back to
+<a href=../AWeb%20Manual.html>index</a>.
+
+</body>
+</html>

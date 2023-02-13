@@ -1,0 +1,7 @@
+MODULES := aweblib/hotlist.aweblib
+
+aweblib/hotlist.aweblib/TYPE := executable/library/amigashared
+aweblib/hotlist.aweblib/DEPS := $(MODULELIB) linklibs/libawebclib.a
+aweblib/hotlist.aweblib/CFILES := \
+hotlisttask hotmanager hotviewer
+

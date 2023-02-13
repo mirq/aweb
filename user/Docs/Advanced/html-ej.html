@@ -1,0 +1,523 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+<html>
+<head>
+<title>
+AWeb supported HTML (E-J)
+</title>
+</head>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<h1>&nbsp; AWeb supported HTML</h1>
+
+<h2>Tags (E-J)</h2>
+
+The <em>Mode</em> column in the tables below contains the <a href=htmlmode.html>HTML
+mode</a> that recognizes the tag or attribute. Elements recognized in <em>strict</em>
+mode will also be recognized in <em>tolerant</em> mode, but elements marked as
+<em>tolerant</em> will not be recognized in <em>strict</em> mode.
+
+<h3><a name=EM>EM</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;EM&gt; ... &lt;/EM&gt;
+   <td>Specifies emphasized text. Typically rendered in italics.
+   <td>Strict
+</table>
+
+<h3><a name=EMBED>EMBED</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;EMBED&gt; ... &lt;/EMBED&gt;
+   <td>Specifies an embedded object to display inlined with the text. The
+      <a href=html-ks.html#OBJECT>OBJECT</a> element should be used instead because it offers
+      more flexibility.
+   <td>Tolerant (NS)
+<tr valign=top><th align=left>Attribute<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>HEIGHT=nn<br>WIDTH=nn
+   <td>Specifies the height and the width of the object in pixels. AWeb uses this to
+      reserve enough space for the object, so that once it is loaded no reformatting
+      of the page is needed.
+   <td>Tolerant (NS)
+<tr align=left valign=top><td>NAME="name"
+   <td>Specifies a name for the object.
+   <td>Tolerant (NS)
+<tr align=left valign=top><td>SRC="url"
+   <td>Specifies the address of the object. See <a href=html-ad.html#A>A</a> for details.
+   <td>Tolerant (NS)
+<tr align=left valign=top><td>name=value
+   <td>All other attributes are passed as (name, value) pairs to the object.
+   <td>Tolerant (NS)
+</table>
+
+<h3><a name=FONT>FONT</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;FONT&gt; ... &lt;/FONT&gt;
+   <td>Specifies a change in font size or colour.
+   <td>Strict
+<tr valign=top><th align=left>Attribute<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>COLOR=#rrggbb<br>COLOR=colourname
+   <td>Specifies the colour to render the text in.<br>
+      See <a href=html.html#colours>colour specifications</a> for a list of valid names.
+   <td>Strict
+<tr align=left valign=top><td>SIZE=nn<br>SIZE=+nn<br>SIZE=-nn
+   <td>Specifies the font size.<p>
+      If <var>nn</var> is given, it is an absolute size. Valid sizes are 1 to 7,
+      1 being the smallest and 7 the largest.<p>
+      If <var>+nn</var> or <var>-nn</var> is given, it is a change relative to
+      the current <a href=html-ad.html#BASEFONT>BASEFONT</a> or <a href=html-ej.html#Hn>Hn</a> size.
+      Valid range is -6 to +6, but the resulting font size will be adjusted to
+      fall within the range 1 to 7. Note that relative font size changes are not
+      cumulative.
+   <td>Strict
+<tr align=left valign=top><td>FACE="name list"
+   <td>Specifies a comma separated list of names of preferred font faces.
+   <td>Strict
+</table>
+
+<h3><a name=FORM>FORM</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;FORM&gt; ... &lt;/FORM&gt;
+   <td>Specifies a fill-in form. The form should contain one or more
+      <a href=html-ad.html#BUTTON>BUTTON</a>,
+      <a href=html-ej.html#INPUT>INPUT</a>, <a href=html-ks.html#SELECT>SELECT</a> or
+      <a href=html-tz.html#TEXTAREA>TEXTAREA</a> elements that define the form fields.
+   <td>Strict
+<tr valign=top><th align=left>Attribute<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>ACTION="url"
+   <td>Specifies the address to be used to carry out the form's action. Default is
+      the form's address.
+   <td>Strict
+<tr align=left valign=top><td>METHOD=GET<br>METHOD=POST
+   <td>Specifies how the form data should be sent to the action address. METHOD=GET
+      includes the arguments in a URL. METHOD=POST sends the data using a HTTP post
+      transaction.
+   <td>Strict
+<tr align=left valign=top><td>ENCTYPE="type"
+   <td>Specifies what sort of encoding should be used when sending the form data.
+      Valid encoding types are: "application/x-www-form-urlencoded" (default) and
+      "multipart/form-data".
+   <td>Strict
+<tr align=left valign=top><td>TARGET="name"
+   <td>The name of the <a href=html-ej.html#FRAME>frame</a> where to display the
+      result after submitting the form. If the name does not exist, a new window
+      will be opened.
+      <p>
+      See <a href=html-ad.html#A>A</a> for a list of <em>magic</em> target names.
+   <td>Strict
+<tr align=left valign=top><td>NAME="name"
+   <td>Specifies the name of this form, for use in scripts.
+   <td>Strict
+<TR VALIGN="TOP"><TH ALIGN="LEFT">Javascript Event</TH><TH ALIGN="LEFT">Explanation</TH><TH ALIGN="LEFT">Mode</TH></TR>
+<TR ALIGN="LEFT" VALIGN="TOP">
+<TD>ONRESET="script"<BR>ONSUBMIT="script"</TD>
+<TD>Standard JavaScript <A HREF="html.html#events">event handlers</A>.</TD>
+<TD>Strict</TD>
+</TR>
+</table>
+
+<h3><a name=FRAME>FRAME</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;FRAME&gt;
+   <td><em>Can only appear within a <a href=html-ej.html#FRAMESET>FRAMESET</a>
+      element.</em>
+      <p>
+      Embeds another document in a framed HTML document.
+   <td>Strict
+<tr valign=top><th align=left>Attribute<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>BORDER=YES<br>BORDER=NO
+   <td>Specifies if the frame should have a border or not. See also the FRAMEBORDER
+      attribute.
+   <td>Tolerant (NS)
+<tr align=left valign=top><td>FRAMEBORDER=nn
+   <td>Specifies the thickness of the border around the frame. FRAMEBORDER=0 means
+      no border.
+   <td>Strict
+<tr align=left valign=top><td>HEIGHT=nn<br>HEIGHT=nn%
+   <td><em>Only valid when used as embedded object.</em><br>
+      Specifies the height of the frame in pixels or as a percentage of the window height.
+   <td>Strict
+<tr align=left valign=top><td>MARGINHEIGHT=nn<br>MARGINWIDTH=nn
+   <td>Specifies the vertical and horizontal margins around the contents within the
+      frame, in pixels.
+   <td>Strict
+<tr align=left valign=top><td>NAME="name"
+   <td>Gives the frame a name. This name can be used in the TARGET attribute
+      of the <a href=html-ad.html#A>A</a> and <a href=html-ad.html#BASE>BASE</a> tags.<p>
+      Names must begin with an alphanumeric character.
+   <td>Strict
+<tr align=left valign=top><td>NORESIZE
+   <td>Specifies that the frame has a fixed width.<p>
+      Note that with AWeb, you can always resize the frame regardless of this attribute.
+   <td>Strict
+<tr align=left valign=top><td>SCROLLING=YES<br>SCROLLING=NO<br>SCROLLING=AUTO
+   <td>Specifies if scrollers are allowed for this frame. If scrollers are allowed,
+      they are only displayed if the contents doesn't fit entirely in the frame. If
+      not allowed, no scrollers will be displayed even if the document doesn't fit.<p>
+      Default is to allow scrollers. AUTO is a synonym for YES.
+   <td>Strict
+<tr align=left valign=top><td>SRC="url"
+   <td>Specifies the address of the document to display in the frame. See
+      <a href=html-ad.html#A>A</a> for details.
+   <td>Strict
+</table>
+
+<h3><a name=FRAMESET>FRAMESET</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;FRAMESET&gt; ... &lt;FRAMESET/&gt;
+   <td>Subdivides the browser window in two or more subwindows.<p>
+      The FRAMESET element should contain one or more <a href=html-ej.html#FRAME>FRAME</a>
+      elements that define the documents to display in the subwindows. Other
+      FRAMESET elements may be included to achieve a more complex subdivision.<p>
+      A document containing a FRAMESET element should not contain a <a href=html-ad.html#BODY>BODY</a>.
+      For compatibility with browsers that don't support frames, a
+      <a href=html-ks.html#NOFRAMES>NOFRAMES</a> element may be included in the document.
+   <td>Strict
+<tr valign=top><th align=left>Attribute<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>BORDER=YES<br>BORDER=NO
+   <td>Specifies if the included frames should have borders or not. See also
+      the FRAMEBORDER attribute.
+   <td>Tolerant (NS)
+<tr align=left valign=top><td>COLS="spec,spec,..."
+   <td>Specifies the way the frameset should be divided into columns. Each "spec"
+      can be one of the following:
+      <table cellpadding=0>
+         <tr valign=top><td>n<td>width of the column in number of pixels.
+         <tr valign=top><td>n%<td>width of the column as percentage of the window width.
+         <tr valign=top><td>n*<td>relative width of the remaining columns. The remainder
+            of the window will be divided over these columns. The number may be omitted.
+      </table>
+   <td>Strict
+<tr align=left valign=top><td>FRAMEBORDER=nn
+   <td>Default thickness for the borders of the included frames, in pixels.
+      FRAMEBORDER=0 means no borders.
+   <td>Tolerant (MS)
+<tr align=left valign=top><td>FRAMESPACING=nn
+   <td>Spacing between the included frames, in pixels.
+   <td>Tolerant (MS)
+<tr align=left valign=top><td>ROWS="spec,spec,..."
+   <td>Specifies the way the frameset should be divided into rows. Each "spec"
+      can be one of the following:
+      <table cellpadding=0>
+         <tr valign=top><td>n<td>height of the row in number of pixels.
+         <tr valign=top><td>n%<td>height of the row as percentage of the window height.
+         <tr valign=top><td>n*<td>relative height of the remaining rows. The remainder
+            of the window will be divided over these rows. The number may be omitted.
+      </table>
+   <td>Strict
+</table>
+
+<h3><a name=Hn>H1..H6</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;H1&gt; ... &lt;/H1&gt;<br>
+      &nbsp;&nbsp;:<br>
+      &lt;H6&gt; ... &lt;/H6&gt;
+   <td>Specifies a heading. There are six levels of heading that may be rendered
+      in different fonts, sizes and styles. H1 is the most important heading,
+      H6 the least important.
+   <td>Strict
+<tr valign=top><th align=left>Attribute<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>ALIGN=LEFT<br>ALIGN=CENTER<br>ALIGN=RIGHT
+   <td>Specifies the horizontal position of the header in the window.
+   <td>Strict
+</table>
+
+<h3><a name=HEAD>HEAD</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;HEAD&gt; ... &lt;/HEAD&gt;
+   <td>Specifies the document header section. This section contains meta-information
+      about the document, like the <a href=html-tz.html#TITLE>TITLE</a>. Each HTML document
+      can have at most 1 HEAD.
+      <p>Both the start and end tags are optional.
+   <td>Strict
+</table>
+
+<h3><a name=HR>HR</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;HR&gt;
+   <td>Renders a horizontal rule.
+   <td>Strict
+<tr valign=top><th align=left>Attribute<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>ALIGN=LEFT<br>ALIGN=CENTER<br>ALIGN=RIGHT
+   <td>Specifies the location where to render a short rule in the window. Default is
+      centered within the window width.
+   <td>Strict
+<tr align=left valign=top><td>NOSHADE
+   <td>Renders the rule as a solid line or block, with no 3-d effects.
+   <td>Strict
+<tr align=left valign=top><td>SIZE=nn
+   <td>Specifies the vertical size of the ruler, measured in pixels. Default is 2 pixels.
+   <td>Strict
+<tr align=left valign=top><td>WIDTH=nn%<br>WIDTH=nn
+   <td>Specifies the width of the ruler, either in a percentage of the window
+      width, or as a number of pixels. Default is a width of 100%.
+   <td>Strict
+<tr align=left valign=top><td>COLOR=#rrggbb<br>COLOR=colourname
+   <td>Specifies the colour to render the rule in. This attribute implies the
+      NOSHADE attribute.<br>
+      See <a href=html.html#colours>colour specifications</a> for a list of valid names.
+   <td>Tolerant (MS)
+</table>
+
+<h3><a name=HTML>HTML</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;HTML&gt; ... &lt;/HTML&gt;
+   <td>Specifies a HTML document. Each HTML document should begin with &lt;HTML&gt;
+      and end with &lt;/HTML&gt;.
+      <p>Both the start and end tags are optional.
+   <td>Strict
+</table>
+
+<h3><a name=I>I</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;I&gt; ... &lt;/I&gt;
+   <td>Renders text in italics. Usually it is better to use one of the logical
+      styles (like <a href=html-ej.html#EM>EM</a>) instead of phisycal styles
+      like I.
+   <td>Strict
+</table>
+
+<h3><a name=IFRAME>IFRAME</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;FRAME&gt; ... &lt;/IFRAME&gt;
+   <td>Embeds another document in a HTML document.<p>
+      If the browser doesn't support frames, or is configured not to use frames,
+      the content of the IFRAME element is displayed, otherwise it is ignored.
+   <td>Strict
+<tr valign=top><th align=left>Attribute<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>ALIGN=TOP<br>ALIGN=MIDDLE<br>ALIGN=BOTTOM
+   <td>Specifies how the frame should be aligned with the text:
+      <table cellpadding=0>
+         <tr><th align=left>ALIGN<th align=left>Meaning
+         <tr valign=top><td>TOP<td>the top of the frame aligns with the top of the
+            tallest element in the line
+         <tr valign=top><td>MIDDLE<td>the middle of the frame aligns with the text baseline
+         <tr valign=top><td>BOTTOM<td>the bottom of the frame aligns with the text baseline
+      </table>
+   <td>Strict
+<tr align=left valign=top><td>ALIGN=LEFT<br>ALIGN=RIGHT
+   <td>Specifies that the frame is a floating frame. It is flushed to the current left or
+      right margin, and the text will flow around it.
+   <td>Strict
+<tr align=left valign=top><td>FRAMEBORDER=nn
+   <td>Specifies the thickness of the border around the frame. FRAMEBORDER=0 means
+      no border.
+   <td>Strict
+<tr align=left valign=top><td>HEIGHT=nn<br>HEIGHT=nn%
+   <td>Specifies the height of the frame in pixels or as a percentage of the window height.
+   <td>Strict
+<tr align=left valign=top><td>HSPACE=nn<br>VSPACE=nn
+   <td>Specifies a margin around the frame for floating frames. Without margin the text
+      will be placed directly adjacent to the frame.
+   <td>Tolerant (MS)
+<tr align=left valign=top><td>MARGINHEIGHT=nn<br>MARGINWIDTH=nn
+   <td>Specifies the vertical and horizontal margins around the contents within the
+      frame, in pixels.
+   <td>Strict
+<tr align=left valign=top><td>NAME="name"
+   <td>Gives the frame a name. This name can be used in the TARGET attribute
+      of the <a href=html-ad.html#A>A</a> and <a href=html-ad.html#BASE>BASE</a> tags.<p>
+      Names must begin with an alphanumeric character.
+   <td>Strict
+<tr align=left valign=top><td>SCROLLING=YES<br>SCROLLING=NO<br>SCROLLING=AUTO
+   <td>Specifies if scrollers are allowed for this frame. If scrollers are allowed,
+      they are only displayed if the contents doesn't fit entirely in the frame. If
+      not allowed, no scrollers will be displayed even if the document doesn't fit.<p>
+      Default is to allow scrollers. AUTO is a synonym for YES.
+   <td>Strict
+<tr align=left valign=top><td>SRC="url"
+   <td>Specifies the address of the document to display in the frame. See
+      <a href=html-ad.html#A>A</a> for details.
+   <td>Strict
+<tr align=left valign=top><td>WIDTH=nn<br>WIDTH=nn%
+   <td>Specifies the width of the frame in pixels or as a percentage of the window width.
+   <td>Tolerant (MS)
+</table>
+
+
+<h3><a name=IMG>IMG</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;IMG&gt;
+   <td>Specifies an image to be displayed inlined with the text.
+   <td>Strict
+<tr valign=top><th align=left>Attribute<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>ALIGN=TOP<br>ALIGN=MIDDLE<br>ALIGN=BOTTOM
+   <td>Specifies how the image should be aligned with the text:
+      <table cellpadding=0>
+         <tr><th align=left>ALIGN<th align=left>Meaning
+         <tr valign=top><td>TOP<td>the top of the image aligns with the top of the
+            tallest element in the line
+         <tr valign=top><td>MIDDLE<td>the middle of the image aligns with the text baseline
+         <tr valign=top><td>BOTTOM<td>the bottom of the image aligns with the text baseline
+      </table>
+   <td>Strict
+<tr align=left valign=top><td>ALIGN=LEFT<br>ALIGN=RIGHT
+   <td>Specifies that the image is a floating image. It is flushed to the current left or
+      right margin, and the text will flow around it.
+   <td>Strict
+<tr align=left valign=top><td>ALT="text"
+   <td>Specifies the text to be displayed when the image isn't loaded (yet). This text
+      is also shown in a tooltip when the mouse hovers over the image.
+   <td>Strict
+<tr align=left valign=top><td>BORDER=nn
+   <td>Specifies the thickness of the border. BORDER=0 means no border.
+   <td>Strict
+<tr align=left valign=top><td>HEIGHT=nn<br>WIDTH=nn
+   <td>Specifies the height and the width of the image in pixels. AWeb uses this to
+      reserve enough space for the image, so that once it is loaded no reformatting
+      of the page is needed.
+   <td>Strict
+<tr align=left valign=top><td>HSPACE=nn<br>VSPACE=nn
+   <td>Specifies a margin around the image for floating images. Without margin the text
+      will be placed directly adjacent to the image.
+   <td>Strict
+<tr align=left valign=top><td>ISMAP
+   <td>Specifies that the image is a clickable map. The image must be contained within
+      a <a href=html-ad.html#A>A</a> element.
+   <td>Strict
+<tr align=left valign=top><td>SRC="url"
+   <td>Specifies the address of the image. See <a href=html-ad.html#A>A</a> for details.
+   <td>Strict
+<tr align=left valign=top><td>USEMAP="url"
+   <td>Defines this image as a client-side image map. The url must contain a
+      fragment name (introduced by the # character) and must point to a
+      <a href=html-ks.html#MAP>MAP</a> element. The MAP element may be in the same document
+      or in another document.
+   <td>Strict
+<tr align=left valign=top><td>NAME="name"
+   <td>Specifies the name of this image, for use in scripts.
+   <td>Strict
+<TR VALIGN="TOP"><TH ALIGN="LEFT">Javascript Event</TH><TH ALIGN="LEFT">Explanation</TH><TH ALIGN="LEFT">Mode</TH></TR>
+<TR ALIGN="LEFT" VALIGN="TOP">
+<TD>ONABORT="script"<BR>ONCLICK="script"<BR>ONERROR="script"<BR>ONLOAD="script"</TD>
+<TD>Standard JavaScript <A HREF="html.html#events">event handlers</A>.<P>For animated GIF images, the ONLOAD event handler is executed every time the animation restarts with the first frame.</TD>
+<TD>Strict</TD>
+</TR>
+</table>
+
+<h3><a name=INPUT>INPUT</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;INPUT&gt;
+   <td><em>Can only appear within a <a href=html-ej.html#FORM>FORM</a> element</em><br>
+      Defines an input field in a form.
+   <td>Strict
+<tr valign=top><th align=left>Attribute<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>TYPE=BUTTON<br>TYPE=CHECKBOX<br>TYPE=FILE<br>
+      TYPE=HIDDEN<br>TYPE=IMAGE<br>
+      TYPE=PASSWORD<br>TYPE=RADIO<br>TYPE=RESET<br>TYPE=SUBMIT<br>TYPE=TEXT
+   <td>Defines the type of input field:
+      <table cellpadding=0>
+         <tr><th align=left>TYPE<th align=left>Meaning
+         <tr valign=top><td>BUTTON<td>A general purpose button
+         <tr valign=top><td>CHECKBOX<td>A simple checkbox, on or off
+         <tr valign=top><td>FILE<td>A file upload selection field
+         <tr valign=top><td>HIDDEN<td>Invisible field, but will be sent with the form data
+         <tr valign=top><td>IMAGE<td>Clickable image, much like image maps
+         <tr valign=top><td>PASSWORD<td>One-line text entry, but typed text will be unreadable
+         <tr valign=top><td>RADIO<td>Radiobuttons, one choice out of many
+         <tr valign=top><td>RESET<td>Button to reset all fields to their initial state
+         <tr valign=top><td>SUBMIT<td>Button to send the form data
+         <tr valign=top><td>TEXT<td>One-line text entry, this is the default type
+      </table>
+      A general purpose button (TYPE=BUTTON) will generally have an ONCLICK
+      event handler specified to define the action to be taken when the user
+      clicks the button.
+   <td>Strict
+<tr align=left valign=top><td>ALIGN=TOP<br>ALIGN=MIDDLE<br>ALIGN=BOTTOM
+   <td>Specifies the alignment of an IMAGE field.
+   <td>Strict
+<tr align=left valign=top><td>CHECKED
+   <td>Specifies that a CHECKBOX or RADIO button should be initially checked.
+   <td>Strict
+<tr align=left valign=top><td>MAXLENGTH=nn
+   <td>Specifies the maximum number of characters that can be typed in a TEXT or PASSWORD
+      field.
+   <td>Strict
+<tr align=left valign=top><td>NAME="name"
+   <td>Gives this field a name. Fields without a name will not be included in the
+      form data sent.
+   <td>Strict
+<tr align=left valign=top><td>SRC="url"
+   <td>Specifies the source URL of the image for an IMAGE type field.
+   <td>Strict
+<tr align=left valign=top><td>SIZE=nn
+   <td>Specifies the size of the input box for FILE, TEXT and PASSWORD fields, in characters.
+   <td>Strict
+<tr align=left valign=top><td>VALUE="value"
+   <td>For BUTTON, CHECKBOX, RADIO, HIDDEN and SUBMIT this specifies the value (data) to
+      be included if the form is sent.<br>
+      For TEXT and PASSWORD this specifies the initial value of the input box.<br>
+      For BUTTON, SUBMIT and RESET this specifies the button label.<br>
+      For FILE this is the initial path and file to be used when popping up the
+      file requester.
+   <td>Strict
+<TR VALIGN="TOP"><TH ALIGN="LEFT">Javascript Event</TH><TH ALIGN="LEFT">Explanation</TH><TH ALIGN="LEFT">Mode</TH></TR>
+<TR ALIGN="LEFT" VALIGN="TOP">
+<TD><BR><BR><BR>ONBLUR="script"<BR>ONCHANGE="script"<BR>ONCLICK="script"<BR>ONFOCUS="script"<BR>ONSELECT="script"</TD>
+<TD>Standard JavaScript <A HREF="html.html#events">event handlers</A>.<BR><BR><B>Valid for types</B><BR>BUTTON, CHECKBOX, FILE, PASSWORD, RADIO, RESET, SUBMIT, TEXT<BR>FILE, TEXT<BR>BUTTON, CHECKBOX, RADIO, RESET, SUBMIT<BR>BUTTON, CHECKBOX, FILE, PASSWORD, RADIO, RESET, SUBMIT, TEXT<BR>TEXT</TD>
+<TD>Strict</TD>
+</TR>
+</TABLE>
+
+<h3><a name=ISINDEX>ISINDEX</a></h3>
+<table border width=100%>
+<tr valign=top><th align=left>Tag<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>&lt;ISINDEX&gt;
+   <td>Specifies that this page is a searchable index.<p>
+      <strong>Note:</strong> The HTML definition states that this tag can
+      only be used within a <a href=html-ej.html#HEAD>HEAD</a> element. Because there are
+      many pages that has this tag in the document </a href=html-ad.html#BODY>BODY</a>,
+      AWeb does not impose this restriction, not even in strict mode!
+   <td>Strict
+<tr valign=top><th align=left>Attribute<th align=left>Explanation<th align=left>Mode
+<tr align=left valign=top><td>PROMPT="prompt"
+   <td>Defines the propmt to use. Default is
+   <pre>This is a searchable index. Enter keywords:</pre>
+   <td>Strict
+</table>
+
+<p>
+<hr>
+<a href=html.html>Back to overview</a><br>
+More HTML tags:
+<a href=html-ad.html>A-D</a>,
+<a href=html-ks.html>K-S</a>,
+<a href=html-tz.html>T-Z</a><br>
+<br>
+
+<a href=../AWeb%20Manual.html><img src=../GlobalImages/back.gif width=32 height=16 alt="<-" border=0></a> Back to
+<a href=../AWeb%20Manual.html>index</a>.
+
+</body>
+</html>

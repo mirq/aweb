@@ -1,0 +1,10 @@
+==id $Id: librarymanager_lib.sfd,v 1.1 2005/01/29 18:12:39 falemagn Exp $
+==base _LibraryManagerBase
+==bias 6
+==public
+==include <exec/libraries.h>
+==include <dos/dos.h>
+struct Library *LibOpen(ULONG version)(d0)
+BPTR LibClose()()
+BPTR LibExpunge()()
+==end

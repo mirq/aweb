@@ -1,0 +1,57 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+<html>
+<head>
+<title>
+Starting your TCP connection
+</title>
+</head>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<h1>&nbsp; Starting your TCP connection</h1>
+
+Before you can access documents from the World Wide Web, you must start your
+<em>TCP connection</em> with the Internet. The connection is maintained by the
+TCP package you are using, also known as <em>TCP stack</em>.
+<p>
+You can start your TCP stack yourself before you start AWeb, or while AWeb is
+running. To make life easier, you can even let AWeb start your TCP stack when
+it is needed for the first time. For example, if you are browsing through local
+documents, and then follow a hyperlink to some document out there on the World
+Wide Web, then AWeb could start the TCP stack automatically.
+<p>
+To use this feature, you have to <a href=../Configuring/nwprograms.html#tcp>configure</a>
+the start script (or program) for your TCP package.
+<p>
+If you have <a href=../Configuring/nwprograms.html#tcp>configured</a> the stop script
+(or program) for your TCP stack, AWeb can terminate the TCP stack automatically
+after you quit AWeb. Note that it does so only if AWeb has started the TCP stack
+before, and only after asking for your permission to do so.<br>
+If you started the TCP stack yourself, AWeb will not terminate it.
+
+<p>
+<hr>
+<a href=../AWeb%20Manual.html><img src=../GlobalImages/back.gif width=32 height=16 alt="<-" border=0></a> Back to
+<a href=../AWeb%20Manual.html>index</a>.
+
+</body>
+</html>

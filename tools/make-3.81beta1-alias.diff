@@ -1,0 +1,89 @@
+Index: filedef.h
+===================================================================
+RCS file: /cvsroot/make/make/filedef.h,v
+retrieving revision 2.20
+diff -u -r2.20 filedef.h
+--- filedef.h	24 Feb 2004 13:50:21 -0000	2.20
++++ filedef.h	5 Sep 2004 13:25:17 -0000
+@@ -96,6 +96,8 @@
+                                    pattern-specific variables.  */
+     unsigned int considered:1;  /* equal to `considered' if file has been
+                                    considered on current scan of goal chain */
++    unsigned int alias:1;       /* Nonzero if this is an alias for other 
++                                   targets i.e., a dependency of .ALIAS.  */
+   };
+ 
+ 
+Index: file.c
+===================================================================
+RCS file: /cvsroot/make/make/file.c,v
+retrieving revision 1.72
+diff -u -r1.72 file.c
+--- file.c	16 May 2004 19:16:53 -0000	1.72
++++ file.c	5 Sep 2004 13:25:25 -0000
+@@ -461,6 +461,15 @@
+ 	  f2->mtime_before_update = NONEXISTENT_MTIME;
+ 	}
+ 
++  for (f = lookup_file (".ALIAS"); f != 0; f = f->prev)
++    for (d = f->deps; d != 0; d = d->next)
++      for (f2 = d->file; f2 != 0; f2 = f2->prev)
++	{
++	  /* Mark this file as alias and phony.  */
++	  f2->phony = 1;
++	  f2->alias = 1;
++	}
++  
+   for (f = lookup_file (".INTERMEDIATE"); f != 0; f = f->prev)
+     {
+       /* .INTERMEDIATE with deps listed
+Index: remake.c
+===================================================================
+RCS file: /cvsroot/make/make/remake.c,v
+retrieving revision 1.112
+diff -u -r1.112 remake.c
+--- remake.c	16 May 2004 19:16:54 -0000	1.112
++++ remake.c	5 Sep 2004 13:25:40 -0000
+@@ -1162,6 +1162,42 @@
+   else
+ #endif
+     {
++      /* If this is a .ALIAS target, its ntime is dependent on the mtimes
++         of the targets on which the alias depends.  */
++      if (file->alias)
++        {
++          /* By default, an alias target is always old, unless the target has beed updated
++             already, in which case, its mtime is the newest mtime of its prerequisites,
++             if any.  */
++          
++          mtime = OLD_MTIME;
++          
++          if (file->updated)
++            {
++              struct dep *d = file->deps;
++          
++              FILE_TIMESTAMP max_mtime = OLD_MTIME;
++                    
++              for (; d != 0; d = d->next)
++                {
++                  struct file *f;
++                  
++                  for (f=d->file; f != 0; f = f->prev)
++                    {
++                      mtime = file_mtime(f);
++               
++                      if (mtime > max_mtime)
++                        max_mtime = mtime;
++                    }
++                }
++           
++              mtime            = max_mtime;
++              file->last_mtime = mtime;
++            }
++        
++          return mtime;
++        }
++            
+       mtime = name_mtime (file->name);
+ 
+       if (mtime == NONEXISTENT_MTIME && search && !file->ignore_vpath)

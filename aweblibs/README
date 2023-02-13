@@ -1,0 +1,5 @@
+aweb/aweblibs
+
+This is the place where all the AWeb specific libraries reside.
+Their includes are in the "include" subdirectory and it should
+be added to the include path when compiling AWeb.

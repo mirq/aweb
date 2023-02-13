@@ -1,0 +1,1877 @@
+## version $VER: AWebCfg.catalog 3.0 (30.06.2003)
+## language suomi
+## codeset 0
+;
+; AWebcfg.cd - AWeb configuration program catalog description file
+;
+;
+;  The MSG_DUMMY_nn labels are there because FlexCat doesn't
+;  understand the LABEL (+1//) syntax (C='s Catcomp uses this
+;  to skip 1 number)
+;
+;
+;-------------- Error messages ----------------------
+;
+; NOTE - No locale formatters (like %1$s) possible in this string!
+;        Only plain C formatters allowed.
+MSG_ERROR_CANTOPENV
+Ei voi avata %s versio %ld
+; Can't open %s version %ld
+;
+MSG_ERROR_COMMANDLINE
+
+; Please check the commandline options.\n\
+; E.g. you must use at least one of the 4 switches.\n\
+; The Template is:
+;
+; ***NEW***
+;
+;
+;-------------- Settings requesters- ------------------
+;
+;  General
+;
+MSG_SET_REQTITLE_FONT
+Valitse kirjasin
+; Select font
+;
+MSG_SET_REQTITLE_SCREEN
+Valitse näyttötila
+; Select screenmode
+;
+MSG_SET_REQTITLE_MAILTO
+Valitse mailto: komento
+; Select mailto: command
+;
+MSG_SET_REQTITLE_FTP
+Valitse ftp: komento
+; Select ftp: command
+;
+MSG_SET_REQTITLE_TELNET
+Valitse telnet: komento
+; Select telnet: command
+;
+MSG_SET_REQTITLE_NEWS
+Valitse news: komento
+; Select news: command
+;
+MSG_SET_REQTITLE_STARTTCP
+Valitse TCP-käynnistyskomento
+; Select TCP start command
+;
+MSG_SET_REQTITLE_ENDTCP
+Valitse TCP-lopetuskomento
+; Select TCP end command
+;
+MSG_SET_REQTITLE_TEMPPATH
+Valitse väliaikaistiedostojen hakemisto
+; Select temp path
+;
+MSG_SET_REQTITLE_SAVEPATH
+Valitse tallennushakemisto
+; Select save path
+;
+MSG_SET_REQTITLE_EDITOR
+Valitse tekstieditori
+; Select Editor command
+;
+MSG_SET_REQTITLE_HTMLVIEWER
+Valitse HTML-näyttäjä
+; Select HTML viewer command
+;
+MSG_SET_REQTITLE_MIMEVIEWER
+Valitse näyttäjäkomento
+; Select viewer command
+;
+MSG_SET_REQTITLE_AREXXMACRO
+Valitse ARexx-makro
+; Select ARexx macro
+;
+MSG_SET_REQTITLE_BROWSERWINDOW
+AWeb selainasetukset
+; AWeb browser settings
+;
+MSG_SET_REQTITLE_PROGRAMWINDOW
+AWeb ohjelma-asetukset
+; AWeb program settings
+;
+MSG_SET_REQTITLE_NETWORKWINDOW
+AWeb verkkoasetukset
+; AWeb network settings
+;
+MSG_SET_REQTITLE_OPENBROWSER
+Avaa selainasetukset
+; Open browser settings
+;
+MSG_SET_REQTITLE_SAVEBROWSER
+Tallenna selainasetukset nimellä
+; Save browser settings as
+;
+MSG_SET_REQTITLE_OPENPROGRAM
+Avaa ohjelma-asetukset
+; Open program settings
+;
+MSG_SET_REQTITLE_SAVEPROGRAM
+Tallenna ohjelma-asetukset nimellä
+; Save program settings as
+;
+MSG_SET_REQTITLE_OPENNETWORK
+Avaa verkkoasetukset
+; Open network settings
+;
+MSG_SET_REQTITLE_SAVENETWORK
+Tallenna verkkoasetukset nimellä
+; Save network settings as
+;
+MSG_SET_REQTITLE_CACHEPATH
+Valitse puskurihakemisto
+; Select cache path
+;
+MSG_SET_REQTITLE_IMGVIEWER
+Valitse kuvanäyttäjä
+; Select image viewer command
+;
+MSG_SET_REQTITLE_GUIWINDOW
+AWeb käyttöliittymän asetukset
+; AWeb GUI settings
+;
+MSG_SET_REQTITLE_OPENGUI
+Avaa käyttöliittymän asetukset
+; Open GUI settings
+;
+MSG_SET_REQTITLE_SAVEGUI
+Tallenna käyttöliittymän asetukset nimellä
+; Save GUI settings as
+;
+MSG_SET_REQTITLE_SIGNATURE
+Valitse allekirjoitustiedosto
+; Select signature file
+;
+MSG_SET_REQTITLE_STARTUPSCRIPT
+Valitse käynnistys ARexx-skripti
+; Select startup ARexx script
+;
+MSG_SET_REQTITLE_SHUTDOWNSCRIPT
+Valitse lopetus ARexx-skripti
+; Select shutdown ARexx script
+;
+;  Clicktab labels - Browser
+;
+MSG_SET_CTBR_OPTIONS
+_1 Valinnat
+; _1 Options
+;
+MSG_SET_CTBR_FONTS
+_2 Kirjasimet
+; _2 Fonts
+;
+MSG_SET_CTBR_STYLES
+_3 Tyylit
+; _3 Styles
+;
+MSG_SET_CTBR_COLOURS
+_4 Värit
+; _4 Colours
+;
+MSG_SET_CTBR_MIME
+_5 Näyttäjät
+; _5 Viewers
+;
+;  Clicktab labels - Program
+;
+MSG_SET_CTPR_SCREEN
+_1 Näyttö
+; _1 Screen
+;
+MSG_SET_CTPR_PALETTE
+_2 Värikartta
+; _2 Palette
+;
+MSG_SET_CTPR_OPTIONS
+_3 Valinnat
+; _3 Options
+;
+MSG_SET_CTPR_PROGRAMS
+_4 Ohjelmat
+; _4 Programs
+;
+MSG_SET_CTPR_AREXX
+_5 ARexx
+; _5 ARexx
+;
+;  Clicktab labels - Network
+;
+MSG_SET_CTNW_OPTIONS
+_1 Valinnat
+; _1 Options
+;
+MSG_SET_CTNW_PROGRAMS
+_2 Ohjelmat
+; _2 Programs
+;
+MSG_SET_CTNW_PROXY
+_3 Välityspalvelin
+; _3 Proxy
+;
+MSG_SET_CTNW_CACHE
+_4 Puskuri
+; _4 Cache
+;
+MSG_SET_CTNW_PRIVACY
+_5 Yksityisyys
+; _5 Privacy
+;
+MSG_SET_CTNW_MAIL
+_6 Posti/Uutiset
+; _6 Mail/News
+;
+;  Clicktab labels - GUI
+;
+MSG_SET_CTUI_OPTIONS
+_1 Valinnat
+; _1 Options
+;
+MSG_DUMMY_8
+
+; 
+;
+MSG_SET_CTUI_BUTTONS
+_3 Painikkeet
+; _3 Buttons
+;
+MSG_SET_CTUI_POPUP
+_4 Ponnahdus
+; _4 Popup
+;
+MSG_SET_CTUI_KEYS
+_5 Näppäimet
+; _5 Keys
+;
+MSG_SET_CTUI_MENUS
+_2 Valikot
+; _2 Menus
+;
+MSG_SET_CTUI_NAV
+_6 Suunnistus
+; _6 Navigation
+;
+;  Popup help
+;
+; (don't use 40200-40208)
+;
+MSG_SET_HLP_NOARGS
+(ei paikanpitäjiä)
+; (No placeholders)
+;
+MSG_SET_HLP_A
+%a = uutisryhmä tai artikkeli
+; %%a = newsgroup or article
+;
+MSG_SET_HLP_E
+%e = sähköpostiosoite
+; %%e = e-mail address
+;
+MSG_SET_HLP_F
+%f = hakemisto/tiedostonimi
+; %%f = path/file name
+;
+MSG_SET_HLP_H
+%h = isäntänimi
+; %%h = host name
+;
+MSG_SET_HLP_L
+%l = käyttäjätunnus
+; %%l = login name
+;
+MSG_SET_HLP_N
+%n = näytön nimi
+; %%n = screen name
+;
+MSG_SET_HLP_P
+%p = portin numero
+; %%p = port number
+;
+MSG_SET_HLP_U
+%u = alkuperäinen URL
+; %%u = original URL
+;
+MSG_SET_HLP_W
+%w = salasana
+; %%w = password
+;
+MSG_SET_HLP_T
+%t = otsikko
+; %%t = title
+;
+MSG_SET_HLP_U2
+%u = nykyinen URL
+; %%u = current URL
+;
+MSG_SET_HLP_U3
+%u = kohde URL
+; %%u = object URL
+;
+MSG_SET_HLP_I
+%i = kehyksen ID
+; %%i = frame ID
+;
+MSG_SET_HLP_I2
+%i = kohdekehyksen ID
+; %%i = target frame ID
+;
+MSG_SET_HLP_M
+%m = MIME-tyyppi
+; %%m = MIME type
+;
+MSG_SET_HLP_S
+%s = hakumäärite
+; %%s = search argument
+;
+MSG_SET_HLP_D
+%d = päiväys
+; %%d = date
+;
+MSG_SET_HLP_G
+%g = ryhmän nimi
+; %%g = group name
+;
+MSG_SET_HLP_I3
+%i = viestin id
+; %%i = message id
+;
+MSG_SET_HLP_N2
+%n = oikea nimi
+; %%n = real name
+;
+MSG_SET_HLP_S2
+%s = aihe
+; %%s = subject
+;
+MSG_SET_HLP_I4
+%i = kohdistuskehyksen ID
+; %%i = focus frame ID
+;
+MSG_SET_HLP_C
+%c = asetusten nimi
+; %%c = config name
+;
+;  Font descriptions
+;
+MSG_SET_FD_NORMALTAG
+Normaali
+; Normal
+;
+MSG_SET_FD_NORMAL
+Normaali teksti
+; Normal text
+;
+MSG_SET_FD_H1
+<H1> : Otsikkotaso 1, suurin
+; <H1> : Headers level 1, largest
+;
+MSG_SET_FD_H2
+<H2> : Otsikkotaso 2
+; <H2> : Headers level 2
+;
+MSG_SET_FD_H3
+<H3> : Otsikkotaso 3
+; <H3> : Headers level 3
+;
+MSG_SET_FD_H4
+<H4> : Otsikkotaso 4
+; <H4> : Headers level 4
+;
+MSG_SET_FD_H5
+<H5> : Otsikkotaso 5
+; <H5> : Headers level 5
+;
+MSG_SET_FD_H6
+<H6> : Otsikkotaso 6, pienin
+; <H6> : Headers level 6, smallest
+;
+MSG_SET_FD_CITE
+<CITE> : lainaukset, yleensä kursivoitu
+; <CITE> : citations, typically italics
+;
+MSG_SET_FD_CODE
+<CODE> : ohjelmointiesimerkki, yleensä vakioleveys
+; <CODE> : code example, typically monospaced
+;
+MSG_SET_FD_DFN
+<DFN> : määritelmä, yleensä kursivoitu
+; <DFN> : definition, typically italics
+;
+MSG_SET_FD_EM
+<EM> : korostettu, yleensä kursivoitu
+; <EM> : emphasized, typically italics
+;
+MSG_SET_FD_KBD
+<KBD> : näppäimistösyöte, yleensä vakioleveys
+; <KBD> : keyboard input, typically monospaced
+;
+MSG_SET_FD_SAMP
+<SAMP> : mallituloste, yleensä vakioleveys
+; <SAMP> : sample output, typically monospaced
+;
+MSG_SET_FD_STRONG
+<STRONG> : vahva korostus, yleensä paksunnettu
+; <STRONG> : strong emphasis, typically bold
+;
+MSG_SET_FD_VAR
+<VAR> : sijoitusmuuttuja, yleensä kursivoitu
+; <VAR> : placeholder variable, typically italics
+;
+MSG_DUMMY_1
+
+; 
+; (Note the leading space in the next 3 strings)
+MSG_SET_FD_BOLD
+ Paksunnettu
+;  Bold
+;
+MSG_SET_FD_ITALIC
+ Kursivoitu
+;  Italic
+;
+MSG_SET_FD_UNDERLINED
+ Alleviivattu
+;  Underlined
+;
+MSG_SET_FD_NORMALFONT
+Normaali kirjasin
+; Normal font
+;
+MSG_SET_FD_FIXEDFONT
+Kiinteäleveys-kirjasin
+; Fixed width font
+;
+MSG_SET_FD_SIZE
+koko
+; size
+;
+MSG_SET_FD_BIG
+<BIG> : iso kirjasin
+; <BIG> : large font
+;
+MSG_SET_FD_SMALL
+<SMALL> : pieni kirjasin
+; <SMALL> : small font
+;
+MSG_SET_FD_SUB
+<SUB> : pieni alaviitekirjasin
+; <SUB> : small subscript font
+;
+MSG_SET_FD_SUP
+<SUP> : pieni yläviitekirjasin
+; <SUP> : small superscript font
+;
+MSG_SET_FD_ADDRESS
+<ADDRESS> : osoite, yleensä kursivoitu
+; <ADDRESS> : address, typically italics
+;
+MSG_SET_FD_BLOCKQUOTE
+<BLOCKQUOTE> : pitkät viittaukset, yleensä kursivoitu
+; <BLOCKQUOTE> : long quotations, typically italics
+;
+MSG_SET_FD_PRE
+<PRE> : esimuotoiltu teksti, pitäisi olla kiinteä leveys
+; <PRE> : preformatted text, should be fixed width
+;
+;  HTML modes
+;
+MSG_SET_HTML_STRICT
+Tiukka
+; Strict
+;
+MSG_SET_HTML_TOLERANT
+Salliva
+; Tolerant
+;
+MSG_SET_HTML_COMPATIBLE
+Yhteensopiva
+; Compatible
+;
+;  Screen types
+;
+MSG_SET_SCRT_DEFAULT
+Julkinen näyttö (oletus)
+; Default public screen
+;
+MSG_SET_SCRT_NAMED
+Nimetty julkinen näyttö
+; Named public screen
+;
+MSG_SET_SCRT_OWN
+Oma julkinen näyttö
+; Own public screen
+;
+;  Image loading types
+;
+MSG_SET_IMGL_OFF
+Ei kuvia
+; Off
+;
+MSG_SET_IMGL_MAPS
+Vain kartat
+; Maps only
+;
+MSG_SET_IMGL_ALL
+Kaikki kuvat
+; All images
+;
+;  MIME list column names
+;
+MSG_SET_MLCN_TYPE
+Tyyppi
+; Type
+;
+MSG_SET_MLCN_EXT
+Jatkeet
+; Extensions
+;
+;**obsolete
+MSG_SET_MLCN_COMMAND
+Näyttäjäohjelma
+; Viewer command
+;
+MSG_SET_MLCN_ACTION
+A
+; A
+;
+MSG_SET_MLCN_NAME
+Nimi ja määritteet
+; Name and arguments
+;
+;  Browser pen names
+;
+MSG_SET_BRPEN_LINK
+Uusi linkki
+; New link
+;
+MSG_SET_BRPEN_VLINK
+Vierailtu linkki
+; Visited link
+;
+MSG_SET_BRPEN_ALINK
+Valittu linkki
+; Selected link
+;
+MSG_SET_BRPEN_BGCOLOR
+Tausta
+; Background
+;
+MSG_SET_BRPEN_TEXT
+Teksti
+; Text
+;
+;  Screen colour names
+;
+MSG_SET_SCRPEN_TEXT
+Normaali teksti
+; Normal text
+;
+MSG_SET_SCRPEN_SHINE
+Kirkkaat reunat
+; Bright edges
+;
+MSG_SET_SCRPEN_SHADOW
+Tummat reunat
+; Dark edges
+;
+MSG_SET_SCRPEN_FILL
+Aktiivisen ikkunan otsikkopalkit
+; Active window title bars
+;
+MSG_SET_SCRPEN_FILLTEXT
+Aktiivisen ikkunan nimet
+; Active window titles
+;
+MSG_SET_SCRPEN_BACKGROUND
+Tausta
+; Background
+;
+MSG_SET_SCRPEN_HIGHLIGHTTEXT
+Tärkeä teksti
+; Important text
+;
+MSG_SET_SCRPEN_BARDETAIL
+Valikkoteksti
+; Menu text
+;
+MSG_SET_SCRPEN_BARBLOCK
+Valikon tausta
+; Menu background
+;
+;  ARexx menu shortcut
+;
+MSG_SET_AREX_NONE
+ei mitään
+; none
+;
+;  Network external program types
+;
+MSG_SET_NWPRG_STARTTCP
+Käynnistä TCP
+; Start TCP
+;
+MSG_SET_NWPRG_ENDTCP
+Lopeta TCP
+; End TCP
+;
+;  Font types and sizes (fonts page)
+;
+MSG_SET_FTYPE_NORMAL
+Normaalit kirjasimet
+; Normal fonts
+;
+MSG_SET_FTYPE_FIXED
+Kiinteä leveys-kirjasimet
+; Fixed width fonts
+;
+MSG_SET_FSIZE_1
+1 (pienin)
+; 1 (smallest)
+;
+MSG_SET_FSIZE_3
+3 (normaali)
+; 3 (normal)
+;
+MSG_SET_FSIZE_7
+7 (suurin)
+; 7 (largest)
+;
+;  Font list headers
+;
+MSG_SET_FLH_SIZE
+Koko
+; Size
+;
+MSG_SET_FLH_FONTFACE
+Kirjasimen nimi ja koko
+; Font name and size
+;
+;  Style list headers
+;
+MSG_SET_SLH_TAG
+Tag
+; Tag
+;
+MSG_SET_SLH_STYLE
+Piirtotaso
+; Rendered as
+;
+;  Cache verify modes
+;
+MSG_SET_CAVERIFY_ALWAYS
+Aina
+; Always
+;
+MSG_SET_CAVERIFY_ONCE
+Kerran istunnon aikana
+; Once per session
+;
+MSG_SET_CAVERIFY_NEVER
+Ei koskaan
+; Never
+;
+;  Palette loading
+;
+MSG_SET_LPAL_OFF
+Pois
+; Off
+;
+MSG_SET_LPAL_COLOURS
+Värit
+; Colours
+;
+MSG_SET_LPAL_GRAY
+Harmaasävy
+; Grayscale
+;
+;  MIME action names and abbreviationss
+;
+MSG_SET_MACT_DEFAULT
+Oletus
+; Default
+;
+MSG_SET_MACT_INTERNAL
+Sisäinen (I)
+; Internal (I)
+;
+MSG_SET_MACT_PLUGIN
+AWeb Plugin (A)
+; AWeb Plugin (A)
+;
+MSG_SET_MACT_EXTERNAL
+Ulk. ohjelma (E)
+; Extl. program (E)
+;
+MSG_SET_MACT_EXTPIPE
+Ulk. +/PIPE (P)
+; Extl. w/PIPE (P)
+;
+MSG_SET_MACT_SAVEDISK
+Tallenna levylle (S)
+; Save to disk (S)
+;
+MSG_SET_MACT_EXTCAN
+
+; Extl. No Fetch (F)
+;
+; ***NEW***
+;
+MSG_SET_MACT_CANCEL
+
+; Cancel (C)
+;
+; ***NEW***
+;
+; 1-letter abbreviations to use for the above in the MIME list
+MSG_SET_MACT_ABBREV
+ IAEPFSC
+;  IAEPFSC
+;
+;  Cookie settings
+;
+MSG_SET_COOKIES_NEVER
+Ei koskaan
+; Never
+;
+MSG_SET_COOKIES_ASK
+Kysy ensin
+; Ask before set
+;
+MSG_SET_COOKIES_QUIET
+Aina (hiljainen)
+; Always (quiet)
+;
+;  Pupup menu types
+;
+MSG_SET_PUPTYPE_IMAGE
+Kuvaponnahdusvalikko
+; Image popup menu
+;
+MSG_SET_PUPTYPE_LINK
+Linkkiponnahdusvalikko
+; Link popup menu
+;
+MSG_SET_PUPTYPE_FRAME
+Kehysponnahdusvalikko
+; Frame popup menu
+;
+;  Menu entry types (used in the chooser)
+;
+MSG_SET_MENUTYPE_MENU
+Valikko
+; Menu
+;
+MSG_SET_MENUTYPE_ITEM
+Toiminto
+; Item
+;
+MSG_SET_MENUTYPE_SUB
+Alitoiminto
+; Sub
+;
+;  Menu entry types used in the first list column.
+;  For best effects, make sure the string for "MENU" is
+;  wider than the string for "Item".
+;
+MSG_SET_MENULABEL_MENU
+VALIKKO
+; MENU
+;
+MSG_SET_MENULABEL_ITEM
+Tmnto
+; Item
+;
+;  Javascript choices
+;
+MSG_SET_JS_OFF
+Pois käytöstä
+; Off
+;
+MSG_SET_JS_11
+Tiukka
+; Fastidious
+;
+MSG_SET_JS_ALL
+Salliva
+; Omnivorous
+;
+;  Gadget labels - general
+;
+MSG_SET_PAGE
+_Sivu
+; _Page
+;
+MSG_SET_SAVE
+_Tallenna
+; _Save
+;
+MSG_SET_USE
+_Käytä
+; _Use
+;
+MSG_SET_CANCEL
+_Peru
+; _Cancel
+;
+MSG_SET_TEST
+T_estaa
+; _Test
+;
+;  Gadget labels - fonts
+;
+MSG_SET_FONT_FONT
+K_irjasin
+; _Font
+;
+MSG_SET_FONT_FONTTYPE
+Kirjasintyyppi
+; Font t_ype
+;
+MSG_SET_FONT_SETALL
+Tämä kirjasin kaikkiin
+; Set _all to this font name
+;
+MSG_SET_FONT_FONTTYPE2
+Kirjasintyyppi
+; Font type
+;
+MSG_SET_FONT_ALIAS
+_Alias
+; A_lias
+;
+MSG_SET_FONT_ADD
+Lisää
+; Add
+;
+MSG_SET_FONT_DEL
+Poista
+; Del
+;
+;  Gadget labels - colours
+;
+MSG_SET_APP_CHGCOLOUR
+_Vaihda väri
+; C_hange colour
+;
+MSG_SET_APP_SCREENPENS
+Käytä näytön teksti- ja taustakyniä
+; Use screen text and _background pens
+;
+;  Gadget labels - browser options/gui options
+;
+MSG_SET_BROPT_HTMLMODE
+_HTML-tila
+; HTML _mode
+;
+MSG_SET_BROPT_ULLINKS
+Alleviivatut linkit
+; Under_lined links
+;
+MSG_SET_BROPT_CYCLETOLIST
+Näytä kiertokentät listana
+; Show c_ycle fields as list
+;
+MSG_SET_BROPT_DOCOLORS
+Käytä taustaa ja värejä
+; Use _background and colours
+;
+MSG_SET_BROPT_POPUPLABEL
+Ponnahdusvalikon aktivointi
+; Popup menu activation
+;
+MSG_SET_BROPT_POPUPSHIFT
+S_HIFT näppäin
+; S_HIFT key
+;
+MSG_SET_BROPT_POPUPALT
+_ALT näppäin
+; _ALT key
+;
+MSG_SET_BROPT_POPUPCONTROL
+CT_RL näppäin
+; CT_RL key
+;
+MSG_SET_BROPT_POPUPMIDBUTTON
+Keskimmäinen hiiren nappi
+; M_iddle mouse button
+;
+MSG_SET_BROPT_DOBGSOUND
+Käytä taustaääniä
+; Use background soun_d
+;
+MSG_SET_BROPT_BLINK
+Vilkku (0.1 s)
+; Blin_k (0.1 s)
+;
+MSG_SET_BROPT_POPUPRBUTTON
+Oikea hiiren nappi
+; Ri_ght mouse button
+;
+MSG_SET_BROPT_JAVASCRIPT
+Käytä _JavaScriptiä
+; Use _JavaScript
+;
+MSG_SET_BROPT_FRAMES
+Käytä kehyksiä
+; Use _frames
+;
+MSG_SET_BROPT_INCTABLE
+Asteittainen taulukkojen näyttö
+; _Incremental table display
+;
+MSG_SET_BROPT_NOMINALFRAME
+Nimellinen kehyksen korkeus
+; _Nominal frame height
+;
+MSG_SET_BROPT_JSERRORS
+Näytä JavaScript-virheet
+; Show JavaScript _errors
+;
+MSG_SET_BROPT_NOBANNERS
+Estä mainosikkunat
+; Su_ppress banner windows
+;
+MSG_SET_BROPT_TOOLTIPS
+Näytä kuvien vihjeet
+; Display t_ooltips for images
+;
+MSG_SET_BROPT_HANDPOINTER
+Käsiosoitin linkkien yllä
+; _Hand pointer over links
+;
+MSG_SET_BROPT_JSWATCH
+Varoita epäilyttävästä JavaScriptistä
+; _Warn for suspect JavaScript
+;
+MSG_SET_BROPT_TEMPRP
+Käytä graafista taustapuskuria
+; Use double buffered _rendering
+;
+MSG_SET_BROPT_CHARSET
+_Oletusmerkistö
+; Default ch_aracter set
+;
+MSG_SET_BROPT_IMGBORDER
+Reunus kuvien ympärillä
+; Border around ima_ges
+;
+; ***NEW***
+;
+;  Gadget labels - screen
+;
+MSG_SET_SCREEN_OPENON
+Näytön t_yyppi
+; _Open on
+;
+MSG_SET_SCREEN_NAME
+_Näytön nimi
+; Screen _name
+;
+MSG_SET_SCREEN_MODE
+Näyttö_tila
+; Screen _mode
+;
+MSG_SET_SCREEN_PALETTE
+Lataa tasainen _värikartta
+; _Load spread palette
+;
+;  Gadget labels - palette
+;
+MSG_SET_PALL_PENLABEL
+Kynäasetukset
+; Pen settings
+;
+MSG_SET_PALL_PEN
+K_ynä
+; P_en
+;
+MSG_SET_PALL_PALLETTELABEL
+Vaihda värikartta
+; Change palette
+;
+MSG_SET_PALL_PALLPEN
+Ky_nä
+; Pe_n
+;
+MSG_SET_PALL_CHGCOLOUR
+_Muuta väri
+; C_hange colour
+;
+;  Gadget labels - network options and privacy
+;
+MSG_SET_NETWORK_IMGLOAD
+K_uvien lataus
+; _Image loading
+;
+MSG_SET_NETWORK_MAXCONN
+_Yhteyksien enimmäismäärä
+; Max. _network connections
+;
+MSG_SET_NETWORK_HOMEPAGE
+Kotisi_vu
+; _Home page
+;
+MSG_SET_NETWORK_LOCALINDEX
+P_aikallinen hakemisto
+; _Local index
+;
+MSG_SET_NETWORK_STARTHOME
+Aloita kotisivulta
+; St_art with home page
+;
+MSG_SET_NETWORK_ANONYMOUS
+Estä Referer-kentän lähetys selatessa
+; Suppress _Referer while browsing
+;
+MSG_SET_NETWORK_IGNORE
+Älä välitä palvelimen MIME-tyypeistä
+; I_gnore server MIME type
+;
+MSG_SET_NETWORK_MAXDISK
+levyjen luku_operaatiot
+; _disk reads
+;
+MSG_SET_NETWORK_COOKIES
+Käytä e_västeitä
+; Use coo_kies
+;
+MSG_SET_NETWORK_NOCOOKIELABEL
+Ei evästeitä verkkoalueille
+; No cookies for domains
+;
+MSG_SET_NETWORK_NOCOOKIEADD
+Lisää
+; Add
+;
+MSG_SET_NETWORK_NOCOOKIEDEL
+Poista
+; Del
+;
+MSG_SET_NETWORK_FORMWARN
+Varoita ennen turvattoman lomakkeen lähetystä
+; _Warn before sending unsecure form data
+;
+MSG_SET_NETWORK_AUTOSEARCHURL
+Automaattisen _haun URL
+; Autosea_rch URL
+;
+MSG_SET_NETWORK_AUTOSEARCH
+Automaattinen etsintä päälle
+; _Enable autosearch
+;
+MSG_SET_NETWORK_SPAMBLOCK
+Aktivoi roskasuodatin uutisia lähetettäessä
+; _Activate spamblock when posting news
+;
+MSG_SET_NETWORK_FTPEMAILADDR
+Käytä sähköpostiosoitetta FTP anonyymisalasanana
+; Use e-mail address as _FTP anon password
+;
+MSG_SET_NETWORK_SPOOFID
+E_sitä olevasi
+; Spoo_f as
+;
+MSG_SET_NETWORK_CONTANIM
+Jatkuva animaatio
+; C_ontinuous animation
+;
+MSG_SET_NETWORK_SPOOFID_EXPL
+(Valitse listasta tai\n\
+ kirjoita oma selaintunnus)
+; (Select an entry from the list\n or type your own browser ID)
+;
+MSG_SET_NETWORK_RESTRICT_IMAGES
+Rajoita kuvat samaan isäntään
+; Restrict i_mages to same host
+;
+;  Gadget labels - network proxy
+;
+MSG_SET_PROXY_TYPE
+T_yyppi
+; T_ype
+;
+MSG_SET_PROXY_NAME
+_Välityspalvelin
+; _Proxy
+;
+MSG_SET_PROXY_LIMITED
+Rajoitettu välityspalvelimen käyttö
+; _Limited proxy usage
+;
+MSG_SET_PROXY_NOPROXYLABEL
+Ei välityspalvelinta näille osoitteille
+; No proxy for these sites
+;
+MSG_SET_PROXY_NOPROXYADD
+Lisää
+; Add
+;
+MSG_SET_PROXY_NOPROXYDEL
+Poista
+; Del
+;
+MSG_SET_PROXY_PASSIVEFTP
+Passiivi FTP
+; Passi_ve FTP
+;
+;  Gadget labels - network external programs
+;
+MSG_SET_NWPRG_TYPE
+T_yyppi
+; T_ype
+;
+MSG_SET_NWPRG_CMD
+Ko_mento
+; Co_mmand
+;
+MSG_SET_NWPRG_ARGS
+Mää_ritteet
+; _Arguments
+;
+;  Gadget labels - program options
+;
+MSG_SET_PROGRAM_SAVEPATH
+Tallennus_hakemisto
+; S_ave path
+;
+MSG_SET_PROGRAM_OVERLAP
+V_ierityksen päällekkäisyys (pikseliä)
+; Scroll _overlap (pixels)
+;
+MSG_SET_PROGRAM_ALLOW
+Salli shell-käskyt linkeissä
+; A_llow Shell commands in links
+;
+MSG_SET_PROGRAM_HOTCLOSE
+Pikalistaikkuna sulkeutuu itse
+; _Hotlist requester auto close
+;
+MSG_SET_PROGRAM_HOTREQ
+Pikalistapainike avaa pikalistaikkunan
+; Hotlist button gives _requester
+;
+MSG_SET_PROGRAM_HOTSINGLECLICK
+Käytä kertaklikkausta pikalistaikkunassa
+; Use Singleclic_k in Hotlist Viewer
+;
+; ***NEW***
+;
+MSG_SET_PROGRAM_WHISCLOSE
+Sulje historiaikkunan automaattisesti
+; History _window auto close
+;
+MSG_SET_PROGRAM_SAVEICONS
+Luo ikonit
+; Create _icons
+;
+MSG_SET_PROGRAM_AAHOTLIST
+Avaa pikalista automaattisesti
+; Auto ope_n hotlist
+;
+MSG_SET_PROGRAM_AAWINHIS
+Avaa historiaikkuna automaattisesti
+; Auto open window histor_y
+;
+MSG_SET_PROGRAM_AANETSTAT
+Avaa verkontila-ikkuna automaattisesti
+; Auto open n_etwork status
+;
+MSG_SET_PROGRAM_DRAGGING
+Salli valinta maalaamalla
+; Allow _dragging
+;
+MSG_SET_PROGRAM_CENTERREQS
+Keskitä kyselyikkunat
+; Center re_questers
+;
+;  Gadget labels - external programs
+;
+MSG_SET_EDITOR_LABEL
+Tekstieditori
+; Editor
+;
+MSG_SET_EDITOR_CMD
+Ko_mento
+; Co_mmand
+;
+MSG_SET_EDITOR_ARGS
+Mää_ritteet
+; _Arguments
+;
+MSG_SET_VIEWER_LABEL
+HTML-lähdekoodin näyttäjä
+; HTML source viewer
+;
+;**OBSOLETE**
+MSG_SET_VIEWER_CMD
+Komento
+; C_ommand
+;
+;**OBSOLETE**
+MSG_SET_VIEWER_ARGS
+Määritteet
+; A_rguments
+;
+MSG_SET_CONSOLE
+K_onsoli
+; Co_nsole
+;
+MSG_SET_PRPROGRAMS_TYPE
+T_yyppi
+; T_ype
+;
+MSG_SET_IMGVIEWER_LABEL
+Kuvanäyttäjä
+; Image viewer
+;
+MSG_SET_STARTUP_LABEL
+Skripti, joka ajetaan käynnistyessä
+; Script run at startup
+;
+MSG_SET_SHUTDOWN_LABEL
+Skripti, joka ajetaan lopetettaessa
+; Script run at shutdown
+;
+;  Gadget labels - cache
+;
+MSG_SET_CACHE_TEMPPATH
+_Väliaikaistiedostojen hakemisto
+; Temp _path
+;
+MSG_DUMMY_2
+
+; 
+MSG_SET_CACHE_DOCMEM
+_Muisti (kilotavu)
+; _Memory (kB)
+;
+MSG_SET_CACHE_DOCDISK
+_Levy (kilotavua)
+; _Disk (kB)
+;
+MSG_DUMMY_3
+
+; 
+MSG_DUMMY_4
+
+; 
+MSG_DUMMY_5
+
+; 
+MSG_DUMMY_6
+
+; 
+MSG_DUMMY_7
+
+; 
+MSG_SET_CACHE_CACHEPATH
+Puskuri_hakemisto
+; Cache _path
+;
+MSG_SET_CACHE_SIZELABEL
+Puskurin koko
+; Cache size
+;
+MSG_SET_CACHE_FREELABEL
+Vapaana pidetään vähintään
+; Keep minimum free
+;
+MSG_SET_CACHE_CHIP
+_Grafiikkamuistia (kilotavua)
+; C_hip (kB)
+;
+MSG_SET_CACHE_FAST
+M_uuta muistia (kilotavua)
+; _Fast (kB)
+;
+MSG_CACHE_VERIFICATION_LABEL
+Puskurin tarkistus
+; Cache Verification
+;
+MSG_SET_CACHE_VERIFY_DYN
+Tarkista _dynaamiset objektit
+; Verify d_ynamic objects
+;
+MSG_SET_CACHE_VERIFY_STAT
+Tarkista _staattiset objektit
+; Verify _static objects
+;
+MSG_SET_CACHE_FASTRESPONSE_DYN
+Nopea vaste
+; Fast _response
+;
+MSG_SET_CACHE_FASTRESPONSE_STAT
+Nopea vaste
+; Fas_t response
+;
+MSG_SET_CACHE_NOCACHELABEL
+Älä puskuroi näitä osoitteita
+; Do not cache these sites
+;
+MSG_SET_CACHE_NOCACHEADD
+Lisää
+; Add
+;
+MSG_SET_CACHE_NOCACHEDEL
+Poista
+; Del
+;
+;  Gadget labels - MIME types and external viewers
+;
+MSG_SET_MIME_TYPE
+T_yyppi
+; T_ype
+;
+MSG_SET_MIME_ADD
+_Lisää
+; _Add
+;
+MSG_SET_MIME_DEL
+P_oista
+; _Del
+;
+MSG_SET_MIME_EXTENSIONS
+_Jatkeet
+; _Extensions
+;
+;**obsolete
+MSG_SET_MIME_CMD
+Komento
+; C_ommand
+;
+MSG_SET_MIME_ARGS
+Mää_ritteet
+; A_rguments
+;
+MSG_SET_MIME_NAME
+_Nimi
+; Na_me
+;
+MSG_SET_MIME_ACTION
+Toi_minto
+; Act_ion
+;
+;  Settings colour requester
+;
+MSG_SET_COLOUR_TITLE
+Valitse väri
+; Select colour
+;
+MSG_SET_COLOUR_CANCEL
+Peru
+; Cancel
+;
+MSG_SET_COLOUR_OK
+Ok
+; Ok
+;
+MSG_SET_COLOUR_RED
+R
+; R
+;
+MSG_SET_COLOUR_GREEN
+G
+; G
+;
+MSG_SET_COLOUR_BLUE
+B
+; B
+;
+;  Gadget labels - Menu (was: ARexx menu)
+;
+MSG_SET_AREXX_SORT
+L_ajittele
+; S_ort
+;
+MSG_SET_AREXX_ADD
+_Lisää
+; _Add
+;
+MSG_SET_AREXX_DEL
+_Poista
+; _Del
+;
+MSG_SET_AREXX_TITLE
+_Nimi
+; T_itle
+;
+MSG_DUMMY_9
+
+; 
+;
+MSG_DUMMY_10
+
+; 
+;
+MSG_SET_MENUS_INVALID
+VIRHEELLINEN
+; INVALID
+;
+MSG_SET_MENUS_TYPE
+T_yyppi
+; T_ype
+;
+MSG_SET_MENUS_COMMAND
+Ko_mento
+; Co_mmand
+;
+;  Gadget labels - Styles page
+;
+MSG_SET_STYLE_FIXED
+Kiinteä leveys
+; _Fixed width
+;
+MSG_SET_STYLE_ABSSIZE
+_Absoluuttinen koko
+; _Abs size
+;
+MSG_SET_STYLE_RELSIZE
+_Suhteellinen koko
+; _Rel size
+;
+MSG_SET_STYLE_NORMAL
+Normaali
+; _Normal
+;
+MSG_SET_STYLE_BOLD
+Paksunnettu
+; _Bold
+;
+MSG_SET_STYLE_ITALIC
+Kursiivi
+; _Italic
+;
+MSG_SET_STYLE_UNDERLINED
+Alleviivattu
+; Under_lined
+;
+;  Gadget labels - User buttons
+;
+MSG_SET_BUTTON_SORT
+L_ajittele
+; S_ort
+;
+MSG_SET_BUTTON_ADD
+_Lisää
+; _Add
+;
+MSG_SET_BUTTON_DEL
+P_oista
+; _Del
+;
+MSG_SET_BUTTON_LABEL
+_Nimi
+; _Label
+;
+MSG_SET_BUTTON_CMD
+Kä_sky
+; Co_mmand
+;
+;  Gadget labels - Popup menus
+;
+MSG_SET_POPUP_TYPE
+T_yyppi
+; T_ype
+;
+MSG_SET_POPUP_SORT
+L_ajittele
+; S_ort
+;
+MSG_SET_POPUP_ADD
+_Lisää
+; _Add
+;
+MSG_SET_POPUP_DEL
+P_oista
+; _Del
+;
+MSG_SET_POPUP_TITLE
+_Nimi
+; T_itle
+;
+MSG_SET_POPUP_CMD
+Kä_sky
+; Co_mmand
+;
+MSG_SET_POPUP_SHOWIF
+Näytä jos kohde
+; Show if object
+;
+MSG_SET_POPUP_INMEM
+on muistissa
+; in m_em
+;
+MSG_SET_POPUP_NOTINMEM
+ei ole muistissa
+; _not in mem
+;
+;  Gadget labels - GUI options
+;
+MSG_SET_GUIOPT_SHOWBUTTONS
+Näytä käyttäjän painikkeet
+; Show user _buttons
+;
+MSG_SET_GUIOPT_SHOWNAV
+Näytä suunnistuspainikkeet
+; Show _navigation gadgets
+;
+MSG_SET_GUIOPT_BORDERLESS
+Reunuksettomat painikkeet
+; Border_less gadgets
+;
+MSG_SET_GUIOPT_BUTTONTYPE
+Painikkeen tyyppi
+; Gadget _Type
+;
+MSG_SET_GUIOPT_TEXTONLY
+Vain teksti
+; Text Only
+;
+MSG_SET_GUIOPT_TEXTIMAGE
+Kuva & teksti
+; Image & Text
+;
+MSG_SET_GUIOPT_IMAGEONLY
+Vain kuva
+; Image Only
+;
+MSG_SET_GUIOPT_BUTTONPOS
+Painikkeen paikka
+; Gadget _Position
+;
+MSG_SET_GUIOPT_BUTPOS_LEFT
+Vasemmalla
+; Left
+;
+MSG_SET_GUIOPT_BUTPOS_RIGHT
+Oikealla
+; Right
+;
+MSG_SET_GUIOPT_BUTPOS_TOPLEFT
+Ylävasemmalla
+; Top Left
+;
+MSG_SET_GUIOPT_BUTPOS_TOPRIGHT
+Yläoikealla
+; Top Right
+;
+MSG_SET_GUIOPT_BUTPOS_BIGLEFT
+Isot vasemmalla
+; Big Left
+;
+MSG_SET_GUIOPT_BUTPOS_BIGRIGHT
+Isot oikealla
+; Big Right
+;
+MSG_SET_GUIOPT_WINBDR
+
+; Window Borders
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_WINBDR_STANDARD
+
+; Standard
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_WINBDR_GADGETLESS
+
+; Gadgetless
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_WINBDR_BORDERLESS
+
+; Borderless
+;
+; ***NEW***
+;
+;  Gadget labels - Network Mail/News
+;
+MSG_SET_MAIL_TAB_ADDRESS
+_Osoite
+; _Address
+;
+MSG_SET_MAIL_TAB_MAIL
+_Sähköposti
+; _Mail
+;
+MSG_SET_MAIL_TAB_NEWS
+_Uutiset
+; _News
+;
+MSG_SET_MAIL_TAB_OPTIONS
+_Valinnat
+; _Options
+;
+MSG_SET_MAIL_ADDRESS
+Sä_hköpostiosoite
+; _E-mail address
+;
+MSG_SET_MAIL_REALNAME
+Oikea _nimi
+; _Real name
+;
+MSG_SET_MAIL_REPLYTO
+V_astausosoite
+; Re_ply to address
+;
+MSG_SET_MAIL_ORGANIZATION
+_Järjestö
+; Or_ganization
+;
+MSG_SET_MAIL_SIGNATURE
+A_llekirjoitustiedosto
+; S_ignature file
+;
+MSG_SET_MAIL_SMTPHOST
+Postip_alvelin (SMTP)
+; Mail _host (SMTP)
+;
+MSG_SET_MAIL_MAILQUOTEHDR
+La_inauksen otsikko
+; _Quote header
+;
+MSG_SET_MAIL_EXTMAILER
+Käytä ulkoista postiohjelmaa
+; Use _external mailer
+;
+MSG_SET_MAIL_EXTMCOMMAND
+Ko_mento
+; Comman_d
+;
+MSG_SET_MAIL_EXTMARGS
+Mää_ritteet
+; Ar_guments
+;
+MSG_SET_MAIL_NNTPHOST
+Uutisp_alvelin (NNTP)
+; News _host (NNTP)
+;
+MSG_SET_MAIL_NEWSQUOTEHDR
+La_inauksen otsikko
+; _Quote header
+;
+MSG_SET_MAIL_NEWSUSER
+Uutispalvelimen kä_yttäjätunnus
+; News use_r name
+;
+MSG_SET_MAIL_NEWSPASSWORD
+Uutispalvelimen sa_lasana
+; News _password
+;
+MSG_SET_MAIL_EXTNEWS
+Käytä ulkoista uutislukijaa
+; Use _external newsreader
+;
+MSG_SET_MAIL_EXTNCOMMAND
+Ko_mento
+; Comman_d
+;
+MSG_SET_MAIL_EXTNARGS
+Mää_ritteet
+; Ar_guments
+;
+MSG_SET_MAIL_MAXARTICLES
+_Artikkelien enimmäismäärä
+; Ma_x nr of articles
+;
+MSG_SET_MAIL_SORTED
+Lajittele artikkelit
+; So_rt articles
+;
+MSG_SET_MAIL_FRAMED
+Jaa näyttö
+; S_plit screen
+;
+MSG_SET_MAIL_LONGHDRS
+Pitkät otsikot
+; _Long headers
+;
+MSG_SET_MAIL_PROPFONT
+Suhteellinen kirjasin
+; Proportional _font
+;
+MSG_SET_MAIL_NEWSBYNUMBER
+Hae numeron perusteella
+; Retrieve by num_ber
+;
+;  Gadget labels - GUI keys
+;
+MSG_SET_KEYS_KEY
+Näppäin
+; Key
+;
+MSG_SET_KEYS_COMMAND
+Kä_sky
+; Co_mmand
+;
+;  Key names
+;
+MSG_SET_KEYS_ENTER
+Enter
+; Enter
+;
+MSG_SET_KEYS_TAB
+Tab
+; Tab
+;
+MSG_SET_KEYS_BS
+Askelpalautin
+; BS
+;
+MSG_SET_KEYS_SPACE
+Välilyönti
+; Space
+;
+MSG_SET_KEYS_UP
+Ylös
+; Up
+;
+MSG_SET_KEYS_LEFT
+Vasen
+; Left
+;
+MSG_SET_KEYS_RIGHT
+Oikea
+; Right
+;
+MSG_SET_KEYS_DOWN
+Alas
+; Down
+;
+MSG_SET_KEYS_NUM
+Num
+; Num
+;
+MSG_SET_KEYS_SHIFT
+Vaihto
+; Shift
+;
+MSG_SET_KEYS_WHEELUP
+Rulla ylös
+; Wheel up
+;
+MSG_SET_KEYS_WHEELDOWN
+Rulla alas
+; Wheel down
+;
+;  Gadget labels - Navigation buttons
+;
+MSG_SET_NAVS_BUTTON
+Painike
+; Button
+;
+MSG_SET_NAVS_COMMAND
+Kä_sky
+; Co_mmand
+;
+;  Navigation button names
+;
+MSG_SET_NAVS_BACK
+Takaisin
+; Back
+;
+MSG_SET_NAVS_FORWARD
+Eteenpäin
+; Forward
+;
+MSG_SET_NAVS_HOME
+Koti
+; Home
+;
+MSG_SET_NAVS_ADDHOT
+Lisää pikalistaan
+; Add to hotlist
+;
+MSG_SET_NAVS_HOTLIST
+Näytä pikalista
+; Show hotlist
+;
+MSG_SET_NAVS_CANCEL
+Peru
+; Cancel
+;
+MSG_SET_NAVS_NETSTATUS
+Verkon tila
+; Network status
+;
+MSG_SET_NAVS_SEARCH
+Etsi
+; Search
+;
+MSG_SET_NAVS_RELOAD
+Hae uudelleen
+; Reload
+;
+MSG_SET_NAVS_LOADIMAGES
+Hae kuvat
+; Load images
+;
+;  Settings menu strings
+;
+MSG_SET_PROJECT_MENU
+Projekti
+; Project
+;
+MSG_SET_PROJECT_OPEN
+O/Avaa...
+; O/Open...
+;
+MSG_SET_PROJECT_SAVEAS
+A/Tallenna nimellä...
+; A/Save as...
+;
+MSG_SET_PROJECT_QUIT
+Q/Lopeta asetukset
+; Q/Quit settings
+;
+MSG_SET_EDIT_MENU
+Muokkaa
+; Edit
+;
+MSG_SET_EDIT_DEFAULTS
+D/Palauta oletukset
+; D/Reset to defaults
+;
+MSG_SET_EDIT_LASTSAVED
+L/Viimeksi tallennettu
+; L/Last saved
+;
+MSG_SET_EDIT_RESTORE
+R/Palauta
+; R/Restore
+;
+MSG_SET_WINDOWS_MENU
+Ikkunat
+; Windows
+;
+MSG_SET_WINDOWS_BROWSER
+Selainasetukset...
+; Browser settings...
+;
+MSG_SET_WINDOWS_PROGRAM
+Ohjelma-asetukset...
+; Program settings...
+;
+MSG_SET_WINDOWS_NETWORK
+Verkkoasetukset...
+; Network settings...
+;
+MSG_SET_WINDOWS_CLASSACT
+ClassAct-asetukset...
+; ClassAct settings...
+;
+MSG_SET_WINDOWS_SNAPSHOT
+Tallenna ikkunoiden paikat
+; Snapshot
+;
+MSG_SET_WINDOWS_GUI
+Käyttöliittymän asetukset...
+; GUI settings...
+;

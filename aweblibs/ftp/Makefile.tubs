@@ -1,0 +1,11 @@
+MODULES := aweblib/ftp.aweblib
+
+aweblib/ftp.aweblib/TYPE := executable/library/amigashared
+aweblib/ftp.aweblib/DEPS := $(MODULELIB) linklibs/libawebclib.a
+aweblib/ftp.aweblib/CFILES := \
+ftp ftpparse
+
+aweblib/ftp.aweblib/CFILES/ftp/CPPFLAGS := $(NETINCLUDE2)
+
+aweblib/ftp.aweblib/CFILES/CFLAGS := -g -O0
+aweblib/ftp.aweblib/LDFLAGS := -g

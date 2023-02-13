@@ -1,0 +1,35 @@
+<html>
+<head>
+<title>struct Taskmsg</title>
+</head>
+<body>
+<h1><code>struct Taskmsg</code></h1>
+
+<h2>Purpose</h2>
+
+The <b><code>struct Taskmsg</code></b> is used to send
+<a href="../methods/index.html">messages</a> to a
+<a href="../classes/task.html">subtask</a>.
+
+<h2>Structure contents</h2>
+
+<pre>
+struct Taskmsg
+{  struct Message execmsg;       /* The EXEC message header */
+   <a href="../methods/index.html#amessage">struct Amessage</a> *amsg;        /* The AWeb OO-message */
+   LONG result;                  /* Return value of the method */
+};
+</pre>
+
+<h2>Usage</h2>
+
+<h3>Field: <code>amsg</code></h3>
+A pointer to the <a href="../methods/index.html#amessage"><code>struct Amessage</code></a>
+that is sent with this <code>Taskmsg</code>.
+
+<h3>Field: <code>result</code></h3>
+The result after processing the supplied <code>amsg</code>.
+
+</body>
+</html>
+

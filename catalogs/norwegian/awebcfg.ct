@@ -1,0 +1,1914 @@
+## version $VER: AWebCfg.catalog 3.0 (30.06.2003)
+## language norsk
+## codeset 0
+;
+; AWebcfg.cd - AWeb configuration program catalog description file
+;
+;
+;  The MSG_DUMMY_nn labels are there because FlexCat doesn't
+;  understand the LABEL (+1//) syntax (C='s Catcomp uses this
+;  to skip 1 number)
+;
+;
+;-------------- Error messages ----------------------
+;
+; NOTE - No locale formatters (like %1$s) possible in this string!
+;        Only plain C formatters allowed.
+MSG_ERROR_CANTOPENV
+Kan ikke åpne %s versjon %ld
+; Can't open %s version %ld
+;
+MSG_ERROR_COMMANDLINE
+
+; Please check the commandline options.\n\
+; E.g. you must use at least one of the 4 switches.\n\
+; The Template is:
+;
+; ***NEW***
+;
+;
+;-------------- Settings requesters- ------------------
+;
+;  General
+;
+MSG_SET_REQTITLE_FONT
+Velg skrifttype
+; Select font
+;
+MSG_SET_REQTITLE_SCREEN
+Velg skjermmodus
+; Select screenmode
+;
+MSG_SET_REQTITLE_MAILTO
+Velg mailto: kommando
+; Select mailto: command
+;
+MSG_SET_REQTITLE_FTP
+Velg ftp: kommmando
+; Select ftp: command
+;
+MSG_SET_REQTITLE_TELNET
+Velg telnet: kommando
+; Select telnet: command
+;
+MSG_SET_REQTITLE_NEWS
+Velg news: kommando
+; Select news: command
+;
+MSG_SET_REQTITLE_STARTTCP
+Velg TCP start kommando
+; Select TCP start command
+;
+MSG_SET_REQTITLE_ENDTCP
+Velg TCP stopp kommando
+; Select TCP end command
+;
+MSG_SET_REQTITLE_TEMPPATH
+Velg midlertidig sti
+; Select temp path
+;
+MSG_SET_REQTITLE_SAVEPATH
+Velg lagringssti
+; Select save path
+;
+MSG_SET_REQTITLE_EDITOR
+Velg Editor kommando
+; Select Editor command
+;
+MSG_SET_REQTITLE_HTMLVIEWER
+Velg HTML framviser kommando
+; Select HTML viewer command
+;
+MSG_SET_REQTITLE_MIMEVIEWER
+Velg framviser kommando
+; Select viewer command
+;
+MSG_SET_REQTITLE_AREXXMACRO
+Velg ARexx makro
+; Select ARexx macro
+;
+MSG_SET_REQTITLE_BROWSERWINDOW
+AWeb browserinnstillinger
+; AWeb browser settings
+;
+MSG_SET_REQTITLE_PROGRAMWINDOW
+AWeb programinstillinger
+; AWeb program settings
+;
+MSG_SET_REQTITLE_NETWORKWINDOW
+AWeb nettverksinnstillinger
+; AWeb network settings
+;
+MSG_SET_REQTITLE_OPENBROWSER
+Hent browserinnstillinger
+; Open browser settings
+;
+MSG_SET_REQTITLE_SAVEBROWSER
+Lagre browserinnstillinger som
+; Save browser settings as
+;
+MSG_SET_REQTITLE_OPENPROGRAM
+Hent programinnstilllinger
+; Open program settings
+;
+MSG_SET_REQTITLE_SAVEPROGRAM
+Lagre programinnstillinger som
+; Save program settings as
+;
+MSG_SET_REQTITLE_OPENNETWORK
+Åpne nettverksinnstillinger
+; Open network settings
+;
+MSG_SET_REQTITLE_SAVENETWORK
+Lagre nettverksinnstillinger som
+; Save network settings as
+;
+MSG_SET_REQTITLE_CACHEPATH
+Velg cache sti
+; Select cache path
+;
+MSG_SET_REQTITLE_IMGVIEWER
+
+; Select image viewer command
+;
+MSG_SET_REQTITLE_GUIWINDOW
+
+; AWeb GUI settings
+;
+MSG_SET_REQTITLE_OPENGUI
+
+; Open GUI settings
+;
+MSG_SET_REQTITLE_SAVEGUI
+
+; Save GUI settings as
+;
+MSG_SET_REQTITLE_SIGNATURE
+
+; Select signature file
+;
+MSG_SET_REQTITLE_STARTUPSCRIPT
+
+; Select startup ARexx script
+;
+MSG_SET_REQTITLE_SHUTDOWNSCRIPT
+
+; Select shutdown ARexx script
+;
+;  Clicktab labels - Browser
+;
+MSG_SET_CTBR_OPTIONS
+_1 Valg
+; _1 Options
+;
+MSG_SET_CTBR_FONTS
+_2 Skrifttyper
+; _2 Fonts
+;
+MSG_SET_CTBR_STYLES
+_3 Stiler
+; _3 Styles
+;
+MSG_SET_CTBR_COLOURS
+_4 Farger
+; _4 Colours
+;
+MSG_SET_CTBR_MIME
+_5 Framvisere
+; _5 Viewers
+;
+;  Clicktab labels - Program
+;
+MSG_SET_CTPR_SCREEN
+_1 Skjerm
+; _1 Screen
+;
+MSG_SET_CTPR_PALETTE
+_2 Palett
+; _2 Palette
+;
+MSG_SET_CTPR_OPTIONS
+_3 Valg
+; _3 Options
+;
+MSG_SET_CTPR_PROGRAMS
+_4 Programmer
+; _4 Programs
+;
+MSG_SET_CTPR_AREXX
+_5 ARexx
+; _5 ARexx
+;
+;  Clicktab labels - Network
+;
+MSG_SET_CTNW_OPTIONS
+_1 Valg
+; _1 Options
+;
+MSG_SET_CTNW_PROGRAMS
+_2 Programmer
+; _2 Programs
+;
+MSG_SET_CTNW_PROXY
+_3 Proxy
+; _3 Proxy
+;
+MSG_SET_CTNW_CACHE
+_4 Cache
+; _4 Cache
+;
+MSG_SET_CTNW_PRIVACY
+
+; _5 Privacy
+;
+MSG_SET_CTNW_MAIL
+
+; _6 Mail/News
+;
+;  Clicktab labels - GUI
+;
+MSG_SET_CTUI_OPTIONS
+
+; _1 Options
+;
+MSG_DUMMY_8
+
+; 
+;
+MSG_SET_CTUI_BUTTONS
+
+; _3 Buttons
+;
+MSG_SET_CTUI_POPUP
+
+; _4 Popup
+;
+MSG_SET_CTUI_KEYS
+
+; _5 Keys
+;
+MSG_SET_CTUI_MENUS
+
+; _2 Menus
+;
+MSG_SET_CTUI_NAV
+
+; _6 Navigation
+;
+;  Popup help
+;
+; (don't use 40200-40208)
+;
+MSG_SET_HLP_NOARGS
+(Ingen erstatt-variabler)
+; (No placeholders)
+;
+MSG_SET_HLP_A
+%a = diskusjonsgruppe eller artikkel
+; %%a = newsgroup or article
+;
+MSG_SET_HLP_E
+%e = e-post adresse
+; %%e = e-mail address
+;
+MSG_SET_HLP_F
+%f = sti/filnavn
+; %%f = path/file name
+;
+MSG_SET_HLP_H
+%h = vertsnavn
+; %%h = host name
+;
+MSG_SET_HLP_L
+%l = innloggingsnavn
+; %%l = login name
+;
+MSG_SET_HLP_N
+%n = skjermnavn
+; %%n = screen name
+;
+MSG_SET_HLP_P
+%p = portnummer
+; %%p = port number
+;
+MSG_SET_HLP_U
+%u = original URL
+; %%u = original URL
+;
+MSG_SET_HLP_W
+%w = passord
+; %%w = password
+;
+MSG_SET_HLP_T
+
+; %%t = title
+;
+MSG_SET_HLP_U2
+
+; %%u = current URL
+;
+MSG_SET_HLP_U3
+
+; %%u = object URL
+;
+MSG_SET_HLP_I
+
+; %%i = frame ID
+;
+MSG_SET_HLP_I2
+
+; %%i = target frame ID
+;
+MSG_SET_HLP_M
+
+; %%m = MIME type
+;
+MSG_SET_HLP_S
+
+; %%s = search argument
+;
+MSG_SET_HLP_D
+
+; %%d = date
+;
+MSG_SET_HLP_G
+
+; %%g = group name
+;
+MSG_SET_HLP_I3
+
+; %%i = message id
+;
+MSG_SET_HLP_N2
+
+; %%n = real name
+;
+MSG_SET_HLP_S2
+
+; %%s = subject
+;
+MSG_SET_HLP_I4
+
+; %%i = focus frame ID
+;
+MSG_SET_HLP_C
+
+; %%c = config name
+;
+;  Font descriptions
+;
+MSG_SET_FD_NORMALTAG
+Normal
+; Normal
+;
+MSG_SET_FD_NORMAL
+Normal tekst
+; Normal text
+;
+MSG_SET_FD_H1
+<H1> : Overskrifter nivå 1
+; <H1> : Headers level 1, largest
+;
+MSG_SET_FD_H2
+<H2> : Overskrifter nivå 2
+; <H2> : Headers level 2
+;
+MSG_SET_FD_H3
+<H3> : Overskrifter nivå 3
+; <H3> : Headers level 3
+;
+MSG_SET_FD_H4
+<H4> : Overskrifter nivå 4
+; <H4> : Headers level 4
+;
+MSG_SET_FD_H5
+<H5> : Overskrifter nivå 5
+; <H5> : Headers level 5
+;
+MSG_SET_FD_H6
+<H6> : Overskrifter nivå 6
+; <H6> : Headers level 6, smallest
+;
+MSG_SET_FD_CITE
+<CITE> : sitat, vanligvis kursiv
+; <CITE> : citations, typically italics
+;
+MSG_SET_FD_CODE
+<CODE> : kode eksempel, vanligvis proporsjonal
+; <CODE> : code example, typically monospaced
+;
+MSG_SET_FD_DFN
+<DFN> : definisjon, vanligvis kursiv
+; <DFN> : definition, typically italics
+;
+MSG_SET_FD_EM
+<EM> : uthevet, vanligvis kursiv
+; <EM> : emphasized, typically italics
+;
+MSG_SET_FD_KBD
+<KBD> : tastatur innputt, vanligvis proporsjonal
+; <KBD> : keyboard input, typically monospaced
+;
+MSG_SET_FD_SAMP
+<SAMP> : prøve utputt, vanligvis proporsjonal
+; <SAMP> : sample output, typically monospaced
+;
+MSG_SET_FD_STRONG
+<STRONG> : sterkt uthevet, vanligvis fet
+; <STRONG> : strong emphasis, typically bold
+;
+MSG_SET_FD_VAR
+<VAR> : erstatt-variabel, vanligvis kursiv
+; <VAR> : placeholder variable, typically italics
+;
+MSG_DUMMY_1
+
+; 
+; (Note the leading space in the next 3 strings)
+MSG_SET_FD_BOLD
+ Fet
+;  Bold
+;
+MSG_SET_FD_ITALIC
+ Kursiv
+;  Italic
+;
+MSG_SET_FD_UNDERLINED
+ Understreket
+;  Underlined
+;
+MSG_SET_FD_NORMALFONT
+Normal skrifttype
+; Normal font
+;
+MSG_SET_FD_FIXEDFONT
+Fastbredde skrifttype
+; Fixed width font
+;
+MSG_SET_FD_SIZE
+Størrelse
+; size
+;
+MSG_SET_FD_BIG
+<BIG> : stor skrifttype
+; <BIG> : large font
+;
+MSG_SET_FD_SMALL
+<SMALL> : liten skrifttype
+; <SMALL> : small font
+;
+MSG_SET_FD_SUB
+<SUB> : liten nedsenket skrifttype
+; <SUB> : small subscript font
+;
+MSG_SET_FD_SUP
+<SUP> : liten opphevet skrifttype
+; <SUP> : small superscript font
+;
+MSG_SET_FD_ADDRESS
+<ADDRESS> : adresse, vanligvis kursiv
+; <ADDRESS> : address, typically italics
+;
+MSG_SET_FD_BLOCKQUOTE
+<BLOCKQUOTE> : lange sitat, vanligvis kursiv
+; <BLOCKQUOTE> : long quotations, typically italics
+;
+MSG_SET_FD_PRE
+<PRE> : preformatert tekst, bør være fast bredde
+; <PRE> : preformatted text, should be fixed width
+;
+;  HTML modes
+;
+MSG_SET_HTML_STRICT
+Streng
+; Strict
+;
+MSG_SET_HTML_TOLERANT
+Tolerent
+; Tolerant
+;
+MSG_SET_HTML_COMPATIBLE
+Kompatibel
+; Compatible
+;
+;  Screen types
+;
+MSG_SET_SCRT_DEFAULT
+Standard offentlig skjerm
+; Default public screen
+;
+MSG_SET_SCRT_NAMED
+Navngitt offentlig skjerm
+; Named public screen
+;
+MSG_SET_SCRT_OWN
+Egen offentlig skjerm
+; Own public screen
+;
+;  Image loading types
+;
+MSG_SET_IMGL_OFF
+Av
+; Off
+;
+MSG_SET_IMGL_MAPS
+Bare Maps
+; Maps only
+;
+MSG_SET_IMGL_ALL
+Alle bilder
+; All images
+;
+;  MIME list column names
+;
+MSG_SET_MLCN_TYPE
+Type
+; Type
+;
+MSG_SET_MLCN_EXT
+Endinger
+; Extensions
+;
+;**obsolete
+MSG_SET_MLCN_COMMAND
+Framviser kommando
+; Viewer command
+;
+MSG_SET_MLCN_ACTION
+
+; A
+;
+MSG_SET_MLCN_NAME
+
+; Name and arguments
+;
+;  Browser pen names
+;
+MSG_SET_BRPEN_LINK
+Ny lenke
+; New link
+;
+MSG_SET_BRPEN_VLINK
+Besøkt lenke
+; Visited link
+;
+MSG_SET_BRPEN_ALINK
+Valgt lenke
+; Selected link
+;
+MSG_SET_BRPEN_BGCOLOR
+Bakgrunn
+; Background
+;
+MSG_SET_BRPEN_TEXT
+Tekst
+; Text
+;
+;  Screen colour names
+;
+MSG_SET_SCRPEN_TEXT
+Normal tekst
+; Normal text
+;
+MSG_SET_SCRPEN_SHINE
+Lyse kanter
+; Bright edges
+;
+MSG_SET_SCRPEN_SHADOW
+Mørke kanter
+; Dark edges
+;
+MSG_SET_SCRPEN_FILL
+Aktive vinduers tittel-linje
+; Active window title bars
+;
+MSG_SET_SCRPEN_FILLTEXT
+Aktive vinduers tittler
+; Active window titles
+;
+MSG_SET_SCRPEN_BACKGROUND
+Bakgrunn
+; Background
+;
+MSG_SET_SCRPEN_HIGHLIGHTTEXT
+Viktig tekst
+; Important text
+;
+MSG_SET_SCRPEN_BARDETAIL
+Meny tekst
+; Menu text
+;
+MSG_SET_SCRPEN_BARBLOCK
+Meny bakgrunn
+; Menu background
+;
+;  ARexx menu shortcut
+;
+MSG_SET_AREX_NONE
+ingen
+; none
+;
+;  Network external program types
+;
+MSG_SET_NWPRG_STARTTCP
+Start TCP
+; Start TCP
+;
+MSG_SET_NWPRG_ENDTCP
+Stopp TCP
+; End TCP
+;
+;  Font types and sizes (fonts page)
+;
+MSG_SET_FTYPE_NORMAL
+Normale skrifttyper
+; Normal fonts
+;
+MSG_SET_FTYPE_FIXED
+Fastbredde skrifttyper
+; Fixed width fonts
+;
+MSG_SET_FSIZE_1
+1 (minst)
+; 1 (smallest)
+;
+MSG_SET_FSIZE_3
+3 (normal)
+; 3 (normal)
+;
+MSG_SET_FSIZE_7
+7 (størst)
+; 7 (largest)
+;
+;  Font list headers
+;
+MSG_SET_FLH_SIZE
+Størrelse
+; Size
+;
+MSG_SET_FLH_FONTFACE
+Skrifttype navn og størrelse
+; Font name and size
+;
+;  Style list headers
+;
+MSG_SET_SLH_TAG
+Tag
+; Tag
+;
+MSG_SET_SLH_STYLE
+Tegnet som
+; Rendered as
+;
+;  Cache verify modes
+;
+MSG_SET_CAVERIFY_ALWAYS
+Alltid
+; Always
+;
+MSG_SET_CAVERIFY_ONCE
+En gang
+; Once per session
+;
+MSG_SET_CAVERIFY_NEVER
+Aldri
+; Never
+;
+;  Palette loading
+;
+MSG_SET_LPAL_OFF
+Av
+; Off
+;
+MSG_SET_LPAL_COLOURS
+Farger
+; Colours
+;
+MSG_SET_LPAL_GRAY
+Gråskala
+; Grayscale
+;
+;  MIME action names and abbreviationss
+;
+MSG_SET_MACT_DEFAULT
+
+; Default
+;
+MSG_SET_MACT_INTERNAL
+
+; Internal (I)
+;
+MSG_SET_MACT_PLUGIN
+
+; AWeb Plugin (A)
+;
+MSG_SET_MACT_EXTERNAL
+
+; Extl. program (E)
+;
+MSG_SET_MACT_EXTPIPE
+
+; Extl. w/PIPE (P)
+;
+MSG_SET_MACT_SAVEDISK
+
+; Save to disk (S)
+;
+MSG_SET_MACT_EXTCAN
+
+; Extl. No Fetch (F)
+;
+; ***NEW***
+;
+MSG_SET_MACT_CANCEL
+
+; Cancel (C)
+;
+; ***NEW***
+;
+; 1-letter abbreviations to use for the above in the MIME list
+MSG_SET_MACT_ABBREV
+ IAEPFSC
+;  IAEPFSC
+;
+;  Cookie settings
+;
+MSG_SET_COOKIES_NEVER
+
+; Never
+;
+MSG_SET_COOKIES_ASK
+
+; Ask before set
+;
+MSG_SET_COOKIES_QUIET
+
+; Always (quiet)
+;
+;  Pupup menu types
+;
+MSG_SET_PUPTYPE_IMAGE
+
+; Image popup menu
+;
+MSG_SET_PUPTYPE_LINK
+
+; Link popup menu
+;
+MSG_SET_PUPTYPE_FRAME
+
+; Frame popup menu
+;
+;  Menu entry types (used in the chooser)
+;
+MSG_SET_MENUTYPE_MENU
+
+; Menu
+;
+MSG_SET_MENUTYPE_ITEM
+
+; Item
+;
+MSG_SET_MENUTYPE_SUB
+
+; Sub
+;
+;  Menu entry types used in the first list column.
+;  For best effects, make sure the string for "MENU" is
+;  wider than the string for "Item".
+;
+MSG_SET_MENULABEL_MENU
+
+; MENU
+;
+MSG_SET_MENULABEL_ITEM
+
+; Item
+;
+;  Javascript choices
+;
+MSG_SET_JS_OFF
+
+; Off
+;
+MSG_SET_JS_11
+
+; Fastidious
+;
+MSG_SET_JS_ALL
+
+; Omnivorous
+;
+;  Gadget labels - general
+;
+MSG_SET_PAGE
+_Side
+; _Page
+;
+MSG_SET_SAVE
+_Lagre
+; _Save
+;
+MSG_SET_USE
+_Bruk
+; _Use
+;
+MSG_SET_CANCEL
+_Avbryt
+; _Cancel
+;
+MSG_SET_TEST
+_Test
+; _Test
+;
+;  Gadget labels - fonts
+;
+MSG_SET_FONT_FONT
+S_krifttype
+; _Font
+;
+MSG_SET_FONT_FONTTYPE
+Skriftt_ype
+; Font t_ype
+;
+MSG_SET_FONT_SETALL
+_Sett alle til denne skrifttypen
+; Set _all to this font name
+;
+MSG_SET_FONT_FONTTYPE2
+
+; Font type
+;
+MSG_SET_FONT_ALIAS
+
+; A_lias
+;
+MSG_SET_FONT_ADD
+
+; Add
+;
+MSG_SET_FONT_DEL
+
+; Del
+;
+;  Gadget labels - colours
+;
+MSG_SET_APP_CHGCOLOUR
+F_orandre farge
+; C_hange colour
+;
+MSG_SET_APP_SCREENPENS
+Bruk _skjermtekst og bakgrunnspenner
+; Use screen text and _background pens
+;
+;  Gadget labels - browser options/gui options
+;
+MSG_SET_BROPT_HTMLMODE
+HTML _modus
+; HTML _mode
+;
+MSG_SET_BROPT_ULLINKS
+Under_strekede lenker
+; Under_lined links
+;
+MSG_SET_BROPT_CYCLETOLIST
+Vis 'c_ycle' felter som liste
+; Show c_ycle fields as list
+;
+MSG_SET_BROPT_DOCOLORS
+B_ruk bakgrunn og farger
+; Use _background and colours
+;
+MSG_SET_BROPT_POPUPLABEL
+Poppopp-meny aktivering
+; Popup menu activation
+;
+MSG_SET_BROPT_POPUPSHIFT
+S_HIFT tast
+; S_HIFT key
+;
+MSG_SET_BROPT_POPUPALT
+_ALT tast
+; _ALT key
+;
+MSG_SET_BROPT_POPUPCONTROL
+CT_RL tast
+; CT_RL key
+;
+MSG_SET_BROPT_POPUPMIDBUTTON
+M_idtre museknapp
+; M_iddle mouse button
+;
+MSG_SET_BROPT_DOBGSOUND
+Bruk bakgrunnsly_d
+; Use background soun_d
+;
+MSG_SET_BROPT_BLINK
+
+; Blin_k (0.1 s)
+;
+MSG_SET_BROPT_POPUPRBUTTON
+
+; Ri_ght mouse button
+;
+MSG_SET_BROPT_JAVASCRIPT
+
+; Use _JavaScript
+;
+MSG_SET_BROPT_FRAMES
+
+; Use _frames
+;
+MSG_SET_BROPT_INCTABLE
+
+; _Incremental table display
+;
+MSG_SET_BROPT_NOMINALFRAME
+
+; _Nominal frame height
+;
+MSG_SET_BROPT_JSERRORS
+
+; Show JavaScript _errors
+;
+MSG_SET_BROPT_NOBANNERS
+
+; Su_ppress banner windows
+;
+MSG_SET_BROPT_TOOLTIPS
+
+; Display t_ooltips for images
+;
+MSG_SET_BROPT_HANDPOINTER
+
+; _Hand pointer over links
+;
+MSG_SET_BROPT_JSWATCH
+
+; _Warn for suspect JavaScript
+;
+MSG_SET_BROPT_TEMPRP
+
+; Use double buffered _rendering
+;
+; ***NEW***
+;
+MSG_SET_BROPT_CHARSET
+
+; Default ch_aracter set
+;
+; ***NEW***
+;
+MSG_SET_BROPT_IMGBORDER
+
+; Border around ima_ges
+;
+; ***NEW***
+;
+;  Gadget labels - screen
+;
+MSG_SET_SCREEN_OPENON
+Åpne _på
+; _Open on
+;
+MSG_SET_SCREEN_NAME
+Skjerm_navn
+; Screen _name
+;
+MSG_SET_SCREEN_MODE
+Skjerm_modus
+; Screen _mode
+;
+MSG_SET_SCREEN_PALETTE
+_Hent spredd palett
+; _Load spread palette
+;
+;  Gadget labels - palette
+;
+MSG_SET_PALL_PENLABEL
+Penn innstillinger
+; Pen settings
+;
+MSG_SET_PALL_PEN
+P_enn
+; P_en
+;
+MSG_SET_PALL_PALLETTELABEL
+Forandre palett
+; Change palette
+;
+MSG_SET_PALL_PALLPEN
+Pe_nn
+; Pe_n
+;
+MSG_SET_PALL_CHGCOLOUR
+_Forandre farge
+; C_hange colour
+;
+;  Gadget labels - network options and privacy
+;
+MSG_SET_NETWORK_IMGLOAD
+B_ilde nedlasting
+; _Image loading
+;
+MSG_SET_NETWORK_MAXCONN
+Maks. _nettverksforbindelser
+; Max. _network connections
+;
+MSG_SET_NETWORK_HOMEPAGE
+_Hjemmeside
+; _Home page
+;
+MSG_SET_NETWORK_LOCALINDEX
+L_okal index
+; _Local index
+;
+MSG_SET_NETWORK_STARTHOME
+Start _med hjemmeside
+; St_art with home page
+;
+MSG_SET_NETWORK_ANONYMOUS
+S_urf anonymt
+; Suppress _Referer while browsing
+;
+MSG_SET_NETWORK_IGNORE
+I_gnorèr tjener MIME typer
+; I_gnore server MIME type
+;
+MSG_SET_NETWORK_MAXDISK
+_disk lesninger
+; _disk reads
+;
+MSG_SET_NETWORK_COOKIES
+Bruk coo_kies
+; Use coo_kies
+;
+MSG_SET_NETWORK_NOCOOKIELABEL
+
+; No cookies for domains
+;
+MSG_SET_NETWORK_NOCOOKIEADD
+
+; Add
+;
+MSG_SET_NETWORK_NOCOOKIEDEL
+
+; Del
+;
+MSG_SET_NETWORK_FORMWARN
+
+; _Warn before sending unsecure form data
+;
+MSG_SET_NETWORK_AUTOSEARCHURL
+
+; Autosea_rch URL
+;
+MSG_SET_NETWORK_AUTOSEARCH
+
+; _Enable autosearch
+;
+MSG_SET_NETWORK_SPAMBLOCK
+
+; _Activate spamblock when posting news
+;
+MSG_SET_NETWORK_FTPEMAILADDR
+
+; Use e-mail address as _FTP anon password
+;
+MSG_SET_NETWORK_SPOOFID
+
+; Spoo_f as
+;
+MSG_SET_NETWORK_CONTANIM
+
+; C_ontinuous animation
+;
+MSG_SET_NETWORK_SPOOFID_EXPL
+
+; (Select an entry from the list\n or type your own browser ID)
+;
+MSG_SET_NETWORK_RESTRICT_IMAGES
+
+; Restrict i_mages to same host
+;
+;  Gadget labels - network proxy
+;
+MSG_SET_PROXY_TYPE
+T_ype
+; T_ype
+;
+MSG_SET_PROXY_NAME
+P_roxy
+; _Proxy
+;
+MSG_SET_PROXY_LIMITED
+B_egrenset proxy bruk
+; _Limited proxy usage
+;
+MSG_SET_PROXY_NOPROXYLABEL
+Ikke bruk proxy for disse adressene
+; No proxy for these sites
+;
+MSG_SET_PROXY_NOPROXYADD
+Legg til
+; Add
+;
+MSG_SET_PROXY_NOPROXYDEL
+Slett
+; Del
+;
+MSG_SET_PROXY_PASSIVEFTP
+
+; Passi_ve FTP
+;
+;  Gadget labels - network external programs
+;
+MSG_SET_NWPRG_TYPE
+T_ype
+; T_ype
+;
+MSG_SET_NWPRG_CMD
+Ko_mmando
+; Co_mmand
+;
+MSG_SET_NWPRG_ARGS
+A_rgumenter
+; _Arguments
+;
+;  Gadget labels - program options
+;
+MSG_SET_PROGRAM_SAVEPATH
+La_gre sti
+; S_ave path
+;
+MSG_SET_PROGRAM_OVERLAP
+Scroll _overlapping (piksler)
+; Scroll _overlap (pixels)
+;
+MSG_SET_PROGRAM_ALLOW
+Tillat Shell _kommandoer i lenker
+; A_llow Shell commands in links
+;
+MSG_SET_PROGRAM_HOTCLOSE
+A_dresseliste vindu auto-lukk
+; _Hotlist requester auto close
+;
+MSG_SET_PROGRAM_HOTREQ
+Adresseliste knapp gir _vindu
+; Hotlist button gives _requester
+;
+MSG_SET_PROGRAM_HOTSINGLECLICK
+
+; Use Singleclic_k in Hotlist Viewer
+;
+; ***NEW***
+;
+MSG_SET_PROGRAM_WHISCLOSE
+H_istorie vindu auto-lukk
+; History _window auto close
+;
+MSG_SET_PROGRAM_SAVEICONS
+Lag iko_ner
+; Create _icons
+;
+MSG_SET_PROGRAM_AAHOTLIST
+Åpne adresseliste a_utomatisk
+; Auto ope_n hotlist
+;
+MSG_SET_PROGRAM_AAWINHIS
+Åpne vin_dushistorie automatisk
+; Auto open window histor_y
+;
+MSG_SET_PROGRAM_AANETSTAT
+Åpne nettverks_status automatisk
+; Auto open n_etwork status
+;
+MSG_SET_PROGRAM_DRAGGING
+
+; Allow _dragging
+;
+MSG_SET_PROGRAM_CENTERREQS
+
+; Center re_questers
+;
+;  Gadget labels - external programs
+;
+MSG_SET_EDITOR_LABEL
+Editor:
+; Editor
+;
+MSG_SET_EDITOR_CMD
+Ko_mmando
+; Co_mmand
+;
+MSG_SET_EDITOR_ARGS
+A_rgumenter
+; _Arguments
+;
+MSG_SET_VIEWER_LABEL
+HTML kildekode framviser
+; HTML source viewer
+;
+;**OBSOLETE**
+MSG_SET_VIEWER_CMD
+K_ommando
+; C_ommand
+;
+;**OBSOLETE**
+MSG_SET_VIEWER_ARGS
+Ar_gumenter
+; A_rguments
+;
+MSG_SET_CONSOLE
+
+; Co_nsole
+;
+MSG_SET_PRPROGRAMS_TYPE
+
+; T_ype
+;
+MSG_SET_IMGVIEWER_LABEL
+
+; Image viewer
+;
+MSG_SET_STARTUP_LABEL
+
+; Script run at startup
+;
+MSG_SET_SHUTDOWN_LABEL
+
+; Script run at shutdown
+;
+;  Gadget labels - cache
+;
+MSG_SET_CACHE_TEMPPATH
+Midl_ertidig sti
+; Temp _path
+;
+MSG_DUMMY_2
+
+; 
+MSG_SET_CACHE_DOCMEM
+_Minne (kB)
+; _Memory (kB)
+;
+MSG_SET_CACHE_DOCDISK
+_Disk (kB)
+; _Disk (kB)
+;
+MSG_DUMMY_3
+
+; 
+MSG_DUMMY_4
+
+; 
+MSG_DUMMY_5
+
+; 
+MSG_DUMMY_6
+
+; 
+MSG_DUMMY_7
+
+; 
+MSG_SET_CACHE_CACHEPATH
+Cache _sti
+; Cache _path
+;
+MSG_SET_CACHE_SIZELABEL
+Cache størrelse
+; Cache size
+;
+MSG_SET_CACHE_FREELABEL
+Hold minimum ledig
+; Keep minimum free
+;
+MSG_SET_CACHE_CHIP
+_Grafikkminne (kB)
+; C_hip (kB)
+;
+MSG_SET_CACHE_FAST
+_Hurtigminne (kB)
+; _Fast (kB)
+;
+MSG_CACHE_VERIFICATION_LABEL
+
+; Cache Verification
+;
+; ***NEW***
+;
+MSG_SET_CACHE_VERIFY_DYN
+
+; Verify d_ynamic objects
+;
+; ***NEW***
+;
+MSG_SET_CACHE_VERIFY_STAT
+
+; Verify _static objects
+;
+; ***NEW***
+;
+MSG_SET_CACHE_FASTRESPONSE_DYN
+
+; Fast _response
+;
+; ***NEW***
+;
+MSG_SET_CACHE_FASTRESPONSE_STAT
+
+; Fas_t response
+;
+; ***NEW***
+;
+MSG_SET_CACHE_NOCACHELABEL
+Ikke legg disse dokumentene i cachen
+; Do not cache these sites
+;
+MSG_SET_CACHE_NOCACHEADD
+Legg til
+; Add
+;
+MSG_SET_CACHE_NOCACHEDEL
+Slett
+; Del
+;
+;  Gadget labels - MIME types and external viewers
+;
+MSG_SET_MIME_TYPE
+_Type
+; T_ype
+;
+MSG_SET_MIME_ADD
+Le_gg til
+; _Add
+;
+MSG_SET_MIME_DEL
+Sl_ett
+; _Del
+;
+MSG_SET_MIME_EXTENSIONS
+En_dinger
+; _Extensions
+;
+;**obsolete
+MSG_SET_MIME_CMD
+K_ommando
+; C_ommand
+;
+MSG_SET_MIME_ARGS
+A_rgumenter
+; A_rguments
+;
+MSG_SET_MIME_NAME
+
+; Na_me
+;
+MSG_SET_MIME_ACTION
+
+; Act_ion
+;
+;  Settings colour requester
+;
+MSG_SET_COLOUR_TITLE
+Velg farge
+; Select colour
+;
+MSG_SET_COLOUR_CANCEL
+Avbryt
+; Cancel
+;
+MSG_SET_COLOUR_OK
+Ok
+; Ok
+;
+MSG_SET_COLOUR_RED
+R
+; R
+;
+MSG_SET_COLOUR_GREEN
+G
+; G
+;
+MSG_SET_COLOUR_BLUE
+B
+; B
+;
+;  Gadget labels - Menu (was: ARexx menu)
+;
+MSG_SET_AREXX_SORT
+S_ortèr
+; S_ort
+;
+MSG_SET_AREXX_ADD
+Le_gg til
+; _Add
+;
+MSG_SET_AREXX_DEL
+Sl_ett
+; _Del
+;
+MSG_SET_AREXX_TITLE
+_Tittel
+; T_itle
+;
+MSG_DUMMY_9
+
+; 
+;
+MSG_DUMMY_10
+
+; 
+;
+MSG_SET_MENUS_INVALID
+
+; INVALID
+;
+MSG_SET_MENUS_TYPE
+
+; T_ype
+;
+MSG_SET_MENUS_COMMAND
+
+; Co_mmand
+;
+;  Gadget labels - Styles page
+;
+MSG_SET_STYLE_FIXED
+_Fast bredde
+; _Fixed width
+;
+MSG_SET_STYLE_ABSSIZE
+Ab_solutt størrelse
+; _Abs size
+;
+MSG_SET_STYLE_RELSIZE
+_Relativ størrelse
+; _Rel size
+;
+MSG_SET_STYLE_NORMAL
+_Normal
+; _Normal
+;
+MSG_SET_STYLE_BOLD
+F_et
+; _Bold
+;
+MSG_SET_STYLE_ITALIC
+Kurs_iv
+; _Italic
+;
+MSG_SET_STYLE_UNDERLINED
+_Understreket
+; Under_lined
+;
+;  Gadget labels - User buttons
+;
+MSG_SET_BUTTON_SORT
+
+; S_ort
+;
+MSG_SET_BUTTON_ADD
+
+; _Add
+;
+MSG_SET_BUTTON_DEL
+
+; _Del
+;
+MSG_SET_BUTTON_LABEL
+
+; _Label
+;
+MSG_SET_BUTTON_CMD
+
+; Co_mmand
+;
+;  Gadget labels - Popup menus
+;
+MSG_SET_POPUP_TYPE
+
+; T_ype
+;
+MSG_SET_POPUP_SORT
+
+; S_ort
+;
+MSG_SET_POPUP_ADD
+
+; _Add
+;
+MSG_SET_POPUP_DEL
+
+; _Del
+;
+MSG_SET_POPUP_TITLE
+
+; T_itle
+;
+MSG_SET_POPUP_CMD
+
+; Co_mmand
+;
+MSG_SET_POPUP_SHOWIF
+
+; Show if object
+;
+MSG_SET_POPUP_INMEM
+
+; in m_em
+;
+MSG_SET_POPUP_NOTINMEM
+
+; _not in mem
+;
+;  Gadget labels - GUI options
+;
+MSG_SET_GUIOPT_SHOWBUTTONS
+
+; Show user _buttons
+;
+MSG_SET_GUIOPT_SHOWNAV
+
+; Show _navigation gadgets
+;
+MSG_SET_GUIOPT_BORDERLESS
+
+; Border_less gadgets
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTTONTYPE
+
+; Gadget _Type
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_TEXTONLY
+
+; Text Only
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_TEXTIMAGE
+
+; Image & Text
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_IMAGEONLY
+
+; Image Only
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTTONPOS
+
+; Gadget _Position
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTPOS_LEFT
+
+; Left
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTPOS_RIGHT
+
+; Right
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTPOS_TOPLEFT
+
+; Top Left
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTPOS_TOPRIGHT
+
+; Top Right
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTPOS_BIGLEFT
+
+; Big Left
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_BUTPOS_BIGRIGHT
+
+; Big Right
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_WINBDR
+
+; Window Borders
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_WINBDR_STANDARD
+
+; Standard
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_WINBDR_GADGETLESS
+
+; Gadgetless
+;
+; ***NEW***
+;
+MSG_SET_GUIOPT_WINBDR_BORDERLESS
+
+; Borderless
+;
+; ***NEW***
+;
+;  Gadget labels - Network Mail/News
+;
+MSG_SET_MAIL_TAB_ADDRESS
+
+; _Address
+;
+MSG_SET_MAIL_TAB_MAIL
+
+; _Mail
+;
+MSG_SET_MAIL_TAB_NEWS
+
+; _News
+;
+MSG_SET_MAIL_TAB_OPTIONS
+
+; _Options
+;
+MSG_SET_MAIL_ADDRESS
+
+; _E-mail address
+;
+MSG_SET_MAIL_REALNAME
+
+; _Real name
+;
+MSG_SET_MAIL_REPLYTO
+
+; Re_ply to address
+;
+MSG_SET_MAIL_ORGANIZATION
+
+; Or_ganization
+;
+MSG_SET_MAIL_SIGNATURE
+
+; S_ignature file
+;
+MSG_SET_MAIL_SMTPHOST
+
+; Mail _host (SMTP)
+;
+MSG_SET_MAIL_MAILQUOTEHDR
+
+; _Quote header
+;
+MSG_SET_MAIL_EXTMAILER
+
+; Use _external mailer
+;
+MSG_SET_MAIL_EXTMCOMMAND
+
+; Comman_d
+;
+MSG_SET_MAIL_EXTMARGS
+
+; Ar_guments
+;
+MSG_SET_MAIL_NNTPHOST
+
+; News _host (NNTP)
+;
+MSG_SET_MAIL_NEWSQUOTEHDR
+
+; _Quote header
+;
+MSG_SET_MAIL_NEWSUSER
+
+; News use_r name
+;
+MSG_SET_MAIL_NEWSPASSWORD
+
+; News _password
+;
+MSG_SET_MAIL_EXTNEWS
+
+; Use _external newsreader
+;
+MSG_SET_MAIL_EXTNCOMMAND
+
+; Comman_d
+;
+MSG_SET_MAIL_EXTNARGS
+
+; Ar_guments
+;
+MSG_SET_MAIL_MAXARTICLES
+
+; Ma_x nr of articles
+;
+MSG_SET_MAIL_SORTED
+
+; So_rt articles
+;
+MSG_SET_MAIL_FRAMED
+
+; S_plit screen
+;
+MSG_SET_MAIL_LONGHDRS
+
+; _Long headers
+;
+MSG_SET_MAIL_PROPFONT
+
+; Proportional _font
+;
+MSG_SET_MAIL_NEWSBYNUMBER
+
+; Retrieve by num_ber
+;
+;  Gadget labels - GUI keys
+;
+MSG_SET_KEYS_KEY
+
+; Key
+;
+MSG_SET_KEYS_COMMAND
+
+; Co_mmand
+;
+;  Key names
+;
+MSG_SET_KEYS_ENTER
+
+; Enter
+;
+MSG_SET_KEYS_TAB
+
+; Tab
+;
+MSG_SET_KEYS_BS
+
+; BS
+;
+MSG_SET_KEYS_SPACE
+
+; Space
+;
+MSG_SET_KEYS_UP
+
+; Up
+;
+MSG_SET_KEYS_LEFT
+
+; Left
+;
+MSG_SET_KEYS_RIGHT
+
+; Right
+;
+MSG_SET_KEYS_DOWN
+
+; Down
+;
+MSG_SET_KEYS_NUM
+
+; Num
+;
+MSG_SET_KEYS_SHIFT
+
+; Shift
+;
+MSG_SET_KEYS_WHEELUP
+
+; Wheel up
+;
+MSG_SET_KEYS_WHEELDOWN
+
+; Wheel down
+;
+;  Gadget labels - Navigation buttons
+;
+MSG_SET_NAVS_BUTTON
+
+; Button
+;
+MSG_SET_NAVS_COMMAND
+
+; Co_mmand
+;
+;  Navigation button names
+;
+MSG_SET_NAVS_BACK
+
+; Back
+;
+MSG_SET_NAVS_FORWARD
+
+; Forward
+;
+MSG_SET_NAVS_HOME
+
+; Home
+;
+MSG_SET_NAVS_ADDHOT
+
+; Add to hotlist
+;
+MSG_SET_NAVS_HOTLIST
+
+; Show hotlist
+;
+MSG_SET_NAVS_CANCEL
+
+; Cancel
+;
+MSG_SET_NAVS_NETSTATUS
+
+; Network status
+;
+MSG_SET_NAVS_SEARCH
+
+; Search
+;
+MSG_SET_NAVS_RELOAD
+
+; Reload
+;
+MSG_SET_NAVS_LOADIMAGES
+
+; Load images
+;
+;  Settings menu strings
+;
+MSG_SET_PROJECT_MENU
+Prosjekt
+; Project
+;
+MSG_SET_PROJECT_OPEN
+O/Hent...
+; O/Open...
+;
+MSG_SET_PROJECT_SAVEAS
+A/Lagre som...
+; A/Save as...
+;
+MSG_SET_PROJECT_QUIT
+Q/Avslutt innstillinger
+; Q/Quit settings
+;
+MSG_SET_EDIT_MENU
+Forandre
+; Edit
+;
+MSG_SET_EDIT_DEFAULTS
+D/Standardverdier
+; D/Reset to defaults
+;
+MSG_SET_EDIT_LASTSAVED
+L/Sist lagret
+; L/Last saved
+;
+MSG_SET_EDIT_RESTORE
+R/Gjenopprett
+; R/Restore
+;
+MSG_SET_WINDOWS_MENU
+Vinduer
+; Windows
+;
+MSG_SET_WINDOWS_BROWSER
+Browserinnstillinger...
+; Browser settings...
+;
+MSG_SET_WINDOWS_PROGRAM
+Programinnstillinger...
+; Program settings...
+;
+MSG_SET_WINDOWS_NETWORK
+Nettverksinnstillinger
+; Network settings...
+;
+MSG_SET_WINDOWS_CLASSACT
+ClassAct innstillinger...
+; ClassAct settings...
+;
+MSG_SET_WINDOWS_SNAPSHOT
+Husk plassering
+; Snapshot
+;
+MSG_SET_WINDOWS_GUI
+
+; GUI settings...
+;

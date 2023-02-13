@@ -1,0 +1,49 @@
+<html>
+<head>
+<title>Method: AOM_NEW</title>
+</head>
+<body>
+<h1>Method: AOM_NEW</h1>
+
+<h2>Purpose</h2>
+
+The <b>AOM_NEW</b> method is used to create a new instance of a class.
+
+<h2>Message structure</h2>
+
+The <b>AOM_NEW</b> method uses an <b>Amset</b> structure:<p>
+
+<pre>
+struct Amset
+{  <a href=index.html#Amessage>struct Amessage</a> amsg;
+   struct TagItem *tags;
+};
+</pre>
+
+<h2>Usage</h2>
+
+<h3>Message</h3>
+The AOM_NEW message is sent to a NULL object, and can therefore only be
+used with the <a href=../lib/Amethodas.html>AmethodasA()</a> function.
+Most convenient is to use the varargs stub function
+<a href=../lib/Anewobject.html>Anewobject()</a>.
+
+<h3>tags</h3>
+The taglist holds the tags that set the attributes of the newly created
+object.
+
+<h3>Return value</h3>
+The method returns a pointer to the new object, or NULL if creation failed.
+
+<h2>Implementation</h2>
+
+All classes <b>must</b> implement this method.
+<p>
+Typically, the class allocates a new instance using the
+<a href=../lib/Allocobject.html>Allocobject()</a> function, then does some
+general initialization and calls the code for the <a href=set.html>AOM_SET</a>
+method.
+
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<html>
+<head>
+<title>Method: AOM_ADDCHILD</title>
+</head>
+<body>
+<h1>Method: AOM_ADDCHILD</h1>
+
+<h2>Purpose</h2>
+
+The <b>AOM_ADDCHILD</b> method is used to add an object (the child) into
+a relationship with another object (the parent). Relationships are generally
+of order 1:N, that is one parent can be related to many child objects.
+<p>
+Eventuelly the child must be removed from the relationship by the
+<a href=remchild.html>AOM_REMCHILD</a> method.
+
+<h2>Message structure</h2>
+
+The <b>AOM_ADDCHILD</b> method uses an <b>Amadd</b> structure:<p>
+
+<pre>
+struct Amadd
+{  <a href=index.html#Amessage>struct Amessage</a> amsg;
+   <a href="../classes/object.html">struct Aobject</a> *child;
+   ULONG relation;
+};
+</pre>
+
+<h2>Usage</h2>
+
+Note that the publicly available relationships will not use the
+object's <code>next</code> and <code>prev</code> fields (the embedded
+MinNode structure that every object starts with) to implement the
+relationship. Therefore these fields remain free for your own use.
+
+<h3>Field: <code>child</code></h3>
+The child object to be added into the relationship.
+
+<h3>Field: <code>relation</code></h3>
+Identifies the relationship to add the child object into.
+In general, an object can be parent in more than one relationship.
+
+<h3>Return value</h3>
+The return value for this method is not defined.
+
+<h2>Implementation</h2>
+
+Plugin classes generally need not to implement this method.
+
+</body>
+</html>
+

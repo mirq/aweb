@@ -1,0 +1,51 @@
+<html>
+<head>
+<title>Allocmem()</title>
+</head>
+<body>
+<h1>Allocmem()</h1>
+
+<h2>Purpose</h2>
+Allocate memory within AWeb's memory system.
+
+<h2>Synopsis</h2>
+<pre>
+   memoryblock = Allocmem(size, attributes)
+   D0                     D0    D1
+
+   void *Allocmem(ULONG, ULONG)
+</pre>
+
+<h2>Function</h2>
+This function allocates memory within AWeb's memory system. It is used
+exactly like exec.library's <code>AllocVec()</code> function.
+<p>
+Eventually you will free the memory using the
+<a href=freemem.html><code>Freemem()</code></a> function.
+<p>
+Plugin implementations generally need not use this function (although
+it is allowed to do so), except for cases where it is documented that
+this function <b>must</b> be used to allocate memory.
+
+<h2>Inputs</h2>
+<table border>
+<tr><th align=left valign=top>Parameter
+   <th align=left valign=top>Description
+<tr><td valign=top><code>size</code>
+   <td valign=top>The size of the desired memory block in bytes.
+<tr><td valign=top><code>attributes</code>
+   <td valign=top>Currently only the <code>MEMF_CHIP</code>
+      flag is recognized to allocate chip memory. If this flag is
+      not set, fast memory is allocated by default, if available.
+      <p>
+      All memory allocated by this function is public, and is cleared
+      after allocation.
+</table>
+
+<h2>Result</h2>
+A pointer to a newly allocated block of memory of at least the
+required size, or NULL in case of failure.
+
+<h2>See also</h2>
+<a href="dupstr.html">Dupstr()</a>,
+<a href="freemem.html">Freemem()</a>

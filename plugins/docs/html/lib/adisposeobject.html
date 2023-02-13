@@ -1,0 +1,35 @@
+<html>
+<head>
+<title>Adisposeobject()</title>
+</head>
+<body>
+<h1>Adisposeobject()</h1>
+
+<h2>Purpose</h2>
+Perform the <a href="../methods/dispose.html">AOM_DISPOSE</a> method on an object.
+
+<h2>Synopsis</h2>
+<pre>
+   Adisposeobject(object)
+                  A0
+
+   void Adisposeobject(<a href="../classes/object.html">struct Aobject</a> *)
+</pre>
+
+<h2>Function</h2>
+Object oriented support function that invokes the
+<a href="../methods/dispose.html">AOM_DISPOSE</a> method on the specified
+object, to delete the object.
+
+<h2>Inputs</h2>
+<table border>
+<tr><th align=left valign=top>Parameter
+   <th align=left valign=top>Description
+<tr><td valign=top><code>object</code>
+   <td valign=top>Pointer to the object that should be disposed.
+      When this function returns this pointer has become invalid and must
+      not be used again.
+</table>
+
+<h2>See also</h2>
+<a href="anewobjecta.html">AnewobjectA()</a>

@@ -1,0 +1,11 @@
+MODULES := Catalogs/all
+
+Catalogs/all/TYPE := catalog
+Catalogs/all/APPS := aweb awebcfg
+Catalogs/all/LANGUAGES := \
+bosanski bosnian catalan català croatian czech danish \
+dansk deutsch dutch español finnish français french \
+german greek hrvatski hungarian italian italiano latvian magyar \
+nederlands norsk norwegian polish polski portuguese portuguese-brazil português \
+português-brasil russian serbian slovak slovenian slovensko spanish srpski \
+suomi svenska swedish turkish türkçe

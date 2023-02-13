@@ -1,0 +1,695 @@
+<html>
+<head>
+<title>AWeb release history</title>
+</head>
+
+<BODY BACKGROUND="GlobalImages/awebbg.gif">
+
+<IMG SRC="GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<H1>&nbsp; AWeb Release History</H1>
+
+<BR><BR><BR>
+
+<B>The <A HREF="http://cvs.sunsite.dk/viewcvs.cgi/*checkout*/aweb/ChangeLog?rev=HEAD&content-type=text/plain" TARGET="_blank">changelog</A> contains full details of all changes made to AWeb.</B>
+
+<BR><BR>
+
+<HR>
+
+<H2>AWeb APL 3.5.09 Lite (Full Release)</H2>
+=======
+Public release date: 28-July-2007
+
+
+<P><LI>NEW CHARSET SUPPORT PLUGIN
+<P>It is now possible for AWeb to convert the character set of the viewed page into another via the new charset plugin.  For example, the page you are viewing may be using a character set you are not able to view.  This plugin will convert such pages to your system character set (by default), or to another of your choosing.  Please refer to the <A HREF="file:///AWebPath:AwebPlugin/Docs/awebcharset.readme">plugin readme</A> for further information.  Thanks go to Frank (Opi) Weber for the contribution.
+
+<P><LI>JAVASCRIPT
+<P>Dynamic Garbage Collection is now employed.
+<P>When the JavaScript interpreter has finished with a JavaScript object, the memory needs to be returned to the pool for later usage.  Due to the design of JavaScript as a language, the programmer need not worry about this.  Instead, the JavaScript interpreter automatically releases the memory.  The process of doing this is called Garbage Collection.  The problem is to know which objects are in use by the program and which are not.  The old JavaScript interpreter tried to do this at the end of the script which is relatively easy, but has the problem that long scripts can consume all the memory.  The new design performs Garbage Colection periodically during script execution.
+<P>In layman's terms, this means that some scripts that would timeout or consume all memeory now complete in a fraction of the time.
+<P>Implemention of JavaScript 1.5 ECMA 262-3 is almost complete.  The behaviour of Fastidious and Omnivorous <A HREF="Configuring/broptions.html">modes</A> have changed:
+   <UL>
+   <LI>Fastidious now executes all JavaScript but will stop at the first error
+   <LI>Omnivorous executes all JavaScript and attempts to continue past errors
+   </UL>
+
+<P><LI>DOM
+<P>JavaScript event handlers have been added to the following elements:
+   <UL>
+   <LI><A HREF="Advanced/html-ej.html#IMG">&lt;IMG&gt;: ONCLICK</A>
+   <LI><A HREF="Advanced/html-ks.html#OBJECT">&lt;OBJECT&gt;: ONABORT, ONCLICK, ONERROR, ONLOAD, ONMOUSEOUT, ONMOUSEOVER</A>
+   </UL>
+
+<P><LI>GUI
+<P>Further options for <A HREF="Configuring/uioptions.html">GUI Settings</A>, including borderless windows, so AWeb appears to run in a kind of "Kiosk" mode.
+
+<P><LI>MIME TYPES
+<P>Multiple MIME entries are allowed for each MIME type in the <A HREF="Configuring/brviewers.html">Browser->Viewer settings</A>, so actions can be performed based on both the MIME type of the file as well as its filename extension.  This is useful where are server may send both a .lha file or a .swf file, yet may have set the MIME type for both files to "application/octet-stream".
+
+<P><LI>BUGFIXES
+<P>
+   <UL>
+   <LI>The absolute URI "/" now works as expected.
+   <LI>MIME check is now slightly less stringent, so HTML docs with one or two stray unprintables will now display.
+   <LI>FTP directory parsing routines replaced, allowing paths and files with spaces in their names to be correctly displayed (a very old bug!).
+   <LI>URIs for FTP file links now point to the filename rather than the linkname.
+   <LI>Transparency now works for deep-scaled bitmaps.
+   <LI>AWeb would freeze if a PIPE: channel filled up and the external command failed to read from the pipe.  AWeb now opens a pipe with unlimited buffers.
+   <LI>A few more Forbid()s removed (yay!).
+   <LI>The HTML 'Content-Disposition' header is now parsed and acted upon.
+   <LI>Memory leak plugged.
+   <LI>When saving files the correct default icon for the file type is created if using DefIcons, as is the case with both OS4 and MOS.
+   <LI> The &amp;reg; (&reg;) symbol is now interpreted and rendered correctly.
+   <LI>Document Search Index file is now created again if it didn't already exist.
+   <LI>Various MorphOS compatibility issues resolved.
+   <LI>Various other minor bug fixes, too numerous to mention!
+   </UL>
+</UL>
+
+<HR>
+
+<H2>AWeb APL 3.5.08 Lite (beta)</H2>
+Public release date: 17-Apr-2006
+
+<UL>
+
+<P><LI>BUGFIXES
+<P>
+   <UL>
+   <LI>ftp.aweblib (and others) no longer abort via clib2 on reciept of SIG_BREAKF_C (^C).
+   <LI>When AWeb was uniconified, the window was sometimes restored twice.  This happened when AWeb was iconified with the window in a zoomed state and AWeb would first uniconify to full screen then to the zoomed size.  Now AWeb uniconifies directly to the zoomed size.
+   <LI>AWeb no longer crashes if the SRC attribute of an IMG element is "" (empty).
+   <LI>Crash on deiconification fixed (IAWebStartup was not cleared after dropping the interface).
+   <LI>Background images are no longer rendered into document copies that have no frame, which would crash.
+   <LI>Input fields are no longer rendered twice (one at 0,0) if they are made active by JavaScript before they have been rendered in their correct position.  The Google website would often show this.
+   <LI>Images in button elements within frames no longer render (sometimes) incorrectly to the top left 0,0 of the frame.
+   <LI>HTML comments that contained a string of dashes ("-") no longer break AWeb's comment parsing and cause comments to be displayed.
+   <LI>Stored cookie date/time is now improved.
+   <LI>Input elements now render correctly when preactivated by JavaScript.  For example, when submitting files to os4depot.net where typing into the Filename gadget would not render anything yet the chars would be sent to the ASL requester when then file-select gadget was then used.
+   <LI>Various other minor bugs resolved.
+   </UL>
+
+<P><LI>AMISSL
+<P>AWeb now supports AmiSSL version 3.  Support for older versions of AmiSSL has been dropped. AmiSSL version 3 is more secure, faster and easier to install than previous versions.  AmiSSL now comes as part of OS4 Update 4, and is available for m68k systems from the <A HREF="http://www.heightanxiety.com/AmiSSL">AmiSSL website</A>.
+
+<P><LI>ETAG
+<P>AWeb now supports the <A HREF="Working/cachebrowser.html#Etags">Etag technique</A> for cache validation.
+
+<P><LI>PNG ALPHA BLENDING
+<P>The PNG plugin now provides alpha channel support for PNG images on screen depths greater than 8 bits.  This is true for the Amiga OS4 (PPC) and MorphOS versions only.  The Amiga OS4 version uses the <A HREF="http://aminet.net/search?query=libablit" TARGET="_blank">libablit package</A> written by Jürgen Schober.
+
+<P><LI>OS4 MEMORY SYSTEM
+<P>The main executable has been adapted to abide by the new OS4 memory rules, however the AWeb plugins and libraries still misbehave.
+
+<P><LI>OS4 MOUSEWHEEL SUPPORT
+<P>The mousewheel API in OS4 Update4 changed.  AWeb now supports the new API.
+
+<P><LI>OTHER CHANGES
+   <UL>
+   <LI>OS4 defaults have been set up to use the Bitstream fonts that are supplied as standard with OS4.  Thus the OS4 settings files are no longer included.
+   <LI>Plugins are now setup as standard with "best" options.
+   <LI>New "Use singleclick in Hotlist Viewer" option in <A HREF="Configuring/proptions.html#hlsingleclick">Program settings->Options</A>.
+   <LI>New "Border around images" option in <A HREF="Configuring/broptions.html#ImageBorder">Browser settings->Options</A>.
+   <LI>Progress bar during erase of AWeb's cache.
+   <LI>Implemented the MULTIPASS command option in <A HREF="file:///AWebPath:AWebPlugin/Docs/awebpng.html#parameters">awebpng.awebplugin</A>.
+   </UL>
+
+</UL>
+
+
+<HR>
+
+<H2>AWeb APL 3.5.07 Lite (beta)</H2>
+Public release date: 23-Sep-2005
+
+<UL>
+
+<P><LI>BUGFIXES
+<P>
+   <UL>
+   <LI>A bug with nested tables having a height tag has been fixed.
+   <LI>A bug with the GZIP decoding engine which would cause it to discard non GZIP encoded files has been fixed.
+   <LI>LHA files download gain.
+   </UL>
+
+<P><LI>ADDITIONAL GADGET LAYOUT
+<P>An extra choice for the new gadget layout options has been added resulting in a simpler design with a reduced number of options. This layout suits larger gadget images and icons.
+
+<P><LI>SEARCH ENGINES
+<P>The AWeb Search Engines feature which disappeared somewhere between the old commercial and current APL versions has returned.  It is accessible as ever via the Project menu or a User Button in the default settings.
+<BR><I>NOTE:</I> as of 3.5.07 its location within the AWeb hierarchy has changed.  If you are updating AWeb and retaining your current prefs, please go to the 'Settings->GUI settings->Menus->Item Search engines' and change the Command entry to OPEN "file:///AWebPath:Extras/AWebSearchEngines/search.html".
+
+</UL>
+
+
+<HR>
+
+<H2>AWeb APL 3.5.06 Lite (beta)</H2>
+Internal Release Only: 14-Jul-2005
+
+<UL>
+
+<P><LI>AWEBLIBS and AWEBPLUGINS
+<P><B>*** NOTE WELL ***</B>
+<BR>There has been a major change in the underlying code for these libraries and the old ones will not work with the new AWeb and vice versa.  AWeb should simply fail safely, but to be sure please flush libraries from memory by typing "<CODE>avail flush</CODE>" at a shell if you switch between different AWeb versions.
+
+<P><LI>GUI
+<BR>The GUI layout has been modified to allow new options for the user.  Navigation buttons may be positioned to the left or right, in a single row or the traditional two row block.  The buttons themselves may now be borderless, have images, text, or both images and text.
+
+<P><LI>HTTP
+<BR>AWeb now supports GZIP content encoding.  This results in the much faster downloading of webpages from sites supporting this type of encoding, <A HREF="http://amigaworld.net" TARGET="_blank">Amigaworld.net</A> being a good example of this.
+
+<P><LI>JAVASCRIPT
+<BR>A long standing bug with the caching of JavaScript source files has been tracked down and fixed.  Previously AWeb would store an empty file in the cache resulting in errors in otherwise functional scripts.
+
+</UL>
+
+
+<HR>
+
+<H2>AWeb APL 3.5.05 Lite (beta)</H2>
+Public release date: 25-Jan-2005
+
+<P>This is mainly a bugfix release.
+
+<UL>
+
+<P><LI>JAVASCRIPT
+<BR>Some of the nastier JavaScript bugs have been tracked down and the problem where onload and onunload would not work when preceded by a &lt;SCRIPT&gt; section in the head of the document has been sorted out.
+
+<P><LI>AWebCfg
+<BR>Fixed a bug introduced with the OS4 port which caused the m68k version to throw muforce hits on loading and saving prefs.
+<BR>Reduced the size of the new cache control gadget labels so that the window will work with topaz 8 on a small (640 wide) screen again.  A minimum screen height of 230 is required.
+
+</UL>
+
+
+<HR>
+
+<H2>AWeb APL 3.5.04 Lite (beta)</H2>
+Public release date: 16-Dec-2004
+
+<UL>
+
+<P><LI>CACHE VALIDATION
+<BR> The cache validation code has been updated, the user nows has much more control over how the cached copies of documents and images etc. are validated.  The Network Settings cache page now allows the user to select different options for dynamicaly created objects (shtml, php, asp, cgi etc.) and static objects (ordinary html, images etc.).
+<P>The default is:
+   <UL>
+   <LI>Always Validate, No Fast Response for dynamic objects.
+   <LI>Validate Once Per Session, Fast Response for static objects.
+   </UL>
+<P>This gives a good compromise between reducing network activity and ensuring that typical login systems still work.
+
+<P><LI>REDIRECTION
+<BR>The referer in redirected pages is now set correctly.
+
+<P><LI>PRINTING
+<BR>AWeb is now aware that the standard printer.device can handle bitmaps larger than 8 bits deep from version 44, so it is now able to print from 16 or 24 or 32 bit screens without requiring Turboprint.
+
+<P><LI>OS4 / MORPHOS PORTING
+<BR>Some bugs in the library code for OS4 that were inadavertantly produced by merging the MORPHOS port code have been cleaned up.
+
+<P>FORM ELEMENTS
+<LI>Crashing bugs in the code that allowed form elements to be used outside of forms have been fixed.
+
+</UL>
+
+
+<HR>
+
+<H2>AWeb APL 3.5.03 Lite (beta)</H2>
+Public release date: 20-Nov-2004
+
+<UL>
+
+<P><LI>OS4 PORT
+<BR>Fixed a couple of OS trashing bugs introduced with the porting process.
+
+<P><LI>MORPHOS PORT
+<BR>AWeb now supports a native MorphOS build (as part of the main CVS).  The port is not complete as yet with PNG and JPG plugins missing, but much work has been done.
+
+<P><LI>JAVASCRIPT
+<BR>In Tolerant mode, event handlers such as onclick now allow the form "javascript:code" to function.
+
+<P><LI>FORM ELEMENTS
+<BR>AWeb now supports the use of &lt;INPUT&gt; elements outside of forms as Document GUI objects, for JavaScript events etc.
+
+<P>The Above two changes make life a little easier on some XOOPS based sites, for example the 'Post New Thread' button now displays on amigaworld.net.
+
+<P><LI>COOKIES
+<BR>The Non RFC mode is extended to allow .domain.com (note preceeding period) to match domain.com.  This improves the behaviour of some login systems.
+
+<P><LI>IMAGE POPUP MENU
+<BR>Added "Image Url To Clipboard" to default Image Popup menu.
+
+</UL>
+
+
+<HR>
+
+<H2>AWeb APL 3.5.02 Lite (beta)</H2>
+Public release date: 31-Oct-2004
+
+<UL>
+
+<P><LI>JAVASCRIPT
+<BR>Fixed a bug where JavaScript images could overwrite some document properties.
+<BR>AWeb now requires at least version 36.0 of JavaScript.aweblib.
+
+<P><LI>OS4 PORT
+<BR>AWeb APL 3.5 Lite has now been ported to AmigaOS 4.0.  A fully sick PPC build is available (archive aweb3.5.02bos4_20041028.lha).  If you have previously run the m68k version of AWeb on OS4 you <B>must</B> ensure that no m68k AWeb libraries are resident in memory, either by rebooting before running or by typing <CODE>"avail flush"</CODE> at the shell prompt after quitting AWeb.
+
+</UL>
+
+
+<HR>
+
+<H2>AWeb APL 3.5.01 Lite (beta)</H2>
+Public release date: 4-Aug-2004
+
+<P>One new feature (improved relocation handling) and a few bug fixes have been added since 3.5.00 (beta).
+
+<UL>
+
+<P><LI>RELOCATION
+<BR>AWeb relocation handling has been much improved - temporarily moved urls are now temporary!  They are not cached and a second request to the original url will reload the document.  Also, the relocated url is displayed under the name of the destination not the original request (MSIE and Mozilla both do this).
+<BR>These changes mean a that many login systems work smoother without the need to manually refresh pages.  An example is the "Continue To Message" link on a Yahoo advert now works.
+
+<P><LI>ENFORCER HITS
+<BR>A few enforcer hit type bugs have been cleaned up resulting in improved stability.
+
+<P><LI>JAVASCRIPT IMAGE ONERROR
+<BR>A bug in the JavaScript Image() objects onerror handling was fixed.
+
+<P><LI>TRANSPARENT GIF ANIMATIONS
+<BR>The new background image handling did not update the backgrounds of Animated GIFs.
+
+<P><LI>CHARSET TRANSLATION
+<BR>Two new charsets have been added as an interim fix to the problem of windows characters in ISO-8859-1 documents:
+   <UL>
+   <LI>iso-8859-1 - translates the extra windows characters from windows-1252 to near equivalents (as the old compatible mode did, but with a few composite characters missing)
+   <LI>windows-1252 - translates true windows-1252 docs to iso-8859-1
+   </UL>
+<P>A more comprehensive charset solution is in the works...
+
+<P><LI>CHARACTER REFERENCES
+<BR>Character references for Unicode characters such as "&amp;ldquo;" etc. are now supported in all modes and not just Strict.  The "&amp;euro;" (&euro;) reference should work now if you have fonts properly supporting this glyph configured.
+
+</UL>
+
+
+<HR>
+
+<H2>AWeb APL 3.5.00 Lite (beta)</H2>
+Public release date: 20-Jun-2004
+
+<UL>
+
+<P><LI>HTML
+<BR>Support for &lt;INS&gt; and &lt;DEL&gt; tags
+
+<P><LI>RENDERING
+<BR>Double buffered rendering - optional double buffering dramatically reduces flickering during rendering of pages with long tables.
+<BR>Background Images - no longer forces a complete redraw of the document, resulting in a dramatic speed up of some pages.
+
+<P><LI>LAYOUT
+<BR>Fixes and standardization to the way tables are laid out and to the way background images in tables are aligned means that many more pages render "correctly".
+
+<P><LI>INTERNAL IMAGE DECODER
+<BR>Fix to the transparency bug in the internal GIF decoder.
+
+<P><LI>GOPHER SUPPORT
+<BR>Improved Gopher support.
+
+<P><LI>CHARACTER SETS
+<BR>Support for Translating Character Sets enables pages using a different character set to be displayed.
+
+<P><LI>SPLASH SCREEN
+<BR>New more attractive startup screen and About requester.
+
+<P><LI>AWEB PLUGINS
+<BR>Fixes to a major bug in the image decoder plugins where AWeb would crash with bad memory trashing on repeated iconification.
+
+<P><LI>AWEB LIBS
+<BR>The aweblib version numbering has been changed; all version start from 35 as of this release.  This avoids some clashes that would otherwise occur with previous versions of AWeb.
+<BR>awebjs.aweblib has been renamed to "javascript.aweblib" for the same reason.
+
+<P><LI>JAVASCRIPT
+<BR>Fundamental support for Regular Expression objects has been introduced in this version.  However, the string methods using regular expressions have not yet been implemented, and as most Real World sites use these methods, few new sites will work.  Rather, this is the first step on the journey.
+
+</UL>
+
+
+<HR>
+
+<H2>AWeb APL</H2>
+On 8 June 2002, AWeb's original author, Yvon Rozijn, made the decision to release the source code under the AWeb Public License (APL).  You can read about it at Yvon's <A HREF="http://www.xs4all.nl/~yrozijn/aweb/" TARGET="_blank">website</A>.
+<P>
+
+
+<HR>
+
+<h2>AWeb-II 3.4</h2>
+Release date: 1-Dec-2000
+<ul>
+<li>Fixed a lot of bugs, like:
+   <ul>
+   <li>Network settings were destroyed when using "Save settings as...".
+   <li>AWeb seemed to hang on tables with COLSPAN=0 and ROWSPAN=0.
+   <li>In some cases nothing was shown although the document was fully loaded.
+   <li>Pasting from clipboard could paste only partial text.
+   <li>Some JavaScript constructs didn't work as they do on PC browsers.
+   <li>Problems arose when an URL used in GUI commands (e.g. add to hotlist)
+      contains a double quote.
+   <li>In some configurations, only one page of a document was printed.
+   <li>JavaScript error requester displayed a useless line number.
+   <li>... and more.
+   </ul>
+<li>Added new features, like:
+   <ul>
+   <li>Cycle-type form field changed to popup-type.
+   <li>Now displays hand pointer when over a link. Its appearance can be changed by the user.
+   <li>Added "sort by date" option to the hotlist manager.
+   <li>Added support for the AmiSSL library.
+   <li>Added support for different font faces in documents.
+   <li>Now optionally prevents loading of images from other hosts than the main document.
+   <li>... and more.
+   </ul>
+</ul>
+
+<hr>
+
+<h2>AWeb-II 3.3</h2>
+Release date: 18-Oct-1999
+<ul>
+<li>Fixed many bugs, like:
+   <ul>
+   <li>Didn't show all JPEG files wih the plugin.
+   <li>Printing could skip the end of a page, or everything after the first page.
+   <li>With some sites, cookies were not recognized.
+   <li>Didn't correctly handle SSL requests through proxies.
+   <li>Sometimes an incomplete file was deleted regardless of the response to the
+      "Incomplete file" warning requester.
+   <li>Tried to interprete JavaScript of version 1.2 or higher.
+   <li>Sometimes it was impossible to break an endlessly looping script.
+   <li>... and more.
+   </ul>
+<li>Added some new features, like:
+   <ul>
+   <li>Made the menus fully configurable.
+   <li>Made the function of the navigation buttons fully configurable.
+   <li>Added an option to hide the navigation gadgets.
+   <li>Added a &quot;save as IFF&quot; function.
+   <li>New option to <a href="Configuring/broptions.html#jserrors">show JavaScript
+      error messages</a> or not.
+   <li>New option to <a href="Configuring/broptions.html#nobanners">suppress banner
+      windows</a> (those irritating advertizement windows popping up on many sites).
+   <li>Added <a href="Configuring/nwproxy.html#passiveftp">Passive FTP option</a>
+      to make FTP work from behind some firewalls.
+   <li>The no-cookie list is now saved in a separate file. Selecting "Never" from
+      the cookie warning requester no longer inadvertently saves all your network settings.
+   <li>Added a lot of new ARexx commands.
+   <li>Improved window refreshing when JavaScript is running.
+   <li>... and more.
+   </ul>
+</ul>
+
+<hr>
+
+<h2>AWeb-II 3.2</h2>
+Release date: 1-Jul-1998
+<ul>
+<li>Fixed bugs:
+   <ul>
+   <li>Lockups when a window opened while user was scrolling the window.
+   <li>Fixed a few JavaScript incompatibilities.
+   <li>Some forms (especially with file-upload) didn't work.
+   <li>Sometimes cookies weren't set.
+   <li>Proxy wasn't used for secure connections.
+   <li>... and more.
+   </ul>
+<li>Browser windows are now <a href="Starting/browser.html#appwindow">AppWindows</a>.
+<li>Added <a href="Starting/browser.html#iconify">iconify</a> option.
+<li>Added warning requesters when SSL connection or certificate verification fails.
+<li>Spoofing will now take effect in JavaScript too.
+<li>... and more.
+</ul>
+
+<hr>
+
+<h2>AWeb-II 3.1</h2>
+Release date: 1-Jan-1998
+<ul>
+<li>Fixed bugs:
+   <ul>
+   <li>FTP didn't work with INet-225.
+   </ul>
+<li>Added support for <a href="Working/javascript.html">JavaScript 1.1</a>.
+<li>Added support for <a href="Working/secure.html">secure connections</a> by use of MiamiSSL.
+<li>Added internal <a href="Working/mail.html">mailer</a> (mailto:).
+<li>Added internal <a href="Working/news.html">newsreader</a>.
+<li>Added the <a href="Working/autosearch.html">autosearch</a> feature.
+<li>Added a search engine to the documentation.
+<li>Updated strict HTML mode to support HTML 4.0.
+<li>Added option to <a href="Configuring/uikeys.html">configure the keyboard</a>.
+<li>Added option for <a href="Configuring/nwoptions.html#contanim">continuously running
+   transfer animation</a>.
+<li>Arexx: added <a href="Advanced/ARexx/window.html#CHANOPEN">CHANOPEN</a> and related
+   commands to incrementally load a document.
+<li>...and many,many other things.
+</ul>
+
+<hr>
+
+<h2>AWeb-II 3.0b (bugfix)</h2>
+Release date: 18-Sep-1997
+<ul>
+<li>Fixed many bugs:
+   <ul>
+   <li>AWeb could hang or crash (01000008, semaphore in illegal state) frequently.
+   <li>Large paragraphs of text could be messed up.
+   <li>Small images on a line by themselves could take up too much vertical space.
+   <li>Scrolling horizontally, then going back would not display the document correctly.
+   <li>Opening a new window could load the document again.
+   <li>Reload of a redirected page when the redirection changed (like random Yahoo)
+      didn't display the new page.
+   <li>With image loading set to "maps only", other images already in memory weren't displayed.
+   <li>Submitting a form from an unloaded image "button" didn't always work.
+   <li>... and more.
+   </ul>
+<li>Added support for image scaling for nontransparent images when using the internal
+   (datatype based) decoder.
+<li>Added support for RAmiga-C in text form fields (copy contents to clipboard).
+<li>Added support for all Windows characters in the range 128-159.
+</ul>
+
+<hr>
+
+<h2>AWeb-II 3.0</h2>
+Release date: 1-Jun-1997
+<ul>
+<li>Support for <a href=Starting/browser.html#frames>frames</a>, table backgrounds,
+   and more <a href=Advanced/html.html>HTML</a> features.
+<li>Support for server push and client pull.
+<li>Support for <a href=Working/authorize.html#proxy>proxy authorization</a>.
+<li>Internal <a href=Starting/browser.html#ftp>FTP</a> support.
+<li>A public <a href=Advanced/api.html>plugin interface</a>. Plugin modules can do their
+   rendering directly in the AWeb browser window. The API (Application Program
+   Interface) is available as a separate archive.
+<li><a href=Starting/browser.html#stimages>Standalone images</a> are now shown in the AWeb
+   window, or using an optional external image viewer.
+<li>More versatile <a href=Working/cookies.html>cookie</a> protection, and a cookie alert
+   requester. Cookie save file is now in readable form.
+<li>Largely enhanced <a href=Advanced/ARexx/commands.html>Arexx command set</a>.
+<li><a href=Starting/browser.html#clipboard>Clipboard support</a>, including copy
+   selected text from a page.
+<li>Fully configurable <a href=Starting/gui.html#user>user buttons</a>.
+<li>Fully configurable <a href=Starting/popup.html>popup menu</a>.
+<li>New <a href=Starting/infowindow.html>info window</a> with HTTP transfer headers, meta
+   information and links.
+<li><a href=Working/nws.html>Network status window</a> shows CPS rate.
+<li>New powerful <a href=Working/hotlistmgr.html>hotlist manager</a>.
+<li>Enhanced <a href=Working/cachebrowser.html>cachebrowser</a> with find functions and
+   delete of multiple files.
+<li><a href=Working/search.html>Search function</a> highlights the text found.
+<li>Improved greyscale palette.
+<li>Menu item: edit HTML source.
+<li>Menu items: load settings, save settings as.
+<li>No-proxy and no-cache lists are now sorted and support pattern matching.
+<li>...and many, many other things.
+</ul>
+
+<hr>
+
+<h2>AWeb-II 2.1</h2>
+Release date: 1-Nov-1996
+<ul>
+<li>Fixed many bugs.
+<li>Completed HTML 3.2 support (tables, floating images, font size and colours, client
+   side image maps).
+<li>Added support for background sounds (based on datatypes).
+<li>Moved the settings to a separate program with three windows.
+<li>Added a persistent, disk based cache with a cache browser.
+<li>Added the popup menu.
+<li>Added search function.
+<li>Added graphical print function.
+<li>Now treats https: as http:
+<li>Made the GUI button images and the transfer animation configurable.
+<li>Added more default MIME types.
+<li>...and many, many other things.
+</ul>
+
+<hr>
+
+<h2>AWeb-II 2.0, AWeb 1.2b</h2>
+Release date: 1-Jul-1996
+<br><br>
+<strong>AWeb 1.2b</strong> is a demo version with many features disabled<br>
+<ul>
+<li>Fixed bugs:
+   <ul>
+   <li>Enforcer hit when executing ARexx GET command
+   <li>&lt;HR&gt; within list was rendered indented
+   <li>Last MIME setting was saved twice in the settings file
+   <li>&lt;OL START=n&gt; started with n+1
+   <li>&lt;OL START=32766&gt; bullets became negative
+   <li>Hit form text area 'E' button and let editor open overlapping window on
+      same screen, then window wasn't refreshed if editor window was closed.
+   <li>Didn't follow the "garbage in, garbage out" rule correctly on &lt;P&gt;
+      tags within &lt;PRE&gt;. Fixed to treat &lt;P&gt; in preformatted text
+      as two newlines.
+   <li>Didn't send <code>Pragma: no-cache</code> when requesting a reload.
+   <li>Displayed extra blank line between bullet and text for &lt;LI&gt;&lt;P&gt;text&lt;/P&gt;
+   <li>If title in hotlist contains &lt; or &amp; then HTML hotlist didn't display correctly
+   <li>Images weren't refreshed correctly when scrolled from underneath an overlapping window
+   <li>HTTP response wasn't recognized when first block received was 1 byte
+   </ul>
+<li>Now sets the file comment to the URL when saving or downloading.
+<li>Added SCREENTOFRONT and SCREENTOBACK ARexx commands.
+<li>Added CACHE ARexx command.
+<li>Added GET ACTIVEPORT ARexx command.
+</ul>
+
+<hr>
+
+<h2>AWeb 1.2</h2>
+Release date: 28-May-1996
+<br><br>
+<strong>AWeb 1.2</strong> is a demo version with many features disabled<br>
+<ul>
+<li>Fixed many bugs:
+   <ul>
+   <li>used to hang on "processing" with some gif images
+   <li>moving or closing a window sometimes caused a system lockup
+   <li>going back and forward through history sometimes showed wrong
+       versions of a page, most notably with (search) form responses
+   <li>when the temporary directory was PROGDIR:something, external
+       programs didn't work
+   <li>with long rows of images, images were displayed on top of each other
+   <li>the output console window of spawned external programs couldn't
+       be used for input
+   </ul>
+<li>Added localization
+<li>Added backgrounds, text colours, centering
+<li>Made all unloaded image icons external, and replaceable
+<li>Added hierarchical hotlist
+<li>Improved the window history
+<li>Added user-configurable ARexx macro menu
+<li>Added ALLOWCMD and GET SCREEN ARexx commands
+<li>Added "tolerant" HTML mode, and made HTML mode a proper setting that
+    is saved
+<li>Added telnet: and news: support through external programs
+<li>Added automatic TCP connection start/stop
+<li>... and many other very small changes
+</ul>
+
+<hr>
+
+<h2>AWeb 1.1</h2>
+Release date: 15-Apr-1996
+<ul>
+<li>Fixed several bugs:
+   <ul>
+   <li>crashed on 68000 machines at some URLs like www.yahoo.com
+   <li>sending forms with empty fields didn't work
+   <li>loading MPEGs skipped 1 byte
+   <li>crashed when typing beyond the border of a textarea form field
+   <li>image memory cache limit didn't work
+   <li>downloading image didn't save but started external viewer instead
+   <li>shift-click on ftp link stopped AWeb
+   <li>didn't adapt to different frame size for navigation buttons
+   <li>GIFs didn't show up as transparent, or were messed up totally
+   <li>some settings weren't saved correctly when changed
+   </ul>
+<li>Transparent GIF now works even if the GIF datatype used doesn't
+   support transparency
+<li>Now falls back to topaz if font not found instead of exiting
+<li>Improved scrolling speed on simple refresh windows
+<li>Added keyboard support for the settings window
+<li>Added HOTLIST tooltype and argument
+<li>Improved speed when navigating back and forward to large documents
+<li>Now remembers form field values when going back
+<li>Improved pre-loaded palette
+<li>Now uses <code>KEYPATH</code> variable to locate key file
+<li>... and many other very small changes
+</ul>
+
+<hr>
+
+<h2>AWeb 1.0</h2>
+Release date: 22-Mar-1996
+<p>
+First release for general public.
+
+<hr>
+
+<h2>AWeb 0.6alpha</h2>
+Release date: 13-Jan-1996
+<p>
+This release was only for members of the Dutch Amiga Magazine BBS.
+<ul>
+<li>keymap.library is now opened with version 37 (version 39 does not exist)
+</ul>
+
+<hr>
+
+<h2>AWeb 0.5alpha</h2>
+Release date: 12-Jan-1996
+<p>
+This release was only for members of the Dutch Amiga Magazine BBS.
+<ul>
+<li>Added FORM and ISINDEX support
+<li>Added ISINDEX support
+<li>Fixed many bugs
+</ul>
+
+<hr>
+
+<h2>AWeb 0.2alpha</h2>
+Release date: 29-Dec-1995
+<p>
+This release was only for members of the Dutch Amiga Magazine BBS.
+<ul>
+<li>Fixed redirection, which was broken in the initial release
+</ul>
+
+<hr>
+
+<h2>AWeb 0.1alpha</h2>
+Release date: 28-Dec-1995
+<p>
+This release was only for members of the Dutch Amiga Magazine BBS.
+<p>
+Limited initial alpha release
+
+<p>
+
+<hr>
+
+<a href=AWeb%20Manual.html><img src=GlobalImages/back.gif width=32 height=16 alt="<-" border=0></a> Back to
+<a href=AWeb%20Manual.html>index</a>.
+
+</body>
+</html>

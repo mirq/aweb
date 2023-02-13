@@ -1,0 +1,75 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+
+<HTML>
+
+<HEAD>
+<TITLE>Command and Arguments</TITLE>
+</HEAD>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<H1>&nbsp; Command and Arguments</H1>
+
+On several locations within the settings requesters, you can enter some sort of external command. For convenience, there are separate string gadgets for the command itself and its arguments.
+<P>In the <EM>command</EM> string gadget, you can type in a command.  It is advised that you specify the full path, or else AWeb might not be able to execute the command.  You can click on the <IMG SRC="Images/PopfileGad.png" ALT="file" WIDTH="20" HEIGHT="21"> button to pop up a file requester, so you can easily pick the command.
+<P>In the <EM>arguments</EM> string you specify the arguments for the command.  Any text you type here will be passed to the external program, but some special character combinations will be replaced by parameters from AWeb.  Generally the following parameter specifiers are used:
+<P><CODE><B>%a</B></CODE> = news article or newsgroup name
+<BR><CODE><B>%e</B></CODE> = e-mail address
+<BR><CODE><B>%f</B></CODE> = path/file name
+<BR><CODE><B>%h</B></CODE> = host name
+<BR><CODE><B>%i</B></CODE> = frame ID
+<BR><CODE><B>%l</B></CODE> = login name
+<BR><CODE><B>%m</B></CODE> = MIME type
+<BR><CODE><B>%n</B></CODE> = screen name
+<BR><CODE><B>%p</B></CODE> = port number
+<BR><CODE><B>%u</B></CODE> = URL
+<BR><CODE><B>%w</B></CODE> = password
+<P>Not all parameters are applicable in every case.  You can click the <U><IMG SRC="Images/DropdownGad.png" ALT="V" WIDTH="23" HEIGHT="21"></U> button to pop up a short descriptive list with the possible parameters.
+<P>Instead of a program, you can specify a DOS script.  If you do, make sure that the <EM>script</EM> bit for this file is set.  You can set this bit either by the DOS command
+<PRE>&nbsp;&nbsp;&nbsp;protect <VAR>script_name</VAR> +s</PRE>
+or by the Workbench Information program (select the <EM>Script</EM> checkbox).
+<P>Note that an external program setting will usually <EM>only</EM> be recognized if <EM>both</EM> fields, command <EM>and</EM> arguments, are supplied.
+
+<H2>Example</H2>
+
+Look at the <EM>HTML source viewer</EM> setting (in the <A HREF="prprograms.html#viewer">Program->Programs</A> settings).  Suppose you want to install MultiView as viewer, and let it open its window on the same screen as AWeb.
+<P>First, you click on the <IMG SRC="Images/PopfileGad.png" ALT="file" WIDTH="20" HEIGHT="21"> button and navigate to the <B>SYS:Utilities</B> drawer.  Then you select <B>MultiView</B>.  Now the <EM>Command</EM> is set up correctly.
+<P>Then click on the <U><IMG SRC="Images/DropdownGad.png" ALT="V" WIDTH="23" HEIGHT="21"></U> gadget and hold the mouse button.  You will see:
+<PRE>&nbsp;&nbsp;&nbsp;%f = path/file name<BR>&nbsp;&nbsp;&nbsp;%n = screen name</PRE>
+<P>Amongst its arguments, MultiView accepts: FILE,SCREEN/S,PUBSCREEN/K.  Therefore you enter <B>%f PUBSCREEN %n</B> in the <EM>Arguments</EM> field.  The <B>%f</B> will be replaced by the real file name when the command is executed by AWeb.  Likewise, <B>%n</B> will be replaced by the actual screen name.
+<P>So your settings would look like this:
+
+<TABLE>
+<TR><TD ALIGN="RIGHT">Command:</TD><TD>SYS:Utilities/MultiView</TD></TR>
+<TR><TD ALIGN=r"RIGHT">Arguments:</TD><TD>%f PUBSCREEN %n</TD></TR>
+</TABLE>
+
+<P>If you like MultiView to run on its own screen, you would set it up this way:
+
+<TABLE>
+<TR><TD ALIGN="RIGHT">Command:</TD><TD>SYS:Utilities/MultiView</TD></TR>
+<TR><TD ALIGN="RIGHT">Arguments:</TD><TD>%f SCREEN</TD></TR>
+</TABLE>
+
+</BODY>
+
+</HTML>

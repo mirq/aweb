@@ -1,0 +1,208 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+<html>
+<head>
+<title>
+The GUI
+</title>
+</head>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<h1>&nbsp; The GUI</h1>
+
+<h
+<h2><a name="navs">Overview</a></h2>
+On top of the browser window there are a number of gadgets. The exact size and imagery of the buttons may vary depending on your set-up, and their placement can be set in the <A HREF="../Configuring/uioptions.html#NavGadsPlacement">GUI Settings</A>.
+<P>This table describes the meaning of the gadgets in the default ("Right") configuration:
+<p>
+<table border width=100%>
+<tr align=center>
+   <td width=30%><a href=#url>URL field</a>
+   <td width=10%><a href=#urltemplate>URL template</a>
+   <td width=10% rowspan=2><a href=#backstat>Background status</a>
+   <td width=10%> * <a href=#back>Back</a>
+   <td width=10%> * <a href=#fwd>Forward</a>
+   <td width=10%> * <a href=#home>Home</a>
+   <td width=10%> * <a href=#addhot>Add to hotlist</a>
+   <td width=10%> * <a href=#hotlist>Hotlist</a>
+<tr align=center>
+   <td><a href=#status>Status</a>
+   <td><a href=#secure>Secure indicator</a>
+   <td> * <a href=#cancel>Cancel</a>
+   <td> * <a href=#nws>Network status</a>
+   <td> * <a href=#search>Search</a>
+   <td> * <a href=#reload>Reload</a>
+   <td> * <a href=#loadimgs>Load images</a>
+<tr align=center>
+   <td colspan=8><a href=#user>User buttons</a>
+</table>
+<p>
+The top two rows form the <em>navigation gadgets</em>.
+You can <a href="../Configuring/uioptions.html#navs">configure</a> AWeb not to
+show these gadgets, for example if you are using a third-party alternative
+navigation control window.
+<p>
+You can also <a href="../Configuring/uinavs.html#navs">configure</a> the function
+of the ten gadgets marked with an asterisk (*). Described below is their
+default function.
+<p>
+To save precious space on your screen, you have the
+<a HREF="../Configuring/uioptions.html#navs">option</a> to turn all the
+gadgets off so they are not visible.
+
+<h2><a name=url>URL field</a></h2>
+This field shows the URL (network address) of the currently shown page.
+You can enter a new URL here, then ENTER will retrieve the page for that
+URL.
+<p>
+The <code>Project / Open&nbsp;WWW</code> menu function or its shortcut,
+<i><b>A</b></i><tt>W</tt>, will activate this field and preload it with
+"<code>http://www.</code>" for even more convenience.
+
+<h2><a name=urltemplate>URL template</a></h2>
+This button opens a small popup list from which you can select a common
+start of URL, like "<code>http://www.</code>". The <a href=#url>URL field</a>
+will be activated and preloaded with the partial URL.
+
+<h2><a name=status>Status indicator</a></h2>
+This field serves two purposes.
+<p>
+First, when browsing through a page, it shows the URL "behind" the link
+currently pointed to with the mouse. That is, when you click this URL will
+be retrieved.
+<p>
+Second, when a page is being loaded for this window, it shows the current
+state. If actual data is retrieved, a progress bar will appear showing
+how far the load process is. The progress bar will not appear if the
+final size of the document is not known on forehand.
+
+<h2><a name=secure>Secure indicator</a></h2>
+This indicator shows if the current document was retrieved over a
+<a HREF="../Working/secure.html">secure connection</a>.
+<h2><a name=backstat>Background status indicator</a></h2>
+When one or more load operations are in progress, this indicator will show
+a little square. On every connection made, and on every block retrieved,
+the square will advance one step.
+<p>
+This indicator lets you know if there are still things loading in the
+background, and how rapidly they progress. If you want more detail,
+the <a HREF=../Working/nws.html>network status window</a> will tell you everything.
+<p>
+You can <a HREF="../Configuring/nwoptions.html#contanim">configure</a> this
+indicator to play at a constant speed when one or more transfers are going on.
+
+<h2><a name=back>Back button</a></h2>
+This button lets you walk back through the window history. The window
+history contains all pages viewed before <em>in this window</em>.
+<p>
+The <code>Navigate / Back</code> menu function, or its shortcut,
+<i><b>A</b></i><tt>B</tt>, or the <kbd>Alt + cursor left</kbd>
+key combination, will do the same.
+
+<h2><a name=fwd>Forward button</a></h2>
+This button lets you walk forward through the window history. The window
+history contains all pages viewed before <em>in this window</em>. Note
+that the window history is currently linear, without branches. That means
+that if you walk back a few steps, then retrieve another page, the window
+history "after" that page will be forgotten.
+<p>
+The <code>Navigate / Forward</code> menu function, or its shortcut,
+<i><b>A</b></i><tt>F</tt>, or the <kbd>Alt + cursor right</kbd>
+key combination, will do the same.
+
+<h2><a name=home>Home button</a></h2>
+This button retrieves the URL that is configured as your
+<a HREF=../Configuring/nwoptions.html#home>home page</a>.
+<p>
+The <code>Navigate / Home&nbsp;document</code> menu function, or its shortcut,
+<i><b>A</b></i><tt>D</tt>, will do the same.
+
+<h2><a name=addhot>Add to hotlist button</a></h2>
+This button adds the current document to your hotlist.
+<p>
+The <code>Hotlist / Add&nbsp;to&nbsp;hotlist</code> menu function, or its shortcut,
+<i><b>A</b></i><tt>A</tt>, will do the same.
+
+<h2><a name=hotlist>Hotlist button</a></h2>
+This button shows your hotlist.
+<p>
+The <code>Hotlist / Show&nbsp;hotlist</code> menu function, or its shortcut,
+<i><b>A</b></i><tt>H</tt>, will do the same.
+<p>
+You can <a HREF=../Configuring/proptions.html#hlrequester>configure</a>
+AWeb so that this button opens the
+<a HREF=../Working/hotlist.html#viewer>hotlist viewer window</a>
+instead.
+<h2><a name=cancel>Cancel button</a></h2>
+This button will interrupt (cancel) the load of a page in this window.
+Background loads cannot be cancelled by this button, use the cancel button
+in the <a HREF=../Working/nws.html>network status window</a> instead.
+<p>
+The <code>Control / Cancel&nbsp;load</code> menu function, or its shortcut,
+<i><b>A</b></i><tt>X</tt>, and the <kbd>Esc</kbd> key, will do the same.
+
+<h2><a name=nws>Network status button</a></h2>
+This button will open the <a HREF=../Working/nws.html>network status window</a>, or
+bring it to front if it is already open.
+<p>
+The <code>Control / Network&nbsp;status</code> menu function, or its shortcut,
+<i><b>A</b></i><tt>?</tt>, will do the same.
+
+<h2><a name=search>Search button</a></h2>
+This button opens the <a HREF=../Working/search.html>search requester</a>, or bring it to
+front if it is already open.
+<p>
+The <code>Project / Search...</code> menu function, or its shortcut,
+<i><b>A</b></i><tt>F</tt>, will do the same.
+
+<h2><a name=reload>Reload button</a></h2>
+This button will reload the current document. The page is deleted from
+the cache, and retrieved again.
+<p>
+The <code>Control / Reload&nbsp;current</code> menu function
+will do the same.
+
+<h2><a name=loadimgs>Load images button</a></h2>
+This button will load all unloaded images in the current page.
+<p>
+The <code>Control / Load&nbsp;images&nbsp;now / All&nbsp;images</code>
+menu function, or its shortcut,
+<i><b>A</b></i><tt>I</tt>, will do the same.
+
+<h2><a name=user>User buttons</a></h2>
+This is a row of general purpose buttons. You can <a HREF=../Configuring/uibuttons.html>
+configure</a> the function of the buttons yourself.
+<p>
+If you have defined more buttons than fit in the window, you can scroll the
+button bar horizontally. Click and drag the mouse to the left or the right
+while you hold the <kbd>SHIFT</kbd> key.
+<p>
+To save valuable browser space on small screen, you have the
+<a HREF=../Configuring/uioptions.html#buttons>option</a> to hide the user buttons.
+
+<p>
+<hr>
+<a href=../AWeb%20Manual.html><img src=../GlobalImages/back.gif width=32 height=16 alt="<-" border=0></a> Back to
+<a href=../AWeb%20Manual.html>index</a>.
+
+</body>
+</html>

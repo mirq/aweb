@@ -1,0 +1,70 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+
+<HTML>
+
+<HEAD>
+<TITLE>Secure connections</TITLE>
+<META NAME="KEYWORDS" CONTENT="SSL, security, privacy, AmiSSL, MiamiSSL">
+</HEAD>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<H1>&nbsp; Secure connections</H1>
+
+<H2>Purpose</H2>
+Some sites ask you to supply personal or secret information, such as your credit card number to pay for some goods you order, or name/password to log in to you bank.  When you enter this information into a form and submit it, this information is sent publicly over the internet.
+<P>You will want to be certain of two things:
+<UL>
+<LI>That the company asking you for this sensitive information, really <B><I>is</I></B> the company they claim to be, and
+<LI>That no-one is eavesdropping at one of the many intermediate computers that your information passes through on its way to the destination..
+</UL>
+
+Secure connections through SSL (Secure Sockets Layer) offers a way to achieve both security goals.  <A HREF="http://en.wikipedia.org/wiki/Public_key_certificate" TARGET="_blank"><I>Certificates</I></A> are used to ensure the website you are submitting your details to really is in fact who they claim to be, and <A HREF="http://en.wikipedia.org/wiki/Encryption" TARGET="_blank"><I>encryption</I></A> is employed to ensure no-one can read your data except the recipient.
+<P>You might want to read more about <A HREF="http://en.wikipedia.org/wiki/Secure_Sockets_Layer" TARGET="_blank">how SSL works</A>.
+<P>Important to note is that secure connections only ensures your information isn't seen by unauthorized persons; it won't in any way prevent the legitimate receiver abusing your information.
+
+<H2>SSL libraries</H2>
+Before you can use secure connections, you must install a library that implements SSL functionality to AWeb - AWeb on its own does not provide secure connections to websites.
+<P>AWeb supports the freely available <A HREF="http://www.heightanxiety.com/AmiSSL" TARGET="_blank">AmiSSL</a> library by Andrija Antonijevic.  AWeb also supports MiamiSSL, available for registered users of the Miami TCP stack by Holger Kruse.
+<P>If you have both libraries (amisslmaster.library and miamisslintl.library/miamisslusa.library) installed, AWeb will prefer AmiSSL over MiamiSSL. If you wish to use MiamiSSL instead, you should remove or rename <CODE>LIBS:amisslmaster.library</CODE> <I>before</I> you start AWeb.
+<P>The <A HREF="../Starting/infowindow.html">Information window</A> will tell you which SSL library was used for the displayed page.
+
+<H2>Be sure of the sender's identity!</H2>
+In the AWeb default configuration there is a small padlock icon next to the status bar at the top of the browser window.  It tells you whether the page you are viewing was retrieved over a secure connection or not.  If it was, the padlock will appear locked, and means the sender of the page is really who they claim to be and that the page wasn't "forged" by an impersonator.
+<P>If a document uses frames, the image reflects the security status of the frame that has focus.  Simply click in any frame to see if it is secure.
+<P>You can change the Secure icon if you wish by <A HREF="../Configuring/buttons.html">modifying the button file</A>.
+
+<H2>Encryption details</H2>
+The cipher method used for the connection is shown in the <A HREF="../Starting/infowindow.html">Information window</A>.
+<P>Because encryption requires substantial processor time, retrieving data over a secure connection may be substantially slower than the same information retrieved over a standard connection, depending on your computer.  This speed loss will depend on the cipher method used.  You may wish to disable some cipher methods for your SSL library in order to make secure connections work faster, however the security of your connection will be less, and some websites may reject your connection if a minimum level of security is not available.  Banks typically will do this.  Refer to your SSL library's documentation for information on disabling ciphers.
+
+<H2>Protect your form data</H2>
+Even when a form (such as a bank login page) has been retrieved over a secure connection, there is no guarantee that the form data will be submitted over a secure connection to the website too.  By default, AWeb will warn you if you are about to submit data over an unsecured connection and offer you an opportunity to cancel it.  You can change this action via the <A HREF="../Configuring/nwprivacy.html#formwarn">Warn before sending unsecure form data</A> option in the Network Settings.
+
+<P>
+
+<HR>
+<A HREF="../AWeb%20Manual.html"><IMG SRC="../GlobalImages/back.gif" WIDTH="32" HEIGHT="16" ALT="<-" BORDER="0"></A> Back to <A HREF="../AWeb%20Manual.html">index</A>.
+
+</BODY>
+
+</HTML>

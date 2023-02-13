@@ -1,0 +1,2198 @@
+## version $VER: AWeb.catalog 3.3 (19.11.1999)
+## language slovak
+## codeset 0
+;
+; AWeb.cd - AWeb catalog description file
+;
+; $Id: aweb.ct,v 1.8 2009/09/11 11:45:22 opi Exp $
+;
+;  The MSG_DUMMY_nn labels are there because FlexCat doesn't
+;  understand the LABEL (+1//) syntax (C='s Catcomp uses this
+;  to skip 1 number)
+;
+;
+;-------------- General -----------------------------
+;
+MSG_REQUEST_TITLE
+AWeb - ùiadosï
+; AWeb request
+;
+MSG_REQUEST_YES_NO
+
+; Yes|No
+;
+; ***NEW***
+;
+;
+;-------------- About requester ---------------------
+;
+MSG_ABOUT_TITLE
+O programe AWeb
+; About AWeb
+;
+MSG_ABOUT_REGNR
+Registraçné çíslo
+; Registration #
+;
+MSG_ABOUT_REGTO
+Oprávnený pouùívateã
+; Registered to
+;
+MSG_ABOUT_SCREENNAME
+Názov verejnej obrazovky
+; Public screen name
+;
+MSG_ABOUT_PORTNAME
+Názov ARexxového portu
+; ARexx port name
+;
+MSG_ABOUT_EMAIL
+E-mail
+; E-mail
+;
+MSG_ABOUT_WWW
+WWW
+; WWW
+;
+MSG_ABOUT_OK
+_Ok
+; _Ok
+;
+MSG_ABOUT_UNREGISTERED
+Neregistrovaná verzia\n
+; Unregistered version\n
+;
+MSG_ABOUT_DEMO
+Neregistrovaná demoverzia\n
+; Unregistered demo version\n
+;
+MSG_ABOUT_DISTRIBUTED
+Distribúcia: %s
+; Distributed by %s
+;
+; Translators give yourself credit with this string.
+; It should read something like "(Language) translation by: (your name)\n"
+;
+MSG_ABOUT_TRANSLATOR
+
+; 
+;
+MSG_ABOUT_SPECIAL
+Îpeciálna verzia urçená k distribúcii s AmigaOS\n
+; Special version for distribution with Amiga OS\n
+;
+;-------------- Quit requester ----------------------
+;
+MSG_QUIT_TEXT
+Naozaj si prajete ukonçiï AWeb?
+; Are you sure you want to quit AWeb?
+;
+MSG_QUIT_OK
+_Ok
+; _Ok
+;
+MSG_QUIT_CANCEL
+_Zruîiï
+; _Cancel
+;
+MSG_QUIT_WARNING
+VAROVANIE: Prenos bude preruîený!\n\n
+; WARNING: Transfers will be aborted!\n\n
+;
+;-------------- Demoversion requester ---------------
+;
+MSG_DEMO_TEXT
+Toto je demoverzia AWebu, otvorenie\nviacerých okien nie je podporované.
+; This is the demo version of AWeb\nmultiple document windows are not supported
+;
+MSG_DEMO_OK
+_Ok
+; _Ok
+;
+;
+;-------------- Close windows requester -------------
+;
+MSG_SCRCLOSE_TEXT
+AWeb nemôùe zavrieï svoju obrazovku.\nZavrite prosím vîetky okná.
+; AWeb can't close its screen.\nPlease close all windows.
+;
+MSG_SCRCLOSE_OK
+Ok
+; Ok
+;
+;
+;-------------- Network status window ---------------
+;
+MSG_NWS_TITLE
+Údaje o prenose
+; Network status
+;
+MSG_NWS_QUEUED
+çakajúce
+; Queued
+;
+MSG_NWS_STARTED
+zaçalo
+; Started
+;
+MSG_NWS_LOOKUP
+vyhãadávanie
+; Looking up
+;
+MSG_NWS_CONNECT
+nadväzovanie spojenia
+; Connecting
+;
+MSG_NWS_WAIT
+çakanie
+; Waiting
+;
+MSG_NWS_PROCESS
+spracovávanie
+; Processing
+;
+MSG_NWS_LOGIN
+pripojovanie
+; Logging in
+;
+MSG_NWS_CPS
+%ld cps
+; %ld cps
+;
+MSG_NWS_NEWSGROUP
+preskúmavanie
+; Scanning
+;
+MSG_NWS_UPLOAD
+posielanie
+; Uploading
+;
+;-------------- Authorization requester -------------
+;
+MSG_AUTH_TITLE
+Oprávnenie
+; Authorization
+;
+MSG_AUTH_PROMPT
+Je nutné zadaï pouùívateãa a heslo pre
+; Userid and password required for
+;
+MSG_AUTH_USERID
+Po_uùívateã
+; _Userid
+;
+MSG_AUTH_PASSWORD
+_Heslo
+; _Password
+;
+MSG_AUTH_OK
+_Ok
+; _Ok
+;
+MSG_AUTH_CANCEL
+_Zruîiï
+; _Cancel
+;
+MSG_AUTH_PROMPT_FTP
+Je nutné zadaï heslo pre
+; Password required for
+;
+MSG_AUTH_USERID_FTP
+Pouùívateã
+; Userid
+;
+MSG_AUTH_PROMPT_PROXY
+Je nutné zadaï pouùívateãa a heslo pre proxy
+; Userid and password required for proxy
+;
+MSG_AUTH_PROMPT_MASTER
+
+; Please enter the password to show the passwords.
+;
+; ***NEW***
+;
+;
+;-------------- File requesters ---------------------
+;
+MSG_FILE_SAVETITLE
+Uloùiï súbor
+; Select save filename
+;
+MSG_FILE_SAVE
+Uloùiï
+; Save
+;
+MSG_FILE_INCTEXT
+Neúplný súbor!\n%s\nOçakávaných: %ld bajtov\nPrijatých: %ld bajtov\n\n\
+Ak kliknete na tlaçítko Ok,\nbudú tieto údaje zachované.
+; Incomplete file!\n%s\nExpected: %ld bytes\nReceived: %ld bytes\n\n\
+; Choose OK to keep the partial data.
+;
+MSG_DUMMY_1
+
+; 
+MSG_FILE_EXISTTEXT
+Súbor\n%s\nuù existuje!
+; File:\n%s\nalready exists!
+;
+MSG_FILE_EXISTBUTTONS
+_Prepísaï|Pr_ipojiï|_Nový názov|_Zruîiï
+; _Overwrite|_Append|_New name|_Cancel
+;
+MSG_FILE_AREXXTITLE
+Vyberte ARexxové makro
+; Select ARexx macro
+;
+MSG_FILE_HOTLISTTITLE
+Vyberte hierarchické záloùky
+; Select hierarchical hotlist
+;
+MSG_FILE_LOCALTITLE
+Vyberte lokálny súbor
+; Open local file
+;
+MSG_FILE_OPEN
+Otvoriï
+; Open
+;
+MSG_FILE_TEMPTITLE
+Nemoùno nájsï cestu pre doçasné súbory:\n%s\nBude pouùitá îtandardná cesta T:.
+; Can't find temporary path:\n%s\nUse T: instead.
+;
+MSG_FILE_TEMPBUTTONS
+_Ok
+; _Ok
+;
+MSG_FILE_INCBUTTONS2
+_Ok|Z_novu|_Zruîiï
+; _Ok|_Retry|_Cancel
+;
+MSG_FILE_SETTINGSTITLE
+Vyberte adresár s nastavením
+; Select settings directory
+;
+MSG_FILE_UPLOADTITLE
+Vyberte súbor k poslaniu
+; Select file to upload
+;
+;-------------- TCP close requester -----------------
+;
+MSG_TCP_ENDTCP
+AWeb je pozastavený.\nMá byï preruîené aj TCP spojenie?
+; AWeb is stopped.\nShould the TCP connection be terminated too?
+;
+MSG_TCP_BUTTONS
+Án_o|_Nie
+; _Yes|_No
+;
+;-------------- Startup requester -------------------
+; Mind the maximum length!
+;
+MSG_STARTUP_FONTS
+Naçítavanie fontov
+; Loading fonts
+;
+MSG_STARTUP_IMAGES
+Naçítavanie obrázkov GUI
+; Loading GUI images
+;
+MSG_STARTUP_CACHE
+Naçítavanie indexu cache
+; Loading cache index
+;
+;-------------- Hotlist requester -------------------
+;
+MSG_HOTL_TITLE
+AWeb - záloùky
+; AWeb hotlist
+;
+MSG_HOTL_ADDLINK
+Prid_aï odkaz
+; _Add link
+;
+MSG_HOTL_ADDGROUP
+_Pridaï skupinu
+; Add _group
+;
+; (No hotkey for this one please!)
+MSG_HOTL_REMOVE
+Odstrániï
+; Remove
+;
+MSG_HOTL_FOLLOW
+Pre_jsï na
+; _Follow
+;
+MSG_HOTL_NAME
+_Názov
+; _Name
+;
+MSG_HOTL_URL
+U_RL
+; _URL
+;
+MSG_HOTL_NEWGROUP
+Nová skupina
+; New group
+;
+MSG_HOTL_NEWLINK
+Nový odkaz
+; New link
+;
+; -- new hotlist viewer requester --
+;
+MSG_HOTL_TITLE_VIEWER
+Zobrazovaç záloùiek AWebu
+; AWeb hotlist viewer
+;
+MSG_HOTL_VURLS
+UR_L
+; UR_Ls
+;
+MSG_HOTL_MANAGER
+_Správca
+; _Manager
+;
+; -- new hotlist manager requester --
+;
+MSG_HOTL_TITLE_MANAGER
+Správca záloùiek AWebu
+; AWeb hotlist manager
+;
+MSG_HOTL_LTYPE
+Zo_znam
+; L_ist
+;
+MSG_HOTL_LTYPE_REST
+Ostatné
+; Rest
+;
+MSG_HOTL_LTYPE_ALL
+Vîetko
+; All
+;
+MSG_HOTL_LTYPE_GROUPS
+Skupiny
+; Groups
+;
+MSG_HOTL_LSORT
+Trie_diï podãa
+; S_ort
+;
+MSG_HOTL_LSORT_TITLE
+titulkov
+; Title
+;
+MSG_HOTL_LSORT_URL
+URL
+; URL
+;
+MSG_HOTL_MOVEIN
+_< Do
+; _< In
+;
+MSG_HOTL_MOVEOUT
+Von _>
+; Out _>
+;
+MSG_HOTL_MOVE
+< _Presunúï
+; < _Move
+;
+MSG_HOTL_DEL
+Z_mazaï
+; _Delete
+;
+MSG_HOTL_WHERE
+_Kde
+; _Where
+;
+MSG_HOTL_SHOW
+Pre_jsï na
+; S_how
+;
+MSG_HOTL_SORT
+_Triediï
+; Sor_t
+;
+MSG_HOTL_PARENT
+Nadrad_ený
+; _Parent
+;
+MSG_HOTL_ALL
+Skupin_y
+; G_roups
+;
+MSG_HOTL_ADDENTRY
++ P_oloùka
+; + _Entry
+;
+MSG_HOTL_ADDGROUP2
++ Skup_ina
+; + _Group
+;
+MSG_HOTL_URLS
+UR_L
+; UR_Ls
+;
+MSG_HOTL_REVERT
+_Vrátiï
+; Re_vert
+;
+MSG_HOTL_SAVE
+_Uloùiï
+; _Save
+;
+MSG_HOTL_LADD
+Prid_aï
+; _Add
+;
+MSG_HOTL_FIND
+_Hãadaï
+; _Find
+;
+MSG_HOTL_PATTERN
+Ma_ska
+; Mat_ch
+;
+MSG_HOTL_NEXT
+Ðalej
+; Ne_xt
+;
+MSG_HOTL_DEFAULT_TITLE
+** nový odkaz **
+; ** New link **
+;
+MSG_HOTL_DEFAULT_GROUP
+** nová skupina **
+; ** New group **
+;
+MSG_HOTL_TITLE_ALLGROUPS
+Vîetky skupiny
+; All groups
+;
+MSG_HOTL_TITLE_WHERE
+Skupiny obsahujúce túto poloùku
+; Groups containing this entry
+;
+MSG_HOTL_TITLE_REST
+Nepriradené poloùky
+; Unassigned entries
+;
+MSG_HOTL_TITLE_ALL
+Vîetky poloùky
+; All entries
+;
+MSG_HOTL_TITLE_ROOTGROUPS
+Základné skupiny
+; Root-level groups
+;
+MSG_HOTL_LSORT_DATE
+
+; Date
+;
+; ***NEW***
+;
+;
+;--------------  Window history requester -------------------
+;
+MSG_WHIS_TITLE
+Okno s priebehom
+; Window history
+;
+MSG_WHIS_FILTER
+_Filter
+; _Filter
+;
+MSG_WHIS_WINDOW
+O_kno
+; _Window
+;
+MSG_WHIS_ORDER
+P_oradie
+; _Order
+;
+MSG_WHIS_DISPLAY
+Pre_jsï na
+; _Display
+;
+MSG_WHIS_ORDER_NATURAL
+Prirodzené
+; Natural
+;
+MSG_WHIS_ORDER_MAINLINE
+Logické
+; Mainline
+;
+MSG_WHIS_ORDER_RETRIEVED
+Nadobudnuté
+; Retrieved
+;
+MSG_WHIS_ORDER_TITLE
+Názvy
+; Title
+;
+MSG_WHIS_ORDER_URL
+URL
+; URL
+;
+;
+;-------------- Cache browser ---------------------------
+;
+MSG_CABR_TITLE
+Prehliadaç cache
+; Cache browser
+;
+MSG_CABR_URL
+URL
+; URL
+;
+MSG_CABR_DATE
+dátumu
+; Date
+;
+MSG_CABR_SIZE
+veãkosti
+; Size
+;
+MSG_CABR_TYPE
+druhu
+; Type
+;
+MSG_CABR_FILE
+súboru
+; File
+;
+MSG_CABR_STATUS
+%ld súborov, %ld kB
+; %ld files, %ld kB
+;
+MSG_CABR_SORTBY
+Trie_diï podãa
+; _Sort by
+;
+MSG_CABR_OPEN
+_Otvoriï
+; _Open
+;
+MSG_CABR_SAVE
+_Uloùiï
+; Sa_ve
+;
+MSG_CABR_DELETE
+Z_mazaï
+; _Delete
+;
+MSG_CABR_FIND
+_Hãadaï
+; _Find
+;
+MSG_CABR_PATTERN
+Ma_ska
+; _Match
+;
+MSG_CABR_NEXT
+Ð_alej
+; _Next
+;
+MSG_CABR_CHARSET
+
+; Charset
+;
+; ***NEW***
+;
+MSG_CABR_ETAG
+
+; Etag
+;
+; ***NEW***
+;
+;-------------- Progress requester ----------------------
+;
+MSG_PROGRESS_TITLE
+AWeb - stav
+; AWeb progress
+;
+MSG_PROGRESS_CANCEL
+Zruîiï
+; Cancel
+;
+;
+;-------------- Fix cache requesters ---------------------
+;
+MSG_FIXCACHE_WARNING
+VAROVANIE!\n\
+Táto funkcia zmaùe vîetky cudzie súbory\n\
+z adresára %s.
+; WARNING!\n\
+; This function will delete all foreign files from the\n\
+; %s drawer
+;
+MSG_FIXCACHE_BUTTONS
+_Ok|_Zruîiï
+; _Ok|_Cancel
+;
+MSG_FIXCACHE_PROGRESS
+Oprava diskovej cache...
+; Fixing the disk cache...
+;
+MSG_FIXCACHE_DELETEPROGRESS
+
+; Delete %ld Files from disk cache...
+;
+; ***NEW***
+;
+MSG_FIXCACHE_DELETEIMAGES
+Naozaj si prajete vymazaï z cache\n\
+vîetky obrázky?
+; Are you sure you want to delete\n\
+; all images from the cache?
+;
+MSG_FIXCACHE_DELETEDOCS
+Naozaj si prajete vymazaï z cache\n\
+vîetky dokumenty?
+; Are you sure you want to delete\n\
+; all documents from the cache?
+;
+MSG_FIXCACHE_ERASE
+Naozaj si prajete vymazaï z cache\n\
+vîetky obrázky a dokumenty?
+; Are you sure you want to delete\n\
+; all documents and images from the cache?
+;
+MSG_FIXCACHE_CORRUPT
+Register cache je neçitateãný alebo\n\
+patrí k starîej verzii AWebu. Z tohoto\n\
+dôvodu nemoùno vyuùiï súbory v cache.\n\
+Prajete si ju vyprázdniï?
+; The cache registration is unreadable\n\
+; or from an older version of AWeb.\n\
+; Cached files cannot be used any more.\n\
+; Do you want to clean up now?
+;
+;-------------- Search requesters ---------------------
+;
+MSG_SEARCH_STRING
+_Vyhãadaï
+; Search _for
+;
+MSG_SEARCH_IGNORECASE
+_Ignorovaï malé/VEÃKÉ
+; _Ignore case
+;
+MSG_SEARCH_SEARCH
+_Hãadaï
+; _Search
+;
+MSG_SEARCH_FROMTOP
+Od zaçia_tku
+; From _top
+;
+MSG_SEARCH_BACKWARDS
+_Dozadu
+; _Backwards
+;
+MSG_SEARCH_CANCEL
+_Zruîiï
+; _Cancel
+;
+MSG_SEARCH_NOTFOUND
+Reïazec sa nenaîiel
+; String not found
+;
+MSG_SEARCH_OK
+_Ok
+; _Ok
+;
+;
+;-------------- Popup menu ---------------------------
+;
+MSG_POPUP_LOADIMAGE
+Naçítaï obrázok
+; Load image
+;
+MSG_POPUP_RELOADIMAGE
+Aktualizovaï obrázok
+; Reload image
+;
+MSG_POPUP_SAVEIMAGE
+Uloùiï obrázok...
+; Save image
+;
+MSG_POPUP_DOWNLOADIMAGE
+Stiahnuï obrázok...
+; Download image
+;
+MSG_POPUP_FLUSHIMAGE
+Odstrániï obrázok
+; Flush image
+;
+MSG_POPUP_SHOWIMAGE
+Zobraziï obrázok
+; Show image
+;
+MSG_POPUP_OPENLINK
+Sledovaï odkaz
+; Open link
+;
+MSG_POPUP_OPENLINKNW
+Sledovaï odkaz v novom okne...
+; Open link in new window
+;
+MSG_POPUP_LOADLINK
+Naçítaï odkaz na pozadí
+; Load link in background
+;
+MSG_POPUP_SAVELINK
+Uloùiï odkaz...
+; Save link
+;
+MSG_POPUP_DOWNLOADLINK
+Stiahnuï odkaz...
+; Download link
+;
+MSG_POPUP_ADDLINK
+Pridaï odkaz do záloùiek
+; Add link to hotlist
+;
+MSG_POPUP_RELOADFRAME
+Aktualizovaï obsah
+; Reload contents
+;
+MSG_POPUP_SAVEFRAME
+Uloùiï zdrojový text...
+; Save source
+;
+MSG_POPUP_VIEWFRAME
+Zobraziï zdrojový text
+; View source
+;
+MSG_POPUP_SHOWFRAME
+Zobraziï oddelene
+; Show separately
+;
+MSG_POPUP_SEARCHFRAME
+Vyhãadaï v obsahu
+; Search in contents
+;
+MSG_POPUP_INFOFRAME
+Informácie
+; Info
+;
+MSG_POPUP_IMAGE2CLIP
+
+; Image Url to Clipboard
+;
+; ***NEW***
+;
+;
+;-------------- Print --------------------------------
+;
+MSG_PRINTP_TITLE
+Nastavenia tlaçe
+; Print parameters
+;
+MSG_PRINTP_SCALE
+Veãko_sï (v %)
+; _Scale (%)
+;
+MSG_PRINTP_PRINTBG
+Tlaçiï _pozadie
+; Print _backgrounds
+;
+MSG_PRINTP_FORMFEED
+Posielaï do tlaçiarne _FF
+; _Formfeed
+;
+MSG_PRINTP_CENTER
+Umiest_niï v strede
+; Ce_nter
+;
+MSG_PRINTP_PRINT
+_Tlaçiï
+; _Print
+;
+MSG_PRINTP_CANCEL
+_Zruîiï
+; _Cancel
+;
+MSG_PRINT_NOPRINTER
+Tlaçiareñ je nedostupná
+; Unable to access the printer
+;
+MSG_PRINT_OK
+_Ok
+; _Ok
+;
+MSG_PRINT_PROGRESS
+Prebieha tlaç...
+; Printing in progress...
+;
+MSG_PRINTP_LAYOUTWIDTH
+
+; _Layout Width
+;
+; ***NEW***
+;
+MSG_PRINTP_LW_WINDOW
+
+; Window
+;
+; ***NEW***
+;
+MSG_PRINTP_LW_DOCUMENT
+
+; Document
+;
+; ***NEW***
+;
+MSG_PRINTP_LW_SCREEN
+
+; Screen
+;
+; ***NEW***
+;
+;
+;-------------- Cookie warning ----------------------
+;
+MSG_COOKIE_TITLE
+Cookie - upozornenie
+; Cookie alert
+;
+MSG_COOKIE_WARNING
+Bude nastavený Netscape cookie!
+; About to set a NetScape cookie!
+;
+MSG_COOKIE_NAME
+Názov cookie:
+; Cookie name:
+;
+MSG_COOKIE_VALUE
+Hodnota cookie:
+; Cookie value:
+;
+MSG_COOKIE_DOMAIN
+Pre doménu:
+; For domain:
+;
+MSG_COOKIE_PATH
+Cesta:
+; Path:
+;
+MSG_COOKIE_COMMENT
+Poznámka:
+; Comment:
+;
+MSG_COOKIE_MAXAGE
+Ùivotnosï:
+; Max-age:
+;
+MSG_COOKIE_EXPIRES
+Vyprîí:
+; Expires:
+;
+MSG_COOKIE_ONCE
+_Raz
+; _Once
+;
+MSG_COOKIE_ACCEPT
+_Trvalo
+; _Accept
+;
+MSG_COOKIE_NEVER
+_Nikdy
+; _Never
+;
+MSG_COOKIE_CANCEL
+_Zruîiï
+; _Cancel
+;
+MSG_COOKIE_SECURE
+AWeb poîle tento cookie späï iba pomocou zabezpeçného spojenia.
+; AWeb will send this cookie back\nover secure connections only.
+;
+MSG_COOKIE_UNSECURE
+AWeb poîle tento cookie späï aj pomocou NEZABEZPEÇENÉHO spojenia.
+; AWeb will send this cookie back\nover UNSECURE connections too.
+;
+;
+;-------------- Info requester ----------------------
+;
+MSG_INFO_TITLE
+Informácie
+; Information
+;
+MSG_INFO_FROMCACHE
+Naçítané z cache
+; Read from AWeb cache
+;
+MSG_INFO_XFER
+Hlaviçky prenosu:
+; Transfer headers:
+;
+MSG_INFO_META
+Meta informácia:
+; Meta information:
+;
+MSG_INFO_LINK
+Sledovateãné odkazy:
+; Clickable links:
+;
+MSG_INFO_CIPHER
+Îifrovacia metóda pre HTTPS: %s
+; HTTPS cipher method: %s
+;
+MSG_INFO_SSLLIBRARY
+
+; SSL library used: %s
+;
+; ***NEW***
+;
+;-------------- Default buttons ---------------------
+;
+MSG_USERBUTTON_CACHE
+Cache
+; Cache
+;
+MSG_USERBUTTON_CLOCK
+Hodiny
+; Clock
+;
+MSG_USERBUTTON_SEARCH
+
+; Search
+;
+; ***NEW***
+;
+;-------------- Authorizations edit requester -------
+;
+MSG_AUTHEDIT_TITLE
+Úpravy oprávnení
+; Edit authorizations
+;
+MSG_AUTHEDIT_TITLE_SERVER
+Server
+; Server
+;
+MSG_AUTHEDIT_TITLE_USERID
+Pouùívateã
+; Userid
+;
+MSG_AUTHEDIT_TITLE_PASSWORD
+
+; Password
+;
+; ***NEW***
+;
+MSG_AUTHEDIT_DEL
+Z_mazaï
+; _Del
+;
+MSG_AUTHEDIT_SERVER
+Server
+; Server
+;
+MSG_AUTHEDIT_USERID
+Po_uùívateã
+; _Userid
+;
+MSG_AUTHEDIT_PASSWORD
+_Heslo
+; _Password
+;
+MSG_AUTHEDIT_SHOWPASS
+
+; _Show Passwords
+;
+; ***NEW***
+;
+MSG_AUTHEDIT_SHOWPWREQ
+
+; To use this function you must first enter a\n\
+; master password then you can use the function\n\
+; to show all passwords.\n\
+; \n\
+; Warning:\n\
+; Please remember or notice your password\n\
+; because here is no chance to show or delete\n\
+; the password without the password!
+;
+; ***NEW***
+;
+MSG_AUTHEDIT_SHOWPWREQ_BUTTONS
+
+; _Ok|_Cancel
+;
+; ***NEW***
+;
+;-------------- JavaScript prompt requester ---------
+;
+MSG_JSPROMPT_OK
+_Ok
+; _Ok
+;
+MSG_JSPROMPT_CANCEL
+_Zruîiï
+; _Cancel
+;
+;
+;-------------- Unsecure form warning ---------------
+;
+MSG_FORMWARN_TITLE
+AWeb - upozornenie
+; AWeb warning
+;
+MSG_FORMWARN_WARNING
+Obsah tohoto formulára bude poslaný\npo NEZABEZPEÇENOM spojení.
+; Data from this form will be sent\nover an UNSECURE connection.
+;
+MSG_FORMWARN_BUTTONS
+_Ok|_Zruîiï
+; _Ok|_Cancel
+;
+;
+;-------------- Mailer messages ---------------------
+;
+MSG_MAIL_TITLE
+AWeb - chyba pri posielaní
+; AWeb mailer error
+;
+MSG_MAIL_NOSMTPHOST
+Najprv treba nastaviï SMTP hostiteãa.\nPozrite nastavenie Sieï/Poîta.
+; You have to configure your SMTP host first.\nSee Network/Mail settings.
+;
+MSG_MAIL_NOCONNECT
+Nemoùno sa pripojiï k %s.
+; Can't connect to %s.
+;
+MSG_MAIL_MAILFAILED
+Chyba pri odosielaní poîty.
+; Sending mail message failed.
+;
+MSG_MAIL_BUTTONS
+Z_novu|_Uloùiï|_Zruîiï
+; _Retry|_Save|_Cancel
+;
+MSG_MAIL_SAVETITLE
+Uloùiï správu s chybou
+; Save failed message
+;
+MSG_MAIL_MAILTO_TITLE
+Odoslaï na %s
+; Mail to %s
+;
+MSG_MAIL_MAILTO_HEADER
+Odoslaï na: %s
+; Mail to: %s
+;
+MSG_MAIL_TO
+Komu:
+; To:
+;
+MSG_MAIL_SUBJECT
+Predmet:
+; Subject:
+;
+MSG_MAIL_MESSAGE_BODY
+Správa:
+; Message body:
+;
+MSG_MAIL_EXTRA_HEADERS
+Pripojiï detailnú hlaviçku
+; Extra mail headers included
+;
+MSG_MAIL_SEND
+Odoslaï
+; Send mail
+;
+MSG_MAIL_RESET
+Vymazaï
+; Reset
+;
+MSG_MAIL_RETURN
+Späï
+; Return
+;
+MSG_MAIL_MAIL_SENT_TITLE
+Správa odoslaná na: %s
+; Mail sent to: %s
+;
+MSG_MAIL_MAIL_SENT
+<H1>Sprava odoslana.</H1>\nVasa sprava pre <B>%s</B> bola uspesne odoslana.
+; <H1>Mail sent</H1>\nYour mail message to <B>%s</B> has been sent succesfully.
+;
+;
+;-------------- Newsreader messages -----------------
+;
+MSG_NEWS_TITLE
+AWeb - chyba prehliadaça diskusných skupín
+; AWeb newsreader error
+;
+MSG_NEWS_NONNTPHOST
+Najprv treba nastaviï NNTP hostiteãa.\nPozrite nastavenie Sieï/News.
+; You have to configure your NNTP host first.\nSee Network/News settings.
+;
+MSG_NEWS_NOCONNECT
+Nemoùno sa pripojiï k %s.
+; Can't connect to %s.
+;
+MSG_NEWS_POSTFAILED
+Chyba pri odosielaní príspevku.
+; Posting article failed.
+;
+MSG_NEWS_BUTTONS
+Z_novu|_Uloùiï|_Zruîiï
+; _Retry|_Save|_Cancel
+;
+MSG_NEWS_SAVETITLE
+Uloùiï neodoslaný príspevok
+; Save failed article
+;
+MSG_NEWS_NEWS_HEADER
+News
+; News
+;
+MSG_NEWS_SUBSCRIBED
+Prihlásené skupiny
+; Subscribed newsgroups
+;
+; Don't forget to include the '8' in the %8ld below:
+MSG_NEWS_NEW_ARTICLES
+%8ld nových príspevkov
+; %8ld new articles
+;
+MSG_NEWS_CATCH_UP
+Oznaçiï ako preçítané
+; Catch up
+;
+MSG_NEWS_UNSUBSCRIBE
+Odhlásiï
+; Unsubscribe
+;
+MSG_NEWS_OTHER_GROUP
+Dalsia skupina
+; Other group
+;
+MSG_NEWS_SUBSCRIBE
+Prihlásiï
+; Subscribe
+;
+MSG_NEWS_READ
+Naçítaï
+; Read
+;
+MSG_NEWS_SEARCH_FOR_GROUP
+Hladanie skupiny
+; Search for group
+;
+MSG_NEWS_SEARCH
+Hãadaï
+; Search
+;
+MSG_NEWS_LONG_DOWNLOAD
+Ak hladate skupinu prvykrat, je potrebne\n\
+najprv nacitat zoznam vsetkych skupin.\n\
+Toto moze trvat aj niekolko minut.
+; The first time you search for a group,\n\
+; a list of all newsgroup names will be downloaded.\n\
+; This may take several minutes to complete.
+;
+MSG_NEWS_NO_SUBJECT
+(ziadny predmet)
+; (no subject)
+;
+MSG_NEWS_LINES
+(%s riadkov)
+; (%s lines)
+;
+MSG_NEWS_POST_NEW_ARTICLE
+Novy prispevok
+; Post new article
+;
+MSG_NEWS_GROUP_LIST
+Zoznam skupin
+; Group list
+;
+MSG_NEWS_ERROR_NO_GROUP
+<h1>Chyba</h1>\nSkupina %s neexistuje.
+; <h1>Error</h1>\nGroup %s does not exist.
+;
+MSG_NEWS_USE_FRAMES
+Prehliadaç diskusných skupín bude pouùívaï rámçeky.
+; News is configured to use frames
+;
+MSG_NEWS_ERROR_NO_ARTICLE
+Prispevok %s neexistuje<br>
+; Article %s does not exist<BR>
+;
+MSG_NEWS_FOLLOW_UP
+Odpovedat verejne
+; Follow-up
+;
+MSG_NEWS_REPLY
+Odpovedat sukrome
+; Reply in e-mail
+;
+MSG_NEWS_SAVE
+Ulozit prispevok
+; Save article
+;
+MSG_NEWS_SUBJECT
+Predmet:
+; Subject:
+;
+MSG_NEWS_NEWSGROUPS
+Skupiny:
+; Newsgroups:
+;
+MSG_NEWS_ARTICLE_BODY
+Telo prispevku:
+; Article body:
+;
+MSG_NEWS_EXTRA_HEADERS
+Prilozit detailnu hlavicku
+; Extra news headers included
+;
+MSG_NEWS_POST_ARTICLE
+Odoslat prispevok
+; Post article
+;
+MSG_NEWS_RESET
+Vymazat
+; Reset
+;
+MSG_NEWS_RETURN
+Späï
+; Return
+;
+MSG_NEWS_FOLLOWUP_TITLE
+Odpovedaï na çlánok
+; Follow-up to article
+;
+MSG_NEWS_FOLLOWUP_TO_GROUPS
+Odpovedaï do:
+; Follow-up to:
+;
+MSG_NEWS_PLEASE_DELETE
+Zmaùte prosím zbytoçne citované riadky...
+; Please delete unnecessary quoted lines
+;
+MSG_NEWS_REPLY_TITLE
+Odpoved na clanok
+; Reply to article
+;
+MSG_NEWS_REPLY_TO_ADDRESS
+Odpovedat na:
+; Reply to:
+;
+MSG_NEWS_ARTICLE_POSTED_TITLE
+Clanok bol poslany
+; Article posted
+;
+MSG_NEWS_ARTICLE_POSTED
+<H1>Clanok bol poslany</H1>\nVas clanok bol uspesne poslany.
+; <H1>Article posted</h1>\n\
+; Your article has been posted.
+;
+MSG_NEWS_DOWNLOAD_TITLE
+Stiahnut zoznam diskusnych skupin
+; Download newsgroup list
+;
+MSG_NEWS_DOWNLOAD_BODY
+<H1>Prebieha stahovanie...</H1>\n\
+Stahovanie zoznamu diskusnych skupin. Toto moze trvat aj niekolko minut.
+; <H1>Downloading...</H1>\n\
+; Downloading newsgroup list. This can take several minutes.
+;
+MSG_NEWS_SEARCH_RESULT
+Vysledok hladania
+; Search result
+;
+MSG_NEWS_FIRST_MATCHING
+Prvych %ld z %ld diskusnych skupin vyhovujucich <b>%s</b>
+; First %ld of %ld newsgroup names matching <B>%s</B>
+;
+MSG_NEWS_FOUND_MATCHING
+Naslo sa %ld diskusnych skupin vyhovujucich <b>%s</b>
+; Found %ld newsgroup names matching <B>%s</B>
+;
+;
+;-------------- Shell/ARexx command warning ---------
+;
+MSG_CMDWARN_TITLE
+AWeb - upozornenie
+; AWeb warning
+;
+MSG_CMDWARN_SHELL
+Bude vykonaný tento príkaz shellu:\n%s
+; About to execute shell command:\n%s
+;
+MSG_CMDWARN_AREXX
+Bude spustený tento ARexxový skript:\n%s
+; About to start ARexx program:\n%s
+;
+MSG_CMDWARN_BUTTONS
+_Ok|_Zruîiï
+; _Ok|_Cancel
+;
+;
+;-------------- SSL related warnings ----------------
+;
+MSG_SSLWARN_SSL_TITLE
+AWeb - upozornenie
+; AWeb warning
+;
+MSG_SSLWARN_SSL_TEXT
+Nemoùno nadviazaï zabezpeçené spojenie k %s:\n%s\n \nMá sa namiesto neho pouùiï nezabezpeçené spojenie?
+; Cannot make secure connection to %s:\n%s\n \nUse an unsecure connection instead?
+;
+MSG_SSLWARN_SSL_BUTTONS
+_Nezabezpeçené|_Zruîiï
+; _Unsecure|_Cancel
+;
+MSG_SSLWARN_SSL_NO_SSL
+Zabezpeçené spojenia sú podporované programom pre TCP/IP Miami a MiamiSSL.
+; Secure connections are only supported with the Miami TCP program and MiamiSSL.
+;
+MSG_SSLWARN_CERT_TITLE
+AWeb - upozornenie
+; AWeb warning
+;
+MSG_SSLWARN_CERT_TEXT
+Certifikát pre %s nemoùno overiï.\nPodrobnosti: %s\n \n\
+Ak sa rozhodnete pokraçovaï, budú údaje îifrované (ochrana proti odpoçúvaniu), \
+ale nemoùno overiï totoùnosï servera (ÙIADNA ochrana proti podvodom).\n \n\
+Prajete si pokraçovaï?
+; Certificate for %s cannot be verified.\nDetails: %s\n \n\
+; If you continue the data will be encrypted (protection against eavesdropping), \
+; but the identity of the server cannot be verified (-NO- protection against fraud).\n \n\
+; Do you want to continue?
+;
+MSG_SSLWARN_CERT_BUTTONS
+_Ok|_Zruîiï
+; _Ok|_Cancel
+;
+MSG_SSLWARN_SSL_NO_SSL2
+
+; Secure connections are only supported when using AmiSSL or MiamiSSL.
+;
+; ***NEW***
+;
+;
+;-------------- Unknown MIME type -------------------
+;
+MSG_UNKMIME_TITLE
+Neznámý druh súboru
+; Unknown content type
+;
+MSG_UNKMIME_TEXT
+Nerozpoznaný súbor bude uloùený\n \n\
+URL:   %s\nDruh:   %s\nPrípona:   %s\n \n\
+Ak chcete tomuto druhu súboru priradiï iný \
+zobrazovaç alebo akciu, zruîte uloùenie a naçítajte \
+súbor eîte raz po nastavení poloùky Prehliadaç (Zobrazovaçe).
+; Unrecognized file will be saved\n \n\
+; URL:   %s\nContent type:   %s\nExtension:   %s\n \n\
+; You might want to cancel the save now, and reload this file \
+; after configuring a viewer or action for this MIME type \
+; in the Browser settings (Viewers).
+;
+MSG_UNKMIME_BUTTONS
+_Uloùiï|_Zruîiï
+; _Save|_Cancel
+;
+MSG_REQUEST_COPYURL
+
+; Copy _URL to clipboard
+;
+; ***NEW***
+;
+;-------------- Open URL requester ------------------
+;
+;
+MSG_OPENURL_TITLE
+AWeb - ùiadosï
+; AWeb request
+;
+MSG_OPENURL_TEXT
+Vpíîte poùadované URL:
+; Type in the URL to open:
+;
+MSG_OPENURL_BUTTONS
+_Ok|_Zruîiï
+; _Ok|_Cancel
+;
+;
+;-------------- Save as IFF requester ---------------
+;
+;
+MSG_SAVEIFF_PROGRESS
+Ukladanie obrázku vo formáte IFF...
+; Saving IFF file...
+;
+;
+;-------------- awebcharset.awebplugin ---------------
+;
+;
+MSG_CHARSET_CODESETTITLE
+
+; Awebcharset.awebplugin
+;
+; ***NEW***
+;
+MSG_CHARSET_CODESETWRONG
+
+; The Version of %s on the System is %ld.%ld,\n\
+; but for this Plugin at least Version %ld.%ld is needed.\n
+;
+; ***NEW***
+;
+MSG_CHARSET_CODESETFAIL
+
+; Can't open required %s - Version: %ld.%ld.\n
+;
+; ***NEW***
+;
+MSG_CHARSET_CODESETURL
+
+; \n\
+; Please visit http://sourceforge.net/projects/codesetslib\n\
+; for downloading the latest Version and make sure the\n\
+; Library is properly installed.
+;
+; ***NEW***
+;
+MSG_CHARSET_INFOTITLE
+
+; Awebcharset.awebplugin Info Window
+;
+; ***NEW***
+;
+MSG_CHARSET_INFOTEXT
+
+; Filter is : %s\n\
+; Replace is: %s\n\
+; Request is: %s\n\
+; \n\
+; URL='%s'\n\
+; \n\
+; Document Charsets:\n\
+; Header Charset     = '%s'\n\
+; Meta Charset       = '%s'\n\
+; \n\
+; Used Charsets:\n\
+; Source Charset     = '%s'\n\
+; Destination Charset= '%s'
+;
+; ***NEW***
+;
+MSG_CHARSET_DIFFREQTXT
+
+; The Server send 2 different Charsets for this Document:\n\
+; \n\
+; Header Charset  = '%s'\n\
+; Document Charset= '%s'\n\
+; \n\
+; Which Charset should be used?
+;
+; ***NEW***
+;
+MSG_CHARSET_DIFFREQBUT
+
+; Don't ask again
+;
+; ***NEW***
+;
+MSG_CHARSET_ON
+
+; On
+;
+; ***NEW***
+;
+MSG_CHARSET_OFF
+
+; Off
+;
+; ***NEW***
+;
+MSG_CHARSET_OK
+
+; _Ok
+;
+; ***NEW***
+;
+;
+;-------------- Menus -------------------------------
+;
+; If the second character in a menu item string is a slash (/),
+; then the first character is used as menu shortcut.
+;
+MSG_PROJECT_MENU
+Projekt
+; Project
+;
+MSG_PROJECT_NEWWINDOW
+N/Nové okno
+; N/New window
+;
+MSG_PROJECT_CLOSEWINDOW
+K/Zavrieï okno
+; K/Close window
+;
+MSG_PROJECT_OPENURL
+U/Otvoriï URL...
+; U/Open URL
+;
+MSG_PROJECT_OPENWWW
+W/Otvoriï WWW
+; W/Open WWW
+;
+MSG_PROJECT_OPENLOCAL
+L/Otvoriï lokálne...
+; L/Open local...
+;
+MSG_PROJECT_OPENSEARCH
+E/Vyhãadávacie servery
+; E/Search engines
+;
+MSG_PROJECT_SOURCE
+Zobraziï zdrojový text...
+; View source...
+;
+MSG_PROJECT_SAVEHTML
+S/Uloùiï zdrojový text ako...
+; S/Save source...
+;
+MSG_PROJECT_ABOUT
+O programe...
+; About...
+;
+MSG_PROJECT_QUIT
+Q/Koniec...
+; Q/Quit...
+;
+MSG_PROJECT_SEARCH
+G/Hãadaï...
+; G/Search...
+;
+MSG_PROJECT_PRINT
+P/Tlaçiï...
+; P/Print...
+;
+MSG_PROJECT_EDIT
+Upraviï zdrojový text...
+; Edit source...
+;
+MSG_PROJECT_INFO
+Informácie...
+; Info...
+;
+MSG_PROJECT_OPENNEWS
+Otvoriï News
+; Open News
+;
+; (Shortcut key is backslash)
+MSG_PROJECT_ICONIFY
+\x5C/Ikonifikovaï
+; \\/Iconify
+;
+MSG_PROJECT_SAVEIFF
+Uloùiï ako IFF...
+; Save as IFF...
+;
+MSG_CONTROL_MENU
+Riadenie
+; Control
+;
+MSG_CONTROL_LOADNOW
+Naçítaï obrázky
+; Load images now
+;
+MSG_CONTROL_LOADNOWALL
+I/Vîetky
+; I/All images
+;
+MSG_CONTROL_LOADNOWMAPS
+M/Iba mapy
+; M/Maps only
+;
+MSG_CONTROL_NETWORKSTATUS
+?/Údaje o prenose...
+; ?/Network status...
+;
+MSG_DUMMY_2
+
+; 
+MSG_CONTROL_CANCEL
+Z/Zruîiï naçítavanie
+; Z/Cancel load
+;
+MSG_CONTROL_NEXTWINDOW
+./Ðalîie okno
+; ./Next window
+;
+MSG_CONTROL_PREVWINDOW
+,/Predchádzajúce okno
+; ,/Previous window
+;
+MSG_CONTROL_NOPROXY
+Y/Vypnúï proxy
+; Y/Disable proxy
+;
+MSG_CONTROL_RLOAD
+Aktualizovaï
+; Reload
+;
+MSG_CONTROL_RLOADDOC
+R/Súçasný dokument
+; R/Current document
+;
+MSG_CONTROL_RLOADIMGS
+Obrázky
+; Images in current
+;
+MSG_CONTROL_PLAYBGSOUND
+J/Zvuk na pozadí
+; J/Play background sound
+;
+MSG_CONTROL_COPYURL
+Kopírovaï URL
+; Copy URL
+;
+MSG_CONTROL_PASTEURL
+Vloùiï URL
+; Paste URL
+;
+MSG_CONTROL_COPYBLOCK
+C/Kopírovaï blok
+; C/Copy block
+;
+MSG_CONTROL_DRAGGING
+Text z okna
+; Dragging
+;
+MSG_CONTROL_BREAKJS
+X/Preruîiï JavaScript
+; X/Break JavaScript
+;
+MSG_CONTROL_DEBUGJS
+Ladiï JavaScript
+; Debug JavaScript
+;
+MSG_CONTROL_RESET
+Aktualizovaï rámçeky
+; Reset frames
+;
+MSG_CACHE_MENU
+Cache
+; Cache
+;
+MSG_DUMMY_3
+
+; 
+MSG_DUMMY_4
+
+; 
+MSG_DUMMY_5
+
+; 
+MSG_DUMMY_6
+
+; 
+MSG_CACHE_SAVEAUTH
+Uloùiï oprávnenia
+; Save authorizations
+;
+;**obsolete**
+MSG_CACHE_FLUSHAUTH
+Odstrániï oprávnenia
+; Flush authorizations
+;
+MSG_CACHE_BROWSER
+Prehliadaç cache...
+; Cache browser...
+;
+MSG_CACHE_FLUSH
+Odstrániï z pamäti
+; Flush from memory
+;
+MSG_CACHE_FLSHIMGSND
+Nezobrazené obrázky
+; Nondisplayed images
+;
+MSG_CACHE_FLSHIMGS
+Vîetky obrázky
+; All images
+;
+MSG_CACHE_FLSHDOCSND
+Nezobrazené dokumenty
+; Nondisplayed documents
+;
+MSG_CACHE_DELETE
+Zmazaï z disku
+; Delete from disk
+;
+MSG_CACHE_DELIMGS
+Vîetky obrázky
+; All images
+;
+MSG_CACHE_DELDOCS
+Vîetky dokumenty
+; All documents
+;
+MSG_CACHE_CLEAR
+Celú cache
+; Erase cache
+;
+MSG_CACHE_FIX
+Opraviï cache...
+; Fix cache...
+;
+MSG_CACHE_EDITAUTH
+Upraviï oprávnenia...
+; Edit authorizations...
+;
+MSG_NAVIGATE_MENU
+Navigácia
+; Navigate
+;
+MSG_NAVIGATE_BACK
+B/Späï
+; B/Back
+;
+MSG_NAVIGATE_FWD
+F/Dopredu
+; F/Forward
+;
+MSG_NAVIGATE_HOME
+D/Domovská stránka
+; D/Home document
+;
+MSG_NAVIGATE_HISTORY
+-/Okno s priebehom...
+; -/Window history...
+;
+MSG_HOTLIST_MENU
+Záloùky
+; Hotlist
+;
+MSG_HOTLIST_ADDHOT
+A/Pridaï do záloùiek
+; A/Add to hotlist
+;
+MSG_HOTLIST_SHOWHOT
+H/Zobraziï záloùky
+; H/Show hotlist
+;
+;**obsolete**
+MSG_HOTLIST_MAINT
+T/Údrùba...
+; T/Maintenance...
+;
+MSG_HOTLIST_SAVE
+Uloùiï záloùky
+; Save hotlist
+;
+MSG_HOTLIST_RESTORE
+Obnoviï ostatne uloùené
+; Restore last saved
+;
+MSG_HOTLIST_AMHOTRX
+AMosaic (ARexx)
+; AMosaic (ARexx)
+;
+MSG_HOTLIST_AMHOT20
+AMosaic (2.0)
+; AMosaic (2.0)
+;
+MSG_HOTLIST_IBHOT
+Iné...
+; Other...
+;
+MSG_HOTLIST_VIEW
+V/Zobrazovaç záloùiek...
+; V/View hotlist...
+;
+MSG_HOTLIST_MGR
+T/Správca záloùiek...
+; T/Hotlist manager...
+;
+MSG_SETTINGS_MENU
+Nastavenia
+; Settings
+;
+MSG_SETTINGS_LOADIMG
+Naçítavanie obrázkov
+; Image loading
+;
+MSG_SETTINGS_LOADIMGALL
+Vîetky
+; All images
+;
+MSG_SETTINGS_LOADIMGMAPS
+Iba mapy
+; Maps only
+;
+MSG_SETTINGS_LOADIMGOFF
+Vypnuté
+; Off
+;
+MSG_DUMMY_7
+
+; 
+MSG_DUMMY_8
+
+; 
+MSG_SETTINGS_BROWSER
+Prehliadaç...
+; Browser settings...
+;
+MSG_SETTINGS_PROGRAM
+Program...
+; Program settings...
+;
+MSG_SETTINGS_NETWORK
+Sieï...
+; Network settings...
+;
+MSG_SETTINGS_CLASSACT
+ClassAct...
+; ClassAct settings...
+;
+MSG_SETTINGS_SAVEALL
+Uloùiï nastavenie
+; Save current settings
+;
+MSG_SETTINGS_SNAPSHOT
+Zapísaï umiestnenie okien
+; Snapshot windows
+;
+;**obsolete
+MSG_SETTINGS_SNAPSHOTALT
+Zapísaï altern. umiestnenie
+; Snapshot as alternate size
+;
+MSG_SETTINGS_BGIMAGES
+Obrázky na pozadí
+; Background images
+;
+MSG_SETTINGS_BGSOUND
+Zvuk na pozadí
+; Background sound
+;
+MSG_SETTINGS_SAVEAS
+Uloùiï nastavenie ako...
+; Save settings as...
+;
+MSG_SETTINGS_LOAD
+Naçítaï nastavenie...
+; Load settings...
+;
+MSG_SETTINGS_GUI
+GUI...
+; GUI settings...
+;
+MSG_HELP_MENU
+Pomoc
+; Help
+;
+MSG_HELP_HELP
+Dokumentácia
+; Documentation
+;
+MSG_HELP_AWEBHOME
+Domovská stránka AWebu
+; AWeb home page
+;
+MSG_HELP_AWEBFAQ
+AWeb FAQ
+; AWeb FAQ
+;
+MSG_HELP_REGISTER
+Registrácia
+; Registration
+;
+MSG_AREXX_MENU
+ARexx
+; ARexx
+;
+MSG_AREXX_AREXX
+!/Spustiï Arexxové makro...
+; !/Start ARexx macro...
+;
+;--------------- Navigation Button Texts -------
+;
+MSG_NAVGAD_FORWARD
+
+; Fwd
+;
+; ***NEW***
+;
+MSG_NAVGAD_BACK
+
+; Back
+;
+; ***NEW***
+;
+MSG_NAVGAD_HOME
+
+; Home
+;
+; ***NEW***
+;
+MSG_NAVGAD_CANCEL
+
+; Stop
+;
+; ***NEW***
+;
+MSG_NAVGAD_IMAGES
+
+; Images
+;
+; ***NEW***
+;
+MSG_NAVGAD_STATUS
+
+; Status
+;
+; ***NEW***
+;
+MSG_NAVGAD_SEARCH
+
+; Find
+;
+; ***NEW***
+;
+MSG_NAVGAD_RELOAD
+
+; Reload
+;
+; ***NEW***
+;
+MSG_NAVGAD_ADDHOTLIST
+
+; Add
+;
+; ***NEW***
+;
+MSG_NAVGAD_HOTLIST
+
+; Hotlist
+;
+; ***NEW***
+;
+;
+;-------------- Error messages ----------------------
+;
+MSG_ERROR_CANTOPEN
+Nemoùno otvoriï %s
+; Can't open %s
+;
+; NOTE - No locale formatters (like %1$s) possible in this string!
+;        Only plain C formatters allowed.
+MSG_ERROR_CANTOPENV
+Nemoùno otvoriï %s verzie %ld
+; Can't open %s version %ld
+;
+MSG_ERROR_NEEDOS30
+AWeb vyùaduje OS 3.0 alebo novîí
+; AWeb needs OS 3.0 or better
+;
+MSG_ERROR_CANTQUIT
+Nemoùno ukonçiï!\n%s\nsa stále pouùíva.
+; Cannot quit!\n%s\nis still in use
+;
+;-------------- partial error messages --------------
+;
+MSG_EPART_ERROR
+Chyba
+; Error
+;
+MSG_EPART_RETURL
+pri pristupe k URL
+; While retrieving URL
+;
+MSG_EPART_ADDRSCHEME
+Sposob adresovania &quot;%s&quot; tato verzia AWebu nepodporuje
+; The &quot;%s&quot; addressing scheme is not implemented in this version of AWeb
+;
+MSG_EPART_NOLIB
+Najprv je nutne spustit podporu TCP/IP
+; A TCP stack must be started first
+;
+MSG_EPART_NOHOST
+Nemozno zistit nazov hostitela &quot;%s&quot;
+; Cannot resolve host name &quot;%s&quot;
+;
+MSG_EPART_NOCONNECT
+Nemozno sa pripojit k &quot;%s&quot;
+; Cannot connect to &quot;%s&quot;
+;
+MSG_EPART_NOFILE
+Nemozno otvorit subor &quot;%s&quot;
+; Cannot open file &quot;%s&quot;
+;
+MSG_EPART_XAWEB
+Neplatny interny (x-aweb:) nazov &quot;%s&quot;
+; Invalid internal (x-aweb:) name &quot;%s&quot;
+;
+MSG_EPART_FLUSHED_HEAD
+Odstránené
+; Flushed
+;
+MSG_EPART_FLUSHED_MSG
+Tento dokument se uz nenachadza v pamati
+; This document is no longer available in memory
+;
+MSG_EPART_FLUSHED_NORELOAD
+K tomuto dokumentu sa nedá vrátiï. Musíte znovu vyplniï formulár, ktorým \
+bola vytvorená táto stránka. Toto môùe maï neùelané vedãajîie úçinky, ako \
+napríklad dvojitú registráciu.
+; This document cannot be retrieved again. You will have to submit the form again that \
+; produced this page. Beware of undesired side-effects if you submit that form twice, \
+; like a duplicate registration.
+;
+MSG_EPART_NOLOGIN
+Nemozno sa pripojit k &quot;%s&quot; ako &quot;%s&quot;
+; Cannot login at &quot;%s&quot; as &quot;%s&quot;
+;
+MSG_EPART_NOAWEBLIB
+Nemozno nacitat prislusny modul AWebLib pre &quot;%s&quot;.
+; Unable to load the AWebLib module for &quot;%s&quot;.
+;
+MSG_EPART_NOPROGRAM
+Pre sposob adresovania &quot;%s&quot; nemate nastaveny program.
+; You haven't configured a program for the &quot;%s&quot; addressing scheme.
+;
+;
+;-------------- Miscellaneous -----------------------
+;
+; (external program window title)
+MSG_AWEB_EXTWINTITLE
+AWeb - externý program
+; AWeb External Program
+;
+; (status field text)
+MSG_AWEB_BYTESREAD
+Bajtov naçítaných
+; Bytes read
+;
+; (form SUBMIT button default text)
+MSG_AWEB_FORMSUBMIT
+Odoslat
+; Submit
+;
+; (form RESET button default text)
+MSG_AWEB_FORMRESET
+Vymazat
+; Reset
+;
+; (ISINDEX default prompt)
+MSG_AWEB_INDEXPROMPT
+Toto je prehladavatelny dokument. Zadajte klucove slova: 
+; This is a searchable index. Enter keywords:
+;
+; (window title)
+MSG_AWEB_NODOCTITLE
+(nie je naçítaný dokument)
+; (No document loaded)
+;
+; (screen title)
+MSG_AWEB_SCREENTITLE
+Názov verejnej obrazovky - AWeb
+; AWeb public screen - Name AWeb
+;
+; (hotlist document title)
+MSG_AWEB_HOTLISTTITLE
+ - zalozky
+; Hotlist
+;
+; (gopher index title)
+MSG_AWEB_GOPHERINDEX
+Gopher - index
+; Gopher index
+;
+; (gopher menu title)
+MSG_AWEB_GOPHERMENU
+Gopher - menu
+; Gopher menu
+;
+; (window history title)
+MSG_AWEB_WINDOWHIS
+Okno s priebehom
+; Window history
+;
+; (partial title of other hotlist)
+MSG_AWEB_OTHER
+Iné
+; Other
+;
+; (transfer status messages)
+MSG_AWEB_LOOKUP
+Vyhãadávanie %s
+; Looking up %s
+;
+MSG_AWEB_CONNECT
+Nadväzovanie %s spojenia k %s
+; Making %s connection to %s
+;
+MSG_AWEB_WAITING
+Poùiadavka na %s odoslaná; çakanie na odozvu
+; %s request sent; waiting for response
+;
+MSG_AWEB_TCPSTART
+Zriaðovanie TCP spojenia
+; Establishing TCP connection
+;
+; (form image fieldstatus text)
+MSG_AWEB_FORMLOCATION
+Formulár na x=%ld, y=%ld
+; Submit form at x=%ld, y=%ld
+;
+; (form BUTTON button default text)
+MSG_AWEB_FORMBUTTON
+Spustit
+; Start
+;
+; (frame resizing status prompt)
+MSG_AWEB_FRAME_RESIZE
+Zmena veãkosti rámçeka
+; Resize frame
+;
+; (transfer status message)
+MSG_AWEB_LOGIN
+Prihlasovanie k %s
+; Logging in at %s
+;
+; (transfer status message)
+MSG_AWEB_NEWSGROUP
+Prehãadávanie %s
+; Scanning %s
+;
+; (transfer status message)
+MSG_AWEB_NEWSSCAN
+Prehãadávanie %s (%ld çlánkov)
+; Scanning %s (%ld articles)
+;
+; (transfer status message)
+MSG_AWEB_NEWSSORT
+Triedenie %s
+; Sorting %s
+;
+; (transfer status message)
+MSG_AWEB_NEWSPOST
+Odosielanie çlánku
+; Posting article
+;
+; (transfer status message)
+MSG_AWEB_MAILSEND
+Odosielanie správy
+; Sending mail message
+;
+; (transfer status message)
+MSG_AWEB_UPLOAD
+Odosielanie súboru
+; Uploading file
+;
+; ** (don't use numbers 40001 or higher) **

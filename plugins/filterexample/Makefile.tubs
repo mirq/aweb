@@ -1,0 +1,10 @@
+MODULES := AWebPlugin/filterexample.awebplugin
+
+AWebPlugin/filterexample.awebplugin/TYPE := executable/library/amigashared
+AWebPlugin/filterexample.awebplugin/DEPS := linklibs/libawebclib.a $(MODULELIB)
+AWebPlugin/filterexample.awebplugin/CFILES := \
+startup filterexample
+
+
+AWebPlugin/filterexample.awebplugin/CFILES/CPPFLAGS := -I plugins/include
+

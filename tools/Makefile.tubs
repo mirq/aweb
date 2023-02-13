@@ -1,0 +1,10 @@
+MODULES := Docs/makeindex Docs/searchindex
+
+Docs/makeindex/DEPS := linklibs/libawebclib.a
+Docs/searchindex/DEPS := linklibs/libawebclib.a
+
+Docs/makeindex/CFILES := makeindex
+
+Docs/searchindex/CFILES := searchindex
+
+

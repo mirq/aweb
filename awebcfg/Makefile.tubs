@@ -1,0 +1,8 @@
+MODULES     := AWebCfg
+AWebCfg/CFILES := \
+awebcfg cfgbr cfgpr cfgnw cfgui cfgmainstr \
+cfglocale
+
+AWebCfg/LDFLAGS := -L. -lm  -lawebcommon -lawebclib
+
+AWebCfg/DEPS := linklibs/libawebcommon.a  linklibs/libawebclib.a

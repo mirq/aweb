@@ -1,0 +1,49 @@
+<html>
+<head>
+<title>struct Pluginquery</title>
+</head>
+<body>
+<h1><code>struct Pluginquery</code></h1>
+
+<h2>Purpose</h2>
+
+The <b><code>struct Pluginquery</code></b> is used for holding the
+results of the <a href="../plugin/queryplugin.html"><code>Queryplugin()</code></a>
+function of a plugin module.
+
+<h2>Structure contents</h2>
+
+<pre>
+struct Pluginquery
+{  long structsize;        /* Set to struct size by caller */
+   BOOL command;           /* Set to TRUE if plugin supports Commandplugin() */
+   BOOL filter;            /* Set to TRUE if plugin supports Filterplugin() */
+};
+</pre>
+
+<h2>Usage</h2>
+
+<h3>Field: <code>structsize</code> (in)</h3>
+Size of this structure, in bytes. The exact size of this structure may vary
+with each version of AWeb.
+<p>
+Do not touch parts of this structure beyond the size indicated by this field.
+That is, support earlier versions of AWeb.
+<p>
+Do not touch parts of the structure beyond the size the plugin expects this
+structure to be. That is, don't touch parts of the structure you don't
+understand.
+
+<h3>Field: <code>command</code> (out)</h3>
+Should be set to nonzero by the plugin if the plugin supports the
+<a href="../plugin/commandplugin.html"><code>Commandplugin()</code></a>
+function.
+
+<h3>Field: <code>filter</code> (out)</h3>
+Should be set to nonzero by the plugin if the plugin supports the
+<a href="../plugin/filterplugin.html"><code>Filterplugin()</code></a>
+function.
+
+</body>
+</html>
+

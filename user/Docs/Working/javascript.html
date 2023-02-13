@@ -1,0 +1,110 @@
+<!--
+/**********************************************************************
+ *
+ * This file is part of the AWeb APL Lite distribution
+ *
+ * Copyright (C) 2002 Yvon Rozijn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the AWeb Public License as included in this
+ * distribution.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * AWeb Public License for more details.
+ *
+ **********************************************************************/
+-->
+<html>
+<head>
+<title>
+JavaScript
+</title>
+<meta name=keywords content="security, privacy"></head>
+
+<BODY BACKGROUND="../GlobalImages/awebbg.gif">
+
+<IMG SRC="../GlobalImages/aweb.gif" ALT="AWeb Logo" WIDTH="199" HEIGHT="92" HSPACE="0" VSPACE="0" ALIGN="LEFT" BORDER="0">
+
+<h1>&nbsp; JavaScript</h1>
+
+<h2>About JavaScript</h2>
+JavaScript is a scripting language, invented by NetScape. It was originally
+named <em>LiveScript</em>. After the introduction of the <em>Java</em>
+programming language by Sun Microsystems, NetScape changed its name to
+<em>JavaScript</em>. Despite the confusing name similarity, <em>JavaScript</em>
+has <strong>nothing</strong> to do with <em>Java</em> whatsoever.<br>
+<em>Java</em> is a full, standalone programming language that needs a compiler.
+Java programs can run on any hardware platform (that supports the Java
+environment). Often Java <em>applets</em>, small programs with limited
+functionality, are included on a web page. These applets need to be downloaded
+separately, much like images on a page.<br>
+<em>JavaScript</em> on the other hand, is a scripting language. It needs
+an interpreter, not a compiler. Javascript "programs" are often included
+within the source of a web page.
+<p>
+More and more pages on the World Wide Web use JavaScript. Often it is used
+to create dynamic effects on pages, or to add complex functionality to
+data-entry forms.
+<p>
+Although JavaScript has a basic protection scheme against privacy violation,
+many people think this scheme isn't watertight.
+
+<h2>Enabling JavaScript</h2>
+You can <a href="../Configuring/broptions.html#javascript">configure</a> AWeb to
+use JavaScript or to ignore it. If you are concerned about your privacy,
+you should disable JavaScript usage. Note that many pages will not look or
+work the way they were designed if you disable JavaScript usage.
+
+<h2>Breaking JavaScript programs</h2>
+You might want to break a JavaScript program if it seems to run too long.
+The <code>Control / Break&nbsp;JavaScript</code> menu item allows you
+to do so. It will also cancel all outstanding timeout events, these are
+often used to create a running text on a page.
+<p>
+If the menu is not available or doesn't seem to work, you should try the
+keyboard shortcut for the menu item (by default: RightAmiga-X).
+
+<h2><a name=nobanners>Suppressing JavaScript banner windows</a></h2>
+Many pages on the web use JavaScript to automatically open a banner or
+advertisement window every time you visit the page. If you find this
+annoying, you have the <a href="../Configuring/broptions.html#nobanners">option
+to suppress these windows</a> without disabling JavaScript altogether.
+<p>
+<font size=-1>
+This options disables the <code>window.open()</code> function if it would open
+a new window, in the following cases: when the statement is run directly from
+the page source (interpreted while parsing the page), when it is run as the result
+of a <code>&lt;BODY ONLOAD="<var>statement</var>"&gt;</code> or
+<code>&lt;BODY ONUNLOAD="<var>statement</var>"&gt;</code> tag, or when it
+is run as the result of a <code>setTimeout()</code> run in these places. Opening
+a new window as a result of a link or a button is not affected.
+<p>
+Because a failure of the <code>window.open()</code> function might result in more
+errors (no such property), error messages are disabled for the remainder of the
+script, regardless of the setting of the
+<a href="../Configuring/broptions.html#jserrors">Show JavaScript errors</a> option.
+</font>
+
+<h2>Showing JavaScript error messages</h2>
+Some JavaScript programs generate error messages, either because they are
+faulty programs, or because they refer to components not available in this
+version of AWeb. If these error messages annoy you, you can
+<a href="../Configuring/broptions.html#jserrors">turn these off</a>. With error
+messages turned off, the program still stops in error but you won't see the
+error message.
+
+<h2>Programmers</h2>
+If you like to add JavaScript to your own pages, AWeb offers you two
+bonus features. There is a <a href="../Advanced/jsprogrammer.html#AWebJS">standalone
+JavaScript interpreter</a>, and there is the unique
+<a href="../Advanced/jsprogrammer.html#debugger">debugger</a>.
+
+<p>
+<hr>
+<a href=../AWeb%20Manual.html><img src=../GlobalImages/back.gif width=32 height=16 alt="<-" border=0></a> Back to
+<a href=../AWeb%20Manual.html>index</a>.
+
+</body>
+</html>

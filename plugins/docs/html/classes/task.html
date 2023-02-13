@@ -1,0 +1,257 @@
+<html>
+<head>
+<title>AOTP_TASK class</title>
+</head>
+<body>
+<h1>AOTP_TASK class</h1>
+
+<h2>Purpose</h2>
+
+The <b>AOTP_TASK</b> class is used to spawn a subprocess.
+
+<h2>Supported methods</h2>
+
+<table border>
+<tr><th align=left valign=top>Method
+   <th align=left valign=top>Description
+<tr><th align=left valign=top><a href="../methods/dispose.html">AOM_DISPOSE</a>
+   <td valign=top>Dispose the object, and stop the subtask
+<tr><th align=left valign=top><a href="../methods/get.html">AOM_GET</a>
+   <td valign=top>Get attribute values
+<tr><th align=left valign=top><a href="../methods/new.html">AOM_NEW</a>
+   <td valign=top>Prepare a new subtask
+<tr><th align=left valign=top><a href="../methods/set.html">AOM_SET</a>
+   <td valign=top>Set attribute values
+</table>
+
+<h2>Supported attributes</h2>
+
+<table border>
+<tr><th align=left valign=top>Attribute
+   <th align=left valign=top>Type
+   <th align=left valign=top>Description
+   <th align=left valign=top>Applicability
+<tr><th align=left valign=top>AOBJ_Map
+   <td valign=top>struct TagItem *
+   <td valign=top>Array of TagItem structures used to map the attributes
+      send by the subtask in an <a href="../methods/update.html">AOM_UPDATE</a>
+      message.
+   <td valign=top>AOM_NEW<br>AOM_SET
+<tr><th align=left valign=top>AOBJ_Target
+   <td valign=top><a href="../classes/object.html">struct Aobject</a> *
+   <td valign=top>Object that the <a href="../methods/update.html">AOM_UPDATE</a>
+      messages from the subtask will be sent to.
+   <td valign=top>AOM_NEW<br>AOM_SET
+<tr><th align=left valign=top>AOTSK_Async
+   <td valign=top>BOOL
+   <td valign=top>Can be used in combination with the AOTSK_Suspend or AOTSK_Stop
+      attributes, or in the
+      <a href="../lib/updatetaskattrs.html"><code>Updatetaskattrs()</code></a>
+      function.<p>
+      When set to TRUE, these actions are performed asynchroneously.
+   <td valign=top>AOM_SET
+<tr><th align=left valign=top>AOTSK_Entry
+   <td valign=top><a href=#subtaskfunction>Subtaskfunction</a> *
+   <td valign=top>Pointer to the subtask entry point that must be called when the
+      subtask is started.
+   <td valign=top>AOM_NEW<br>AOM_SET
+<tr><th align=left valign=top rowspan=2>AOTSK_Message
+   <td valign=top rowspan=2><a href="../methods/index.html#amessage">struct Amessage</a> *
+   <td valign=top>Pointer to an OO message to send to the subtask.<p>
+      Use the <a href="../lib/asetattrsasynca.html"><code>Asetattrsasynca()</code></a>
+      function to send an <a href="../methods/set.html">AOM_SET</a> message
+      asynchroneously.
+   <td valign=top>AOM_SET
+<tr>
+   <td valign=top>Pointer to an OO message to send by the subtask to the
+      main process using the <a href="../lib/updatetask.html"><code>Updatetask()</code></a>
+      function.
+   <td valign=top>Received on AOM_UPDATE
+<tr><th align=left valign=top>AOTSK_Name
+   <td valign=top>STRPTR
+   <td valign=top>Name of the newly created process.
+   <td valign=top>AOM_NEW<br>AOM_SET
+<tr><th align=left valign=top>AOTSK_Replied
+   <td valign=top><a href=#repliedfunction>Repliedfunction</a> *
+   <td valign=top>Pointer to a function that is called when the message specified
+      by the AOM_Message attribute (or built by the
+      <a href="../lib/asetattrsasynca.html"><code>Asetattrsasynca()</code></a> function)
+      has been replied by the subtask.
+   <td valign=top>AOM_SET
+<tr><th align=left valign=top>AOTSK_Stacksize
+   <td valign=top>LONG
+   <td valign=top>Size of the stack to allocate for the new process, in bytes.
+      Default is 20000.
+   <td valign=top>AOM_NEW<br>AOM_SET
+<tr><th align=left valign=top>AOTSK_Start
+   <td valign=top>BOOL
+   <td valign=top>When creating an AOTP_TASK object, the subprocess is not started
+      yet. Set the AOTSK_Start attribute to TRUE to start the subprocess.
+   <td valign=top>AOM_NEW<br>AOM_SET<br>AOM_GET
+<tr><th align=left valign=top>AOTSK_Stop
+   <td valign=top>BOOL
+   <td valign=top>When set to TRUE, the subprocess is stopped. If the
+      AOTSK_Async attribute is set too, the method returns immediately, otherwise
+      it waits until the subprocess has actually finished.
+   <td valign=top>AOM_SET<br>AOM_GET
+<tr><th align=left valign=top>AOTSK_Suspend
+   <td valign=top>BOOL
+   <td valign=top>When set to TRUE, the subprocess is temporarily halted. If the
+      AOTSK_Async attribute is set too, the method returns immediately, otherwise
+      it waits until the subprocess has actually come to a wait.
+      <p>
+      Set this attribute to FALSE to let the subprocess run again.
+   <td valign=top>AOM_SET<br>AOM_GET
+<tr><th align=left valign=top>AOTSK_Userdata
+   <td valign=top>APTR
+   <td valign=top>User defined pointer that will be passed to the subtask
+      entry function once it is started.
+   <td valign=top>AOM_SET<br>AOM_GET
+</table>
+
+<h2>Usage</h2>
+
+<h3>The main AWeb task</h3>
+
+<h4>Starting the subtask</h4>
+When the AOTP_TASK object is created, everything is prepared for the subtask
+to run, but it is not actually started. To start the subtask, set the
+object's <b>AOTSK_Start</b> attribute to TRUE. Then a new process is
+launched, and the <a href=#subtaskfunction>entry point</a> specified by
+the <b>AOTSK_Entry</b> attribute is called.
+
+<h4>Sending messages</h4>
+The main process can send AWeb OO <a href="../methods/index.html">messages</a>
+to the subtask.<br>
+<font size=-1>Note: usually the term "message" in the object oriented
+paradigm is conceptually totally different from the term "message" as
+the Amiga exec library uses it. In the message traffic with subtasks,
+the two different meanings are actually combined.</font>
+<p>
+To send a message, set the <b>AOTSK_Message</b> attribute to a pointer
+to the message. Unless you also set the <b>ATSK_Async</b> attribute to TRUE,
+the <a href="../methods/set.html">AOM_SET</a> method will not return
+until the subtask has replied the message.
+<p>
+If you set the <b>AOTSK_Replied</b> attribute together with <b>AOTSK_Message</b>,
+this function will be called as soon as the message is replied by the
+subtask. This works for both synchroneous and asynchroneous messages.
+The <b>AOTSK_Replied</b> attribute must be set to a pointer to a
+<code>Repliedfunction</code> type function:<p>
+<pre>
+<a name=repliedfunction>typedef void Repliedfunction(<a href="../classes/object.html">struct Aobject</a> *task,<a href="../structs/taskmsg.html">struct Taskmsg</a> *msg);
+</pre>
+The first argument is a pointer to the AOTP_TASK object. You could
+<a href="../methods/get.html">AOM_GET</a> the <b>AOTSK_Userdata</b> attribute
+from it, for example, to find your own context.<br>
+The second argument is a pointer to the message that was replied. You
+might want to examine its <code>result</code> field.
+<p>
+When there are only some attributes to be set in an asynchroneous way,
+it is more convenient to use the
+<a href="../lib/asetattrsasynca.html"><code>AsetattrsasyncA()</code></a>
+function. You can use the <b>AOTSK_Replied</b> attribute with this
+function, too.
+
+<h4>Receiving updates</h4>
+The subtask might send <a href="../methods/update.html">AOM_UPDATE</a>
+messages to the object specified in the <b>AOBJ_Target</b> attribute.
+Usually this will be the object that created the AOTP_TASK object.
+In these messages, either attributes might be set directly,
+or the <b>AOTSK_Message</b> attribute might hold a pointer to a
+<a href="../methods/index.html#amessage.html"><code>struct Amessage</code></a>
+that should be processed by some dispatcher.
+
+<h4>Suspending the subtask</h4>
+You can temporarily suspend the subtask's processing by
+<a href="../methods/set.html">AOM_SET</a>-ing the AOTP_TASK object's
+<b>AOTSK_Suspend</b> attribute to TRUE. Unless you also set <b>AOTSK_Async</b>
+to TRUE, the method will not return until the subtask is actually
+suspended.
+<p>
+Set the <b>AOTSK_Suspend</b> attribute to FALSE to let the subtask
+continue.
+
+<h4>Stopping the subtask</h4>
+You can terminate the subtask by
+<a href="../methods/set.html">AOM_SET</a>-ing the <b>AOTSK_Stop</b>
+attribute to TRUE. Unless you also set <b>AOTSK_Async</b>
+to TRUE, the method will not return until the subtask is actually
+terminated.
+<p>
+If you <a href="../methods/dispose.html">AOM_DISPOSE</a> the AOTP_TASK
+object, the subtask is terminated too if it was still running.
+
+<h3>The subtask</h3>
+
+<h4>Entry point</h4>
+For the subtask, an entry point must be defined according to the
+<code>Subtaskfunction</code> definition:<p>
+<pre>
+<a name=subtaskfunction>typedef void Subtaskfunction(APTR userdata);
+</pre>
+When the entry function returns, the subtask is stopped.
+<p>
+Note that most of the functions from the
+<a href="../lib/index.html">awebsupport.library</a> are not allowed
+within a subtask.
+
+<h4>Receiving messages</h4>
+The subtask must, during its processing, regularly check for messages
+sent by the main process. The
+<a href="../lib/gettaskmsg.html"><code>Gettaskmsg()</code></a> function
+returns a pointer to a waiting <a href="../structs/taskmsg.html"><code>struct
+Taskmsg</code></a>. The <code>amsg</code> pointer in this structure points
+to a <a href="../methods/index.html#amessage.html"><code>struct Amessage</code></a>
+that should be processed by a dispatcher type function. Any type of
+<a href="../methods/index.html">method</a> can be sent, but usually only
+<a href="../methods/set.html">AOM_SET</a> is used.
+<p>
+If the <b>AOTSK_Stop</b> attribute is set in an <a href="../methods/set.html">AOM_SET</a>
+message, the subtask entry function must return.
+<p>
+All messages (including the one in which <b>AOTSK_Stop</b> was set) <b>must</b>
+be replied using the <a href="../lib/replytaskmsg.html"><code>Replytaskmsg()</code></a>
+function. Before replying the message, you may set the <code>result</code> field.
+<p>
+You can wait for incoming messages, together with any other signals, using
+the <a href="../lib/waittask.html"><code>Waittask()</code></a> function.
+<p>
+If you don't expect any messages other than perhaps the one with <b>AOTSK_Stop</b>,
+you may use the <a href="../lib/checktaskbreak.html"><code>Checktaskbreak()</code></a>
+function instead.
+
+<h4>Sending updates</h4>
+The subtask can send <a href="../methods/update.html">AOM_UPDATE</a> messages
+to the main process. Use the
+<a href="../lib/updatetask.html"><code>Updatetask()</code></a> function to
+send any message type in a synchroneous fashion. The main task will receive
+this message as value of the <b>AOTSK_Message</b> in an
+<a href="../methods/update.html">AOM_UPDATE</a> method.
+<p>
+The <a href="../lib/Updatetaskattrs.html"><code>Updatetaskattrs()</code></a>
+function sends not a message, but merely only attributes to the main process.
+The main task receives this attributes directly in the
+<a href="../methods/update.html">AOM_UPDATE</a> message's taglist.
+<p>
+When using the <a href="../lib/Updatetaskattrs.html"><code>Updatetaskattrs()</code></a>
+function, you may also set the <b>AOTSK_Async</b> attribute. If set to TRUE, the
+update will be asynchroneous, that is the subtask will continue while
+the main task is processing the <a href="../methods/update.html">AOM_UPDATE</a>
+message.
+
+<h4>Saving CPU resources</h4>
+When several subtasks are started, each doing heavy CPU intensive processing,
+the machine may become very slow. Therefore, if a subtask process does
+much processing, and is not time critical, it should protect its processing
+code with AWeb's <b>process semaphore</b>. You get a pointer to this semaphore
+by <a href="../methods/get.html">AOM_GET</a>-ing the <b>AOAPP_Semaphore</b>
+attribute from the <a href=application.html>AOTP_APPLICATION</a> object
+(found using the <a href="../lib/aweb.html"><code>Aweb()</code></a> function).
+<p>
+To avoid locking out messages containing <b>AOTSK_Stop</b>, you must obtain
+this semaphore using the
+<a href="../lib/obtaintasksemaphore.html"><code>Obtaintasksemaphore()</code></a>
+function. Likewise, other semaphores that may block your task for a while
+should be obtained using this function.
+
