@@ -31,7 +31,10 @@
 #include <intuition/icclass.h>
 #include <workbench/startup.h>
 #include <workbench/workbench.h>
+#undef NO_INLINE_STDARG
 #include <reaction/reaction.h>
+
+#define NO_INLINE_STDARG
 
 #ifdef __MORPHOS__
 #include <intuition/extensions.h>

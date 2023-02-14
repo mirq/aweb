@@ -32,17 +32,27 @@
 #include <graphics/gfx.h>
 #include <libraries/gadtools.h>
 
+
+#undef NO_INLINE_STDARG
 #include <reaction/reaction.h>
+
+#define NO_INLINE_STDARG
 
 #include <libraries/awebstartup.h>
 
+
+#undef  NO_INLINE_STDARG
 #include <proto/icon.h>
+#define NO_INLINE_STDARG
+
 #include <proto/intuition.h>
 #include <proto/graphics.h>
 #include <proto/gadtools.h>
 #include <proto/utility.h>
 #include <proto/layers.h>
 #include <proto/wb.h>
+
+#include "string_extra.c"
 
 /*------------------------------------------------------------------------*/
 
