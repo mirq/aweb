@@ -134,7 +134,6 @@ void *Tcpopenlib(void)
 }
 
 extern struct Assl *Assl_initamissl(struct Library *socketbase);
-struct Assl *Assl_initmiamissl(void);
 
 struct Assl *Tcpopenssl(struct Library *socketbase)
 {  struct Assl *assl=NULL;
@@ -151,11 +150,6 @@ struct Assl *Tcpopenssl(struct Library *socketbase)
 
    }
 
-#if !( defined(__amigaos4__) || defined(__MORPHOS__) )
-   else if(assl=Assl_initmiamissl())
-   {  AwebSslBase=AwebMiamisslBase;
-   }
-#endif // __amigaos4__
 
    return assl;
 }

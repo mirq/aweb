@@ -2,7 +2,7 @@ INCLUDE    := -I Include -I aweblibs/include -I aweb/include
 NETINCLUDE := -I /gg/netinclude
 NETINCLUDE2 :=
 SSLINCLUDE := -I /gg/amissl-sdk/include
-MIAMISSLINCLUDE := -I /gg/miamissl-sdk/include -I /gg/miamissl-sdk
+
 ALPHALIB :=
 
 CC := m68k-amigaos-gcc
