@@ -42,7 +42,14 @@
 #include <libraries/gadtools.h>
 #include <gadgets/colorwheel.h>
 #include <gadgets/gradientslider.h>
+
+#undef NO_INLINE_STDARG
 #include <reaction/reaction.h>
+#include <reaction/reaction_macros.h>
+#include <clib/reaction_lib_protos.h>
+
+#define NO_INLINE_STDARG
+
 
 #include <proto/exec.h>
 #include <clib/alib_protos.h>
@@ -204,5 +211,6 @@ extern BOOL Opennetwork(void);
 extern ULONG nwmask;
 extern BOOL Processnetwork(void);
 extern void Closenetwork(void);
+
 
 #endif
