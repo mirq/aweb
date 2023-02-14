@@ -37,7 +37,10 @@
 #include <clib/alib_protos.h>
 #endif
 
+#undef NO_INLINE_STDARG
 #include <reaction/reaction.h>
+
+#define NO_INLINE_STDARG
 
 #include <proto/exec.h>
 #include <proto/intuition.h>
