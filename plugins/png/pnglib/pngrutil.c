@@ -1914,25 +1914,28 @@ png_read_filter_row(png_structp png_ptr, png_row_infop row_info, png_bytep row,
       }
       case PNG_FILTER_VALUE_AVG:
       {
-         png_uint_32 i;
-         int bpp;
-         png_bytep rp;
-         png_bytep pp;
-         png_bytep lp;
+          png_uint_32 i;
+          png_bytep rp = row;
+          png_bytep pp = prev_row;
 
-         bpp = (row_info->pixel_depth + 7) / 8;
-         for (i = 0, rp = row, pp = prev_row;
-            i < (png_uint_32)bpp; i++, rp++, pp++)
-         {
-            *rp = (png_byte)(((int)(*rp) +
-               ((int)(*pp) / 2)) & 0xff);
-         }
-         for (lp = row; i < row_info->rowbytes; i++, rp++, lp++, pp++)
-         {
-            *rp = (png_byte)(((int)(*rp) +
-               (int)(*pp + *lp) / 2) & 0xff);
-         }
-         break;
+
+          unsigned int bpp = (row_info->pixel_depth + 7) >> 3;
+          png_size_t istop = row_info->rowbytes - bpp;
+
+          for (i = 0; i < bpp; i++) {
+              *rp = (png_byte) (((int) (*rp) +
+                                 ((int) (*pp++) / 2)) & 0xff);
+
+              rp++;
+          }
+
+          for (i = 0; i < istop; i++) {
+              *rp = (png_byte) (((int) (*rp) +
+                                 (int) (*pp++ + *(rp - bpp)) / 2) & 0xff);
+
+              rp++;
+          }
+          break;
       }
       case PNG_FILTER_VALUE_PAETH:
       {
