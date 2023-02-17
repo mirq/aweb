@@ -3,7 +3,7 @@ MODULES     := AWebJS
 AWebJS/DEPS   := linklibs/libawebcommon.a linklibs/libawebclib.a
 AWebJS/CFILES := awebjs
 
-AWebJS/LDFLAGS := -L. -lm  -stackswap $(AWEBJSLIB)
+AWebJS/LDFLAGS := -L. -lm  /opt/amiga/m68k-amigaos/libnix/lib/swapstack.o $(AWEBJSLIB)
 
 
 

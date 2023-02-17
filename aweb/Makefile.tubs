@@ -13,9 +13,9 @@ link local locale map mime name nameserv netstat object \
 parse popup prefs print printwin radio request ruler saveas saveiff scroller \
 search select simplerexx soundcopy soundsource source sourcedriver splashimages support \
 table task tcp tcperr text textarea timer tooltip url version whiswin window \
-winhis winrexx xaweb amissl miamissl
+winhis winrexx xaweb amissl
 
-AWeb/LDFLAGS := -L. -lm -lawebcommon -stackswap -g -laz $(ALPHALIB) $(AWEBJSLIB)
+AWeb/LDFLAGS := -L. -lm -lawebcommon /opt/amiga/m68k-amigaos/libnix/lib/swapstack.o -g -laz $(ALPHALIB) $(AWEBJSLIB)
 
 AWeb/CFILES/awebamitcp/CPPFLAGS := $(NETINCLUDE)
 AWeb/CFILES/awebtcp/CPPFLAGS    := $(NETINCLUDE2)

@@ -15,258 +15,11 @@
     <configurations />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8dac3c36-dcb1-4bfe-aab2-018b6a9ec96f" name="Changes" comment="png util build fix">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AWCR" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChangeLog" beforeDir="false" afterPath="$PROJECT_DIR$/ChangeLog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Include/awebprefs.h.bak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Include/awebprefs.h.orig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Include/ezlists.h.new" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Include/ezlists.h.old" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Include/keyfile.h" beforeDir="false" afterPath="$PROJECT_DIR$/Include/keyfile.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Include/platform_specific.h" beforeDir="false" afterPath="$PROJECT_DIR$/Include/platform_specific.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Include/platform_specific.h.68k" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Include/platform_specific.h.orig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile.os4" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile.os4" afterDir="false" />
+    <list default="true" id="8dac3c36-dcb1-4bfe-aab2-018b6a9ec96f" name="Changes" comment="060721 code">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tubsengine" beforeDir="false" afterPath="$PROJECT_DIR$/Tubsengine" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tubsengine.os4" beforeDir="false" afterPath="$PROJECT_DIR$/Tubsengine.os4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tubsengine.os4.bak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb.cd" beforeDir="false" afterPath="$PROJECT_DIR$/aweb.cd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aweb/Makefile.tubs" beforeDir="false" afterPath="$PROJECT_DIR$/aweb/Makefile.tubs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/Untitled" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/amissl.c" beforeDir="false" afterPath="$PROJECT_DIR$/aweb/amissl.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/application.c" beforeDir="false" afterPath="$PROJECT_DIR$/aweb/application.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/arexx.c" beforeDir="false" afterPath="$PROJECT_DIR$/aweb/arexx.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/asyncio.c" beforeDir="false" afterPath="$PROJECT_DIR$/aweb/asyncio.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/aweb.c" beforeDir="false" afterPath="$PROJECT_DIR$/aweb/aweb.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/aweb.c.orig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/awebamitcp.c.bak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/awebtcp.c" beforeDir="false" afterPath="$PROJECT_DIR$/aweb/awebtcp.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/body.c" beforeDir="false" afterPath="$PROJECT_DIR$/aweb/body.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/body.c.bak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/cache.c" beforeDir="false" afterPath="$PROJECT_DIR$/aweb/cache.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/cache.c!" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/cache.c.bak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/cookie.c" beforeDir="false" afterPath="$PROJECT_DIR$/aweb/cookie.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/cookie.c.bak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/editor.c" beforeDir="false" afterPath="$PROJECT_DIR$/aweb/editor.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/event.c" beforeDir="false" afterPath="$PROJECT_DIR$/aweb/event.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/file.c" beforeDir="false" afterPath="$PROJECT_DIR$/aweb/file.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/framejs.c.new" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/http.c" beforeDir="false" afterPath="$PROJECT_DIR$/aweb/http.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/http.c.bak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/imgcopy.c.back" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/include/application.h.bak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/include/asyncio.h" beforeDir="false" afterPath="$PROJECT_DIR$/aweb/include/asyncio.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/include/awebprotos.h" beforeDir="false" afterPath="$PROJECT_DIR$/aweb/include/awebprotos.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/include/awebprotos.h.orig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/include/docprivate.h.bak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/include/docprivate.h.orig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/include/frame.h.orig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/include/frprivate.h" beforeDir="false" afterPath="$PROJECT_DIR$/aweb/include/frprivate.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/include/frprivate.h.new" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/include/jslib.h.rej" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/include/locale.h" beforeDir="false" afterPath="$PROJECT_DIR$/aweb/include/locale.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/include/locale.h.bak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/include/locale.h.orig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/include/locale.h.rej" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/include/window.h" beforeDir="false" afterPath="$PROJECT_DIR$/aweb/include/window.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/include/winprivate.h" beforeDir="false" afterPath="$PROJECT_DIR$/aweb/include/winprivate.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/include/winprivate.h.bak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/info.c" beforeDir="false" afterPath="$PROJECT_DIR$/aweb/info.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/local.c" beforeDir="false" afterPath="$PROJECT_DIR$/aweb/local.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/local.c.bak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/netstat.c" beforeDir="false" afterPath="$PROJECT_DIR$/aweb/netstat.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/object.c" beforeDir="false" afterPath="$PROJECT_DIR$/aweb/object.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/prefs.c" beforeDir="false" afterPath="$PROJECT_DIR$/aweb/prefs.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/print.c" beforeDir="false" afterPath="$PROJECT_DIR$/aweb/print.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/print.c.orig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/request.c" beforeDir="false" afterPath="$PROJECT_DIR$/aweb/request.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/saveiff.c.orig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/select.c" beforeDir="false" afterPath="$PROJECT_DIR$/aweb/select.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/simplerexx.c" beforeDir="false" afterPath="$PROJECT_DIR$/aweb/simplerexx.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/soundcopy.c" beforeDir="false" afterPath="$PROJECT_DIR$/aweb/soundcopy.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/soundcopy.c.illka" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/task.c" beforeDir="false" afterPath="$PROJECT_DIR$/aweb/task.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/text.c" beforeDir="false" afterPath="$PROJECT_DIR$/aweb/text.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/timer.c" beforeDir="false" afterPath="$PROJECT_DIR$/aweb/timer.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/tooltip.c" beforeDir="false" afterPath="$PROJECT_DIR$/aweb/tooltip.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/unnamed" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/url.c" beforeDir="false" afterPath="$PROJECT_DIR$/aweb/url.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/window.c" beforeDir="false" afterPath="$PROJECT_DIR$/aweb/window.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/winrexx.c" beforeDir="false" afterPath="$PROJECT_DIR$/aweb/winrexx.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/awebcfg.cd.orig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/awebcfg/awebcfg.c" beforeDir="false" afterPath="$PROJECT_DIR$/awebcfg/awebcfg.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/awebcfg/awebcfg.c.rej" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/awebcfg/cfgbr.c" beforeDir="false" afterPath="$PROJECT_DIR$/awebcfg/cfgbr.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/awebcfg/cfgnw.c" beforeDir="false" afterPath="$PROJECT_DIR$/awebcfg/cfgnw.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/awebcfg/cfgpr.c" beforeDir="false" afterPath="$PROJECT_DIR$/awebcfg/cfgpr.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/awebcfg/cfgpr.c.orig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/awebcfg/cfgui.c" beforeDir="false" afterPath="$PROJECT_DIR$/awebcfg/cfgui.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/awebcfg/cfgui.c.bak" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/awebcfg/include/awebcfg.h" beforeDir="false" afterPath="$PROJECT_DIR$/awebcfg/include/awebcfg.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/awebcfg/include/cfglocale.h.bak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/awebcfg/include/cfglocale.h.orig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/awebclib/amiga_createextio.c" beforeDir="false" afterPath="$PROJECT_DIR$/awebclib/amiga_createextio.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/awebclib/debug.c.bak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/awebcommon/Makefile.tubs" beforeDir="false" afterPath="$PROJECT_DIR$/awebcommon/Makefile.tubs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/awebcommon/defprefs.c.bak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/awebcommon/defprefs.c.orig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/awebcommon/libraries.c" beforeDir="false" afterPath="$PROJECT_DIR$/awebcommon/libraries.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/awebcommon/memory.c" beforeDir="false" afterPath="$PROJECT_DIR$/awebcommon/memory.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/awebjs/.#Makefile.tubs.1.2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/awebjs/.#awebjs.c.1.4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/awebjs/Makefile.tubs" beforeDir="false" afterPath="$PROJECT_DIR$/awebjs/Makefile.tubs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/awebjs/arexxjs.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/awebjs/arexxjs.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/awebjs/awebjs.c" beforeDir="false" afterPath="$PROJECT_DIR$/awebjs/awebjs.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/awebjs/awebjs.c.orig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/awebjs/rexxmsgext.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/awebjs/tests/delay.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/awebjs/tests/testGETVAR.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/awebjs/tests/testSETVAR.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/awebjs/tests/testmulti1.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/awebjs/tests/testmulti2.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweblibs/arexx/TEST.rexx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweblibs/arexx/akefile.tubs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweblibs/arexx/cfgrexx.c" beforeDir="false" afterPath="$PROJECT_DIR$/aweblibs/arexx/cfgrexx.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweblibs/authorize/Makefile.tubs" beforeDir="false" afterPath="$PROJECT_DIR$/aweblibs/authorize/Makefile.tubs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweblibs/ftp/Makefile.tubs" beforeDir="false" afterPath="$PROJECT_DIR$/aweblibs/ftp/Makefile.tubs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweblibs/ftp/ftp.c.bak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweblibs/gopher/Makefile.tubs" beforeDir="false" afterPath="$PROJECT_DIR$/aweblibs/gopher/Makefile.tubs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweblibs/gopher/akefile.tubs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweblibs/gopher/gopher.c" beforeDir="false" afterPath="$PROJECT_DIR$/aweblibs/gopher/gopher.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweblibs/history/Makefile.tubs" beforeDir="false" afterPath="$PROJECT_DIR$/aweblibs/history/Makefile.tubs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweblibs/history/akefile.tubs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweblibs/history/whistask.c" beforeDir="false" afterPath="$PROJECT_DIR$/aweblibs/history/whistask.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweblibs/hotlist/Makefile.tubs" beforeDir="false" afterPath="$PROJECT_DIR$/aweblibs/hotlist/Makefile.tubs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweblibs/hotlist/akefile.tubs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweblibs/hotlist/hotlisttask.c" beforeDir="false" afterPath="$PROJECT_DIR$/aweblibs/hotlist/hotlisttask.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweblibs/hotlist/hotmanager.c" beforeDir="false" afterPath="$PROJECT_DIR$/aweblibs/hotlist/hotmanager.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweblibs/hotlist/hotviewer.c" beforeDir="false" afterPath="$PROJECT_DIR$/aweblibs/hotlist/hotviewer.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweblibs/hotlist/hotviewer.c.orig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweblibs/include/clib/awebplugin_protos." beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweblibs/include/gatestubs/awebjs.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweblibs/include/inline4/spiderjs.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweblibs/include/interfaces/awebjs.h.bak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweblibs/include/interfaces/spiderjs.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweblibs/include/interfaces/spiderjs.i" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweblibs/include/libraries/awebauth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweblibs/include/ppcinline/awebjs.h.rej" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweblibs/include/proto.old/awebjs.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweblibs/include/proto.old/awebplugin.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweblibs/include/proto.old/awebprint.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweblibs/include/proto.old/awebssl.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweblibs/include/proto.old/awebstartup.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweblibs/include/proto.old/awebtcp.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweblibs/include/proto.old/plugin.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweblibs/include/proto/spiderjs.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweblibs/include/toto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweblibs/news/news.c" beforeDir="false" afterPath="$PROJECT_DIR$/aweblibs/news/news.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweblibs/startup/akefile.tubs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/bosanski/aweb.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/bosanski/aweb.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/bosnian/aweb.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/bosnian/aweb.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/catalan/aweb.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/catalan/aweb.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/catal�/aweb.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/catal�/aweb.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/croatian/.#aweb.ct.1.2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/croatian/aweb.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/croatian/aweb.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/czech/aweb.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/czech/aweb.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/danish/aweb.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/danish/aweb.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/dansk/aweb.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/dansk/aweb.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/deutsch/aweb.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/deutsch/aweb.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/deutsch/aweb.ct.orig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/deutsch/aweb.ct.rej" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/dutch/aweb.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/dutch/aweb.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/empty/aweb.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/empty/aweb.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/espa�ol/aweb.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/espa�ol/aweb.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/finnish/aweb.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/finnish/aweb.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/fran�ais/aweb.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/fran�ais/aweb.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/french/aweb.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/french/aweb.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/german/aweb.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/german/aweb.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/greek/aweb.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/greek/aweb.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/hrvatski/aweb.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/hrvatski/aweb.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/hungarian/aweb.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/hungarian/aweb.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/italian/aweb.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/italian/aweb.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/italiano/aweb.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/italiano/aweb.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/latvian/aweb.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/latvian/aweb.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/magyar/aweb.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/magyar/aweb.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/nederlands/aweb.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/nederlands/aweb.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/nederlands/awebcfg.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/nederlands/awebcfg.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/norsk/aweb.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/norsk/aweb.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/norsk/awebcfg.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/norsk/awebcfg.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/norwegian/aweb.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/norwegian/aweb.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/polish/aweb.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/polish/aweb.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/polski/aweb.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/polski/aweb.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/portuguese-brazil/aweb.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/portuguese-brazil/aweb.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/portuguese-brazil/awebcfg.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/portuguese-brazil/awebcfg.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/portuguese/aweb.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/portuguese/aweb.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/portugu�s-brasil/aweb.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/portugu�s-brasil/aweb.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/portugu�s-brasil/awebcfg.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/portugu�s-brasil/awebcfg.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/portugu�s/aweb.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/portugu�s/aweb.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/russian/aweb.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/russian/aweb.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/russian/awebcfg.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/russian/awebcfg.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/serbian/aweb.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/serbian/aweb.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/slovak/aweb.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/slovak/aweb.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/slovenian/aweb.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/slovenian/aweb.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/slovensko/aweb.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/slovensko/aweb.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/spanish/aweb.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/spanish/aweb.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/srpski/aweb.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/srpski/aweb.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/suomi/aweb.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/suomi/aweb.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/svenska/aweb.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/svenska/aweb.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/swedish/aweb.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/swedish/aweb.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/turkish/aweb.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/turkish/aweb.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogs/t�rk�e/aweb.ct" beforeDir="false" afterPath="$PROJECT_DIR$/catalogs/t�rk�e/aweb.ct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/newlib/macros.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/charset/SCOPTIONS" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/charset/awebcharset.c" beforeDir="false" afterPath="$PROJECT_DIR$/plugins/charset/awebcharset.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/charset/awebcharset.c.orig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/charset/awebcharset.h.orig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/charset/awebcharset.readme" beforeDir="false" afterPath="$PROJECT_DIR$/plugins/charset/awebcharset.readme" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/charset/awebcharset.readme.orig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/charset/pluginlib.h" beforeDir="false" afterPath="$PROJECT_DIR$/plugins/charset/pluginlib.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/charset/pluginlib.h.orig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/charset/startup.c.orig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/gif/akefile.tubs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/gif/gifsource.c.bak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/gif/mwamiga.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/gif/startup.c.bak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/gif/test.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/include/proto!/awebplugin.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/jfif/akefile.tubs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/jfif/awebjfif.c.bak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/jfif/jpeglib/.#jerror.c.1.2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/jfif/jpeglib/jmemaweb.c" beforeDir="false" afterPath="$PROJECT_DIR$/plugins/jfif/jpeglib/jmemaweb.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/jfif/startup.c.bak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/png/.#pngsource.c.1.3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/png/.#pngsource.c.1.5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/png/Makefile.tubs.old" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/png/__pngcopyos4.c.bak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/png/akefile.tubs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/png/awebpng.c.new" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/png/pnglib/pngrutil.c" beforeDir="false" afterPath="$PROJECT_DIR$/plugins/png/pnglib/pngrutil.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/.#Install.os4.1.10" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/Install.info" beforeDir="false" afterPath="$PROJECT_DIR$/tools/Install.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/Install.os4" beforeDir="false" afterPath="$PROJECT_DIR$/tools/Install.os4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/Install.os4.info" beforeDir="false" afterPath="$PROJECT_DIR$/tools/Install.os4.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/oodebug/objecttypes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/oodebug/oodebugparser.rx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/oodebug/processheaders.rx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/oodebug/tagsfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/replace.pl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/tubsfind/dir.c" beforeDir="false" afterPath="$PROJECT_DIR$/tools/tubsfind/dir.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/tubsfind/foo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/tubsfind/ioerr2errno.c" beforeDir="false" afterPath="$PROJECT_DIR$/tools/tubsfind/ioerr2errno.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/tubsfind/ioerr2errno.h" beforeDir="false" afterPath="$PROJECT_DIR$/tools/tubsfind/ioerr2errno.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/tubsfind/tubsfind" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/tubsfind/tubsfind.c" beforeDir="false" afterPath="$PROJECT_DIR$/tools/tubsfind/tubsfind.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/update_ct.rexx" beforeDir="false" afterPath="$PROJECT_DIR$/tools/update_ct.rexx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/Docs/.#history.html.1.16" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/Docs/AWeb Manual.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/Docs/AWeb Manual.html.info" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/Docs/Advanced/ARexx/window.html" beforeDir="false" afterPath="$PROJECT_DIR$/user/Docs/Advanced/ARexx/window.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -336,7 +89,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1676584481416</updated>
-      <workItem from="1676584483290" duration="10592000" />
+      <workItem from="1676584483290" duration="12806000" />
     </task>
     <task id="LOCAL-00001" summary="png util build fix">
       <created>1676585558946</created>
@@ -345,11 +98,19 @@
       <option name="project" value="LOCAL" />
       <updated>1676585558946</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="060721 code">
+      <created>1676667804102</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1676667804102</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="png util build fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="png util build fix" />
+    <MESSAGE value="060721 code" />
+    <option name="LAST_COMMIT_MESSAGE" value="060721 code" />
   </component>
 </project>

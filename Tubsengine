@@ -13,12 +13,12 @@ BUILDDATE= $(shell build/builddate)
 
 MODULELIB = linklibs/libmoduleinit.a
 
-CFLAGS	 := -O2 -g -fomit-frame-pointer -m68020-60 -Werror-implicit-function-declaration \
+CFLAGS	 := -O2 -g  -mcrt=nix20 -fomit-frame-pointer -m68020-60 -Werror-implicit-function-declaration \
 	    -Wall  -Wno-parentheses -D__AMIGADATE__='$(BUILDDATE)'
 
 CPPFLAGS := -Dstpbrk=strpbrk $(INCLUDE)
 
-LDFLAGS =  -noixemul -lamigastubs -lrexx -specs tools/gcc.spec -Ldistribution/linklibs/ -lawebclib -ldebug
+LDFLAGS =  -noixemul  -specs tools/gcc.spec -Ldistribution/linklibs/ -lawebclib -ldebug
 
 
 RM	 = rm -f -R $(1)
