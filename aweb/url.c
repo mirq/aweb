@@ -75,8 +75,8 @@ static long Urlhostlength(UBYTE *ptr)
 {  UBYTE *p=ptr;
    if(p[0]=='/' && p[1]=='/')
    {  p+=2;
-      while(*p && *p!='/' && *p!=fraghash && p!='?') p++;
-      if(*p=='/' || *p=='\0' || *p=='?') return p-ptr;
+      while(*p && *p!='/' && *p!=fraghash) p++;
+      if(*p=='/' || *p=='\0') return p-ptr;
    }
    return 0;
 }
@@ -1569,7 +1569,7 @@ void Getjspart(struct Url *url,UWORD which,UBYTE **start,long *length)
        if(*p==':') p++;
        if(p[0]=='/' && p[1]=='/') p+=2;
        if(which==UJP_HOST || which==UJP_HOSTNAME) *start=p;
-       for(;*p && *p!='/' && *p!=':' && *p!='?';p++);
+       for(;*p && *p!='/' && *p!=':';p++);
        if(which==UJP_HOST)
        {  *length=p-*start;
           return;
@@ -1623,7 +1623,7 @@ void *Repjspart(struct Url *url,UWORD which,UBYTE *part)
              *q++=*p++;
           }
           start=q;
-          for(;*p && *p!='/' && *p!=':' && *p!='?';*q++=*p++);
+          for(;*p && *p!='/' && *p!=':';*q++=*p++);
           if(which==UJP_HOST)
           {  strcpy(start,part);
              q=start+strlen(start);

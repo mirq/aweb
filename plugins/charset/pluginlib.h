@@ -46,9 +46,9 @@
 #include "platform_specific.h"
 
 #define PLUGIN_VERSION     1
-#define PLUGIN_REVISION    5
+#define PLUGIN_REVISION    8
 #define PLUGIN_LIBNAME     "awebcharset.awebplugin"
-#define PLUGIN_LIBID       "$VER: awebcharset.awebplugin 1.5 (" __AMIGADATE__ ") " CPU
+#define PLUGIN_LIBID       "$VER: awebcharset.awebplugin 1.8 (" __AMIGADATE__ ") " CPU
 #define PLUGIN_SIZE        sizeof(struct AwebCharsetBase)
 
 struct AwebCharsetBase

@@ -21,7 +21,6 @@
 #include "text.h"
 #include "link.h"
 #include "application.h"
-#include "window.h"
 
 #include <graphics/gfxmacros.h>
 

@@ -631,7 +631,7 @@ BOOL Initrequest(void)
 {  NEWLIST(&requests);
    InitSemaphore(&reqsema);
    inited=TRUE;
-   if(!(reqport=ACreatemsgport())) return FALSE;
+   if(!(reqport=CreateMsgPort())) return FALSE;
    requestbackfillhook.h_Entry=(HOOKFUNC)GIVEME_HOOKENTRY(Backfillhook);
    requestbackfillhook.h_Data=(void *)2; /* (void *)(Drawinfoptr()->dri_Pens[SHINEPEN]); */
    nobackfillhook.h_Entry=(HOOKFUNC)GIVEME_HOOKENTRY(NoBackFillHook);
@@ -647,7 +647,7 @@ void Freerequest(void)
 {  if(inited) Closerequests();
    if(reqport)
    {  Setprocessfun(reqport->mp_SigBit,NULL);
-      ADeletemsgport(reqport);
+      DeleteMsgPort(reqport);
    }
 }
 

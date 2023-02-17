@@ -762,7 +762,7 @@ BOOL Openprogram(void)
    NEWLIST(&imgvhelplist);
    NEWLIST(&conshelplist);
    if(!tablabels[0]) Localize();
-   if(nport=ACreatemsgport())
+   if(nport=CreateMsgPort())
    {  strcpy(prefsname,"ENV:" DEFAULTCFG);
       if(*configname) AddPart(prefsname,configname,64);
       AddPart(prefsname,"program",64);
@@ -1102,5 +1102,5 @@ void Closeprogram(void)
    Disposeprogramprefs(&orgpgp);
    if(nreq.nr_Name) EndNotify(&nreq);
    memset(&nreq,0,sizeof(nreq));
-   if(nport) ADeletemsgport(nport);nport=NULL;
+   if(nport) DeleteMsgPort(nport);nport=NULL;
 }

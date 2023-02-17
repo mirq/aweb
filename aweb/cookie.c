@@ -478,20 +478,19 @@ static BOOL Nocookie(UBYTE *domain)
 }
 
 static void Writestring(void *fh,UBYTE *string)
-{  
-	FWrite(fh,string,strlen(string),1);
+{  WriteAsync(fh,string,strlen(string));
 }
 
 /* Save cookies with expiry date */
 static void Savecookies(void)
 {  struct Usenode *u;
    struct Cookie *ck;
-   BPTR fh;
+   void *fh;
    UBYTE name[256],datebuf[32];
    ObtainSemaphore(&cookiesema);
    strcpy(name,Cachename());
    if(AddPart(name,"AWCK",256))
-   {  if(fh=FOpen(name,MODE_NEWFILE,IOBUFSIZE))
+   {  if(fh=OpenAsync(name,MODE_WRITE,IOBUFSIZE))
       {  for(u=usenodes.first;u->next;u=u->next)
          {  ck=COOKIE(u);
             if(ck->expires && !Nocookie(ck->domain))
@@ -530,7 +529,7 @@ static void Savecookies(void)
                Writestring(fh,"\"\n");
             }
          }
-         FClose(fh);
+         CloseAsync(fh);
       }
    }
    ReleaseSemaphore(&cookiesema);
@@ -668,21 +667,8 @@ static void Parsecookie(UBYTE *cookiespec,UBYTE *orgdomain,UBYTE *orgpath,ULONG 
 }
 
 /* Read a string into buffer. Return length (ex 0-byte) or -1 if error */
-static long Readstring(BPTR fh,UBYTE *buffer,long max)
+static long Readstring(void *fh,UBYTE *buffer,long max)
 {  long n=0,ch;
-
-		if(FGets(fh,buffer,max))
-		{
-			int len = strlen(buffer);
-			if(buffer[len-1] == '\n')
-			{
-				buffer[len -1] = '\0';
-				len--;
-			}
-			return len;
-		}
-		return -1;
-/*		
    while(n<max)
    {  ch=ReadCharAsync(fh);
       if(ch<0) return -1;
@@ -692,7 +678,6 @@ static long Readstring(BPTR fh,UBYTE *buffer,long max)
       n++;
    }
    return n;
-   */
 }
 
 /* Read cookies */
@@ -703,7 +688,7 @@ static void Readcookies(void)
    if(buffer=ALLOCTYPE(UBYTE,INPUTBLOCKSIZE,0))
    {  strcpy(name,Cachename());
       if(AddPart(name,"AWCK",256))
-      {  if(fh=FOpen(name,MODE_OLDFILE,IOBUFSIZE))
+      {  if(fh=OpenAsync(name,MODE_READ,IOBUFSIZE))
          {  if(Readstring(fh,buffer,INPUTBLOCKSIZE)<0) goto err;
             /* If buffer starts with 'AWCK' it's old format - ignore. */
             if(STRNEQUAL(buffer,"AWCK",4)) goto err;
@@ -712,7 +697,7 @@ static void Readcookies(void)
                if(Readstring(fh,buffer,INPUTBLOCKSIZE)<0) break;
             }
 err:
-            FClose(fh);
+            CloseAsync(fh);
          }
       }
       FREE(buffer);

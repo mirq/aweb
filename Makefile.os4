@@ -21,8 +21,8 @@ $(wordlist 2, $(words $(TARGETS)), $(TARGETS)) :
 	@$(NOP)
 
 $(BUILDDIR)Tubsfiles : $(BUILDDIR)tubsfind
-	$(BUILDDIR)tubsfind  -c $(BUILDDIR)tubscache -o $@ -e $(BUILDDIR) -e $(DISTDIR) -e %/CVS
+	$(BUILDDIR)tubsfind -c $(BUILDDIR)tubscache -o $@ -e $(BUILDDIR) -e $(DISTDIR) -e %/CVS
 
 $(BUILDDIR)tubsfind : tools/tubsfind/tubsfind.c tools/tubsfind/dir.c tools/tubsfind/ioerr2errno.c
 	$(call MKDIRS, $(BUILDDIR))
-	$(BUILD_CC)  $^ -o  $@ -I tools/tubsfind -mcrt=clib2 -Wall -D__AMIGA -D__USE_INLINE__
+	$(BUILD_CC) -mcrt=clib2 $^ -o  $@ -I tools/tubsfind -Wall -D__AMIGA -D__USE_INLINE__

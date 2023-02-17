@@ -15,18 +15,15 @@
 #endif
 
 #ifdef CATCOMP_ARRAY
-#ifndef CATCOMP_NUMBERS
+#undef CATCOMP_NUMBERS
+#undef CATCOMP_STRINGS
 #define CATCOMP_NUMBERS
-#endif
-#ifndef CATCOMP_STRINGS
 #define CATCOMP_STRINGS
-#endif
 #endif
 
 #ifdef CATCOMP_BLOCK
-#ifndef CATCOMP_STRINGS
+#undef CATCOMP_STRINGS
 #define CATCOMP_STRINGS
-#endif
 #endif
 
 
@@ -58,9 +55,6 @@
 #define MSG_DEMO_OK 301
 #define MSG_SCRCLOSE_TEXT 400
 #define MSG_SCRCLOSE_OK 401
-#define MSG_AMISSL_ERROR_TITLE 450
-#define MSG_AMISSL_ERROR_BODY 451
-#define MSG_AMISSL_ERROR_OK 452
 #define MSG_NWS_TITLE 500
 #define MSG_NWS_QUEUED 501
 #define MSG_NWS_STARTED 502
@@ -360,6 +354,8 @@
 #define MSG_CHARSET_ON 3108
 #define MSG_CHARSET_OFF 3109
 #define MSG_CHARSET_OK 3110
+#define MSG_CHARSET_SYSTEM 3111
+#define MSG_CHARSET_COMMAND 3112
 #define MSG_PROJECT_MENU 10000
 #define MSG_PROJECT_NEWWINDOW 10001
 #define MSG_PROJECT_CLOSEWINDOW 10002
@@ -545,9 +541,6 @@
 #define MSG_DEMO_OK_STR "_Ok"
 #define MSG_SCRCLOSE_TEXT_STR "AWeb can't close its screen.\nPlease close all windows."
 #define MSG_SCRCLOSE_OK_STR "Ok"
-#define MSG_AMISSL_ERROR_TITLE_STR "AmiSSL Version Error"
-#define MSG_AMISSL_ERROR_BODY_STR "AWeb requires at least version 4.2 of AmiSSL\nto make https connections"
-#define MSG_AMISSL_ERROR_OK_STR "_OK"
 #define MSG_NWS_TITLE_STR "Network status"
 #define MSG_NWS_QUEUED_STR "Queued"
 #define MSG_NWS_STARTED_STR "Started"
@@ -841,12 +834,14 @@
 #define MSG_CHARSET_CODESETFAIL_STR "Can't open required %s - Version: %ld.%ld.\n"
 #define MSG_CHARSET_CODESETURL_STR "\nPlease visit http://sourceforge.net/projects/codesetslib\nfor downloading the latest Version and make sure the\nLibrary is properly installed."
 #define MSG_CHARSET_INFOTITLE_STR "Awebcharset.awebplugin Info Window"
-#define MSG_CHARSET_INFOTEXT_STR "Filter is : %s\nReplace is: %s\nRequest is: %s\n\nURL='%s'\n\nDocument Charsets:\nHeader Charset     = '%s'\nMeta Charset       = '%s'\n\nUsed Charsets:\nSource Charset     = '%s'\nDestination Charset= '%s'"
+#define MSG_CHARSET_INFOTEXT_STR "Filter is : %s\nReplace is: %s\nRequest is: %s\n\nURL='%s'\n\nDocument Charsets:\nHeader Charset     = '%s'\nMeta Charset       = '%s'\n\nUsed Charsets:\nSource Charset     = '%s'\nDestination Charset= '%s' (%s)"
 #define MSG_CHARSET_DIFFREQTXT_STR "The Server send 2 different Charsets for this Document:\n\nHeader Charset  = '%s'\nDocument Charset= '%s'\n\nWhich Charset should be used?"
 #define MSG_CHARSET_DIFFREQBUT_STR "Don't ask again"
 #define MSG_CHARSET_ON_STR "On"
 #define MSG_CHARSET_OFF_STR "Off"
 #define MSG_CHARSET_OK_STR "_Ok"
+#define MSG_CHARSET_SYSTEM_STR "System"
+#define MSG_CHARSET_COMMAND_STR "Command"
 #define MSG_PROJECT_MENU_STR "Project"
 #define MSG_PROJECT_NEWWINDOW_STR "N/New window"
 #define MSG_PROJECT_CLOSEWINDOW_STR "K/Close window"
@@ -1011,7 +1006,7 @@
 
 struct CatCompArrayType
 {
-    LONG         cca_ID;
+    ULONG        cca_ID;
     CONST_STRPTR cca_Str;
 };
 
@@ -1040,9 +1035,6 @@ STATIC CONST struct CatCompArrayType CatCompArray[] =
     {MSG_DEMO_OK,(CONST_STRPTR)MSG_DEMO_OK_STR},
     {MSG_SCRCLOSE_TEXT,(CONST_STRPTR)MSG_SCRCLOSE_TEXT_STR},
     {MSG_SCRCLOSE_OK,(CONST_STRPTR)MSG_SCRCLOSE_OK_STR},
-    {MSG_AMISSL_ERROR_TITLE,(CONST_STRPTR)MSG_AMISSL_ERROR_TITLE_STR},
-    {MSG_AMISSL_ERROR_BODY,(CONST_STRPTR)MSG_AMISSL_ERROR_BODY_STR},
-    {MSG_AMISSL_ERROR_OK,(CONST_STRPTR)MSG_AMISSL_ERROR_OK_STR},
     {MSG_NWS_TITLE,(CONST_STRPTR)MSG_NWS_TITLE_STR},
     {MSG_NWS_QUEUED,(CONST_STRPTR)MSG_NWS_QUEUED_STR},
     {MSG_NWS_STARTED,(CONST_STRPTR)MSG_NWS_STARTED_STR},
@@ -1342,6 +1334,8 @@ STATIC CONST struct CatCompArrayType CatCompArray[] =
     {MSG_CHARSET_ON,(CONST_STRPTR)MSG_CHARSET_ON_STR},
     {MSG_CHARSET_OFF,(CONST_STRPTR)MSG_CHARSET_OFF_STR},
     {MSG_CHARSET_OK,(CONST_STRPTR)MSG_CHARSET_OK_STR},
+    {MSG_CHARSET_SYSTEM,(CONST_STRPTR)MSG_CHARSET_SYSTEM_STR},
+    {MSG_CHARSET_COMMAND,(CONST_STRPTR)MSG_CHARSET_COMMAND_STR},
     {MSG_PROJECT_MENU,(CONST_STRPTR)MSG_PROJECT_MENU_STR},
     {MSG_PROJECT_NEWWINDOW,(CONST_STRPTR)MSG_PROJECT_NEWWINDOW_STR},
     {MSG_PROJECT_CLOSEWINDOW,(CONST_STRPTR)MSG_PROJECT_CLOSEWINDOW_STR},
@@ -1553,12 +1547,6 @@ STATIC CONST UBYTE CatCompBlock[] =
     MSG_SCRCLOSE_TEXT_STR "\x00\x00"
     "\x00\x00\x01\x91\x00\x04"
     MSG_SCRCLOSE_OK_STR "\x00\x00"
-    "\x00\x00\x01\xC2\x00\x16"
-    MSG_AMISSL_ERROR_TITLE_STR "\x00\x00"
-    "\x00\x00\x01\xC3\x00\x48"
-    MSG_AMISSL_ERROR_BODY_STR "\x00\x00"
-    "\x00\x00\x01\xC4\x00\x04"
-    MSG_AMISSL_ERROR_OK_STR "\x00"
     "\x00\x00\x01\xF4\x00\x10"
     MSG_NWS_TITLE_STR "\x00\x00"
     "\x00\x00\x01\xF5\x00\x08"
@@ -2145,8 +2133,8 @@ STATIC CONST UBYTE CatCompBlock[] =
     MSG_CHARSET_CODESETURL_STR "\x00"
     "\x00\x00\x0C\x20\x00\x24"
     MSG_CHARSET_INFOTITLE_STR "\x00\x00"
-    "\x00\x00\x0C\x21\x00\xC4"
-    MSG_CHARSET_INFOTEXT_STR "\x00\x00"
+    "\x00\x00\x0C\x21\x00\xC8"
+    MSG_CHARSET_INFOTEXT_STR "\x00"
     "\x00\x00\x0C\x22\x00\x86"
     MSG_CHARSET_DIFFREQTXT_STR "\x00"
     "\x00\x00\x0C\x23\x00\x10"
@@ -2157,6 +2145,10 @@ STATIC CONST UBYTE CatCompBlock[] =
     MSG_CHARSET_OFF_STR "\x00"
     "\x00\x00\x0C\x26\x00\x04"
     MSG_CHARSET_OK_STR "\x00"
+    "\x00\x00\x0C\x27\x00\x08"
+    MSG_CHARSET_SYSTEM_STR "\x00\x00"
+    "\x00\x00\x0C\x28\x00\x08"
+    MSG_CHARSET_COMMAND_STR "\x00"
     "\x00\x00\x27\x10\x00\x08"
     MSG_PROJECT_MENU_STR "\x00"
     "\x00\x00\x27\x11\x00\x0E"
@@ -2470,12 +2462,12 @@ STATIC CONST UBYTE CatCompBlock[] =
 
 /****************************************************************************/
 
-
 struct LocaleInfo
 {
     struct Library     *li_LocaleBase;
     struct Catalog     *li_Catalog;
 };
+
 
 
 /****************************************************************************/

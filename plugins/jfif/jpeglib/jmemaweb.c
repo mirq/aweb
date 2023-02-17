@@ -179,7 +179,7 @@ METHODDEF(void)
 close_backing_store (j_common_ptr cinfo, backing_store_ptr info)
 {
    Close((long)info->temp_file);        /* close the file */
-   Delete(info->temp_name); /* delete the file */
+   DeleteFile(info->temp_name); /* delete the file */
    TRACEMSS(cinfo, 1, JTRC_TFILE_CLOSE, info->temp_name);
 }
 

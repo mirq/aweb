@@ -254,7 +254,7 @@ static void Deinstalleditor(void)
    while(ed=(struct Editor *)REMHEAD(&editors)) Disposeeditorreal(ed);
    if(notifyport)
    {  Setprocessfun(notifyport->mp_SigBit,NULL);
-      ADeletemsgport(notifyport);
+      DeleteMsgPort(notifyport);
    }
 }
 
@@ -294,7 +294,7 @@ struct Amessage *,amsg,A1
 BOOL Installeditor(void)
 {  NEWLIST(&editors);
    if(!Amethod(NULL,AOM_INSTALL,AOTP_EDITOR,(Tag)Editor_Dispatcher)) return FALSE;
-   if(!(notifyport=ACreatemsgport())) return FALSE;
+   if(!(notifyport=CreateMsgPort())) return FALSE;
    Setprocessfun(notifyport->mp_SigBit,Processnotify);
    return TRUE;
 }

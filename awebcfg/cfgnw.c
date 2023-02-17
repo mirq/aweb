@@ -1790,7 +1790,7 @@ BOOL Opennetwork(void)
    NEWLIST(&qhdrhelplist);
    NEWLIST(&spoofidlist);
    if(!tablabels[0]) Localize();
-   if(nport=ACreatemsgport())
+   if(nport=CreateMsgPort())
    {  strcpy(prefsname1,"ENV:" DEFAULTCFG);
       if(*configname) AddPart(prefsname1,configname,64);
       AddPart(prefsname1,"network",64);
@@ -2211,5 +2211,5 @@ void Closenetwork(void)
    memset(&nreq1,0,sizeof(nreq1));
    if(nreq2.nr_Name) EndNotify(&nreq2);
    memset(&nreq2,0,sizeof(nreq2));
-   if(nport) ADeletemsgport(nport);nport=NULL;
+   if(nport) DeleteMsgPort(nport);nport=NULL;
 }

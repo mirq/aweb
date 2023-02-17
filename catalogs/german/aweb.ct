@@ -4,7 +4,7 @@
 ;
 ; AWeb.cd - AWeb catalog description file
 ;
-; $Id: aweb.ct,v 1.13 2009/09/11 11:43:12 opi Exp $
+; $Id: aweb.cd,v 1.15 2009/09/11 11:40:34 opi Exp $
 ;
 ;  The MSG_DUMMY_nn labels are there because FlexCat doesn't
 ;  understand the LABEL (+1//) syntax (C='s Catcomp uses this
@@ -1457,7 +1457,7 @@ Meta Charset  = '%s'\n\
 \n\
 Benutzte Charsets:\n\
 Quell Charset = '%s'\n\
-Ziel  Charset = '%s'
+Ziel  Charset = '%s' (%s)
 ; Filter is : %s\n\
 ; Replace is: %s\n\
 ; Request is: %s\n\
@@ -1470,7 +1470,7 @@ Ziel  Charset = '%s'
 ; \n\
 ; Used Charsets:\n\
 ; Source Charset     = '%s'\n\
-; Destination Charset= '%s'
+; Destination Charset= '%s' (%s)
 ;
 MSG_CHARSET_DIFFREQTXT
 Der Server sendete 2 verschiedene Charsets für dieses Dokument:\n\
@@ -1501,6 +1501,14 @@ Aus
 MSG_CHARSET_OK
 _OK
 ; _Ok
+;
+MSG_CHARSET_SYSTEM
+System
+; System
+;
+MSG_CHARSET_COMMAND
+Kommando
+; Command
 ;
 ;
 ;-------------- Menus -------------------------------

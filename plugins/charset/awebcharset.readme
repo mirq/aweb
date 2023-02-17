@@ -49,6 +49,10 @@ destination charset and the filter and replace feature is turned on.
 
 
 The awebcharset.awebplugin implements the follow plugin commands:
+On, Off, ReplaceOn, ReplaceOFF, RequestOn, RequestOff, System, Info
+and all charsets which are supported by the codeset.library.
+
+Here is a short description what the commands do:
 
 On  -  turns the filter on. This is the default setting.
 Off -  turns the filter off, what mean the Filter do nearly nothing.
@@ -70,29 +74,31 @@ RequestOn  - turns the feature to Show a Requester if the Meta and
 RequestOff - turn that feature off. This is the default setting.
 This setting is stored in the ENV Variable: Env:AWeb3/CharsetRequest.
 
-Note: If that Feature is turned off the header Charset is used otherwise
-a Requester always ask which charset should be used if the Meta and Header
-Charset differ.
+Note: If that Feature is turned off then always the header Charset is
+used otherwise a Requester always ask which charset should be used if
+the Meta and Header Charset differ.
 
+System - Set the Destination charset back to the System default charset.
 
-INFO - show in a requester the Filter, Replace and Request Mode (On/Off),
+Info - show in a requester the Filter, Replace and Request Mode (On/Off),
 the URL, Header and Meta Charset definitions from the Server/Document
-and the used Source and Destination Charsets.
+and the used Source and Destination Charsets. In parentheses is displayed
+if the Destination charset was set from the System or a Command.
 
 Note: The Requester show the Information for the latest Data which go
-through the Filter, which is must not the currently active Window (Page)
-or the visible Part of the page. So sometimes the Requester show wrong Datas.
+through the Filter, which must not the currently active Window (Page)
+or a visible Part of the page. So sometimes the Requester show wrong Datas.
 
 
 If a charset (supported from codeset.library) is given as command then
 the filter is turned on (for the case it was turned off before) and this
 charset is used as destination charset.
 
-e.g. if you want to convert to the koi8-r charset then send koi8-r
-to the plugin. See also Usage section.
+e.g. if you want to convert to the koi8-r charset then send 'koi8-r'
+(without the quotes) to the plugin. See also Usage section.
 
 
-The commands are case-insensitive. e.g. 'On', 'ON' and 'oN' do the same.
+All commands are case-insensitive. e.g. 'On', 'ON' and 'oN' do the same.
 
 
 If a not supported command is send to the plugin then the plugin
@@ -106,9 +112,16 @@ get a requester which inform you about that and the charset support is disabled.
 Usage:
 ------
 Usually you don't need the command function but if you want to change
-the used charset you must send a command to the Pugin.
+the used Destination charset you must send a command to the Pugin.
 
-Here are 4 ways to do this:
+In the follow examples the command 'Off' is used. You can use the
+Command similar with all the other supported commands or charsets
+which are supportet by codesets.library. To use other commands just
+replace the word 'Off' with one of the commands e.g. 'INFO' or a
+charset e.g. 'windows-1251' (without the quotes).
+
+
+Here are 4 ways to send a command to the plugin:
 
 1. Use a menu entry
 -------------------
@@ -137,8 +150,6 @@ Send a command like 'PLUGIN AWebPath:AWebPlugin/awebcharset.awebplugin Off'
 to the AWeb ARexx port. For more Information about ARexx see:
 file:///AWebPAth:docs/arexx/program.html#PLUGIN
 
-
-Similar with all the other supported commands.
 
 After you use the command function you must reload the page.
 The page should then displayed with your new settings.
@@ -221,6 +232,11 @@ Maybe some more character replacements. Any suggestions?
 
 History: (DateFormat: YYYY-MM-DD)
 --------
+Version 1.5 - 2009-10-15
+- Changed the version string and bumped version.
+- All future changes will be listed in the changelog file only to
+  avoid double work for the History.
+
 Version 1.4 - 2009-10-06
 - Provide a cleared structure for the InitSemaphore() call and free the
   structure at Expungepluginlib().

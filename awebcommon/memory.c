@@ -21,14 +21,9 @@
 
 #include <proto/exec.h>
 
-#if !defined(__amigaos4__)
 static struct SignalSemaphore memsema;
-#endif
-#if defined(__amigaos4__)
-static APTR globalpool = NULL;
-#else
+
 static void *fastpool;
-#endif
 
 #ifdef BETAKEYFILE
 extern BOOL nopool;
@@ -43,67 +38,7 @@ extern BOOL nopool;
 static void *chippool;
 #endif
 
-#if defined(__amigaos4__)
 
-BOOL Initmemory(void)
-{
-	if(!(globalpool = AllocSysObjectTags(ASOT_MEMPOOL, ASOPOOL_Puddle, PUDDLESIZE, ASOPOOL_Threshold, TRESHSIZE, ASOPOOL_Protected, TRUE, ASOPOOL_MFlags,MEMF_CLEAR,TAG_DONE)))
-	{
-		return FALSE;
-	}
-	
-	return TRUE;
-}
-
-void Freememory(void)
-{
-	if(globalpool)
-	{
-		FreeSysObject(ASOT_MEMPOOL,globalpool);
-	}
-}
-
-void *Pallocmem(long size,ULONG flags,void *pool)
-{
-   void *mem;
-#ifdef BETAKEYFILE
-   if(nopool) pool=NULL;
-#endif
-
-   if(pool) mem=AllocVecPooled(pool,size+4);
-   else mem=AllocVecTags(size+4,AVT_Type, MEMF_PRIVATE, AVT_ClearWithValue,0,TAG_DONE);
-   if(mem)
-   {  
-      *(void **)mem=pool;
-      return (void *)((ULONG)mem+4);
-   }
-   else return NULL;
-}
-
-void *Allocmem(long size,ULONG flags)
-{  
-
-   void *mem;
-
-   mem=Pallocmem(size,flags,globalpool);
-
-   return mem;
-}
-
-void Freemem(void *mem)
-{  void *pool;
-
-   if(mem)
-   {
-   	  pool=*(void **)((ULONG)mem-4);
-
-      if(pool) FreeVecPooled(pool,(void *)((ULONG)mem-4));
-      else FreeVec((void *)((ULONG)mem-4));
-
-   }
-}
-
-#else
 
 /*-----------------------------------------------------------------------*/
 
@@ -168,5 +103,3 @@ void Freemem(void *mem)
       ReleaseSemaphore(&memsema);
    }
 }
-
-#endif

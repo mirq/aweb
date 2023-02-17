@@ -48,7 +48,7 @@ struct AsyncFile
     BPTR                  af_File;
     ULONG                 af_BlockSize;
     struct MsgPort       *af_Handler;
-    UBYTE                *af_Offset;
+                UBYTE                                                            *af_Offset;
     LONG                  af_BytesLeft;
     ULONG                 af_BufferSize;
     APTR                  af_Buffers[2];

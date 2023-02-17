@@ -79,8 +79,6 @@ struct Awindow
    struct List urlpoplist;    /* Chooser list */
    struct List userbutlist;   /* User button speedbar list */
    short newwidth,newheight;  /* Inner dimensions set with OM_NEW */
-   WORD  newleft, newtop;     /* Window left and top positions set with OM_NEW */
-   BOOL  leftset, topset;     /* if the above two are set (can't use 0 as is meaningfyul so is -1 )*/  
    UWORD ptrtype;            /* Current pointer type */
    struct AppWindow *appwindow; /* The AppWindow for this window or NULL */
    UBYTE *statustext;         /* Copy of status text */
@@ -92,8 +90,6 @@ struct Awindow
 
    UBYTE *charset;            /* Character set to force or NULL */
    struct DrawInfo *drawinfo;  /* Drawinfo for GUI buttons */
-   STRPTR pubscreenname;       /* Name of window specific screen of appscreen of NIL */ 
-   BOOL   screenlocked;        /* If we locked ou screen */
 };
 
 #define WINF_NOPROXY       0x0001   /* Don't use proxies. */

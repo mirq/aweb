@@ -27,7 +27,7 @@ __near
 #ifdef __MORPHOS__
 long __stack=(16*1024);
 #else
-long __stack=8192;
+long __stack_size = 8192;
 #endif
 
 #ifdef __MORPHOS__
@@ -201,9 +201,8 @@ void Closelib(struct Library **base, struct Interface **iface);
 
 /*---------------------------------------------------------------------------*/
 
-STRPTR Dupstr(STRPTR str,long length)
-{  
-   STRPTR dup;
+UBYTE *Dupstr(UBYTE *str,long length)
+{  UBYTE *dup;
    if(!str) return NULL;
    if(length<0) length=strlen(str);
    if(dup=ALLOCTYPE(UBYTE,length+1,0))
@@ -221,7 +220,7 @@ void Cleanup(void)
       RemPort(cfgport);
       while(msg=GetMsg(cfgport)) ReplyMsg(msg);
       Permit();
-      ADeletemsgport(cfgport);
+      DeleteMsgPort(cfgport);
    }
    if(visualinfo) FreeVisualInfo(visualinfo);
    if(drawinfo) FreeScreenDrawInfo(pubscreen,drawinfo);
@@ -341,7 +340,7 @@ static struct Library *Openlib(UBYTE *name,long version)
 static void Getarguments(struct WBStartup *wbs)
 {  long args[8]={0};
    if(wbs)
-   {  long oldcd= ASetcurrentdir(wbs->sm_ArgList[0].wa_Lock);
+   {  long oldcd=CurrentDir(wbs->sm_ArgList[0].wa_Lock);
       struct DiskObject *dob=GetDiskObject(wbs->sm_ArgList[0].wa_Name);
       if(dob)
       {  UBYTE **ttp;
@@ -355,7 +354,7 @@ static void Getarguments(struct WBStartup *wbs)
          }
          FreeDiskObject(dob);
       }
-      ASetcurrentdir(oldcd);
+      CurrentDir(oldcd);
    }
    else
    {  struct RDArgs *rda=ReadArgs(argtemplate,args,NULL);
@@ -375,7 +374,7 @@ static void Getarguments(struct WBStartup *wbs)
 static BOOL Dupstartupcheck(void)
 {  struct Cfgmsg msg={{{0}}};
    struct MsgPort *port;
-   if(cfgport=ACreatemsgport())
+   if(cfgport=CreateMsgPort())
    {  Forbid();
       if(port=FindPort(AWEBCFGPORTNAME))
       {  msg.msg.mn_ReplyPort=cfgport;
@@ -393,7 +392,7 @@ static BOOL Dupstartupcheck(void)
       if(port)
       {  WaitPort(cfgport);
          GetMsg(cfgport);
-         ADeletemsgport(cfgport);
+         DeleteMsgPort(cfgport);
          cfgport=NULL;
          return FALSE;
       }

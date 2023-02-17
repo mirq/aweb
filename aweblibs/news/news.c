@@ -2464,12 +2464,7 @@ static void Downloadactive(struct Fetchdriver *fd)
          }
          Close(file);
          if(!ok)
-         {
-#if defined(__amigaos4__)
-			Delete(ACTIVENAME);
-#else
-            DeleteFile(ACTIVENAME);
-#endif
+         {  DeleteFile(ACTIVENAME);
          }
       }
       Updatetaskattrs(

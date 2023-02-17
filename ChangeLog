@@ -2,111 +2,20 @@
 AWeb Open Source - ChangeLog
 ----------------------------
 
+$Id: ChangeLog,v 1.431 2009/10/16 11:18:47 opi Exp $
+$Source: /pack/anoncvs/aweb/ChangeLog,v $
 
-Wed, 07 Mar 2018  -  15:53:11
-Revision:  17
+2009-10-16: Frank (Opi) Weber <opionline@yahoo.de>
+    * plugins/charset/awebcharset.readme: Update the History last time.
+      All future changes will be listed in the changelog file only to avoid
+      double work for the History.
 
-    Add support for AmiSSL 4.2  A minimum of verson 4.2 is required to use more 
-    than one connection  process at at time so AWeb will enforce this minimum. 
-    A error requestor to inform about incorrect AmiSSL version.  Fix a number of 
-    warnings.    
-
-
-Tue, 25 Feb 2014  -  17:29:34
-Revision:  16
-
-    Add support for new built in mouse pointer types in AmigaOS 4.1 build Improve 
-    security by limiting Cyphers and enforcing SSL3 minimum Various fixes.   
-
-
-Sat, 26 May 2012  -  01:13:25
-Revision:  15
-
-    REplace all calls to CreatemsgPort and DeleteMsgPort with ACreatemsgport ADeletemsgport. 
-    Implement said functiosn with AlloSysObject for AmigaOS 4 and CreateMsgPort 
-    DeleteMsgPort for other operating systems.  Fix a few pointer type warnings 
-       
-
-
-Fri, 25 May 2012  -  02:36:54
-Revision:  14
-
-    AWeb created and deleted apports like crazy. Now the apport is created once 
-    at the beginning of the app and deleted the end at the same time as the other 
-    ports.   
-
-
-Fri, 25 May 2012  -  01:50:51
-Revision:  13
-
-    AWeb would only create an appport if opened on the default public screen. If 
-    opened on a named public screen (even if that name was Workbench!) it wouldn't 
-    create the port. AWeb now always creates an appport whatever screen it opens 
-    on.   
-
-
-Fri, 25 May 2012  -  00:27:42
-Revision:  12
-
-    Extend ARexx NEW to enabling opening the new window on a specific named screen 
-      
-
-
-Thu, 24 May 2012  -  23:11:09
-Revision:  11
-
-    Extend AREXX NEW to set LEFT and TOP of a new window. Add missing left and 
-    top attributes to javascrip window.open() spec.   
-
-
-Thu, 24 May 2012  -  19:40:38
-Revision:  10
-
-    Use AmigaOS 4 sysiclass for iconify gadget  
-
-
-Thu, 24 May 2012  -  18:35:10
-Revision:  9
-
-    The gadget / layout craetion code was moved to the wrong place so that it was 
-    not called on uniconfication. Corrected.  Save the values of winow->Width and 
-    window->Height after opening (as they are no longer always calculated by AWeb) 
-    and ensure newwidth and newheight are zeroed after use, so that on uniconfication 
-    etc they are not reused.    
-
-
-Thu, 24 May 2012  -  17:27:28
-Revision:  8
-
-    Fix long term bug where javascript.open() would open an incorrectly sized window. 
-     The old code would determine the window bordersizes, gadget layout sizes etc 
-    from those of an existing window. But this was only valid if the two windows 
-    were to share identical specs, in particular if they both were to have or not 
-    have navigation gadgets.  The new code allocates the entire gadgetry and imagery 
-    before the window is opened, allowing LayLimits to be used to determine the 
-    required window size.  Some additional calls to Closewindfow() were added to 
-    cleanup resources in the event of failing to open a window.  Fix a few warnings. 
-
-
-2012-05-22: Andy Broad <andy@broad.ology.org.uk>
-    * awebcommon/memory.c: Update code to use modern AmigaOS functions
-    
-2012-05-21: Andy Broad <andy@broad.ology.org.uk>
-    * aweb/arexx.c, aweb/winrexx.c, user/Docs/Advanced/ARexx/window.html:
-      Extend the ARexx command NEW to give greater control over the window. Added 
-      NONAV WIDTH and Height and updated the documentation accordingly.  
-  
-2012-05-20: Andy Broad <andy@broad.ology.org.uk>
-    * Include/keyfile.h: bumprev ro 3.5.10
-    * Include/platform_specific.h: bumprev of OS4 to OS4.1
-
-2012-05-20: Andy Broad <andy@broad.ology.org.uk>
-    * Remove asyncio dependencies. Fix behaviour of AWeb when render to a window
-      that is partially ofscreen.
+2009-10-15: Frank (Opi) Weber <opionline@yahoo.de>
+    * aweblibs/history/whistask.c: Fixed a wrong (void *) casting.
 
 2009-10-15: Andy Broad <andy@broad.ology.org.uk>
     * aweblibs/cachebroswer/cabrtask.c: removed (void *) cast from qsort and update
-      cabrsortf type to include consts. NO VOID POINTERS TO ELIMNATE AWARNINGS PLEASE!
+      cabrsortf type to include consts. NO VOID POINTERS TO ELIMNATE ALL WARNINGS PLEASE!
 
 2009-10-15: Frank (Opi) Weber <opionline@yahoo.de>
     * aweblibs/history/whistask.c: Changed the version string and bumped version.

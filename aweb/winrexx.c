@@ -90,7 +90,7 @@ static void Dodeletedocs(short code,void *data)
 }
 
 static void Disposereqdata(short code,struct Reqdata *rd)
-{  TEXT buf[16];
+{  UBYTE buf[16];
    if(rd)
    {  if(rd->title) FREE(rd->title);
       if(rd->ac)
@@ -187,7 +187,7 @@ static BOOL Docancel(struct Arexxcmd *ac,struct Awindow *win,long *ploadid,BOOL 
    return TRUE;
 }
 
-static BOOL Dochanclose(struct Arexxcmd *ac,struct Awindow *win,  STRPTR ch)
+static BOOL Dochanclose(struct Arexxcmd *ac,struct Awindow *win,UBYTE *ch)
 {  BOOL done;
    long id=atoi(ch);
    if(Channelfetch(ac,id,AOFCC_Close,TRUE,TAG_END))
@@ -200,7 +200,7 @@ static BOOL Dochanclose(struct Arexxcmd *ac,struct Awindow *win,  STRPTR ch)
    return done;
 }
 
-static BOOL Dochanheader(struct Arexxcmd *ac,struct Awindow *win, STRPTR ch,  STRPTR header)
+static BOOL Dochanheader(struct Arexxcmd *ac,struct Awindow *win,UBYTE *ch,UBYTE *header)
 {  BOOL done=FALSE;
    long id=atoi(ch);
    UBYTE *headerdup;
@@ -217,7 +217,7 @@ static BOOL Dochanheader(struct Arexxcmd *ac,struct Awindow *win, STRPTR ch,  ST
    return done;
 }
 
-static BOOL Dochandata(struct Arexxcmd *ac,struct Awindow *win, STRPTR ch,
+static BOOL Dochandata(struct Arexxcmd *ac,struct Awindow *win,UBYTE *ch,
    UBYTE *data,BOOL newline)
 {  BOOL done=FALSE;
    long id=atoi(ch);
@@ -235,10 +235,10 @@ static BOOL Dochandata(struct Arexxcmd *ac,struct Awindow *win, STRPTR ch,
    return done;
 }
 
-static BOOL Dochanopen(struct Arexxcmd *ac,struct Awindow *win, STRPTR urlname)
+static BOOL Dochanopen(struct Arexxcmd *ac,struct Awindow *win,UBYTE *urlname)
 {  void *url;
    long id=0;
-   TEXT  buf[8];
+   UBYTE buf[8];
    if(url=Findurl("",urlname,0))
    {  id=Auload(url,AUMLF_CHANNEL,NULL,NULL,NULL);
       if(id)
@@ -282,9 +282,9 @@ static BOOL Docopyblock(struct Arexxcmd *ac,struct Awindow *win)
 
 static BOOL Docopyurl(struct Arexxcmd *ac,struct Awindow *win,UBYTE *targetname)
 {  void *target;
-   STRPTR url;
+   UBYTE *url;
    if(win && (target=Targetframe(win->frame,targetname)))
-   {  url=(STRPTR)Agetattr((void *)Agetattr(target,AOFRM_Url),AOURL_Url);
+   {  url=(UBYTE *)Agetattr((void *)Agetattr(target,AOFRM_Url),AOURL_Url);
       if(url)
       {  Clipcopy(url,strlen(url));
       }
@@ -293,7 +293,7 @@ static BOOL Docopyurl(struct Arexxcmd *ac,struct Awindow *win,UBYTE *targetname)
 }
 
 static BOOL Dodeletecache(struct Arexxcmd *ac,struct Awindow *win,
-   BOOL images,BOOL docs,BOOL force, STRPTR pattern)
+   BOOL images,BOOL docs,BOOL force,UBYTE *pattern)
 {  short type;
    if(pattern)
    {  if(images && !docs) type=CACFT_IMAGES;
@@ -822,12 +822,12 @@ static BOOL Doload(struct Arexxcmd *ac,struct Awindow *win,UBYTE *urlname,
 }
 
 static BOOL Doloadimages(struct Arexxcmd *ac,struct Awindow *win,
-   UBYTE *targetname,BOOL maps,BOOL restricted)
+   UBYTE *targetname,BOOL maps,BOOL restrict)
 {  void *target;
    ULONG flags=0;
    if(win && (target=Targetframe(win->frame,targetname)))
    {  if(maps) flags|=ACMLF_MAPSONLY;
-      if(restricted) flags|=ACMLF_RESTRICT;
+      if(restrict) flags|=ACMLF_RESTRICT;
       Anotifycload(target,flags);
    }
    else ac->errorlevel=RXERR_WARNING;
@@ -853,17 +853,10 @@ static BOOL Domimetype(struct Arexxcmd *ac,struct Awindow *win,UBYTE *name)
 }
 
 static BOOL Donew(struct Arexxcmd *ac,struct Awindow *oldwin,
-   UBYTE *url,UBYTE *name,BOOL reload,UBYTE *post,BOOL smart,BOOL nonav, LONG *left, LONG *top, ULONG *width, ULONG *height,STRPTR pubscreenname)
+   UBYTE *url,UBYTE *name,BOOL reload,UBYTE *post,BOOL smart)
 {  struct Awindow *win;
    win=Anewobject(AOTP_WINDOW,
       AOWIN_Name,(Tag)name,
-      AOWIN_Navigation,nonav?FALSE:TRUE,
-      AOWIN_Buttonbar,nonav?FALSE:TRUE, 
-      width?AOWIN_Innerwidth:TAG_IGNORE,width?*width:0,
-      height?AOWIN_Innerheight:TAG_IGNORE,height?*height:0,
-      left?AOWIN_Left:TAG_IGNORE,left?*left:0,    
-      top?AOWIN_Top:TAG_IGNORE,top?*top:0,
-      AOWIN_PubScreenName,pubscreenname,
       AOWIN_Noproxy,Agetattr((struct Aobject *)oldwin,AOWIN_Noproxy),
       TAG_END);
    if(win)
@@ -1559,9 +1552,7 @@ BOOL Doarexxcmd(struct Arexxcmd *ac)
          break;
       case ARX_NEW:
          done=Donew(ac,win,(UBYTE *)ac->parameter[0],(UBYTE *)ac->parameter[1],
-            ac->parameter[2],(UBYTE *)ac->parameter[3],ac->parameter[4],ac->parameter[5],
-            (LONG *)ac->parameter[8],(LONG *)ac->parameter[9],
-            (ULONG *)ac->parameter[6],(ULONG *)ac->parameter[7],(STRPTR)ac->parameter[10]);
+            ac->parameter[2],(UBYTE *)ac->parameter[3],ac->parameter[4]);
          break;
       case ARX_OPEN:
          done=Doopen(ac,win,(UBYTE *)ac->parameter[0],(UBYTE *)ac->parameter[1],

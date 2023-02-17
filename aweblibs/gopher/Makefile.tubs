@@ -8,4 +8,3 @@ aweblib/gopher.aweblib/CFILES := \
 gopher
 
 aweblib/gopher.aweblib/CFILES/gopher/CPPFLAGS := $(NETINCLUDE2)
-

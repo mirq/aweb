@@ -905,50 +905,36 @@ if(SetSignal(0,0)&SIGBREAKF_CTRL_C) return 0;
 }
 
 static struct RastPort *Alloctemprp(struct RastPort *rp)
+
 {
 
    struct Layer_Info *li;
    struct Layer *l;
    struct BitMap *tempbm;
    ULONG bmwidth, bmheight, bmdepth;
-	 
-//DebugPrintF("Entering %s\n",__FUNCTION__);	
-//   bmwidth  = IGraphics->GetBitMapAttr(rp->BitMap,BMA_WIDTH);
-//   bmheight = IGraphics->GetBitMapAttr(rp->BitMap,BMA_HEIGHT);
-  
-   bmwidth = rp->Layer->bounds.MaxX - rp->Layer->bounds.MinX + 1;
-   bmheight = rp->Layer->bounds.MaxY - rp->Layer->bounds.MinY + 1;
-   
+
+   bmwidth  = GetBitMapAttr(rp->BitMap,BMA_WIDTH);
+   bmheight = GetBitMapAttr(rp->BitMap,BMA_HEIGHT);
    bmdepth  = GetBitMapAttr(rp->BitMap,BMA_DEPTH);
-//   __D("bmw %ld bmh %ld BMd %ld\n",bmwidth,bmheight,bmdepth);
-   
+
    if(tempbm = AllocBitMap(bmwidth,bmheight,bmdepth,BMF_MINPLANES,rp->BitMap))
    {
        if (rp && rp->Layer)
        {
           if ((li = NewLayerInfo()) != NULL)
           {
-//           __D("bitmap dimensions %d %d %d \n",bmwidth,bmheight,bmdepth);
-//           __D("bounds %d %d %d %d\n",
-//                                             rp->Layer->bounds.MinX,
-//                                             rp->Layer->bounds.MinY,
-//                                             rp->Layer->bounds.MaxX,
-//                                             rp->Layer->bounds.MaxY);
-
              if ((l = CreateUpfrontHookLayer(li,
                                              tempbm,
-                                             0, // rp->Layer->bounds.MinX,
-                                             0, // rp->Layer->bounds.MinY,
-                                             rp->Layer->bounds.MaxX - rp->Layer->bounds.MinX ,
-                                             rp->Layer->bounds.MaxY - rp->Layer->bounds.MinY,
+                                             rp->Layer->bounds.MinX,
+                                             rp->Layer->bounds.MinY,
+                                             rp->Layer->bounds.MaxX,
+                                             rp->Layer->bounds.MaxY,
                                              LAYERSIMPLE,
                                              LAYERS_NOBACKFILL,
                                              NULL)) != NULL)
              {
                 InstallLayerHook(l,(struct Hook *)rp->Layer->BackFill);
-//                DebugPrintF("Leaving %s\n",__FUNCTION__);	
                 return (l->rp);
-                
              }
              DisposeLayerInfo(li);
           }
@@ -962,7 +948,6 @@ static void Freetemprp(struct RastPort *rp)
 {
     struct Layer_Info *li;
     struct BitMap *bm = NULL;
- //   DebugPrintF("Entering %s\n",__FUNCTION__);	
     if(rp)
     {
         bm = rp->BitMap;
@@ -970,8 +955,7 @@ static void Freetemprp(struct RastPort *rp)
     if (rp && rp->Layer)
     {
        li = rp->Layer->LayerInfo;
-//       InstallLayerInfoHook(li,LAYERS_NOBACKFILL);
-       InstallLayerHook(rp->Layer,LAYERS_NOBACKFILL);
+       InstallLayerInfoHook(li,LAYERS_NOBACKFILL);
        DeleteLayer(0,rp->Layer);
        DisposeLayerInfo(li);
     }
@@ -979,7 +963,6 @@ static void Freetemprp(struct RastPort *rp)
     {
         FreeBitMap(bm);
     }
-  //  DebugPrintF("Leaving %s\n",__FUNCTION__);	
 }
 
 

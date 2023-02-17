@@ -12,15 +12,15 @@
 
 static char *program_name;
 
-void fatal(const char *msg, int __errno)
+void fatal(const char *msg, int ___errno)
 {
-    if (!__errno)
+    if (!___errno)
         exit(EXIT_SUCCESS);
 
     if (msg)
-        fprintf(stderr, "%s: %s: %s\n", program_name, msg, strerror(errno));
+        fprintf(stderr, "%s: %s: %s\n", program_name, msg, strerror(___errno));
     else
-        fprintf(stderr, "%s: %s\n", program_name, strerror(errno));
+        fprintf(stderr, "%s: %s\n", program_name, strerror(___errno));
 
     exit(20);
 }
@@ -577,4 +577,3 @@ int main (int argc, char *argv[])
 
     return 0;
 }
-

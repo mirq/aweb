@@ -181,7 +181,7 @@ static void Deinstalltimer(void)
    }
    if(timerport)
    {  Setprocessfun(timerport->mp_SigBit,NULL);
-      ADeletemsgport(timerport);
+      DeleteMsgPort(timerport);
    }
 }
 
@@ -221,7 +221,7 @@ struct Amessage *,amsg,A1
 BOOL Installtimer(void)
 {  NEWLIST(&timers);
    if(!Amethod(NULL,AOM_INSTALL,AOTP_TIMER,(Tag)Timer_Dispatcher)) return FALSE;
-   if(!(timerport=ACreatemsgport())) return FALSE;
+   if(!(timerport=CreateMsgPort())) return FALSE;
    Setprocessfun(timerport->mp_SigBit,Processtimer);
    if(!(timerequest=(struct timerequest *)
       CreateExtIO(timerport,sizeof(struct timerequest)))) return FALSE;

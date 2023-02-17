@@ -1,0 +1,12 @@
+MODULES := linklibs/libclib2moduleinit.a
+
+linklibs/libclib2moduleinit.a/TYPE := executable/library/link
+linklibs/libclib2moduleinit.a/CFILES := \
+module_init \
+module_exit \
+module_libraries \
+
+
+
+
+

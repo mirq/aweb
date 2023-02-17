@@ -108,8 +108,10 @@ static struct Node *Getnode(struct List *list,long n)
 /*-----------------------------------------------------------------------*/
 
 /* Allocate nodes for this group */
-static void Allocgroupnodes(LIST(Hotitem) *list,short level)
-{  struct Hotitem *hi;
+static void Allocgroupnodes(void * alist,short level)
+{
+   LIST(Hotitem) *list=alist;
+   struct Hotitem *hi;
    struct Node *node;
    for(hi=list->first;hi->next;hi=hi->next)
    {  if(hi->type==HITEM_ENTRY)
@@ -233,7 +235,7 @@ static BOOL Enternode(struct Hotwindow *how,BOOL realenter)
       }
    }
    if(hb)
-   {  Updatetaskattrs(AOHOT_Follow,hb->url,TAG_END);
+   {  Updatetaskattrs(AOHOT_Follow,(Tag)hb->url,TAG_END);
       result=how->autoclose;
    }
    return result;

@@ -70,7 +70,7 @@ static struct Arexxtemplate templates[]=
    {ARX_LOADIMAGES,      "LOADIMAGES",        "TARGET/K,MAPS/S,RESTRICT/S"},
    {ARX_LOADSETTINGS,    "LOADSETTINGS",      "PATH,REQUEST/S"},
    {ARX_MIMETYPE,        "MIMETYPE",          "NAME/A"},
-   {ARX_NEW,             "NEW",               "URL/A,NAME/K,RELOAD/S,POST/K,SMART/S,NONAV/S,WIDTH/N/K,HEIGHT/N/K,LEFT/N/K,TOP/N/K,PUBSCREENNAME/K"},
+   {ARX_NEW,             "NEW",               "URL/A,NAME/K,RELOAD/S,POST/K,SMART/S"},
    {ARX_OPEN,            "OPEN",              "URL/A,TARGET/K,RELOAD/S,POST/K,SMART/S"},
    {ARX_OPENREQ,         "OPENREQ",           "FILE/S,PAT=PATTERN/K"},
    {ARX_PLAYBGSOUND,     "PLAYBGSOUND",       ""},

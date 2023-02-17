@@ -16,5 +16,4 @@ memory \
 libraries
 
 linklibs/libawebdevcommon.a/CFILES/CPPFLAGS := -DDEVELOPER -DBETAKEYFILE -I awebcfg/include
-linklibs/libawebdevcommon.a/CFILES/CFLAGS := -gstabs
 

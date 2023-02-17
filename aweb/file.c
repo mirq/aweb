@@ -86,9 +86,8 @@ static void Saveiconfile(struct File *fil)
 }
 
 static void Deletefile(struct File *fil)
-{  
-	ADeletefile(fil->name);
-	if(fil->icontype) DeleteDiskObject(fil->name);
+{  DeleteFile(fil->name);
+   if(fil->icontype) DeleteDiskObject(fil->name);
 }
 
 /* Copy data from other file */

@@ -27,14 +27,10 @@
 #include "jslib.h"
 #include <intuition/imageclass.h>
 #include <intuition/gadgetclass.h>
-#include <intuition/pointerclass.h>
 #include <intuition/icclass.h>
 #include <workbench/startup.h>
 #include <workbench/workbench.h>
-#undef NO_INLINE_STDARG
 #include <reaction/reaction.h>
-
-#define NO_INLINE_STDARG
 
 #ifdef __MORPHOS__
 #include <intuition/extensions.h>
@@ -54,7 +50,7 @@
 #include <proto/utility.h>
 #include <proto/wb.h>
 
-#if !defined(__MORPHOS__) && !defined(__amigaos4__)
+#ifndef __MORPHOS__
 #include <images/titlebar.h>
 #include <proto/titlebarimage.h>
 
@@ -279,35 +275,8 @@ void Setawinpointer(struct Awindow *win,UWORD ptrtype)
 {  void *ptr;
    /* Only set the pointer if it changes */
    if(win->window && ptrtype!=win->ptrtype)
-   {  
-#if defined(__amigaos4__)
-	switch(ptrtype)
-	{
-		case APTR_DEFAULT:
-		{
-		    SetWindowPointer(win->window,WA_PointerType,POINTERTYPE_NORMAL,WA_PointerDelay,TRUE,TAG_END);
-		    break;
-		}
-		case APTR_RESIZEHOR:
-		{
-		    SetWindowPointer(win->window,WA_PointerType,POINTERTYPE_EASTWESTRESIZE,WA_PointerDelay,TRUE,TAG_END);
-		    break;
-		}
-		case APTR_RESIZEVERT:
-		{
-		    SetWindowPointer(win->window,WA_PointerType,POINTERTYPE_NORTHSOUTHRESIZE,WA_PointerDelay,TRUE,TAG_END);
-		    break;
-		}
-		case APTR_HAND:
-		{
-		    SetWindowPointer(win->window,WA_PointerType,POINTERTYPE_LINK,WA_PointerDelay,TRUE,TAG_END);
-		    break;
-		}
-	}
-#else
-      ptr=Apppointer((struct Application *)Aweb(),ptrtype);
-      SetWindowPointer(win->window,WA_Pointer,ptr,WA_PointerDelay,TRUE,TAG_END);
-#endif
+   {  ptr=Apppointer((struct Application *)Aweb(),ptrtype);
+      SetWindowPointer(win->window,WA_Pointer,ptr,TAG_END);
       win->ptrtype=ptrtype;
    }
 }
@@ -451,7 +420,7 @@ static void Rebuildbuttonrow(struct Awindow *win,struct DrawInfo *dri)
    {  Setgadgetattrs(win->ubutgad,win->window,NULL,SPEEDBAR_Buttons,~0,TAG_END);
       while(node=RemHead(&win->userbutlist))
       {  GetSpeedButtonNodeAttrs(node,SBNA_Image,&label,TAG_END);
-         DisposeObject((Object *)label);
+         DisposeObject(label);
          FreeSpeedButtonNode(node);
       }
       Addspeedbutton(win,dri,prefs.gui.buttons.first,-1);
@@ -517,7 +486,7 @@ void Makebutton(struct Awindow *win, struct Gadget **button, struct Image *img, 
                      GA_Image,label,
                      GA_SelectRender,selectlabel,
                      GA_RelVerify,TRUE,
-                     GA_Immediate,FALSE,
+                     GA_Immediate,TRUE,
                      REACTION_SpecialPens,&win->capens,
                      (prefs.gui.nobevel?BUTTON_BevelStyle:TAG_IGNORE),BVS_NONE,
                      BUTTON_Transparent,TRUE,
@@ -638,22 +607,9 @@ static BOOL Openwindow(struct Awindow *win)
    struct Node *node;
    void *buttonrow;
    void *navblock;
-   UWORD innerwidth = 0;
-   UWORD innerheight = 0;
-
-   
    struct IBox *bx,*zbx; /* ptrs to our box and zbox structures */
    ULONG bgrgb[3];
    short i;
-   
-   if(win->pubscreenname)
-   {
-       if((screen = LockPubScreen(win->pubscreenname)))
-       {
-           win->screenlocked = TRUE;
-       }
-   }
-   
    if(ISEMPTY(&win->urlpoplist))
    {  for(i=0;urlpops[i];i++)
       {  if(node=AllocChooserNode(CNA_Text,urlpops[i],TAG_END))
@@ -662,7 +618,7 @@ static BOOL Openwindow(struct Awindow *win)
       }
    }
    Agetattrs(Aweb(),
-      screen?TAG_IGNORE:AOAPP_Screen,(Tag)&screen,
+      AOAPP_Screen,(Tag)&screen,
       AOAPP_Colormap,(Tag)&colormap,
       AOAPP_Drawinfo,(Tag)&drinfo,
       AOAPP_Screenfont,(Tag)&font,
@@ -674,52 +630,128 @@ static BOOL Openwindow(struct Awindow *win)
       AOAPP_Processtype,AOTP_WINDOW,
       AOAPP_Processfun,(Tag)Processwindow,
       TAG_END);
-     if(!(win->spacegad = (struct Gadget *)NewObject(SPACE_GetClass(),NULL,  TAG_DONE)))
-     {
-         return FALSE;
-     }
-            
    if(!win->box.Width)
    {  if(nextx<0)
       {  nextx=prefs.window.winx;
          nexty=prefs.window.winy;
       }
-
-      if(win->leftset)
-      {
-          win->box.Left = win->newleft;
-      }
-      else
-      {
-            win->box.Left=nextx;
-            nextx+=20;
-      }
-      if(win->topset)
-      {
-          win->box.Top = win->newtop; 
-      }
-      else
-      {
-          nexty+=8;
-          win->box.Top=nexty;          
-      }
-      
+      win->box.Left=nextx;
+      win->box.Top=nexty;
+      nextx+=20;
+      nexty+=8;
       if(nextx+prefs.window.winw>screen->Width) nextx=0;
       if(nexty+prefs.window.winh>screen->Height) nexty=0;
       win->box.Width=prefs.window.winw;
       win->box.Height=prefs.window.winh;
-      SetAttrs(win->spacegad,
-          win->newwidth?SPACE_MinWidth:TAG_IGNORE,win->newwidth,
-          win->newheight?SPACE_MinHeight:TAG_IGNORE,win->newheight,
-          TAG_DONE);
-    
+      if(win->newwidth || win->newheight)
+      {  struct Awindow *awin;
+         for(awin=windows.first;awin->object.next;awin=awin->object.next)
+         {  if(awin->window)
+            {  if(win->newwidth)
+               {  win->box.Width=awin->window->Width-awin->spacegad->Width+win->newwidth;
+                  if(win->box.Width<awin->window->MinWidth)
+                  {  win->box.Width=awin->window->MinWidth;
+                  }
+               }
+               if(win->newheight)
+               {  win->box.Height=awin->window->Height-awin->spacegad->Height+win->newheight;
+                  if(win->box.Height<awin->window->MinHeight)
+                  {  win->box.Height=awin->window->MinHeight;
+                  }
+               }
+            }
+            break;
+         }
+      }
       win->zoombox.Left=prefs.window.wiax;
       win->zoombox.Top=prefs.window.wiay;
       win->zoombox.Width=prefs.window.wiaw;
       win->zoombox.Height=prefs.window.wiah;
    }
 
+   GetRGB32(colormap,drinfo->dri_Pens[BACKGROUNDPEN],1,bgrgb);
+   if(bgrgb[0] < 0x22222222) bgrgb[0] = 0x22222222;
+   if(bgrgb[1] < 0x22222222) bgrgb[1] = 0x22222222;
+   if(bgrgb[2] < 0x22222222) bgrgb[2] = 0x22222222;
 
+   if(bgrgb[0] > 0xffffffff - 0x22222222) bgrgb[0] = 0xffffffff - 0x22222222;
+   if(bgrgb[1] > 0xffffffff - 0x22222222) bgrgb[1] = 0xffffffff - 0x22222222;
+   if(bgrgb[2] > 0xffffffff - 0x22222222) bgrgb[2] = 0xffffffff - 0x22222222;
+
+
+
+   win->capens.sp_LightPen=ObtainBestPen(colormap,
+      bgrgb[0]+0x22222222,bgrgb[1]+0x22222222,bgrgb[2]+0x22222222,
+      OBP_FailIfBad,FALSE,
+      OBP_Precision,PRECISION_EXACT,
+      TAG_END);
+   win->capens.sp_DarkPen=ObtainBestPen(colormap,
+      bgrgb[0]-0x22222222,bgrgb[1]-0x22222222,bgrgb[2]-0x22222222,
+      OBP_FailIfBad,FALSE,
+      OBP_Precision,PRECISION_EXACT,
+      TAG_END);
+   if(win->flags & WINF_ZOOMED)
+   {
+       zbx = &win->box;
+       bx  = &win->zoombox;
+       win->flags &= ~ WINF_ZOOMED;
+   }
+   else
+   {
+       bx   = &win->box;
+       zbx  = &win->zoombox;
+
+   }
+   if(!(win->window=OpenWindowTags(NULL,
+      WA_Left,bx->Left,
+      WA_Top,bx->Top,
+      WA_Borderless,(prefs.gui.windowborder == 2)?TRUE:FALSE,
+      WA_Width,bx->Width,
+      WA_Height,bx->Height,
+      WA_PubScreen,screen,
+      WA_SizeGadget,(prefs.gui.windowborder > 0)?FALSE:TRUE,
+      WA_DragBar,(prefs.gui.windowborder > 0)?FALSE:TRUE,
+      WA_DepthGadget,(prefs.gui.windowborder > 0)?FALSE:TRUE,
+      WA_CloseGadget,(prefs.gui.windowborder > 0)?FALSE:TRUE,
+      WA_Activate,TRUE,
+      WA_SimpleRefresh,TRUE,
+      WA_SizeBRight,TRUE,
+      WA_SizeBBottom,TRUE,
+      WA_NewLookMenus,TRUE,
+      WA_AutoAdjust,TRUE,
+      WA_ReportMouse,TRUE,
+      WA_MaxWidth,-1,
+      WA_MaxHeight,-1,
+#ifdef __MORPHOS__
+                        WA_ExtraGadget_Iconify, TRUE,
+#endif
+      (prefs.gui.windowborder > 0)?TAG_IGNORE:WA_Zoom,zbx,
+      TAG_END))) return FALSE;
+
+
+   Settitle(win,AWEBSTR(MSG_AWEB_NODOCTITLE));
+   Setactiveport(win->portname);
+   activewindow=win;
+   win->window->UserData=(BYTE *)win;
+   win->window->UserPort=windowport;
+   ModifyIDCMP(win->window,idcmpflags);
+   Newwindowmenus(win,menus);
+   if(!(win->downimg=(struct Image *)NewObject(NULL,"sysiclass",
+      SYSIA_DrawInfo,drinfo,
+      SYSIA_Which,DOWNIMAGE,
+      TAG_END))) return FALSE;
+   if(!(win->upimg=(struct Image *)NewObject(NULL,"sysiclass",
+      SYSIA_DrawInfo,drinfo,
+      SYSIA_Which,UPIMAGE,
+      TAG_END))) return FALSE;
+   if(!(win->rightimg=(struct Image *)NewObject(NULL,"sysiclass",
+      SYSIA_DrawInfo,drinfo,
+      SYSIA_Which,RIGHTIMAGE,
+      TAG_END))) return FALSE;
+   if(!(win->leftimg=(struct Image *)NewObject(NULL,"sysiclass",
+      SYSIA_DrawInfo,drinfo,
+      SYSIA_Which,LEFTIMAGE,
+      TAG_END))) return FALSE;
 
    if(prefs.gui.shownav && (win->flags&WINF_NAVS))
    {  if(!(win->backimg=Buttonimage2(Aweb(),BUTF_BACK,FALSE,backdata,DEFAULTWIDTH,DEFAULTHEIGHT))) return FALSE;
@@ -746,13 +778,78 @@ static BOOL Openwindow(struct Awindow *win)
       win->imgselimg=Buttonimage2(Aweb(),BUTF_LOADIMAGES,TRUE,imgdata,DEFAULTWIDTH,DEFAULTHEIGHT);
 
    }
-
+   if(prefs.gui.windowborder == 0)
+   {
+       if(!(win->downarrow=(struct Gadget *)NewObject(NULL,"buttongclass",
+          GA_RelRight,-win->window->BorderRight+1,
+          GA_RelBottom,-win->window->BorderBottom-win->downimg->Height+1,
+          GA_Image,win->downimg,
+          GA_ID,GID_DOWN,
+          ICA_TARGET,ICTARGET_IDCMP,
+          TAG_END))) return FALSE;
+       if(!(win->uparrow=(struct Gadget *)NewObject(NULL,"buttongclass",
+          GA_RelRight,-win->window->BorderRight+1,
+          GA_RelBottom,-win->window->BorderBottom-
+             win->downimg->Height-win->upimg->Height+1,
+          GA_Image,win->upimg,
+          GA_ID,GID_UP,
+          ICA_TARGET,ICTARGET_IDCMP,
+          GA_Previous,win->downarrow,
+          TAG_END))) return FALSE;
+       if(!(win->vslider.gad=(struct Gadget *)NewObject(NULL,"propgclass",
+          GA_RelRight,-win->window->BorderRight+5,
+          GA_Width,win->window->BorderRight-8,
+          GA_Top,win->window->BorderTop+2,
+          GA_RelHeight,-win->window->BorderTop-win->window->BorderBottom-
+             win->downimg->Height-win->upimg->Height-4,
+          GA_ID,GID_VSLIDER,
+          PGA_Freedom,FREEVERT,
+          PGA_Total,1,
+          PGA_Visible,1,
+          PGA_NewLook,TRUE,
+          PGA_Borderless,TRUE,
+          ICA_TARGET,ICTARGET_IDCMP,
+          GA_Previous,win->uparrow,
+          TAG_END))) return FALSE;
+       if(!(win->rightarrow=(struct Gadget *)NewObject(NULL,"buttongclass",
+          GA_RelRight,-win->window->BorderRight-win->rightimg->Width+1,
+          GA_RelBottom,-win->window->BorderBottom+1,
+          GA_Image,win->rightimg,
+          GA_ID,GID_RIGHT,
+          ICA_TARGET,ICTARGET_IDCMP,
+          GA_Previous,win->vslider.gad,
+          TAG_END))) return FALSE;
+       if(!(win->leftarrow=(struct Gadget *)NewObject(NULL,"buttongclass",
+          GA_RelRight,-win->window->BorderRight-
+             win->rightimg->Width-win->leftimg->Width+1,
+          GA_RelBottom,-win->window->BorderBottom+1,
+          GA_Image,win->leftimg,
+          GA_ID,GID_LEFT,
+          ICA_TARGET,ICTARGET_IDCMP,
+          GA_Previous,win->rightarrow,
+          TAG_END))) return FALSE;
+       if(!(win->hslider.gad=(struct Gadget *)NewObject(NULL,"propgclass",
+          GA_Left,win->window->BorderLeft,
+          GA_RelBottom,-win->window->BorderBottom+3,
+          GA_RelWidth,-win->window->BorderLeft-win->window->BorderRight-
+             win->rightimg->Width-win->leftimg->Width-2,
+          GA_Height,win->window->BorderBottom-4,
+          GA_ID,GID_HSLIDER,
+          PGA_Freedom,FREEHORIZ,
+          PGA_Total,1,
+          PGA_Visible,1,
+          PGA_NewLook,TRUE,
+          PGA_Borderless,TRUE,
+          ICA_TARGET,ICTARGET_IDCMP,
+          GA_Previous,win->leftarrow,
+          TAG_END))) return FALSE;
+   }
    buttonrow=Makebuttonrow(win,drinfo);
 
    navblock=Makenavigationblock(win);
    win->ledgad=Animgadget(Aweb(),&win->capens);
 
-   win->layoutgad=(struct Gadget *)VLayoutObject,
+   win->layoutgad=VLayoutObject,
       GA_ID,GID_LAYOUT,
       LAYOUT_SpaceInner,FALSE,
       TAG_END);
@@ -942,195 +1039,13 @@ static BOOL Openwindow(struct Awindow *win)
 #else
         LAYOUT_SpaceOuter,FALSE,
 #endif
-         StartMember,win->spacegad,
-//         CHILD_MinHeight,40,
-//         CHILD_MinWidth,80,
+         StartMember,win->spacegad=SpaceObject,
+         EndMember,
+         CHILD_MinHeight,40,
+         CHILD_MinWidth,80,
       EndMember,
       TAG_END);
-      
-   if(win->newwidth || win->newheight)
-   {
-       LayoutLimits(win->layoutgad,&limits,NULL,screen);
-       if(win->newwidth)
-       {
-           innerwidth = limits.MinWidth;
-       }
-       
-       if(win->newheight)
-       {
-           innerheight = limits.MinHeight;
-       }    
-   }
-   win->newwidth = 0;
-   win->newheight = 0;
-   
-   GetRGB32(colormap,drinfo->dri_Pens[BACKGROUNDPEN],1,bgrgb);
-   if(bgrgb[0] < 0x22222222) bgrgb[0] = 0x22222222;
-   if(bgrgb[1] < 0x22222222) bgrgb[1] = 0x22222222;
-   if(bgrgb[2] < 0x22222222) bgrgb[2] = 0x22222222;
-
-   if(bgrgb[0] > 0xffffffff - 0x22222222) bgrgb[0] = 0xffffffff - 0x22222222;
-   if(bgrgb[1] > 0xffffffff - 0x22222222) bgrgb[1] = 0xffffffff - 0x22222222;
-   if(bgrgb[2] > 0xffffffff - 0x22222222) bgrgb[2] = 0xffffffff - 0x22222222;
-
-
-
-   win->capens.sp_LightPen=ObtainBestPen(colormap,
-      bgrgb[0]+0x22222222,bgrgb[1]+0x22222222,bgrgb[2]+0x22222222,
-      OBP_FailIfBad,FALSE,
-      OBP_Precision,PRECISION_EXACT,
-      TAG_END);
-   win->capens.sp_DarkPen=ObtainBestPen(colormap,
-      bgrgb[0]-0x22222222,bgrgb[1]-0x22222222,bgrgb[2]-0x22222222,
-      OBP_FailIfBad,FALSE,
-      OBP_Precision,PRECISION_EXACT,
-      TAG_END);
-   if(win->flags & WINF_ZOOMED)
-   {
-       zbx = &win->box;
-       bx  = &win->zoombox;
-       win->flags &= ~ WINF_ZOOMED;
-   }
-   else
-   {
-       bx   = &win->box;
-       zbx  = &win->zoombox;
-
-   }
-   if(!(win->window=OpenWindowTags(NULL,
-      WA_Left,bx->Left,
-      WA_Top,bx->Top,
-      WA_Borderless,(prefs.gui.windowborder == 2)?TRUE:FALSE,
-      innerwidth?TAG_IGNORE:WA_Width,bx->Width,
-      innerheight?TAG_IGNORE:WA_Height,bx->Height,
-      innerwidth?WA_InnerWidth:TAG_IGNORE,innerwidth,
-      innerheight?WA_InnerHeight:TAG_IGNORE,innerheight,
-      WA_PubScreen,screen,
-      WA_SizeGadget,(prefs.gui.windowborder > 0)?FALSE:TRUE,
-      WA_DragBar,(prefs.gui.windowborder > 0)?FALSE:TRUE,
-      WA_DepthGadget,(prefs.gui.windowborder > 0)?FALSE:TRUE,
-      WA_CloseGadget,(prefs.gui.windowborder > 0)?FALSE:TRUE,
-      WA_Activate,TRUE,
-      WA_SimpleRefresh,TRUE,
-      WA_SizeBRight,TRUE,
-      WA_SizeBBottom,TRUE,
-      WA_NewLookMenus,TRUE,
-      WA_AutoAdjust,TRUE,
-      WA_ReportMouse,TRUE,
-      WA_MaxWidth,-1,
-      WA_MaxHeight,-1,
-#ifdef __MORPHOS__
-                        WA_ExtraGadget_Iconify, TRUE,
-#endif
-      (prefs.gui.windowborder > 0)?TAG_IGNORE:WA_Zoom,zbx,
-      TAG_END))) 
-    {
-      return FALSE;
-    }
-
-
-   Settitle(win,AWEBSTR(MSG_AWEB_NODOCTITLE));
-   Setactiveport(win->portname);
-   activewindow=win;
-   win->window->UserData=(BYTE *)win;
-   win->window->UserPort=windowport;
-   ModifyIDCMP(win->window,idcmpflags);
-   Newwindowmenus(win,menus);
-   if(!(win->downimg=(struct Image *)NewObject(NULL,"sysiclass",
-      SYSIA_DrawInfo,drinfo,
-      SYSIA_Which,DOWNIMAGE,
-      TAG_END))) return FALSE;
-   if(!(win->upimg=(struct Image *)NewObject(NULL,"sysiclass",
-      SYSIA_DrawInfo,drinfo,
-      SYSIA_Which,UPIMAGE,
-      TAG_END))) return FALSE;
-   if(!(win->rightimg=(struct Image *)NewObject(NULL,"sysiclass",
-      SYSIA_DrawInfo,drinfo,
-      SYSIA_Which,RIGHTIMAGE,
-      TAG_END))) return FALSE;
-   if(!(win->leftimg=(struct Image *)NewObject(NULL,"sysiclass",
-      SYSIA_DrawInfo,drinfo,
-      SYSIA_Which,LEFTIMAGE,
-      TAG_END))) return FALSE;
-   if(!(win->iconify_img=(struct Image *)NewObject(NULL,"sysiclass",
-      SYSIA_DrawInfo,drinfo,
-      SYSIA_Which,ICONIFYIMAGE,
-      TAG_END))) return FALSE;      
-      
- //    win->iconify_img = (struct Image *)NewObject (NULL, "sysiclass",  SYSIA_DrawInfo, drinfo, SYSIA_Which, TBFRAMEIMAGE, SYSIA_FullFrame, TRUE,TAG_END);
-
-   if(prefs.gui.windowborder == 0)
-   {
-       if(!(win->downarrow=(struct Gadget *)NewObject(NULL,"buttongclass",
-          GA_RelRight,-win->window->BorderRight+1,
-          GA_RelBottom,-win->window->BorderBottom-win->downimg->Height+1,
-          GA_Image,win->downimg,
-          GA_ID,GID_DOWN,
-          ICA_TARGET,ICTARGET_IDCMP,
-          TAG_END))) return FALSE;
-       if(!(win->uparrow=(struct Gadget *)NewObject(NULL,"buttongclass",
-          GA_RelRight,-win->window->BorderRight+1,
-          GA_RelBottom,-win->window->BorderBottom-
-             win->downimg->Height-win->upimg->Height+1,
-          GA_Image,win->upimg,
-          GA_ID,GID_UP,
-          ICA_TARGET,ICTARGET_IDCMP,
-          GA_Previous,win->downarrow,
-          TAG_END))) return FALSE;
-       if(!(win->vslider.gad=(struct Gadget *)NewObject(NULL,"propgclass",
-          GA_RelRight,-win->window->BorderRight+5,
-          GA_Width,win->window->BorderRight-8,
-          GA_Top,win->window->BorderTop+2,
-          GA_RelHeight,-win->window->BorderTop-win->window->BorderBottom-
-             win->downimg->Height-win->upimg->Height-4,
-          GA_ID,GID_VSLIDER,
-          PGA_Freedom,FREEVERT,
-          PGA_Total,1,
-          PGA_Visible,1,
-          PGA_NewLook,TRUE,
-          PGA_Borderless,TRUE,
-          ICA_TARGET,ICTARGET_IDCMP,
-          GA_Previous,win->uparrow,
-          TAG_END))) return FALSE;
-       if(!(win->rightarrow=(struct Gadget *)NewObject(NULL,"buttongclass",
-          GA_RelRight,-win->window->BorderRight-win->rightimg->Width+1,
-          GA_RelBottom,-win->window->BorderBottom+1,
-          GA_Image,win->rightimg,
-          GA_ID,GID_RIGHT,
-          ICA_TARGET,ICTARGET_IDCMP,
-          GA_Previous,win->vslider.gad,
-          TAG_END))) return FALSE;
-       if(!(win->leftarrow=(struct Gadget *)NewObject(NULL,"buttongclass",
-          GA_RelRight,-win->window->BorderRight-
-             win->rightimg->Width-win->leftimg->Width+1,
-          GA_RelBottom,-win->window->BorderBottom+1,
-          GA_Image,win->leftimg,
-          GA_ID,GID_LEFT,
-          ICA_TARGET,ICTARGET_IDCMP,
-          GA_Previous,win->rightarrow,
-          TAG_END))) return FALSE;
-       if(!(win->hslider.gad=(struct Gadget *)NewObject(NULL,"propgclass",
-          GA_Left,win->window->BorderLeft,
-          GA_RelBottom,-win->window->BorderBottom+3,
-          GA_RelWidth,-win->window->BorderLeft-win->window->BorderRight-
-             win->rightimg->Width-win->leftimg->Width-2,
-          GA_Height,win->window->BorderBottom-4,
-          GA_ID,GID_HSLIDER,
-          PGA_Freedom,FREEHORIZ,
-          PGA_Total,1,
-          PGA_Visible,1,
-          PGA_NewLook,TRUE,
-          PGA_Borderless,TRUE,
-          ICA_TARGET,ICTARGET_IDCMP,
-          GA_Previous,win->leftarrow,
-          TAG_END))) return FALSE;
-   }
-   /* remove our sixe restriction on the space gad for newwidth new height */
-   FlushLayoutDomainCache(win->layoutgad);
-   SetGadgetAttrs(win->spacegad,NULL,NULL,SPACE_MinWidth, 100, SPACE_MinHeight,80,TAG_DONE);   
-   
    LayoutLimits(win->layoutgad,&limits,NULL,screen);
-
    WindowLimits(win->window,
       limits.MinWidth+win->window->BorderLeft+win->window->BorderRight,
       limits.MinHeight+win->window->BorderTop+win->window->BorderBottom,
@@ -1150,13 +1065,10 @@ static BOOL Openwindow(struct Awindow *win)
    {
 
 #ifndef __MORPHOS__
-#if !defined(__amigaos4__)
-     //   create iconify gadget 
+        /* create iconify gadget */
         if ( NULL != TitlebarImageBase )
         {
                        win->iconify_img = NewObject (NULL, "tbiclass", SYSIA_Which, ICONIFYIMAGE, SYSIA_DrawInfo, drinfo, TAG_END);
-
-                     
                        if ( NULL != win->iconify_img )
                        {
                                win->iconify_gad = NewObject(NULL,"buttongclass",
@@ -1173,29 +1085,8 @@ static BOOL Openwindow(struct Awindow *win)
                                if ( NULL != win->iconify_gad )
                                        AddGadget (win->window, win->iconify_gad, 0);
                        }
-
         }
-#else
-
-            //           win->iconify_img = (struct Image *)NewObject (NULL, "sysiclass",  SYSIA_DrawInfo, drinfo, SYSIA_Which, TBFRAMEIMAGE, SYSIA_FullFrame, TRUE,TAG_END);
-                       
-                       if ( NULL != win->iconify_img )
-                       {
-                               win->iconify_gad = NewObject(NULL,"buttongclass",
-                                       GA_RelRight,TRUE,
-                                       GA_Titlebar, TRUE,                               
-                                       GA_Image, win->iconify_img,
-                                       GA_RelVerify, TRUE,
-                                       GA_ID, GID_ICONIFY,
-                                       ICA_TARGET, ICTARGET_IDCMP,
-                                     TAG_END );
-                               if ( NULL != win->iconify_gad )
-                                       AddGadget (win->window, win->iconify_gad, 0);
-                       }
-
-#endif        
 #endif
-
             AddGList(win->window,win->downarrow,-1,-1,NULL);
        ((struct ExtGadget *)win->layoutgad)->MoreFlags&=~GMORE_SCROLLRASTER;
        AddGList(win->window,win->layoutgad,-1,-1,NULL);
@@ -1210,18 +1101,11 @@ static BOOL Openwindow(struct Awindow *win)
        AddGList(win->window,win->layoutgad,-1,-1,NULL);
        RefreshGList(win->layoutgad,win->window,NULL,-1);
    }
- 
-   	
    Asetattrs(win->frame,
       AOBJ_Width,win->window->Width,
       AOBJ_Height,win->window->Height,
       AOBJ_Window,(Tag)win,
       TAG_END);
-   /* Set the box to what we actualy opened */
-   
-   win->box.Width = win->window->Width;
-   win->box.Height = win->window->Height;   
-   
    SetABPenDrMd(win->window->RPort,1,0,JAM1);
    Arender(win->frame,NULL,0,0,AMRMAX,AMRMAX,0,NULL);
    Adragrender(win->frame,NULL,NULL,0,NULL,0,AMDS_BEFORE);
@@ -1230,11 +1114,6 @@ static BOOL Openwindow(struct Awindow *win)
    Addanimgad(win->window,win->ledgad);
    if(appwindowport=(struct MsgPort *)Agetattr(Aweb(),AOAPP_Appwindowport))
    {  win->appwindow=AddAppWindow(win->key,0,win->window,appwindowport,TAG_END);
-   }
-   if(win->screenlocked)
-   {
-       UnlockPubScreen(NULL,screen);
-       win->screenlocked = FALSE;
    }
    return TRUE;
 }
@@ -1245,12 +1124,6 @@ static void Closewindow(struct Awindow *win)
    struct ColorMap *colormap=(struct ColorMap *)Agetattr(Aweb(),AOAPP_Colormap);
    void *label;
    Remanimgad(win->ledgad);
-   if(win->pubscreenname && win->screenlocked)
-   {
-       UnlockPubScreen(win->pubscreenname,NULL);
-       win->screenlocked = FALSE;
-   }
-   
    if(win->frame)
    {  Asetattrs(win->frame,AOBJ_Window,0,TAG_END);
    }
@@ -1277,60 +1150,60 @@ static void Closewindow(struct Awindow *win)
    }
    while(node=RemHead(&win->userbutlist))
    {  GetSpeedButtonNodeAttrs(node,SBNA_Image,&label,TAG_END);
-      DisposeObject((Object *)label);
+      DisposeObject(label);
       FreeSpeedButtonNode(node);
    }
 
         /* dispose of iconify imagery */
         if ( NULL != win->iconify_gad )
         {
-                DisposeObject((Object *)win->iconify_gad);
+                DisposeObject(win->iconify_gad);
                 win->iconify_gad = NULL;
         }
         if ( NULL != win->iconify_img )
         {
-                DisposeObject((Object *)win->iconify_img);
+                DisposeObject(win->iconify_img);
                 win->iconify_img = NULL;
         }
 
 
-   if(win->downimg) DisposeObject((Object *)win->downimg);win->downimg=NULL;
-   if(win->upimg) DisposeObject((Object *)win->upimg);win->upimg=NULL;
-   if(win->rightimg) DisposeObject((Object *)win->rightimg);win->rightimg=NULL;
-   if(win->leftimg) DisposeObject((Object *)win->leftimg);win->leftimg=NULL;
+   if(win->downimg) DisposeObject(win->downimg);win->downimg=NULL;
+   if(win->upimg) DisposeObject(win->upimg);win->upimg=NULL;
+   if(win->rightimg) DisposeObject(win->rightimg);win->rightimg=NULL;
+   if(win->leftimg) DisposeObject(win->leftimg);win->leftimg=NULL;
 
-   if(win->backimg) DisposeObject((Object *)win->backimg);win->backimg=NULL;
-   if(win->fwdimg) DisposeObject((Object *)win->fwdimg);win->fwdimg=NULL;
-   if(win->homeimg) DisposeObject((Object *)win->homeimg);win->homeimg=NULL;
-   if(win->addhotimg) DisposeObject((Object *)win->addhotimg);win->addhotimg=NULL;
-   if(win->hotimg) DisposeObject((Object *)win->hotimg);win->hotimg=NULL;
-   if(win->cancelimg) DisposeObject((Object *)win->cancelimg);win->cancelimg=NULL;
-   if(win->nwsimg) DisposeObject((Object *)win->nwsimg);win->nwsimg=NULL;
-   if(win->searchimg) DisposeObject((Object *)win->searchimg);win->searchimg=NULL;
-   if(win->rldimg) DisposeObject((Object *)win->rldimg);win->rldimg=NULL;
-   if(win->imgimg) DisposeObject((Object *)win->imgimg);win->imgimg=NULL;
-   if(win->unsecureimg) DisposeObject((Object *)win->unsecureimg);win->unsecureimg=NULL;
-   if(win->secureimg) DisposeObject((Object *)win->secureimg);win->secureimg=NULL;
-   if(win->backselimg) DisposeObject((Object *)win->backselimg);win->backselimg=NULL;
-   if(win->fwdselimg) DisposeObject((Object *)win->fwdselimg);win->fwdselimg=NULL;
-   if(win->homeselimg) DisposeObject((Object *)win->homeselimg);win->homeselimg=NULL;
-   if(win->addhotselimg) DisposeObject((Object *)win->addhotselimg);win->addhotselimg=NULL;
-   if(win->hotselimg) DisposeObject((Object *)win->hotselimg);win->hotselimg=NULL;
+   if(win->backimg) DisposeObject(win->backimg);win->backimg=NULL;
+   if(win->fwdimg) DisposeObject(win->fwdimg);win->fwdimg=NULL;
+   if(win->homeimg) DisposeObject(win->homeimg);win->homeimg=NULL;
+   if(win->addhotimg) DisposeObject(win->addhotimg);win->addhotimg=NULL;
+   if(win->hotimg) DisposeObject(win->hotimg);win->hotimg=NULL;
+   if(win->cancelimg) DisposeObject(win->cancelimg);win->cancelimg=NULL;
+   if(win->nwsimg) DisposeObject(win->nwsimg);win->nwsimg=NULL;
+   if(win->searchimg) DisposeObject(win->searchimg);win->searchimg=NULL;
+   if(win->rldimg) DisposeObject(win->rldimg);win->rldimg=NULL;
+   if(win->imgimg) DisposeObject(win->imgimg);win->imgimg=NULL;
+   if(win->unsecureimg) DisposeObject(win->unsecureimg);win->unsecureimg=NULL;
+   if(win->secureimg) DisposeObject(win->secureimg);win->secureimg=NULL;
+   if(win->backselimg) DisposeObject(win->backselimg);win->backselimg=NULL;
+   if(win->fwdselimg) DisposeObject(win->fwdselimg);win->fwdselimg=NULL;
+   if(win->homeselimg) DisposeObject(win->homeselimg);win->homeselimg=NULL;
+   if(win->addhotselimg) DisposeObject(win->addhotselimg);win->addhotselimg=NULL;
+   if(win->hotselimg) DisposeObject(win->hotselimg);win->hotselimg=NULL;
 
-   if(win->cancelselimg) DisposeObject((Object *)win->cancelselimg);win->cancelselimg=NULL;
-   if(win->nwsselimg) DisposeObject((Object *)win->nwsselimg);win->nwsselimg=NULL;
-   if(win->searchselimg) DisposeObject((Object *)win->searchselimg);win->searchselimg=NULL;
-   if(win->rldselimg) DisposeObject((Object *)win->rldselimg);win->rldselimg=NULL;
-   if(win->imgselimg) DisposeObject((Object *)win->imgselimg);win->imgselimg=NULL;
+   if(win->cancelselimg) DisposeObject(win->cancelselimg);win->cancelselimg=NULL;
+   if(win->nwsselimg) DisposeObject(win->nwsselimg);win->nwsselimg=NULL;
+   if(win->searchselimg) DisposeObject(win->searchselimg);win->searchselimg=NULL;
+   if(win->rldselimg) DisposeObject(win->rldselimg);win->rldselimg=NULL;
+   if(win->imgselimg) DisposeObject(win->imgselimg);win->imgselimg=NULL;
 
-   if(win->downarrow) DisposeObject((Object *)win->downarrow);win->downarrow=NULL;
-   if(win->uparrow) DisposeObject((Object *)win->uparrow);win->uparrow=NULL;
-   if(win->vslider.gad) DisposeObject((Object *)win->vslider.gad);win->vslider.gad=NULL;
-   if(win->rightarrow) DisposeObject((Object *)win->rightarrow);win->rightarrow=NULL;
-   if(win->leftarrow) DisposeObject((Object *)win->leftarrow);win->leftarrow=NULL;
-   if(win->hslider.gad) DisposeObject((Object *)win->hslider.gad);win->hslider.gad=NULL;
+   if(win->downarrow) DisposeObject(win->downarrow);win->downarrow=NULL;
+   if(win->uparrow) DisposeObject(win->uparrow);win->uparrow=NULL;
+   if(win->vslider.gad) DisposeObject(win->vslider.gad);win->vslider.gad=NULL;
+   if(win->rightarrow) DisposeObject(win->rightarrow);win->rightarrow=NULL;
+   if(win->leftarrow) DisposeObject(win->leftarrow);win->leftarrow=NULL;
+   if(win->hslider.gad) DisposeObject(win->hslider.gad);win->hslider.gad=NULL;
 
-   if(win->layoutgad) DisposeObject((Object *)win->layoutgad);win->layoutgad=NULL;
+   if(win->layoutgad) DisposeObject(win->layoutgad);win->layoutgad=NULL;
    if(win->wintitle) FREE(win->wintitle);win->wintitle=NULL;
    if(win->drawinfo) FREE(win->drawinfo);win->drawinfo=NULL;
 }
@@ -1360,11 +1233,7 @@ static long Setwindow(struct Awindow *win,struct Amset *ams)
    {  switch(tag->ti_Tag)
       {  case AOAPP_Screenvalid:
             if(tag->ti_Data && !win->window)
-            {  
-                if(!(Openwindow(win)))
-                {
-                   Closewindow(win);  // Close window free any partly allocated resources on window open failure.
-                }   
+            {  Openwindow(win);
             }
             else
             {  Closewindow(win);
@@ -1523,14 +1392,6 @@ static long Setwindow(struct Awindow *win,struct Amset *ams)
          case AOWIN_Innerheight:
             win->newheight=tag->ti_Data;
             break;
-         case AOWIN_Left:
-            win->newleft=tag->ti_Data;
-            win->leftset = TRUE;
-            break;            
-         case AOWIN_Top:
-            win->newtop=tag->ti_Data;
-            win->topset = TRUE;
-            break;                        
          case AOBJ_Pointertype:
             Setawinpointer(win,tag->ti_Data);
             break;
@@ -1556,17 +1417,6 @@ static long Setwindow(struct Awindow *win,struct Amset *ams)
             else
             {
                 win->charset = NULL;
-            }
-            break;
-         case AOWIN_PubScreenName:
-            if(tag->ti_Data)
-            {
-               win->pubscreenname = Dupstr(tag->ti_Data,-1);
-            }
-            else
-            {
-               FREE(win->pubscreenname);
-               win->pubscreenname = NULL;
             }
             break;
       }
@@ -1604,16 +1454,10 @@ static void Disposewindow(struct Awindow *win)
    if(win->statushptext) FREE(win->statushptext);
    if(win->activeurl) Aremchild(win->activeurl,(struct Aobject *)win,AOREL_URL_WINDOW);
    if(win->frame) Adisposeobject(win->frame);
-   if(win->pubscreenname)
-   {
-       FREE(win->pubscreenname);
-       win->pubscreenname = NULL;
-   }
    while(p=RemHead(&win->urlpoplist)) FreeChooserNode(p);
    Aremchild(Aweb(),(struct Aobject *)win,AOREL_APP_USE_SCREEN);
    Aremchild(Aweb(),(struct Aobject *)win,AOREL_APP_USE_MENUS);
    Amethodas(AOTP_OBJECT,win,AOM_DISPOSE);
-
 }
 
 static struct Awindow *Newwindow(struct Amset *ams)
@@ -1774,7 +1618,7 @@ static void Deinstallwindow(void)
 {  void *p;
    while(p=REMHEAD(&windows)) Adisposeobject(p);
 
-#if !defined(__MORPHOS__) && !defined(__amigaos4__)
+#ifndef __MORPHOS__
         if ( NULL != TitlebarImageBase )
         {
                 CloseLibrary (TitlebarImageBase);
@@ -1864,7 +1708,7 @@ void Setsecure(struct Awindow *win)
 
 BOOL Installwindow(void)
 {
-#if !defined(__MORPHOS__) && !defined(__amigaos4__)
+#ifndef __MORPHOS__
         if ( (FALSE == noiconify) && (prefs.gui.windowborder == 0)  && (NULL == TitlebarImageBase) )
         {
                 TitlebarImageBase = OpenLibrary("titlebar.image",40L);
@@ -1920,36 +1764,9 @@ void Busypointer(BOOL busy)
                   TAG_END);
             }
             else
-            {  
-#if defined(__amigaos4__)
-	switch(win->ptrtype)
-	{
-		case APTR_DEFAULT:
-		{
-		    SetWindowPointer(win->window,WA_PointerType,POINTERTYPE_NORMAL,WA_PointerDelay,TRUE,TAG_END);
-		    break;
-		}
-		case APTR_RESIZEHOR:
-		{
-		    SetWindowPointer(win->window,WA_PointerType,POINTERTYPE_EASTWESTRESIZE,WA_PointerDelay,TRUE,TAG_END);
-		    break;
-		}
-		case APTR_RESIZEVERT:
-		{
-		    SetWindowPointer(win->window,WA_PointerType,POINTERTYPE_NORTHSOUTHRESIZE,WA_PointerDelay,TRUE,TAG_END);
-		    break;
-		}
-		case APTR_HAND:
-		{
-		    SetWindowPointer(win->window,WA_PointerType,POINTERTYPE_LINK,WA_PointerDelay,TRUE,TAG_END);
-		    break;
-		}
-	}
-#else
-            	SetWindowPointer(win->window,
+            {  SetWindowPointer(win->window,
                   WA_Pointer,Apppointer((struct Application *)Aweb(),win->ptrtype),
                   TAG_END);
-#endif
             }
          }
       }
@@ -2003,10 +1820,7 @@ void Reopenallwindows(void)
 {  struct Awindow *win;
    for(win=windows.first;win->object.next;win=win->object.next)
    {  Closewindow(win);
-      if(!Openwindow(win))
-      {
-          Closewindow(win);  // Close window free any partly allocated resources associated with window open failure  
-      }
+      Openwindow(win);
    }
 }
 
@@ -2042,28 +1856,14 @@ void *Jopenwindow(struct Jcontext *jc,struct Jobject *opener,
    UBYTE *frag,*basename;
    UBYTE *p;
    short width=0,height=0;
-   short left, top;
-   BOOL leftset=FALSE, topset=FALSE;
-   
    BOOL navs=TRUE,buttons=TRUE;
    if(spec && *spec)
    {  navs=FALSE;
       buttons=FALSE;
       for(p=spec;*p;p++)
-      {  
-         if(STRNIEQUAL(p,"width=",6))
+      {  if(STRNIEQUAL(p,"width=",6))
          {  width=atoi(p+6);
          }
-         if(STRNIEQUAL(p,"left=",5))
-         {  
-             left=atoi(p+5);
-             leftset = TRUE;
-         }         
-         if(STRNIEQUAL(p,"top=",4))
-         {  
-             top=atoi(p+4);
-             topset = TRUE;
-         }                  
          if(STRNIEQUAL(p,"height=",7))
          {  height=atoi(p+7);
          }
@@ -2085,8 +1885,6 @@ void *Jopenwindow(struct Jcontext *jc,struct Jobject *opener,
          AOWIN_Name,(Tag)name,
          AOWIN_Innerwidth,width,
          AOWIN_Innerheight,height,
-         leftset?AOWIN_Left:TAG_IGNORE,left,
-         topset?AOWIN_Top:TAG_IGNORE,top,         
          AOWIN_Noproxy,Agetattr((struct Aobject *)oldwin,AOWIN_Noproxy),
          AOWIN_Navigation,navs,
          AOWIN_Buttonbar,buttons,

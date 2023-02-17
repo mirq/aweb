@@ -96,7 +96,7 @@ static UBYTE   *useragentspoof =
     "User-Agent: %s; (Spoofed by MorphOS-AWeb/%s)\r\n";
 #else
 static UBYTE   *useragentspoof =
-    "User-Agent: %s;%s)\r\n";
+    "User-Agent: %s; (Spoofed by Amiga-AWeb/%s)\r\n";
 #endif
 
 static UBYTE   *fixedheaders = "Accept: */*;q=1\r\nAccept-Encoding: gzip\r\n";
@@ -511,7 +511,6 @@ static BOOL Readblock(struct Httpinfo *hi)
             memmove(hi->fd->block, hi->fd->block + 1, n - 1);
             n--;
         }
-        
     }
     else
 #endif
@@ -622,10 +621,7 @@ static BOOL Readheaders(struct Httpinfo *hi)
     for (;;)
     {
         if (!Findline(hi))
-        {
-        	printf("Readheaders not find line\n");
             return FALSE;
-        }
         if (hi->linelength == 0)
         {
             if (hi->status)
@@ -883,22 +879,12 @@ static BOOL Readresponse(struct Httpinfo *hi)
 {
     long            stat = 0;
     BOOL            http = FALSE;
-	BOOL firstfail = TRUE;
 
     do
     {
-    	// check for failure twice as a work arround for some HTTPS sites failing first time
-    	// possibly ought to check the failure type in Readblock()?
         if (!Readblock(hi))
-        {
-			if(!firstfail)
-			{
-				return FALSE;
-			}
-			firstfail = FALSE;
-        }
+            return FALSE;
     } while (hi->blocklength < 5);
-
     if (STRNEQUAL(hi->fd->block, "HTTP/", 5))
     {
         if (!Findline(hi))
@@ -1218,7 +1204,6 @@ static void Httpresponse(struct Httpinfo *hi, BOOL readfirst)
 
     if (!readfirst || Readresponse(hi))
     {
-
         Nextline(hi);
         hi->flags |= HTTPIF_HEADERS;
         if (Readheaders(hi))

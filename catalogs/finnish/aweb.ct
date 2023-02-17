@@ -4,7 +4,7 @@
 ;
 ; AWeb.cd - AWeb catalog description file
 ;
-; $Id: aweb.ct,v 1.9 2009/09/11 11:42:50 opi Exp $
+; $Id: aweb.cd,v 1.15 2009/09/11 11:40:34 opi Exp $
 ;
 ;  The MSG_DUMMY_nn labels are there because FlexCat doesn't
 ;  understand the LABEL (+1//) syntax (C='s Catcomp uses this
@@ -1492,7 +1492,7 @@ MSG_CHARSET_INFOTEXT
 ; \n\
 ; Used Charsets:\n\
 ; Source Charset     = '%s'\n\
-; Destination Charset= '%s'
+; Destination Charset= '%s' (%s)
 ;
 ; ***NEW***
 ;
@@ -1528,6 +1528,18 @@ MSG_CHARSET_OFF
 MSG_CHARSET_OK
 
 ; _Ok
+;
+; ***NEW***
+;
+MSG_CHARSET_SYSTEM
+
+; System
+;
+; ***NEW***
+;
+MSG_CHARSET_COMMAND
+
+; Command
 ;
 ; ***NEW***
 ;

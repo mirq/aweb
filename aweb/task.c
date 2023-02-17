@@ -111,9 +111,9 @@ static void __saveds Subtask(void)
 
     process->pr_WindowPtr = task->windowptr;
 
-    if ((task->subport = ACreatemsgport()))
+    if ((task->subport = CreateMsgPort()))
     {
-        task->updport = ACreatemsgport();
+        task->updport = CreateMsgPort();
         task->state   = TSKS_RUN;
 
         ReplyMsg((struct Message *)task->startup);
@@ -135,7 +135,7 @@ static void __saveds Subtask(void)
         task->state   = TSKS_DEAD;
 
         ReleaseSemaphore(&task->sema);
-        ADeletemsgport(port);
+        DeleteMsgPort(port);
 //KPrintF("%08lx - Subtask ends\n",task);
     }
     else
@@ -234,7 +234,7 @@ struct Taskmsg *Gettaskmsg(void)
 BOOL Obtaintasksemaphore(struct SignalSemaphore *sema)
 {  struct SemaphoreMessage smsg={{{0}}},*msg;
    ULONG mask=SetSignal(0,0);
-   struct MsgPort *port=ACreatemsgport();
+   struct MsgPort *port=CreateMsgPort();
    if(port)
    {  smsg.ssm_Message.mn_ReplyPort=port;
 //KPrintF("%08lx - Obtaintasksemaphore %08lx\n",FindTask(NULL)->tc_UserData,sema);
@@ -254,7 +254,7 @@ BOOL Obtaintasksemaphore(struct SignalSemaphore *sema)
          mask=Wait((1<<port->mp_SigBit)|SIGBREAKF_CTRL_C);
       }
    }
-   if(port) ADeletemsgport(port);
+   if(port) DeleteMsgPort(port);
 //KPrintF("%08lx - Obtaintasksemaphore %08lx continue\n",FindTask(NULL)->tc_UserData,sema);
    return BOOLVAL(smsg.ssm_Semaphore);
 }
@@ -472,9 +472,7 @@ static void Starttask(struct Atask *task)
             NP_Output,Output(),
             NP_CloseOutput,FALSE,
             NP_StackSize,task->stacksize,
-#if defined(__amigaos4__)
-            NP_Child,TRUE,
-#endif
+
 #ifdef __MORPHOS__
             NP_CodeType, CODETYPE_PPC,
             NP_PPCStackSize, task->stacksize*2,
@@ -770,9 +768,9 @@ static void Deinstalltask(void)
    }
    if(taskport)
    {  Setprocessfun(taskport->mp_SigBit,NULL);
-      ADeletemsgport(taskport);
+      DeleteMsgPort(taskport);
    }
-   if(semaport) ADeletemsgport(semaport);
+   if(semaport) DeleteMsgPort(semaport);
 }
 
 USRFUNC_H2
@@ -812,8 +810,8 @@ BOOL Installtask(void)
 {  NEWLIST(&tasks);
    InitSemaphore(&startsema);
    InitSemaphore(&portsema);
-   if(!(taskport=ACreatemsgport())) return FALSE;
-   if(!(semaport=ACreatemsgport())) return FALSE;
+   if(!(taskport=CreateMsgPort())) return FALSE;
+   if(!(semaport=CreateMsgPort())) return FALSE;
    Setprocessfun(taskport->mp_SigBit,Processtask);
    if(!Amethod(NULL,AOM_INSTALL,AOTP_TASK,(Tag)Task_Dispatcher)) return FALSE;
    mainproc=(struct Process *)FindTask(NULL);

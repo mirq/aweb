@@ -1,0 +1,21 @@
+failat 1
+
+smake clean
+smake CPU=68020 
+smake install CPU=68020
+smake archive CPU=68020
+
+smake clean
+smake CPU=68030
+smake install CPU=68030
+smake archive CPU=68030
+
+smake clean
+smake CPU=68040
+smake install CPU=68040
+smake archive CPU=68040
+
+smake clean
+smake CPU=68060
+smake install CPU=68060
+smake archive CPU=68060

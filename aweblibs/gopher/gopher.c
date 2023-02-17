@@ -31,8 +31,8 @@
 #include <exec/resident.h>
 
 #define GOPHER_VERSION 36
-#define GOPHER_REVISION 0
-#define GOPHER_VERSTRING "36.0 " CPU
+#define GOPHER_REVISION 1
+#define GOPHER_VERSTRING "36.1"
 
 #ifdef __MORPHOS__
 ULONG __abox__ =1;
@@ -139,7 +139,7 @@ struct ExecBase *SysBase;
 LIBSTART_DUMMY
 
 static char __aligned libname[]="gopher.aweblib";
-static char __aligned libid[]="gopher.aweblib " GOPHER_VERSTRING " " __AMIGADATE__;
+static char __aligned libid[]="$VER: gopher.aweblib " GOPHER_VERSTRING " (" __AMIGADATE__ ") " CPU;
 
 /*----------------------------------------------------------------------*/
 #if defined(__amigaos4__)
@@ -383,7 +383,7 @@ LIBMAN_TYPE, LIBMAN_NAME
    Gopherlibbase->lib_Flags&=~LIBF_DELEXP;
    if(Gopherlibbase->lib_OpenCnt==1)
    {
-      if(!(AwebSupportBase=OpenLibrary("awebsupport.library",0))) return Real_Closelib(LIBMAN_NAME);
+      if(!(AwebSupportBase=OpenLibrary("awebsupport.library",0))) return (struct Library *) Real_Closelib(LIBMAN_NAME);
 #if defined (__amigaos4__)
       if(!( IAwebSupport = (struct AwebSupportIface *)GetInterface(AwebSupportBase,"main",1,0))) return Real_Closelib(LIBMAN_NAME);
 #endif
@@ -665,7 +665,7 @@ static void Builddir(struct Fetchdriver *fd,struct GResponse *resp,long read)
                             length+=sprintf(fd->block+length,"<BR>%s <A HREF=\"gopher://%s:%s/%c%s\">%s</A>",icon,host,hport,type,selector,descr);
                                 if(length>INPUTBLOCKSIZE-1000)
                         {  Updatetaskattrs(
-                       AOURL_Data,fd->block,
+                       AOURL_Data,(Tag)fd->block,
                    AOURL_Datalength,length,
                    TAG_END);
                    length=0;
@@ -675,10 +675,10 @@ static void Builddir(struct Fetchdriver *fd,struct GResponse *resp,long read)
 /* telnet type */
                         case '8':
                         {
-                                length+=sprintf(fd->block+length,"<BR>%s <A HREF=\"telnet://%s:%s\">%s</A>",icon,host,hport,selector,descr);
+                                length+=sprintf(fd->block+length,"<BR>%s <A HREF=\"telnet://%s:%s%s\">%s</A>",icon,host,hport,selector,descr);
                                 if(length>INPUTBLOCKSIZE-1000)
                         {  Updatetaskattrs(
-                       AOURL_Data,fd->block,
+                       AOURL_Data,(Tag)fd->block,
                    AOURL_Datalength,length,
                    TAG_END);
                    length=0;
@@ -691,7 +691,7 @@ static void Builddir(struct Fetchdriver *fd,struct GResponse *resp,long read)
                                 length+=sprintf(fd->block+length,"<BR>%s <A HREF=\"http://%s:%s%s\">%s</A>",icon,host,hport,selector,descr);
                                 if(length>INPUTBLOCKSIZE-1000)
                         {  Updatetaskattrs(
-                       AOURL_Data,fd->block,
+                       AOURL_Data,(Tag)fd->block,
                    AOURL_Datalength,length,
                    TAG_END);
                    length=0;
@@ -704,7 +704,7 @@ static void Builddir(struct Fetchdriver *fd,struct GResponse *resp,long read)
                                 length+=sprintf(fd->block+length,"<BR>%s",descr);
                                 if(length>INPUTBLOCKSIZE-1000)
                         {  Updatetaskattrs(
-                       AOURL_Data,fd->block,
+                       AOURL_Data,(Tag)fd->block,
                    AOURL_Datalength,length,
                    TAG_END);
                    length=0;
@@ -720,7 +720,7 @@ static void Builddir(struct Fetchdriver *fd,struct GResponse *resp,long read)
          length+=sprintf(fd->block+length,"<BR>%s",descr);
          if(length>INPUTBLOCKSIZE-1000)
          {  Updatetaskattrs(
-               AOURL_Data,fd->block,
+               AOURL_Data,(Tag)fd->block,
                AOURL_Datalength,length,
                TAG_END);
             length=0;
@@ -731,7 +731,7 @@ static void Builddir(struct Fetchdriver *fd,struct GResponse *resp,long read)
    }
    if(length)
    {  Updatetaskattrs(
-         AOURL_Data,fd->block,
+         AOURL_Data,(Tag)fd->block,
          AOURL_Datalength,length,
          TAG_END);
    }
@@ -753,7 +753,7 @@ static void Deleteperiods(struct Fetchdriver *fd,struct GResponse *resp,long rea
       length+=p-begin;
       if(length>INPUTBLOCKSIZE-1000)
       {  Updatetaskattrs(
-            AOURL_Data,fd->block,
+            AOURL_Data,(Tag)fd->block,
             AOURL_Datalength,length,
             TAG_END);
          length=0;
@@ -762,7 +762,7 @@ static void Deleteperiods(struct Fetchdriver *fd,struct GResponse *resp,long rea
    }
    if(length)
    {  Updatetaskattrs(
-         AOURL_Data,fd->block,
+         AOURL_Data,(Tag)fd->block,
          AOURL_Datalength,length,
          TAG_END);
    }
@@ -774,7 +774,7 @@ static void Makeindex(struct Fetchdriver *fd)
    sprintf(fd->block,"<html><h1>%s</h1><isindex>",AWEBSTR(MSG_AWEB_GOPHERINDEX));
    length=strlen(fd->block);
    Updatetaskattrs(
-      AOURL_Data,fd->block,
+      AOURL_Data,(Tag)fd->block,
       AOURL_Datalength,length,
       TAG_END);
 }
@@ -798,7 +798,7 @@ __saveds static void Fetchdrivertask(struct Fetchdriver *fd)
    struct Library *SocketBase;
    struct Gopheraddr ha={0};
    struct hostent *hent;
-   struct GResponse resp={0};
+   struct GResponse resp={{0}};
    BOOL error=FALSE;
    long sock;
    long result,length;
@@ -839,7 +839,7 @@ __saveds static void Fetchdrivertask(struct Fetchdriver *fd)
                            }
                            else
                            {  Updatetaskattrs(
-                                 AOURL_Data,fd->block,
+                                 AOURL_Data,(Tag)fd->block,
                                  AOURL_Datalength,length,
                                  TAG_END);
                            }

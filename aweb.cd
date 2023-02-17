@@ -92,17 +92,6 @@ MSG_SCRCLOSE_OK (//)
 Ok
 ;
 ;
-;-------------- AmiSSL version error requester ------
-;
-MSG_AMISSL_ERROR_TITLE (450//)
-AmiSSL Version Error
-;
-MSG_AMISSL_ERROR_BODY (//)
-AWeb requires at least version 4.2 of AmiSSL\nto make https connections
-;
-MSG_AMISSL_ERROR_OK (//)
-_OK
-;
 ;-------------- Network status window ---------------
 ;
 MSG_NWS_TITLE (500//)
@@ -1105,7 +1094,7 @@ Meta Charset       = '%s'\n\
 \n\
 Used Charsets:\n\
 Source Charset     = '%s'\n\
-Destination Charset= '%s'
+Destination Charset= '%s' (%s)
 ;
 MSG_CHARSET_DIFFREQTXT (//)
 The Server send 2 different Charsets for this Document:\n\
@@ -1126,6 +1115,12 @@ Off
 ;
 MSG_CHARSET_OK (//)
 _Ok
+;
+MSG_CHARSET_SYSTEM (//)
+System
+;
+MSG_CHARSET_COMMAND (//)
+Command
 ;
 ;
 ;-------------- Menus -------------------------------

@@ -42,14 +42,7 @@
 #include <libraries/gadtools.h>
 #include <gadgets/colorwheel.h>
 #include <gadgets/gradientslider.h>
-
-#undef NO_INLINE_STDARG
 #include <reaction/reaction.h>
-#include <reaction/reaction_macros.h>
-#include <clib/reaction_lib_protos.h>
-
-#define NO_INLINE_STDARG
-
 
 #include <proto/exec.h>
 #include <clib/alib_protos.h>
@@ -112,9 +105,6 @@ extern BOOL has35;
 #define OSDEP(a,b) (has35?(b):(a))
 #endif
 
-extern struct MsgPort *ACreatemsgport();
-extern VOID ADeletemsgport(struct MsgPort *port);
-extern BPTR ASetcurrentdir(BPTR lock);
 
 extern struct LocaleInfo localeinfo;
 
@@ -144,7 +134,7 @@ extern struct Settingsprefs setprefs;
 
 /* awebcfg */
 
-extern STRPTR Dupstr(STRPTR str,long length);
+extern UBYTE *Dupstr(UBYTE *str,long length);
 extern void Makechooserlist(struct List *list,UBYTE **labels,BOOL readonly);
 extern void Freechooserlist(struct List *list);
 extern void Makeclicktablist(struct List *list,UBYTE **labels);
@@ -211,6 +201,5 @@ extern BOOL Opennetwork(void);
 extern ULONG nwmask;
 extern BOOL Processnetwork(void);
 extern void Closenetwork(void);
-
 
 #endif

@@ -166,15 +166,6 @@
 #define AOWIN_Chartable    (AOWIN_Dummy+53)  /* GET */
    /* (UBYTE *) Pointer to character translation table */
 
-#define AOWIN_Left         (AOWIN_Dummy+54) /* NEW */
-   /* (WORD) Offset from left edge */
-   
-#define AOWIN_Top          (AOWIN_Dummy+55) /* NEW */
-   /* (WORD) Offset from top edge */   
-   
-#define AOWIN_PubScreenName    (AOWIN_Dummy+56) /* NEW */
-   /* (STRPTR) name of windows personal public screen */
-   
 #define AOWIN_    (AOWIN_Dummy+)
 #define AOWIN_    (AOWIN_Dummy+)
 

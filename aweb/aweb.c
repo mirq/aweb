@@ -37,9 +37,6 @@
 #include <dos/dostags.h>
 #include <dos/rdargs.h>
 #include <dos/dosextens.h>
-#if defined(__amigaos4__)
-#include <dos/obsolete.h>
-#endif
 #include <exec/execbase.h>
 #include <workbench/startup.h>
 #include <workbench/workbench.h>
@@ -79,7 +76,7 @@ __near
 
 #endif
 
-long __stack=16384;
+long __stack_size = 16384;
 
 #endif
 
@@ -636,14 +633,13 @@ VARARGS68K_DECLARE(BOOL  Spawn(BOOL del,UBYTE *cmd,UBYTE *args,UBYTE *argspec,..
    conlen=2+Pformatlength(prefs.program.console,"tn",conparams);
    if((buffer=ALLOCTYPE(UBYTE,len,0))
    && (conbuf=ALLOCTYPE(UBYTE,conlen,0)))
-   {  
-      strncpy(buffer,"failat 30\n",len);
-      if(!script) strncat(buffer,"\"",len);
-      strncat(buffer,cmd,len);
-      if(!script) strncat(buffer,"\"",len);
-      strncat(buffer," ",len);
+   {  strcpy(buffer,"failat 30\n");
+      if(!script) strcat(buffer,"\"");
+      strcat(buffer,cmd);
+      if(!script) strcat(buffer,"\"");
+      strcat(buffer," ");
       Pformat(buffer+strlen(buffer),args,argspec,params,TRUE);
-      if(del) snprintf(buffer+strlen(buffer),len,"\ndelete \"%s\" quiet",params[0]);
+      if(del) sprintf(buffer+strlen(buffer),"\ndelete \"%s\" quiet",params[0]);
       Pformat(conbuf,prefs.program.console,"tn",conparams,FALSE);
       if(!(out=Open(conbuf,MODE_NEWFILE)))
       {  out=Open("NIL:",MODE_NEWFILE);
@@ -668,14 +664,12 @@ VARARGS68K_DECLARE(BOOL  Spawn(BOOL del,UBYTE *cmd,UBYTE *args,UBYTE *argspec,..
 static BOOL Openinitialdoc(UBYTE *initialurl,UBYTE local,BOOL veryfirst)
 {  void *win;
    struct Url *url;
-   STRPTR urlname,fragment;
+   UBYTE *urlname,*fragment;
    BOOL opened=FALSE;
    if(local)
-   {
-      int len = strlen(initialurl) + 21;
-      if(urlname=ALLOCTYPE(UBYTE,len,0))
-      {  strncpy(urlname,"file://localhost/",len);
-         strncat(urlname,initialurl,len);
+   {  if(urlname=ALLOCTYPE(UBYTE,strlen(initialurl)+20,0))
+      {  strcpy(urlname,"file://localhost/");
+         strcat(urlname,initialurl);
          url=Findurl("",urlname,0);
          FREE(urlname);
       }
@@ -710,7 +704,7 @@ static BOOL Dupstartupcheck(void)
 {  struct Awebcontrolmsg amsg={{{0}}};
    struct MsgPort *port;
    short i;
-   if(awebcontrolport=ACreatemsgport())
+   if(awebcontrolport=CreateMsgPort())
    {  Forbid();
       if(port=FindPort(AWEBCONTROLPORTNAME))
       {  amsg.msg.mn_ReplyPort=awebcontrolport;
@@ -727,7 +721,7 @@ static BOOL Dupstartupcheck(void)
       if(port)
       {  WaitPort(awebcontrolport);
          GetMsg(awebcontrolport);
-         ADeletemsgport(awebcontrolport);
+         DeleteMsgPort(awebcontrolport);
          awebcontrolport=NULL;
          for(i=0;i<16;i++)
          {  if(initialurls[i]) FREE(initialurls[i]);
@@ -1485,7 +1479,7 @@ void Cleanup(void)
       RemPort(awebcontrolport);
       while(msg=GetMsg(awebcontrolport)) ReplyMsg(msg);
       Permit();
-      ADeletemsgport(awebcontrolport);
+      DeleteMsgPort(awebcontrolport);
    }
 
    report();
@@ -1632,7 +1626,7 @@ static void Getarguments(struct WBStartup *wbs)
    long i,nurl=0;
    struct Process *process;
    if(wbs)
-   {  long oldcd=ASetcurrentdir(wbs->sm_ArgList[0].wa_Lock);
+   {  long oldcd=CurrentDir(wbs->sm_ArgList[0].wa_Lock);
       struct DiskObject *dob=GetDiskObject(wbs->sm_ArgList[0].wa_Name);
       if(dob)
       {  UBYTE **ttp;
@@ -1659,7 +1653,7 @@ static void Getarguments(struct WBStartup *wbs)
          }
          FreeDiskObject(dob);
       }
-      ASetcurrentdir(oldcd);
+      CurrentDir(oldcd);
       for(i=1;i<wbs->sm_NumArgs && nurl<16;i++)
       {  UBYTE buffer[256];
          if(NameFromLock(wbs->sm_ArgList[i].wa_Lock,buffer,255)
@@ -1952,7 +1946,7 @@ static struct TimerIFace *ITimer;
 void setupprof(void)
 {  long i;
    if(profile
-   && (profport=ACreatemsgport())
+   && (profport=CreateMsgPort())
    && (profrequest=(struct timerequest *)CreateStdIO(profport))
    && !OpenDevice("timer.device",UNIT_MICROHZ,(struct IORequest *)profrequest,0))
    {  TimerBase=profrequest->tr_node.io_Device;
@@ -2008,7 +2002,7 @@ void report(void)
 #endif
    if(TimerBase) CloseDevice((struct IORequest *)profrequest);
    if(profrequest) DeleteStdIO((struct IOStdReq *)profrequest);
-   if(profport) ADeletemsgport(profport);
+   if(profport) DeleteMsgPort(profport);
 }
 #endif
 
@@ -2030,4 +2024,3 @@ void Mprintf(UBYTE *fmt,...)
    ReleaseSemaphore(&sema);
 }
 #endif
-

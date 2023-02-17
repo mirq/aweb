@@ -609,7 +609,7 @@ BOOL Initprefs(void)
    Makepatterns(&prefs.network.nocookie);
    Makepatterns(&prefs.network.noproxy);
    Makepatterns(&prefs.network.nocache);
-   if(!(notifyport=ACreatemsgport())) return FALSE;
+   if(!(notifyport=CreateMsgPort())) return FALSE;
    if(*configname) AddPart(nfname,configname,64);
    sprintf(brprefsname,"%s/browser",nfname);
    nfreqbr.nr_Name=brprefsname;
@@ -658,7 +658,7 @@ void Freeprefs(void)
    if(nfreqnc.nr_Name) EndNotify(&nfreqnc);
    if(notifyport)
    {  Setprocessfun(notifyport->mp_SigBit,NULL);
-      ADeletemsgport(notifyport);
+      DeleteMsgPort(notifyport);
    }
    if(jmimetypes) Freejobject(jmimetypes);
    if(jplugins) Freejobject(jplugins);
@@ -677,7 +677,7 @@ void Startsettings(UWORD type)
 {  struct Cfgmsg msg={{{0}}};
    struct MsgPort *port,*cfgport;
    UBYTE *p,*q;
-   if(port=ACreatemsgport())
+   if(port=CreateMsgPort())
    {  Forbid();
       if(cfgport=FindPort(AWEBCFGPORTNAME))
       {  msg.msg.mn_ReplyPort=port;
@@ -702,14 +702,14 @@ void Startsettings(UWORD type)
             }
          }
       }
-      ADeletemsgport(port);
+      DeleteMsgPort(port);
    }
 }
 
 void Closesettings(void)
 {  struct Cfgmsg msg={{{0}}};
    struct MsgPort *port,*cfgport;
-   if(port=ACreatemsgport())
+   if(port=CreateMsgPort())
    {  Forbid();
       if(cfgport=FindPort(AWEBCFGPORTNAME))
       {  msg.msg.mn_ReplyPort=port;
@@ -719,7 +719,7 @@ void Closesettings(void)
          WaitPort(port);
       }
       else Permit();
-      ADeletemsgport(port);
+      DeleteMsgPort(port);
    }
 }
 

@@ -771,44 +771,38 @@ void Processwindow(void)
                break;
 
             case IDCMP_IDCMPUPDATE:
-               switch(gadgetid= GetTagData(GA_ID,0,(struct TagItem *)msg->IAddress))
+               switch(gadgetid=GetTagData(GA_ID,0,(struct TagItem *)msg->IAddress))
                {  case GID_UP:      win->cmd|=CMD_LINEUP|CMD_SCROLLED|CMD_SETSCROLL;break;
                   case GID_DOWN:    win->cmd|=CMD_LINEDOWN|CMD_SCROLLED|CMD_SETSCROLL;break;
                   case GID_LEFT:    win->cmd|=CMD_LEFT|CMD_SCROLLED|CMD_SETSCROLL;break;
                   case GID_RIGHT:   win->cmd|=CMD_RIGHT|CMD_SCROLLED|CMD_SETSCROLL;break;
                   case GID_VSLIDER: win->cmd|=CMD_SCROLLED;break;
                   case GID_HSLIDER: win->cmd|=CMD_SCROLLED;break;
+                  case GID_URL:
+                     Followurlgadget(win);
+                     break;
+                  case GID_URLPOP:
+                     urlpop=urlpops[Getvalue(win->urlpopgad,CHOOSER_Active)];
+                     Setgadgetattrs(win->urlgad,win->window,NULL,
+                        STRINGA_TextVal,urlpop,
+                        STRINGA_BufferPos,strlen(urlpop),
+                        STRINGA_DispPos,0,
+                        TAG_END);
+                     ActivateLayoutGadget(win->layoutgad,win->window,NULL, (ULONG) win->urlgad);
+                     break;
+                  case GID_UBUTTON:
+                     Douserbutton(win,GetTagData(LAYOUT_RelCode,-1,
+                        (struct TagItem *)msg->IAddress));
+                     break;
+                  case GID_ICONIFY:
+                     /* swallow ICMPUPDATE event from iconify gadget */
+                     break;
+                  default:
+                     if(gadgetid>=GID_NAV && gadgetid<GID_NAV+NRNAVBUTTONS)
+                     {  Donavbutton(win,gadgetid-GID_NAV);
+                     }
+                     break;
                }
-               if(GetTagData(LAYOUT_RelVerify,0,(struct TagItem *)msg->IAddress))
-               {
-	               switch(gadgetid=GetTagData(GA_ID,0,(struct TagItem *)msg->IAddress))
-	               {
-	                  case GID_URL:
-	                     Followurlgadget(win);
-	                     break;
-	                  case GID_URLPOP:
-	                     urlpop=urlpops[Getvalue(win->urlpopgad,CHOOSER_Active)];
-	                     Setgadgetattrs(win->urlgad,win->window,NULL,
-	                        STRINGA_TextVal,urlpop,
-	                        STRINGA_BufferPos,strlen(urlpop),
-	                        STRINGA_DispPos,0,
-	                        TAG_END);
-	                     ActivateLayoutGadget(win->layoutgad,win->window,NULL, (ULONG) win->urlgad);
-	                     break;
-	                  case GID_UBUTTON:
-	                     Douserbutton(win,GetTagData(LAYOUT_RelCode,-1,
-	                        (struct TagItem *)msg->IAddress));
-	                     break;
-	                  case GID_ICONIFY:
-	                     /* swallow ICMPUPDATE event from iconify gadget */
-	                     break;
-	                  default:
-	                     if(gadgetid>=GID_NAV && gadgetid<GID_NAV+NRNAVBUTTONS)
-	                     {  Donavbutton(win,gadgetid-GID_NAV);
-	                     }
-	                     break;
-	               }
-	           }
                break;
             case IDCMP_RAWKEY:
                if(!(msg->Code&IECODE_UP_PREFIX))

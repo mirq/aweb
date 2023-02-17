@@ -3,7 +3,7 @@ NETINCLUDE := -I /sdk/include/netinclude
 NETINCLUDE2 := -I /sdk/include/netinclude
 SSLINCLUDE :=
 MIAMISSLINCLUDE := -I /sdk/miamissl-sdk/include -I /sdk/miamissl-sdk
-ALPHALIB := 
+ALPHALIB := -L /SDK/Local/clib2/lib -lablit
 
 CC := /GCC/bin/gcc
 AR := ar
@@ -11,7 +11,7 @@ AR := ar
 MODULELIB := linklibs/libnewlibmoduleinit.a
 MODULELDFLAG := -lnewlibmoduleinit
 
-CFLAGS	 :=  -O2 -Werror-implicit-function-declaration \
+CFLAGS	 :=  -02 -Werror-implicit-function-declaration \
 	    -Wall  -Wno-parentheses -DUSE_CODESETS
 
 CPPFLAGS := -Dstpbrk=strpbrk $(INCLUDE)

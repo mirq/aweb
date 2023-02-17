@@ -140,9 +140,8 @@ static void Tagdebug(pfunc *prf,struct TagItem *tags)
 
 static void Oodebug(short type,struct Aobject *ao,struct Amessage *amsg)
 {  pfunc *prf;
-   // if(ookdebug) //prf=(pfunc *)KPrintF;
-   // else
-    prf=(pfunc *)printf;
+   if(ookdebug) prf=(pfunc *)KPrintF;
+   else prf=(pfunc *)printf;
    if(type>=0 && type<NR_OBJECTTYPES && classname[type])
    {  prf(">%-8.8s %08lx: %s ",classname[type],ao,
          methodname[amsg->method<100?amsg->method:100]);

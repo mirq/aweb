@@ -1,7 +1,0 @@
-MODULES := aweblib/history.aweblib
-
-aweblib/history.aweblib/TYPE := executable/library/amigashared
-aweblib/history.aweblib/DEPS := linklibs/libmoduleinit.a
-aweblib/history.aweblib/CFILES := \
-whistask
-

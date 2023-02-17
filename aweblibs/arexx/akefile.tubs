@@ -1,8 +1,0 @@
-MODULES := aweblib/arexx.aweblib
-
-aweblib/arexx.aweblib/TYPE := executable/library/amigashared
-aweblib/arexx.aweblib/DEPS := linklibs/libmoduleinit.a
-aweblib/arexx.aweblib/CFILES := \
-cfgrexx
-
-

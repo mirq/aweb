@@ -4,7 +4,3 @@ aweblib/history.aweblib/TYPE := executable/library/amigashared
 aweblib/history.aweblib/DEPS := $(MODULELIB) linklibs/libawebclib.a
 aweblib/history.aweblib/CFILES := \
 whistask
-
-aweblib/history.aweblib/CFILES/CFLAGS :=  -g
-aweblib/history.aweblib/LDFLAGS := -g
-

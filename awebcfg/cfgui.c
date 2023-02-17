@@ -1775,7 +1775,7 @@ BOOL Opengui(void)
    NEWLIST(&navlist);
    NEWLIST(&navhelplist);
    if(!tablabels[0]) Localize();
-   if(nport=ACreatemsgport())
+   if(nport=CreateMsgPort())
    {  strcpy(prefsname,"ENV:" DEFAULTCFG);
       if(*configname) AddPart(prefsname,configname,64);
       AddPart(prefsname,"gui",64);
@@ -2220,5 +2220,5 @@ void Closegui(void)
    Disposeguiprefs(&orguip);
    if(nreq.nr_Name) EndNotify(&nreq);
    memset(&nreq,0,sizeof(nreq));
-   if(nport) ADeletemsgport(nport);nport=NULL;
+   if(nport) DeleteMsgPort(nport);nport=NULL;
 }

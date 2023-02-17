@@ -43,11 +43,11 @@ DIR *opendir(const char *name)
                 FreeDosObject(DOS_FIB, dir->fib);
             }
             
-            free(dir);                
-        }        
+            free(dir);
+        }
     }
     
-    if (errno == 0) 
+    if (errno == 0)
         errno = IoErr2errno(IoErr());
         
     return NULL;
@@ -62,7 +62,7 @@ void closedir(DIR *dir)
 
 struct dirent *readdir(DIR *dir)
 {
-    if (!ExNext(dir->lock, dir->fib))   
+    if (!ExNext(dir->lock, dir->fib))
     {
         const int err = IoErr();
         
@@ -91,7 +91,7 @@ DIR *cd(DIR *dir)
     
     if (cur)
     {
-        cur->lock = SetCurrentDir(dir->lock);
+        cur->lock = CurrentDir(dir->lock);
         
         cur = dir;
     }

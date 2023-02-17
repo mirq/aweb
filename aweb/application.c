@@ -32,27 +32,17 @@
 #include <graphics/gfx.h>
 #include <libraries/gadtools.h>
 
-
-#undef NO_INLINE_STDARG
 #include <reaction/reaction.h>
-
-#define NO_INLINE_STDARG
 
 #include <libraries/awebstartup.h>
 
-
-#undef  NO_INLINE_STDARG
 #include <proto/icon.h>
-#define NO_INLINE_STDARG
-
 #include <proto/intuition.h>
 #include <proto/graphics.h>
 #include <proto/gadtools.h>
 #include <proto/utility.h>
 #include <proto/layers.h>
 #include <proto/wb.h>
-
-#include "string_extra.c"
 
 /*------------------------------------------------------------------------*/
 
@@ -100,7 +90,7 @@ struct Application
    void (*processfun[128])(void);
    void *resizehorobj,*resizevertobj;  /* Pointerclass objects */
    void *handobj;                      /* Pointerclass object */
-#if 0 // defined(__amigaos4__)
+#if defined(__amigaos4__)
     struct DiskObject *def_link;       /* Objects for extended default pointers */
     struct DiskObject *def_hor;
     struct DiskObject *def_vert;
@@ -245,8 +235,7 @@ static int handhot[2]={ 5,1 };
 
 /* Read pointer data */
 static void Readpointerdata(UWORD type)
-{  
-   STRPTR filename;
+{  UBYTE *filename;
    UWORD *data;
    int *hot;
    long fh;
@@ -456,8 +445,8 @@ VARARGS68K_DECLARE(static void Broadcastsafe(struct Application *app,long relati
 }
 
 /* Set a new save path */
-static void Setsavepath(struct Application *app, STRPTR path)
-{  STRPTR end, newpath;
+static void Setsavepath(struct Application *app,UBYTE *path)
+{  UBYTE *end,*newpath;
    if(path)
    {
       end=PathPart(path);
@@ -937,7 +926,7 @@ static void Appclosescreen(struct Application *app)
       Releaseapppens(app);
       if(app->flags&APPF_OURSCREEN)
       {  SetSignal(0,1<<app->pubsignum);  /* Clear the signal */
-         while(!(PubScreenStatus(app->screen,PSNF_PRIVATE)))
+         while(!PubScreenStatus(app->screen,PSNF_PRIVATE))
          {  ULONG rwmask=0,mask;
             struct Window *rw=BuildEasyRequest(app->screen->FirstWindow,&closereq,0);
             if(rw==(struct Window *)-1) rw=NULL;
@@ -961,8 +950,8 @@ static void Appclosescreen(struct Application *app)
       if(app->appport)
       {  Setprocessfun(app->appport->mp_SigBit,NULL);
          Processappwindow();
-//         ADeletemsgport(app->appport);
-//         app->appport=NULL;
+         DeleteMsgPort(app->appport);
+         app->appport=NULL;
       }
       if(app->screenname)
       {  FREE(app->screenname);
@@ -1002,8 +991,7 @@ static BOOL Appopenscreen(struct Application *app,BOOL loadreq)
          for(i=0;i<8;i++)
          {  ObtainPen(app->screen->ViewPort.ColorMap,i,0,0,0,PEN_NO_SETCOLOR);
          }
-      //   Loadpalette(app);
-         
+         Loadpalette(app);
          if(prefs.program.loadpalette && prefs.program.screendepth<=8)
          {  Setcolors(app,prefs.program.screendepth);
          }
@@ -1041,11 +1029,9 @@ static BOOL Appopenscreen(struct Application *app,BOOL loadreq)
       }
       UnlockPubScreenList();
       if(!app->screenname) app->screenname=Dupstr("Workbench",-1);
-
-   }
-   if(app->appport /* =ACreatemsgport() */ )
-   {
-       Setprocessfun(app->appport->mp_SigBit,Processappwindow);
+      if(app->appport=CreateMsgPort())
+      {  Setprocessfun(app->appport->mp_SigBit,Processappwindow);
+      }
    }
    if(!(app->drawinfo=GetScreenDrawInfo(app->screen))) return FALSE;
    Obtainapppens(app);
@@ -1101,8 +1087,8 @@ static void Removeappicon(struct Application *app)
          app->appdob=NULL;
       }
       Setprocessfun(app->appport->mp_SigBit,NULL);
-//      ADeletemsgport(app->appport);
-//      app->appport=NULL;
+      DeleteMsgPort(app->appport);
+      app->appport=NULL;
    }
 }
 
@@ -1110,7 +1096,7 @@ static void Removeappicon(struct Application *app)
 static void Appiconify(struct Application *app,BOOL hide)
 {  if(hide && !(app->flags&APPF_ICONIFIED))
    {  Appclosescreen(app);
-      if(app->appport) /*=ACreatemsgport()) */
+      if(app->appport=CreateMsgPort())
       {
 #ifndef NEED35
          if(IconBase->lib_Version<44)
@@ -1330,13 +1316,10 @@ static struct Application *Newapplication(struct Amset *ams)
       sysattr.ta_Name=((struct GfxBase *)GfxBase)->DefaultFont->tf_Message.mn_Node.ln_Name;
       sysattr.ta_YSize=((struct GfxBase *)GfxBase)->DefaultFont->tf_YSize;
       app->systemfont=OpenFont(&sysattr);
-      app->windowport=ACreatemsgport();
-      app->reactionport=ACreatemsgport();
+      app->windowport=CreateMsgPort();
+      app->reactionport=CreateMsgPort();
       Setprocessfun(app->reactionport->mp_SigBit,Processapp);
       Setprocessfun(app->windowport->mp_SigBit,Processwindow);
-      app->appport  =ACreatemsgport();
-      /* processfunc are set elsewhere for apport depending on context */
-      
       app->savepath=Dupstr(prefs.program.savepath,-1);
       Setapplication(app,ams);
       Makemenus(app);
@@ -1352,8 +1335,7 @@ static struct Application *Newapplication(struct Amset *ams)
          AOBJ_Map,(Tag)animtimermap,
          TAG_END);
 
-#if 0 //defined(__amigaos4__)
-
+#if defined(__amigaos4__)
     if(!(app->resizehorobj = LoadDefPointer(app,"eastwestresizepointer",&app->def_hor)))
     {
 #endif
@@ -1367,10 +1349,10 @@ static struct Application *Newapplication(struct Amset *ams)
 //         POINTERA_YResolution,POINTERYRESN_SCREENRESASPECT,
          TAG_END);
 
-#if 0 //defined(__amigaos4__)
+#if defined(__amigaos4__)
     }
 #endif
-#if 0 //defined(__amigaos4__)
+#if defined(__amigaos4__)
     if(!(app->resizevertobj = LoadDefPointer(app,"northsouthresizepointer",&app->def_vert)))
     {
 #endif
@@ -1382,11 +1364,11 @@ static struct Application *Newapplication(struct Amset *ams)
 //         POINTERA_XResolution,POINTERXRESN_SCREENRES,
 //         POINTERA_YResolution,POINTERYRESN_SCREENRESASPECT,
          TAG_END);
-#if 0 //defined(__amigaos4__)
+#if defined(__amigaos4__)
     }
 #endif
 
-#if 0 //defined(__amigaos4__)
+#if defined(__amigaos4__)
     if(!(app->handobj = LoadDefPointer(app,"linkpointer",&app->def_link)))
     {
 #endif
@@ -1396,7 +1378,7 @@ static struct Application *Newapplication(struct Amset *ams)
          POINTERA_XOffset,-handhot[0],
          POINTERA_YOffset,-handhot[1],
          TAG_END);
-#if 0 //defined(__amigaos4__)
+#if defined(__amigaos4__)
      }
 #endif
 
@@ -1590,7 +1572,7 @@ static long Remchildapplication(struct Application *app,struct Amadd *ama)
 
 static long Jsetupapplication(struct Application *app,struct Amjsetup *js)
 {  struct Jvar *jv;
-   UBYTE buf[512],*p;
+   UBYTE buf[256],*p;
    if(prefs.browser.dojs && Openjslib())
    {  if(!app->jcontext)
       {  app->jcontext=Newjcontext(app->screenname);
@@ -1606,11 +1588,11 @@ static long Jsetupapplication(struct Application *app,struct Amjsetup *js)
          {  if(jv=Jproperty(app->jcontext,app->jnavigator,"appCodeName"))
             {  Setjproperty(jv,JPROPHOOK_READONLY,NULL);
                if(*prefs.network.spoofid)
-               {  strlcpy(buf,prefs.network.spoofid,sizeof(buf));
+               {  strcpy(buf,prefs.network.spoofid);
                   if(p=strchr(buf,'/')) *p='\0';
                }
                else
-               {  strncpy(buf,"AWeb",sizeof(buf));
+               {  strcpy(buf,"AWeb");
                }
                Jasgstring(app->jcontext,jv,buf);
             }
@@ -1627,7 +1609,7 @@ static long Jsetupapplication(struct Application *app,struct Amjsetup *js)
             {  Setjproperty(jv,JPROPHOOK_READONLY,NULL);
                if ((p=strchr(prefs.network.spoofid,'/')))
                {
-                  strncpy(buf,p+1,sizeof(buf));
+                  strcpy(buf,p+1);
                }
                else
                {
@@ -1636,9 +1618,9 @@ static long Jsetupapplication(struct Application *app,struct Amjsetup *js)
                         " [" BETARELEASE "beta]"
                      #endif
                   ;
-                  strncpy(buf,p,sizeof(buf));
+                  strcpy(buf,p);
                }
-               strncat(buf," (Amiga; I)",sizeof(buf));
+               strcat(buf," (Amiga; I)");
                Jasgstring(app->jcontext,jv,buf);
             }
             if(jv=Jproperty(app->jcontext,app->jnavigator,"userAgent"))
@@ -1646,17 +1628,17 @@ static long Jsetupapplication(struct Application *app,struct Amjsetup *js)
                if(*prefs.network.spoofid)
                {
 #ifdef __MORPHOS__
-                                                                snprintf(buf,sizeof(buf),"%s; (Spoofed by MorphOS-AWeb/%s)",prefs.network.spoofid,awebversion);
+                                                                sprintf(buf,"%s; (Spoofed by MorphOS-AWeb/%s)",prefs.network.spoofid,awebversion);
 #else
-                                                                snprintf(buf,sizeof(buf),"%s; (Spoofed by Amiga-AWeb/%s)",prefs.network.spoofid,awebversion);
+                                                                sprintf(buf,"%s; (Spoofed by Amiga-AWeb/%s)",prefs.network.spoofid,awebversion);
 #endif
                }
                else
                {
 #ifdef __MORPHOS__
-                                                                snprintf(buf,sizeof(buf),"MorphOS-AWeb/%s",awebversion);
+                                                                sprintf(buf,"MorphOS-AWeb/%s",awebversion);
 #else
-                                                                snprintf(buf,sizeof(buf),"Amiga-AWeb/%s",awebversion);
+                                                                sprintf(buf,"Amiga-AWeb/%s",awebversion);
 #endif
                }
                Jasgstring(app->jcontext,jv,buf);
@@ -1728,27 +1710,18 @@ static void Disposeapplication(struct Application *app)
    if(app->windowport)
    {  Setprocessfun(app->windowport->mp_SigBit,NULL);
       while((msg = GetMsg(app->windowport))) ReplyMsg(msg);
-      ADeletemsgport(app->windowport);
+      DeleteMsgPort(app->windowport);
    }
    if(app->reactionport)
    {  Setprocessfun(app->reactionport->mp_SigBit,NULL);
       while((msg = GetMsg(app->reactionport))) ReplyMsg(msg);
-      ADeletemsgport(app->reactionport);
+      DeleteMsgPort(app->reactionport);
    }
-   if(app->appport)
-   {  Setprocessfun(app->appport->mp_SigBit,NULL);
-      while((msg = GetMsg(app->appport))) ReplyMsg(msg);
-      ADeletemsgport(app->appport);
-   }   
 
-#if 0 //defined(__amigaos4__)
-
+#if defined(__amigaos4__)
    if(app->def_link) FreeDiskObject(app->def_link);
-   app->def_link = NULL;
    if(app->def_hor) FreeDiskObject(app->def_hor);
-   app->def_hor = NULL;
    if(app->def_vert) FreeDiskObject(app->def_vert);
-   app->def_vert = NULL;
 #endif
 
    if(app->resizehorobj) DisposeObject(app->resizehorobj);

@@ -144,7 +144,7 @@ static long outstanding=0;
 
 long InitAWebARexx(void)
 {  if(Openlib("rexxsyslib.library",0,(struct Library **)&RexxSysBase,(struct Interface **)&IRexxSys))
-   {  replyport=ACreatemsgport();
+   {  replyport=CreateMsgPort();
       outstanding=0;
    }
    return (replyport?replyport->mp_SigBit:0);
@@ -156,7 +156,7 @@ void FreeAWebARexx(void)
       {  WaitPort(replyport);
          GetAWebARexxMsg();
       }
-      ADeletemsgport(replyport);
+      DeleteMsgPort(replyport);
       replyport=NULL;
    }
    if(RexxSysBase)

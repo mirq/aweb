@@ -18,10 +18,8 @@ MSG_REQUEST_TITLE
 ; AWeb request
 ;
 MSG_REQUEST_YES_NO
-
+Да|Нет
 ; Yes|No
-;
-; ***NEW***
 ;
 ;
 ;-------------- About requester ---------------------
@@ -96,7 +94,7 @@ _Нет
 ; _Cancel
 ;
 MSG_QUIT_WARNING
-ВНИМAНИЕ: Связи будут прервaны!\n\n
+ВНИМAНИЕ: Загрузки будут прервaны!\n\n
 ; WARNING: Transfers will be aborted!\n\n
 ;
 ;-------------- Demoversion requester ---------------
@@ -113,7 +111,7 @@ MSG_DEMO_OK
 ;-------------- Close windows requester -------------
 ;
 MSG_SCRCLOSE_TEXT
-Не зaкрыть экрaн AWeb.\nЗaкройте все окнa нa нем.
+AWeb не может закрыть экран.\nЗaкройте все окнa AWeb.
 ; AWeb can't close its screen.\nPlease close all windows.
 ;
 MSG_SCRCLOSE_OK
@@ -206,16 +204,14 @@ MSG_AUTH_PROMPT_PROXY
 ; Userid and password required for proxy
 ;
 MSG_AUTH_PROMPT_MASTER
-
+Введите мастер-пароль для отображения паролей
 ; Please enter the password to show the passwords.
-;
-; ***NEW***
 ;
 ;
 ;-------------- File requesters ---------------------
 ;
 MSG_FILE_SAVETITLE
-Укaжите фaйл зaписи
+Имя фaйла для зaписи
 ; Select save filename
 ;
 MSG_FILE_SAVE
@@ -224,7 +220,7 @@ MSG_FILE_SAVE
 ;
 MSG_FILE_INCTEXT
 Неполный фaйл!\n%s\nОжидaлось бaйт: %ld\nПринято бaйт: %ld\n\n\
-Нaжмите О'кей для сохрaнения чaстичных дaнных.
+Нaжмите О'кей для сохрaнения чaстично принятых дaнных.
 ; Incomplete file!\n%s\nExpected: %ld bytes\nReceived: %ld bytes\n\n\
 ; Choose OK to keep the partial data.
 ;
@@ -236,7 +232,7 @@ MSG_FILE_EXISTTEXT
 ; File:\n%s\nalready exists!
 ;
 MSG_FILE_EXISTBUTTONS
-_Переписaть|_Добaвить|_Новое имя|_Отменa
+_Перезаписaть|_Добaвить|_Новое имя|_Отменa
 ; _Overwrite|_Append|_New name|_Cancel
 ;
 MSG_FILE_AREXXTITLE
@@ -272,7 +268,7 @@ MSG_FILE_SETTINGSTITLE
 ; Select settings directory
 ;
 MSG_FILE_UPLOADTITLE
-Укaжите выгружaемый фaйл
+Выберите файл для отправки
 ; Select file to upload
 ;
 ;-------------- TCP close requester -----------------
@@ -495,7 +491,7 @@ MSG_HOTL_LSORT_DATE
 ;--------------  Window history requester -------------------
 ;
 MSG_WHIS_TITLE
-Регистрaтор окон
+История окон
 ; Window history
 ;
 MSG_WHIS_FILTER
@@ -594,16 +590,12 @@ MSG_CABR_NEXT
 ; _Next
 ;
 MSG_CABR_CHARSET
-
+Набор символов
 ; Charset
 ;
-; ***NEW***
-;
 MSG_CABR_ETAG
-
+Etag
 ; Etag
-;
-; ***NEW***
 ;
 ;-------------- Progress requester ----------------------
 ;
@@ -631,36 +623,34 @@ _Дaлее|_Отменa
 ; _Ok|_Cancel
 ;
 MSG_FIXCACHE_PROGRESS
-Фиксaция кешa дискa...
+Фиксaция дискового кэша...
 ; Fixing the disk cache...
 ;
 MSG_FIXCACHE_DELETEPROGRESS
-
+Удаление %ld файлов из дискового кэша
 ; Delete %ld Files from disk cache...
-;
-; ***NEW***
 ;
 MSG_FIXCACHE_DELETEIMAGES
 Действительно удaлить\n\
-все изображения из кешa?
+все изображения из кэшa?
 ; Are you sure you want to delete\n\
 ; all images from the cache?
 ;
 MSG_FIXCACHE_DELETEDOCS
 Действительно удaлить\n\
-все документы из кешa?
+все документы из кэшa?
 ; Are you sure you want to delete\n\
 ; all documents from the cache?
 ;
 MSG_FIXCACHE_ERASE
-Действительно удaлить из кешa\n\
+Действительно удaлить из кэшa\n\
 все изображения и все документы?
 ; Are you sure you want to delete\n\
 ; all documents and images from the cache?
 ;
 MSG_FIXCACHE_CORRUPT
-Бaзa кешa нечитaбельнa или\n\
-от стaрой версии AWeb.\n\
+Бaзa кэшa нечитaбельнa или\n\
+создана стaрой версией AWeb.\n\
 Онa не может быть использовaнa.\n\
 Очистить бaзу кешa?
 ; The cache registration is unreadable\n\
@@ -778,10 +768,8 @@ MSG_POPUP_INFOFRAME
 ; Info
 ;
 MSG_POPUP_IMAGE2CLIP
-
+Скопировать URL изображения
 ; Image Url to Clipboard
-;
-; ***NEW***
 ;
 ;
 ;-------------- Print --------------------------------
@@ -878,7 +866,7 @@ MSG_COOKIE_MAXAGE
 ; Max-age:
 ;
 MSG_COOKIE_EXPIRES
-Исходы:
+Срок действия:
 ; Expires:
 ;
 MSG_COOKIE_ONCE
@@ -939,7 +927,7 @@ MSG_INFO_SSLLIBRARY
 ;-------------- Default buttons ---------------------
 ;
 MSG_USERBUTTON_CACHE
-Кеш
+Кэш
 ; Cache
 ;
 MSG_USERBUTTON_CLOCK
@@ -947,10 +935,8 @@ MSG_USERBUTTON_CLOCK
 ; Clock
 ;
 MSG_USERBUTTON_SEARCH
-
+Поиск
 ; Search
-;
-; ***NEW***
 ;
 ;-------------- Authorizations edit requester -------
 ;
@@ -967,10 +953,8 @@ MSG_AUTHEDIT_TITLE_USERID
 ; Userid
 ;
 MSG_AUTHEDIT_TITLE_PASSWORD
-
+Пароль
 ; Password
-;
-; ***NEW***
 ;
 MSG_AUTHEDIT_DEL
 _Удaлить
@@ -989,13 +973,16 @@ _Пaроль
 ; _Password
 ;
 MSG_AUTHEDIT_SHOWPASS
-
+Показывать пароли
 ; _Show Passwords
 ;
-; ***NEW***
-;
 MSG_AUTHEDIT_SHOWPWREQ
-
+Введите мастер-пароль для использования функции\n\
+показа паролей.\n\
+Предупреждение:\n\
+Пожалуйста, запомните или запишите мастер-пароль,\n\
+так как без него показ или удаление паролей будут\n\
+невозможны!
 ; To use this function you must first enter a\n\
 ; master password then you can use the function\n\
 ; to show all passwords.\n\
@@ -1005,13 +992,9 @@ MSG_AUTHEDIT_SHOWPWREQ
 ; because here is no chance to show or delete\n\
 ; the password without the password!
 ;
-; ***NEW***
-;
 MSG_AUTHEDIT_SHOWPWREQ_BUTTONS
-
+О'_кей|_Отмена
 ; _Ok|_Cancel
-;
-; ***NEW***
 ;
 ;-------------- JavaScript prompt requester ---------
 ;
@@ -1420,41 +1403,48 @@ MSG_SAVEIFF_PROGRESS
 ;
 ;
 MSG_CHARSET_CODESETTITLE
-
+Awebcharset.awebplugin
 ; Awebcharset.awebplugin
 ;
-; ***NEW***
-;
 MSG_CHARSET_CODESETWRONG
-
+В системе установлен %s версии %ld.%ld,\n\
+а для этого плагина требуется по меньшей\n\
+мере версия %ld.%ld.\n
 ; The Version of %s on the System is %ld.%ld,\n\
 ; but for this Plugin at least Version %ld.%ld is needed.\n
 ;
-; ***NEW***
-;
 MSG_CHARSET_CODESETFAIL
-
+Не удается открыть %s - версия: %ld.%ld.\n
 ; Can't open required %s - Version: %ld.%ld.\n
 ;
-; ***NEW***
-;
 MSG_CHARSET_CODESETURL
-
+\n\
+Посетите http://sourceforge.net/projects/codesetslib\n\
+для получения последней версии и убедитесь, что\n\
+она правильно установлена.
 ; \n\
 ; Please visit http://sourceforge.net/projects/codesetslib\n\
 ; for downloading the latest Version and make sure the\n\
 ; Library is properly installed.
 ;
-; ***NEW***
-;
 MSG_CHARSET_INFOTITLE
-
+Информация
 ; Awebcharset.awebplugin Info Window
 ;
-; ***NEW***
-;
 MSG_CHARSET_INFOTEXT
-
+Фильтр: %s\n\
+Замена: %s\n\
+Запрос: %s\n\
+\n\
+URL='%s'\n\
+\n\
+Кодировка документа:\n\
+Кодировка заголовка     = '%s'\n\
+Meta кодировка          = '%s'\n\
+\n\
+Использованы кодировки:\n\
+Исходная кодировка      = '%s'\n\
+Отображаемая кодировка  = '%s'
 ; Filter is : %s\n\
 ; Replace is: %s\n\
 ; Request is: %s\n\
@@ -1469,10 +1459,13 @@ MSG_CHARSET_INFOTEXT
 ; Source Charset     = '%s'\n\
 ; Destination Charset= '%s'
 ;
-; ***NEW***
-;
 MSG_CHARSET_DIFFREQTXT
-
+Сервер указывает 2 различных кодировки для этого документа:\n\
+\n\
+Кодировка заголовка = '%s'\n\
+Кодировка документа = '%s'\n\
+\n\
+Какую кодировку использовать?
 ; The Server send 2 different Charsets for this Document:\n\
 ; \n\
 ; Header Charset  = '%s'\n\
@@ -1480,31 +1473,21 @@ MSG_CHARSET_DIFFREQTXT
 ; \n\
 ; Which Charset should be used?
 ;
-; ***NEW***
-;
 MSG_CHARSET_DIFFREQBUT
-
+Больше не спрашивать
 ; Don't ask again
 ;
-; ***NEW***
-;
 MSG_CHARSET_ON
-
+Вкл
 ; On
 ;
-; ***NEW***
-;
 MSG_CHARSET_OFF
-
+Выкл
 ; Off
 ;
-; ***NEW***
-;
 MSG_CHARSET_OK
-
+О'_кей
 ; _Ok
-;
-; ***NEW***
 ;
 ;
 ;-------------- Menus -------------------------------
@@ -1908,64 +1891,44 @@ MSG_AREXX_AREXX
 ;--------------- Navigation Button Texts -------
 ;
 MSG_NAVGAD_FORWARD
-
+Вперед
 ; Fwd
 ;
-; ***NEW***
-;
 MSG_NAVGAD_BACK
-
+Назад
 ; Back
 ;
-; ***NEW***
-;
 MSG_NAVGAD_HOME
-
+Домой
 ; Home
 ;
-; ***NEW***
-;
 MSG_NAVGAD_CANCEL
-
+Стоп
 ; Stop
 ;
-; ***NEW***
-;
 MSG_NAVGAD_IMAGES
-
+Изображения
 ; Images
 ;
-; ***NEW***
-;
 MSG_NAVGAD_STATUS
-
+Статус
 ; Status
 ;
-; ***NEW***
-;
 MSG_NAVGAD_SEARCH
-
+Поиск
 ; Find
 ;
-; ***NEW***
-;
 MSG_NAVGAD_RELOAD
-
+Перезагрузить
 ; Reload
 ;
-; ***NEW***
-;
 MSG_NAVGAD_ADDHOTLIST
-
+Добавить
 ; Add
 ;
-; ***NEW***
-;
 MSG_NAVGAD_HOTLIST
-
+Хотлист
 ; Hotlist
-;
-; ***NEW***
 ;
 ;
 ;-------------- Error messages ----------------------

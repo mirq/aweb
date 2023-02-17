@@ -37,7 +37,7 @@ extern long localblocksize;
 void Localfiletask(struct Fetchdriver *fd)
 {
    long lock;
-   BPTR fh;
+   void *fh;
    struct FileInfoBlock *fib;
    UBYTE *name,*buf=NULL,*p;
    UBYTE c;
@@ -114,13 +114,13 @@ void Localfiletask(struct Fetchdriver *fd)
       {  if(!(fd->flags&FDVF_CACHERELOAD))
          {  Updatetaskattrs(AOURL_Lastmodified,date,TAG_END);
          }
-         if(fh=FOpen(name,MODE_OLDFILE,INPUTBLOCKSIZE))
+         if(fh=OpenAsync(name,MODE_READ,INPUTBLOCKSIZE))
          {  for(;;)
             {
 #ifdef DEVELOPER
-               actual=FRead(fh,fd->block,1,MIN(localblocksize,fd->blocksize));
+               actual=ReadAsync(fh,fd->block,MIN(localblocksize,fd->blocksize));
 #else
-               actual=FRead(fh,fd->block,1,fd->blocksize);
+               actual=ReadAsync(fh,fd->block,fd->blocksize);
 #endif
                if(Checktaskbreak()) break;
                Updatetaskattrs(
@@ -129,7 +129,7 @@ void Localfiletask(struct Fetchdriver *fd)
                   TAG_END);
                if(!actual) break;
             }
-            FClose(fh);
+            CloseAsync(fh);
          }
          else
          {  Tcperror(fd,TCPERR_NOFILE,name);

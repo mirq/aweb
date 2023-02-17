@@ -48,9 +48,11 @@ UBYTE destname[MAXNAMELEN];
 UBYTE scrname[MAXNAMELEN];
 UBYTE headername[MAXNAMELEN];
 UBYTE metaname[MAXNAMELEN];
+UBYTE defaultname[MAXNAMELEN];
 UBYTE *url="None";
+BOOL initdefault = FALSE;
+BOOL usedefault = FALSE;
 
-#define DEFAULTCHARSET "ISO-8859-1"
 #define UTF8DEFAULT "UTF-8"
 #define VALIDBYTES 4 /* maximal Number of Bytes for a valid UTF-8 sequence */
 
@@ -92,6 +94,20 @@ static void Remmem(void *mem)
       }
    }
    ReleaseSemaphore(memlistsema);
+}
+
+/* Get the Systems default codeset name and store it */
+static void Initdefault()
+{
+   struct codeset *cs;
+
+   if((cs = CodesetsFindA(NULL, NULL)) && cs->name)
+   {
+      strncpy(destname,cs->name,strlen(cs->name));
+      strncpy(defaultname,cs->name,strlen(cs->name));
+   }
+   initdefault = TRUE;
+   usedefault = TRUE;
 }
 
 /* Get a ENV Variable */
@@ -284,9 +300,6 @@ ULONG Initpluginlib(struct AwebCharsetBase *base)
    /* Initialise platform specific environment */
    if (!AwebModuleInit()) return FALSE;
 
-   /* Set the default charset */
-   strncpy(destname,DEFAULTCHARSET,sizeof(DEFAULTCHARSET));
-
    /* Return nonzero if success */
    return TRUE;
 }
@@ -299,19 +312,22 @@ void Expungepluginlib(struct AwebCharsetBase *base)
    /* free all outstanding memory allocations */
    struct Memnode *mn;
 
-   ObtainSemaphore(memlistsema);
-   while(mn=(struct Memnode *)REMHEAD(&memlist))
+   if(memlistsema)
    {
-      if(mn->mem)
+      ObtainSemaphore(memlistsema);
+      while(mn=(struct Memnode *)REMHEAD(&memlist))
       {
-         Freemem(mn->mem);
-         mn->mem=NULL;
+         if(mn->mem)
+         {
+            Freemem(mn->mem);
+            mn->mem=NULL;
+         }
+         FREE(mn);
       }
-      FREE(mn);
+      ReleaseSemaphore(memlistsema);
+      FREE(memlistsema);
+      memlistsema=NULL;
    }
-   ReleaseSemaphore(memlistsema);
-   FREE(memlistsema);
-   memlistsema=NULL;
 
    AwebModuleExit();
 }
@@ -325,7 +341,7 @@ LIBFUNC_H1
 )
 {
    LIBFUNC_INIT
-
+   
    /* Return zero class IDs to indicate we're a filter plugin */
    pi->sourcedriver=0;
    pi->copydriver=0;
@@ -337,6 +353,11 @@ LIBFUNC_H1
    InitSemaphore(memlistsema);
    NEWLIST(&memlist);
 
+   /* Get the Systems default codeset name */
+   if(!initdefault)
+   {
+      Initdefault();
+   }
    /* Return nonzero (success) */
    return 1;
 
@@ -380,14 +401,16 @@ LIBFUNC_H1
  * 'RequestOn' and 'RequestOff' which turn the feature to Show
  * a Requester if the Meta and Header Charset differ On or Off.
  *
- * 'INFO' which show a requester with some informations.
+ * 'Info' show a requester with some informations.
+ *
+ * 'System' Set the destination charset back to the system default.
  *
  * If a charset (must be supported from the codeset.library)
  * is given as command then the filter is switched On
  * and this charset is used as destination charset.
  *
  * If any other command is given the plugin return with
- * RC=10 and the default codeset (ISO-8859-1) is used.
+ * RC=10 and the default codeset is used.
 */
 LIBFUNC_H1
 (
@@ -402,11 +425,17 @@ LIBFUNC_H1
    STRPTR *array;
    int i=0;
    BOOL valid=FALSE;
-   UBYTE *buf, *infotxt, *filteronoff, *replaceonoff, *requestonoff;
+   UBYTE *buf, *infotxt, *filteronoff, *replaceonoff, *requestonoff, *setby;
    long len=0;
 
    if(CodesetsBase)
    {
+      /* be sure the default charsetname is set */
+      if(!initdefault)
+      {
+         Initdefault();
+      }
+      /* search for supported commands */
       if(!stricmp(pc->command,"Off"))
       {
          SetVar("AWeb3/CharsetFilter","Off",3,GVF_GLOBAL_ONLY);
@@ -437,11 +466,12 @@ LIBFUNC_H1
          SetVar("AWeb3/CharsetRequest","On",2,GVF_GLOBAL_ONLY);
          valid=TRUE;
       }
-      else if(!stricmp(pc->command,"INFO"))
+      else if(!stricmp(pc->command,"Info"))
       {
          filteronoff =Getcharsetenv("AWeb3/CharsetFilter",  TRUE) ?Awebstr(MSG_CHARSET_ON):Awebstr(MSG_CHARSET_OFF);
          replaceonoff=Getcharsetenv("AWeb3/CharsetReplace", TRUE) ?Awebstr(MSG_CHARSET_ON):Awebstr(MSG_CHARSET_OFF);
          requestonoff=Getcharsetenv("AWeb3/CharsetRequest",FALSE) ?Awebstr(MSG_CHARSET_ON):Awebstr(MSG_CHARSET_OFF);
+         setby = usedefault ? Awebstr(MSG_CHARSET_SYSTEM):Awebstr(MSG_CHARSET_COMMAND);
 
          len =strlen(infotxt=Awebstr(MSG_CHARSET_INFOTEXT));
          len+=strlen(filteronoff);
@@ -452,14 +482,21 @@ LIBFUNC_H1
          len+=strlen(metaname);
          len+=strlen(scrname);
          len+=strlen(destname);
+         len+=strlen(setby);
 
-         if(buf=Allocmem(len,MEMF_CLEAR))
+         if(buf=Allocmem(len+11,MEMF_CLEAR))
          {
             sprintf(buf,infotxt, filteronoff, replaceonoff ,requestonoff ,url,
-                    headername, metaname, scrname, destname);
+                    headername, metaname, scrname, destname, setby);
             Syncrequest(Awebstr(MSG_CHARSET_INFOTITLE),buf,Awebstr(MSG_CHARSET_OK));
             Freemem(buf);
          }
+         valid=TRUE;
+      }
+      else if(!stricmp(pc->command,"System"))
+      {
+         strncpy(destname,defaultname,sizeof(destname)-1);
+         usedefault=TRUE;
          valid=TRUE;
       }
       else
@@ -472,6 +509,7 @@ LIBFUNC_H1
                {
                   SetVar("AWeb3/CharsetFilter","On",2,GVF_GLOBAL_ONLY);
                   strncpy(destname,array[i],sizeof(destname)-1);
+                  usedefault=FALSE;
                   valid=TRUE;
                }
             }
@@ -482,7 +520,8 @@ LIBFUNC_H1
    if(valid==FALSE)
    {
       /* Invalid command */
-      strncpy(destname,DEFAULTCHARSET,sizeof(destname)-1);
+      strncpy(destname,defaultname,sizeof(destname)-1);
+      usedefault=TRUE;
       pc->rc=10;
    }
    LIBFUNC_EXIT
@@ -680,7 +719,8 @@ LIBFUNC_H1
             }
             if(!validheader && !validmeta) /* use default charset */
             {
-               strncpy(fd->srccharset,DEFAULTCHARSET,sizeof(DEFAULTCHARSET));
+               strncpy(fd->srccharset,defaultname,strlen(defaultname));
+               usedefault=TRUE;
             }
             /* check if the filter is On and we have 2 valid names */
             if(fd->on && validheader && validmeta)
@@ -693,7 +733,7 @@ LIBFUNC_H1
                      len =strlen(reqtxt=Awebstr(MSG_CHARSET_DIFFREQTXT));
                      len+=strlen(headercharset);
                      len+=strlen(metaname);
-                     if(txtbuf=Allocmem(len+1, MEMF_CLEAR))
+                     if(txtbuf=Allocmem(len+3, MEMF_CLEAR))
                      {
                         sprintf(txtbuf,reqtxt, headercharset, metaname);
 

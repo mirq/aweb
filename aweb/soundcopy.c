@@ -336,7 +336,7 @@ static void Audioplay(struct Sndcopy *snd,struct Sndtask *st)
 
    if (st->dtsample)
    {
-      if ((st->ioport = ACreatemsgport()))
+      if ((st->ioport = CreateMsgPort()))
       {
          ULONG rc;
 
@@ -352,7 +352,7 @@ static void Audioplay(struct Sndcopy *snd,struct Sndtask *st)
             Playdbuf(st);
          }
       }
-      ADeletemsgport(st->ioport);
+      DeleteMsgPort(st->ioport);
    }
 }
 

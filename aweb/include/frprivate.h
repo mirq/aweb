@@ -98,8 +98,6 @@ struct Frame
 #define FRMF_JSOPEN        0x00200000  /* JS generated source is still open */
 #define FRMF_JSOPTIONCTR   0x00400000  /* JS object has JS option constructor added */
 #define FRMF_RESET         0x00800000  /* Next layout must relayout even if dims unchanged */
-#define FRMF_JSETUP        0x01000000  /* Frames js object has been setup */
-
 
 #define FSIDE_TOP    1
 #define FSIDE_BOTTOM 2

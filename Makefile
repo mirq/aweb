@@ -14,7 +14,7 @@ ifeq ($(TARGETS),)
 endif
 
 $(firstword $(TARGETS)) : $(BUILDDIR)builddate $(BUILDDIR)Tubsfiles
-	touch aweb/version.c
+#	touch aweb/version.c
 	@$(MAKE) -f Tubsengine --no-print-directory $(MAKEFLAGS) $(TARGETS)
 
 $(wordlist 2, $(words $(TARGETS)), $(TARGETS)) :

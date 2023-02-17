@@ -231,8 +231,10 @@ static UBYTE *Strstri(UBYTE *str,UBYTE *sub)
 /*-----------------------------------------------------------------------*/
 
 /* Insert a Hotbase in the list */
-static void Inserthotbase(LIST(Hotbase) *list,struct Hotbase *hb)
-{  struct Hotbase *a;
+static void Inserthotbase(void * alist,struct Hotbase *hb)
+{
+   LIST(Hotbase) *list=alist;
+   struct Hotbase *a;
    for(a=list->first;a->next;a=a->next)
    {  if(stricmp(a->title,hb->title)>0) break;
    }
@@ -240,8 +242,10 @@ static void Inserthotbase(LIST(Hotbase) *list,struct Hotbase *hb)
 }
 
 /* Find a duplicate Hotbase in the list, but don't create a new one */
-static struct Hotbase *Findhotbase(LIST(Hotbase) *list,struct Hotbase *hb1)
-{  struct Hotbase *hb;
+static struct Hotbase *Findhotbase(void * alist,struct Hotbase *hb1)
+{
+   LIST(Hotbase) *list=alist;
+   struct Hotbase *hb;
    for(hb=list->first;hb->next;hb=hb->next)
    {  if(hb!=hb1 && STREQUAL(hb->title,hb1->title) && STREQUAL(hb->url,hb1->url)) return hb;
    }
@@ -251,7 +255,7 @@ static struct Hotbase *Findhotbase(LIST(Hotbase) *list,struct Hotbase *hb1)
 /* Create a new base, don't insert yet into list */
 static struct Hotbase *Newhotbase(UBYTE *title,UBYTE *url)
 {  struct Hotbase *hb;
-   UBYTE *duptitle,*dupurl;
+   UBYTE *duptitle,*dupurl=NULL;
    if((duptitle=Dupstr(title,-1))
    && (dupurl=Dupstr(url,-1))
    && (hb=ALLOCSTRUCT(Hotbase,1,MEMF_PUBLIC|MEMF_CLEAR)))
@@ -304,8 +308,10 @@ static void Allocitemnodes1(struct Hotitem *hi)
       LBNCA_FGPen,dri->dri_Pens[HIGHLIGHTTEXTPEN],
       TAG_END);
 }
-static void Allocitemnodes(LIST(Hotitem) *list)
-{  struct Hotitem *hi;
+static void Allocitemnodes(void * alist)
+{
+   LIST(Hotitem) *list=alist;
+   struct Hotitem *hi;
    for(hi=list->first;hi->next;hi=hi->next)
    {  Allocitemnodes1(hi);
       if(hi->type!=HITEM_ENTRY)
@@ -326,8 +332,10 @@ static void Allocallnodes(struct Hotwindow *how)
 }
 
 /* Free nodes for every entity */
-static void Freeitemnodes(LIST(Hotitem) *list)
-{  struct Hotitem *hi;
+static void Freeitemnodes(void * alist)
+{
+   LIST(Hotitem) *list=alist;
+   struct Hotitem *hi;
    for(hi=list->first;hi->next;hi=hi->next)
    {  if(hi->lnode) FreeListBrowserNode(hi->lnode);
       if(hi->gnode) FreeListBrowserNode(hi->gnode);
@@ -354,8 +362,10 @@ static void Deletebase(struct Hotbase *hb)
 }
 
 /* Delete all items or referencing this base */
-static void Deleteitems(LIST(Hotitem) *list,struct Hotbase *hb,BOOL basetoo)
-{  struct Hotitem *hi;
+static void Deleteitems(void * alist,struct Hotbase *hb,BOOL basetoo)
+{
+   LIST(Hotitem) *list=alist;
+   struct Hotitem *hi;
    for(hi=list->first;hi->next;hi=hi->next)
    {  if(hi->type!=HITEM_ENTRY)
       {  Deleteitems(&hi->subitems,hb,basetoo);
@@ -392,8 +402,10 @@ static void Deleteitem(struct Hotitem *hi)
 }
 
 /* Update all items to use new hotbase if nonnull, and update gnode text */
-static void Updateitems(LIST(Hotitem) *list,struct Hotbase *hb,struct Hotbase *newhb)
-{  struct Hotitem *hi;
+static void Updateitems(void * alist,struct Hotbase *hb,struct Hotbase *newhb)
+{
+   LIST(Hotitem) *list=alist;
+   struct Hotitem *hi;
    for(hi=list->first;hi->next;hi=hi->next)
    {  if(hi->type==HITEM_ENTRY)
       {  if(hi->gnode && hi->base==hb)
@@ -418,7 +430,7 @@ static void Setgadgets(struct Hotwindow *how)
    long lnum=Getvalue(llistgad,LISTBROWSER_NumSelected);
    BOOL enable;
    UBYTE *name=NULL,*url=NULL;
-   struct Hotitem *hi;
+   struct Hotitem *hi=NULL;
    struct Hotbase *hb;
    if(gtype==GTP_ALL) name=AWEBSTR(MSG_HOTL_TITLE_ALLGROUPS);
    else if(gtype==GTP_WHERE) name=AWEBSTR(MSG_HOTL_TITLE_WHERE);
@@ -527,6 +539,8 @@ static void Setlistid(struct Hotwindow *how,short id)
 
 /*-----------------------------------------------------------------------*/
 
+typedef int hotlistsortf(const void *, const void *);
+
 /* Sort comparison function, sort on URL. */
 static int Sortnodesurl(struct Node **na,struct Node **nb)
 {  struct Hotbase *hba,*hbb;
@@ -556,6 +570,7 @@ static void Makellist(struct Hotwindow *how)
    struct Hotitem *hi;
    struct Node *node;
    short i,n;
+   hotlistsortf *f;
    ObtainSemaphore(how->hotsema);
    NewList(&llist);
    if(ltype==LTP_GROUPS)
@@ -591,7 +606,9 @@ static void Makellist(struct Hotwindow *how)
          {  for(i=0;i<n;i++)
             {  if(node=RemHead(&llist)) nodes[i]=node;
             }
-            qsort(nodes,n,sizeof(struct Node *),lsort==LSRT_URL?Sortnodesurl:Sortnodesdate);
+            if(lsort==LSRT_URL) f=(hotlistsortf *)Sortnodesurl;
+            else f=(hotlistsortf *)Sortnodesdate;
+            qsort(nodes,n,sizeof(struct Node *),f);
             for(i=0;i<n;i++)
             {  if(nodes[i]) AddTail(&llist,nodes[i]);
             }
@@ -626,7 +643,7 @@ static void Doubleclickl(struct Hotwindow *how)
    if(ltype!=LTP_GROUPS)
    {  hb=(struct Hotbase *)Getlbnvalue(Selectednode(&llist),LBNA_UserData);
       if(hb)
-      {  Updatetaskattrs(AOHOT_Follow,hb->url,TAG_END);
+      {  Updatetaskattrs(AOHOT_Follow,(Tag)hb->url,TAG_END);
       }
    }
 }
@@ -763,8 +780,10 @@ static void Selectpattern(struct Hotwindow *how)
 /*-----------------------------------------------------------------------*/
 
 /* Create the left-hand list, all groups */
-static void Addgrouptoglist(LIST(Hotitem) *list,short level)
-{  struct Hotitem *hi;
+static void Addgrouptoglist(void * alist,short level)
+{
+   LIST(Hotitem) *list=alist;
+   struct Hotitem *hi;
    for(hi=list->first;hi->next;hi=hi->next)
    {  if(hi->type!=HITEM_ENTRY)
       {  if(hi->gnode)
@@ -867,7 +886,7 @@ static void Doubleclickg(struct Hotwindow *how)
    if(hi)
    {  if(hi->type==HITEM_ENTRY)
       {  if(hi->base)
-         {  Updatetaskattrs(AOHOT_Follow,hi->base->url,TAG_END);
+         {  Updatetaskattrs(AOHOT_Follow,(Tag)hi->base->url,TAG_END);
          }
       }
       else
@@ -918,10 +937,11 @@ static void Sortglist(struct Hotwindow *how)
 {  long ng=0,ne=0,ig,ie;
    struct Hotitem *hi;
    struct Hotitem **hia;
+   hotlistsortf *f;
    LIST(Hotitem) *list=NULL;
    struct Node *node=Getnode(&glist,gselect);
-   if(gtype==GTP_GROUP && ggroup) list=&ggroup->subitems;
-   else list=how->hotlist;
+   if(gtype==GTP_GROUP && ggroup) list=(APTR)&ggroup->subitems;
+   else list=(APTR)how->hotlist;
    if(list && gtype!=GTP_WHERE)
    {  Setgadgetattrs(glistgad,window,NULL,LISTBROWSER_Labels,~0,TAG_END);
       for(hi=list->first;hi->next;hi=hi->next)
@@ -930,7 +950,7 @@ static void Sortglist(struct Hotwindow *how)
       }
       if((ne+ng) && (hia=ALLOCTYPE(struct Hotitem *,ne+ng,0)))
       {  ig=0,ie=0;
-         while(hi=REMHEAD(list))
+         while(hi=(struct Hotitem *)REMHEAD(list))
          {  if(hi->type==HITEM_ENTRY)
             {  hia[ng+ie]=hi;
                ie++;
@@ -940,8 +960,9 @@ static void Sortglist(struct Hotwindow *how)
                ig++;
             }
          }
-         if(ng) qsort(hia,ng,sizeof(struct Hotitem *),Sorthitem);
-         if(ne) qsort(hia+ng,ne,sizeof(struct Hotitem *),Sorthitem);
+         f=(hotlistsortf *)Sorthitem;
+         if(ng) qsort(hia,ng,sizeof(struct Hotitem *),f);
+         if(ne) qsort(hia+ng,ne,sizeof(struct Hotitem *),f);
          for(ie=0;ie<ng+ne;ie++)
          {  ADDTAIL(list,hia[ie]);
          }
@@ -962,8 +983,8 @@ static void Sortglist(struct Hotwindow *how)
 static void Gaddg(struct Hotwindow *how)
 {  struct Hotitem *hi;
    LIST(Hotitem) *list;
-   if(gtype==GTP_ALL) list=how->hotlist;
-   else if(gtype==GTP_GROUP && ggroup) list=&ggroup->subitems;
+   if(gtype==GTP_ALL) list=(APTR)how->hotlist;
+   else if(gtype==GTP_GROUP && ggroup) list=(APTR)&ggroup->subitems;
    else return;
    if(hi=ALLOCSTRUCT(Hotitem,1,MEMF_PUBLIC|MEMF_CLEAR))
    {  hi->nodetype=HNT_ITEM;
@@ -1337,8 +1358,10 @@ static void Deleteentries(struct Hotwindow *how)
 
 /* Add group to glist if list contains this base, unselect all items of
  * group added except the matchine one, return nr of items added */
-static long Additemswhere(struct Hotitem *group,LIST(Hotitem) *list,struct Hotbase *hb)
-{  long n=0;
+static long Additemswhere(struct Hotitem *group,void * alist,struct Hotbase *hb)
+{
+   LIST(Hotitem) *list=alist;
+   long n=0;
    struct Hotitem *hi,*match=NULL;
    for(hi=list->first;hi->next;hi=hi->next)
    {  if(hi->type==HITEM_ENTRY)
@@ -1410,7 +1433,7 @@ static void Show(struct Hotwindow *how)
    {  hb=(struct Hotbase *)Getlbnvalue(Selectednode(&llist),LBNA_UserData);
    }
    if(hb)
-   {  Updatetaskattrs(AOHOT_Follow,hb->url,TAG_END);
+   {  Updatetaskattrs(AOHOT_Follow,(Tag)hb->url,TAG_END);
    }
 }
 

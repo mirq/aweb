@@ -20,6 +20,7 @@
 #include "aweblib.h"
 #include "libraries/awebmodule.h"
 #include "libraries/awebclib.h"
+#include "hotlist.h"
 
 #include <exec/resident.h>
 #include <proto/exec.h>
@@ -67,8 +68,8 @@ struct DrawListIFace *IDrawList;
 #endif
 
 #define HOTLIST_VERSION 36
-#define HOTLIST_REVISION 0
-#define HOTLIST_VERSTRING "36.0 " CPU
+#define HOTLIST_REVISION 1
+#define HOTLIST_VERSTRING "36.1"
 
 
 
@@ -147,7 +148,7 @@ struct Library *HotlistBase;
 static APTR libseglist;
 
 static char __aligned libname[]="hotlist.aweblib";
-static char __aligned libid[]="hotlist.aweblib " HOTLIST_VERSTRING " " __AMIGADATE__;
+static char __aligned libid[]="$VER: hotlist.aweblib " HOTLIST_VERSTRING  " (" __AMIGADATE__ ") " CPU;
 
 LIBSTART_DUMMY
 
@@ -396,7 +397,7 @@ LIBMAN_TYPE, LIBMAN_NAME
    Hotlibbase->lib_Flags&=~LIBF_DELEXP;
    if(Hotlibbase->lib_OpenCnt==1)
    {
-      if(!(AwebSupportBase=OpenLibrary("awebsupport.library",0))) return Real_Closelib(LIBMAN_NAME);
+      if(!(AwebSupportBase=OpenLibrary("awebsupport.library",0))) return (struct Library *) Real_Closelib(LIBMAN_NAME);
 #if defined (__amigaos4__)
       if(!( IAwebSupport = (struct AwebSupportIface *)GetInterface(AwebSupportBase,"main",1,0))) return Real_Closelib(LIBMAN_NAME);
 #endif
@@ -520,7 +521,7 @@ static ULONG Initaweblib(struct Library *libbase)
    if(!(DOSBase = (struct DosLibrary *) OpenLibrary("dos.library",39))) return FALSE;
    if(!(IntuitionBase = (struct IntuitionBase *) OpenLibrary("intuition.library",39))) return FALSE;
    if(!(GfxBase = (struct GfxBase *) OpenLibrary("graphics.library",39))) return FALSE;
-   if(!(UtilityBase=OpenLibrary("utility.library",39))) return FALSE;
+   if(!(UtilityBase= (struct UtilityBase *) OpenLibrary("utility.library",39))) return FALSE;
    if(!(WindowBase=OpenLibrary("window.class",OSNEED(0,44)))) return FALSE;
    if(!(LayoutBase=OpenLibrary("gadgets/layout.gadget",OSNEED(0,44)))) return FALSE;
    if(!(ButtonBase=OpenLibrary("gadgets/button.gadget",OSNEED(0,44)))) return FALSE;
@@ -588,7 +589,7 @@ static void Expungeaweblib(struct Library *libbase)
    if(ButtonBase) CloseLibrary(ButtonBase);
    if(LayoutBase) CloseLibrary(LayoutBase);
    if(WindowBase) CloseLibrary(WindowBase);
-   if(UtilityBase) CloseLibrary(UtilityBase);
+   if(UtilityBase) CloseLibrary((struct Library *) UtilityBase);
    if(GfxBase) CloseLibrary((struct Library *) GfxBase);
    if(IntuitionBase) CloseLibrary((struct Library *) IntuitionBase);
    if(DOSBase) CloseLibrary((struct Library *)DOSBase);

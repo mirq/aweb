@@ -37,10 +37,7 @@
 #include <clib/alib_protos.h>
 #endif
 
-#undef NO_INLINE_STDARG
 #include <reaction/reaction.h>
-
-#define NO_INLINE_STDARG
 
 #include <proto/exec.h>
 #include <proto/intuition.h>
@@ -436,9 +433,9 @@ static void Disposeprint(struct Print *prt)
       if(prt->ioreq->io_Device) CloseDevice((struct IORequest *)prt->ioreq);
       DeleteExtIO((struct IORequest *)prt->ioreq);
    }
-   if(prt->ioport) 
+   if(prt->ioport)
    {  Setprocessfun(prt->ioport->mp_SigBit,NULL);
-      ADeletemsgport(prt->ioport);
+      DeleteMsgPort(prt->ioport);
    }
    Aremchild(Aweb(),(struct Aobject *)prt,AOREL_APP_USE_SCREEN);
    if(prt->wait) Replyarexxcmd(prt->wait);
@@ -456,7 +453,7 @@ static struct Print *Newprint(struct Amset *ams)
          prt->flags=flags;
          Setprint(prt,ams);
          Aaddchild(Aweb(),(struct Aobject *)prt,AOREL_APP_USE_SCREEN);
-         if(!(prt->ioport=ACreatemsgport())) goto err;
+         if(!(prt->ioport=CreateMsgPort())) goto err;
          Setprocessfun(prt->ioport->mp_SigBit,Processprint);
          if(!(prt->ioreq=(struct IODRPReq *)CreateExtIO(prt->ioport,sizeof(struct IODRPReq)))) goto err;
          if(OpenDevice("printer.device",0,(struct IORequest *)prt->ioreq,0))

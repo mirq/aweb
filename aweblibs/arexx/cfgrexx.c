@@ -1518,12 +1518,8 @@ AREXX_TYPE, AREXX_NAME
 
 #ifndef NOAREXXPORTS
    struct AwebPrefs newprefs={0};
-   STRPTR stem=(STRPTR)ac->parameter[2];
-   STRPTR item = NULL;
-   STRPTR value = NULL;
-   STRPTR stemvar = NULL;
-   
-   
+   UBYTE *stem=(UBYTE *)ac->parameter[2];
+   UBYTE *item,*value,*stemvar;
    long i,j,max=0;
    BOOL add[NRADDIND];
 

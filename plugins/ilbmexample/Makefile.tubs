@@ -1,0 +1,10 @@
+MODULES := AWebPlugin/ilbmexample.awebplugin
+
+AWebPlugin/ilbmexample.awebplugin/TYPE := executable/library/amigashared
+AWebPlugin/ilbmexample.awebplugin/DEPS := linklibs/libmoduleinit.a
+AWebPlugin/ilbmexample.awebplugin/CFILES := \
+startup ilbmcopy ilbmsource ilbmexample
+
+
+AWebPlugin/ilbmexample.awebplugin/CFILES/CPPFLAGS := -I plugins/include
+

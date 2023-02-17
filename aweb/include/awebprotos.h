@@ -269,12 +269,12 @@ extern void Lowlevelreq(STRPTR msg,...);
 
    struct Interface;
 
-extern struct Library *Openclass(STRPTR name,long version,struct Library **base,struct Interface **iface);
+extern struct Library *Openclass(UBYTE *name,long version,struct Library **base,struct Interface **iface);
 
    // Open a library;
 
-extern struct Library *Openlib(STRPTR name, long version,struct Library **base, struct Interface **iface);
-extern struct Library *Openlibnofail(STRPTR name, long version,struct Library **base, struct Interface **iface);
+extern struct Library *Openlib(UBYTE* name, long version,struct Library **base, struct Interface **iface);
+extern struct Library *Openlibnofail(UBYTE* name, long version,struct Library **base, struct Interface **iface);
 
 extern void  Closelib(struct Library **base, struct Interface **iface);
 
@@ -372,11 +372,6 @@ extern BOOL Stackoverflow(void);
 
    // Return TRUE if AWeb owns the active window
 extern BOOL Awebactive(void);
-
-extern struct MsgPort *ACreatemsgport();
-extern void ADeletemsgport(struct MsgPort *port);
-extern BPTR ASetcurrentdir( BPTR lock);
-VOID ADeletefile( STRPTR filename);
 
 #ifdef BETAKEYFILE
 extern void Mprintf(UBYTE *fmt,...);

@@ -44,10 +44,6 @@
 /* send out an async packet to the file system. */
 static VOID SendPacket(struct AsyncFile *file, APTR arg2)
 {
-		/* Fix suggested by ColinWenzel */
-		file->af_Packet.sp_Msg.mn_ReplyPort = &file->af_PacketPort;
-		/* */
-		
     file->af_Packet.sp_Pkt.dp_Port = &file->af_PacketPort;
     file->af_Packet.sp_Pkt.dp_Arg2 = (LONG)arg2;
     PutMsg(file->af_Handler, &file->af_Packet.sp_Msg);
@@ -86,12 +82,7 @@ LONG bytes;
              * we would have to use GetMsg(), which correctly arbitrates access in such
              * a case
              */
-             
-            Remove((struct Node *)WaitPort(&file->af_PacketPort)); 
-         
-             /* The above strikes me as worrying! */
-          /*   WaitPort(&file->af_PacketPort);
-             GetMsg(&file->af_PacketPort); */
+            Remove((struct Node *)WaitPort(&file->af_PacketPort));
 
             /* set the port type back to PA_IGNORE so we won't be bothered with
              * spurious signals

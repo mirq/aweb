@@ -147,31 +147,12 @@ static void Closeamissl()
 
 }
 
-static VOID Amisslversionerrorreq()
-{
-	Syncrequest(AWEBSTR(MSG_AMISSL_ERROR_TITLE),
-				AWEBSTR(MSG_AMISSL_ERROR_BODY),
-				AWEBSTR(MSG_AMISSL_ERROR_OK)
-			,50);
-}
-
-
 static BOOL Openamissl()
 {
 
         if(!(AmiSSLMasterBase = OpenLibrary("amisslmaster.library",AMISSLMASTER_MIN_VERSION)))
         {
-			Amisslversionerrorreq();
             return FALSE;
-        }
-        if(AmiSSLMasterBase->lib_Version == 4)
-        {
-        	if(AmiSSLMasterBase->lib_Revision < 2)
-        	{
-				Amisslversionerrorreq();
-    	        Closeamissl();
-	            return FALSE;
-        	}
         }
 #if defined(__amigaos4__)
         if(!(IAmiSSLMaster = (struct AmiSSLMasterIFace *)GetInterface(AmiSSLMasterBase,"main",1,NULL)))
@@ -274,12 +255,6 @@ struct Assl *Assl_initamissl(void *socketbase)
                 CleanupAmiSSL(TAG_END);
                 assl->amisslbase = NULL;
              }
-             else
-             {
-             // success 
-				SSLeay_add_ssl_algorithms();
-				SSL_load_error_strings();
-             }
 #if defined(__amigaos4__)
           }
 #endif
@@ -311,7 +286,7 @@ static int __saveds __stdargs
    char *s=NULL,*u=NULL;
    struct Assl *assl;
    X509 *xs;
-   __attribute__((unused))int err;  // we don't use the result below so mark this unused. Should we be using the result? broadblues 20180307
+   int err;
    char buf[256];
    if(!ok)
    {  assl=Gettaskuserdata();
@@ -361,22 +336,18 @@ LIBFUNC_H1
 
    if(assl && assl->amisslbase)
    {
-//      SSLeay_add_ssl_algorithms();
-//      SSL_load_error_strings();
+      SSLeay_add_ssl_algorithms();
+      SSL_load_error_strings();
       if(assl->sslctx=SSL_CTX_new(SSLv23_client_method()))
       {
 #if defined(__MORPHOS__)
         DECLGATE(static, Certcallback, LIB);
          SSL_CTX_set_default_verify_paths(assl->sslctx);
-         SSL_CTX_set_cipher_list(assl->sslctx,"HIGH:!aNULL:!eNULL:!EXPORT:!DES:!3DES:!MD5:!PSK@STRENGTH");
-		 SSL_CTX_set_options(assl->sslctx, SSL_OP_NO_SSLv2);
          SSL_CTX_set_verify(assl->sslctx,/*SSL_VERIFY_PEER|*/SSL_VERIFY_FAIL_IF_NO_PEER_CERT,
             &Certcallback);
 
 #else
          SSL_CTX_set_default_verify_paths(assl->sslctx);
-		 SSL_CTX_set_options(assl->sslctx, SSL_OP_NO_SSLv2);
-         SSL_CTX_set_cipher_list(assl->sslctx,"HIGH:!aNULL:!eNULL:!EXPORT:!DES:!3DES:!MD5:!PSK@STRENGTH");
          SSL_CTX_set_verify(assl->sslctx,/*SSL_VERIFY_PEER|*/SSL_VERIFY_FAIL_IF_NO_PEER_CERT,
             (APTR)_Certcallback);
 #endif
@@ -645,9 +616,9 @@ long _Assl_Extfunc(void)
 #define ASSLVERSIONSTR   "1.0"
 
 
-static TEXT version[]="awebamissl.library";
+static UBYTE version[]="awebamissl.library";
 #if defined(__amigaos4__)
-static TEXT idstring[]= "awebamissl " ASSLVERSIONSTR " " __AMIGADATE__ " " CPU;
+static UBYTE idstring[]= "awebamissl " ASSLVERSIONSTR " " __AMIGADATE__ " " CPU;
 #endif
 
 #if defined (__amigaos4__)
@@ -929,4 +900,3 @@ void Freeawebamissl()
 
 
 #endif // (!__amigaos4__)
-

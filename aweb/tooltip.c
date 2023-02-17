@@ -116,7 +116,7 @@ static void Closetooltip(void)
    }
    if(ttport)
    {  Setprocessfun(ttport->mp_SigBit,NULL);
-      ADeletemsgport(ttport);
+      DeleteMsgPort(ttport);
       ttport=NULL;
    }
    tttick=FALSE;
@@ -152,7 +152,7 @@ static void Ticktooltip(long x,long y)
             hookdata.flags=ABKFIL_BACKFILL|ABKFIL_BORDER;
             tthook.h_Entry=(HOOKFUNC)GIVEME_HOOKENTRY(Awebbackfillhook);
             tthook.h_Data=&hookdata;
-            ttport=ACreatemsgport();
+            ttport=CreateMsgPort();
 
             label= NewObject( LABEL_GetClass(), NULL,
                       LABEL_DrawInfo,(int)dri,

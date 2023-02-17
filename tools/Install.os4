@@ -10,7 +10,7 @@
 (set awr (- awn (* awv 65536)))
 
 ; all strings used in this installer script
-(set #need51 "This program requires OS 4.1 or later to function.")
+(set #need51 "This program requires OS 4.0 or later to function.")
 (set #needcpu "This archive was designed for 68020 processor, please download the correct version for your CPU.")
 (set #nohelp "No help available.")
 (set #welcome
@@ -45,8 +45,6 @@
          "\nof bugs. There is no extra browsing functionality."
     )
 )
-(set #developer-no-install "Don't Install AWeb.developer" )
-(set #developer-install "Install AWeb.developer")
 
 (set #fixfonts-prompt "The FixFonts utility will be run to make the newly added fonts available.")
 (set #fixfonts-help
@@ -68,62 +66,6 @@
 )
 
 (set #start-prompt "Would you like to start AWeb once the installation is finished?")
-(set #start-no "Don't Start AWeb")
-(set #start-yes "Start AWeb")
-
-(if (or (= @language "français") (= @language "french")) (
-    (set #need51 "Ce programme nécessite AmigaOS 4.0 ou supérieur pour fonctionner.")
-    (set #nohelp "Aucune aide disponible.")
-    (set #welcome
-       (cat "\n\nAWeb APL Lite est un navigateur WEB rapide et multithread pour AmigaOS et MorphOS.\n\n"
-            "AWeb APL Lite fonctionne avec une grande variété de pile TCP/IP, incluant Genesis, Miami et Roadshow.\n\n"
-          ("\n\nCe script d'installation va installer AWeb APL Lite browser version %ld.%ld sur votre système.\n" awv awr)
-       )
-    )
-
-    (set #classact
-       (cat "IMPORTANT\n\n"
-            "Ce programme requiert le package ClassAct ou ReAction pour fonctionner.\n"
-            "Le package ClassAct n'est pas inclus dans l'archive AWeb_APL archive, mais est disponible "
-            "gratuitement sur Aminet.\n\n"
-            "Le package ReAction est inclus dans l'AmigaOS depuis la version 3.5 du système d'exploitation."
-       )
-    )
-
-    (set #destdir-prompt "Veuillez sélectionner le tiroir où vous voulez installer APL Lite.\n(Si vous n'acceptez pas l'emplacement par défaut, un tiroir 'AWebPPC' sera créé.)")
-    (set #destdir-help "Un tiroir pour AWebPPC sera créé ici. En acceptant l'emplacement par défaut, la plupart des fichiers n'auront pas à être copiés.")
-    (set #installing "Installation de ")
-    (set #languages-prompt "Veuillez sélectionner quel(s) langages vous désirez installer")
-
-    (set #developer-prompt
-        (cat "Désirez-vous installer le programme AWeb.developer"
-              "\nen plus du programme AWeb standard ?"
-        )
-    )
-    (set #developer-help
-        (cat "AWeb.developer est une version spéciale d'AWeb avec des fonctions spéciales supplémentaires."
-             "\nSon usage principal est pour la recherche et le rapport de bugs. Il n'y a aucune "
-             "\nfonction de navigation supplémentaire."
-        )
-    )
-    (set #developer-no-install "Ne pas installer AWeb.developer" )
-    (set #developer-install "Installer AWeb.developer")
-
-    (set #charsets-prompt "Veuillez sélectionner le jeu de caractères que vous désirez installer")
-
-    (set #readme "Affichage du fichier de note de la version...")
-    (set #makeasgn "Ajout de l'assignation AWeb_APL dans S:User-Startup")
-    (set #bye
-       (cat "Si vous avez besoin d'aide pour configurer ou utiliser AWeb APL Lite, pressez la touche HELP "
-            "lorsque AWeb est actif pour accéder à la documentation.\n\n\n"
-            "Veuillez vérifier le tiroir AwebPlugin inclus dans cette archive pour configurer les décodeurs d'image internes. Les paramètres par défaut sont utilisés, mais vous pourriez vouloir modifier les options."
-       )
-    )
-
-    (set #start-prompt "Voulez-vous démarrer AWeb une fois l'installation terminée ?")
-    (set #start-no "Ne pas lancer AWeb")
-    (set #start-yes "Lancer AWeb")
-))
 
 ; ---------------------------------------------------------------------------
 
@@ -156,7 +98,7 @@
    (askbool
       (prompt #developer-prompt)
       (help #developer-help)
-      (choices #developer-no-install #developer-install )
+      (choices "Don't Install AWeb.developer" "Install AWeb.developer")
       (default 1)
   )
 )
@@ -374,7 +316,7 @@
 (set #dontstart
    (askbool
       (prompt #start-prompt)
-      (choices #start-no #start-yes)
+      (choices "Don't Start AWeb" "Start AWeb")
       (help ".")
       (default 0)
   )
@@ -388,5 +330,4 @@
 )
 
 (exit #bye)
-
 

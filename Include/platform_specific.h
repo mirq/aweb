@@ -222,7 +222,7 @@ typedef ULONG IPTR;
 #define VA_GETLIN(a,b)   va_getlinearva(a,b)
 
 #ifndef CPU
-#define CPU "OS4.1 PPC"
+#define CPU "OS4.0 PPC"
 #endif
 
 

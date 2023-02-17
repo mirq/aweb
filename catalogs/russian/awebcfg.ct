@@ -15,16 +15,17 @@
 ; NOTE - No locale formatters (like %1$s) possible in this string!
 ;        Only plain C formatters allowed.
 MSG_ERROR_CANTOPENV
-Не открыть %s версии %ld
+Не удается открыть %s версии %ld
 ; Can't open %s version %ld
 ;
 MSG_ERROR_COMMANDLINE
-
+Проверьте опции командной строки.\n\
+Например, следует использовать по меньшей мере\n\
+один из 4 ключей.\n\
+Пример:
 ; Please check the commandline options.\n\
 ; E.g. you must use at least one of the 4 switches.\n\
 ; The Template is:
-;
-; ***NEW***
 ;
 ;
 ;-------------- Settings requesters- ------------------
@@ -721,10 +722,8 @@ MSG_SET_MACT_EXTCAN
 ; ***NEW***
 ;
 MSG_SET_MACT_CANCEL
-
+Отмена (C)
 ; Cancel (C)
-;
-; ***NEW***
 ;
 ; 1-letter abbreviations to use for the above in the MIME list
 MSG_SET_MACT_ABBREV
@@ -948,22 +947,16 @@ MSG_SET_BROPT_JSWATCH
 ; _Warn for suspect JavaScript
 ;
 MSG_SET_BROPT_TEMPRP
-
+Использовать рендеринг с двойной буферизацией
 ; Use double buffered _rendering
 ;
-; ***NEW***
-;
 MSG_SET_BROPT_CHARSET
-
+Кодировка по умолчанию
 ; Default ch_aracter set
 ;
-; ***NEW***
-;
 MSG_SET_BROPT_IMGBORDER
-
+Рамка вокруг изображений
 ; Border around ima_ges
-;
-; ***NEW***
 ;
 ;  Gadget labels - screen
 ;
@@ -1158,10 +1151,8 @@ MSG_SET_PROGRAM_HOTREQ
 ; Hotlist button gives _requester
 ;
 MSG_SET_PROGRAM_HOTSINGLECLICK
-
+Использовать один щелчок в хотлисте
 ; Use Singleclic_k in Hotlist Viewer
-;
-; ***NEW***
 ;
 MSG_SET_PROGRAM_WHISCLOSE
 _Aвтозaкрытие окнa регистрaторa
@@ -1292,34 +1283,24 @@ _Fast (кБ)
 ; _Fast (kB)
 ;
 MSG_CACHE_VERIFICATION_LABEL
-
+Верификация кэша
 ; Cache Verification
 ;
-; ***NEW***
-;
 MSG_SET_CACHE_VERIFY_DYN
-
+Верификация динамических объектов
 ; Verify d_ynamic objects
 ;
-; ***NEW***
-;
 MSG_SET_CACHE_VERIFY_STAT
-
+Верификация статических объектов
 ; Verify _static objects
 ;
-; ***NEW***
-;
 MSG_SET_CACHE_FASTRESPONSE_DYN
-
+Быстрый отклик
 ; Fast _response
 ;
-; ***NEW***
-;
 MSG_SET_CACHE_FASTRESPONSE_STAT
-
+Быстрый отклик
 ; Fas_t response
-;
-; ***NEW***
 ;
 MSG_SET_CACHE_NOCACHELABEL
 Не кешируемые сaйты
@@ -1533,64 +1514,44 @@ MSG_SET_GUIOPT_SHOWNAV
 ; Show _navigation gadgets
 ;
 MSG_SET_GUIOPT_BORDERLESS
-
+Без рамки
 ; Border_less gadgets
 ;
-; ***NEW***
-;
 MSG_SET_GUIOPT_BUTTONTYPE
-
+Тип гаджета
 ; Gadget _Type
 ;
-; ***NEW***
-;
 MSG_SET_GUIOPT_TEXTONLY
-
+Только текст
 ; Text Only
 ;
-; ***NEW***
-;
 MSG_SET_GUIOPT_TEXTIMAGE
-
+Текст и изображение
 ; Image & Text
 ;
-; ***NEW***
-;
 MSG_SET_GUIOPT_IMAGEONLY
-
+Только изображение
 ; Image Only
 ;
-; ***NEW***
-;
 MSG_SET_GUIOPT_BUTTONPOS
-
+Положение гаджета
 ; Gadget _Position
 ;
-; ***NEW***
-;
 MSG_SET_GUIOPT_BUTPOS_LEFT
-
+Слева
 ; Left
 ;
-; ***NEW***
-;
 MSG_SET_GUIOPT_BUTPOS_RIGHT
-
+Справа
 ; Right
 ;
-; ***NEW***
-;
 MSG_SET_GUIOPT_BUTPOS_TOPLEFT
-
+Сверху слева
 ; Top Left
 ;
-; ***NEW***
-;
 MSG_SET_GUIOPT_BUTPOS_TOPRIGHT
-
+Сверху справа
 ; Top Right
-;
-; ***NEW***
 ;
 MSG_SET_GUIOPT_BUTPOS_BIGLEFT
 
@@ -1605,28 +1566,20 @@ MSG_SET_GUIOPT_BUTPOS_BIGRIGHT
 ; ***NEW***
 ;
 MSG_SET_GUIOPT_WINBDR
-
+Рамка окна
 ; Window Borders
 ;
-; ***NEW***
-;
 MSG_SET_GUIOPT_WINBDR_STANDARD
-
+Стандарт
 ; Standard
 ;
-; ***NEW***
-;
 MSG_SET_GUIOPT_WINBDR_GADGETLESS
-
+Без гаджетов
 ; Gadgetless
 ;
-; ***NEW***
-;
 MSG_SET_GUIOPT_WINBDR_BORDERLESS
-
+Без рамки
 ; Borderless
-;
-; ***NEW***
 ;
 ;  Gadget labels - Network Mail/News
 ;

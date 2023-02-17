@@ -74,10 +74,8 @@ typedef int READ_RET;
  * format to an async file. No need to change either the reading
  * or writing process if changed to a little-endian architecture.
  */
-static BOOL Write32bit(BPTR fh, ULONG val)
+static BOOL Write32bit(struct AsyncFile * fh, ULONG val)
 {
-
-/*
    if(-1 == WriteCharAsync(fh,(val >> 24) & 0xff))
       return FALSE;
    if(-1 == WriteCharAsync(fh,(val >> 16) & 0xff))
@@ -86,23 +84,12 @@ static BOOL Write32bit(BPTR fh, ULONG val)
       return FALSE;
    if(-1 == WriteCharAsync(fh, val & 0xff))
       return FALSE;
-*/
 
-	if((0 == FWrite(fh,&val,sizeof(ULONG),1)))
-	{
-		return FALSE;
-	}
    return TRUE;
 }
 
-static READ_RET Read32Bit(BPTR fh, ULONG * val)
+static READ_RET Read32Bit(struct AsyncFile * fh, ULONG * val)
 {
-
-	if((0 == FRead(fh,val,sizeof(ULONG),1)))
-	{
-		return RRT_EOF;
-	}
-	/*
    LONG     r;
 
    r = ReadCharAsync(fh);
@@ -124,7 +111,7 @@ static READ_RET Read32Bit(BPTR fh, ULONG * val)
    if(-1 == r)
       return RRT_ERROR;
    *val |= r & 0xff;
-*/
+
    return RRT_OKAY;
 }
 
@@ -157,30 +144,30 @@ static READ_RET Read16Bit(struct AsyncFile * fh, UWORD * val)
 }
 */
 
-static BOOL Write8bit(BPTR fh, UBYTE val)
+static BOOL Write8bit(struct AsyncFile * fh, UBYTE val)
 {
-   if((0 == FWrite(fh, &val, sizeof(UBYTE),1 )))
-   {
+   if(-1 == WriteCharAsync(fh, val & 0xff))
       return FALSE;
-   }
+
    return TRUE;
 }
 
-static READ_RET Read8Bit(BPTR fh, UBYTE * val)
+static READ_RET Read8Bit(struct AsyncFile * fh, UBYTE * val)
 {
+   LONG     r;
 
+   r = ReadCharAsync(fh);
+   if(-1 == r)
+      return RRT_EOF;
+   *val = r & 0xff;
 
-   if(0 == FRead(fh,val,sizeof(UBYTE),1))
-   {
-         return RRT_EOF;
-   }
-    return RRT_OKAY;
+   return RRT_OKAY;
 }
 
 /// Read/Write String
 #define READBUF_LEN             32
 
-static READ_RET Readstring(BPTR fh, STRPTR * str)
+static READ_RET Readstring(struct AsyncFile * fh, STRPTR * str)
 {
    char    read_buf[READBUF_LEN+1];
    LONG    read_len;
@@ -196,15 +183,14 @@ static READ_RET Readstring(BPTR fh, STRPTR * str)
 
    do
    {
-      if(NULL == FGets(fh, read_buf, READBUF_LEN))
+      if(NULL == FGetsLenAsync(fh, read_buf, READBUF_LEN, &read_len))
       {
          FREE(*str);
          if(0 == IoErr())
             return RRT_EOF;
          return RRT_ERROR;
       }
-      read_len = strlen(read_buf);
-      
+
       str_len += read_len + 1;
       str_swap = ALLOCTYPE(UBYTE, str_len, 0);
       if(NULL == str_swap)
@@ -225,14 +211,11 @@ static READ_RET Readstring(BPTR fh, STRPTR * str)
    return RRT_OKAY;
 }
 
-static BOOL Writestring(BPTR fh, STRPTR str)
+static BOOL Writestring(struct AsyncFile * fh, STRPTR str)
 {
-   if(str && strlen(str) > 0)
-   {
-       if(0 == FWrite(fh, str,strlen(str),1))
-          return FALSE;
-   }          
-   if(0 == FWrite(fh,"\n",1,1))
+   if(-1 == WriteLineAsync(fh, str))
+      return FALSE;
+   if(-1 == WriteCharAsync(fh, '\n'))
       return FALSE;
 
    return TRUE;
@@ -298,7 +281,7 @@ static void FreeCRegStruct(struct Cregentry *cre)
    cre->movedto = NULL;
 }
 
-static READ_RET ReadCRegStruct_v6(BPTR fh, struct Cregentry *cre)
+static READ_RET ReadCRegStruct_v6(struct AsyncFile *fh, struct Cregentry *cre)
 {
    READ_RET        ret;
 
@@ -525,7 +508,7 @@ static READ_RET ReadCRegStruct_v3(struct AsyncFile      *fh, struct Cregentry *c
         return RRT_OKAY;
 }
 */
-static BOOL WriteCRegStruct(BPTR fh, struct Cregentry * cre)
+static BOOL WriteCRegStruct(struct AsyncFile * fh, struct Cregentry * cre)
 {
    if(FALSE == Write32bit(fh, cre->nr))
       return FALSE;
@@ -567,12 +550,12 @@ static BOOL WriteCRegStruct(BPTR fh, struct Cregentry * cre)
    return TRUE;
 }
 
-static READ_RET ReadCHdrStruct(BPTR fh, struct Creghdr * crh)
+static READ_RET ReadCHdrStruct(struct AsyncFile * fh, struct Creghdr * crh)
 {
    LONG readlen; /* amount of data actually read by ReadAsync() */
 
    /* read magic label */
-   readlen = FRead(fh, &crh->label, 1, MAGICLABEL_LEN);
+   readlen = ReadAsync(fh, &crh->label, MAGICLABEL_LEN);
    if(MAGICLABEL_LEN != readlen)
       return RRT_ERROR;
    crh->label[MAGICLABEL_LEN] = '\0';
@@ -588,12 +571,12 @@ static READ_RET ReadCHdrStruct(BPTR fh, struct Creghdr * crh)
    return RRT_OKAY;
 }
 
-static BOOL WriteCHdrStruct(BPTR fh, struct Creghdr * crh)
+static BOOL WriteCHdrStruct(struct AsyncFile * fh, struct Creghdr * crh)
 {
    LONG writelen; /* amount of data actually written by WriteAsync() */
 
    /* write magic label */
-   writelen = FWrite(fh, &crh->label,1, MAGICLABEL_LEN);
+   writelen = WriteAsync(fh, &crh->label, MAGICLABEL_LEN);
    if(MAGICLABEL_LEN != writelen)
       return FALSE;
 
@@ -628,20 +611,20 @@ static BOOL Readcachereg(UBYTE * name, long lock)
 
 
 #ifndef LOCALONLY
-   fh = FOpen(name, MODE_OLDFILE, FILEBLOCKSIZE);
+   fh = OpenAsync(name, MODE_READ, FILEBLOCKSIZE);
    if(NULL == fh)
       return FALSE;
 
    if(RRT_OKAY != ReadCHdrStruct(fh, &crh))
    {
-      FClose(fh);
+      CloseAsync(fh);
       return FALSE;
    }
 
    /* check for header validity */
    if(0 != strncmp(crh.label, MAGICLABEL, MAGICLABEL_LEN))
    {
-      FClose(fh);
+      CloseAsync(fh);
       return FALSE;
    }
 
@@ -652,7 +635,7 @@ static BOOL Readcachereg(UBYTE * name, long lock)
              ReadCRegStruct = ReadCRegStruct_v3;
          else
          {*/
-         FClose(fh);
+         CloseAsync(fh);
          return FALSE;
       /* }*/
    }
@@ -666,7 +649,7 @@ static BOOL Readcachereg(UBYTE * name, long lock)
       ret = ReadCRegStruct(fh, &cre);
       if(RRT_OKAY != ret)
       {
-         FClose(fh);
+         CloseAsync(fh);
          FreeCRegStruct(&cre);
          if(RRT_ERROR == ret)
             return FALSE;
@@ -676,7 +659,7 @@ static BOOL Readcachereg(UBYTE * name, long lock)
       /* check validity of entry type */
       if(cre.type > MAX_COTYPE) //was: if(cre.type < 0 || cre.type > MAX_COTYPE)
       {
-         FClose(fh);
+         CloseAsync(fh);
          FreeCRegStruct(&cre);
          return FALSE;
       }
@@ -686,7 +669,7 @@ static BOOL Readcachereg(UBYTE * name, long lock)
          url = Findurl("", cre.url, 0);
          if(NULL == url)
          {
-            FClose(fh);
+            CloseAsync(fh);
             FreeCRegStruct(&cre);
             return FALSE;
          }
@@ -700,7 +683,7 @@ static BOOL Readcachereg(UBYTE * name, long lock)
          url = Anewobject(AOTP_URL, AOURL_Url,(Tag)cre.url, TAG_END);
          if(NULL == url)
          {
-            FClose(fh);
+            CloseAsync(fh);
             FreeCRegStruct(&cre);
             return FALSE;
          }
@@ -716,7 +699,7 @@ static BOOL Readcachereg(UBYTE * name, long lock)
          {
             if(filename)
             {
-               ADeletefile(filename);
+               DeleteFile(filename);
                FREE(filename);
             }
          }
@@ -728,7 +711,7 @@ static BOOL Readcachereg(UBYTE * name, long lock)
                               TAG_END);
             if(NULL == cac)
             {
-               FClose(fh);
+               CloseAsync(fh);
                FreeCRegStruct(&cre);
                return FALSE;
             }
@@ -761,7 +744,7 @@ static BOOL Readcachereg(UBYTE * name, long lock)
 }
 
 /* Write an entry to the cache registration file */
-static void Writeregentry(BPTR fh, struct Cache *cac, BOOL del)
+static void Writeregentry(void *fh, struct Cache *cac, BOOL del)
 {
 #ifndef LOCALONLY
    struct Cregentry cre = {0};
@@ -844,13 +827,13 @@ static void Createlog(UBYTE * name)
    void   *fh;
    struct Creghdr crh = {{0}};
 
-   if(fh = FOpen(name, MODE_WRITE, FILEBLOCKSIZE))
+   if(fh = OpenAsync(name, MODE_WRITE, FILEBLOCKSIZE))
    {
       strncpy(crh.label, "AWCR", 4);
       crh.version = CACHEVERSION;
       crh.lastnr = cachenr;
       WriteCHdrStruct(fh, &crh);
-      FClose(fh);
+      CloseAsync(fh);
    }
 #endif
 }
@@ -859,14 +842,14 @@ static void Savecachereg(BOOL nodelete)
 {
 #ifndef LOCALONLY
    UBYTE  *name;
-   BPTR   fh;
+   void   *fh;
    struct Creghdr crh = {{0}};
    struct Cache *cac, *ucac;
    BOOL   ok = FALSE;
 
    if(name = Makename("AWCR", NULL))
 {
-      if(fh = FOpen(name, MODE_NEWFILE, FILEBLOCKSIZE))
+      if(fh = OpenAsync(name, MODE_WRITE, FILEBLOCKSIZE))
       {
          strncpy(crh.label, "AWCR", 4);
          crh.version = CACHEVERSION;
@@ -883,13 +866,13 @@ static void Savecachereg(BOOL nodelete)
             }
          }
          ok = TRUE;
-         if(FClose(fh) != 0) /////// ??
+         if(CloseAsync(fh) >= 0)
          {
-            ADeletefile(awcuname);
+            DeleteFile(awcuname);
          }
          else
          {
-            ADeletefile(name);
+            DeleteFile(name);
          }
       }
       FREE(name);
@@ -916,11 +899,10 @@ static void Addregentry(struct Cache *cac, BOOL del)
 
    if(!exitting)
    {
-      if(fh = FOpen(awcuname, MODE_OLDFILE, FILEBLOCKSIZE))
+      if(fh = OpenAsync(awcuname, MODE_APPEND, FILEBLOCKSIZE))
       {
-      	 ChangeFilePosition(fh,0,OFFSET_END);
          Writeregentry(fh, cac, del);
-         FClose(fh);
+         CloseAsync(fh);
       }
       if(++nradded > NRCHKPT)
       {
@@ -951,13 +933,13 @@ static void Opencacfile(struct Cache *cac)
    cac->name = Makename(buf, ext);
    if(ext)
       FREE(ext);
-   cac->fh = FOpen(cac->name, MODE_NEWFILE, FILEBLOCKSIZE);
+   cac->fh = OpenAsync(cac->name, MODE_WRITE, FILEBLOCKSIZE);
 }
 
 /* Delete the associated file, and write entry in registration. */
 static void Deletecache(struct Cache *cac)
 {
-   ADeletefile(cac->name);
+   DeleteFile(cac->name);
    if(!initializing)
    {  /* Don't add a DEL entry when we are reading in the registration */
       Addregentry(cac, TRUE);
@@ -1213,9 +1195,7 @@ static void Deletedir(UBYTE * name)
    NEWLIST(&dellist);
    if(lock = Lock(name, SHARED_LOCK))
    {
-
-      oldcd = ASetcurrentdir(lock);
-
+      oldcd = CurrentDir(lock);
       if(Examine(lock, &fib))
       {
          while(ExNext(lock, &fib))
@@ -1230,11 +1210,10 @@ static void Deletedir(UBYTE * name)
       }
       while(cd =(struct Cafixdel *)REMHEAD(&dellist))
       {
-         ADeletefile(cd->name);
+         DeleteFile(cd->name);
          FREE(cd);
       }
-
-      ASetcurrentdir(oldcd);
+      CurrentDir(oldcd);
       UnLock(lock);
    }
 }
@@ -1242,9 +1221,8 @@ static void Deletedir(UBYTE * name)
 static BOOL Fixroot(void *preq)
 {
    __aligned struct FileInfoBlock fib = {0};
+   long    oldcd = CurrentDir(cachelock);
 
-   long    oldcd = ASetcurrentdir(cachelock);
-   
    LIST(Cafixdel) dellist;
    struct Cafixdel *cd;
    UBYTE  *p;
@@ -1279,16 +1257,14 @@ static BOOL Fixroot(void *preq)
    }
    while(cd =(struct Cafixdel *)REMHEAD(&dellist))
    {
-      ADeletefile(cd->name);
+      DeleteFile(cd->name);
       FREE(cd);
    }
    ok = TRUE;
 err:
    while(cd =(struct Cafixdel *)REMHEAD(&dellist))
       FREE(cd);
-
-   ASetcurrentdir(oldcd);
-
+   CurrentDir(oldcd);
    return ok;
 }
 
@@ -1298,9 +1274,7 @@ static BOOL Fixcachedir(void *preq, void  *alist, short dirnum)
    struct Cafix *cf;
    __aligned struct FileInfoBlock fib = { 0 };
    UBYTE   name[8];
-
-   long    oldcd = ASetcurrentdir(cachelock);
-
+   long    oldcd = CurrentDir(cachelock);
    long    dirlock;
 
    LIST(Cafixdel) dellist;
@@ -1311,9 +1285,7 @@ static BOOL Fixcachedir(void *preq, void  *alist, short dirnum)
    sprintf(name, "AWCD%02X", dirnum);
    if(dirlock = Lock(name, SHARED_LOCK))
    {
-
-      ASetcurrentdir(dirlock);
-
+      CurrentDir(dirlock);
       if(Examine(dirlock, &fib))
       {
          while(ExNext(dirlock, &fib))
@@ -1349,7 +1321,7 @@ static BOOL Fixcachedir(void *preq, void  *alist, short dirnum)
       }
       while(cd =(struct Cafixdel *)REMHEAD(&dellist))
       {
-         ADeletefile(cd->name);
+         DeleteFile(cd->name);
          FREE(cd);
       }
       ok = TRUE;
@@ -1364,9 +1336,7 @@ err:
          UnLock(dirlock);
       ok = TRUE;
    }
-
-   ASetcurrentdir(oldcd);
-
+   CurrentDir(oldcd);
    return ok;
 }
 
@@ -1587,7 +1557,7 @@ static long Srcupdatecache(struct Cache *cac, struct Amsrcupdate *ams)
    {
       if(length && cac->fh)
       {
-         FWrite(cac->fh, data,1, length);
+         WriteAsync(cac->fh, data, length);
          cac->disksize += length;
          cadisksize += length;
          sizeadded += length;
@@ -1599,7 +1569,7 @@ static long Srcupdatecache(struct Cache *cac, struct Amsrcupdate *ams)
    {
       if(cac->fh)
       {
-         FClose(cac->fh);
+         CloseAsync(cac->fh);
          Setcomment(cac);
          cac->fh = NULL;
          Addregentry(cac, FALSE);
@@ -1618,7 +1588,7 @@ static void Disposecache(struct Cache *cac)
    cadisksize -= cac->disksize;
    Remcabrobject(cac);
    if(cac->fh)
-      FClose(cac->fh);
+      CloseAsync(cac->fh);
    if(cac->name)
    {
       if(!(cac->flags & CACF_NODELETE))

@@ -1341,7 +1341,7 @@ BOOL Openbrowser(void)
    NEWLIST(&stylelist);
    NEWLIST(&mimeactlist);
    if(!tablabels[0]) Localize();
-   if(nport=ACreatemsgport())
+   if(nport=CreateMsgPort())
    {  strcpy(prefsname,"ENV:" DEFAULTCFG);
       if(*configname) AddPart(prefsname,configname,64);
       AddPart(prefsname,"browser",64);
@@ -1378,7 +1378,7 @@ BOOL Openbrowser(void)
               DirLock=Lock("AWebPath:Charsets",ACCESS_READ);
               if (DirLock)
               {
-                      PrevDir=ASetcurrentdir(DirLock);
+                      PrevDir=CurrentDir(DirLock);
                       res=MatchFirst("#?.charset",apath);
                       while (!res)
                       {
@@ -1403,7 +1403,7 @@ IsBuiltin:
                               res=MatchNext(apath);
                       }
                       MatchEnd(apath);
-                      ASetcurrentdir(PrevDir);
+                      CurrentDir(PrevDir);
                       UnLock(DirLock);
               }
 #if defined(__amigaos4__)
@@ -1774,5 +1774,5 @@ void Closebrowser(void)
    Disposebrowserprefs(&orgbrp);
    if(nreq.nr_Name) EndNotify(&nreq);
    memset(&nreq,0,sizeof(nreq));
-   if(nport) ADeletemsgport(nport);nport=NULL;
+   if(nport) DeleteMsgPort(nport);nport=NULL;
 }

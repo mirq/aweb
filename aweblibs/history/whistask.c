@@ -39,8 +39,8 @@ ULONG __abox__=1;
 #endif
 
 #define HISTORY_VERSION 36
-#define HISTORY_REVISION 0
-#define HISTORY_VERSTRING "36.0 " CPU
+#define HISTORY_REVISION 1
+#define HISTORY_VERSTRING "36.1"
 
 enum WINHIS_GADGETIDS
 {  WGID_LIST=1,WGID_FILTER,WGID_WIN,WGID_ORDER,WGID_DISPLAY,
@@ -49,11 +49,11 @@ enum WINHIS_GADGETIDS
 static struct Image *mainimg;
 
 static struct ColumnInfo columninfo[]=
-{  8,NULL,0,
-   4,NULL,0,
-   4,NULL,0,
-   84,NULL,0,
-   -1,NULL,0,
+{ {  8,NULL,0 },
+  {  4,NULL,0 },
+  {  4,NULL,0 },
+  { 84,NULL,0 },
+  { -1,NULL,0 }
 };
 
 static UBYTE *orderlabels[6];
@@ -171,7 +171,7 @@ struct ExecBase *SysBase;
 LIBSTART_DUMMY
 
 static char __aligned libname[]="history.aweblib";
-static char __aligned libid[]="history.aweblib " HISTORY_VERSTRING " " __AMIGADATE__;
+static char __aligned libid[]="$VER: history.aweblib " HISTORY_VERSTRING  " (" __AMIGADATE__ ") " CPU;
 
 /*----------------------------------------------------------------------*/
 #if defined(__amigaos4__)
@@ -418,7 +418,7 @@ LIBMAN_TYPE, LIBMAN_NAME
    Histlibbase->lib_Flags&=~LIBF_DELEXP;
    if(Histlibbase->lib_OpenCnt==1)
    {
-      if(!(AwebSupportBase=OpenLibrary("awebsupport.library",0))) return Real_Closelib(LIBMAN_NAME);
+      if(!(AwebSupportBase=OpenLibrary("awebsupport.library",0))) return (struct Library *) Real_Closelib(LIBMAN_NAME);
 #if defined (__amigaos4__)
       if(!( IAwebSupport = (struct AwebSupportIface *)GetInterface(AwebSupportBase,"main",1,0))) return Real_Closelib(LIBMAN_NAME);
 #endif
@@ -528,7 +528,7 @@ static ULONG Initaweblib(struct Library *libbase)
 
    if(!(DOSBase = (struct DosLibrary *) OpenLibrary("dos.library",0))) return FALSE;
    if(!(IntuitionBase = (struct IntuitionBase *) OpenLibrary("intuition.library",39))) return FALSE;
-   if(!(UtilityBase=OpenLibrary("utility.library",39))) return FALSE;
+   if(!(UtilityBase= (struct UtilityBase *) OpenLibrary("utility.library",39))) return FALSE;
    if(!(WindowBase=OpenLibrary("window.class",OSNEED(0,44)))) return FALSE;
    if(!(LayoutBase=OpenLibrary("gadgets/layout.gadget",OSNEED(0,44)))) return FALSE;
    if(!(ButtonBase=OpenLibrary("gadgets/button.gadget",OSNEED(0,44)))) return FALSE;
@@ -600,8 +600,8 @@ static void Expungeaweblib(struct Library *libbase)
    if(ButtonBase) CloseLibrary(ButtonBase);
    if(LayoutBase) CloseLibrary(LayoutBase);
    if(WindowBase) CloseLibrary(WindowBase);
-   if(UtilityBase) CloseLibrary(UtilityBase);
-   if(IntuitionBase) CloseLibrary(IntuitionBase);
+   if(UtilityBase) CloseLibrary((struct Library *) UtilityBase);
+   if(IntuitionBase) CloseLibrary((struct Library *) IntuitionBase);
 
     AwebModuleExit();
 }
@@ -695,7 +695,7 @@ static struct Node *Allocnode(struct Whiswindow *whw,struct Winhis *whis)
    BOOL skip;
    UBYTE *name;
    struct Framehis *fhis=Findfhis(whis);
-   sprintf(buffer,"%d",whis->windownr);
+   sprintf(buffer,"%ld",whis->windownr);
    skip=whw->order>WHIS_MAINLINE || (whis->wflags&WINHF_SKIP)!=0;
    if(whw->order==WHIS_URL) name=Urltitle(whis);
    else if(whis->title) name=whis->title;
@@ -719,7 +719,7 @@ static struct Node *Allocnode(struct Whiswindow *whw,struct Winhis *whis)
    return node;
 }
 
-typedef int whissortf(void *,void *);
+typedef int whissortf(const void *, const void *);
 
 static int Whissortretrieved(struct Winhis **wa,struct Winhis **wb)
 {  int c=0;
@@ -890,7 +890,7 @@ static BOOL Dodisplay(struct Whiswindow *whw)
    if(node)
    {  GetListBrowserNodeAttrs(node,LBNA_UserData,&whis,TAG_END);
       ReleaseSemaphore(whw->whissema);  /* avoid deadlock, main task needs it */
-      Updatetaskattrs(AOWHW_Display,whis,TAG_END);
+      Updatetaskattrs(AOWHW_Display,(Tag)whis,TAG_END);
       ObtainSemaphore(whw->whissema);
       done=whw->autoclose;
    }

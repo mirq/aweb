@@ -61,8 +61,8 @@ CreateExtIO(CONST struct MsgPort * port, LONG io_size)
         if(port == NULL || io_size < (LONG)sizeof(*result))
                 goto out;
 
-       // result = AllocCreateIORequest(port,(ULONG)io_size);
-       result = AllocSysObject(ASOT_IOREQUEST,ASOIOR_ReplyPort,port,ASOIOR_Size,io_size,TAG_DONE);
+        result = CreateIORequest(port,(ULONG)io_size);
+
  out:
 
         return(result);
