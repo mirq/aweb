@@ -2,7 +2,6 @@ INCLUDE    := -I Include -I aweblibs/include -I aweb/include
 NETINCLUDE := -I /gg/netinclude
 NETINCLUDE2 :=
 SSLINCLUDE := -I /gg/amissl-sdk/include
-MIAMISSLINCLUDE := -I /gg/miamissl-sdk/include -I /gg/miamissl-sdk
 ALPHALIB :=
 
 CC := m68k-amigaos-gcc
@@ -13,7 +12,7 @@ BUILDDATE= $(shell build/builddate)
 
 MODULELIB = linklibs/libmoduleinit.a
 
-CFLAGS	 := -O2 -g  -mcrt=nix20 -fomit-frame-pointer -m68020-60 -Werror-implicit-function-declaration \
+CFLAGS	 := -g -mcrt=nix20 -fomit-frame-pointer -m68000 -Werror-implicit-function-declaration \
 	    -Wall  -Wno-parentheses -D__AMIGADATE__='$(BUILDDATE)'
 
 CPPFLAGS := -Dstpbrk=strpbrk $(INCLUDE)

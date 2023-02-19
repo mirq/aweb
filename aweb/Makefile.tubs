@@ -15,19 +15,18 @@ search select simplerexx soundcopy soundsource source sourcedriver splashimages 
 table task tcp tcperr text textarea timer tooltip url version whiswin window \
 winhis winrexx xaweb amissl
 
-AWeb/LDFLAGS := -L. -lm -lawebcommon /opt/amiga/m68k-amigaos/libnix/lib/swapstack.o -g -laz $(ALPHALIB) $(AWEBJSLIB)
+AWeb/LDFLAGS := -L. -lm  -lawebcommon /opt/amiga/m68k-amigaos/libnix/lib/swapstack.o -laz $(ALPHALIB) $(AWEBJSLIB)
 
 AWeb/CFILES/awebamitcp/CPPFLAGS := $(NETINCLUDE)
 AWeb/CFILES/awebtcp/CPPFLAGS    := $(NETINCLUDE2)
 AWeb/CFILES/amissl/CPPFLAGS     := $(SSLINCLUDE) $(NETINCLUDE2)
-AWeb/CFILES/miamissl/CPPFLAGS   := $(MIAMISSLINCLUDE) $(NETINCLUDE2)
 AWeb/CFILES/http/CPPFLAGS       := $(NETINCLUDE2) -I zlib/
 AWeb/CFILES/nameserv/CPPFLAGS   := $(NETINCLUDE2)
 AWeb/CFILES/tcp/CPPFLAGS        := $(NETINCLUDE2)
 
 AWeb/CFILES/netstat/CFLAGS := -O0
 
-AWeb/CFILES/framejs/CFLAGS := -O2 -g
+AWeb/CFILES/framejs/CFLAGS := -g
 
 
 AWeb.developer/DEPS := linklibs/libawebdevcommon.a
@@ -40,7 +39,6 @@ AWeb.developer/CFILES/CFLAGS := -g
 
 AWeb.developer/CFILES/awebamitcp/CPPFLAGS := $(NETINCLUDE)
 AWeb.developer/CFILES/amissl/CPPFLAGS     := $(SSLINCLUDE)
-AWeb.developer/CFILES/miamissl/CPPFLAGS   := $(MIAMISSLINCLUDE)
 AWeb.developer/CFILES/http/CPPFLAGS       := $(NETINCLUDE2) -I zlib/
 
 AWeb.developer/CFILES/netstat/CFLAGS := -O0
