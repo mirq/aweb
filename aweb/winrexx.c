@@ -822,12 +822,12 @@ static BOOL Doload(struct Arexxcmd *ac,struct Awindow *win,UBYTE *urlname,
 }
 
 static BOOL Doloadimages(struct Arexxcmd *ac,struct Awindow *win,
-   UBYTE *targetname,BOOL maps,BOOL restrict)
+   UBYTE *targetname,BOOL maps,BOOL restricted)
 {  void *target;
    ULONG flags=0;
    if(win && (target=Targetframe(win->frame,targetname)))
    {  if(maps) flags|=ACMLF_MAPSONLY;
-      if(restrict) flags|=ACMLF_RESTRICT;
+      if(restricted) flags|=ACMLF_RESTRICT;
       Anotifycload(target,flags);
    }
    else ac->errorlevel=RXERR_WARNING;
