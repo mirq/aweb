@@ -743,7 +743,7 @@ DECLARE_HOOK
     static void __saveds, Lputchar,
     struct Hook *, hook, A0,
     APTR, dummy, A2,
-    UBYTE        , c   , A1
+    UBYTE    *    , c   , A1
 )
 {
    USRFUNC_INIT
