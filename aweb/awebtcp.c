@@ -28,7 +28,6 @@ extern struct Library *AwebInet225Base;
 #endif
 
 struct Library *AwebAmiSslBase;
-extern struct Library *AwebMiamisslBase;
 
 struct Library *AwebTcpBase;
 struct Library *AwebSslBase;
@@ -50,8 +49,7 @@ struct AwebSslIFace * IAwebSsl;
 /*--- Init and cleanup tcp libries --------------------------------------*/
 /*-----------------------------------------------------------------------*/
 
-BOOL Initawebtcp()
-{
+BOOL Initawebtcp() {
     Initawebamitcp();
     Initawebamissl();
 
@@ -68,19 +66,20 @@ BOOL Initawebtcp()
 
 #if defined(__amigaos4__)
 
-     AwebAmiTcpBase = OpenLibrary("awebamitcp.library",0);
-     IAwebAmiTcp = GetInterface(AwebAmiTcpBase,"main",1,0);
-     AwebAmiSslBase = OpenLibrary("awebamissl.library",0);
-     IAwebAmiSsl = GetInterface(AwebAmiSslBase,"main",1,0);
+    AwebAmiTcpBase = OpenLibrary("awebamitcp.library",0);
+    IAwebAmiTcp = GetInterface(AwebAmiTcpBase,"main",1,0);
+    AwebAmiSslBase = OpenLibrary("awebamissl.library",0);
+    IAwebAmiSsl = GetInterface(AwebAmiSslBase,"main",1,0);
 #endif
 
-     if(!AwebAmiTcpBase)return FALSE;
+    if (!AwebAmiTcpBase) {
+        return FALSE;
+    }
 
-     return TRUE;
+    return TRUE;
 }
 
-void Freeawebtcp()
-{
+void Freeawebtcp() {
 
 #if defined(__amigaos4__)
 
@@ -100,62 +99,54 @@ void Freeawebtcp()
 
 /* For os4 Tcpopenlib returns a pointer to the bsdscket Interface for Os3 the library base */
 
-void *Tcpopenlib(void)
-{  struct Library *base=NULL;
-   if(base=OpenLibrary("bsdsocket.library",0))
-   {
-      AwebTcpBase=AwebAmiTcpBase;
-      SocketBase = AwebTcpBase;
+void *Tcpopenlib(void) {
+    struct Library *base = NULL;
+    if (base = OpenLibrary("bsdsocket.library", 0)) {
+        AwebTcpBase = AwebAmiTcpBase;
+        SocketBase = AwebTcpBase;
 #if defined(__amigaos4__)
 
-      IAwebTcp = (struct AwebTcpIface *)IAwebAmiTcp;
+        IAwebTcp = (struct AwebTcpIface *)IAwebAmiTcp;
 
 #endif
-      a_setup(base);
-   }
+        a_setup(base);
+    }
 
 #ifdef SUPPORT_INET
-   else if(base=OpenLibrary("inet:libs/socket.library",4))
-   {  AwebTcpBase=AwebInet225Base;
-      a_setup(base);
-   }
+    else if(base=OpenLibrary("inet:libs/socket.library",4))
+    {  AwebTcpBase=AwebInet225Base;
+       a_setup(base);
+    }
 #endif
 
 #if defined(__amigaos4__)
-   {
-    struct Interface *socketiface;
-    socketiface = GetInterface(base,"main",1,0);
-    return socketiface;
-   }
+    {
+     struct Interface *socketiface;
+     socketiface = GetInterface(base,"main",1,0);
+     return socketiface;
+    }
 #else
 
-   return base;
+    return base;
 #endif
 }
 
 extern struct Assl *Assl_initamissl(struct Library *socketbase);
-struct Assl *Assl_initmiamissl(void);
 
-struct Assl *Tcpopenssl(struct Library *socketbase)
-{  struct Assl *assl=NULL;
+struct Assl *Tcpopenssl(struct Library *socketbase) {
+    struct Assl *assl = NULL;
 
-   if(assl=Assl_initamissl(socketbase))
-   {
+    if (assl = Assl_initamissl(socketbase)) {
 
-      AwebSslBase=AwebAmiSslBase;
+        AwebSslBase = AwebAmiSslBase;
 #if defined(__amigaos4__)
 
-      IAwebSsl = (struct AwebSslIface *)IAwebAmiSsl;
+        IAwebSsl = (struct AwebSslIface *)IAwebAmiSsl;
 
 #endif
 
-   }
+    }
 
-#if !( defined(__amigaos4__) || defined(__MORPHOS__) )
-   else if(assl=Assl_initmiamissl())
-   {  AwebSslBase=AwebMiamisslBase;
-   }
-#endif // __amigaos4__
 
-   return assl;
+    return assl;
 }
