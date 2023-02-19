@@ -25,7 +25,9 @@
 #include "asyncio.h"
 #include "application.h"
 #include "libraries/awebarexx.h"
+#undef NO_INLINE_STDARG
 #include <reaction/reaction.h>
+#define NO_INLINE_STDARG
 #include <intuition/intuition.h>
 #include <proto/intuition.h>
 

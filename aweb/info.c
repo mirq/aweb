@@ -25,7 +25,9 @@
 #include "frame.h"
 #include <intuition/intuition.h>
 #include <libraries/gadtools.h>
+#undef NO_INLINE_STDARG
 #include <reaction/reaction.h>
+#define NO_INLINE_STDARG
 #include <proto/exec.h>
 #include <clib/alib_protos.h>
 #include <proto/intuition.h>

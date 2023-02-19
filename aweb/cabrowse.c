@@ -27,7 +27,10 @@
 
 #include <intuition/intuition.h>
 #include <libraries/locale.h>
+
+#undef NO_INLINE_STDARG
 #include <reaction/reaction.h>
+#define NO_INLINE_STDARG
 
 #include <proto/intuition.h>
 #include <proto/utility.h>

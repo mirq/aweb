@@ -24,7 +24,9 @@
 #include "window.h"
 #include "jslib.h"
 #include <intuition/imageclass.h>
+#undef NO_INLINE_STDARG
 #include <reaction/reaction.h>
+#define NO_INLINE_STDARG
 #include <proto/graphics.h>
 #include <proto/intuition.h>
 #include <proto/utility.h>

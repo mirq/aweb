@@ -20,7 +20,9 @@
 #include "aweb.h"
 #include "application.h"
 
+#undef NO_INLINE_STDARG
 #include <reaction/reaction.h>
+#define NO_INLINE_STDARG
 
 #include <intuition/intuition.h>
 #include <intuition/imageclass.h>

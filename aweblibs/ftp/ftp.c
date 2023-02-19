@@ -37,7 +37,9 @@
 
 
 #include <exec/resident.h>
+#undef NO_INLINE_STDARG
 #include <reaction/reaction.h>
+#define NO_INLINE_STDARG
 #include <proto/intuition.h>
 #include <proto/exec.h>
 
