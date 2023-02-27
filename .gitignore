@@ -4,3 +4,5 @@ build
 cmake-build-debug
 cmake-build-release
 .vscode
+dist_Debug
+dist_Release
