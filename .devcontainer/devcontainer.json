@@ -1,0 +1,82 @@
+{
+    "name": "AWeb Amiga Development",
+    "image": "amigadev/crosstools:m68k-amigaos",
+
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils:2": {
+            "installZsh": true,
+            "configureZshAsDefaultShell": true,
+            "installOhMyZsh": true,
+            "upgradePackages": true,
+            "username": "vscode",
+            "userUid": "automatic",
+            "userGid": "automatic"
+        },
+        "ghcr.io/devcontainers/features/git:1": {
+            "ppa": true,
+            "version": "latest"
+        }
+    },
+
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.cpptools",
+                "ms-vscode.cpptools-extension-pack",
+                "ms-vscode.cmake-tools",
+                "twxs.cmake",
+                "ms-vscode.hexeditor",
+                "streetsidesoftware.code-spell-checker"
+            ],
+            "settings": {
+                "cmake.configureOnOpen": false,
+                "cmake.generator": "Unix Makefiles",
+                "cmake.preferredGenerators": ["Unix Makefiles"],
+                "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+                "C_Cpp.default.compilerPath": "/opt/amiga/bin/m68k-amigaos-gcc",
+                "C_Cpp.default.intelliSenseMode": "gcc-x86",
+                "C_Cpp.default.cStandard": "c11",
+                "C_Cpp.default.defines": [
+                    "AMIGA",
+                    "__amigaos__",
+                    "__stdargs=",
+                    "__saveds=",
+                    "BARTMAN_GCC"
+                ],
+                "C_Cpp.default.includePath": [
+                    "${workspaceFolder}/Include",
+                    "${workspaceFolder}/aweb/include",
+                    "${workspaceFolder}/aweblibs/include",
+                    "${workspaceFolder}/libs/library",
+                    "${workspaceFolder}/libs/library/include",
+                    "/opt/amiga/m68k-amigaos/sys-include",
+                    "/opt/amiga/m68k-amigaos/include"
+                ],
+                "files.associations": {
+                    "*.h": "c",
+                    "*.c": "c"
+                }
+            }
+        }
+    },
+
+    "remoteEnv": {
+        "CC": "m68k-amigaos-gcc",
+        "CXX": "m68k-amigaos-gcc",
+        "AMIGA_TOOLCHAIN": "/opt/amiga",
+        "TOOLCHAIN_PATH": "/opt/amiga"
+    },
+
+    "mounts": [
+        "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
+    ],
+
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
+    "workspaceFolder": "/workspace",
+
+    "postCreateCommand": "echo 'AWeb Amiga development environment ready!' && m68k-amigaos-gcc --version",
+
+    "forwardPorts": [],
+
+    "shutdownAction": "stopContainer"
+}
