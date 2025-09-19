@@ -1,0 +1,15 @@
+
+If you're an user, you shouldn't need to worry about this archive; any
+application requiring the "titlebar.image" BOOPSI class should already
+come with the library file included in its own distribution archive.
+That said, in case you encounter one that doesn't, you can simply copy
+the file to your system by running the supplied installation script.
+
+If you're a developer and need to add extra gadgets to the titlebar of
+your application's window(s), you're free (and encouraged) to include
+the "titlebar.image" library file - as well as any other contents of
+this archive you may require - into your distribution archive, and use
+the "tbiclass" image class implemented by the library.
+
+Massimo Tantignone (tanti@intercom.it)
+

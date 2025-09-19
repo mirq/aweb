@@ -60,6 +60,15 @@
         }
     },
 
+    // CLion configuration
+    "containerEnv": {
+        "CC": "m68k-amigaos-gcc",
+        "CXX": "m68k-amigaos-gcc",
+        "AMIGA_TOOLCHAIN": "/opt/amiga",
+        "TOOLCHAIN_PATH": "/opt/amiga",
+        "CMAKE_TOOLCHAIN_FILE": "/workspace/toolchain/m68k-amigaos.cmake"
+    },
+
     "remoteEnv": {
         "CC": "m68k-amigaos-gcc",
         "CXX": "m68k-amigaos-gcc",
