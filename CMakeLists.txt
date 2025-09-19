@@ -9,7 +9,7 @@ if(NOT AMIGA)
 endif()
 
 set(CMAKE_C_STANDARD 11)
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}  -DAMIGA -D__amigaos__ -Dstpbrk=strpbrk -Wall -Wextra -fomit-frame-pointer")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}  -DAMIGA -D__amigaos__ -DDEVELOPER -Dstpbrk=strpbrk -Wall -Wextra -fomit-frame-pointer")
 set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -DDEVELOPER -DBETAKEYFILE")
 
 file(GLOB_RECURSE SOURCES  ${PROJECT_SOURCE_DIR}/aweb/*.c)

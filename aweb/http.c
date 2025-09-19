@@ -67,7 +67,35 @@ struct Httpinfo
     long            partlength; /* Content-length for this part */
     UBYTE          *userid;     /* Userid from URL */
     UBYTE          *passwd;     /* Password from URL */
+    long            chunk_remaining;    /* Bytes remaining in current chunk */
+    UWORD           chunk_state;        /* Current chunk parsing state */
 };
+
+struct Httpconn
+{
+    NODE(Httpconn);
+    UBYTE          *hostname;   /* Host name */
+    long            port;       /* Port number */
+    BOOL            ssl;        /* SSL connection flag */
+    long            sock;       /* Socket descriptor */
+    struct Assl    *assl;       /* SSL context for HTTPS */
+    struct Library *socketbase; /* Socket library base */
+    ULONG           lastused;   /* Last used timestamp */
+    ULONG           created;    /* Connection creation time */
+    long            requests;   /* Number of requests on this connection */
+    long            maxrequests; /* Max requests allowed (from Keep-Alive header) */
+    long            timeout;    /* Keep-alive timeout in seconds */
+    BOOL            keepalive;  /* Server supports keep-alive */
+};
+
+static LIST(Httpconn) connectionpool;
+static struct SignalSemaphore poolsema;
+static long totalconnections = 0;
+
+#define MAX_CONNECTIONS_PER_HOST 6
+#define MAX_TOTAL_CONNECTIONS 30
+#define DEFAULT_KEEPALIVE_TIMEOUT 15
+#define CONNECTION_IDLE_TIMEOUT 60
 
 #define HTTPIF_AUTH         0x0001       /* Tried with a known to be valid auth */
 #define HTTPIF_PRXAUTH      0x0002       /* Tried with a known to be valid prxauth */
@@ -79,11 +107,19 @@ struct Httpinfo
 #define HTTPIF_TUNNELOK     0x0080       /* Tunnel response was ok */
 #define HTTPIF_GZIPENCODED  0x0100       /* response is gzip encoded */
 #define HTTPIF_GZIPDECODING 0x0200       /* decoding gziped response has begun */
+#define HTTPIF_CONN_CLOSE   0x0400       /* Connection: close header received */
+#define HTTPIF_CONN_KEEPALIVE 0x0800     /* Connection: keep-alive header received */
+#define HTTPIF_CHUNKED      0x1000       /* Response uses chunked transfer encoding */
 
+/* Chunk parsing states */
+#define CHUNK_SIZE          0            /* Reading chunk size */
+#define CHUNK_DATA          1            /* Reading chunk data */
+#define CHUNK_TRAILER       2            /* Reading chunk trailer CRLF */
+#define CHUNK_DONE          3            /* All chunks processed */
 
-static UBYTE   *httprequest = "GET %.7000s HTTP/1.0\r\n";
+static UBYTE   *httprequest = "GET %.7000s HTTP/1.1\r\n";
 
-static UBYTE   *httppostrequest = "POST %.7000s HTTP/1.0\r\n";
+static UBYTE   *httppostrequest = "POST %.7000s HTTP/1.1\r\n";
 
 #ifdef __MORPHOS__
 static UBYTE   *useragent = "User-Agent: MorphOS-AWeb/%s\r\n";
@@ -99,7 +135,7 @@ static UBYTE   *useragentspoof =
     "User-Agent: %s; (Spoofed by Amiga-AWeb/%s)\r\n";
 #endif
 
-static UBYTE   *fixedheaders = "Accept: */*;q=1\r\nAccept-Encoding: gzip\r\n";
+static UBYTE   *fixedheaders = "Accept: */*;q=1\r\nAccept-Encoding: gzip\r\nConnection: keep-alive\r\n";
 
 //   "Accept: text/html;level=3, text/html;version=3.0, */*;q=1\r\n";
 
@@ -486,6 +522,17 @@ static long Receive(struct Httpinfo *hi, UBYTE * buffer, long length)
     {
         result = a_recv(hi->sock, buffer, length, 0, hi->socketbase);
     }
+
+#ifdef DEVELOPER
+    if (result > 0 && httpdebug)
+    {
+        printf("Receive: got %ld bytes: ", result);
+        for (int i = 0; i < MIN(20, result); i++) {
+            printf("%02x ", (unsigned char)buffer[i]);
+        }
+        printf("\n");
+    }
+#endif
     return result;
 }
 
@@ -494,36 +541,10 @@ static BOOL Readblock(struct Httpinfo *hi)
 {
     long            n;
 
-#ifdef DEVELOPER
-    UBYTE          *block;
-
-    if (!hi->socketbase)
-    {
-        block =
-            fgets(hi->fd->block + hi->blocklength,
-                  hi->fd->blocksize - hi->blocklength, (FILE *) hi->sock);
-        n = block ? strlen(block) : 0;
-    /*
-       for some reason, we get a bogus 'G' in the second console window
-     */
-        if (STRNEQUAL(hi->fd->block, "GHTTP/", 6))
-        {
-            memmove(hi->fd->block, hi->fd->block + 1, n - 1);
-            n--;
-        }
-    }
-    else
-#endif
-        n = Receive(hi, hi->fd->block + hi->blocklength,
-                    hi->fd->blocksize - hi->blocklength);
+    n = Receive(hi, hi->fd->block + hi->blocklength,
+                hi->fd->blocksize - hi->blocklength);
     if (n < 0 || Checktaskbreak())
     {
-
-/* Don't send error, let source driver keep its partial data if it wants to.
-      Updatetaskattrs(
-         AOURL_Error,TRUE,
-         TAG_END);
-*/
         return FALSE;
     }
     if (n == 0)
@@ -650,12 +671,18 @@ static BOOL Readheaders(struct Httpinfo *hi)
         else if (STRNIEQUAL(hi->fd->block, "Content-Length:", 15))
         {
             long            i = 0;
+#ifdef DEVELOPER
+            printf("Readheaders: found Content-Length header: %s\n", hi->fd->block + 15);
+#endif
 
             /* temporary work arround for unkown size of decoded gzip */
 
             if(!(hi->flags & HTTPIF_GZIPENCODED))
             {
                 sscanf(hi->fd->block + 15, " %ld", &i);
+#ifdef DEVELOPER
+                printf("Readheaders: parsed Content-Length: %ld bytes\n", i);
+#endif
                 Updatetaskattrs(AOURL_Contentlength, i, TAG_END);
             }
         }
@@ -850,6 +877,51 @@ static BOOL Readheaders(struct Httpinfo *hi)
               Updatetaskattrs(AOURL_Contentlength,0,TAG_END);
           }
         }
+        else if (STRNIEQUAL(hi->fd->block, "Connection:", 11))
+        {
+            UBYTE *p;
+            for (p = hi->fd->block + 11; *p && isspace(*p); p++);
+            if (STRNIEQUAL(p, "close", 5))
+            {
+                hi->flags |= HTTPIF_CONN_CLOSE;
+            }
+            else if (STRNIEQUAL(p, "keep-alive", 10))
+            {
+                hi->flags |= HTTPIF_CONN_KEEPALIVE;
+            }
+        }
+        else if (STRNIEQUAL(hi->fd->block, "Transfer-Encoding:", 18))
+        {
+            UBYTE *p;
+            for (p = hi->fd->block + 18; *p && isspace(*p); p++);
+            if (STRNIEQUAL(p, "chunked", 7))
+            {
+#ifdef DEVELOPER
+                printf("Readheaders: detected chunked transfer encoding\n");
+#endif
+                hi->flags |= HTTPIF_CHUNKED;
+            }
+        }
+        else if (STRNIEQUAL(hi->fd->block, "Keep-Alive:", 11))
+        {
+            UBYTE *p, *q;
+            for (p = hi->fd->block + 11; *p && isspace(*p); p++);
+            while (*p)
+            {
+                if (STRNIEQUAL(p, "timeout=", 8))
+                {
+                    p += 8;
+                    hi->fd->keepalive_timeout = atol(p);
+                }
+                else if (STRNIEQUAL(p, "max=", 4))
+                {
+                    p += 4;
+                    hi->fd->keepalive_max = atol(p);
+                }
+                while (*p && *p != ',' && *p != ' ') p++;
+                while (*p && (*p == ',' || *p == ' ')) p++;
+            }
+        }
         else if (STRNIEQUAL(hi->fd->block,"Content-Disposition:",20))
         {
             UBYTE *p,*q;
@@ -973,6 +1045,9 @@ static BOOL Readpartheaders(struct Httpinfo *hi)
         if (STRNIEQUAL(hi->fd->block, "Content-Length:", 15))
         {
             sscanf(hi->fd->block + 15, " %ld", &hi->partlength);
+#ifdef DEVELOPER
+            printf("Multipart: Content-Length: %ld bytes\n", hi->partlength);
+#endif
         }
         else if (STRNIEQUAL(hi->fd->block, "Content-Type:", 13))
         {
@@ -997,6 +1072,13 @@ static BOOL Readpartheaders(struct Httpinfo *hi)
  * multipart boundary found. */
 static BOOL Readdata(struct Httpinfo *hi)
 {
+#ifdef DEVELOPER
+    printf("Readdata: starting, current blocklength=%ld\n", hi->blocklength);
+    if (hi->blocklength > 0) {
+        printf("Readdata: buffer content: '%.50s'\n", hi->fd->block);
+    }
+    printf("Readdata: flags=0x%x, CHUNKED=%s\n", hi->flags, (hi->flags & HTTPIF_CHUNKED) ? "TRUE" : "FALSE");
+#endif
     UBYTE     *bdcopy = NULL;
     long      bdlength = 0, blocklength = 0;
     BOOL      result = FALSE, boundary, partial, eof;
@@ -1009,51 +1091,332 @@ static BOOL Readdata(struct Httpinfo *hi)
     UWORD     gzip_end=0;
     z_stream  d_stream;
 
+    /* Separate buffer for accumulating chunked gzip data */
+    UBYTE     *chunk_gzip_buffer=NULL;
+    long      chunk_gzip_size=0;
+    long      chunk_gzip_length=0;
+
 
     if (hi->boundary)
     {
         bdlength = strlen(hi->boundary);
         bdcopy = ALLOCTYPE(UBYTE, bdlength + 1, 0);
     }
+
+    /* Initialize accumulation buffer for chunked+gzip */
+    if ((hi->flags & HTTPIF_CHUNKED) && (hi->flags & HTTPIF_GZIPENCODED))
+    {
+        chunk_gzip_size = 64 * 1024; /* 64KB initial buffer */
+        chunk_gzip_buffer = ALLOCTYPE(UBYTE, chunk_gzip_size, 0);
+        chunk_gzip_length = 0;
+#ifdef DEVELOPER
+        printf("Readdata: allocated %ld bytes for chunked gzip accumulation\n", chunk_gzip_size);
+#endif
+    }
     for (;;)
     {
+#ifdef DEVELOPER
+        printf("Readdata: loop iteration, blocklength=%ld\n", hi->blocklength);
+#endif
         if (hi->blocklength)
         {
+#ifdef DEVELOPER
+            printf("Readdata: entering data processing block\n");
+#endif
 
 
-            // first block of the encoded data
-            // allocate buffer and initialize zlib
-
-            if ((hi->flags & HTTPIF_GZIPENCODED) && !(hi->flags & HTTPIF_GZIPDECODING))
+            /* Handle chunked transfer encoding FIRST (before gzip) */
+            if (hi->flags & HTTPIF_CHUNKED)
             {
-              hi->flags |= HTTPIF_GZIPDECODING;
-              gzipbuffer = ALLOCTYPE(UBYTE,gzip_buffer_size,0);   //
-              gziplength=hi->blocklength;                  //
-              memcpy(gzipbuffer,hi->fd->block,gziplength); // copy date to buffer only needed on first block
+#ifdef DEVELOPER
+                printf("Readdata: processing chunked data, state=%d, remaining=%ld\n", 
+                       hi->chunk_state, hi->chunk_remaining);
+#endif
+                UBYTE *src = hi->fd->block;
+                UBYTE *src_end = src + hi->blocklength;
+                UBYTE *dest = hi->fd->block;
+                long extracted_data = 0;
+                BOOL chunk_complete = FALSE;
 
-              hi->blocklength=0;
-              d_stream.zalloc = Z_NULL;
-              d_stream.zfree = Z_NULL;
-              d_stream.opaque = Z_NULL;
-              d_stream.avail_in = 0;
-              d_stream.next_in = Z_NULL;
+#ifdef DEVELOPER
+                printf("Readdata: raw buffer (%ld bytes): ", hi->blocklength);
+                for (int i = 0; i < MIN(31, hi->blocklength); i++) {
+                    printf("%02x ", (unsigned char)hi->fd->block[i]);
+                }
+                printf("\n");
+#endif
 
-              err=inflateInit2(&d_stream,16+15);           // set zlib to expect 'gzip-header'
-              if(err!=Z_OK)  printf ("zlib Init Fail\n");  //
+                while (src < src_end && !chunk_complete)
+                {
+                    switch (hi->chunk_state)
+                    {
+                        case CHUNK_SIZE:
+                        {
+                            /* Find end of chunk size line */
+                            UBYTE *line_end = src;
+                            while (line_end < src_end && *line_end != '\r' && *line_end != '\n')
+                                line_end++;
 
-              d_stream.next_in = gzipbuffer;
-              d_stream.avail_in = gziplength;
-              d_stream.next_out = hi->fd->block;
-              d_stream.avail_out = gzip_buffer_size;
+                            if (line_end >= src_end)
+                            {
+#ifdef DEVELOPER
+                                printf("Readdata: incomplete chunk size line, need more data\n");
+#endif
+                                chunk_complete = TRUE; /* Need more data */
+                                break;
+                            }
 
-          //  printf("zlib initialized  source=%d bytes\n",gziplength);  // debug
+                            /* Parse chunk size */
+                            UBYTE saved = *line_end;
+                            *line_end = '\0';
+                            char *endptr;
+#ifdef DEVELOPER
+                            printf("Readdata: parsing chunk size string: '%s'\n", (char*)src);
+#endif
+                            hi->chunk_remaining = strtol((char*)src, &endptr, 16);
 
-              hi->blocklength=0;
-              continue;
+                            if (endptr == (char*)src || hi->chunk_remaining < 0)
+                            {
+#ifdef DEVELOPER
+                                printf("Readdata: malformed chunk size\n");
+#endif
+                                *line_end = saved;
+                                hi->chunk_state = CHUNK_DONE;
+                                chunk_complete = TRUE;
+                                break;
+                            }
+
+#ifdef DEVELOPER
+                            printf("Readdata: parsed chunk size: %ld bytes (0x%s)\n", hi->chunk_remaining, (char*)src);
+#endif
+                            *line_end = saved;
+
+                            /* Skip CRLF after chunk size */
+                            src = line_end;
+                            if (src < src_end && *src == '\r') src++;
+                            if (src < src_end && *src == '\n') src++;
+                            else
+                            {
+                                /* Incomplete CRLF */
+                                chunk_complete = TRUE;
+                                break;
+                            }
+
+                            if (hi->chunk_remaining == 0)
+                            {
+#ifdef DEVELOPER
+                                printf("Readdata: final chunk (size 0), chunked transfer complete\n");
+#endif
+                                hi->chunk_state = CHUNK_DONE;
+                                hi->flags &= ~HTTPIF_CHUNKED; /* Clear chunked flag */
+                                chunk_complete = TRUE;
+                            }
+                            else
+                            {
+                                hi->chunk_state = CHUNK_DATA;
+                            }
+                            break;
+                        }
+
+                        case CHUNK_DATA:
+                        {
+                            /* Extract chunk data */
+                            long available = src_end - src;
+                            long to_copy = MIN(hi->chunk_remaining, available);
+
+                            if (to_copy > 0)
+                            {
+#ifdef DEVELOPER
+                                printf("Readdata: extracting %ld bytes of chunk data\n", to_copy);
+#endif
+
+                                /* If chunked+gzip, accumulate in separate buffer */
+                                if (chunk_gzip_buffer)
+                                {
+                                    /* Ensure buffer is large enough */
+                                    if (chunk_gzip_length + to_copy > chunk_gzip_size)
+                                    {
+                                        long new_size = chunk_gzip_size * 2;
+                                        while (chunk_gzip_length + to_copy > new_size)
+                                            new_size *= 2;
+                                        UBYTE *new_buffer = ALLOCTYPE(UBYTE, new_size, 0);
+                                        if (new_buffer)
+                                        {
+                                            if (chunk_gzip_length > 0)
+                                                memcpy(new_buffer, chunk_gzip_buffer, chunk_gzip_length);
+                                            FREE(chunk_gzip_buffer);
+                                            chunk_gzip_buffer = new_buffer;
+                                            chunk_gzip_size = new_size;
+#ifdef DEVELOPER
+                                            printf("Readdata: expanded gzip buffer to %ld bytes\n", new_size);
+#endif
+                                        }
+                                    }
+
+                                    /* Copy chunk data to accumulation buffer */
+                                    memcpy(chunk_gzip_buffer + chunk_gzip_length, src, to_copy);
+                                    chunk_gzip_length += to_copy;
+#ifdef DEVELOPER
+                                    printf("Readdata: accumulated %ld bytes, total=%ld\n", to_copy, chunk_gzip_length);
+#endif
+                                }
+                                else
+                                {
+                                    /* Normal chunk processing */
+                                    if (dest != src)
+                                    {
+                                        memmove(dest, src, to_copy);
+                                    }
+                                    dest += to_copy;
+                                    extracted_data += to_copy;
+                                }
+
+                                src += to_copy;
+                                hi->chunk_remaining -= to_copy;
+                            }
+
+                            if (hi->chunk_remaining == 0)
+                            {
+                                hi->chunk_state = CHUNK_TRAILER;
+                            }
+                            else
+                            {
+                                /* Need more data for this chunk */
+                                chunk_complete = TRUE;
+                            }
+                            break;
+                        }
+
+                        case CHUNK_TRAILER:
+                        {
+                            /* Skip chunk trailing CRLF */
+#ifdef DEVELOPER
+                            printf("Readdata: CHUNK_TRAILER state, src < src_end=%s, available=%ld\n",
+                                   (src < src_end) ? "TRUE" : "FALSE", src_end - src);
+                            if (src < src_end) {
+                                printf("Readdata: next bytes: %02x %02x %02x\n",
+                                       (unsigned char)*src,
+                                       (src+1 < src_end) ? (unsigned char)*(src+1) : 0,
+                                       (src+2 < src_end) ? (unsigned char)*(src+2) : 0);
+                            }
+#endif
+                            if (src < src_end && *src == '\r') src++;
+                            if (src < src_end && *src == '\n')
+                            {
+                                src++;
+                                hi->chunk_state = CHUNK_SIZE; /* Ready for next chunk */
+#ifdef DEVELOPER
+                                printf("Readdata: chunk trailer consumed, ready for next chunk\n");
+#endif
+                            }
+                            else
+                            {
+                                /* Incomplete trailing CRLF */
+#ifdef DEVELOPER
+                                printf("Readdata: incomplete trailing CRLF, need more data\n");
+#endif
+                                chunk_complete = TRUE;
+                            }
+                            break;
+                        }
+
+                        case CHUNK_DONE:
+                        default:
+                            chunk_complete = TRUE;
+                            break;
+                    }
+                }
+
+                /* Update buffer with extracted data (only for normal chunks) */
+                if (!chunk_gzip_buffer)
+                {
+                    hi->blocklength = extracted_data;
+                }
+                else
+                {
+                    /* For chunked+gzip, clear the main buffer since data is in accumulation buffer */
+                    hi->blocklength = 0;
+                }
+
+                /* Remove processed bytes from buffer */
+                if (src < src_end && src > hi->fd->block)
+                {
+                    long remaining = src_end - src;
+                    memmove(hi->fd->block + extracted_data, src, remaining);
+                    hi->blocklength += remaining;
+#ifdef DEVELOPER
+                    printf("Readdata: moved %ld unprocessed bytes after extracted data\n", remaining);
+#endif
+                }
+
+#ifdef DEVELOPER
+                printf("Readdata: extracted %ld bytes total, buffer now has %ld bytes\n", 
+                       extracted_data, hi->blocklength);
+                if (extracted_data > 0)
+                {
+                    printf("Readdata: extracted data (first 20 bytes): ");
+                    for (int i = 0; i < MIN(20, extracted_data); i++) {
+                        printf("%02x ", (unsigned char)hi->fd->block[i]);
+                    }
+                    printf("\n");
+                }
+#endif
+
+                /* If chunks are done, process gzip if needed */
+                if (hi->chunk_state == CHUNK_DONE)
+                {
+#ifdef DEVELOPER
+                    printf("Readdata: chunked transfer complete, checking for gzip (flags=0x%x, accumulated=%ld)\n",
+                           hi->flags, chunk_gzip_length);
+#endif
+                    /* If we have gzip encoded data, decompress it now */
+                    if ((hi->flags & HTTPIF_GZIPENCODED) && chunk_gzip_buffer && chunk_gzip_length > 0)
+                    {
+#ifdef DEVELOPER
+                        printf("Readdata: starting gzip decompression of %ld accumulated bytes\n", chunk_gzip_length);
+#endif
+                        /* Use accumulated buffer directly for gzip processing */
+#ifdef DEVELOPER
+                        printf("Readdata: using accumulation buffer directly for gzip (%ld bytes)\n", chunk_gzip_length);
+#endif
+                        /* Set up gzip processing with accumulated data */
+                        hi->flags |= HTTPIF_GZIPDECODING;
+                        hi->blocklength = 0; /* Clear main buffer for gzip output */
+#ifdef DEVELOPER
+                        printf("Readdata: set GZIPDECODING flag, flags=0x%x\n", hi->flags);
+                        printf("Readdata: continuing to gzip processing\n");
+#endif
+                        /* Continue to gzip processing instead of breaking */
+                        goto start_gzip_processing;
+                    }
+                    else
+                    {
+                        /* No gzip, we're done if no more extracted data */
+                        if (extracted_data == 0 && chunk_gzip_length == 0)
+                        {
+                            break;
+                        }
+                    }
+                }
+
+                /* Continue with chunk processing if we have extracted data */
+                if (extracted_data == 0)
+                {
+                    /* Need more data but no extracted data to process */
+                    continue;
+                }
             }
 
-
-
+            // Skip content processing only during chunked data collection, not after gzip
+            if (chunk_gzip_buffer && hi->chunk_state != CHUNK_DONE)
+            {
+#ifdef DEVELOPER
+                printf("Readdata: skipping content processing, collecting chunks for gzip\n");
+#endif
+                /* Skip boundary/content processing during chunk collection */
+            }
+            else
+            {
             boundary = partial = eof = FALSE;
             if (bdcopy)
             {                   /* Look for [CR]LF--<boundary>[--][CR]LF or any possible part thereof. */
@@ -1112,14 +1475,23 @@ static BOOL Readdata(struct Httpinfo *hi)
             }
             if (!boundary && !partial)
                 blocklength = hi->blocklength;
+
+            /* Normal content processing */
+#ifdef DEVELOPER
+            printf("Content: sending %ld bytes of data\n", blocklength);
+            if (blocklength > 0) {
+                printf("Content: first 100 chars: '%.100s'\n", hi->fd->block);
+            }
+#endif
             Updatetaskattrs(AOURL_Data, hi->fd->block,
                             AOURL_Datalength, blocklength, TAG_END);
+
             if (blocklength < hi->blocklength)
             {
                 memmove(hi->fd->block, hi->fd->block + blocklength,
                         hi->blocklength - blocklength);
-
             }
+            hi->blocklength -= blocklength;
 
             if (hi->flags & HTTPIF_GZIPDECODING)
             {
@@ -1127,58 +1499,149 @@ static BOOL Readdata(struct Httpinfo *hi)
               d_stream.avail_out = hi->fd->blocksize;
             }
 
-            hi->blocklength -= blocklength;
-
             if (boundary)
             {
                 result = !eof;
                 break;
             }
+            } /* End of content processing else block */
         }
+
+start_gzip_processing:
+#ifdef DEVELOPER
+        printf("Readdata: reached gzip processing section, flags=0x%x, GZIPDECODING=%s\n",
+               hi->flags, (hi->flags & HTTPIF_GZIPDECODING) ? "TRUE" : "FALSE");
+#endif
+        /* Initialize gzip decompression if needed */
+        if ((hi->flags & HTTPIF_GZIPDECODING) && !gzipbuffer)
+        {
+#ifdef DEVELOPER
+            printf("Readdata: initializing gzip decompression for complete data (blocklength=%ld)\n", hi->blocklength);
+#endif
+            gzipbuffer = ALLOCTYPE(UBYTE, gzip_buffer_size, 0);
+            if (!gzipbuffer)
+            {
+                break; /* Out of memory */
+            }
+
+            d_stream.zalloc = Z_NULL;
+            d_stream.zfree = Z_NULL;
+            d_stream.opaque = Z_NULL;
+            d_stream.avail_in = 0;
+            d_stream.next_in = Z_NULL;
+
+            err = inflateInit2(&d_stream, 16+15); /* gzip format */
+            if (err != Z_OK)
+            {
+#ifdef DEVELOPER
+                printf("Readdata: zlib init failed: %d\n", err);
+#endif
+                FREE(gzipbuffer);
+                gzipbuffer = NULL;
+                break;
+            }
+
+            /* Use accumulated chunk data or current block data for gzip */
+            if (chunk_gzip_buffer && chunk_gzip_length > 0)
+            {
+                /* Use the accumulated chunked data directly */
+                d_stream.next_in = chunk_gzip_buffer;
+                d_stream.avail_in = chunk_gzip_length;
+                gziplength = chunk_gzip_length;
+#ifdef DEVELOPER
+                printf("Readdata: using %ld bytes from accumulation buffer for gzip processing\n", gziplength);
+#endif
+            }
+            else
+            {
+                /* Use current block data */
+                gziplength = hi->blocklength;
+                if (gziplength > 0)
+                {
+                    memcpy(gzipbuffer, hi->fd->block, gziplength);
+                    d_stream.next_in = gzipbuffer;
+                    d_stream.avail_in = gziplength;
+#ifdef DEVELOPER
+                    printf("Readdata: copied %ld bytes to gzip buffer for processing\n", gziplength);
+#endif
+                }
+                else
+                {
+#ifdef DEVELOPER
+                    printf("Readdata: no data in block for gzip processing\n");
+#endif
+                }
+            }
+            hi->blocklength = 0;
+        }
+
         if (hi->flags & HTTPIF_GZIPDECODING)
         {
           if ( gzip_end > 0 )  break;
 
-          err=inflate(&d_stream, Z_SYNC_FLUSH);   //
+#ifdef DEVELOPER
+          printf("Readdata: gzip decompression loop, avail_in=%d\n", d_stream.avail_in);
+#endif
 
-        //printf(" zlib read=%d bytes  written=%d bytes\n",gziplength-d_stream.avail_in,gzip_buffer_size-d_stream.avail_out);
-        //if (err==Z_OK) printf ("zlib OK\n");
-        //if (err==Z_STREAM_END) printf ("zlib STREAM_END read:%d wrote%d\n\n\n",d_stream.total_in ,d_stream.total_out );
+          /* Set output buffer */
+          d_stream.next_out = hi->fd->block;
+          d_stream.avail_out = hi->fd->blocksize;
 
-          if (err!=Z_OK)
+          err=inflate(&d_stream, Z_SYNC_FLUSH);
+#ifdef DEVELOPER
+          printf("Readdata: gzip inflate result=%ld, avail_out=%d\n", err, d_stream.avail_out);
+#endif
+
+          if (err != Z_OK && err != Z_STREAM_END)
           {
-
 #ifdef DEVELOPER
             if(httpdebug)
             {
                 if (err==Z_DATA_ERROR) printf ("zlib DATA ERROR\n");
                 if (err==Z_STREAM_ERROR) printf ("zlib STREAM ERROR\n");
-                if (err==Z_NEED_DICT) printf ("zlib NEED DICT\n");  // impossible as not used by HTTP spec (which is a shame)
+                if (err==Z_NEED_DICT) printf ("zlib NEED DICT\n");
                 if (err==Z_MEM_ERROR) printf ("zlib MEM ERROR\n");
                 if (err==Z_BUF_ERROR) printf ("zlib BUF ERROR\n");
             }
 #endif
-            gzip_end=1;   // Error break !
+            gzip_end = 1;
           }
 
-          if (err==Z_OK && d_stream.avail_in==0)
+          if (err == Z_STREAM_END)
           {
+#ifdef DEVELOPER
+              printf("Readdata: gzip decompression complete\n");
+#endif
+              gzip_end = 1;
+          }
 
+          /* Check if we need more input data */
+          if ((err == Z_OK || err == Z_BUF_ERROR) && d_stream.avail_in == 0 && !gzip_end)
+          {
              gziplength = Receive(hi, gzipbuffer, gzip_buffer_size);
              if( gziplength <= 0 ){
-               gzip_end=1;    // Finished or Error
+               gzip_end = 1;
              }else{
                d_stream.next_in = gzipbuffer;
                d_stream.avail_in = gziplength;
              }
-             //printf ("LOADING %d Bytes\n",gziplength);
           }
 
-          hi->blocklength=gzip_buffer_size-d_stream.avail_out;
+          hi->blocklength = hi->fd->blocksize - d_stream.avail_out;
 
         }else{
-          if (!Readblock(hi)) break;
-
+#ifdef DEVELOPER
+          printf("Readdata: reading more data (not gzip)...\n");
+#endif
+          if (!Readblock(hi)) {
+#ifdef DEVELOPER
+              printf("Readdata: Readblock() failed, connection ended\n");
+#endif
+              break;
+          }
+#ifdef DEVELOPER
+          printf("Readdata: read %ld more bytes (not gzip)\n", hi->blocklength);
+#endif
 
         }
 
@@ -1190,6 +1653,15 @@ static BOOL Readdata(struct Httpinfo *hi)
       FREE(gzipbuffer);
       inflateEnd(&d_stream);
     }
+
+    /* Cleanup accumulation buffer */
+    if (chunk_gzip_buffer)
+        FREE(chunk_gzip_buffer);
+
+#ifdef DEVELOPER
+    printf("Readdata: function exiting, final flags=0x%x, result=%s\n",
+           hi->flags, result ? "TRUE" : "FALSE");
+#endif
 
     return result;
 }
@@ -1204,10 +1676,16 @@ static void Httpresponse(struct Httpinfo *hi, BOOL readfirst)
 
     if (!readfirst || Readresponse(hi))
     {
+#ifdef DEVELOPER
+        printf("Httpresponse: response read successfully, processing headers...\n");
+#endif
         Nextline(hi);
         hi->flags |= HTTPIF_HEADERS;
         if (Readheaders(hi))
         {
+#ifdef DEVELOPER
+            printf("Httpresponse: headers processed successfully\n");
+#endif
             if (hi->movedto && hi->movedtourl)
             {
                 Updatetaskattrs(hi->movedto, hi->movedtourl, TAG_END);
@@ -1258,13 +1736,25 @@ static void Httpresponse(struct Httpinfo *hi, BOOL readfirst)
                 }
                 else
                 {
+#ifdef DEVELOPER
+                    printf("Httpresponse: reading content data (non-multipart)...\n");
+#endif
                     Readdata(hi);
                 }
             }
         }
+#ifdef DEVELOPER
+        else
+        {
+            printf("Httpresponse: Readheaders() failed\n");
+        }
+#endif
     }
     else
     {
+#ifdef DEVELOPER
+        printf("Httpresponse: Readresponse() failed, reading as plain data...\n");
+#endif
         Readdata(hi);
     }
 }
@@ -1362,28 +1852,55 @@ static BOOL Openlibraries(struct Httpinfo *hi)
 {
     BOOL            result = FALSE;
 
+#ifdef DEVELOPER
+    printf("Openlibraries: opening TCP library\n");
+#endif
     Opentcp(&hi->socketbase, hi->fd, !hi->fd->validate);
     if (hi->socketbase)
     {
+#ifdef DEVELOPER
+        printf("Openlibraries: TCP library opened successfully\n");
+#endif
         result = TRUE;
         if (hi->flags & HTTPIF_SSL)
         {
+#ifdef DEVELOPER
+            printf("Openlibraries: SSL requested, opening SSL library\n");
+#endif
             if (hi->assl = Tcpopenssl(hi->socketbase))
-            {                   /* ok */
+            {
+#ifdef DEVELOPER
+                printf("Openlibraries: SSL library opened successfully\n");
+#endif
             }
             else
-            {                   /* No SSL available */
+            {
+#ifdef DEVELOPER
+                printf("Openlibraries: SSL library failed to open\n");
+#endif
                 if (Securerequest
                     (hi, haiku ? HAIKU12 : AWEBSTR(MSG_SSLWARN_SSL_NO_SSL2)))
                 {
+#ifdef DEVELOPER
+                    printf("Openlibraries: user chose to continue without SSL\n");
+#endif
                     hi->flags &= ~HTTPIF_SSL;
                 }
                 else
                 {
+#ifdef DEVELOPER
+                    printf("Openlibraries: user cancelled, no SSL connection\n");
+#endif
                     result = FALSE;
                 }
             }
         }
+    }
+    else
+    {
+#ifdef DEVELOPER
+        printf("Openlibraries: TCP library failed to open\n");
+#endif
     }
     return result;
 }
@@ -1393,12 +1910,30 @@ static long Opensocket(struct Httpinfo *hi, struct hostent *hent)
 {
     long            sock;
 
+#ifdef DEVELOPER
+    printf("Opensocket: creating socket\n");
+#endif
+
     if (hi->flags & HTTPIF_SSL)
     {
+#ifdef DEVELOPER
+        printf("Opensocket: SSL requested, opening SSL context\n");
+#endif
         if (!Assl_openssl(hi->assl))
+        {
+#ifdef DEVELOPER
+            printf("Opensocket: Assl_openssl() failed\n");
+#endif
             return -1;
+        }
+#ifdef DEVELOPER
+        printf("Opensocket: SSL context opened successfully\n");
+#endif
     }
     sock = a_socket(hent->h_addrtype, SOCK_STREAM, 0, hi->socketbase);
+#ifdef DEVELOPER
+    printf("Opensocket: a_socket() returned %ld\n", sock);
+#endif
     if (sock < 0)
     {
         Assl_closessl(hi->assl);
@@ -1411,6 +1946,10 @@ static BOOL Connect(struct Httpinfo *hi, struct hostent *hent)
 {
     BOOL            ok = FALSE;
 
+#ifdef DEVELOPER
+    printf("Connect: starting connection to %s:%ld ssl=%d\n", hi->hostname, hi->port, BOOLVAL(hi->flags & HTTPIF_SSL));
+#endif
+
     if (hi->port == -1)
     {
         if (hi->flags & HTTPIF_SSL)
@@ -1418,10 +1957,21 @@ static BOOL Connect(struct Httpinfo *hi, struct hostent *hent)
         else
             hi->port = 80;
     }
+
+#ifdef DEVELOPER
+    printf("Connect: using port %ld\n", hi->port);
+#endif
+
     if (!a_connect(hi->sock, hent, hi->port, hi->socketbase))
     {
+#ifdef DEVELOPER
+        printf("Connect: TCP connection established\n");
+#endif
         if (hi->flags & HTTPIF_SSL)
         {
+#ifdef DEVELOPER
+            printf("Connect: starting SSL handshake\n");
+#endif
             if (hi->flags & HTTPIF_SSLTUNNEL)
             {
                 UBYTE          *creq, *p;
@@ -1478,16 +2028,37 @@ static BOOL Connect(struct Httpinfo *hi, struct hostent *hent)
 
             if (ok)
             {
+#ifdef DEVELOPER
+                printf("Connect: attempting SSL connection to %s\n", hi->hostname);
+#endif
                 long            result =
                     Assl_connect(hi->assl, hi->sock, hi->hostname);
                 ok = (result == ASSLCONNECT_OK);
+#ifdef DEVELOPER
+                printf("Connect: SSL connect result=%ld (OK=%d, DENIED=%d)\n", result, ASSLCONNECT_OK, ASSLCONNECT_DENIED);
+                printf("Connect: ok=%s, flags=0x%x, NOSSLREQ=%s\n",
+                       ok ? "TRUE" : "FALSE",
+                       hi->flags,
+                       (hi->flags & HTTPIF_NOSSLREQ) ? "TRUE" : "FALSE");
+#endif
                 if (result == ASSLCONNECT_DENIED)
+                {
+#ifdef DEVELOPER
+                    printf("Connect: SSL connection denied\n");
+#endif
                     hi->flags |= HTTPIF_NOSSLREQ;
+                }
                 if (!ok && !(hi->flags & HTTPIF_NOSSLREQ))
                 {
+#ifdef DEVELOPER
+                    printf("Connect: SSL failed, entering error handling\n");
+#endif
                     UBYTE           errbuf[128], *p;
 
                     p = Assl_geterror(hi->assl, errbuf);
+#ifdef DEVELOPER
+                    printf("Connect: SSL error: %s\n", p ? (char*)p : "unknown");
+#endif
                     if (Securerequest(hi, p))
                     {
                         hi->flags |= HTTPIF_RETRYNOSSL;
@@ -1500,6 +2071,9 @@ static BOOL Connect(struct Httpinfo *hi, struct hostent *hent)
             ok = TRUE;
         }
     }
+#ifdef DEVELOPER
+    printf("Connect: returning %s\n", ok ? "TRUE" : "FALSE");
+#endif
     return ok;
 }
 
@@ -1579,10 +2153,21 @@ static void Httpretrieve(struct Httpinfo *hi, struct Fetchdriver *fd)
     UBYTE          *request, *p, *q;
     BOOL            error = FALSE;
 
+#ifdef DEVELOPER
+    printf("Httpretrieve: starting retrieval for %s\n", fd->name);
+#endif
+
     hi->blocklength = 0;
     hi->nextscanpos = 0;
+    hi->chunk_remaining = 0;
+    hi->chunk_state = CHUNK_SIZE;
     if (fd->flags & FDVF_SSL)
+    {
         hi->flags |= HTTPIF_SSL;
+#ifdef DEVELOPER
+        printf("Httpretrieve: SSL flag set\n");
+#endif
+    }
     hi->fd = fd;
 #ifdef DEVELOPER
     if (STRNEQUAL(fd->name, "&&&&", 4)
@@ -1639,20 +2224,38 @@ static void Httpretrieve(struct Httpinfo *hi, struct Fetchdriver *fd)
 
             Updatetaskattrs(AOURL_Netstatus, NWS_LOOKUP, TAG_END);
             Tcpmessage(fd, TCPMSG_LOOKUP, hi->connect);
+#ifdef DEVELOPER
+            printf("Httpretrieve: looking up %s\n", hi->connect);
+#endif
             if (hent = Lookup(hi->connect, hi->socketbase))
             {
+#ifdef DEVELOPER
+                printf("Httpretrieve: DNS lookup successful\n");
+#endif
                 if ((hi->sock = Opensocket(hi, hent)) >= 0)
                 {
+#ifdef DEVELOPER
+                    printf("Httpretrieve: socket opened, sock=%ld\n", hi->sock);
+#endif
                     Updatetaskattrs(AOURL_Netstatus, NWS_CONNECT, TAG_END);
                     /* hent->h_name is the A entry, might be punyencoded */
                     Tcpmessage(fd, TCPMSG_CONNECT,
                                hi->flags & HTTPIF_SSL ? "HTTPS" : "HTTP",
                                hent->h_name);
+#ifdef DEVELOPER
+                    printf("Httpretrieve: attempting to connect...\n");
+#endif
                     if (Connect(hi, hent))
                     {
+#ifdef DEVELOPER
+                        printf("Httpretrieve: Connect() succeeded, building request...\n");
+#endif
 
                         if (hi->flags & HTTPIF_SSL)
                         {
+#ifdef DEVELOPER
+                            printf("Httpretrieve: SSL connection, getting cipher info...\n");
+#endif
                             p = Assl_getcipher(hi->assl);
                             q = Assl_libname(hi->assl);
                             if (p || q)
@@ -1663,7 +2266,13 @@ static void Httpretrieve(struct Httpinfo *hi, struct Fetchdriver *fd)
                         }
 
                         reqlen = Buildrequest(fd, hi, &request);
+#ifdef DEVELOPER
+                        printf("Httpretrieve: built request, length=%ld\n", reqlen);
+#endif
                         result = (Send(hi, request, reqlen) == reqlen);
+#ifdef DEVELOPER
+                        printf("Httpretrieve: send result=%s (expected %ld bytes)\n", result ? "SUCCESS" : "FAILED", reqlen);
+#endif
 #ifdef BETAKEYFILE
                         if (httpdebug)
                         {
@@ -1673,6 +2282,9 @@ static void Httpretrieve(struct Httpinfo *hi, struct Fetchdriver *fd)
 #endif
                         if (result)
                         {
+#ifdef DEVELOPER
+                            printf("Httpretrieve: request sent successfully, processing data...\n");
+#endif
                             if (fd->multipart)
                             {
                                 result = Sendmultipartdata(hi, fd, NULL);
@@ -1695,34 +2307,56 @@ static void Httpretrieve(struct Httpinfo *hi, struct Fetchdriver *fd)
                             FREE(request);
                         if (result)
                         {
+#ifdef DEVELOPER
+                            printf("Httpretrieve: waiting for response...\n");
+#endif
                             Updatetaskattrs(AOURL_Netstatus, NWS_WAIT,
                                             TAG_END);
                             Tcpmessage(fd, TCPMSG_WAITING,
                                        hi->
                                        flags & HTTPIF_SSL ? "HTTPS" : "HTTP");
                             Httpresponse(hi, TRUE);
+#ifdef DEVELOPER
+                            printf("Httpretrieve: response processing completed\n");
+#endif
                         }
                         else
+                        {
+#ifdef DEVELOPER
+                            printf("Httpretrieve: send failed, setting error=TRUE\n");
+#endif
                             error = TRUE;
+                        }
+                        if (hi->assl)
+                        {
+                            Assl_closessl(hi->assl);
+                        }
+                        a_close(hi->sock, hi->socketbase);
                     }
                     else if (!(hi->flags & HTTPIF_RETRYNOSSL) &&
                              hi->status != 407)
                     {
+#ifdef DEVELOPER
+                        printf("Httpretrieve: connection failed, status=%ld\n", hi->status);
+#endif
                         Tcperror(fd, TCPERR_NOCONNECT,
                                  (hi->flags & HTTPIF_SSLTUNNEL) ? hi->
                                  hostport : (UBYTE *) hent->h_name);
                     }
-                    if (hi->assl)
-                    {
-                        Assl_closessl(hi->assl);
-                    }
-                    a_close(hi->sock, hi->socketbase);
                 }
                 else
+                {
+#ifdef DEVELOPER
+                    printf("Httpretrieve: Opensocket() failed\n");
+#endif
                     error = TRUE;
+                }
             }
             else
             {
+#ifdef DEVELOPER
+                printf("Httpretrieve: DNS lookup failed for %s\n", hi->connect);
+#endif
                 Tcperror(fd, TCPERR_NOHOST, hi->hostname);
             }
             a_cleanup(hi->socketbase);
@@ -1730,24 +2364,209 @@ static void Httpretrieve(struct Httpinfo *hi, struct Fetchdriver *fd)
         else
         {
             Tcperror(fd, TCPERR_NOLIB);
+            if (hi->assl)
+            {
+                Assl_cleanup(hi->assl);
+                hi->assl = NULL;
+            }
+            if (hi->socketbase)
+            {
+                Closeaweblib(hi->socketbase);   /* this is now closed by Closeaweblib as hi->socketbase may be a lib os3 or an interface os4 */
+                hi->socketbase = NULL;
+            }
         }
-        if (hi->assl)
-        {
-            Assl_cleanup(hi->assl);
-            hi->assl = NULL;
-        }
-        if (hi->socketbase)
-        {
-            Closeaweblib(hi->socketbase);   /* this is now closed by Closeaweblib as hi->socketbase may be a lib os3 or an interface os4 */
-            hi->socketbase = NULL;
-        }
-#ifdef DEVELOPER
     }
-#endif
     if (error)
     {
         Updatetaskattrs(AOURL_Error, TRUE, TAG_END);
     }
+}
+
+/*-----------------------------------------------------------------------*/
+/* Connection Pool Management Functions */
+/*-----------------------------------------------------------------------*/
+
+static void Initconnectionpool(void)
+{
+    NEWLIST(&connectionpool);
+    InitSemaphore(&poolsema);
+    totalconnections = 0;
+}
+
+static void Freeconnectionpool(void)
+{
+    struct Httpconn *conn;
+    ObtainSemaphore(&poolsema);
+    while (conn = (struct Httpconn *)REMHEAD(&connectionpool))
+    {
+        if (conn->assl)
+            Assl_closessl(conn->assl);
+        if (conn->sock >= 0)
+            a_close(conn->sock, conn->socketbase);
+        if (conn->hostname)
+            FREE(conn->hostname);
+        FREE(conn);
+    }
+    totalconnections = 0;
+    ReleaseSemaphore(&poolsema);
+}
+
+static struct Httpconn *Findconnection(UBYTE *hostname, long port, BOOL ssl)
+{
+    struct Httpconn *conn;
+    ULONG now = Today();
+
+    ObtainSemaphore(&poolsema);
+    for (conn = connectionpool.first; conn->next; conn = conn->next)
+    {
+        if (conn->port == port && conn->ssl == ssl &&
+            STRIEQUAL(conn->hostname, hostname))
+        {
+            if (now - conn->lastused < CONNECTION_IDLE_TIMEOUT &&
+                conn->requests < conn->maxrequests)
+            {
+                REMOVE(conn);
+                ReleaseSemaphore(&poolsema);
+                return conn;
+            }
+        }
+    }
+    ReleaseSemaphore(&poolsema);
+    return NULL;
+}
+
+static void Returnconnection(struct Httpconn *conn, BOOL closeconn)
+{
+    if (!conn || !conn->keepalive || closeconn)
+    {
+        if (conn)
+        {
+            if (conn->assl)
+                Assl_closessl(conn->assl);
+            if (conn->sock >= 0)
+                a_close(conn->sock, conn->socketbase);
+            if (conn->hostname)
+                FREE(conn->hostname);
+            FREE(conn);
+            ObtainSemaphore(&poolsema);
+            totalconnections--;
+            ReleaseSemaphore(&poolsema);
+        }
+        return;
+    }
+
+    conn->lastused = Today();
+    ObtainSemaphore(&poolsema);
+    ADDTAIL(&connectionpool, conn);
+    ReleaseSemaphore(&poolsema);
+}
+
+static struct Httpconn *Createconnection(UBYTE *hostname, long port, BOOL ssl,
+                                        struct Library *socketbase, struct Assl *assl, long sock)
+{
+    struct Httpconn *conn;
+
+    if (conn = ALLOCSTRUCT(Httpconn, 1, MEMF_CLEAR))
+    {
+        conn->hostname = Dupstr(hostname, -1);
+        conn->port = port;
+        conn->ssl = ssl;
+        conn->sock = sock;
+        conn->assl = assl;
+        conn->socketbase = socketbase;
+        conn->lastused = Today();
+        conn->created = Today();
+        conn->requests = 0;
+        conn->maxrequests = 100; /* Default, will be updated from Keep-Alive header */
+        conn->timeout = DEFAULT_KEEPALIVE_TIMEOUT;
+        conn->keepalive = TRUE;
+
+        ObtainSemaphore(&poolsema);
+        totalconnections++;
+        ReleaseSemaphore(&poolsema);
+    }
+    return conn;
+}
+
+static struct Httpconn *Getconnection(struct Httpinfo *hi, struct hostent *hent)
+{
+    struct Httpconn *conn = NULL;
+
+#ifdef DEVELOPER
+    printf("Getconnection: host=%s port=%ld ssl=%d\n", hi->hostname, hi->port, BOOLVAL(hi->flags & HTTPIF_SSL));
+#endif
+
+    /* Check if keep-alive is enabled in preferences */
+    if (!prefs.network.keepalive)
+    {
+#ifdef DEVELOPER
+        printf("Getconnection: keep-alive disabled\n");
+#endif
+        return NULL;
+    }
+
+    /* Try to find existing connection */
+    conn = Findconnection(hi->hostname, hi->port, BOOLVAL(hi->flags & HTTPIF_SSL));
+
+    if (!conn)
+    {
+#ifdef DEVELOPER
+        printf("Getconnection: no existing connection, creating new\n");
+#endif
+        /* Create new connection */
+        if (Openlibraries(hi))
+        {
+#ifdef DEVELOPER
+            printf("Getconnection: libraries opened successfully\n");
+#endif
+            if ((hi->sock = Opensocket(hi, hent)) >= 0)
+            {
+#ifdef DEVELOPER
+                printf("Getconnection: socket opened successfully, sock=%ld\n", hi->sock);
+#endif
+                if (Connect(hi, hent))
+                {
+#ifdef DEVELOPER
+                    printf("Getconnection: connection established successfully\n");
+#endif
+                    conn = Createconnection(hi->hostname, hi->port,
+                                          BOOLVAL(hi->flags & HTTPIF_SSL),
+                                          hi->socketbase, hi->assl, hi->sock);
+                }
+                else
+                {
+#ifdef DEVELOPER
+                    printf("Getconnection: Connect() failed\n");
+#endif
+                }
+            }
+            else
+            {
+#ifdef DEVELOPER
+                printf("Getconnection: Opensocket() failed\n");
+#endif
+            }
+        }
+        else
+        {
+#ifdef DEVELOPER
+            printf("Getconnection: Openlibraries() failed\n");
+#endif
+        }
+    }
+    else
+    {
+#ifdef DEVELOPER
+        printf("Getconnection: reusing existing connection\n");
+#endif
+        /* Reuse existing connection */
+        hi->sock = conn->sock;
+        hi->assl = conn->assl;
+        hi->socketbase = conn->socketbase;
+        conn->requests++;
+    }
+
+    return conn;
 }
 
 /*-----------------------------------------------------------------------*/
@@ -1855,6 +2674,7 @@ BOOL Inithttp(void)
 #ifndef LOCALONLY
     InitSemaphore(&certsema);
     NEWLIST(&certaccepts);
+    Initconnectionpool();
 #endif
     return TRUE;
 }
@@ -1875,5 +2695,6 @@ void Freehttp(void)
             FREE(ca);
         }
     }
+    Freeconnectionpool();
 #endif
 }

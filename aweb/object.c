@@ -48,7 +48,16 @@ static UBYTE oomethod[101];
 static UBYTE oodelay;
 BOOL ookdebug;
 
-extern void KPrintF(UBYTE *,...);
+/* KPrintF stub for when debug library is not available */
+void KPrintF(UBYTE *fmt, ...)
+{
+#ifdef __GNUC__
+    va_list args;
+    va_start(args, fmt);
+    vprintf((char *)fmt, args);
+    va_end(args);
+#endif
+}
 
 static UBYTE *classname[NR_OBJECTTYPES]=
 {  "OBJECT","APPLICATION","URL","CACHE","FETCH","SOURCE","COPY","TASK",

@@ -45,6 +45,8 @@ struct Fetchdriver
    ULONG serverdate;          /* Date as reported by server */
    ULONG responsetime;      /* local time response recieved */
    UBYTE *etag;            /* Etag NULL */
+   long keepalive_timeout;    /* Keep-alive timeout from server */
+   long keepalive_max;        /* Keep-alive max requests from server */
 
 };
 

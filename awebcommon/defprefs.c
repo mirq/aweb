@@ -256,6 +256,7 @@ struct AwebPrefs defprefs=
       TRUE,                                  /* ftp email address */
       COOKIES_ASK,                           /* use cookies */
       FALSE,                                 /* RFC 2109 cookies */
+      TRUE,                                  /* HTTP keep-alive */
       EMPTYLIST(Nocookie,defprefs.network.nocookie), /* no cookie domains */
       "",                                    /* email address */
       "",                                    /* reply address */
@@ -483,6 +484,7 @@ static struct Saveformat networksave[]=
    {"FTPE",SVF_WORD,  0,OFFSET(Networkprefs,ftpemailaddr)},
    {"COOK",SVF_WORD,  0,OFFSET(Networkprefs,cookies)},
    {"RFCC",SVF_WORD,  0,OFFSET(Networkprefs,rfc2109)},
+   {"KALV",SVF_WORD,  0,OFFSET(Networkprefs,keepalive)},
    {"NOCO",SVF_NOCOOK,1,OFFSET(Networkprefs,nocookie)},
    {"MNAD",SVF_STRING,0,OFFSET(Networkprefs,emailaddr)},
    {"MNRE",SVF_STRING,0,OFFSET(Networkprefs,replyaddr)},
@@ -2062,6 +2064,7 @@ BOOL Copynetworkprefs(struct Networkprefs *from,struct Networkprefs *to)
    to->ftpemailaddr=from->ftpemailaddr;
    to->cookies=from->cookies;
    to->rfc2109=from->rfc2109;
+   to->keepalive=from->keepalive;
    for(nc=from->nocookie.first;nc->next;nc=nc->next)
    {  Addnocookie((struct NocacheList *)&to->nocookie,nc->name);
    }

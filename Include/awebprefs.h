@@ -280,6 +280,7 @@ struct Networkprefs
    BOOL ftpemailaddr;
    short cookies;
    BOOL rfc2109;
+   BOOL keepalive;
    LIST(Nocookie) nocookie;
    /* Mail page */
    UBYTE *emailaddr;
