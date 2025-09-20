@@ -33,12 +33,31 @@
 #include <dos/dosextens.h>
 
 #include <proto/exec.h>
+#include <proto/amissl.h>
+#include <proto/amisslmaster.h>
+#include <amissl/amissl.h>
+#include <libraries/amisslmaster.h>
+#include <libraries/amissl.h>
 
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netdb.h>
 
 #ifndef LOCALONLY
+
+/* SSL context structure for AmiSSL */
+struct HttpSSL
+{
+    struct Library *amisslmaster_base;
+    struct Library *amissl_base;
+#if defined(__amigaos4__)
+    struct AmiSSLMasterIFace *iamisslmaster;
+    struct AmiSSLIFace *iamissl;
+#endif
+    SSL_CTX *ctx;
+    SSL *ssl;
+    BOOL initialized;
+};
 
 struct Httpinfo
 {
@@ -56,7 +75,7 @@ struct Httpinfo
     struct Fetchdriver *fd;
     struct Library *socketbase;
     long            sock;
-    struct Assl    *assl;       /* AwebSSL context */
+    struct HttpSSL *ssl;        /* AmiSSL context */
     long            blocklength;        /* Length of data in block */
     long            nextscanpos;        /* Block position to scan */
     long            linelength; /* Length of current header line */
@@ -80,6 +99,20 @@ struct Httpinfo
 #define HTTPIF_GZIPENCODED  0x0100       /* response is gzip encoded */
 #define HTTPIF_GZIPDECODING 0x0200       /* decoding gziped response has begun */
 
+/* SSL connection status codes */
+#define ASSLCONNECT_OK      0
+#define ASSLCONNECT_DENIED  2
+
+/* Global AmiSSL variables */
+static struct Library *LocalAmiSSLMasterBase = NULL;
+static struct Library *LocalAmiSSLBase = NULL;
+#if defined(__amigaos4__)
+static struct AmiSSLMasterIFace *LocalIAmiSSLMaster = NULL;
+static struct AmiSSLIFace *LocalIAmiSSL = NULL;
+#endif
+static BOOL LocalAmiSSLInitialized = FALSE;
+static struct SignalSemaphore SSLSema;
+static SSL_CTX *GlobalSSLContext = NULL;
 
 static UBYTE   *httprequest = "GET %.7000s HTTP/1.0\r\n";
 
@@ -153,6 +186,137 @@ BOOL charsetdebug=FALSE;
     sprintf(buf + strlen(buf), "%ld", n);
     Updatetaskattrs(AOURL_Status, buf, TAG_END);
 }
+
+/*-----------------------------------------------------------------------*/
+/* AmiSSL initialization and cleanup functions */
+/*-----------------------------------------------------------------------*/
+
+#if defined(__amigaos4__)
+#define GETINTERFACE(iface, base) (iface = (APTR)GetInterface((struct Library *)(base), "main", 1L, NULL))
+#define DROPINTERFACE(iface)      (DropInterface((struct Interface *)iface), iface = NULL)
+#else
+#define GETINTERFACE(iface, base) TRUE
+#define DROPINTERFACE(iface)
+#endif
+
+/* Forward declarations */
+static void CleanupAmiSSLLibraries(void);
+
+/* Initialize AmiSSL libraries */
+static BOOL InitAmiSSLLibraries(void)
+{
+    LocalAmiSSLInitialized = FALSE;
+
+    if (!(LocalAmiSSLMasterBase = OpenLibrary("amisslmaster.library", AMISSLMASTER_MIN_VERSION)))
+        return FALSE;
+    else if (!GETINTERFACE(LocalIAmiSSLMaster, LocalAmiSSLMasterBase))
+        return FALSE;
+    else if (!InitAmiSSLMaster(AMISSL_CURRENT_VERSION, TRUE))
+        return FALSE;
+    else if (!(LocalAmiSSLBase = OpenAmiSSL()))
+        return FALSE;
+    else if (!GETINTERFACE(LocalIAmiSSL, LocalAmiSSLBase))
+        return FALSE;
+#if defined(__amigaos4__)
+    else if (InitAmiSSL(AmiSSL_ErrNoPtr, &errno,
+                        TAG_DONE) != 0)
+#else
+    else if (InitAmiSSL(AmiSSL_ErrNoPtr, &errno,
+                        TAG_DONE) != 0)
+#endif
+        return FALSE;
+    else
+        LocalAmiSSLInitialized = TRUE;
+
+    if (!LocalAmiSSLInitialized)
+        CleanupAmiSSLLibraries();
+
+    return LocalAmiSSLInitialized;
+}
+
+/* Cleanup AmiSSL libraries */
+static void CleanupAmiSSLLibraries(void)
+{
+    if (LocalAmiSSLInitialized)
+    {
+        CleanupAmiSSLA(NULL);
+        LocalAmiSSLInitialized = FALSE;
+    }
+
+    if (LocalAmiSSLBase)
+    {
+        DROPINTERFACE(LocalIAmiSSL);
+        CloseAmiSSL();
+        LocalAmiSSLBase = NULL;
+    }
+
+    DROPINTERFACE(LocalIAmiSSLMaster);
+    CloseLibrary(LocalAmiSSLMasterBase);
+    LocalAmiSSLMasterBase = NULL;
+}
+
+/* Create SSL context */
+static SSL_CTX *CreateSSLContext(void)
+{
+    SSL_CTX *ctx;
+
+    if (!InitAmiSSLLibraries())
+        return NULL;
+
+    OPENSSL_init_ssl(OPENSSL_INIT_SSL_DEFAULT | OPENSSL_INIT_ADD_ALL_CIPHERS | OPENSSL_INIT_ADD_ALL_DIGESTS, NULL);
+
+    if ((ctx = SSL_CTX_new(TLS_client_method())) != NULL)
+    {
+        SSL_CTX_set_default_verify_paths(ctx);
+        SSL_CTX_set_verify(ctx, SSL_VERIFY_PEER, NULL);
+    }
+
+    return ctx;
+}
+
+/* Create new SSL connection */
+static struct HttpSSL *CreateHTTPSSL(void)
+{
+    struct HttpSSL *httpssl;
+
+    if (!(httpssl = ALLOCTYPE(struct HttpSSL, 1, MEMF_CLEAR)))
+        return NULL;
+
+    ObtainSemaphore(&SSLSema);
+
+    if (!GlobalSSLContext)
+        GlobalSSLContext = CreateSSLContext();
+
+    if (GlobalSSLContext && (httpssl->ssl = SSL_new(GlobalSSLContext)))
+    {
+        httpssl->ctx = GlobalSSLContext;
+        httpssl->initialized = TRUE;
+    }
+    else
+    {
+        FREE(httpssl);
+        httpssl = NULL;
+    }
+
+    ReleaseSemaphore(&SSLSema);
+    return httpssl;
+}
+
+/* Cleanup SSL connection */
+static void FreeHTTPSSL(struct HttpSSL *httpssl)
+{
+    if (httpssl)
+    {
+        if (httpssl->ssl)
+        {
+            SSL_shutdown(httpssl->ssl);
+            SSL_free(httpssl->ssl);
+        }
+        FREE(httpssl);
+    }
+}
+
+/*-----------------------------------------------------------------------*/
 
 /* escape non acceptable characters in path */
 
@@ -480,7 +644,7 @@ static long Receive(struct Httpinfo *hi, UBYTE * buffer, long length)
 
     if (hi->flags & HTTPIF_SSL)
     {
-        result = Assl_read(hi->assl, buffer, length);
+        result = SSL_read(hi->ssl->ssl, buffer, length);
     }
     else
     {
@@ -1276,7 +1440,7 @@ static long Send(struct Httpinfo *hi, UBYTE * request, long reqlen)
 
     if (hi->flags & HTTPIF_SSL)
     {
-        result = Assl_write(hi->assl, request, reqlen);
+        result = SSL_write(hi->ssl->ssl, request, reqlen);
     }
     else
     {
@@ -1395,13 +1559,17 @@ static long Opensocket(struct Httpinfo *hi, struct hostent *hent)
 
     if (hi->flags & HTTPIF_SSL)
     {
-        if (!Assl_openssl(hi->assl))
+        if (!(hi->ssl = CreateHTTPSSL()))
             return -1;
     }
     sock = a_socket(hent->h_addrtype, SOCK_STREAM, 0, hi->socketbase);
     if (sock < 0)
     {
-        Assl_closessl(hi->assl);
+        if (hi->ssl)
+        {
+            FreeHTTPSSL(hi->ssl);
+            hi->ssl = NULL;
+        }
     }
     return sock;
 }
@@ -1478,16 +1646,24 @@ static BOOL Connect(struct Httpinfo *hi, struct hostent *hent)
 
             if (ok)
             {
-                long            result =
-                    Assl_connect(hi->assl, hi->sock, hi->hostname);
-                ok = (result == ASSLCONNECT_OK);
-                if (result == ASSLCONNECT_DENIED)
-                    hi->flags |= HTTPIF_NOSSLREQ;
+                /* Set up SSL connection */
+                SSL_set_fd(hi->ssl->ssl, hi->sock);
+                SSL_set_tlsext_host_name(hi->ssl->ssl, hi->hostname);
+
+                long result = SSL_connect(hi->ssl->ssl);
+                ok = (result == 1);  /* SSL_connect returns 1 on success */
+                if (result <= 0)
+                {
+                    int ssl_error = SSL_get_error(hi->ssl->ssl, result);
+                    if (ssl_error == SSL_ERROR_SSL)
+                        hi->flags |= HTTPIF_NOSSLREQ;
+                }
                 if (!ok && !(hi->flags & HTTPIF_NOSSLREQ))
                 {
                     UBYTE           errbuf[128], *p;
+                    unsigned long   ssl_err = ERR_get_error();
 
-                    p = Assl_geterror(hi->assl, errbuf);
+                    p = (UBYTE *)ERR_error_string(ssl_err, errbuf);
                     if (Securerequest(hi, p))
                     {
                         hi->flags |= HTTPIF_RETRYNOSSL;
@@ -1653,8 +1829,8 @@ static void Httpretrieve(struct Httpinfo *hi, struct Fetchdriver *fd)
 
                         if (hi->flags & HTTPIF_SSL)
                         {
-                            p = Assl_getcipher(hi->assl);
-                            q = Assl_libname(hi->assl);
+                            p = (UBYTE *)SSL_get_cipher(hi->ssl->ssl);
+                            q = (UBYTE *)"AmiSSL";
                             if (p || q)
                             {
                                 Updatetaskattrs(AOURL_Cipher, p,
@@ -1712,9 +1888,10 @@ static void Httpretrieve(struct Httpinfo *hi, struct Fetchdriver *fd)
                                  (hi->flags & HTTPIF_SSLTUNNEL) ? hi->
                                  hostport : (UBYTE *) hent->h_name);
                     }
-                    if (hi->assl)
+                    if (hi->ssl)
                     {
-                        Assl_closessl(hi->assl);
+                        FreeHTTPSSL(hi->ssl);
+                        hi->ssl = NULL;
                     }
                     a_close(hi->sock, hi->socketbase);
                 }
@@ -1731,10 +1908,10 @@ static void Httpretrieve(struct Httpinfo *hi, struct Fetchdriver *fd)
         {
             Tcperror(fd, TCPERR_NOLIB);
         }
-        if (hi->assl)
+        if (hi->ssl)
         {
-            Assl_cleanup(hi->assl);
-            hi->assl = NULL;
+            FreeHTTPSSL(hi->ssl);
+            hi->ssl = NULL;
         }
         if (hi->socketbase)
         {
@@ -1855,6 +2032,7 @@ BOOL Inithttp(void)
 #ifndef LOCALONLY
     InitSemaphore(&certsema);
     NEWLIST(&certaccepts);
+    InitSemaphore(&SSLSema);
 #endif
     return TRUE;
 }
@@ -1875,5 +2053,13 @@ void Freehttp(void)
             FREE(ca);
         }
     }
+
+    /* Cleanup SSL resources */
+    if (GlobalSSLContext)
+    {
+        SSL_CTX_free(GlobalSSLContext);
+        GlobalSSLContext = NULL;
+    }
+    CleanupAmiSSLLibraries();
 #endif
 }
