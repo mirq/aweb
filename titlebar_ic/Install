@@ -1,0 +1,198 @@
+;** $VER: titlebar.image_install 40.1 (7.9.98) by Massimo Tantignone
+;**
+
+;******************************
+;** MESSAGES (DEFAULT: ENGLISH)
+
+(set msg_what    "What do you want to install?")
+(set msg_doc     "Documentation")
+(set msg_inc     "Include files")
+(set msg_fd      "Library .fd file")
+(set msg_seldr   "Select the destination drawer:")
+(set msg_whimage "Where do you want to copy the \"titlebar.image\" library?")
+(set msg_whdoc   "Where do you want to copy the documentation files?")
+(set msg_whinc   "Where do you want to copy the include files?\nYou should choose an already existing \"include\" directory.")
+(set msg_whfd    "Where do you want to copy the library .fd file?")
+;(set msg_cpu000  "68000")
+;(set msg_cpu020  "68020/030")
+;(set msg_cpu040  "68040")
+;(set msg_cpu060  "68060")
+(set whathelp    "Choose which part(s) of the titlebar.image package are to be installed.")
+(set dirhelp     "Select the drawer into which the \"titlebar.image\" library is to be copied.\nThe default is \"SYS:Classes/Images\".\nIf a newer version is already in place, it won't be overwritten.")
+(set dirhelp2    "Select the drawer into which the documentation is to be copied.")
+(set dirhelp3    "Select the directory into which the include files are to be copied.\nThe include directory itself won't be copied to the destination directory; only its contents will.\nThis means that you should choose an already existing \"include\" directory.")
+(set dirhelp4    "Select the drawer into which the library .fd file is to be copied.")
+;(set cpuhelp     "If you have an accelerated Amiga, you can choose to\ninstall a more optimized version of titlebar.image.")
+(set msg_done    "For any question or bug report, please write to:\n\ntanti@intercom.it")
+
+;*******************************
+;** ASK INSTALLATION PREFERENCES
+
+(complete 5)
+
+(set var_what
+   (askoptions
+      (prompt msg_what)
+      (help whathelp)
+      (choices "titlebar.image" msg_doc msg_inc msg_fd)
+      (default 1)
+   )
+)
+
+(complete 10)
+
+;(set var_cpu
+;   (askchoice
+;      (prompt msg_selcpu)
+;      (help cpuhelp)
+;      (choices msg_cpu000 msg_cpu020 msg_cpu040 msg_cpu060)
+;   )
+;))
+
+(if (bitand var_what 1)(
+   (set imagedir
+      (askdir
+         (default "SYS:Classes/Images")
+         (help dirhelp)
+         (prompt (cat msg_whimage "\n\n" msg_seldr))
+      )
+   )
+   (set imagedir (tackon imagedir ""))
+))
+
+(complete 20)
+
+(if (bitand var_what 2)(
+   (set docdir
+      (askdir
+         (default @default-dest)
+         (help dirhelp2)
+         (prompt (cat msg_whdoc "\n\n" msg_seldr))
+      )
+   )
+   (set docdir (tackon docdir ""))
+))
+
+(complete 30)
+
+(if (bitand var_what 4)(
+   (set incdir
+      (askdir
+         (default @default-dest)
+         (help dirhelp3)
+         (prompt (cat msg_whinc "\n\n" msg_seldr))
+      )
+   )
+   (set incdir (tackon incdir ""))
+))
+
+(complete 40)
+
+(if (bitand var_what 8)(
+   (set fddir
+      (askdir
+         (default @default-dest)
+         (help dirhelp4)
+         (prompt (cat msg_whfd "\n\n" msg_seldr))
+      )
+   )
+   (set fddir (tackon fddir ""))
+))
+
+(if (bitand var_what 1)
+   (
+      (set @default-dest imagedir)
+   )
+   (
+      (set @default-dest "RAM:")
+   )
+)
+
+;****************************************
+;** INSTALL FILES: TITLEBAR.IMAGE LIBRARY
+
+(complete 50)
+
+(if (bitand var_what 1)
+   (copylib
+      (source "Classes/Images/titlebar.image")
+      (dest imagedir)
+      (optional nofail)
+   )
+)
+
+;*******************************
+;** INSTALL FILES: DOCUMENTATION
+
+(complete 60)
+
+(if (bitand var_what 2)
+   (copyfiles
+      (source "")
+      (choices "titlebar.doc"
+               "titlebar.doc.info"
+               "titlebar.guide"
+               "titlebar.guide.info"
+               "ReadMe!"
+               "ReadMe!.info")
+      (dest docdir)
+   )
+)
+
+;*******************************
+;** INSTALL FILES: INCLUDE FILES
+
+(complete 70)
+
+(if (bitand var_what 4)
+   (copyfiles
+      (source "include")
+      (dest incdir)
+      (all)
+   )
+)
+
+;**************************
+;** INSTALL FILES: .FD FILE
+
+(complete 80)
+
+(if (bitand var_what 8)
+   (copyfiles
+      (source "titlebarimage_cl.fd")
+      (dest fddir)
+   )
+)
+
+;**********************************
+;** INSTALL FILES: PREFERENCES FILE
+
+;(complete 90)
+
+;(if (= 0 (exists "ENVARC:Images/titlebar.prefs" (noreq)))(
+;   (copyfiles
+;      (source "Env-Archive/Images/titlebar.prefs")
+;      (dest "ENVARC:Images")
+;   )
+;   (copyfiles
+;      (source "Env-Archive/Images/titlebar.prefs")
+;      (dest "ENV:Images")
+;   )
+;))
+
+(run "Avail FLUSH > NIL:")
+
+;***********
+;** READ ME!
+
+(complete 90)
+
+(run "SYS:Utilities/MultiView \"ReadMe!\"" (safe))
+
+;*******
+;** DONE
+
+(complete 100)
+
+(exit (cat "\n" msg_done))
+

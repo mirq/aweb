@@ -3,23 +3,63 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
-  <component name="CMakePresetLoader"><![CDATA[{
-  "useNewFormat": true
-}]]></component>
+  <component name="BackendCodeEditorMiscSettings">
+    <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
+    <option name="/Default/Housekeeping/GlobalSettingsUpgraded/IsUpgraded/@EntryValue" value="true" type="bool" />
+  </component>
+  <component name="CMakePresetLoader">{
+  &quot;useNewFormat&quot;: true
+}</component>
+  <component name="CMakeProjectFlavorService">
+    <option name="flavorId" value="CMakePlainProjectFlavor" />
+  </component>
+  <component name="CMakeReloadState">
+    <option name="reloaded" value="true" />
+  </component>
   <component name="CMakeRunConfigurationManager">
     <generated>
-      <config projectName="aweb" targetName="all" />
+      <config projectName="AWeb" targetName="all" />
+      <config projectName="AWeb" targetName="awebcommon" />
+      <config projectName="AWeb" targetName="awebcfg" />
+      <config projectName="AWeb" targetName="aweb" />
+      <config projectName="AWeb" targetName="zlib" />
     </generated>
   </component>
-  <component name="CMakeSettings">
-    <configurations />
+  <component name="CMakeSettings" AUTO_RELOAD="true">
+    <configurations>
+      <configuration PROFILE_NAME="Default" ENABLED="true" GENERATION_OPTIONS="-DCMAKE_TOOLCHAIN_FILE=toolchain/m68k-amigaos.cmake" />
+      <configuration PROFILE_NAME="amiga-release" ENABLED="false" FROM_PRESET="true" GENERATION_DIR="$PROJECT_DIR$/build-amiga" />
+      <configuration PROFILE_NAME="amiga-debug" ENABLED="false" FROM_PRESET="true" GENERATION_DIR="$PROJECT_DIR$/build-amiga-debug" />
+      <configuration PROFILE_NAME="amiga-release - amiga-release" ENABLED="false" FROM_PRESET="true" GENERATION_DIR="$PROJECT_DIR$/build-amiga" />
+      <configuration PROFILE_NAME="amiga-debug - amiga-debug" ENABLED="false" FROM_PRESET="true" GENERATION_DIR="$PROJECT_DIR$/build-amiga-debug" />
+    </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8dac3c36-dcb1-4bfe-aab2-018b6a9ec96f" name="Changes" comment="060721 code">
+    <list default="true" id="8dac3c36-dcb1-4bfe-aab2-018b6a9ec96f" name="Changes" comment="devcontainer fix">
+      <change afterPath="$PROJECT_DIR$/titlebar_ic/Classes/Images/titlebar.image" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/titlebar_ic/Install" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/titlebar_ic/Install.info" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/titlebar_ic/ReadMe!" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/titlebar_ic/ReadMe!.info" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/titlebar_ic/TBITest" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/titlebar_ic/TBITest.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/titlebar_ic/TBITest.c.info" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/titlebar_ic/TBITest.info" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/titlebar_ic/include/clib/titlebarimage_protos.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/titlebar_ic/include/images/titlebar.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/titlebar_ic/include/pragmas/titlebarimage_pragmas.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/titlebar_ic/include/proto/titlebarimage.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/titlebar_ic/titlebar.doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/titlebar_ic/titlebar.doc.info" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/titlebar_ic/titlebar.guide" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/titlebar_ic/titlebar.guide.info" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/titlebar_ic/titlebarimage_cl.fd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.devcontainer/devcontainer.json" beforeDir="false" afterPath="$PROJECT_DIR$/.devcontainer/devcontainer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tubsengine" beforeDir="false" afterPath="$PROJECT_DIR$/Tubsengine" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aweb/Makefile.tubs" beforeDir="false" afterPath="$PROJECT_DIR$/aweb/Makefile.tubs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/awebcfg/include/awebcfg.h" beforeDir="false" afterPath="$PROJECT_DIR$/awebcfg/include/awebcfg.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Include/keyfile.h" beforeDir="false" afterPath="$PROJECT_DIR$/Include/keyfile.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toolchain" beforeDir="false" afterPath="$PROJECT_DIR$/toolchain" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toolchain/m68k-amigaos.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/toolchain/m68k-amigaos.cmake" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,59 +69,105 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Default" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
   </component>
-  <component name="MakefileLocalSettings">
-    <option name="availableProjects">
-      <map>
-        <entry>
-          <key>
-            <ExternalProjectPojo>
-              <option name="name" value="aweb" />
-              <option name="path" value="$PROJECT_DIR$" />
-            </ExternalProjectPojo>
-          </key>
-          <value>
-            <list>
-              <ExternalProjectPojo>
-                <option name="name" value="aweb" />
-                <option name="path" value="$PROJECT_DIR$" />
-              </ExternalProjectPojo>
-            </list>
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="projectSyncType">
-      <map>
-        <entry key="$PROJECT_DIR$" value="RE_IMPORT" />
-      </map>
-    </option>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Include/M_Hook.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Include/platform_specific.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Makefile" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/aweb/amissl.c" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/aweb/awebamitcp.c" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/aweb/awebtcp.c" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/aweb/window.c" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/awebcfg/cfgui.c" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/awebcfg/include/awebcfg.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/awebinet225.c" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/aweblibs/include/libraries/awebssl.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/zlib/zlib.h" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="32uk10GUKt8j4XmZq0ZtreLN1Tr" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "CMake Application.aweb.executor": "Run",
+    "Native Application.all.executor": "Run",
+    "RunOnceActivity.RadMigrateCodeStyle": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "RunOnceActivity.west.config.association.type.startup.service": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "build2025",
+    "last_opened_file_path": "/home/mirek/aweb",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "CMakeSettings",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/plugins/jfif" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="all" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="aweb" TARGET_NAME="all" CONFIG_NAME="all" version="1">
+  <component name="RunManager" selected="CMake Application.aweb">
+    <configuration name="all" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="aweb" TARGET_NAME="all" CONFIG_NAME="all" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="aweb" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="AWeb" TARGET_NAME="aweb" CONFIG_NAME="Default" RUN_TARGET_PROJECT_NAME="AWeb" RUN_TARGET_NAME="aweb">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="awebcfg" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="AWeb" TARGET_NAME="awebcfg" CONFIG_NAME="Default">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="awebcommon" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="AWeb" TARGET_NAME="awebcommon" CONFIG_NAME="Default">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="zlib" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="AWeb" TARGET_NAME="zlib" CONFIG_NAME="Default">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="CMake Application.aweb" />
+      <item itemvalue="CMake Application.awebcfg" />
+      <item itemvalue="CMake Application.awebcommon" />
+      <item itemvalue="CMake Application.zlib" />
+      <item itemvalue="Native Application.all" />
+    </list>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="8dac3c36-dcb1-4bfe-aab2-018b6a9ec96f" name="Changes" comment="" />
@@ -90,6 +176,9 @@
       <option name="presentableId" value="Default" />
       <updated>1676584481416</updated>
       <workItem from="1676584483290" duration="12806000" />
+      <workItem from="1758277628873" duration="2000" />
+      <workItem from="1758277641331" duration="123000" />
+      <workItem from="1758277990859" duration="5723000" />
     </task>
     <task id="LOCAL-00001" summary="png util build fix">
       <created>1676585558946</created>
@@ -105,12 +194,58 @@
       <option name="project" value="LOCAL" />
       <updated>1676667804102</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="added toolchains">
+      <option name="closed" value="true" />
+      <created>1758231116401</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1758231116401</updated>
+    </task>
+    <task id="LOCAL-00004" summary="added amissl">
+      <option name="closed" value="true" />
+      <created>1758231167363</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1758231167363</updated>
+    </task>
+    <task id="LOCAL-00005" summary="devcontainer fix">
+      <option name="closed" value="true" />
+      <created>1758231266924</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1758231266924</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VCPKGProject">
+    <isAutomaticCheckingOnLaunch value="false" />
+    <isAutomaticFoundErrors value="true" />
+    <isAutomaticReloadCMake value="true" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="png util build fix" />
     <MESSAGE value="060721 code" />
-    <option name="LAST_COMMIT_MESSAGE" value="060721 code" />
+    <MESSAGE value="added toolchains" />
+    <MESSAGE value="added amissl" />
+    <MESSAGE value="devcontainer fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="devcontainer fix" />
   </component>
 </project>

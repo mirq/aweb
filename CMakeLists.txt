@@ -16,7 +16,9 @@ file(GLOB_RECURSE SOURCES  ${PROJECT_SOURCE_DIR}/aweb/*.c)
 include_directories(${PROJECT_SOURCE_DIR}/aweb/include)
 include_directories(${PROJECT_SOURCE_DIR}/Include)
 include_directories(${PROJECT_SOURCE_DIR}/aweblibs/include)
-
+include_directories(${PROJECT_SOURCE_DIR}/amissl/include)
+include_directories(${PROJECT_SOURCE_DIR}/zlib)
+include_directories(${PROJECT_SOURCE_DIR}/titlebar_ic/include)
 
 
 set(TARGET_NAME ${PROJECT_NAME_LOWER})
@@ -35,6 +37,10 @@ if(ELF2HUNK)
             TARGET ${AWEB_LINKED} POST_BUILD
             COMMAND ${ELF2HUNK} ${AWEB_LINKED} ../dist/${AWEB_EXE}
     )
+    target_link_libraries(${AWEB_LINKED} awebcommon)
+    target_link_libraries(${AWEB_LINKED} awebcfg)
+    target_link_libraries(${AWEB_LINKED} zlib)
+    target_link_libraries(${AWEB_LINKED} m)
 
 else()
 
@@ -43,7 +49,7 @@ else()
     add_executable(${AWEB_EXE} ${SOURCES} ${HEADERS})
     add_custom_command(
             TARGET ${AWEB_EXE} POST_BUILD
-            COMMAND cp ${AWEB_EXE} ${PROJECT_SOURCE_DIR}/dist_${CMAKE_BUILD_TYPE}/
+            COMMAND cp ${AWEB_EXE} ${PROJECT_SOURCE_DIR}/dist/
     )
 endif()
 
@@ -75,3 +81,4 @@ target_include_directories(zlib PRIVATE ${PROJECT_SOURCE_DIR}/zlib)
 target_link_libraries(${AWEB_EXE} awebcommon)
 target_link_libraries(${AWEB_EXE} awebcfg)
 target_link_libraries(${AWEB_EXE} zlib)
+target_link_libraries(${AWEB_EXE} m)
